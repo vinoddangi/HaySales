@@ -1,3 +1,5 @@
+import { LedgerPage } from '@/pages/LedgerPage';
+import { SalesPage } from '@/pages/SalesPage';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { MobileShell } from '../components/navigation/MobileShell';
@@ -16,6 +18,8 @@ export const AppRoutes: React.FC = () => {
         <Route path="explore" element={<ExplorePage />} />
         <Route path="item/:id" element={<ItemDetailPage />} />
         <Route path="activity" element={<ActivityPage />} />
+        <Route path="sales" element={<SalesPage />} />
+        <Route path="ledger" element={<LedgerPage />} />
         <Route path="profile" element={<ProfilePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

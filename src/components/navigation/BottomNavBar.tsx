@@ -1,4 +1,4 @@
-import { Bell, Home, Layers, User } from 'lucide-react';
+import { BookOpen, Home, Layers, ShoppingBag, User } from 'lucide-react';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '../../utils/cn';
@@ -12,16 +12,36 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { id: 'home', label: 'Home', path: '/', icon: Home },
-  { id: 'explore', label: 'Catalog', path: '/explore', icon: Layers },
   {
-    id: 'activity',
-    label: 'Activity',
-    path: '/activity',
-    icon: Bell,
-    badge: 2,
+    id: 'home',
+    label: 'Home',
+    path: '/',
+    icon: Home,
   },
-  { id: 'profile', label: 'Profile', path: '/profile', icon: User },
+  {
+    id: 'sales',
+    label: 'Sales',
+    path: '/sales',
+    icon: ShoppingBag,
+  }, // Daily Billing Counter
+  {
+    id: 'ledger',
+    label: 'Ledger',
+    path: '/ledger',
+    icon: BookOpen,
+  }, // Dues & Transaction History
+  {
+    id: 'explore',
+    label: 'Catalog',
+    path: '/explore',
+    icon: Layers,
+  },
+  {
+    id: 'profile',
+    label: 'Profile',
+    path: '/profile',
+    icon: User,
+  },
 ];
 
 export const BottomNavBar: React.FC = () => {

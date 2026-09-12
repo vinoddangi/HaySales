@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "haysales",
     "public": "dist",
     "ignore": [
       "firebase.json",
