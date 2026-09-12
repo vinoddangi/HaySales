@@ -1,9 +1,9 @@
 import js from '@eslint/js'
+import tsParser from '@typescript-eslint/parser'
 import prettierConfig from 'eslint-config-prettier'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import globals from 'globals'
-import tsParser from '@typescript-eslint/parser'
 
 export default [
   {
