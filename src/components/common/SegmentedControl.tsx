@@ -10,7 +10,7 @@ export interface SegmentedOption<T extends string> {
 export interface SegmentedControlProps<T extends string> {
   options: SegmentedOption<T>[];
   value: T;
-  onChange: (value: T) => void;
+  onChange: (_value: T) => void;
   className?: string;
 }
 

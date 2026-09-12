@@ -4,7 +4,7 @@ import { cn } from '../../utils/cn';
 
 export interface SwitchProps {
   checked: boolean;
-  onChange: (checked: boolean) => void;
+  onChange: (_checked: boolean) => void;
   disabled?: boolean;
   label?: string;
   className?: string;

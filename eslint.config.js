@@ -3,16 +3,32 @@ import prettierConfig from 'eslint-config-prettier'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import globals from 'globals'
+import tsParser from '@typescript-eslint/parser'
 
 export default [
-  { ignores: ['dist', 'node_modules', '*.config.js'] },
+  {
+    ignores: [
+      'dist/**',
+      'node_modules/**',
+      '.vscode/**',
+      '.github/**',
+      '*.config.js',
+      '*.config.ts',
+    ],
+  },
   js.configs.recommended,
   prettierConfig,
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    files: ['src/**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
-      ecmaVersion: 2022,
-      sourceType: 'module',
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
       globals: {
         ...globals.browser,
         ...globals.es2021,
