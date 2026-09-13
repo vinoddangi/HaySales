@@ -1,5 +1,5 @@
 import { AlertTriangle, CheckCircle, Search, X } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react'; // Added useEffect
 import { Button } from '../components/common/Button';
 import { Card } from '../components/common/Card';
 import {
@@ -28,10 +28,11 @@ export const LedgerPage: React.FC = () => {
 
   const [addTransaction, { isLoading: isPaying }] = useAddTransactionMutation();
 
+  // Fetches ALL transactions for the selected customer (removed limitCount restrictor)
   const { data: transactions = [], isLoading: loadingTx } =
     useGetTransactionsQuery(
       selectedCustId
-        ? { customerId: selectedCustId, limitCount: 5 }
+        ? { customerId: selectedCustId }
         : { customerId: '', limitCount: 0 },
       { skip: !selectedCustId },
     );
@@ -44,7 +45,15 @@ export const LedgerPage: React.FC = () => {
     : 0;
   const effectivePaymentAmount = allDueClear ? outstandingDue : paymentAmount;
 
-  // PRE-FILTERED SEARCH: Shows only outstanding dues by default, searches everyone on type!
+  // Auto-reset payment states on close or selection change
+  useEffect(() => {
+    if (!isDrawerOpen || !selectedCustId) {
+      setPaymentAmount(0);
+      setAllDueClear(false);
+    }
+  }, [selectedCustId, isDrawerOpen]);
+
+  // Filters customers with outstanding dues by default, searches all when typing
   const filteredCustomers = customers.filter((c) => {
     const matchesSearch = c.Name.toLowerCase().includes(
       searchTerm.toLowerCase(),
@@ -61,8 +70,6 @@ export const LedgerPage: React.FC = () => {
         type: 'PAYMENT',
         paymentAmount: effectivePaymentAmount,
       }).unwrap();
-      setPaymentAmount(0);
-      setAllDueClear(false);
       setIsDrawerOpen(false);
       alert('Payment successfully recorded!');
     } catch (err) {
@@ -164,19 +171,25 @@ export const LedgerPage: React.FC = () => {
             </div>
 
             {/* Quick Payment Form */}
-            <div className="space-y-3 pt-2">
-              <label className="flex cursor-pointer items-center gap-2 text-xs font-semibold text-m3-on-surface">
+            <div className="space-y-3 rounded-xl border border-m3-outline-variant bg-m3-surface-container-low p-4">
+              <h4 className="text-xs font-extrabold uppercase tracking-wider text-m3-primary">
+                Record Payment
+              </h4>
+
+              <div className="flex items-center justify-between border-b border-m3-outline-variant/30 pb-2.5">
+                <span className="text-xs font-semibold text-m3-on-surface">
+                  Settle Entire Balance
+                </span>
                 <input
                   type="checkbox"
                   checked={allDueClear}
                   onChange={(e) => setAllDueClear(e.target.checked)}
                   className="h-4 w-4 rounded border-m3-outline text-m3-primary"
                 />
-                All Due Clear (Settles entire balance)
-              </label>
+              </div>
 
               <div className="grid grid-cols-2 gap-3">
-                <div>
+                <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
                     Amount Paid (₹)
                   </label>
@@ -184,12 +197,13 @@ export const LedgerPage: React.FC = () => {
                     type="number"
                     placeholder="0"
                     value={paymentAmount || ''}
+                    disabled={allDueClear}
                     max={outstandingDue}
                     onChange={(e) => setPaymentAmount(Number(e.target.value))}
-                    className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface"
+                    className="w-full rounded-lg border border-m3-outline bg-m3-surface p-2.5 text-xs font-medium"
                   />
                 </div>
-                <div>
+                <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
                     Discount Given (₹)
                   </label>
@@ -197,14 +211,14 @@ export const LedgerPage: React.FC = () => {
                     type="text"
                     readOnly
                     value={formatRupee(discountDuringPayment)}
-                    className="w-full rounded border border-m3-outline bg-m3-surface-container-high p-2 text-xs font-semibold text-m3-on-surface-variant opacity-80"
+                    className="w-full rounded-lg border border-m3-outline bg-m3-surface-container-high p-2.5 text-xs font-bold text-emerald-600 opacity-90"
                   />
                 </div>
               </div>
 
               <Button
                 variant="filled"
-                className="mt-1 w-full"
+                className="w-full text-xs"
                 onClick={handlePay}
                 disabled={
                   isPaying ||
@@ -217,18 +231,24 @@ export const LedgerPage: React.FC = () => {
             </div>
 
             {/* Transactions List */}
-            <div className="space-y-2 pt-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-m3-on-surface-variant">
-                Last 5 Transactions
-              </h4>
+            <div className="space-y-3 pt-2">
+              <div className="flex items-center justify-between">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-m3-on-surface-variant">
+                  Transaction History
+                </h4>
+                <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-600">
+                  Cash Inflows Highlighted
+                </span>
+              </div>
+
               {loadingTx ? (
-                <p className="text-center text-xs">Loading history...</p>
+                <p className="py-4 text-center text-xs">Loading history...</p>
               ) : transactions.length === 0 ? (
-                <p className="text-center text-xs text-m3-on-surface-variant">
-                  No transaction history found.
+                <p className="py-4 text-center text-xs text-m3-on-surface-variant">
+                  No transactions found.
                 </p>
               ) : (
-                <div className="max-h-[25vh] space-y-2 overflow-y-auto">
+                <div className="max-h-[30vh] space-y-2.5 overflow-y-auto pr-1">
                   {transactions.map((tx: any) => {
                     const isSale = tx.type === 'SALE';
                     const amount = tx.amount || 0;
@@ -238,16 +258,31 @@ export const LedgerPage: React.FC = () => {
                     return (
                       <div
                         key={tx.id}
-                        className="flex justify-between rounded border border-m3-outline-variant bg-m3-surface-container-low p-3 text-xs"
+                        className={`flex items-center justify-between rounded-xl border p-3.5 text-xs transition-all ${
+                          !isSale
+                            ? 'border-emerald-500/20 bg-emerald-500/[0.04]'
+                            : 'border-m3-outline-variant bg-m3-surface-container-low'
+                        }`}
                       >
                         <div className="space-y-1">
-                          <p className="font-bold text-m3-on-surface">
-                            {isSale
-                              ? `Sale: ${tx.item || 'Item'}`
-                              : 'Payment Received'}
-                          </p>
+                          <div className="flex items-center gap-1.5">
+                            <span className="font-bold text-m3-on-surface">
+                              {isSale
+                                ? `Sale: ${tx.item || 'Item'}`
+                                : 'Payment Received'}
+                            </span>
+                            <span
+                              className={`rounded px-1.5 py-0.5 text-[9px] font-bold uppercase ${
+                                !isSale
+                                  ? 'bg-emerald-500/20 text-emerald-600'
+                                  : 'bg-neutral-500/20 text-neutral-600'
+                              }`}
+                            >
+                              {!isSale ? 'Cash In' : 'Invoice'}
+                            </span>
+                          </div>
                           <p className="text-[10px] text-m3-on-surface-variant">
-                            {tx.weightKg ? `${tx.weightKg} kg` : ''} •{' '}
+                            {tx.weightKg ? `${tx.weightKg} kg • ` : ''}
                             {new Date(
                               tx.date?.seconds * 1000 || tx.date,
                             ).toLocaleDateString()}
@@ -256,11 +291,11 @@ export const LedgerPage: React.FC = () => {
                         <div className="space-y-0.5 text-right">
                           {isSale ? (
                             <>
-                              <p className="text-[10px] text-m3-on-surface-variant">
-                                Cost: {formatRupee(amount)}
+                              <p className="text-[10px] font-medium text-m3-on-surface-variant">
+                                Total: {formatRupee(amount)}
                               </p>
                               {cash > 0 && (
-                                <p className="text-[10px] text-emerald-600">
+                                <p className="text-[10px] font-semibold text-emerald-600">
                                   Paid: {formatRupee(cash)}
                                 </p>
                               )}
@@ -271,8 +306,8 @@ export const LedgerPage: React.FC = () => {
                               )}
                             </>
                           ) : (
-                            <p className="font-bold text-emerald-600">
-                              Paid: -{formatRupee(tx.paymentAmount || 0)}
+                            <p className="text-sm font-extrabold text-emerald-600">
+                              -{formatRupee(tx.paymentAmount || 0)}
                             </p>
                           )}
                         </div>

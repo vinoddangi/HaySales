@@ -1,5 +1,6 @@
+import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Added
 import { Monitor, Moon, Palette, Smartphone, Sun } from 'lucide-react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
@@ -9,6 +10,7 @@ import {
 } from '../../store/slices/themeSlice';
 import { ColorScheme } from '../../types';
 import { cn } from '../../utils/cn';
+import { LoginModal } from '../auth/LoginModal'; // Added
 import { BottomSheet } from '../common/BottomSheet';
 import { Snackbar } from '../common/Snackbar';
 import { BottomNavBar } from './BottomNavBar';
@@ -19,12 +21,28 @@ export const MobileShell: React.FC = () => {
   const dispatch = useAppDispatch();
   const { mode, scheme, previewFrame } = useAppSelector((state) => state.theme);
 
+  // Authentication states
+  const [showLogin, setShowLogin] = useState(false); // Added
+  const auth = getAuth(); // Added
+
+  useEffect(() => {
+    // Listens for authentication status changes
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (!currentUser) {
+        setShowLogin(true); // Open verification modal if logged out
+      } else {
+        setShowLogin(false);
+      }
+    });
+    return () => unsubscribe();
+  }, [auth]);
+
   // Determine page title based on path
   const getPageTitle = () => {
     const path = location.pathname;
     if (path === '/') return 'HaySales Dashboard';
-    if (path === '/sales') return 'New Sales Register'; // Added!
-    if (path === '/ledger') return 'Customer Dues Ledger'; // Added!
+    if (path === '/sales') return 'New Sales Register';
+    if (path === '/ledger') return 'Customer Dues Ledger';
     if (path === '/explore') return 'Hay & Forage Catalog';
     if (path === '/activity') return 'Activity & Orders';
     if (path === '/customer') return 'Customer Details';
@@ -38,7 +56,7 @@ export const MobileShell: React.FC = () => {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-start overflow-x-hidden bg-neutral-900 font-sans text-m3-on-surface">
-      {/* Desktop Toolbar (Hidden on actual mobile screens) */}
+      {/* Desktop Toolbar */}
       <div className="sticky top-0 z-50 hidden w-full max-w-5xl items-center justify-between border-b border-neutral-700/60 bg-neutral-800 px-4 py-2.5 text-xs text-neutral-200 shadow-md md:flex">
         <div className="flex items-center gap-2 font-medium">
           <span className="inline-block h-2.5 w-2.5 animate-pulse rounded-full bg-emerald-500" />
@@ -101,7 +119,7 @@ export const MobileShell: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Mobile App Container (Height fixed to h-screen and md:h-[860px] to prevent scroll cutoff) */}
+      {/* Main Mobile App Container */}
       <div
         className={cn(
           'relative flex h-screen w-full flex-col bg-m3-surface transition-all duration-300',
@@ -118,16 +136,18 @@ export const MobileShell: React.FC = () => {
             </div>
           </div>
         )}
-
         <TopAppBar title={getPageTitle()} showBack={isDetailPage} />
-
         <main className="flex-1 overflow-y-auto overscroll-contain pb-20">
           <Outlet />
         </main>
-
         <BottomNavBar />
         <BottomSheet />
         <Snackbar />
+        <LoginModal
+          isOpen={showLogin}
+          onClose={() => setShowLogin(false)}
+        />{' '}
+        {/* Added */}
       </div>
     </div>
   );
