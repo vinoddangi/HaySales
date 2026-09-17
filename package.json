@@ -11,12 +11,17 @@
     "lint:fix": "eslint src --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,html,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css,html,json}\"",
+    "db:backup": "node script/backupToGoogleSheets.js",
+    "db:clean": "node script/cleanAllRecords.js",
+    "db:migrate": "node script/migrateFromSheets.js",
     "deploy": "firebase deploy --only hosting"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
     "clsx": "^2.1.1",
     "firebase": "^12.19.0",
+    "firebase-admin": "^14.4.0",
+    "googleapis": "^181.0.0",
     "lucide-react": "^1.16.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

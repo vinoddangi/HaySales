@@ -79,7 +79,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     try {
       await confirmationResult.confirm(pin);
       onClose(); // Sign-in complete!
-    } catch (err) {
+    } catch {
       setError('Incorrect PIN. Please try again.');
     } finally {
       setLoading(false);

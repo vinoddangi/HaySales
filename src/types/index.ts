@@ -36,7 +36,38 @@ export interface SnackbarState {
 
 export interface Customer {
   id: string; // Document ID
-  Id: number; // Numeric sequence ID
-  Name: string; // Customer name
-  totalOutstandingDue?: number; // Added to support tracking dues!
+  name: string; // Customer name
+  mobile?: string; // Contact mobile
+  creditLimit?: number; // Advisory credit limit indicator (default ₹35,000)
+  outstandingAmount?: number; // Real-time running outstanding balance on customer doc
+}
+
+export type ExpenseCategoryType =
+  'Interest' | 'Fuel' | 'Labor' | 'Food / Drink' | 'Tools' | 'Others';
+
+export interface Transaction {
+  id?: string;
+  customerId?: string;
+  customerName?: string;
+  type:
+    | 'SALE'
+    | 'SERVICE'
+    | 'PAYMENT'
+    | 'OPENING_BALANCE'
+    | 'PURCHASE'
+    | 'EXPENSE';
+  category?: 'Purchase' | 'Expense';
+  expenseCategory?: ExpenseCategoryType | string;
+  date?: { seconds?: number } | string | number | Date;
+  item?: string;
+  weightKg?: number;
+  amount?: number;
+  discount?: number;
+  cashPaid?: number;
+  remainingDue?: number;
+  paymentAmount?: number;
+  rate?: number;
+  purchaseRate?: number;
+  vendorName?: string;
+  note?: string;
 }

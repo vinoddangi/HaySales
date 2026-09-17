@@ -1,4 +1,11 @@
-import { BookOpen, Home, Layers, ShoppingBag, User } from 'lucide-react';
+import {
+  ArrowDownLeft,
+  BookOpen,
+  History,
+  Home,
+  ShoppingBag,
+  User,
+} from 'lucide-react';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '../../utils/cn';
@@ -23,18 +30,24 @@ const navItems: NavItem[] = [
     label: 'Sales',
     path: '/sales',
     icon: ShoppingBag,
-  }, // Daily Billing Counter
+  },
+  {
+    id: 'purchases',
+    label: 'Buy',
+    path: '/purchases',
+    icon: ArrowDownLeft,
+  },
+  {
+    id: 'activity',
+    label: 'Activity',
+    path: '/activity',
+    icon: History,
+  },
   {
     id: 'ledger',
     label: 'Ledger',
     path: '/ledger',
     icon: BookOpen,
-  }, // Dues & Transaction History
-  {
-    id: 'explore',
-    label: 'Catalog',
-    path: '/explore',
-    icon: Layers,
   },
   {
     id: 'profile',

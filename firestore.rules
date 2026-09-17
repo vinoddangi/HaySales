@@ -1,0 +1,21 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Root customer document
+    match /customers/{customerId} {
+      allow read, write: if request.auth != null;
+
+      // 2. Recursive match for all subcollections (transactions, Transactions-*, etc.)
+      match /{allSubcollections=**} {
+        allow read, write: if request.auth != null;
+      }
+    }
+
+    // 3. Fallback for any other collection
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+

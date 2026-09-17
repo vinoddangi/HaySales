@@ -1,9 +1,9 @@
-import js from '@eslint/js'
-import tsParser from '@typescript-eslint/parser'
-import prettierConfig from 'eslint-config-prettier'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import globals from 'globals'
+import js from '@eslint/js';
+import tsParser from '@typescript-eslint/parser';
+import prettierConfig from 'eslint-config-prettier';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import globals from 'globals';
 
 export default [
   {
@@ -12,6 +12,7 @@ export default [
       'node_modules/**',
       '.vscode/**',
       '.github/**',
+      'script/**',
       '*.config.js',
       '*.config.ts',
     ],
@@ -50,4 +51,4 @@ export default [
       ],
     },
   },
-]
+];

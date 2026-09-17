@@ -42,8 +42,8 @@ export const MobileShell: React.FC = () => {
     const path = location.pathname;
     if (path === '/') return 'HaySales Dashboard';
     if (path === '/sales') return 'New Sales Register';
+    if (path === '/purchases') return 'Purchases & Expenses';
     if (path === '/ledger') return 'Customer Dues Ledger';
-    if (path === '/explore') return 'Hay & Forage Catalog';
     if (path === '/activity') return 'Activity & Orders';
     if (path === '/customer') return 'Customer Details';
     if (path === '/profile') return 'Profile & Settings';
