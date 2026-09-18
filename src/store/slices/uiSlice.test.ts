@@ -2,9 +2,12 @@ import { describe, expect, it } from 'vitest';
 import uiReducer, {
   closeBottomSheet,
   closeSearch,
+  hideLoading,
   hideSnackbar,
   openBottomSheet,
+  setLoading,
   setSearchQuery,
+  showLoading,
   showSnackbar,
   toggleSearch,
 } from './uiSlice';
@@ -50,5 +53,24 @@ describe('uiSlice', () => {
     const closed = uiReducer(toggled, closeSearch());
     expect(closed.isSearchOpen).toBe(false);
     expect(closed.searchQuery).toBe('');
+  });
+
+  it('handles loading state actions', () => {
+    const initialState = uiReducer(undefined, { type: 'unknown' });
+    expect(initialState.isLoading).toBe(false);
+
+    const loadingState = uiReducer(
+      initialState,
+      showLoading('Saving transaction...'),
+    );
+    expect(loadingState.isLoading).toBe(true);
+    expect(loadingState.loadingMessage).toBe('Saving transaction...');
+
+    const hiddenState = uiReducer(loadingState, hideLoading());
+    expect(hiddenState.isLoading).toBe(false);
+    expect(hiddenState.loadingMessage).toBe('');
+
+    const toggledBool = uiReducer(hiddenState, setLoading(true));
+    expect(toggledBool.isLoading).toBe(true);
   });
 });

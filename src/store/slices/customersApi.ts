@@ -595,32 +595,18 @@ export const customersApi = createApi({
               backupColName,
             );
 
-            // Check any existing documents in the backup subcollection to calculate complete cumulative balance
-            const existingBackupSnap = await getDocs(backupColRef);
+            // Active transactions already reflect the logged outstanding balance from previous backups (via OPENING_BALANCE / running balance).
+            // Do NOT add existing backup subcollection documents into cumulativeDue, which would double-count historical balance.
             let cumulativeDue = 0;
 
-            existingBackupSnap.forEach((bDoc) => {
-              const bData = bDoc.data();
-              if (bData.type === 'PAYMENT') {
-                cumulativeDue -= Number(bData.paymentAmount) || 0;
-              } else {
-                const credit =
-                  bData.remainingDue !== undefined
-                    ? Number(bData.remainingDue) || 0
-                    : (Number(bData.amount) || 0) -
-                      (Number(bData.cashPaid) || 0);
-                cumulativeDue += credit;
-              }
-            });
-
-            // Process and merge active transactions into the backup subcollection
+            // Process and merge active transactions into the target backup subcollection
             txSnap.forEach((tDoc) => {
               const data = tDoc.data();
               // 1. Copy/Update record in Transactions-(YYYY) with merge
               const backupDocRef = doc(backupColRef, tDoc.id);
               batch.set(backupDocRef, data, { merge: true });
 
-              // 2. Aggregate active balance
+              // 2. Aggregate active balance accurately
               if (data.type === 'PAYMENT') {
                 cumulativeDue -= Number(data.paymentAmount) || 0;
               } else {

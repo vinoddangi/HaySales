@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+export type SnackbarType = 'success' | 'error' | 'warning' | 'info';
+
 interface BottomSheetConfig {
   isOpen: boolean;
   title?: string;
@@ -10,12 +12,15 @@ interface BottomSheetConfig {
 interface SnackbarConfig {
   isOpen: boolean;
   message: string;
+  type?: SnackbarType;
   actionLabel?: string;
 }
 
 interface UIState {
   bottomSheet: BottomSheetConfig;
   snackbar: SnackbarConfig;
+  isLoading: boolean;
+  loadingMessage?: string;
   searchQuery: string;
   isSearchOpen: boolean;
 }
@@ -30,6 +35,8 @@ const initialState: UIState = {
     isOpen: false,
     message: '',
   },
+  isLoading: false,
+  loadingMessage: '',
   searchQuery: '',
   isSearchOpen: false,
 };
@@ -58,16 +65,41 @@ export const uiSlice = createSlice({
     },
     showSnackbar: (
       state,
-      action: PayloadAction<{ message: string; actionLabel?: string }>,
+      action: PayloadAction<{
+        message: string;
+        type?: SnackbarType;
+        actionLabel?: string;
+      }>,
     ) => {
       state.snackbar = {
         isOpen: true,
         message: action.payload.message,
+        type: action.payload.type,
         actionLabel: action.payload.actionLabel,
       };
     },
     hideSnackbar: (state) => {
       state.snackbar.isOpen = false;
+    },
+    showLoading: (state, action: PayloadAction<string | undefined>) => {
+      state.isLoading = true;
+      state.loadingMessage = action.payload || '';
+    },
+    hideLoading: (state) => {
+      state.isLoading = false;
+      state.loadingMessage = '';
+    },
+    setLoading: (
+      state,
+      action: PayloadAction<boolean | { isLoading: boolean; message?: string }>,
+    ) => {
+      if (typeof action.payload === 'boolean') {
+        state.isLoading = action.payload;
+        state.loadingMessage = '';
+      } else {
+        state.isLoading = action.payload.isLoading;
+        state.loadingMessage = action.payload.message || '';
+      }
     },
     setSearchQuery: (state, action: PayloadAction<string>) => {
       state.searchQuery = action.payload;
@@ -90,6 +122,9 @@ export const {
   closeBottomSheet,
   showSnackbar,
   hideSnackbar,
+  showLoading,
+  hideLoading,
+  setLoading,
   setSearchQuery,
   toggleSearch,
   closeSearch,

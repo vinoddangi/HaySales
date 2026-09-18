@@ -6,6 +6,7 @@ export * from './CustomerInfoBadge';
 export * from './CustomerSearchSelector';
 export * from './EmptyState';
 export * from './Fab';
+export * from './LoadingOverlay';
 export * from './PageContainer';
 export * from './PeriodFilterBar';
 export * from './SegmentedControl';

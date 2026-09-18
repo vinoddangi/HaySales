@@ -7,6 +7,7 @@ import {
   Receipt,
 } from 'lucide-react';
 import React, { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card } from '../../components/common/Card';
 import { PageContainer } from '../../components/common/PageContainer';
 import { useAppDispatch } from '../../store/hooks';
@@ -22,6 +23,7 @@ import { ExpenseForm } from './components/ExpenseForm';
 import { PurchaseForm } from './components/PurchaseForm';
 
 export const PurchasesPage: React.FC = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [activeCategory, setActiveCategory] = useState<'PURCHASE' | 'EXPENSE'>(
     'PURCHASE',
@@ -94,6 +96,7 @@ export const PurchasesPage: React.FC = () => {
       dispatch(
         showSnackbar({ message: 'Stock purchase successfully recorded!' }),
       );
+      navigate('/');
     } catch (err) {
       console.error(err);
       dispatch(showSnackbar({ message: 'Failed to record stock purchase' }));
@@ -119,6 +122,7 @@ export const PurchasesPage: React.FC = () => {
       }).unwrap();
 
       dispatch(showSnackbar({ message: 'Expense successfully recorded!' }));
+      navigate('/');
     } catch (err) {
       console.error(err);
       dispatch(showSnackbar({ message: 'Failed to record expense' }));

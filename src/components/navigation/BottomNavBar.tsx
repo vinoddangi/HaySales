@@ -4,7 +4,6 @@ import {
   History,
   Home,
   ShoppingBag,
-  User,
 } from 'lucide-react';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -48,12 +47,6 @@ const navItems: NavItem[] = [
     label: 'Ledger',
     path: '/ledger',
     icon: BookOpen,
-  },
-  {
-    id: 'profile',
-    label: 'Profile',
-    path: '/profile',
-    icon: User,
   },
 ];
 

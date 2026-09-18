@@ -4,16 +4,20 @@ import { Button } from '../../components/common/Button';
 import { PageContainer } from '../../components/common/PageContainer';
 import { auth } from '../../store/firebaseConfig';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { setColorScheme, setThemeMode } from '../../store/slices/themeSlice';
+import {
+  setColorScheme,
+  setFontSize,
+  setThemeMode,
+} from '../../store/slices/themeSlice';
 import { showSnackbar } from '../../store/slices/uiSlice';
-import { ColorScheme } from '../../types';
+import { ColorScheme, FontSize } from '../../types';
 import { AppearanceSettings } from './components/AppearanceSettings';
 import { ProfileHeader } from './components/ProfileHeader';
 import { TransactionBackupSettings } from './components/TransactionBackupSettings';
 
 export const ProfilePage: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { mode, scheme } = useAppSelector((state) => state.theme);
+  const { mode, scheme, fontSize } = useAppSelector((state) => state.theme);
   const [currentUser, setCurrentUser] = useState<User | null>(auth.currentUser);
 
   useEffect(() => {
@@ -45,6 +49,18 @@ export const ProfilePage: React.FC = () => {
   const handleSelectScheme = (newScheme: ColorScheme) => {
     dispatch(setColorScheme(newScheme));
     dispatch(showSnackbar({ message: `Applied ${newScheme} Theme` }));
+  };
+
+  const handleSelectFontSize = (newSize: FontSize) => {
+    dispatch(setFontSize(newSize));
+    const labels: Record<FontSize, string> = {
+      small: 'Small (Compact)',
+      medium: 'Default (Standard)',
+      large: 'Large (+1 Level)',
+    };
+    dispatch(
+      showSnackbar({ message: `Font size updated to ${labels[newSize]}` }),
+    );
   };
 
   const handleSignOut = async () => {
@@ -90,8 +106,10 @@ export const ProfilePage: React.FC = () => {
       <AppearanceSettings
         isDark={isDark}
         scheme={scheme}
+        fontSize={fontSize}
         onToggleDarkMode={handleToggleDarkMode}
         onSelectScheme={handleSelectScheme}
+        onSelectFontSize={handleSelectFontSize}
       />
 
       {/* Financial Year Rollover & Backup */}

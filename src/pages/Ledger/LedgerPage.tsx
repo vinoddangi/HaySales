@@ -1,5 +1,6 @@
 import { Filter, IndianRupee, Search, Users, X } from 'lucide-react';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card } from '../../components/common/Card';
 import { PageContainer } from '../../components/common/PageContainer';
 import { useAppDispatch } from '../../store/hooks';
@@ -14,6 +15,7 @@ import { CustomerLedgerList } from './components/CustomerLedgerList';
 import { LedgerDetailDrawer } from './components/LedgerDetailDrawer';
 
 export const LedgerPage: React.FC = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { data: customers = [], isLoading: isLoadingLedger } =
     useGetCustomersQuery();
@@ -75,6 +77,7 @@ export const LedgerPage: React.FC = () => {
 
       setIsDrawerOpen(false);
       dispatch(showSnackbar({ message: 'Payment successfully recorded!' }));
+      navigate('/');
     } catch (err) {
       console.error(err);
       dispatch(showSnackbar({ message: 'Failed to record payment' }));

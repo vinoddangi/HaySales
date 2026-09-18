@@ -5,7 +5,7 @@ import { m3ColorSchemes } from './m3Tokens';
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { mode, scheme } = useAppSelector((state) => state.theme);
+  const { mode, scheme, fontSize } = useAppSelector((state) => state.theme);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -26,7 +26,15 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     Object.entries(tokens).forEach(([cssVar, value]) => {
       root.style.setProperty(cssVar, value);
     });
-  }, [mode, scheme]);
+
+    // Font size scaling across rem units
+    const fontScaleMap: Record<string, string> = {
+      small: '87.5%', // ~14px base
+      medium: '100%', // 16px standard base
+      large: '112.5%', // 18px base (+1 Level)
+    };
+    root.style.fontSize = fontScaleMap[fontSize] || '100%';
+  }, [mode, scheme, fontSize]);
 
   return <>{children}</>;
 };

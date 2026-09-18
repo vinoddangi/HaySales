@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card } from '../../components/common/Card';
 import { CustomerSearchSelector } from '../../components/common/CustomerSearchSelector';
 import { PageContainer } from '../../components/common/PageContainer';
@@ -12,6 +13,7 @@ import { SaleForm } from './components/SaleForm';
 import { ServiceForm } from './components/ServiceForm';
 
 export const SalesPage: React.FC = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { data: customers = [] } = useGetCustomersQuery();
   const [addTransaction, { isLoading: isSaving }] = useAddTransactionMutation();
@@ -47,6 +49,7 @@ export const SalesPage: React.FC = () => {
       dispatch(
         showSnackbar({ message: 'Sale transaction successfully recorded!' }),
       );
+      navigate('/');
     } catch (err) {
       console.error('Failed to save sale:', err);
       dispatch(showSnackbar({ message: 'Error saving sale transaction.' }));
@@ -76,6 +79,7 @@ export const SalesPage: React.FC = () => {
       dispatch(
         showSnackbar({ message: 'Service transaction successfully recorded!' }),
       );
+      navigate('/');
     } catch (err) {
       console.error('Failed to save service:', err);
       dispatch(showSnackbar({ message: 'Error saving service transaction.' }));

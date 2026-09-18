@@ -1,5 +1,6 @@
-import { History, Search } from 'lucide-react';
-import React, { useMemo, useState } from 'react';
+import { Banknote, CreditCard, History, Search } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Card } from '../../components/common/Card';
 import { EmptyState } from '../../components/common/EmptyState';
 import { PageContainer } from '../../components/common/PageContainer';
@@ -17,6 +18,7 @@ import {
 } from '../../store/slices/customersApi';
 import { showSnackbar } from '../../store/slices/uiSlice';
 import { Transaction } from '../../types';
+import { cn } from '../../utils/cn';
 import { parseTransactionDate } from '../../utils/formatters';
 import {
   ActivityCategory,
@@ -27,6 +29,7 @@ import { EditActivityModal } from './components/EditActivityModal';
 
 export const ActivityPage: React.FC = () => {
   const dispatch = useAppDispatch();
+  const [searchParams] = useSearchParams();
   const currentDate = useMemo(() => new Date(), []);
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth();
@@ -36,8 +39,55 @@ export const ActivityPage: React.FC = () => {
     useState<PeriodFilterMode>('currentMonth');
   const [selectedMonth, setSelectedMonth] = useState<number>(currentMonth);
 
+  const categoryParam = searchParams.get('category')?.toUpperCase();
+  const natureParam = searchParams.get('nature')?.toUpperCase();
+
+  const initialCategory: ActivityCategory =
+    categoryParam === 'PURCHASES_EXPENSES' ||
+    categoryParam === 'PURCHASES' ||
+    categoryParam === 'EXPENSES'
+      ? 'PURCHASES_EXPENSES'
+      : categoryParam === 'PAYMENTS' || categoryParam === 'PAYMENT'
+        ? 'PAYMENTS'
+        : 'SALES';
+
   const [activeCategory, setActiveCategory] =
-    useState<ActivityCategory>('SALES');
+    useState<ActivityCategory>(initialCategory);
+
+  const [saleNature, setSaleNature] = useState<'ALL' | 'CASH' | 'CREDIT'>(
+    natureParam === 'CASH'
+      ? 'CASH'
+      : natureParam === 'CREDIT'
+        ? 'CREDIT'
+        : 'ALL',
+  );
+
+  useEffect(() => {
+    if (categoryParam) {
+      if (
+        categoryParam === 'PURCHASES_EXPENSES' ||
+        categoryParam === 'PURCHASES' ||
+        categoryParam === 'EXPENSES'
+      ) {
+        setActiveCategory('PURCHASES_EXPENSES');
+      } else if (categoryParam === 'PAYMENTS' || categoryParam === 'PAYMENT') {
+        setActiveCategory('PAYMENTS');
+      } else if (categoryParam === 'SALES') {
+        setActiveCategory('SALES');
+      }
+    }
+  }, [categoryParam]);
+
+  useEffect(() => {
+    if (
+      natureParam === 'CASH' ||
+      natureParam === 'CREDIT' ||
+      natureParam === 'ALL'
+    ) {
+      setSaleNature(natureParam);
+    }
+  }, [natureParam]);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [editingTransaction, setEditingTransaction] =
     useState<Transaction | null>(null);
@@ -97,15 +147,22 @@ export const ActivityPage: React.FC = () => {
     currentDate,
   ]);
 
-  // Split and count by category
-  const { sales, payments, purchasesExpenses } = useMemo(() => {
-    const s: Transaction[] = [];
+  // Split and count by category & nature
+  const {
+    sales,
+    allSalesCount,
+    cashSalesCount,
+    creditSalesCount,
+    payments,
+    purchasesExpenses,
+  } = useMemo(() => {
+    const allSalesList: Transaction[] = [];
     const p: Transaction[] = [];
     const pe: Transaction[] = [];
 
     periodFilteredTransactions.forEach((tx) => {
       if (tx.type === 'SALE' || tx.type === 'SERVICE') {
-        s.push(tx);
+        allSalesList.push(tx);
       } else if (tx.type === 'PAYMENT') {
         p.push(tx);
       } else if (tx.type === 'PURCHASE' || tx.type === 'EXPENSE') {
@@ -113,8 +170,35 @@ export const ActivityPage: React.FC = () => {
       }
     });
 
-    return { sales: s, payments: p, purchasesExpenses: pe };
-  }, [periodFilteredTransactions]);
+    const cashSalesList = allSalesList.filter(
+      (tx) => (Number(tx.cashPaid) || 0) > 0,
+    );
+    const creditSalesList = allSalesList.filter((tx) => {
+      const amt = Number(tx.amount) || 0;
+      const cash = Number(tx.cashPaid) || 0;
+      const rem =
+        tx.remainingDue !== undefined
+          ? Number(tx.remainingDue) || 0
+          : Math.max(0, amt - cash);
+      return rem > 0;
+    });
+
+    const activeSales =
+      saleNature === 'CASH'
+        ? cashSalesList
+        : saleNature === 'CREDIT'
+          ? creditSalesList
+          : allSalesList;
+
+    return {
+      sales: activeSales,
+      allSalesCount: allSalesList.length,
+      cashSalesCount: cashSalesList.length,
+      creditSalesCount: creditSalesList.length,
+      payments: p,
+      purchasesExpenses: pe,
+    };
+  }, [periodFilteredTransactions, saleNature]);
 
   // Filter current active list by search query
   const currentList = useMemo(() => {
@@ -251,11 +335,55 @@ export const ActivityPage: React.FC = () => {
       {/* 3. Category Selector Tabs */}
       <ActivityCategoryTabs
         activeCategory={activeCategory}
-        salesCount={sales.length}
+        salesCount={allSalesCount}
         paymentsCount={payments.length}
         purchasesExpensesCount={purchasesExpenses.length}
         onSelectCategory={setActiveCategory}
       />
+
+      {/* 3b. Sales Nature Sub-Filter Chips (All, Cash, Credit) */}
+      {activeCategory === 'SALES' && (
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
+          <button
+            type="button"
+            onClick={() => setSaleNature('ALL')}
+            className={cn(
+              'rounded-full px-3 py-1 text-xs font-semibold transition-all',
+              saleNature === 'ALL'
+                ? 'shadow-xs bg-m3-primary text-m3-on-primary'
+                : 'bg-m3-surface-container-high text-m3-on-surface-variant hover:bg-m3-surface-container-highest',
+            )}
+          >
+            All Sales ({allSalesCount})
+          </button>
+          <button
+            type="button"
+            onClick={() => setSaleNature('CASH')}
+            className={cn(
+              'flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold transition-all',
+              saleNature === 'CASH'
+                ? 'shadow-xs bg-teal-600 text-white'
+                : 'bg-m3-surface-container-high text-m3-on-surface-variant hover:bg-m3-surface-container-highest',
+            )}
+          >
+            <Banknote className="h-3.5 w-3.5" />
+            <span>Cash ({cashSalesCount})</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setSaleNature('CREDIT')}
+            className={cn(
+              'flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold transition-all',
+              saleNature === 'CREDIT'
+                ? 'shadow-xs bg-purple-600 text-white'
+                : 'bg-m3-surface-container-high text-m3-on-surface-variant hover:bg-m3-surface-container-highest',
+            )}
+          >
+            <CreditCard className="h-3.5 w-3.5" />
+            <span>Credit ({creditSalesCount})</span>
+          </button>
+        </div>
+      )}
 
       {/* 4. Search Bar */}
       <div className="relative">

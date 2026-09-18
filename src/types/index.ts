@@ -1,5 +1,6 @@
 export type ThemeMode = 'light' | 'dark' | 'system';
 export type ColorScheme = 'purple' | 'blue' | 'green' | 'orange' | 'rose';
+export type FontSize = 'small' | 'medium' | 'large';
 
 export interface Item {
   id: string;

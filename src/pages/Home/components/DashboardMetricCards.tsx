@@ -8,6 +8,7 @@ import {
   Wallet,
 } from 'lucide-react';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card } from '../../../components/common/Card';
 import { cn } from '../../../utils/cn';
 import { formatRupee, formatWeight } from '../../../utils/formatters';
@@ -39,6 +40,7 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
   metrics,
   isLoading,
 }) => {
+  const navigate = useNavigate();
   const totalSales = metrics.totalSalesAmount;
   const cashPercentage =
     totalSales > 0 ? (metrics.salesOnCash / totalSales) * 100 : 0;
@@ -60,18 +62,27 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
 
   return (
     <div className="space-y-3">
-      {/* Top Main Cards: Sales & Purchases */}
+      {/* Top Main Cards: Sales & Purchases (Clickable -> Activity) */}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {/* Total Sales Card */}
         <Card
           variant="elevated"
-          className="relative overflow-hidden border-emerald-500/30 bg-gradient-to-br from-emerald-500/[0.08] to-m3-surface-container-low p-4 dark:from-emerald-500/[0.12]"
+          role="button"
+          tabIndex={0}
+          onClick={() => navigate('/activity?category=SALES')}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              navigate('/activity?category=SALES');
+            }
+          }}
+          className="group relative cursor-pointer overflow-hidden border-emerald-500/30 bg-gradient-to-br from-emerald-500/[0.08] to-m3-surface-container-low p-4 transition-all duration-200 hover:scale-[1.01] hover:border-emerald-500/60 hover:shadow-md active:scale-[0.99] dark:from-emerald-500/[0.12]"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 transition-colors group-hover:underline dark:text-emerald-400">
               Total Sales
             </span>
-            <div className="rounded-full bg-emerald-500/20 p-2 text-emerald-600 dark:text-emerald-300">
+            <div className="rounded-full bg-emerald-500/20 p-2 text-emerald-600 transition-transform group-hover:scale-110 dark:text-emerald-300">
               <TrendingUp className="h-4 w-4" />
             </div>
           </div>
@@ -90,13 +101,22 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
         {/* Total Purchases Card */}
         <Card
           variant="elevated"
-          className="relative overflow-hidden border-amber-500/30 bg-gradient-to-br from-amber-500/[0.08] to-m3-surface-container-low p-4 dark:from-amber-500/[0.12]"
+          role="button"
+          tabIndex={0}
+          onClick={() => navigate('/activity?category=PURCHASES_EXPENSES')}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              navigate('/activity?category=PURCHASES_EXPENSES');
+            }
+          }}
+          className="group relative cursor-pointer overflow-hidden border-amber-500/30 bg-gradient-to-br from-amber-500/[0.08] to-m3-surface-container-low p-4 transition-all duration-200 hover:scale-[1.01] hover:border-amber-500/60 hover:shadow-md active:scale-[0.99] dark:from-amber-500/[0.12]"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-700 transition-colors group-hover:underline dark:text-amber-400">
               Total Purchases
             </span>
-            <div className="rounded-full bg-amber-500/20 p-2 text-amber-600 dark:text-amber-300">
+            <div className="rounded-full bg-amber-500/20 p-2 text-amber-600 transition-transform group-hover:scale-110 dark:text-amber-300">
               <ArrowDownLeft className="h-4 w-4" />
             </div>
           </div>
@@ -166,12 +186,21 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
         {/* Sales on Cash */}
         <Card
           variant="outlined"
-          className="border-teal-500/20 bg-teal-500/[0.04] p-3.5"
+          role="button"
+          tabIndex={0}
+          onClick={() => navigate('/activity?category=SALES&nature=CASH')}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              navigate('/activity?category=SALES&nature=CASH');
+            }
+          }}
+          className="group cursor-pointer border-teal-500/30 bg-teal-500/[0.05] p-3.5 transition-all duration-200 hover:scale-[1.01] hover:border-teal-500/60 hover:shadow-md active:scale-[0.99] dark:bg-teal-500/[0.08]"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5 text-teal-600 dark:text-teal-400">
-              <Banknote className="h-4 w-4" />
-              <span className="text-[11px] font-bold uppercase tracking-wide">
+              <Banknote className="h-4 w-4 transition-transform group-hover:scale-110" />
+              <span className="text-[11px] font-bold uppercase tracking-wide group-hover:underline">
                 Sales on Cash
               </span>
             </div>
@@ -190,12 +219,21 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
         {/* Sales on Credit */}
         <Card
           variant="outlined"
-          className="border-purple-500/20 bg-purple-500/[0.04] p-3.5"
+          role="button"
+          tabIndex={0}
+          onClick={() => navigate('/activity?category=SALES&nature=CREDIT')}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              navigate('/activity?category=SALES&nature=CREDIT');
+            }
+          }}
+          className="group cursor-pointer border-purple-500/30 bg-purple-500/[0.05] p-3.5 transition-all duration-200 hover:scale-[1.01] hover:border-purple-500/60 hover:shadow-md active:scale-[0.99] dark:bg-purple-500/[0.08]"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5 text-purple-600 dark:text-purple-400">
-              <CreditCard className="h-4 w-4" />
-              <span className="text-[11px] font-bold uppercase tracking-wide">
+              <CreditCard className="h-4 w-4 transition-transform group-hover:scale-110" />
+              <span className="text-[11px] font-bold uppercase tracking-wide group-hover:underline">
                 Sales on Credit
               </span>
             </div>

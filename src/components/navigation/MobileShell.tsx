@@ -1,17 +1,19 @@
-import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Added
-import { Monitor, Moon, Palette, Smartphone, Sun } from 'lucide-react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { Monitor, Moon, Palette, Smartphone, Sun, Type } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   setColorScheme,
+  setFontSize,
   setThemeMode,
   togglePreviewFrame,
 } from '../../store/slices/themeSlice';
-import { ColorScheme } from '../../types';
+import { ColorScheme, FontSize } from '../../types';
 import { cn } from '../../utils/cn';
 import { LoginModal } from '../auth/LoginModal'; // Added
 import { BottomSheet } from '../common/BottomSheet';
+import { LoadingOverlay } from '../common/LoadingOverlay';
 import { Snackbar } from '../common/Snackbar';
 import { BottomNavBar } from './BottomNavBar';
 import { TopAppBar } from './TopAppBar';
@@ -19,7 +21,9 @@ import { TopAppBar } from './TopAppBar';
 export const MobileShell: React.FC = () => {
   const location = useLocation();
   const dispatch = useAppDispatch();
-  const { mode, scheme, previewFrame } = useAppSelector((state) => state.theme);
+  const { mode, scheme, fontSize, previewFrame } = useAppSelector(
+    (state) => state.theme,
+  );
 
   // Authentication states
   const [showLogin, setShowLogin] = useState(false); // Added
@@ -51,7 +55,11 @@ export const MobileShell: React.FC = () => {
     return 'HaySales Mobile';
   };
 
-  const isDetailPage = location.pathname.startsWith('/item/');
+  const isDetailPage =
+    location.pathname.startsWith('/item/') ||
+    location.pathname === '/profile' ||
+    location.pathname === '/customers' ||
+    location.pathname === '/customer';
   const schemes: ColorScheme[] = ['purple', 'green', 'blue', 'orange', 'rose'];
 
   return (
@@ -94,6 +102,25 @@ export const MobileShell: React.FC = () => {
               />
             ))}
           </div>
+
+          <button
+            onClick={() => {
+              const sizes: FontSize[] = ['small', 'medium', 'large'];
+              const nextIdx = (sizes.indexOf(fontSize) + 1) % sizes.length;
+              dispatch(setFontSize(sizes[nextIdx]));
+            }}
+            className="flex items-center gap-1.5 rounded-md bg-neutral-700 px-2.5 py-1 text-neutral-200 transition-colors hover:bg-neutral-600"
+            title={`Font Size: ${fontSize}`}
+          >
+            <Type className="h-3.5 w-3.5 text-neutral-300" />
+            <span>
+              {fontSize === 'small'
+                ? 'Text: Sm'
+                : fontSize === 'large'
+                  ? 'Text: +1 Lg'
+                  : 'Text: Normal'}
+            </span>
+          </button>
 
           <button
             onClick={() =>
@@ -147,6 +174,7 @@ export const MobileShell: React.FC = () => {
         <BottomNavBar />
         <BottomSheet />
         <Snackbar />
+        <LoadingOverlay />
         <LoginModal
           isOpen={showLogin}
           onClose={() => setShowLogin(false)}
