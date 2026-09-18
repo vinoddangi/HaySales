@@ -1,7 +1,7 @@
 const CACHE_NAME = 'haysales-cache-v1';
 const RUNTIME_CACHE = 'haysales-runtime-v1';
 
-const PRECACHE_URLS = ['/', '/index.html', '/manifest.json'];
+const PRECACHE_URLS = ['/', '/index.html', '/manifest.json', '/favicon.svg'];
 
 // Install event: Pre-cache critical app shell files
 self.addEventListener('install', (event) => {
