@@ -3,6 +3,10 @@ import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Fab } from '../../components/common/Fab';
 import { PageContainer } from '../../components/common/PageContainer';
+import {
+  PeriodFilterBar as DashboardFilterBar,
+  PeriodFilterMode,
+} from '../../components/common/PeriodFilterBar';
 import { useGetAllTransactionsQuery } from '../../store/slices/customersApi';
 import { Transaction } from '../../types';
 import { parseTransactionDate } from '../../utils/formatters';
@@ -10,10 +14,6 @@ import {
   DashboardBreakdown,
   ItemBreakdownItem,
 } from './components/DashboardBreakdown';
-import {
-  PeriodFilterBar as DashboardFilterBar,
-  PeriodFilterMode,
-} from '../../components/common/PeriodFilterBar';
 import {
   DashboardMetricCards,
   DashboardMetricsData,
