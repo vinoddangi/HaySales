@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import { defineConfig } from 'vite'
@@ -18,5 +19,10 @@ export default defineConfig({
   server: {
     port: 5173,
     open: true, // Automatically open Chrome when starting dev server
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/test/setup.ts'],
   },
 })
