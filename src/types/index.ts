@@ -50,12 +50,7 @@ export interface Transaction {
   customerId?: string;
   customerName?: string;
   type:
-    | 'SALE'
-    | 'SERVICE'
-    | 'PAYMENT'
-    | 'OPENING_BALANCE'
-    | 'PURCHASE'
-    | 'EXPENSE';
+    'SALE' | 'SERVICE' | 'PAYMENT' | 'OPENING_BALANCE' | 'PURCHASE' | 'EXPENSE';
   category?: 'Purchase' | 'Expense';
   expenseCategory?: ExpenseCategoryType | string;
   date?: { seconds?: number } | string | number | Date;

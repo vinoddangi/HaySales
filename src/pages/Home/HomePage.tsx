@@ -11,9 +11,9 @@ import {
   ItemBreakdownItem,
 } from './components/DashboardBreakdown';
 import {
-  DashboardFilterBar,
+  PeriodFilterBar as DashboardFilterBar,
   PeriodFilterMode,
-} from './components/DashboardFilterBar';
+} from '../../components/common/PeriodFilterBar';
 import {
   DashboardMetricCards,
   DashboardMetricsData,
