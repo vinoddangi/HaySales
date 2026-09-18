@@ -4,7 +4,7 @@ import {
   RecaptchaVerifier,
   signInWithPhoneNumber,
 } from 'firebase/auth';
-import { Phone, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '../common/Button';
 
@@ -98,7 +98,11 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         </button>
 
         <div className="mb-6 space-y-2 text-center">
-          <Phone className="mx-auto h-10 w-10 text-m3-primary" />
+          <img
+            src="/favicon.svg"
+            alt="HaySales Logo"
+            className="mx-auto h-12 w-12 rounded-2xl shadow-md"
+          />
           <h2 className="text-sm font-bold text-m3-on-surface">
             Secure Sign In
           </h2>

@@ -59,12 +59,16 @@ export const MobileShell: React.FC = () => {
       {/* Desktop Toolbar */}
       <div className="sticky top-0 z-50 hidden w-full max-w-5xl items-center justify-between border-b border-neutral-700/60 bg-neutral-800 px-4 py-2.5 text-xs text-neutral-200 shadow-md md:flex">
         <div className="flex items-center gap-2 font-medium">
-          <span className="inline-block h-2.5 w-2.5 animate-pulse rounded-full bg-emerald-500" />
+          <img
+            src="/favicon.svg"
+            alt="HaySales Logo"
+            className="shadow-xs h-5 w-5 rounded-md"
+          />
           <span className="font-semibold tracking-wide text-white">
-            React M3 Mobile Skeleton
+            HaySales
           </span>
           <span className="rounded bg-neutral-700 px-2 py-0.5 text-[10px] text-neutral-300">
-            Vite + RTK + Tailwind
+            PWA Mobile App
           </span>
         </div>
 

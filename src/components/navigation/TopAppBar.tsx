@@ -60,9 +60,11 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
                   <ArrowLeft className="h-5 w-5" />
                 </button>
               ) : (
-                <div className="shadow-xs flex h-8 w-8 items-center justify-center rounded-m3-sm bg-m3-primary text-xs font-bold text-m3-on-primary">
-                  HS
-                </div>
+                <img
+                  src="/favicon.svg"
+                  alt="HaySales Logo"
+                  className="shadow-xs h-7 w-7 shrink-0 rounded-lg"
+                />
               )}
               <h1 className="ml-2 truncate text-base font-semibold text-m3-on-surface">
                 {title}

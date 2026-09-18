@@ -13,11 +13,16 @@ export const NotFoundPage: React.FC = () => {
       spacing="md"
       className="flex min-h-[60vh] flex-col items-center justify-center text-center"
     >
+      <img
+        src="/favicon.svg"
+        alt="HaySales Logo"
+        className="mb-4 h-16 w-16 rounded-2xl shadow-md"
+      />
       <Card
         variant="filled"
-        className="flex h-16 w-16 items-center justify-center rounded-full bg-m3-error-container text-m3-on-error-container"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-m3-error-container text-m3-on-error-container"
       >
-        <AlertTriangle className="h-8 w-8" />
+        <AlertTriangle className="h-6 w-6" />
       </Card>
 
       <div className="space-y-1">
