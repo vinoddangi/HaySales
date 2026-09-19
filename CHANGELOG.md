@@ -1,5 +1,11 @@
 # react-m3-mobile-skeleton
 
+## 0.2.1
+
+### Patch Changes
+
+- 62a1a8d: docs: update comprehensive project documentation and release workflows in README.md
+
 ## 0.2.0
 
 ### Minor Changes
