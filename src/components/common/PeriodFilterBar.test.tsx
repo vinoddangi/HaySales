@@ -3,22 +3,20 @@ import { describe, expect, it, vi } from 'vitest';
 import { PeriodFilterBar } from './PeriodFilterBar';
 
 describe('PeriodFilterBar component', () => {
-  it('renders period filter mode buttons', () => {
+  it('renders month selector and YTD button', () => {
     const handleFilterModeChange = vi.fn();
     const handleMonthChange = vi.fn();
 
     render(
       <PeriodFilterBar
-        filterMode="currentMonth"
-        selectedMonth={8}
+        filterMode="month"
+        selectedMonth={8} // September
         onFilterModeChange={handleFilterModeChange}
         onMonthChange={handleMonthChange}
       />,
     );
 
-    expect(
-      screen.getByRole('button', { name: /current month/i }),
-    ).toBeInTheDocument();
+    expect(screen.getAllByText('September').length).toBeGreaterThanOrEqual(1);
     expect(screen.getByRole('button', { name: /ytd/i })).toBeInTheDocument();
   });
 
@@ -28,7 +26,7 @@ describe('PeriodFilterBar component', () => {
 
     render(
       <PeriodFilterBar
-        filterMode="currentMonth"
+        filterMode="month"
         selectedMonth={8}
         onFilterModeChange={handleFilterModeChange}
         onMonthChange={handleMonthChange}
@@ -45,7 +43,7 @@ describe('PeriodFilterBar component', () => {
 
     render(
       <PeriodFilterBar
-        filterMode="currentMonth"
+        filterMode="ytd"
         selectedMonth={8}
         onFilterModeChange={handleFilterModeChange}
         onMonthChange={handleMonthChange}
@@ -55,6 +53,6 @@ describe('PeriodFilterBar component', () => {
     const select = screen.getByRole('combobox');
     fireEvent.change(select, { target: { value: '4' } });
     expect(handleMonthChange).toHaveBeenCalledWith(4);
-    expect(handleFilterModeChange).toHaveBeenCalledWith('customMonth');
+    expect(handleFilterModeChange).toHaveBeenCalledWith('month');
   });
 });

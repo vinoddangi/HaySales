@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
-import { Button } from '../../../components/common/Button';
+import { calculateSaleTotals } from '../../../business/salesBusiness';
+import {
+  BackupWarningBanner,
+  Button,
+  Input,
+  SelectField,
+  SummaryBox,
+  SummaryRow,
+  Text,
+} from '../../../components/common';
+import { Flex, Grid } from '../../../components/layout';
 import { formatRupee } from '../../../utils/formatters';
 
 export interface SaleFormProps {
   outstandingDue: number;
   isCreditAllowed: boolean;
   isSaving: boolean;
+  hasPendingBackup?: boolean;
+  currentYear?: number;
   onSubmit: (_saleData: {
     item: string;
     weightKg: number;
@@ -15,10 +27,22 @@ export interface SaleFormProps {
   }) => Promise<void>;
 }
 
+const ITEM_OPTIONS = [
+  { value: '', label: 'Select type' },
+  { value: 'Chana', label: 'Chana' },
+  { value: 'Gavatri', label: 'Gavatri' },
+  { value: 'B. Kutty', label: 'B. Kutty' },
+  { value: 'Kutty', label: 'Kutty' },
+  { value: 'Tuvar', label: 'Tuvar' },
+  { value: 'Others', label: 'Others' },
+];
+
 export const SaleForm: React.FC<SaleFormProps> = ({
   outstandingDue,
   isCreditAllowed,
   isSaving,
+  hasPendingBackup = false,
+  currentYear = new Date().getFullYear(),
   onSubmit,
 }) => {
   const [date, setDate] = useState(
@@ -30,13 +54,17 @@ export const SaleForm: React.FC<SaleFormProps> = ({
   const [cashPaid, setCashPaid] = useState(0);
   const [allCash, setAllCash] = useState(false);
 
+  const selectedYear = new Date(date).getFullYear();
+  const isCYSelected = !isNaN(selectedYear) && selectedYear >= currentYear;
+  const isBlockedByBackup = hasPendingBackup && isCYSelected;
+
   const avgRate = weightKg > 0 ? amount / weightKg : 0;
   const effectiveCashPaid = allCash ? amount : cashPaid;
-  const remainingDue = Math.max(0, amount - effectiveCashPaid);
+  const { remainingDue } = calculateSaleTotals(amount, 0, effectiveCashPaid);
   const newOutstandingDue = outstandingDue + remainingDue;
 
   const handleSubmit = async () => {
-    if (!selectedItem || amount <= 0) return;
+    if (!selectedItem || amount <= 0 || isBlockedByBackup) return;
     await onSubmit({
       item: selectedItem,
       weightKg,
@@ -53,71 +81,49 @@ export const SaleForm: React.FC<SaleFormProps> = ({
   };
 
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-3">
-        {/* Date Field */}
-        <div className="space-y-1">
-          <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-            Date
-          </label>
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
-          />
-        </div>
+    <Flex direction="column" gap="md" fullWidth>
+      {/* Banner if CY selected and previous year backup is pending */}
+      {isBlockedByBackup && (
+        <BackupWarningBanner currentYear={currentYear} isFormBanner />
+      )}
 
-        {/* Item Type */}
-        <div className="space-y-1">
-          <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-            Item Type
-          </label>
-          <select
-            value={selectedItem}
-            onChange={(e) => setSelectedItem(e.target.value)}
-            className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
-          >
-            <option value="">Select type</option>
-            <option value="Chana">Chana</option>
-            <option value="Gavatri">Gavatri</option>
-            <option value="B. Kutty">B. Kutty</option>
-            <option value="Kutty">Kutty</option>
-            <option value="Tuvar">Tuvar</option>
-            <option value="Others">Others</option>
-          </select>
-        </div>
-      </div>
+      <Grid columns={2} gap="md" fullWidth>
+        <Input
+          label="Date"
+          type="date"
+          required
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
+        <SelectField
+          label="Item Type"
+          required
+          value={selectedItem}
+          options={ITEM_OPTIONS}
+          onChange={(e) => setSelectedItem(e.target.value)}
+        />
+      </Grid>
 
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-            Weight (kg)
-          </label>
-          <input
-            type="number"
-            placeholder="0"
-            value={weightKg || ''}
-            onChange={(e) => setWeightKg(Number(e.target.value))}
-            className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
-          />
-        </div>
-        <div>
-          <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-            Amount (₹)
-          </label>
-          <input
-            type="number"
-            placeholder="0"
-            value={amount || ''}
-            onChange={(e) => setAmount(Number(e.target.value))}
-            className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
-          />
-        </div>
-      </div>
+      <Grid columns={2} gap="md" fullWidth>
+        <Input
+          label="Weight (kg)"
+          type="number"
+          placeholder="0"
+          value={weightKg || ''}
+          onChange={(e) => setWeightKg(Number(e.target.value))}
+        />
+        <Input
+          label="Amount (₹)"
+          type="number"
+          required
+          placeholder="0"
+          value={amount || ''}
+          onChange={(e) => setAmount(Number(e.target.value))}
+        />
+      </Grid>
 
       {/* All Cash Checkbox */}
-      <div className="space-y-2">
+      <Flex direction="column" gap="sm" fullWidth>
         <label className="flex cursor-pointer items-center gap-2 text-xs font-semibold text-m3-on-surface">
           <input
             type="checkbox"
@@ -129,52 +135,47 @@ export const SaleForm: React.FC<SaleFormProps> = ({
         </label>
 
         {!allCash && (
-          <div>
-            <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-              Cash Paid (₹)
-            </label>
-            <input
-              type="number"
-              placeholder="0"
-              value={cashPaid || ''}
-              onChange={(e) => setCashPaid(Number(e.target.value))}
-              className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
-            />
-          </div>
+          <Input
+            label="Cash Paid (₹)"
+            type="number"
+            placeholder="0"
+            value={cashPaid || ''}
+            onChange={(e) => setCashPaid(Number(e.target.value))}
+          />
         )}
-      </div>
+      </Flex>
 
       {/* Summary Box */}
-      <div className="space-y-1.5 rounded border border-m3-outline-variant bg-m3-surface-container-low p-3 text-xs">
-        <div className="flex justify-between">
-          <span className="text-m3-on-surface-variant">Avg Rate:</span>{' '}
-          <strong>{formatRupee(avgRate)}/kg</strong>
-        </div>
-        <div className="flex justify-between">
-          <span className="text-m3-on-surface-variant">Total Price:</span>{' '}
-          <strong>{formatRupee(amount)}</strong>
-        </div>
-        <div className="flex justify-between border-t border-m3-outline-variant/30 pt-1.5 font-bold text-m3-primary">
-          <span>New Total Due:</span>{' '}
-          <span>{formatRupee(newOutstandingDue)}</span>
-        </div>
-      </div>
+      <SummaryBox>
+        <SummaryRow label="Avg Rate:" value={`${formatRupee(avgRate)}/kg`} />
+        <SummaryRow label="Total Price:" value={formatRupee(amount)} />
+        <SummaryRow
+          label="New Total Due:"
+          value={formatRupee(newOutstandingDue)}
+          isTotal
+          isHighlight
+        />
+      </SummaryBox>
 
       {remainingDue > 0 && !isCreditAllowed && (
-        <p className="text-[11px] font-medium text-amber-600 dark:text-amber-400">
+        <Text variant="body-sm" color="warning" weight="medium">
           ⚠️ Customer balance exceeds credit limit indicator (credit sale
           permitted).
-        </p>
+        </Text>
       )}
 
       <Button
         variant="filled"
         className="w-full"
         onClick={handleSubmit}
-        disabled={isSaving || !selectedItem || amount <= 0}
+        disabled={isSaving || !selectedItem || amount <= 0 || isBlockedByBackup}
       >
-        {isSaving ? 'Processing...' : 'Process Sale'}
+        {isSaving
+          ? 'Processing...'
+          : isBlockedByBackup
+            ? `Backup Required for ${currentYear}`
+            : 'Process Sale'}
       </Button>
-    </div>
+    </Flex>
   );
 };

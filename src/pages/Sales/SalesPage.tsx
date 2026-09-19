@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { hasPendingPreviousYearRecords } from '../../api';
 import { Card } from '../../components/common/Card';
 import { CustomerSearchSelector } from '../../components/common/CustomerSearchSelector';
 import { PageContainer } from '../../components/common/PageContainer';
 import { useAppDispatch } from '../../store/hooks';
 import {
   useAddTransactionMutation,
+  useGetAllTransactionsQuery,
+  useGetBackupStatusQuery,
   useGetCustomersQuery,
 } from '../../store/slices/customersApi';
 import { showSnackbar } from '../../store/slices/uiSlice';
@@ -15,11 +18,20 @@ import { ServiceForm } from './components/ServiceForm';
 export const SalesPage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const currentYear = new Date().getFullYear();
   const { data: customers = [] } = useGetCustomersQuery();
+  const { data: allTransactions = [] } = useGetAllTransactionsQuery();
+  const { data: backupStatus } = useGetBackupStatusQuery();
   const [addTransaction, { isLoading: isSaving }] = useAddTransactionMutation();
 
   const [selectedCustId, setSelectedCustId] = useState<string | null>(null);
   const [txType, setTxType] = useState<'SALE' | 'SERVICE'>('SALE');
+
+  const hasPendingBackup = hasPendingPreviousYearRecords(
+    allTransactions,
+    currentYear,
+    backupStatus,
+  );
 
   const customer = customers.find((c) => c.id === selectedCustId);
   const outstandingDue = customer?.outstandingAmount || 0;
@@ -134,6 +146,8 @@ export const SalesPage: React.FC = () => {
               outstandingDue={outstandingDue}
               isCreditAllowed={isCreditAllowed}
               isSaving={isSaving}
+              hasPendingBackup={hasPendingBackup}
+              currentYear={currentYear}
               onSubmit={handleSaleSubmit}
             />
           ) : (
@@ -141,6 +155,8 @@ export const SalesPage: React.FC = () => {
               outstandingDue={outstandingDue}
               isCreditAllowed={isCreditAllowed}
               isSaving={isSaving}
+              hasPendingBackup={hasPendingBackup}
+              currentYear={currentYear}
               onSubmit={handleServiceSubmit}
             />
           )}

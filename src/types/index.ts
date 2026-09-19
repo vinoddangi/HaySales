@@ -39,6 +39,7 @@ export interface Customer {
   id: string; // Document ID
   name: string; // Customer name
   mobile?: string; // Contact mobile
+  village?: string; // Village / City
   creditLimit?: number; // Advisory credit limit indicator (default ₹35,000)
   outstandingAmount?: number; // Real-time running outstanding balance on customer doc
 }

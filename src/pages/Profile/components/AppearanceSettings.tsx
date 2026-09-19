@@ -1,7 +1,7 @@
 import { Moon, Palette, Sun, Type } from 'lucide-react';
 import React from 'react';
-import { Card } from '../../../components/common/Card';
-import { Switch } from '../../../components/common/Switch';
+import { Card, Switch, Text } from '../../../components/common';
+import { Flex, Grid } from '../../../components/layout';
 import { ColorScheme, FontSize } from '../../../types';
 import { cn } from '../../../utils/cn';
 
@@ -43,15 +43,17 @@ export const AppearanceSettings: React.FC<AppearanceSettingsProps> = ({
 }) => {
   return (
     <div className="space-y-2">
-      <h3 className="flex items-center gap-1.5 px-1 text-xs font-bold uppercase tracking-wider text-m3-on-surface-variant">
+      <Flex align="center" gap="xs" className="px-1">
         <Palette className="h-3.5 w-3.5 text-m3-primary" />
-        <span>Material 3 Appearance & Display</span>
-      </h3>
+        <Text styleAs="label" appearance="secondary" uppercase>
+          Material 3 Appearance & Display
+        </Text>
+      </Flex>
 
       <Card variant="outlined" className="space-y-4 p-4">
         {/* Dark Mode Switch */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <Flex align="center" justify="between" fullWidth>
+          <Flex align="center" gap="md">
             <div className="rounded-full bg-m3-surface-container-high p-2 text-m3-on-surface">
               {isDark ? (
                 <Moon className="h-4 w-4" />
@@ -60,23 +62,33 @@ export const AppearanceSettings: React.FC<AppearanceSettingsProps> = ({
               )}
             </div>
             <div>
-              <div className="text-xs font-bold text-m3-on-surface">
+              <Text
+                styleAs="body-sm"
+                appearance="primary"
+                weight="bold"
+                className="block"
+              >
                 Dark Theme
-              </div>
-              <div className="text-[11px] text-m3-on-surface-variant">
+              </Text>
+              <Text styleAs="caption" appearance="secondary" className="block">
                 {isDark ? 'Dark mode enabled' : 'Light mode active'}
-              </div>
+              </Text>
             </div>
-          </div>
+          </Flex>
           <Switch checked={isDark} onChange={onToggleDarkMode} />
-        </div>
+        </Flex>
 
         {/* Color Scheme Picker */}
         <div className="border-t border-m3-outline-variant/30 pt-3">
-          <span className="mb-2 block text-xs font-bold text-m3-on-surface">
+          <Text
+            styleAs="body-sm"
+            appearance="primary"
+            weight="bold"
+            className="mb-2 block"
+          >
             Dynamic M3 Palette Accent
-          </span>
-          <div className="grid grid-cols-5 gap-2">
+          </Text>
+          <Grid columns={5} gap="xs" fullWidth>
             {colorPalettes.map((pal) => (
               <button
                 key={pal.key}
@@ -92,23 +104,28 @@ export const AppearanceSettings: React.FC<AppearanceSettingsProps> = ({
                 <div
                   className={cn('shadow-xs h-7 w-7 rounded-full', pal.bgClass)}
                 />
-                <span className="line-clamp-1 text-center text-[9px] font-medium text-m3-on-surface">
+                <Text
+                  styleAs="caption"
+                  appearance="primary"
+                  align="center"
+                  className="line-clamp-1 text-[9px]"
+                >
                   {pal.name.split(' ')[0]}
-                </span>
+                </Text>
               </button>
             ))}
-          </div>
+          </Grid>
         </div>
 
         {/* Font Size Scaling */}
         <div className="border-t border-m3-outline-variant/30 pt-3">
-          <div className="mb-2 flex items-center justify-between">
-            <div className="flex items-center gap-1.5">
+          <Flex align="center" justify="between" fullWidth className="mb-2">
+            <Flex align="center" gap="xs">
               <Type className="h-4 w-4 text-m3-primary" />
-              <span className="text-xs font-bold text-m3-on-surface">
+              <Text styleAs="body-sm" appearance="primary" weight="bold">
                 Font Size & Text Scaling
-              </span>
-            </div>
+              </Text>
+            </Flex>
             <span className="rounded bg-m3-surface-container-highest px-2 py-0.5 text-[10px] font-semibold text-m3-primary">
               {fontSize === 'small'
                 ? 'Small (87.5%)'
@@ -116,9 +133,9 @@ export const AppearanceSettings: React.FC<AppearanceSettingsProps> = ({
                   ? 'Large (+1 Level / 112.5%)'
                   : 'Default (100%)'}
             </span>
-          </div>
+          </Flex>
 
-          <div className="grid grid-cols-3 gap-2.5">
+          <Grid columns={3} gap="sm" fullWidth>
             {fontSizeOptions.map((opt) => {
               const isSelected = fontSize === opt.key;
               return (
@@ -138,14 +155,18 @@ export const AppearanceSettings: React.FC<AppearanceSettingsProps> = ({
                   >
                     A
                   </span>
-                  <span className="mt-1.5 text-[11px] font-semibold">
+                  <Text
+                    styleAs="caption"
+                    weight="semibold"
+                    className="mt-1.5 block"
+                  >
                     {opt.label}
-                  </span>
+                  </Text>
                   <span className="text-[10px] opacity-75">{opt.level}</span>
                 </button>
               );
             })}
-          </div>
+          </Grid>
 
           <div className="mt-2.5 rounded-lg border border-m3-outline-variant/20 bg-m3-surface-container-high/50 p-2 text-center text-xs text-m3-on-surface">
             <span>Preview: Fast Hay Invoicing, Purchases & Ledger</span>

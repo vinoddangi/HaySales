@@ -1,39 +1,41 @@
-import { Archive, Calendar, Database, RefreshCw } from 'lucide-react';
+import { Archive, CheckCircle2, Database, RefreshCw } from 'lucide-react';
 import React, { useState } from 'react';
-import { Button } from '../../../components/common/Button';
-import { Card } from '../../../components/common/Card';
+import { Button, Card, Text } from '../../../components/common';
+import { Flex } from '../../../components/layout';
 import { useAppDispatch } from '../../../store/hooks';
-import { useBackupYearlyTransactionsMutation } from '../../../store/slices/customersApi';
+import {
+  useBackupYearlyTransactionsMutation,
+  useGetBackupStatusQuery,
+} from '../../../store/slices/customersApi';
 import { showSnackbar } from '../../../store/slices/uiSlice';
 
 export const TransactionBackupSettings: React.FC = () => {
   const dispatch = useAppDispatch();
   const currentYear = new Date().getFullYear();
-  const [selectedYear, setSelectedYear] = useState<number>(currentYear);
+  const targetYear = currentYear - 1;
   const [showConfirm, setShowConfirm] = useState(false);
 
+  const { data: backupStatus } = useGetBackupStatusQuery();
   const [backupTransactions, { isLoading }] =
     useBackupYearlyTransactionsMutation();
 
-  const yearOptions = [
-    { value: currentYear, label: `${currentYear} (CY)` },
-    { value: currentYear - 1, label: `${currentYear - 1} (PY)` },
-  ];
+  const isAlreadyBackedUp =
+    backupStatus && backupStatus.lastBackedUpYear >= targetYear;
 
   const handleExecuteBackup = async () => {
     try {
-      const result = await backupTransactions({ year: selectedYear }).unwrap();
+      const result = await backupTransactions({ year: targetYear }).unwrap();
       setShowConfirm(false);
       dispatch(
         showSnackbar({
-          message: `Synced & archived ${result.backedUpCount} transactions into Transactions-${result.targetYear}!`,
+          message: `Archived ${result.backedUpCount} transactions & ${result.purchasesBackedUpCount} purchases for ${result.targetYear}!`,
         }),
       );
     } catch (err) {
       console.error('Backup error:', err);
       dispatch(
         showSnackbar({
-          message: 'Error executing transaction backup & rollout.',
+          message: 'Error executing annual transaction & purchase backup.',
         }),
       );
     }
@@ -41,82 +43,92 @@ export const TransactionBackupSettings: React.FC = () => {
 
   return (
     <div className="space-y-2">
-      <h3 className="flex items-center gap-1.5 px-1 text-xs font-bold uppercase tracking-wider text-m3-on-surface-variant">
+      <Flex align="center" gap="xs" className="px-1">
         <Database className="h-3.5 w-3.5 text-m3-primary" />
-        <span>Financial Year Rollover & Backup</span>
-      </h3>
+        <Text styleAs="label" appearance="secondary" uppercase>
+          Annual Rollover & Backup
+        </Text>
+      </Flex>
 
       <Card variant="outlined" className="space-y-3.5 p-4">
         <div className="space-y-1">
-          <div className="flex items-center gap-2">
+          <Flex align="center" gap="xs">
             <Archive className="h-4 w-4 text-m3-primary" />
-            <h4 className="text-xs font-bold text-m3-on-surface">
-              Archive & Rollout Transactions
-            </h4>
-          </div>
-          <p className="text-[11px] leading-relaxed text-m3-on-surface-variant">
-            Moves active transactions into{' '}
-            <code className="rounded bg-m3-surface-container-high px-1 py-0.5 font-mono text-[10px] text-m3-primary">
-              Transactions-({selectedYear})
-            </code>
-            . Merges active records into the archive without double-counting
-            previously logged balances, and carries forward the single exact
-            outstanding balance as an updated{' '}
-            <strong>Previous Outstanding</strong> entry.
-          </p>
-        </div>
+            <Text styleAs="body-sm" appearance="primary" weight="bold">
+              Archive Previous Year Data ({targetYear})
+            </Text>
+          </Flex>
 
-        {/* Year Selector Dropdown */}
-        <div className="space-y-1.5 rounded-xl border border-m3-outline-variant/30 bg-m3-surface-container-low p-3">
-          <label
-            htmlFor="backup-year-select"
-            className="flex items-center gap-1.5 text-xs font-bold text-m3-on-surface"
+          {/* Current Backup Status Badge */}
+          {backupStatus && (
+            <div className="py-1">
+              {isAlreadyBackedUp ? (
+                <span className="inline-flex items-center gap-1 rounded-md bg-emerald-500/10 px-2 py-0.5 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                  <CheckCircle2 className="h-3 w-3" />
+                  {targetYear} Backup Completed (Last backed up year:{' '}
+                  {backupStatus.lastBackedUpYear})
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1 rounded-md bg-amber-500/10 px-2 py-0.5 text-[11px] font-semibold text-amber-600 dark:text-amber-400">
+                  ⚠️ {targetYear} Backup Pending (Last backed up year:{' '}
+                  {backupStatus.lastBackedUpYear || 'None'})
+                </span>
+              )}
+            </div>
+          )}
+
+          <Text
+            styleAs="caption"
+            appearance="secondary"
+            className="block leading-relaxed"
           >
-            <Calendar className="h-3.5 w-3.5 text-m3-primary" />
-            <span>Target Financial / Archive Year:</span>
-          </label>
-          <select
-            id="backup-year-select"
-            value={selectedYear}
-            onChange={(e) => {
-              setSelectedYear(Number(e.target.value));
-              setShowConfirm(false);
-            }}
-            className="w-full rounded-lg border border-m3-outline-variant bg-m3-surface px-3 py-2 text-xs font-semibold text-m3-on-surface focus:border-m3-primary focus:outline-none"
-          >
-            {yearOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
+            Archives previous year customer transactions into{' '}
+            <code className="rounded bg-m3-surface-container-high px-1 py-0.5 font-mono text-[10px] text-m3-primary">
+              transactions-{targetYear}
+            </code>{' '}
+            and farm purchases into{' '}
+            <code className="rounded bg-m3-surface-container-high px-1 py-0.5 font-mono text-[10px] text-m3-primary">
+              purchases-{targetYear}
+            </code>
+            . Carries forward each customer&apos;s exact balance as a single{' '}
+            <strong>Previous Outstanding</strong> opening balance and unlocks
+            new entries for {currentYear}. Customer profiles remain intact.
+          </Text>
         </div>
 
         {/* Action button */}
         {!showConfirm ? (
           <div className="flex justify-end pt-1">
             <Button
-              variant="tonal"
+              variant={isAlreadyBackedUp ? 'tonal' : 'filled'}
               size="sm"
               icon={<RefreshCw className="h-3.5 w-3.5" />}
               onClick={() => setShowConfirm(true)}
               disabled={isLoading}
               className="text-xs font-semibold"
             >
-              Rollout & Archive ({selectedYear})
+              {isAlreadyBackedUp
+                ? `Re-run Annual Backup (${targetYear})`
+                : `Perform Annual Backup (${targetYear})`}
             </Button>
           </div>
         ) : (
           <div className="space-y-2 rounded-xl border border-amber-500/30 bg-amber-500/[0.06] p-3 text-xs">
-            <p className="font-semibold text-amber-800 dark:text-amber-300">
-              Confirm Archival for Year {selectedYear}?
-            </p>
-            <p className="text-[10px] text-m3-on-surface-variant">
-              Active customer transactions will be moved to{' '}
-              <code>Transactions-{selectedYear}</code> and replaced with an
-              opening balance entry.
-            </p>
-            <div className="flex items-center gap-2 pt-1">
+            <Text
+              styleAs="body-sm"
+              sentiment="warning"
+              weight="bold"
+              className="block"
+            >
+              Confirm Annual Archival for {targetYear}?
+            </Text>
+            <Text styleAs="caption" appearance="secondary" className="block">
+              Previous year customer transactions and purchases will be archived
+              to <code>transactions-{targetYear}</code> and{' '}
+              <code>purchases-{targetYear}</code>. Active balances will roll
+              forward as opening balances.
+            </Text>
+            <Flex align="center" gap="sm" className="pt-1">
               <Button
                 variant="filled"
                 size="sm"
@@ -126,7 +138,7 @@ export const TransactionBackupSettings: React.FC = () => {
               >
                 {isLoading
                   ? 'Archiving...'
-                  : `Yes, Archive for ${selectedYear}`}
+                  : `Yes, Backup & Roll Over (${targetYear})`}
               </Button>
               <Button
                 variant="outlined"
@@ -137,7 +149,7 @@ export const TransactionBackupSettings: React.FC = () => {
               >
                 Cancel
               </Button>
-            </div>
+            </Flex>
           </div>
         )}
       </Card>

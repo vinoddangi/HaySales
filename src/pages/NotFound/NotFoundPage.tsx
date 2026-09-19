@@ -1,9 +1,8 @@
 import { AlertTriangle, Home } from 'lucide-react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../components/common/Button';
-import { Card } from '../../components/common/Card';
-import { PageContainer } from '../../components/common/PageContainer';
+import { Button, Card, PageContainer, Text } from '../../components/common';
+import { Flex } from '../../components/layout';
 
 export const NotFoundPage: React.FC = () => {
   const navigate = useNavigate();
@@ -25,12 +24,14 @@ export const NotFoundPage: React.FC = () => {
         <AlertTriangle className="h-6 w-6" />
       </Card>
 
-      <div className="space-y-1">
-        <h2 className="text-xl font-bold text-m3-on-surface">Page Not Found</h2>
-        <p className="max-w-xs text-xs leading-relaxed text-m3-on-surface-variant">
+      <Flex direction="column" align="center" gap="xs" className="max-w-xs">
+        <Text styleAs="h1" appearance="primary" weight="bold">
+          Page Not Found
+        </Text>
+        <Text styleAs="body-sm" appearance="secondary">
           The requested screen or route doesn't exist in this application.
-        </p>
-      </div>
+        </Text>
+      </Flex>
 
       <Button
         variant="filled"

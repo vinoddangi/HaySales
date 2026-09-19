@@ -1,10 +1,21 @@
 import React, { useState } from 'react';
-import { Button } from '../../../components/common/Button';
+import { VALID_EXPENSE_CATEGORIES } from '../../../business/purchasesBusiness';
+import {
+  BackupWarningBanner,
+  Button,
+  Input,
+  SelectField,
+  SummaryBox,
+  SummaryRow,
+} from '../../../components/common';
+import { Flex, Grid } from '../../../components/layout';
 import { ExpenseCategoryType } from '../../../types';
 import { formatRupee } from '../../../utils/formatters';
 
 export interface ExpenseFormProps {
   isSaving: boolean;
+  hasPendingBackup?: boolean;
+  currentYear?: number;
   onSubmit: (_data: {
     expenseCategory: ExpenseCategoryType;
     amount: number;
@@ -14,17 +25,15 @@ export interface ExpenseFormProps {
   }) => Promise<void>;
 }
 
-const EXPENSE_CATEGORIES: ExpenseCategoryType[] = [
-  'Interest',
-  'Fuel',
-  'Labor',
-  'Food / Drink',
-  'Tools',
-  'Others',
-];
+const CATEGORY_OPTIONS = VALID_EXPENSE_CATEGORIES.map((cat) => ({
+  value: cat,
+  label: cat,
+}));
 
 export const ExpenseForm: React.FC<ExpenseFormProps> = ({
   isSaving,
+  hasPendingBackup = false,
+  currentYear = new Date().getFullYear(),
   onSubmit,
 }) => {
   const [date, setDate] = useState(
@@ -35,8 +44,12 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = ({
   const [vendorName, setVendorName] = useState('');
   const [note, setNote] = useState('');
 
+  const selectedYear = new Date(date).getFullYear();
+  const isCYSelected = !isNaN(selectedYear) && selectedYear >= currentYear;
+  const isBlockedByBackup = hasPendingBackup && isCYSelected;
+
   const handleSubmit = async () => {
-    if (amount <= 0) return;
+    if (amount <= 0 || isBlockedByBackup) return;
     await onSubmit({
       expenseCategory: category,
       amount,
@@ -51,103 +64,81 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = ({
   };
 
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-3">
-        {/* Date Field */}
-        <div className="space-y-1">
-          <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-            Date
-          </label>
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
-          />
-        </div>
+    <Flex direction="column" gap="md" fullWidth>
+      {/* Banner if CY selected and previous year backup is pending */}
+      {isBlockedByBackup && (
+        <BackupWarningBanner currentYear={currentYear} isFormBanner />
+      )}
 
-        {/* Expense Category */}
-        <div className="space-y-1">
-          <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-            Expense Category
-          </label>
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value as ExpenseCategoryType)}
-            className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
-          >
-            {EXPENSE_CATEGORIES.map((cat) => (
-              <option key={cat} value={cat}>
-                {cat}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      {/* Amount (₹) */}
-      <div className="space-y-1">
-        <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-          Expense Amount (₹)
-        </label>
-        <input
-          type="number"
-          placeholder="0"
-          value={amount || ''}
-          onChange={(e) => setAmount(Number(e.target.value))}
-          className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
+      <Grid columns={2} gap="md" fullWidth>
+        <Input
+          label="Date"
+          type="date"
+          required
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
         />
-      </div>
-
-      {/* Paid To / Beneficiary */}
-      <div className="space-y-1">
-        <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-          Paid To / Person / Station (Optional)
-        </label>
-        <input
-          type="text"
-          placeholder="e.g. Indian Oil Pump, Tractor Driver, Bank"
-          value={vendorName}
-          onChange={(e) => setVendorName(e.target.value)}
-          className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
+        <SelectField
+          label="Expense Category"
+          required
+          value={category}
+          options={CATEGORY_OPTIONS}
+          onChange={(e) => setCategory(e.target.value as ExpenseCategoryType)}
         />
-      </div>
+      </Grid>
 
-      {/* Description / Note */}
-      <div className="space-y-1">
-        <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-          Description / Note (Optional)
-        </label>
-        <input
-          type="text"
-          placeholder="e.g. 50 Liters diesel for generator, Monthly loan interest"
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-          className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
-        />
-      </div>
+      <Input
+        label="Expense Amount (₹)"
+        type="number"
+        required
+        placeholder="0"
+        value={amount || ''}
+        onChange={(e) => setAmount(Number(e.target.value))}
+      />
+
+      <Input
+        label="Paid To / Person / Station (Optional)"
+        type="text"
+        placeholder="e.g. Indian Oil Pump, Tractor Driver, Bank"
+        value={vendorName}
+        onChange={(e) => setVendorName(e.target.value)}
+      />
+
+      <Input
+        label="Description / Note (Optional)"
+        type="text"
+        placeholder="e.g. 50 Liters diesel for generator, Monthly loan interest"
+        value={note}
+        onChange={(e) => setNote(e.target.value)}
+      />
 
       {/* Summary Box */}
-      <div className="space-y-1.5 rounded border border-m3-outline-variant bg-m3-surface-container-low p-3 text-xs">
-        <div className="flex justify-between">
-          <span className="text-m3-on-surface-variant">Category:</span>{' '}
-          <strong className="text-rose-600 dark:text-rose-400">
-            {category}
-          </strong>
-        </div>
-        <div className="flex justify-between border-t border-m3-outline-variant/30 pt-1.5 font-bold text-m3-on-surface">
-          <span>Total Outflow:</span> <span>{formatRupee(amount)}</span>
-        </div>
-      </div>
+      <SummaryBox>
+        <SummaryRow
+          label="Category:"
+          value={
+            <span className="text-rose-600 dark:text-rose-400">{category}</span>
+          }
+        />
+        <SummaryRow
+          label="Total Outflow:"
+          value={formatRupee(amount)}
+          isTotal
+        />
+      </SummaryBox>
 
       <Button
         variant="filled"
         className="w-full bg-rose-600 text-white hover:bg-rose-700"
         onClick={handleSubmit}
-        disabled={isSaving || amount <= 0}
+        disabled={isSaving || amount <= 0 || isBlockedByBackup}
       >
-        {isSaving ? 'Recording...' : 'Record Expense'}
+        {isSaving
+          ? 'Recording...'
+          : isBlockedByBackup
+            ? `Backup Required for ${currentYear}`
+            : 'Record Expense'}
       </Button>
-    </div>
+    </Flex>
   );
 };

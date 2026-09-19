@@ -46,11 +46,36 @@ export const parseTransactionDate = (
   dateVal: { seconds?: number } | string | number | Date | undefined,
 ): Date | null => {
   if (!dateVal) return null;
-  if (typeof dateVal === 'object' && 'seconds' in dateVal && dateVal.seconds) {
+  if (dateVal instanceof Date) return isNaN(dateVal.getTime()) ? null : dateVal;
+  if (
+    typeof dateVal === 'object' &&
+    'seconds' in dateVal &&
+    typeof dateVal.seconds === 'number'
+  ) {
     return new Date(dateVal.seconds * 1000);
   }
-  const d = new Date(dateVal as string | number | Date);
-  return isNaN(d.getTime()) ? null : d;
+  if (typeof dateVal === 'number') {
+    const d = new Date(dateVal);
+    return isNaN(d.getTime()) ? null : d;
+  }
+  if (typeof dateVal === 'string') {
+    const s = dateVal.trim();
+    if (!s) return null;
+
+    // Check for DD/MM/YYYY or DD-MM-YYYY
+    const ddmmyyyyMatch = s.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/);
+    if (ddmmyyyyMatch) {
+      const day = parseInt(ddmmyyyyMatch[1], 10);
+      const month = parseInt(ddmmyyyyMatch[2], 10) - 1;
+      const year = parseInt(ddmmyyyyMatch[3], 10);
+      const d = new Date(year, month, day);
+      if (!isNaN(d.getTime())) return d;
+    }
+
+    const d = new Date(s);
+    return isNaN(d.getTime()) ? null : d;
+  }
+  return null;
 };
 
 export const formatWeight = (kg: number): string => {

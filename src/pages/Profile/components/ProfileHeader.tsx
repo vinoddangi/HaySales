@@ -1,6 +1,7 @@
 import { Edit3, Sparkles, User } from 'lucide-react';
 import React, { useState } from 'react';
-import { Card } from '../../../components/common/Card';
+import { Card, Text } from '../../../components/common';
+import { Flex } from '../../../components/layout';
 
 export interface ProfileHeaderProps {
   name: string;
@@ -33,15 +34,20 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
 
   return (
     <Card variant="filled" className="space-y-3 bg-m3-surface-container p-4">
-      <div className="flex items-center gap-4">
+      <Flex align="center" gap="md" fullWidth>
         <div className="shadow-xs flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-m3-primary-container text-lg font-bold text-m3-on-primary-container">
           <User className="h-7 w-7" />
         </div>
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2">
-            <h2 className="truncate text-base font-bold text-m3-on-surface">
+          <Flex align="center" gap="xs">
+            <Text
+              styleAs="h3"
+              appearance="primary"
+              weight="bold"
+              className="truncate"
+            >
               {name}
-            </h2>
+            </Text>
             {onUpdateName && !isEditing && (
               <button
                 onClick={() => {
@@ -54,12 +60,12 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                 <Edit3 className="h-3.5 w-3.5" />
               </button>
             )}
-          </div>
+          </Flex>
 
           {phoneNumber && name !== phoneNumber && (
-            <p className="text-[11px] text-m3-on-surface-variant">
+            <Text styleAs="caption" appearance="secondary" className="block">
               {phoneNumber}
-            </p>
+            </Text>
           )}
 
           <div className="mt-1 inline-flex items-center gap-1 rounded bg-m3-primary/10 px-2 py-0.5 text-[10px] font-semibold text-m3-primary">
@@ -67,7 +73,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
             <span>{role}</span>
           </div>
         </div>
-      </div>
+      </Flex>
 
       {isEditing && (
         <form onSubmit={handleSave} className="flex items-center gap-2 pt-1">

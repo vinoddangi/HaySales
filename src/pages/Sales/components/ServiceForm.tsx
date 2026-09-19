@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
-import { Button } from '../../../components/common/Button';
+import { calculateSaleTotals } from '../../../business/salesBusiness';
+import {
+  BackupWarningBanner,
+  Button,
+  Input,
+  SelectField,
+  SummaryBox,
+  SummaryRow,
+  Text,
+} from '../../../components/common';
+import { Flex, Grid } from '../../../components/layout';
 import { formatRupee, SERVICE_ITEMS } from '../../../utils/formatters';
 
 export interface ServiceFormProps {
   outstandingDue: number;
   isCreditAllowed: boolean;
   isSaving: boolean;
+  hasPendingBackup?: boolean;
+  currentYear?: number;
   onSubmit: (_serviceData: {
     item: string;
     amount: number;
@@ -15,10 +27,17 @@ export interface ServiceFormProps {
   }) => Promise<void>;
 }
 
+const SERVICE_OPTIONS = [
+  { value: '', label: 'Select service' },
+  ...SERVICE_ITEMS.map((item) => ({ value: item, label: item })),
+];
+
 export const ServiceForm: React.FC<ServiceFormProps> = ({
   outstandingDue,
   isCreditAllowed,
   isSaving,
+  hasPendingBackup = false,
+  currentYear = new Date().getFullYear(),
   onSubmit,
 }) => {
   const [date, setDate] = useState(
@@ -30,12 +49,16 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
   const [allCash, setAllCash] = useState(false);
   const [note, setNote] = useState('');
 
+  const selectedYear = new Date(date).getFullYear();
+  const isCYSelected = !isNaN(selectedYear) && selectedYear >= currentYear;
+  const isBlockedByBackup = hasPendingBackup && isCYSelected;
+
   const effectiveCashPaid = allCash ? amount : cashPaid;
-  const remainingDue = Math.max(0, amount - effectiveCashPaid);
+  const { remainingDue } = calculateSaleTotals(amount, 0, effectiveCashPaid);
   const newOutstandingDue = outstandingDue + remainingDue;
 
   const handleSubmit = async () => {
-    if (!selectedItem || amount <= 0) return;
+    if (!selectedItem || amount <= 0 || isBlockedByBackup) return;
     await onSubmit({
       item: selectedItem,
       amount,
@@ -52,71 +75,49 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
   };
 
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-3">
-        {/* Date Field */}
-        <div className="space-y-1">
-          <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-            Date
-          </label>
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
-          />
-        </div>
+    <Flex direction="column" gap="md" fullWidth>
+      {/* Banner if CY selected and previous year backup is pending */}
+      {isBlockedByBackup && (
+        <BackupWarningBanner currentYear={currentYear} isFormBanner />
+      )}
 
-        {/* Service Type */}
-        <div className="space-y-1">
-          <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-            Service Item
-          </label>
-          <select
-            value={selectedItem}
-            onChange={(e) => setSelectedItem(e.target.value)}
-            className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
-          >
-            <option value="">Select service</option>
-            {SERVICE_ITEMS.map((item) => (
-              <option key={item} value={item}>
-                {item}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
+      <Grid columns={2} gap="md" fullWidth>
+        <Input
+          label="Date"
+          type="date"
+          required
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
+        <SelectField
+          label="Service Item"
+          required
+          value={selectedItem}
+          options={SERVICE_OPTIONS}
+          onChange={(e) => setSelectedItem(e.target.value)}
+        />
+      </Grid>
 
-      {/* Amount and Note */}
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <div>
-          <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-            Amount (₹)
-          </label>
-          <input
-            type="number"
-            placeholder="0"
-            value={amount || ''}
-            onChange={(e) => setAmount(Number(e.target.value))}
-            className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
-          />
-        </div>
-        <div>
-          <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-            Remarks / Note (Optional)
-          </label>
-          <input
-            type="text"
-            placeholder="e.g. Trip to village, harvest work"
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-            className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
-          />
-        </div>
-      </div>
+      <Grid columns={1} smColumns={2} gap="md" fullWidth>
+        <Input
+          label="Amount (₹)"
+          type="number"
+          required
+          placeholder="0"
+          value={amount || ''}
+          onChange={(e) => setAmount(Number(e.target.value))}
+        />
+        <Input
+          label="Remarks / Note (Optional)"
+          type="text"
+          placeholder="e.g. Trip to village, harvest work"
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
+        />
+      </Grid>
 
       {/* All Cash Checkbox */}
-      <div className="space-y-2">
+      <Flex direction="column" gap="sm" fullWidth>
         <label className="flex cursor-pointer items-center gap-2 text-xs font-semibold text-m3-on-surface">
           <input
             type="checkbox"
@@ -128,60 +129,48 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
         </label>
 
         {!allCash && (
-          <div>
-            <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-              Cash Paid (₹)
-            </label>
-            <input
-              type="number"
-              placeholder="0"
-              value={cashPaid || ''}
-              onChange={(e) => setCashPaid(Number(e.target.value))}
-              className="w-full rounded border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
-            />
-          </div>
+          <Input
+            label="Cash Paid (₹)"
+            type="number"
+            placeholder="0"
+            value={cashPaid || ''}
+            onChange={(e) => setCashPaid(Number(e.target.value))}
+          />
         )}
-      </div>
+      </Flex>
 
       {/* Summary Box */}
-      <div className="space-y-1.5 rounded border border-m3-outline-variant bg-m3-surface-container-low p-3 text-xs">
-        <div className="flex justify-between">
-          <span className="text-m3-on-surface-variant">Total Service Fee:</span>{' '}
-          <strong>{formatRupee(amount)}</strong>
-        </div>
-        <div className="flex justify-between">
-          <span className="text-m3-on-surface-variant">Cash Paid:</span>{' '}
-          <strong className="text-emerald-600">
-            {formatRupee(effectiveCashPaid)}
-          </strong>
-        </div>
-        <div className="flex justify-between">
-          <span className="text-m3-on-surface-variant">Added to Dues:</span>{' '}
-          <strong className="text-amber-600">
-            {formatRupee(remainingDue)}
-          </strong>
-        </div>
-        <div className="flex justify-between border-t border-m3-outline-variant/30 pt-1.5 font-bold text-m3-primary">
-          <span>New Total Due:</span>{' '}
-          <span>{formatRupee(newOutstandingDue)}</span>
-        </div>
-      </div>
+      <SummaryBox>
+        <SummaryRow label="Total Service Fee:" value={formatRupee(amount)} />
+        <SummaryRow label="Cash Paid:" value={formatRupee(effectiveCashPaid)} />
+        <SummaryRow label="Added to Dues:" value={formatRupee(remainingDue)} />
+        <SummaryRow
+          label="New Total Due:"
+          value={formatRupee(newOutstandingDue)}
+          isTotal
+          isHighlight
+        />
+      </SummaryBox>
 
       {remainingDue > 0 && !isCreditAllowed && (
-        <p className="text-[11px] font-medium text-amber-600 dark:text-amber-400">
+        <Text variant="body-sm" color="warning" weight="medium">
           ⚠️ Customer balance exceeds credit limit indicator (credit service
           permitted).
-        </p>
+        </Text>
       )}
 
       <Button
         variant="filled"
         className="w-full"
         onClick={handleSubmit}
-        disabled={isSaving || !selectedItem || amount <= 0}
+        disabled={isSaving || !selectedItem || amount <= 0 || isBlockedByBackup}
       >
-        {isSaving ? 'Processing...' : 'Record Service'}
+        {isSaving
+          ? 'Processing...'
+          : isBlockedByBackup
+            ? `Backup Required for ${currentYear}`
+            : 'Record Service'}
       </Button>
-    </div>
+    </Flex>
   );
 };

@@ -1,6 +1,7 @@
 import { ChevronRight } from 'lucide-react';
 import React from 'react';
-import { Card } from '../../../components/common/Card';
+import { Card, Text } from '../../../components/common';
+import { Flex } from '../../../components/layout';
 import { Customer } from '../../../types';
 import { formatRupee } from '../../../utils/formatters';
 
@@ -14,65 +15,79 @@ export const CustomerLedgerList: React.FC<CustomerLedgerListProps> = ({
   onSelectCustomer,
 }) => {
   return (
-    <Card variant="filled" className="space-y-2 bg-m3-surface-container p-4">
-      <div className="flex items-center justify-between pb-1">
-        <h3 className="text-sm font-bold text-m3-on-surface">
-          Customer Accounts
-        </h3>
-        <span className="text-[11px] font-semibold text-m3-on-surface-variant">
-          {customers.length} Customers
-        </span>
-      </div>
+    <Card variant="filled" className="bg-m3-surface-container p-4">
+      <Flex direction="column" gap="sm" fullWidth>
+        <Flex align="center" justify="between" fullWidth className="pb-1">
+          <Text variant="title" color="onSurface" weight="bold">
+            Customer Accounts
+          </Text>
+          <Text variant="caption" color="muted" weight="semibold">
+            {customers.length} Customers
+          </Text>
+        </Flex>
 
-      <div className="max-h-[65vh] divide-y divide-m3-outline-variant/40 overflow-y-auto">
-        {customers.length === 0 ? (
-          <p className="py-6 text-center text-xs text-m3-on-surface-variant">
-            No customer accounts found.
-          </p>
-        ) : (
-          customers.map((c) => {
-            const due = c.outstandingAmount || 0;
-            return (
-              <div
-                key={c.id}
-                onClick={() => onSelectCustomer(c.id)}
-                className="flex cursor-pointer items-center justify-between rounded-lg px-2 py-3.5 transition-colors hover:bg-m3-primary-container"
-              >
-                <div className="min-w-0 flex-1 space-y-0.5 pr-2">
-                  <span className="block truncate text-xs font-semibold text-m3-on-surface">
-                    {c.name}
-                  </span>
-                  {c.mobile ? (
-                    <p className="text-[10px] text-m3-on-surface-variant">
-                      {c.mobile}
-                    </p>
-                  ) : (
-                    <p className="text-[10px] text-m3-on-surface-variant">
-                      Limit: {formatRupee(c.creditLimit || 35000)}
-                    </p>
-                  )}
-                </div>
-
-                <div className="flex shrink-0 items-center gap-2">
-                  <div className="text-right">
-                    <span
-                      className={`block text-xs font-bold ${
-                        due > 0 ? 'text-m3-error' : 'text-emerald-600'
-                      }`}
+        <div className="max-h-[65vh] divide-y divide-m3-outline-variant/40 overflow-y-auto">
+          {customers.length === 0 ? (
+            <p className="py-6 text-center text-xs text-m3-on-surface-variant">
+              No customer accounts found.
+            </p>
+          ) : (
+            customers.map((c) => {
+              const due = c.outstandingAmount || 0;
+              return (
+                <Flex
+                  key={c.id}
+                  align="center"
+                  justify="between"
+                  fullWidth
+                  onClick={() => onSelectCustomer(c.id)}
+                  className="cursor-pointer rounded-lg px-2 py-3.5 transition-colors hover:bg-m3-primary-container"
+                >
+                  <div className="min-w-0 flex-1 space-y-0.5 pr-2">
+                    <Text
+                      variant="body-sm"
+                      weight="semibold"
+                      color="onSurface"
+                      className="block truncate"
                     >
-                      {due > 0 ? formatRupee(due) : 'All Clear'}
-                    </span>
-                    <span className="text-[9px] text-m3-on-surface-variant">
-                      {due > 0 ? 'Due Balance' : 'Zero Due'}
-                    </span>
+                      {c.name}
+                    </Text>
+                    {c.mobile ? (
+                      <Text variant="caption" color="muted" className="block">
+                        {c.mobile}
+                      </Text>
+                    ) : (
+                      <Text variant="caption" color="muted" className="block">
+                        Limit: {formatRupee(c.creditLimit || 35000)}
+                      </Text>
+                    )}
                   </div>
-                  <ChevronRight className="h-4 w-4 text-m3-on-surface-variant" />
-                </div>
-              </div>
-            );
-          })
-        )}
-      </div>
+
+                  <Flex align="center" gap="sm" className="shrink-0">
+                    <div className="text-right">
+                      <Text
+                        variant="amount"
+                        color={due > 0 ? 'error' : 'success'}
+                        className="block text-xs font-bold"
+                      >
+                        {due > 0 ? formatRupee(due) : 'All Clear'}
+                      </Text>
+                      <Text
+                        variant="caption"
+                        color="muted"
+                        className="block text-[9px]"
+                      >
+                        {due > 0 ? 'Due Balance' : 'Zero Due'}
+                      </Text>
+                    </div>
+                    <ChevronRight className="h-4 w-4 text-m3-on-surface-variant" />
+                  </Flex>
+                </Flex>
+              );
+            })
+          )}
+        </div>
+      </Flex>
     </Card>
   );
 };

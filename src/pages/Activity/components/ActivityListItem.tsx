@@ -1,7 +1,8 @@
 import { Edit3 } from 'lucide-react';
 import React from 'react';
+import { Badge, Text } from '../../../components/common';
+import { Flex } from '../../../components/layout';
 import { Transaction } from '../../../types';
-import { cn } from '../../../utils/cn';
 import {
   formatRupee,
   formatWeight,
@@ -56,83 +57,92 @@ export const ActivityListItem: React.FC<ActivityListItemProps> = ({
           ? `${transaction.item || 'Crop'} • ${formatWeight(transaction.weightKg || 0)} @ ₹${avgRate.toFixed(2)}/kg`
           : `${transaction.expenseCategory || 'General Expense'}${transaction.note ? ` • ${transaction.note}` : ''}`;
 
+  const amountColor = isPayment
+    ? 'success'
+    : isPurchase
+      ? 'warning'
+      : isExpense
+        ? 'error'
+        : 'onSurface';
+
+  const typeLabel = isPayment
+    ? 'Payment'
+    : isService
+      ? 'Service'
+      : isSale
+        ? 'Sale'
+        : isPurchase
+          ? 'Purchase'
+          : 'Expense';
+
   return (
-    <div className="flex items-center justify-between gap-3 rounded-2xl border border-m3-outline-variant/60 bg-m3-surface-container-low p-3.5 transition-all hover:bg-m3-surface-container">
-      {/* 1. Date on DD badge */}
-      <div className="shadow-2xs flex min-w-[44px] flex-col items-center justify-center rounded-xl bg-m3-surface-container-high px-2.5 py-1.5 text-center">
+    <Flex
+      align="center"
+      justify="between"
+      gap="md"
+      fullWidth
+      padding="md"
+      className="rounded-2xl border border-m3-outline-variant/60 bg-m3-surface-container-low transition-all hover:bg-m3-surface-container"
+    >
+      {/* 1. Date badge */}
+      <Flex
+        direction="column"
+        align="center"
+        justify="center"
+        paddingHorizontal="sm"
+        paddingVertical="xs"
+        className="shadow-2xs min-w-[44px] rounded-xl bg-m3-surface-container-high text-center"
+      >
         <span className="text-base font-black leading-tight text-m3-primary">
           {dayStr}
         </span>
         <span className="text-[9px] font-extrabold uppercase tracking-wider text-m3-on-surface-variant">
           {monthStr}
         </span>
-      </div>
+      </Flex>
 
       {/* 2. Details: Name, Item, Subtitle, Tags */}
       <div className="min-w-0 flex-1 space-y-0.5">
-        <div className="flex items-center gap-1.5">
-          <span className="truncate text-xs font-bold text-m3-on-surface">
+        <Flex align="center" gap="xs">
+          <Text
+            variant="body-sm"
+            weight="bold"
+            color="onSurface"
+            className="truncate"
+          >
             {displayName}
-          </span>
+          </Text>
 
           {/* Status / Category Badges */}
-          {isFullCashSale && (
-            <span className="py-0.2 rounded bg-teal-500/10 px-1.5 text-[9px] font-bold text-teal-600 dark:text-teal-400">
-              Cash
-            </span>
-          )}
+          {isFullCashSale && <Badge variant="cash">Cash</Badge>}
           {(isSale || isService) && credit > 0 && (
-            <span className="py-0.2 rounded bg-purple-500/10 px-1.5 text-[9px] font-bold text-purple-600 dark:text-purple-400">
-              Credit
-            </span>
+            <Badge variant="credit">Credit</Badge>
           )}
-          {isService && (
-            <span className="py-0.2 rounded bg-cyan-500/10 px-1.5 text-[9px] font-bold text-cyan-600 dark:text-cyan-400">
-              Service
-            </span>
-          )}
+          {isService && <Badge variant="service">Service</Badge>}
           {isPurchase && (
-            <span className="py-0.2 rounded bg-amber-500/10 px-1.5 text-[9px] font-bold text-amber-600 dark:text-amber-400">
-              {transaction.item || 'Stock'}
-            </span>
+            <Badge variant="purchase">{transaction.item || 'Stock'}</Badge>
           )}
           {isExpense && (
-            <span className="py-0.2 rounded bg-rose-500/10 px-1.5 text-[9px] font-bold text-rose-600 dark:text-rose-400">
+            <Badge variant="expense">
               {transaction.expenseCategory || 'Expense'}
-            </span>
+            </Badge>
           )}
-        </div>
+        </Flex>
 
-        <div className="truncate text-[11px] font-medium text-m3-on-surface-variant">
+        <Text variant="caption" color="muted" className="block truncate">
           {displaySubtitle}
-        </div>
+        </Text>
       </div>
 
       {/* 3. Amount & Edit Action */}
-      <div className="flex items-center gap-2.5">
+      <Flex align="center" gap="sm">
         <div className="text-right">
-          <div
-            className={cn(
-              'text-xs font-black tracking-tight',
-              isPayment && 'text-emerald-600 dark:text-emerald-400',
-              (isSale || isService) && 'text-m3-on-surface',
-              isPurchase && 'text-amber-600 dark:text-amber-400',
-              isExpense && 'text-rose-600 dark:text-rose-400',
-            )}
-          >
+          <Text variant="amount" color={amountColor} className="block">
             {formatRupee(amount)}
-          </div>
-          <div className="text-[9px] font-medium text-m3-on-surface-variant">
-            {isPayment
-              ? 'Payment'
-              : isService
-                ? 'Service'
-                : isSale
-                  ? 'Sale'
-                  : isPurchase
-                    ? 'Purchase'
-                    : 'Expense'}
-          </div>
+          </Text>
+          <Text variant="caption" color="muted">
+            {typeLabel}
+          </Text>
         </div>
 
         {/* Edit Button */}
@@ -144,7 +154,7 @@ export const ActivityListItem: React.FC<ActivityListItemProps> = ({
         >
           <Edit3 className="h-3.5 w-3.5" />
         </button>
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   );
 };

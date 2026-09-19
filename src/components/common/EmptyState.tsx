@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from './Button';
+import { Text } from './Text';
 
 export interface EmptyStateProps {
   icon?: React.ReactNode;
@@ -27,11 +28,17 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
           {icon}
         </div>
       )}
-      <p className="text-sm font-semibold text-m3-on-surface">{title}</p>
+      <Text styleAs="h4" appearance="primary" weight="bold">
+        {title}
+      </Text>
       {description && (
-        <p className="max-w-xs text-xs text-m3-on-surface-variant">
+        <Text
+          styleAs="body-sm"
+          appearance="secondary"
+          className="block max-w-xs"
+        >
           {description}
-        </p>
+        </Text>
       )}
       {actionLabel && onAction && (
         <div className="pt-2">

@@ -1,14 +1,24 @@
 import { User as FirebaseUser, onAuthStateChanged } from 'firebase/auth';
-import { ArrowLeft, Bell, Search, User as UserIcon, X } from 'lucide-react';
+import {
+  ArrowLeft,
+  Bell,
+  RefreshCw,
+  Search,
+  User as UserIcon,
+  X,
+} from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { auth } from '../../store/firebaseConfig';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppInit } from '../../store/hooks/useAppInit';
 import {
   setSearchQuery,
   showSnackbar,
   toggleSearch,
 } from '../../store/slices/uiSlice';
+import { Text } from '../common/Text';
+import { Flex } from '../layout/Flex';
 
 export interface TopAppBarProps {
   title?: string;
@@ -25,6 +35,7 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
   const location = useLocation();
   const dispatch = useAppDispatch();
   const { isSearchOpen, searchQuery } = useAppSelector((state) => state.ui);
+  const { isRefreshing, refreshAllData } = useAppInit();
   const [currentUser, setCurrentUser] = useState<FirebaseUser | null>(
     auth.currentUser,
   );
@@ -47,9 +58,15 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
 
   return (
     <header className="pt-safe sticky top-0 z-40 w-full border-b border-m3-outline-variant/30 bg-m3-surface/90 backdrop-blur-md transition-colors">
-      <div className="flex h-14 items-center justify-between gap-2 px-3">
+      <Flex
+        align="center"
+        justify="between"
+        gap="sm"
+        paddingHorizontal="md"
+        className="h-14"
+      >
         {isSearchOpen ? (
-          <div className="flex w-full animate-fade-in items-center gap-2">
+          <Flex align="center" gap="sm" fullWidth className="animate-fade-in">
             <Search className="ml-2 h-5 w-5 shrink-0 text-m3-on-surface-variant" />
             <input
               type="text"
@@ -65,11 +82,11 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
             >
               <X className="h-5 w-5" />
             </button>
-          </div>
+          </Flex>
         ) : (
           <>
             {/* Left Nav Button / Avatar */}
-            <div className="flex items-center gap-2">
+            <Flex align="center" gap="sm">
               {showBack || isDetailPage ? (
                 <button
                   onClick={() => navigate(-1)}
@@ -98,17 +115,36 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
                   )}
                 </button>
               )}
-              <h1 className="truncate text-base font-semibold text-m3-on-surface">
+              <Text
+                as="h1"
+                styleAs="h3"
+                appearance="primary"
+                weight="semibold"
+                className="truncate"
+              >
                 {title}
-              </h1>
-            </div>
+              </Text>
+            </Flex>
 
             {/* Right Action Icons */}
-            <div className="flex items-center gap-1">
+            <Flex align="center" gap="xs">
               {actions ? (
                 actions
               ) : (
                 <>
+                  <button
+                    onClick={() => refreshAllData()}
+                    disabled={isRefreshing}
+                    aria-label="Refresh All Data"
+                    title="Refresh all data"
+                    className="rounded-full p-2.5 text-m3-on-surface-variant transition-colors hover:bg-m3-surface-container-highest active:scale-95 disabled:opacity-50"
+                  >
+                    <RefreshCw
+                      className={`h-4 w-4 ${
+                        isRefreshing ? 'animate-spin text-m3-primary' : ''
+                      }`}
+                    />
+                  </button>
                   <button
                     onClick={() => dispatch(toggleSearch())}
                     aria-label="Search"
@@ -133,10 +169,10 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
                   </button>
                 </>
               )}
-            </div>
+            </Flex>
           </>
         )}
-      </div>
+      </Flex>
     </header>
   );
 };
