@@ -36,7 +36,7 @@ jobs:
           # Check if there are any changeset markdown files
           CHANGESET_COUNT=$(find .changeset -maxdepth 1 -name "*.md" ! -name "README.md" | wc -l)
           echo "Found $CHANGESET_COUNT changesets"
-          
+
           if [ "$CHANGESET_COUNT" -gt 0 ]; then
             npx changeset version
             echo "HAS_CHANGES=true" >> $GITHUB_ENV
