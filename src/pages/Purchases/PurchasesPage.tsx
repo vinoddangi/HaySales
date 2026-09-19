@@ -8,12 +8,14 @@ import {
 } from 'lucide-react';
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { hasPendingPreviousYearRecords } from '../../api';
 import { Card } from '../../components/common/Card';
 import { PageContainer } from '../../components/common/PageContainer';
 import { useAppDispatch } from '../../store/hooks';
 import {
   useAddPurchaseTransactionMutation,
   useGetAllTransactionsQuery,
+  useGetBackupStatusQuery,
 } from '../../store/slices/customersApi';
 import { showSnackbar } from '../../store/slices/uiSlice';
 import { ExpenseCategoryType } from '../../types';
@@ -25,13 +27,21 @@ import { PurchaseForm } from './components/PurchaseForm';
 export const PurchasesPage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const currentYear = new Date().getFullYear();
   const [activeCategory, setActiveCategory] = useState<'PURCHASE' | 'EXPENSE'>(
     'PURCHASE',
   );
 
   const { data: allTransactions = [] } = useGetAllTransactionsQuery();
+  const { data: backupStatus } = useGetBackupStatusQuery();
   const [addPurchaseTransaction, { isLoading: isSaving }] =
     useAddPurchaseTransactionMutation();
+
+  const hasPendingBackup = hasPendingPreviousYearRecords(
+    allTransactions,
+    currentYear,
+    backupStatus,
+  );
 
   // Summary Metrics: Stock, Avg Buying, Expenses
   const {
@@ -257,9 +267,19 @@ export const PurchasesPage: React.FC = () => {
 
         {/* 3. Active Form */}
         {activeCategory === 'PURCHASE' ? (
-          <PurchaseForm isSaving={isSaving} onSubmit={handlePurchaseSubmit} />
+          <PurchaseForm
+            isSaving={isSaving}
+            hasPendingBackup={hasPendingBackup}
+            currentYear={currentYear}
+            onSubmit={handlePurchaseSubmit}
+          />
         ) : (
-          <ExpenseForm isSaving={isSaving} onSubmit={handleExpenseSubmit} />
+          <ExpenseForm
+            isSaving={isSaving}
+            hasPendingBackup={hasPendingBackup}
+            currentYear={currentYear}
+            onSubmit={handleExpenseSubmit}
+          />
         )}
       </Card>
     </PageContainer>

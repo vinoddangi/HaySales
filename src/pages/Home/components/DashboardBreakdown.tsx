@@ -1,6 +1,7 @@
-import { ChevronRight, Layers, PieChart } from 'lucide-react';
+import { Layers, PieChart } from 'lucide-react';
 import React from 'react';
-import { Card } from '../../../components/common/Card';
+import { Badge, Card, Text } from '../../../components/common';
+import { Flex } from '../../../components/layout';
 import { formatRupee, formatWeight } from '../../../utils/formatters';
 
 export interface ItemBreakdownItem {
@@ -17,8 +18,6 @@ export interface DashboardBreakdownProps {
   totalSales: number;
   salesOnCash: number;
   salesOnCredit: number;
-  onNavigateToSales: () => void;
-  onNavigateToLedger: () => void;
 }
 
 export const DashboardBreakdown: React.FC<DashboardBreakdownProps> = ({
@@ -26,58 +25,60 @@ export const DashboardBreakdown: React.FC<DashboardBreakdownProps> = ({
   totalSales,
   salesOnCash,
   salesOnCredit,
-  onNavigateToSales,
-  onNavigateToLedger,
 }) => {
   const cashPct = totalSales > 0 ? (salesOnCash / totalSales) * 100 : 0;
   const creditPct = totalSales > 0 ? (salesOnCredit / totalSales) * 100 : 0;
 
   return (
-    <div className="space-y-3">
+    <Flex direction="column" gap="md" fullWidth>
       {/* Visual Cash vs Credit Distribution Bar */}
       {totalSales > 0 && (
         <Card
           variant="outlined"
-          className="space-y-2.5 border-m3-outline-variant bg-m3-surface-container-low p-3.5"
+          className="border-m3-outline-variant bg-m3-surface-container-low p-3.5"
         >
-          <div className="flex items-center justify-between text-xs font-bold text-m3-on-surface">
-            <span className="flex items-center gap-1.5">
-              <PieChart className="h-4 w-4 text-m3-primary" />
-              Sales Settlement Split
-            </span>
-            <span className="text-[11px] font-normal text-m3-on-surface-variant">
-              Total: {formatRupee(totalSales)}
-            </span>
-          </div>
+          <Flex direction="column" gap="sm" fullWidth>
+            <Flex align="center" justify="between" fullWidth>
+              <Flex align="center" gap="xs">
+                <PieChart className="h-4 w-4 text-m3-primary" />
+                <Text styleAs="h4" appearance="primary" weight="bold">
+                  Sales Settlement Split
+                </Text>
+              </Flex>
+              <Text styleAs="label" appearance="secondary" weight="normal">
+                Total: {formatRupee(totalSales)}
+              </Text>
+            </Flex>
 
-          {/* Dual-color Progress Bar */}
-          <div className="flex h-3 w-full overflow-hidden rounded-full bg-m3-surface-container-highest">
-            <div
-              style={{ width: `${cashPct}%` }}
-              className="bg-teal-500 transition-all duration-500"
-              title={`Cash: ${cashPct.toFixed(1)}%`}
-            />
-            <div
-              style={{ width: `${creditPct}%` }}
-              className="bg-purple-500 transition-all duration-500"
-              title={`Credit: ${creditPct.toFixed(1)}%`}
-            />
-          </div>
+            {/* Dual-color Progress Bar */}
+            <div className="flex h-3 w-full overflow-hidden rounded-full bg-m3-surface-container-highest">
+              <div
+                style={{ width: `${cashPct}%` }}
+                className="bg-teal-500 transition-all duration-500"
+                title={`Cash: ${cashPct.toFixed(1)}%`}
+              />
+              <div
+                style={{ width: `${creditPct}%` }}
+                className="bg-purple-500 transition-all duration-500"
+                title={`Credit: ${creditPct.toFixed(1)}%`}
+              />
+            </div>
 
-          <div className="flex items-center justify-between text-[11px] font-medium">
-            <div className="flex items-center gap-1.5 text-teal-600 dark:text-teal-400">
-              <span className="h-2 w-2 rounded-full bg-teal-500" />
-              <span>
-                Cash: {formatRupee(salesOnCash)} ({cashPct.toFixed(0)}%)
-              </span>
-            </div>
-            <div className="flex items-center gap-1.5 text-purple-600 dark:text-purple-400">
-              <span className="h-2 w-2 rounded-full bg-purple-500" />
-              <span>
-                Credit: {formatRupee(salesOnCredit)} ({creditPct.toFixed(0)}%)
-              </span>
-            </div>
-          </div>
+            <Flex align="center" justify="between" fullWidth>
+              <Flex align="center" gap="xs">
+                <span className="h-2 w-2 rounded-full bg-teal-500" />
+                <Text styleAs="label" sentiment="positive" weight="medium">
+                  Cash: {formatRupee(salesOnCash)} ({cashPct.toFixed(0)}%)
+                </Text>
+              </Flex>
+              <Flex align="center" gap="xs">
+                <span className="h-2 w-2 rounded-full bg-purple-500" />
+                <Text styleAs="label" sentiment="accent" weight="medium">
+                  Credit: {formatRupee(salesOnCredit)} ({creditPct.toFixed(0)}%)
+                </Text>
+              </Flex>
+            </Flex>
+          </Flex>
         </Card>
       )}
 
@@ -85,103 +86,97 @@ export const DashboardBreakdown: React.FC<DashboardBreakdownProps> = ({
       {itemBreakdown.length > 0 && (
         <Card
           variant="outlined"
-          className="space-y-3 border-m3-outline-variant bg-m3-surface-container-low p-3.5"
+          className="border-m3-outline-variant bg-m3-surface-container-low p-3.5"
         >
-          <div className="flex items-center justify-between">
-            <span className="flex items-center gap-1.5 text-xs font-bold text-m3-on-surface">
-              <Layers className="h-4 w-4 text-m3-primary" />
-              Crop / Item Sales & Stock
-            </span>
-            <span className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-              {itemBreakdown.length} Products
-            </span>
-          </div>
+          <Flex direction="column" gap="md" fullWidth>
+            <Flex align="center" justify="between" fullWidth>
+              <Flex align="center" gap="xs">
+                <Layers className="h-4 w-4 text-m3-primary" />
+                <Text styleAs="h4" appearance="primary" weight="bold">
+                  Crop / Item Sales & Stock
+                </Text>
+              </Flex>
+              <Text styleAs="label" appearance="secondary">
+                {itemBreakdown.length} Products
+              </Text>
+            </Flex>
 
-          <div className="space-y-2">
-            {itemBreakdown.map((item) => {
-              const itemPct =
-                totalSales > 0 ? (item.amount / totalSales) * 100 : 0;
-              const avgRate =
-                item.weightKg > 0 ? item.amount / item.weightKg : 0;
+            <Flex direction="column" gap="sm" fullWidth>
+              {itemBreakdown.map((item) => {
+                const itemPct =
+                  totalSales > 0 ? (item.amount / totalSales) * 100 : 0;
+                const avgRate =
+                  item.weightKg > 0 ? item.amount / item.weightKg : 0;
 
-              return (
-                <div
-                  key={item.item}
-                  className="rounded-lg border border-m3-outline-variant/50 bg-m3-surface p-2.5"
-                >
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="font-bold text-m3-on-surface">
-                      {item.item}
-                    </span>
-                    <span className="font-extrabold text-m3-on-surface">
-                      {formatRupee(item.amount)}
-                    </span>
-                  </div>
+                return (
+                  <div
+                    key={item.item}
+                    className="rounded-lg border border-m3-outline-variant/50 bg-m3-surface p-2.5"
+                  >
+                    <Flex align="center" justify="between" fullWidth>
+                      <Text
+                        styleAs="body-sm"
+                        appearance="primary"
+                        weight="bold"
+                      >
+                        {item.item}
+                      </Text>
+                      <Text
+                        styleAs="body-sm"
+                        appearance="primary"
+                        weight="black"
+                      >
+                        {formatRupee(item.amount)}
+                      </Text>
+                    </Flex>
 
-                  <div className="mt-1 flex flex-wrap items-center justify-between gap-1 text-[11px] text-m3-on-surface-variant">
-                    <span>
-                      Sold: {formatWeight(item.weightKg)} • Avg:{' '}
-                      <strong>₹{avgRate.toFixed(2)}/kg</strong>
-                    </span>
-                    {item.stockKg !== undefined && (
-                      <span className="py-0.2 rounded bg-blue-500/10 px-1.5 text-[10px] font-semibold text-blue-700 dark:text-blue-300">
-                        Stock: {formatWeight(item.stockKg)}
-                      </span>
+                    <Flex
+                      wrap
+                      align="center"
+                      justify="between"
+                      gap="xs"
+                      className="mt-1"
+                    >
+                      <Text
+                        styleAs="label"
+                        appearance="secondary"
+                        weight="normal"
+                      >
+                        Sold: {formatWeight(item.weightKg)} • Avg: ₹
+                        {avgRate.toFixed(2)}/kg
+                      </Text>
+                      {item.stockKg !== undefined && (
+                        <Badge sentiment="info" size="sm">
+                          Stock: {formatWeight(item.stockKg)}
+                        </Badge>
+                      )}
+                    </Flex>
+
+                    {item.avgBuyRate !== undefined && item.avgBuyRate > 0 && (
+                      <Text
+                        styleAs="caption"
+                        appearance="secondary"
+                        weight="medium"
+                        className="mt-0.5 block"
+                      >
+                        Avg Buying: ₹{item.avgBuyRate.toFixed(2)}/kg
+                      </Text>
                     )}
-                  </div>
 
-                  {item.avgBuyRate !== undefined && item.avgBuyRate > 0 && (
-                    <div className="mt-0.5 text-[10px] font-medium text-m3-on-surface-variant">
-                      Avg Buying: ₹{item.avgBuyRate.toFixed(2)}/kg
+                    {/* Progress Line */}
+                    <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-m3-surface-container-highest">
+                      <div
+                        style={{ width: `${itemPct}%` }}
+                        className="h-full rounded-full bg-m3-primary"
+                      />
                     </div>
-                  )}
-
-                  {/* Progress Line */}
-                  <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-m3-surface-container-highest">
-                    <div
-                      style={{ width: `${itemPct}%` }}
-                      className="h-full rounded-full bg-m3-primary"
-                    />
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </Flex>
+          </Flex>
         </Card>
       )}
-
-      {/* Quick Access Action Banners */}
-      <div className="grid grid-cols-2 gap-2.5 pt-1">
-        <button
-          type="button"
-          onClick={onNavigateToSales}
-          className="flex items-center justify-between rounded-xl border border-m3-primary/30 bg-m3-primary/[0.08] p-3 text-left transition-all hover:bg-m3-primary/[0.14] active:scale-[0.98]"
-        >
-          <div>
-            <div className="text-xs font-bold text-m3-primary">New Sale</div>
-            <div className="text-[10px] text-m3-on-surface-variant">
-              Record invoice
-            </div>
-          </div>
-          <ChevronRight className="h-4 w-4 text-m3-primary" />
-        </button>
-
-        <button
-          type="button"
-          onClick={onNavigateToLedger}
-          className="flex items-center justify-between rounded-xl border border-m3-outline-variant bg-m3-surface-container-low p-3 text-left transition-all hover:bg-m3-surface-container active:scale-[0.98]"
-        >
-          <div>
-            <div className="text-xs font-bold text-m3-on-surface">
-              Customer Ledgers
-            </div>
-            <div className="text-[10px] text-m3-on-surface-variant">
-              Manage balances
-            </div>
-          </div>
-          <ChevronRight className="h-4 w-4 text-m3-on-surface-variant" />
-        </button>
-      </div>
-    </div>
+    </Flex>
   );
 };

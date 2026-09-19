@@ -8,6 +8,8 @@ import {
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '../../utils/cn';
+import { Text } from '../common/Text';
+import { Flex } from '../layout/Flex';
 
 interface NavItem {
   id: string;
@@ -56,7 +58,12 @@ export const BottomNavBar: React.FC = () => {
 
   return (
     <nav className="pb-safe fixed bottom-0 left-0 right-0 z-40 border-t border-m3-outline-variant/30 bg-m3-surface-container/95 backdrop-blur-lg transition-colors">
-      <div className="mx-auto flex h-16 max-w-lg items-center justify-around px-2">
+      <Flex
+        align="center"
+        justify="around"
+        paddingHorizontal="sm"
+        className="mx-auto h-16 max-w-lg"
+      >
         {navItems.map((item) => {
           const isActive =
             item.path === '/'
@@ -66,15 +73,23 @@ export const BottomNavBar: React.FC = () => {
           const IconComponent = item.icon;
 
           return (
-            <button
+            <Flex
               key={item.id}
+              as="button"
+              direction="column"
+              align="center"
+              justify="center"
               onClick={() => navigate(item.path)}
-              className="group flex flex-1 flex-col items-center justify-center py-1 outline-none"
+              className="group flex-1 py-1 outline-none"
             >
               {/* Active Indicator Pill */}
-              <div
+              <Flex
+                align="center"
+                justify="center"
+                paddingHorizontal="lg"
+                paddingVertical="xs"
                 className={cn(
-                  'relative flex items-center justify-center rounded-m3-full px-5 py-1 transition-all duration-200',
+                  'relative rounded-m3-full transition-all duration-200',
                   isActive
                     ? 'shadow-xs bg-m3-secondary-container text-m3-on-secondary-container'
                     : 'hover:bg-m3-on-surface/8 text-m3-on-surface-variant',
@@ -92,23 +107,21 @@ export const BottomNavBar: React.FC = () => {
                     {item.badge}
                   </span>
                 )}
-              </div>
+              </Flex>
 
               {/* Label */}
-              <span
-                className={cn(
-                  'mt-1 text-[11px] font-medium tracking-tight transition-colors duration-150',
-                  isActive
-                    ? 'font-bold text-m3-on-surface'
-                    : 'text-m3-on-surface-variant group-hover:text-m3-on-surface',
-                )}
+              <Text
+                styleAs="caption"
+                appearance={isActive ? 'primary' : 'secondary'}
+                weight={isActive ? 'bold' : 'medium'}
+                className="mt-1"
               >
                 {item.label}
-              </span>
-            </button>
+              </Text>
+            </Flex>
           );
         })}
-      </div>
+      </Flex>
     </nav>
   );
 };

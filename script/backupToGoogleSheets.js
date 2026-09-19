@@ -104,7 +104,7 @@ async function backupToGoogleSheets() {
       data.creditLimit ?? 35000,
     ]);
 
-    // Fetch all subcollections on this customer doc (e.g. 'transactions', 'Transaction-2025', 'Transaction-2026', etc.)
+    // Fetch all subcollections on this customer doc (e.g. 'transactions', 'transactions-2025', 'transactions-2026', etc.)
     const subCollections = await doc.ref.listCollections();
     for (const subCol of subCollections) {
       const subTxSnap = await subCol.get();

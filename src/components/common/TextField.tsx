@@ -5,6 +5,7 @@ export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputEleme
   label?: string;
   supportingText?: string;
   error?: string;
+  required?: boolean;
   leadingIcon?: React.ReactNode;
   trailingIcon?: React.ReactNode;
   onTrailingIconClick?: () => void;
@@ -15,6 +16,7 @@ export const TextField: React.FC<TextFieldProps> = ({
   label,
   supportingText,
   error,
+  required,
   leadingIcon,
   trailingIcon,
   onTrailingIconClick,
@@ -37,6 +39,9 @@ export const TextField: React.FC<TextFieldProps> = ({
           )}
         >
           {label}
+          {required && (
+            <span className="ml-0.5 font-bold text-m3-error">*</span>
+          )}
         </label>
       )}
 

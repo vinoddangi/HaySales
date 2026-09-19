@@ -93,7 +93,7 @@ async function cleanAllRecords() {
   }
 
   // 2. Extra safeguard for common collections if not returned in listCollections
-  for (const colName of ['customers', 'purchases']) {
+  for (const colName of ['customers', 'purchases', 'metadata']) {
     const docRefs = await db.collection(colName).listDocuments();
     for (const docRef of docRefs) {
       await deleteDocumentRecursively(docRef);
@@ -101,7 +101,7 @@ async function cleanAllRecords() {
   }
 
   console.log(
-    '\n✨ All Firestore root documents, phantom parent paths, and subcollections (including Transactions-YYYY) have been completely wiped!',
+    '\n✨ All Firestore root documents, phantom parent paths, subcollections, and metadata have been completely wiped!',
   );
 }
 

@@ -2,6 +2,8 @@ import { onAuthStateChanged, signOut, User } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { Button } from '../../components/common/Button';
 import { PageContainer } from '../../components/common/PageContainer';
+import { Text } from '../../components/common/Text';
+import { Flex } from '../../components/layout/Flex';
 import { auth } from '../../store/firebaseConfig';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
@@ -11,6 +13,7 @@ import {
 } from '../../store/slices/themeSlice';
 import { showSnackbar } from '../../store/slices/uiSlice';
 import { ColorScheme, FontSize } from '../../types';
+import { APP_VERSION } from '../../utils/version';
 import { AppearanceSettings } from './components/AppearanceSettings';
 import { ProfileHeader } from './components/ProfileHeader';
 import { TransactionBackupSettings } from './components/TransactionBackupSettings';
@@ -115,7 +118,7 @@ export const ProfilePage: React.FC = () => {
       {/* Financial Year Rollover & Backup */}
       <TransactionBackupSettings />
 
-      <div className="flex justify-center pt-2">
+      <div className="flex flex-col items-center gap-3 pt-2">
         <Button
           variant="outlined"
           size="sm"
@@ -124,6 +127,24 @@ export const ProfilePage: React.FC = () => {
         >
           Sign Out
         </Button>
+
+        <Flex
+          direction="column"
+          align="center"
+          gap="none"
+          className="pt-2 text-center"
+        >
+          <Text variant="caption" color="muted">
+            HaySales App • v{APP_VERSION}
+          </Text>
+          <Text
+            variant="caption"
+            color="muted"
+            className="text-[9px] lowercase opacity-60"
+          >
+            Automated Versioning via Changesets
+          </Text>
+        </Flex>
       </div>
     </PageContainer>
   );

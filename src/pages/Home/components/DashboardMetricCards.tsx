@@ -9,8 +9,8 @@ import {
 } from 'lucide-react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card } from '../../../components/common/Card';
-import { cn } from '../../../utils/cn';
+import { Badge, Card, Text } from '../../../components/common';
+import { Flex, Grid } from '../../../components/layout';
 import { formatRupee, formatWeight } from '../../../utils/formatters';
 
 export interface DashboardMetricsData {
@@ -49,21 +49,21 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+      <Grid columns={2} smColumns={3} gap="md">
         {[1, 2, 3, 4, 5, 6].map((i) => (
           <div
             key={i}
             className="h-28 animate-pulse rounded-2xl border border-m3-outline-variant/40 bg-m3-surface-container-low"
           />
         ))}
-      </div>
+      </Grid>
     );
   }
 
   return (
-    <div className="space-y-3">
+    <Flex direction="column" gap="md" fullWidth>
       {/* Top Main Cards: Sales & Purchases (Clickable -> Activity) */}
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      <Grid columns={1} smColumns={2} gap="md" fullWidth>
         {/* Total Sales Card */}
         <Card
           variant="elevated"
@@ -78,23 +78,39 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
           }}
           className="group relative cursor-pointer overflow-hidden border-emerald-500/30 bg-gradient-to-br from-emerald-500/[0.08] to-m3-surface-container-low p-4 transition-all duration-200 hover:scale-[1.01] hover:border-emerald-500/60 hover:shadow-md active:scale-[0.99] dark:from-emerald-500/[0.12]"
         >
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 transition-colors group-hover:underline dark:text-emerald-400">
+          <Flex align="center" justify="between">
+            <Text
+              styleAs="label"
+              sentiment="positive"
+              uppercase
+              className="group-hover:underline"
+            >
               Total Sales
-            </span>
+            </Text>
             <div className="rounded-full bg-emerald-500/20 p-2 text-emerald-600 transition-transform group-hover:scale-110 dark:text-emerald-300">
               <TrendingUp className="h-4 w-4" />
             </div>
-          </div>
+          </Flex>
           <div className="mt-2">
-            <div className="text-2xl font-black tracking-tight text-m3-on-surface">
+            <Text
+              styleAs="display2"
+              weight="black"
+              appearance="primary"
+              as="div"
+            >
               {formatRupee(metrics.totalSalesAmount)}
-            </div>
-            <div className="mt-1 flex flex-wrap items-center gap-2 text-[11px] font-medium text-m3-on-surface-variant">
-              <span>{formatWeight(metrics.totalSalesWeightKg)}</span>
-              <span>•</span>
-              <span>{metrics.salesCount} Invoices</span>
-            </div>
+            </Text>
+            <Flex wrap align="center" gap="sm" className="mt-1">
+              <Text styleAs="caption" appearance="secondary">
+                {formatWeight(metrics.totalSalesWeightKg)}
+              </Text>
+              <Text styleAs="caption" appearance="secondary">
+                •
+              </Text>
+              <Text styleAs="caption" appearance="secondary">
+                {metrics.salesCount} Invoices
+              </Text>
+            </Flex>
           </div>
         </Card>
 
@@ -112,51 +128,73 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
           }}
           className="group relative cursor-pointer overflow-hidden border-amber-500/30 bg-gradient-to-br from-amber-500/[0.08] to-m3-surface-container-low p-4 transition-all duration-200 hover:scale-[1.01] hover:border-amber-500/60 hover:shadow-md active:scale-[0.99] dark:from-amber-500/[0.12]"
         >
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-700 transition-colors group-hover:underline dark:text-amber-400">
+          <Flex align="center" justify="between">
+            <Text
+              styleAs="label"
+              sentiment="warning"
+              uppercase
+              className="group-hover:underline"
+            >
               Total Purchases
-            </span>
+            </Text>
             <div className="rounded-full bg-amber-500/20 p-2 text-amber-600 transition-transform group-hover:scale-110 dark:text-amber-300">
               <ArrowDownLeft className="h-4 w-4" />
             </div>
-          </div>
+          </Flex>
           <div className="mt-2">
-            <div className="text-2xl font-black tracking-tight text-m3-on-surface">
+            <Text
+              styleAs="display2"
+              weight="black"
+              appearance="primary"
+              as="div"
+            >
               {formatRupee(metrics.totalPurchaseAmount)}
-            </div>
-            <div className="mt-1 flex flex-wrap items-center gap-2 text-[11px] font-medium text-m3-on-surface-variant">
-              <span>{formatWeight(metrics.totalPurchaseWeightKg)}</span>
-              <span>•</span>
-              <span>{metrics.purchasesCount} Orders</span>
-            </div>
+            </Text>
+            <Flex wrap align="center" gap="sm" className="mt-1">
+              <Text styleAs="caption" appearance="secondary">
+                {formatWeight(metrics.totalPurchaseWeightKg)}
+              </Text>
+              <Text styleAs="caption" appearance="secondary">
+                •
+              </Text>
+              <Text styleAs="caption" appearance="secondary">
+                {metrics.purchasesCount} Orders
+              </Text>
+            </Flex>
           </div>
         </Card>
-      </div>
+      </Grid>
 
       {/* Grid of Key Rate and Cashflow Metrics */}
-      <div className="grid grid-cols-2 gap-3">
+      <Grid columns={2} gap="md" fullWidth>
         {/* Sales Rate (Avg) */}
         <Card
           variant="outlined"
           className="border-m3-outline-variant bg-m3-surface-container-low p-3.5"
         >
-          <div className="flex items-center gap-2 text-m3-primary">
+          <Flex align="center" gap="sm" className="text-m3-primary">
             <Scale className="h-4 w-4" />
-            <span className="text-[11px] font-bold uppercase tracking-wide text-m3-on-surface-variant">
+            <Text styleAs="label" appearance="secondary" uppercase>
               Sales Rate (Avg)
-            </span>
-          </div>
-          <div className="mt-2 text-lg font-extrabold text-m3-on-surface">
-            {metrics.avgSalesRate > 0
-              ? `₹${metrics.avgSalesRate.toFixed(2)}`
-              : '₹0.00'}
-            <span className="text-xs font-normal text-m3-on-surface-variant">
+            </Text>
+          </Flex>
+          <div className="mt-2 flex items-baseline gap-1">
+            <Text styleAs="h2" weight="extrabold" appearance="primary">
+              {metrics.avgSalesRate > 0
+                ? `₹${metrics.avgSalesRate.toFixed(2)}`
+                : '₹0.00'}
+            </Text>
+            <Text styleAs="body-sm" appearance="secondary">
               /kg
-            </span>
+            </Text>
           </div>
-          <div className="mt-0.5 text-[10px] text-m3-on-surface-variant">
+          <Text
+            styleAs="caption"
+            appearance="secondary"
+            className="mt-0.5 block"
+          >
             Avg selling rate
-          </div>
+          </Text>
         </Card>
 
         {/* Buy Rate (Avg) */}
@@ -164,23 +202,33 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
           variant="outlined"
           className="border-m3-outline-variant bg-m3-surface-container-low p-3.5"
         >
-          <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400">
+          <Flex
+            align="center"
+            gap="sm"
+            className="text-amber-600 dark:text-amber-400"
+          >
             <Coins className="h-4 w-4" />
-            <span className="text-[11px] font-bold uppercase tracking-wide text-m3-on-surface-variant">
+            <Text styleAs="label" appearance="secondary" uppercase>
               Buy Rate (Avg)
-            </span>
-          </div>
-          <div className="mt-2 text-lg font-extrabold text-m3-on-surface">
-            {metrics.avgBuyRate > 0
-              ? `₹${metrics.avgBuyRate.toFixed(2)}`
-              : '₹0.00'}
-            <span className="text-xs font-normal text-m3-on-surface-variant">
+            </Text>
+          </Flex>
+          <div className="mt-2 flex items-baseline gap-1">
+            <Text styleAs="h2" weight="extrabold" appearance="primary">
+              {metrics.avgBuyRate > 0
+                ? `₹${metrics.avgBuyRate.toFixed(2)}`
+                : '₹0.00'}
+            </Text>
+            <Text styleAs="body-sm" appearance="secondary">
               /kg
-            </span>
+            </Text>
           </div>
-          <div className="mt-0.5 text-[10px] text-m3-on-surface-variant">
+          <Text
+            styleAs="caption"
+            appearance="secondary"
+            className="mt-0.5 block"
+          >
             Avg purchase cost
-          </div>
+          </Text>
         </Card>
 
         {/* Sales on Cash */}
@@ -197,23 +245,41 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
           }}
           className="group cursor-pointer border-teal-500/30 bg-teal-500/[0.05] p-3.5 transition-all duration-200 hover:scale-[1.01] hover:border-teal-500/60 hover:shadow-md active:scale-[0.99] dark:bg-teal-500/[0.08]"
         >
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1.5 text-teal-600 dark:text-teal-400">
+          <Flex align="center" justify="between">
+            <Flex
+              align="center"
+              gap="xs"
+              className="text-teal-600 dark:text-teal-400"
+            >
               <Banknote className="h-4 w-4 transition-transform group-hover:scale-110" />
-              <span className="text-[11px] font-bold uppercase tracking-wide group-hover:underline">
+              <Text
+                styleAs="label"
+                sentiment="positive"
+                uppercase
+                className="group-hover:underline"
+              >
                 Sales on Cash
-              </span>
-            </div>
-            <span className="rounded bg-teal-500/10 px-1.5 py-0.5 text-[10px] font-bold text-teal-700 dark:text-teal-300">
+              </Text>
+            </Flex>
+            <Badge sentiment="positive" size="sm">
               {cashPercentage.toFixed(0)}%
-            </span>
-          </div>
-          <div className="mt-2 text-lg font-extrabold text-m3-on-surface">
+            </Badge>
+          </Flex>
+          <Text
+            styleAs="h2"
+            weight="extrabold"
+            appearance="primary"
+            className="mt-2 block"
+          >
             {formatRupee(metrics.salesOnCash)}
-          </div>
-          <div className="mt-0.5 text-[10px] text-m3-on-surface-variant">
+          </Text>
+          <Text
+            styleAs="caption"
+            appearance="secondary"
+            className="mt-0.5 block"
+          >
             Direct cash received
-          </div>
+          </Text>
         </Card>
 
         {/* Sales on Credit */}
@@ -230,65 +296,91 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
           }}
           className="group cursor-pointer border-purple-500/30 bg-purple-500/[0.05] p-3.5 transition-all duration-200 hover:scale-[1.01] hover:border-purple-500/60 hover:shadow-md active:scale-[0.99] dark:bg-purple-500/[0.08]"
         >
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1.5 text-purple-600 dark:text-purple-400">
+          <Flex align="center" justify="between">
+            <Flex
+              align="center"
+              gap="xs"
+              className="text-purple-600 dark:text-purple-400"
+            >
               <CreditCard className="h-4 w-4 transition-transform group-hover:scale-110" />
-              <span className="text-[11px] font-bold uppercase tracking-wide group-hover:underline">
+              <Text
+                styleAs="label"
+                sentiment="accent"
+                uppercase
+                className="group-hover:underline"
+              >
                 Sales on Credit
-              </span>
-            </div>
-            <span className="rounded bg-purple-500/10 px-1.5 py-0.5 text-[10px] font-bold text-purple-700 dark:text-purple-300">
+              </Text>
+            </Flex>
+            <Badge sentiment="credit" size="sm">
               {creditPercentage.toFixed(0)}%
-            </span>
-          </div>
-          <div className="mt-2 text-lg font-extrabold text-m3-on-surface">
+            </Badge>
+          </Flex>
+          <Text
+            styleAs="h2"
+            weight="extrabold"
+            appearance="primary"
+            className="mt-2 block"
+          >
             {formatRupee(metrics.salesOnCredit)}
-          </div>
-          <div className="mt-0.5 text-[10px] text-m3-on-surface-variant">
+          </Text>
+          <Text
+            styleAs="caption"
+            appearance="secondary"
+            className="mt-0.5 block"
+          >
             Credit given to buyers
-          </div>
+          </Text>
         </Card>
-      </div>
+      </Grid>
 
       {/* Cashflow Card */}
       <Card
         variant="filled"
         className="border border-m3-outline-variant/60 bg-m3-surface-container p-4"
       >
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+        <Flex align="center" justify="between">
+          <Flex align="center" gap="sm">
             <div className="rounded-lg bg-m3-primary/10 p-2 text-m3-primary">
               <Wallet className="h-5 w-5" />
             </div>
             <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-m3-on-surface">
+              <Text
+                styleAs="label"
+                appearance="primary"
+                uppercase
+                className="block"
+              >
                 Total Cashflow
-              </div>
-              <div className="text-[11px] text-m3-on-surface-variant">
+              </Text>
+              <Text styleAs="caption" appearance="secondary" className="block">
                 Total cash in (Cash Sales + Payments)
-              </div>
+              </Text>
             </div>
-          </div>
+          </Flex>
           <div className="text-right">
-            <div
-              className={cn(
-                'text-lg font-black',
-                metrics.netCashflow >= 0
-                  ? 'text-emerald-600 dark:text-emerald-400'
-                  : 'text-rose-600 dark:text-rose-400',
-              )}
+            <Text
+              styleAs="h2"
+              weight="black"
+              sentiment={metrics.netCashflow >= 0 ? 'positive' : 'negative'}
+              className="block"
             >
               {formatRupee(metrics.netCashflow)}
-            </div>
-            <div className="text-[10px] font-medium text-m3-on-surface-variant">
+            </Text>
+            <Text
+              styleAs="caption"
+              appearance="secondary"
+              weight="medium"
+              className="block"
+            >
               In: {formatRupee(metrics.totalCashIn)} • Out:{' '}
               {formatRupee(
                 metrics.totalPurchaseAmount + metrics.totalExpenseAmount,
               )}
-            </div>
+            </Text>
           </div>
-        </div>
+        </Flex>
       </Card>
-    </div>
+    </Flex>
   );
 };

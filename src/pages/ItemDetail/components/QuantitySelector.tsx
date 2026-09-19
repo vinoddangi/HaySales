@@ -1,6 +1,7 @@
-import React from 'react';
 import { Minus, Plus } from 'lucide-react';
-import { Card } from '../../../components/common/Card';
+import React from 'react';
+import { Card, Text } from '../../../components/common';
+import { Flex } from '../../../components/layout';
 
 interface QuantitySelectorProps {
   quantity: number;
@@ -19,34 +20,47 @@ export const QuantitySelector: React.FC<QuantitySelectorProps> = ({
   return (
     <div className="px-4">
       <Card variant="outlined" className="space-y-3 p-3.5">
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-bold text-m3-on-surface">
+        <Flex align="center" justify="between" fullWidth>
+          <Text styleAs="body-sm" appearance="primary" weight="bold">
             Order Quantity
-          </span>
-          <div className="flex items-center gap-3">
+          </Text>
+          <Flex align="center" gap="sm">
             <button
               onClick={onDecrement}
               className="flex h-8 w-8 items-center justify-center rounded-full bg-m3-surface-container-highest text-m3-on-surface transition-colors hover:bg-m3-surface-container-high"
             >
               <Minus className="h-3.5 w-3.5" />
             </button>
-            <span className="w-8 text-center text-sm font-bold text-m3-on-surface">
+            <Text
+              styleAs="body"
+              appearance="primary"
+              weight="bold"
+              align="center"
+              className="w-8"
+            >
               {quantity}
-            </span>
+            </Text>
             <button
               onClick={onIncrement}
               className="flex h-8 w-8 items-center justify-center rounded-full bg-m3-surface-container-highest text-m3-on-surface transition-colors hover:bg-m3-surface-container-high"
             >
               <Plus className="h-3.5 w-3.5" />
             </button>
-          </div>
-        </div>
-        <div className="flex items-center justify-between border-t border-m3-outline-variant/30 pt-2 text-xs">
-          <span className="text-m3-on-surface-variant">Calculated Total</span>
-          <span className="text-base font-bold text-m3-primary">
+          </Flex>
+        </Flex>
+        <Flex
+          align="center"
+          justify="between"
+          fullWidth
+          className="border-t border-m3-outline-variant/30 pt-2"
+        >
+          <Text styleAs="caption" appearance="secondary">
+            Calculated Total
+          </Text>
+          <Text styleAs="title" sentiment="accent" weight="bold">
             ${totalPrice}
-          </span>
-        </div>
+          </Text>
+        </Flex>
       </Card>
     </div>
   );

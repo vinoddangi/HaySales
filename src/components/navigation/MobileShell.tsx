@@ -3,6 +3,7 @@ import { Monitor, Moon, Palette, Smartphone, Sun, Type } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppInit } from '../../store/hooks/useAppInit';
 import {
   setColorScheme,
   setFontSize,
@@ -19,6 +20,9 @@ import { BottomNavBar } from './BottomNavBar';
 import { TopAppBar } from './TopAppBar';
 
 export const MobileShell: React.FC = () => {
+  // Initialize all documents in Redux store
+  useAppInit();
+
   const location = useLocation();
   const dispatch = useAppDispatch();
   const { mode, scheme, fontSize, previewFrame } = useAppSelector(

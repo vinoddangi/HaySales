@@ -1,6 +1,8 @@
 import { ChevronRight, Code2 } from 'lucide-react';
 import React from 'react';
-import { Card } from '../../../components/common/Card';
+import { Card, Text } from '../../../components/common';
+import { Flex } from '../../../components/layout';
+import { APP_VERSION } from '../../../utils/version';
 
 export interface ArchitectureInfoProps {
   onOpenOverview: () => void;
@@ -11,10 +13,12 @@ export const ArchitectureInfo: React.FC<ArchitectureInfoProps> = ({
 }) => {
   return (
     <div className="space-y-2">
-      <h3 className="flex items-center gap-1.5 px-1 text-xs font-bold uppercase tracking-wider text-m3-on-surface-variant">
+      <Flex align="center" gap="xs" className="px-1">
         <Code2 className="h-3.5 w-3.5 text-m3-primary" />
-        <span>Skeleton Architecture</span>
-      </h3>
+        <Text styleAs="label" appearance="secondary" uppercase>
+          Skeleton Architecture
+        </Text>
+      </Flex>
 
       <Card
         variant="filled"
@@ -22,21 +26,26 @@ export const ArchitectureInfo: React.FC<ArchitectureInfoProps> = ({
         onClick={onOpenOverview}
         className="flex items-center justify-between bg-m3-surface-container-high p-3.5"
       >
-        <div className="flex items-center gap-3">
+        <Flex align="center" gap="md">
           <img
             src="/favicon.svg"
             alt="HaySales Logo"
             className="shadow-xs h-9 w-9 shrink-0 rounded-xl"
           />
           <div className="space-y-0.5">
-            <div className="text-xs font-bold text-m3-on-surface">
+            <Text
+              styleAs="body-sm"
+              appearance="primary"
+              weight="bold"
+              className="block"
+            >
               HaySales M3 Progressive Web App
-            </div>
-            <div className="text-[10px] text-m3-on-surface-variant">
-              Version 1.0.0 • Mobile-first PWA ready
-            </div>
+            </Text>
+            <Text styleAs="caption" appearance="secondary" className="block">
+              Version {APP_VERSION} • Mobile-first PWA ready
+            </Text>
           </div>
-        </div>
+        </Flex>
         <ChevronRight className="h-4 w-4 text-m3-on-surface-variant" />
       </Card>
     </div>

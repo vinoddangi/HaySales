@@ -1,5 +1,7 @@
 import { ChevronRight } from 'lucide-react';
 import React from 'react';
+import { Badge, Text } from '../../../components/common';
+import { Flex } from '../../../components/layout';
 import { Transaction } from '../../../types';
 import {
   formatDate,
@@ -26,11 +28,11 @@ export const RecentTransactionsWidget: React.FC<
   }
 
   return (
-    <div className="space-y-2.5">
-      <div className="flex items-center justify-between">
-        <span className="text-xs font-bold uppercase tracking-wider text-m3-on-surface-variant">
+    <Flex direction="column" gap="sm" fullWidth>
+      <Flex align="center" justify="between" fullWidth>
+        <Text styleAs="label" appearance="secondary" uppercase>
           Recent Activity
-        </span>
+        </Text>
         <button
           type="button"
           onClick={onViewAll}
@@ -39,9 +41,9 @@ export const RecentTransactionsWidget: React.FC<
           <span>View Ledger</span>
           <ChevronRight className="h-3.5 w-3.5" />
         </button>
-      </div>
+      </Flex>
 
-      <div className="space-y-2">
+      <Flex direction="column" gap="sm" fullWidth>
         {recent.map((tx) => {
           const isPayment = tx.type === 'PAYMENT';
           const isOpening =
@@ -53,48 +55,58 @@ export const RecentTransactionsWidget: React.FC<
             !isPayment && !isOpening && credit === 0 && cash > 0;
 
           return (
-            <div
+            <Flex
               key={tx.id || Math.random().toString()}
-              className="flex items-center justify-between rounded-xl border border-m3-outline-variant bg-m3-surface-container-low p-3 text-xs"
+              align="center"
+              justify="between"
+              fullWidth
+              padding="sm"
+              className="rounded-xl border border-m3-outline-variant bg-m3-surface-container-low text-xs"
             >
               <div className="space-y-0.5">
-                <div className="flex items-center gap-1.5">
-                  <span className="font-bold text-m3-on-surface">
+                <Flex align="center" gap="xs">
+                  <Text styleAs="body-sm" appearance="primary" weight="bold">
                     {isPayment
                       ? 'Payment Received'
                       : isOpening
                         ? 'Opening Balance'
                         : tx.item || 'Sale Item'}
-                  </span>
+                  </Text>
                   {isFullCashSale && (
-                    <span className="py-0.2 rounded bg-teal-500/10 px-1.5 text-[9px] font-bold text-teal-600 dark:text-teal-400">
+                    <Badge sentiment="positive" size="sm">
                       Cash
-                    </span>
+                    </Badge>
                   )}
                   {credit > 0 && !isPayment && !isOpening && (
-                    <span className="py-0.2 rounded bg-purple-500/10 px-1.5 text-[9px] font-bold text-purple-600 dark:text-purple-400">
+                    <Badge sentiment="credit" size="sm">
                       Credit
-                    </span>
+                    </Badge>
                   )}
-                </div>
-                <div className="flex items-center gap-2 text-[10px] text-m3-on-surface-variant">
-                  <span>{formatDate(tx.date)}</span>
+                </Flex>
+                <Flex align="center" gap="xs">
+                  <Text styleAs="caption" appearance="secondary">
+                    {formatDate(tx.date)}
+                  </Text>
                   {tx.weightKg ? (
                     <>
-                      <span>•</span>
-                      <span>{formatWeight(tx.weightKg)}</span>
+                      <Text styleAs="caption" appearance="secondary">
+                        •
+                      </Text>
+                      <Text styleAs="caption" appearance="secondary">
+                        {formatWeight(tx.weightKg)}
+                      </Text>
                     </>
                   ) : null}
-                </div>
+                </Flex>
               </div>
 
-              <div className="text-right font-extrabold text-m3-on-surface">
+              <Text styleAs="body-sm" appearance="primary" weight="black">
                 {formatRupee(amount)}
-              </div>
-            </div>
+              </Text>
+            </Flex>
           );
         })}
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   );
 };

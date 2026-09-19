@@ -1,6 +1,7 @@
+import { CheckCircle2, Star } from 'lucide-react';
 import React from 'react';
-import { Star, CheckCircle2 } from 'lucide-react';
-import { Card } from '../../../components/common/Card';
+import { Card, Text } from '../../../components/common';
+import { Flex } from '../../../components/layout';
 
 interface ProductInfoProps {
   title: string;
@@ -26,45 +27,68 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
   return (
     <div className="space-y-4 px-4 pt-2">
       <Card variant="filled" className="space-y-3 bg-m3-surface-container p-4">
-        <div className="flex items-start justify-between gap-2">
+        <Flex align="start" justify="between" gap="sm" fullWidth>
           <div>
-            <h2 className="text-lg font-bold text-m3-on-surface">{title}</h2>
-            <p className="text-xs text-m3-on-surface-variant">{subtitle}</p>
+            <Text
+              styleAs="h2"
+              appearance="primary"
+              weight="bold"
+              className="block"
+            >
+              {title}
+            </Text>
+            <Text styleAs="body-sm" appearance="secondary" className="block">
+              {subtitle}
+            </Text>
           </div>
           <div className="text-right">
-            <span className="text-xl font-bold text-m3-primary">
+            <Text
+              styleAs="h1"
+              sentiment="accent"
+              weight="bold"
+              className="block"
+            >
               ${price.toFixed(2)}
-            </span>
-            <span className="block text-[10px] text-m3-on-surface-variant">
+            </Text>
+            <Text styleAs="caption" appearance="secondary" className="block">
               per {unit}
-            </span>
+            </Text>
           </div>
-        </div>
+        </Flex>
 
-        <div className="flex items-center justify-between border-t border-m3-outline-variant/30 pt-3 text-xs">
-          <div className="flex items-center gap-1 font-bold text-amber-500">
-            <Star className="h-4 w-4 fill-amber-500" />
-            <span>{rating}</span>
-            <span className="font-normal text-m3-on-surface-variant">
+        <Flex
+          align="center"
+          justify="between"
+          fullWidth
+          className="border-t border-m3-outline-variant/30 pt-3"
+        >
+          <Flex align="center" gap="xs">
+            <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
+            <Text styleAs="body-sm" sentiment="warning" weight="bold">
+              {rating}
+            </Text>
+            <Text styleAs="caption" appearance="secondary">
               ({reviewsCount} verified reviews)
-            </span>
-          </div>
-          <div className="flex items-center gap-1 font-semibold text-emerald-600 dark:text-emerald-400">
-            <CheckCircle2 className="h-3.5 w-3.5" />
-            {stock} in barn
-          </div>
-        </div>
+            </Text>
+          </Flex>
+          <Flex align="center" gap="xs">
+            <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+            <Text styleAs="body-sm" sentiment="positive" weight="semibold">
+              {stock} in barn
+            </Text>
+          </Flex>
+        </Flex>
       </Card>
 
       {/* Description */}
-      <div className="space-y-1">
-        <h3 className="text-xs font-bold uppercase tracking-wider text-m3-on-surface-variant">
+      <Flex direction="column" gap="xs" fullWidth>
+        <Text styleAs="label" appearance="secondary" uppercase>
           Description
-        </h3>
-        <p className="text-xs leading-relaxed text-m3-on-surface">
+        </Text>
+        <Text styleAs="body-sm" appearance="primary">
           {description}
-        </p>
-      </div>
+        </Text>
+      </Flex>
     </div>
   );
 };

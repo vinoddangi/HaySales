@@ -1,11 +1,14 @@
 import { Filter, IndianRupee, Search, Users, X } from 'lucide-react';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { hasPendingPreviousYearRecords } from '../../api';
 import { Card } from '../../components/common/Card';
 import { PageContainer } from '../../components/common/PageContainer';
 import { useAppDispatch } from '../../store/hooks';
 import {
   useAddTransactionMutation,
+  useGetAllTransactionsQuery,
+  useGetBackupStatusQuery,
   useGetCustomersQuery,
   useGetTransactionsQuery,
 } from '../../store/slices/customersApi';
@@ -17,13 +20,22 @@ import { LedgerDetailDrawer } from './components/LedgerDetailDrawer';
 export const LedgerPage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const currentYear = new Date().getFullYear();
   const { data: customers = [], isLoading: isLoadingLedger } =
     useGetCustomersQuery();
+  const { data: allTransactions = [] } = useGetAllTransactionsQuery();
+  const { data: backupStatus } = useGetBackupStatusQuery();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [filterMode, setFilterMode] = useState<'all' | 'dueOnly'>('dueOnly');
   const [selectedCustId, setSelectedCustId] = useState<string | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const hasPendingBackup = hasPendingPreviousYearRecords(
+    allTransactions,
+    currentYear,
+    backupStatus,
+  );
 
   const [addTransaction, { isLoading: isPaying }] = useAddTransactionMutation();
 
@@ -192,6 +204,8 @@ export const LedgerPage: React.FC = () => {
         transactions={transactions}
         isLoadingTransactions={loadingTx}
         isPaying={isPaying}
+        hasPendingBackup={hasPendingBackup}
+        currentYear={currentYear}
         onClose={handleCloseDrawer}
         onPay={handlePay}
       />

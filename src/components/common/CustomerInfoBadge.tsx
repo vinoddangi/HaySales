@@ -2,6 +2,8 @@ import { AlertTriangle, CheckCircle } from 'lucide-react';
 import React from 'react';
 import { Customer } from '../../store/slices/customersApi';
 import { formatRupee } from '../../utils/formatters';
+import { Flex } from '../layout/Flex';
+import { Text } from './Text';
 
 export interface CustomerInfoBadgeProps {
   customer: Customer;
@@ -18,27 +20,58 @@ export const CustomerInfoBadge: React.FC<CustomerInfoBadgeProps> = ({
   const isCreditAllowed = outstandingDue < effectiveCreditLimit;
 
   return (
-    <div className="flex items-center justify-between rounded-lg border border-m3-outline bg-m3-surface-container-low p-3">
+    <Flex
+      align="center"
+      justify="between"
+      fullWidth
+      padding="md"
+      className="rounded-lg border border-m3-outline bg-m3-surface-container-low"
+    >
       <div>
-        <p className="text-sm font-bold text-m3-on-surface">{customer.name}</p>
-        <p className="text-xs text-m3-on-surface-variant">
+        <Text
+          styleAs="body-sm"
+          appearance="primary"
+          weight="bold"
+          className="block"
+        >
+          {customer.name}
+        </Text>
+        <Text styleAs="caption" appearance="secondary" className="block">
           Outstanding Due:{' '}
-          <span className="font-semibold text-m3-error">
+          <Text styleAs="caption" sentiment="negative" weight="bold">
             {formatRupee(outstandingDue)}
-          </span>
-        </p>
+          </Text>
+        </Text>
       </div>
       {isCreditAllowed ? (
-        <span className="flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600">
-          <CheckCircle className="h-4 w-4" /> Credit OK (Limit{' '}
-          {formatRupee(effectiveCreditLimit)})
-        </span>
+        <Flex
+          as="span"
+          align="center"
+          gap="xs"
+          paddingHorizontal="sm"
+          paddingVertical="xs"
+          className="rounded-full bg-emerald-500/10 text-xs font-semibold text-emerald-600"
+        >
+          <CheckCircle className="h-4 w-4" />
+          <Text styleAs="caption" sentiment="positive" weight="semibold">
+            Credit OK (Limit {formatRupee(effectiveCreditLimit)})
+          </Text>
+        </Flex>
       ) : (
-        <span className="flex items-center gap-1 rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-semibold text-amber-600 dark:text-amber-400">
-          <AlertTriangle className="h-4 w-4" /> Above{' '}
-          {formatRupee(effectiveCreditLimit)} Limit
-        </span>
+        <Flex
+          as="span"
+          align="center"
+          gap="xs"
+          paddingHorizontal="sm"
+          paddingVertical="xs"
+          className="rounded-full bg-amber-500/10 text-xs font-semibold text-amber-600 dark:text-amber-400"
+        >
+          <AlertTriangle className="h-4 w-4" />
+          <Text styleAs="caption" sentiment="warning" weight="semibold">
+            Above {formatRupee(effectiveCreditLimit)} Limit
+          </Text>
+        </Flex>
       )}
-    </div>
+    </Flex>
   );
 };

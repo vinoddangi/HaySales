@@ -1,7 +1,9 @@
 import { Search, X } from 'lucide-react';
 import React, { useState } from 'react';
 import { Customer } from '../../store/slices/customersApi';
+import { Flex } from '../layout/Flex';
 import { CustomerInfoBadge } from './CustomerInfoBadge';
+import { Text } from './Text';
 
 export interface CustomerSearchSelectorProps {
   customers: Customer[];
@@ -70,8 +72,10 @@ export const CustomerSearchSelector: React.FC<CustomerSearchSelectorProps> = ({
       {searchTerm && (
         <ul className="max-h-40 divide-y divide-m3-outline-variant overflow-y-auto rounded-lg border border-m3-outline-variant bg-m3-surface shadow-m3-2">
           {filteredCustomers.length === 0 ? (
-            <li className="p-3 text-center text-xs text-m3-on-surface-variant">
-              No matching customers found
+            <li className="p-3 text-center">
+              <Text styleAs="body-sm" appearance="secondary">
+                No matching customers found
+              </Text>
             </li>
           ) : (
             filteredCustomers.map((c) => (
@@ -80,11 +84,13 @@ export const CustomerSearchSelector: React.FC<CustomerSearchSelectorProps> = ({
                 onClick={() => handleSelect(c.id)}
                 className="flex cursor-pointer items-center justify-between p-2.5 text-xs text-m3-on-surface transition-colors hover:bg-m3-primary-container"
               >
-                <span className="font-medium">{c.name}</span>
+                <Text styleAs="body-sm" appearance="primary" weight="medium">
+                  {c.name}
+                </Text>
                 {c.mobile && (
-                  <span className="text-[10px] text-m3-on-surface-variant">
+                  <Text styleAs="caption" appearance="secondary">
                     {c.mobile}
-                  </span>
+                  </Text>
                 )}
               </li>
             ))
@@ -95,10 +101,10 @@ export const CustomerSearchSelector: React.FC<CustomerSearchSelectorProps> = ({
       {/* Selected Customer Info Badge */}
       {selectedCustomer && showBadgeWhenSelected && (
         <div className="space-y-1.5">
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-m3-on-surface-variant">
+          <Flex align="center" justify="between" fullWidth>
+            <Text styleAs="label" appearance="secondary" uppercase>
               Selected Customer
-            </span>
+            </Text>
             <button
               type="button"
               onClick={handleClear}
@@ -106,7 +112,7 @@ export const CustomerSearchSelector: React.FC<CustomerSearchSelectorProps> = ({
             >
               Change Customer
             </button>
-          </div>
+          </Flex>
           <CustomerInfoBadge
             customer={selectedCustomer}
             outstandingDue={outstandingDue}

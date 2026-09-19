@@ -1,7 +1,7 @@
 import { Bell, Layers, Shield, Smartphone } from 'lucide-react';
 import React from 'react';
-import { Card } from '../../../components/common/Card';
-import { Switch } from '../../../components/common/Switch';
+import { Card, Switch, Text } from '../../../components/common';
+import { Flex } from '../../../components/layout';
 
 export interface AppPreferencesProps {
   pushEnabled: boolean;
@@ -22,59 +22,76 @@ export const AppPreferences: React.FC<AppPreferencesProps> = ({
 }) => {
   return (
     <div className="space-y-2">
-      <h3 className="flex items-center gap-1.5 px-1 text-xs font-bold uppercase tracking-wider text-m3-on-surface-variant">
+      <Flex align="center" gap="xs" className="px-1">
         <Smartphone className="h-3.5 w-3.5 text-m3-primary" />
-        <span>Mobile App Preferences</span>
-      </h3>
+        <Text styleAs="label" appearance="secondary" uppercase>
+          Mobile App Preferences
+        </Text>
+      </Flex>
 
       <Card
         variant="outlined"
         className="divide-y divide-m3-outline-variant/30"
       >
-        <div className="flex items-center justify-between p-3.5">
-          <div className="flex items-center gap-3">
+        <Flex align="center" justify="between" fullWidth padding="md">
+          <Flex align="center" gap="md">
             <Bell className="h-4 w-4 text-m3-on-surface-variant" />
             <div>
-              <div className="text-xs font-bold text-m3-on-surface">
+              <Text
+                styleAs="body-sm"
+                appearance="primary"
+                weight="bold"
+                className="block"
+              >
                 Push Alerts
-              </div>
-              <div className="text-[10px] text-m3-on-surface-variant">
+              </Text>
+              <Text styleAs="caption" appearance="secondary" className="block">
                 Freight arrivals and moisture alerts
-              </div>
+              </Text>
             </div>
-          </div>
+          </Flex>
           <Switch checked={pushEnabled} onChange={onPushChange} />
-        </div>
+        </Flex>
 
-        <div className="flex items-center justify-between p-3.5">
-          <div className="flex items-center gap-3">
+        <Flex align="center" justify="between" fullWidth padding="md">
+          <Flex align="center" gap="md">
             <Layers className="h-4 w-4 text-m3-on-surface-variant" />
             <div>
-              <div className="text-xs font-bold text-m3-on-surface">
+              <Text
+                styleAs="body-sm"
+                appearance="primary"
+                weight="bold"
+                className="block"
+              >
                 Offline Queueing
-              </div>
-              <div className="text-[10px] text-m3-on-surface-variant">
+              </Text>
+              <Text styleAs="caption" appearance="secondary" className="block">
                 Cache orders in offline field mode
-              </div>
+              </Text>
             </div>
-          </div>
+          </Flex>
           <Switch checked={offlineSync} onChange={onOfflineSyncChange} />
-        </div>
+        </Flex>
 
-        <div className="flex items-center justify-between p-3.5">
-          <div className="flex items-center gap-3">
+        <Flex align="center" justify="between" fullWidth padding="md">
+          <Flex align="center" gap="md">
             <Shield className="h-4 w-4 text-m3-on-surface-variant" />
             <div>
-              <div className="text-xs font-bold text-m3-on-surface">
+              <Text
+                styleAs="body-sm"
+                appearance="primary"
+                weight="bold"
+                className="block"
+              >
                 Face ID / Biometrics
-              </div>
-              <div className="text-[10px] text-m3-on-surface-variant">
+              </Text>
+              <Text styleAs="caption" appearance="secondary" className="block">
                 Authenticate before high-volume orders
-              </div>
+              </Text>
             </div>
-          </div>
+          </Flex>
           <Switch checked={biometrics} onChange={onBiometricsChange} />
-        </div>
+        </Flex>
       </Card>
     </div>
   );

@@ -1,6 +1,7 @@
 import { Trash2, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
-import { Button } from '../../../components/common/Button';
+import { Button, Input, SelectField, Text } from '../../../components/common';
+import { Flex, Grid } from '../../../components/layout';
 import { ExpenseCategoryType, Transaction } from '../../../types';
 import { parseTransactionDate } from '../../../utils/formatters';
 
@@ -13,13 +14,31 @@ export interface EditActivityModalProps {
   onDelete?: () => Promise<void>;
 }
 
-const EXPENSE_CATEGORIES: ExpenseCategoryType[] = [
-  'Interest',
-  'Fuel',
-  'Labor',
-  'Food / Drink',
-  'Tools',
-  'Others',
+const ITEM_OPTIONS = [
+  { value: 'Chana', label: 'Chana' },
+  { value: 'Gavatri', label: 'Gavatri' },
+  { value: 'B. Kutty', label: 'B. Kutty' },
+  { value: 'Kutty', label: 'Kutty' },
+  { value: 'Tuvar', label: 'Tuvar' },
+  { value: 'Others', label: 'Others' },
+];
+
+const SERVICE_OPTIONS = [
+  { value: 'Pickup', label: 'Pickup' },
+  { value: 'Tractor', label: 'Tractor' },
+  { value: 'Commission', label: 'Commission' },
+  { value: 'Labour', label: 'Labour' },
+  { value: 'Transport', label: 'Transport' },
+  { value: 'Others', label: 'Others' },
+];
+
+const EXPENSE_OPTIONS = [
+  { value: 'Interest', label: 'Interest' },
+  { value: 'Fuel', label: 'Fuel' },
+  { value: 'Labor', label: 'Labor' },
+  { value: 'Food / Drink', label: 'Food / Drink' },
+  { value: 'Tools', label: 'Tools' },
+  { value: 'Others', label: 'Others' },
 ];
 
 export const EditActivityModal: React.FC<EditActivityModalProps> = ({
@@ -106,29 +125,40 @@ export const EditActivityModal: React.FC<EditActivityModalProps> = ({
     await onSave(updated);
   };
 
+  const titleText = isSale
+    ? 'Sale Record'
+    : isService
+      ? 'Service Record'
+      : isPayment
+        ? 'Payment Record'
+        : isPurchase
+          ? 'Stock Purchase'
+          : 'Expense Record';
+
   return (
     <div className="fixed inset-0 z-50 flex animate-fade-in items-end justify-center bg-black/50">
       <div className="absolute inset-0" onClick={onClose} />
       <div className="relative z-10 max-h-[90vh] w-full max-w-md animate-slide-up space-y-4 overflow-y-auto rounded-t-3xl border-t border-m3-outline-variant bg-m3-surface p-5 shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-m3-outline-variant/30 pb-3">
+        <Flex
+          align="center"
+          justify="between"
+          fullWidth
+          className="border-b border-m3-outline-variant/30 pb-3"
+        >
           <div>
-            <h3 className="text-sm font-bold text-m3-on-surface">
-              Edit{' '}
-              {isSale
-                ? 'Sale Record'
-                : isService
-                  ? 'Service Record'
-                  : isPayment
-                    ? 'Payment Record'
-                    : isPurchase
-                      ? 'Stock Purchase'
-                      : 'Expense Record'}
-            </h3>
+            <Text styleAs="h4" appearance="primary" weight="bold">
+              Edit {titleText}
+            </Text>
             {transaction.customerName && (
-              <p className="text-xs font-semibold text-m3-primary">
+              <Text
+                styleAs="body-sm"
+                sentiment="accent"
+                weight="semibold"
+                className="block"
+              >
                 {transaction.customerName}
-              </p>
+              </Text>
             )}
           </div>
           <button
@@ -137,219 +167,135 @@ export const EditActivityModal: React.FC<EditActivityModalProps> = ({
           >
             <X className="h-4 w-4" />
           </button>
-        </div>
+        </Flex>
 
         {/* Edit Form */}
-        <div className="space-y-3.5 text-xs">
-          {/* Date Picker */}
-          <div className="space-y-1">
-            <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-              Date
-            </label>
-            <input
-              type="date"
-              value={dateStr}
-              onChange={(e) => setDateStr(e.target.value)}
-              className="w-full rounded-lg border border-m3-outline bg-m3-surface p-2 text-xs font-medium focus:border-m3-primary focus:outline-none"
+        <Flex direction="column" gap="md" fullWidth>
+          <Input
+            label="Date"
+            type="date"
+            required
+            value={dateStr}
+            onChange={(e) => setDateStr(e.target.value)}
+          />
+
+          {(isSale || isPurchase) && (
+            <SelectField
+              label="Item / Crop Type"
+              required
+              value={item}
+              options={ITEM_OPTIONS}
+              onChange={(e) => setItem(e.target.value)}
             />
-          </div>
-
-          {/* Item Type for Sale & Purchase */}
-          {(isSale || isPurchase) && (
-            <div className="space-y-1">
-              <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-                Item / Crop Type
-              </label>
-              <select
-                value={item}
-                onChange={(e) => setItem(e.target.value)}
-                className="w-full rounded-lg border border-m3-outline bg-m3-surface p-2 text-xs font-medium focus:border-m3-primary focus:outline-none"
-              >
-                <option value="Chana">Chana</option>
-                <option value="Gavatri">Gavatri</option>
-                <option value="B. Kutty">B. Kutty</option>
-                <option value="Kutty">Kutty</option>
-                <option value="Tuvar">Tuvar</option>
-                <option value="Others">Others</option>
-              </select>
-            </div>
           )}
 
-          {/* Service Item Type */}
           {isService && (
-            <div className="space-y-1">
-              <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-                Service Type
-              </label>
-              <select
-                value={item}
-                onChange={(e) => setItem(e.target.value)}
-                className="w-full rounded-lg border border-m3-outline bg-m3-surface p-2 text-xs font-medium focus:border-m3-primary focus:outline-none"
-              >
-                <option value="Pickup">Pickup</option>
-                <option value="Tractor">Tractor</option>
-                <option value="Commission">Commission</option>
-                <option value="Labour">Labour</option>
-                <option value="Transport">Transport</option>
-                <option value="Others">Others</option>
-              </select>
-            </div>
+            <SelectField
+              label="Service Type"
+              required
+              value={item}
+              options={SERVICE_OPTIONS}
+              onChange={(e) => setItem(e.target.value)}
+            />
           )}
 
-          {/* Expense Category */}
           {isExpense && (
-            <div className="space-y-1">
-              <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-                Expense Category
-              </label>
-              <select
-                value={expenseCategory}
-                onChange={(e) =>
-                  setExpenseCategory(e.target.value as ExpenseCategoryType)
-                }
-                className="w-full rounded-lg border border-m3-outline bg-m3-surface p-2 text-xs font-medium focus:border-m3-primary focus:outline-none"
-              >
-                {EXPENSE_CATEGORIES.map((cat) => (
-                  <option key={cat} value={cat}>
-                    {cat}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <SelectField
+              label="Expense Category"
+              required
+              value={expenseCategory}
+              options={EXPENSE_OPTIONS}
+              onChange={(e) =>
+                setExpenseCategory(e.target.value as ExpenseCategoryType)
+              }
+            />
           )}
 
-          {/* Weight & Amount for Sale & Purchase */}
           {(isSale || isPurchase) && (
-            <div className="grid grid-cols-2 gap-3">
-              <div className="space-y-1">
-                <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-                  Weight (kg)
-                </label>
-                <input
-                  type="number"
-                  value={weightKg || ''}
-                  onChange={(e) => setWeightKg(Number(e.target.value))}
-                  className="w-full rounded-lg border border-m3-outline bg-m3-surface p-2 text-xs font-medium focus:border-m3-primary focus:outline-none"
-                />
-              </div>
-              <div className="space-y-1">
-                <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-                  Total Amount (₹)
-                </label>
-                <input
-                  type="number"
-                  value={amount || ''}
-                  onChange={(e) => setAmount(Number(e.target.value))}
-                  className="w-full rounded-lg border border-m3-outline bg-m3-surface p-2 text-xs font-medium focus:border-m3-primary focus:outline-none"
-                />
-              </div>
-            </div>
+            <Grid columns={2} gap="md" fullWidth>
+              <Input
+                label="Weight (kg)"
+                type="number"
+                required
+                value={weightKg || ''}
+                onChange={(e) => setWeightKg(Number(e.target.value))}
+              />
+              <Input
+                label="Total Amount (₹)"
+                type="number"
+                required
+                value={amount || ''}
+                onChange={(e) => setAmount(Number(e.target.value))}
+              />
+            </Grid>
           )}
 
-          {/* Amount and Cash Paid for Service */}
           {isService && (
-            <div className="grid grid-cols-2 gap-3">
-              <div className="space-y-1">
-                <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-                  Service Fee (₹)
-                </label>
-                <input
-                  type="number"
-                  value={amount || ''}
-                  onChange={(e) => setAmount(Number(e.target.value))}
-                  className="w-full rounded-lg border border-m3-outline bg-m3-surface p-2 text-xs font-medium focus:border-m3-primary focus:outline-none"
-                />
-              </div>
-              <div className="space-y-1">
-                <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-                  Cash Paid (₹)
-                </label>
-                <input
-                  type="number"
-                  value={cashPaid || ''}
-                  onChange={(e) => setCashPaid(Number(e.target.value))}
-                  className="w-full rounded-lg border border-m3-outline bg-m3-surface p-2 text-xs font-medium focus:border-m3-primary focus:outline-none"
-                />
-              </div>
-            </div>
-          )}
-
-          {/* Cash Paid for Sale & Purchase */}
-          {(isSale || isPurchase) && (
-            <div className="space-y-1">
-              <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-                Cash Paid (₹)
-              </label>
-              <input
+            <Grid columns={2} gap="md" fullWidth>
+              <Input
+                label="Service Fee (₹)"
+                type="number"
+                required
+                value={amount || ''}
+                onChange={(e) => setAmount(Number(e.target.value))}
+              />
+              <Input
+                label="Cash Paid (₹)"
                 type="number"
                 value={cashPaid || ''}
                 onChange={(e) => setCashPaid(Number(e.target.value))}
-                className="w-full rounded-lg border border-m3-outline bg-m3-surface p-2 text-xs font-medium focus:border-m3-primary focus:outline-none"
               />
-            </div>
+            </Grid>
           )}
 
-          {/* Payment Amount for Payment */}
-          {isPayment && (
-            <div className="space-y-1">
-              <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-                Payment Amount (₹)
-              </label>
-              <input
-                type="number"
-                value={paymentAmount || ''}
-                onChange={(e) => setPaymentAmount(Number(e.target.value))}
-                className="w-full rounded-lg border border-m3-outline bg-m3-surface p-2 text-xs font-medium focus:border-m3-primary focus:outline-none"
-              />
-            </div>
-          )}
-
-          {/* Amount for Expense */}
-          {isExpense && (
-            <div className="space-y-1">
-              <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-                Expense Amount (₹)
-              </label>
-              <input
-                type="number"
-                value={amount || ''}
-                onChange={(e) => setAmount(Number(e.target.value))}
-                className="w-full rounded-lg border border-m3-outline bg-m3-surface p-2 text-xs font-medium focus:border-m3-primary focus:outline-none"
-              />
-            </div>
-          )}
-
-          {/* Vendor / Payee Name */}
-          {(isPurchase || isExpense) && (
-            <div className="space-y-1">
-              <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-                Supplier / Payee Name
-              </label>
-              <input
-                type="text"
-                value={vendorName}
-                onChange={(e) => setVendorName(e.target.value)}
-                className="w-full rounded-lg border border-m3-outline bg-m3-surface p-2 text-xs font-medium focus:border-m3-primary focus:outline-none"
-              />
-            </div>
-          )}
-
-          {/* Note / Remarks */}
-          <div className="space-y-1">
-            <label className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
-              Notes / Remarks
-            </label>
-            <input
-              type="text"
-              value={note}
-              onChange={(e) => setNote(e.target.value)}
-              className="w-full rounded-lg border border-m3-outline bg-m3-surface p-2 text-xs font-medium focus:border-m3-primary focus:outline-none"
+          {(isSale || isPurchase) && (
+            <Input
+              label="Cash Paid (₹)"
+              type="number"
+              value={cashPaid || ''}
+              onChange={(e) => setCashPaid(Number(e.target.value))}
             />
-          </div>
-        </div>
+          )}
+
+          {isPayment && (
+            <Input
+              label="Payment Amount (₹)"
+              type="number"
+              required
+              value={paymentAmount || ''}
+              onChange={(e) => setPaymentAmount(Number(e.target.value))}
+            />
+          )}
+
+          {isExpense && (
+            <Input
+              label="Expense Amount (₹)"
+              type="number"
+              required
+              value={amount || ''}
+              onChange={(e) => setAmount(Number(e.target.value))}
+            />
+          )}
+
+          {(isPurchase || isExpense) && (
+            <Input
+              label="Supplier / Payee Name"
+              type="text"
+              value={vendorName}
+              onChange={(e) => setVendorName(e.target.value)}
+            />
+          )}
+
+          <Input
+            label="Notes / Remarks"
+            type="text"
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+          />
+        </Flex>
 
         {/* Action Buttons */}
-        <div className="space-y-2 pt-2">
+        <Flex direction="column" gap="sm" fullWidth className="pt-2">
           <Button
             variant="filled"
             className="w-full text-xs"
@@ -362,7 +308,7 @@ export const EditActivityModal: React.FC<EditActivityModalProps> = ({
           {onDelete && (
             <div>
               {showConfirmDelete ? (
-                <div className="flex items-center gap-2">
+                <Flex align="center" gap="sm" fullWidth>
                   <Button
                     variant="filled"
                     className="flex-1 bg-rose-600 text-xs text-white hover:bg-rose-700"
@@ -378,7 +324,7 @@ export const EditActivityModal: React.FC<EditActivityModalProps> = ({
                   >
                     Cancel
                   </Button>
-                </div>
+                </Flex>
               ) : (
                 <button
                   type="button"
@@ -391,7 +337,7 @@ export const EditActivityModal: React.FC<EditActivityModalProps> = ({
               )}
             </div>
           )}
-        </div>
+        </Flex>
       </div>
     </div>
   );

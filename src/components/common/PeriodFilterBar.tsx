@@ -2,8 +2,9 @@ import { Calendar, ChevronDown } from 'lucide-react';
 import React from 'react';
 import { cn } from '../../utils/cn';
 import { MONTH_NAMES } from '../../utils/formatters';
+import { Flex } from '../layout/Flex';
 
-export type PeriodFilterMode = 'currentMonth' | 'ytd' | 'customMonth';
+export type PeriodFilterMode = 'month' | 'ytd' | 'currentMonth' | 'customMonth';
 
 export interface PeriodFilterBarProps {
   filterMode: PeriodFilterMode;
@@ -19,67 +20,48 @@ export const PeriodFilterBar: React.FC<PeriodFilterBarProps> = ({
   onMonthChange,
 }) => {
   const currentYear = new Date().getFullYear();
+  const isMonthMode = filterMode !== 'ytd';
 
   const handleSelectMonth = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const val = e.target.value;
-    if (val !== '') {
-      onMonthChange(Number(val));
-      onFilterModeChange('customMonth');
+    const val = Number(e.target.value);
+    if (!isNaN(val)) {
+      onMonthChange(val);
+      onFilterModeChange('month');
     }
   };
 
   return (
-    <div className="no-scrollbar flex items-center gap-2 overflow-x-auto pb-1">
-      {/* 1. Current Month Pill */}
-      <button
-        type="button"
-        onClick={() => onFilterModeChange('currentMonth')}
-        className={cn(
-          'flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all',
-          filterMode === 'currentMonth'
-            ? 'bg-m3-primary text-m3-on-primary shadow-sm'
-            : 'border border-m3-outline-variant bg-m3-surface-container-low text-m3-on-surface-variant hover:bg-m3-surface-container hover:text-m3-on-surface',
-        )}
-      >
-        <Calendar className="h-3.5 w-3.5" />
-        <span>Current Month</span>
-      </button>
-
-      {/* 2. YTD (Year to Date) Pill */}
-      <button
-        type="button"
-        onClick={() => onFilterModeChange('ytd')}
-        className={cn(
-          'flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all',
-          filterMode === 'ytd'
-            ? 'bg-m3-primary text-m3-on-primary shadow-sm'
-            : 'border border-m3-outline-variant bg-m3-surface-container-low text-m3-on-surface-variant hover:bg-m3-surface-container hover:text-m3-on-surface',
-        )}
-      >
-        <span>YTD ({currentYear})</span>
-      </button>
-
-      {/* 3. Direct Month Dropdown (Same Year) */}
-      <div className="relative inline-flex items-center">
-        <select
-          value={filterMode === 'customMonth' ? selectedMonth : ''}
-          onChange={handleSelectMonth}
+    <Flex fullWidth align="center" gap="sm">
+      {/* 1. Month Dropdown Pill (50% equal width) */}
+      <div className="relative min-w-0 flex-1">
+        <Flex
+          fullWidth
+          align="center"
+          justify="between"
+          gap="xs"
+          paddingHorizontal="md"
+          paddingVertical="xs"
           className={cn(
-            'cursor-pointer appearance-none rounded-full py-1.5 pl-3.5 pr-7 text-xs font-semibold transition-all focus:outline-none',
-            filterMode === 'customMonth'
+            'h-9 rounded-full text-xs font-semibold transition-all',
+            isMonthMode
               ? 'bg-m3-primary text-m3-on-primary shadow-sm'
               : 'border border-m3-outline-variant bg-m3-surface-container-low text-m3-on-surface-variant hover:bg-m3-surface-container hover:text-m3-on-surface',
           )}
         >
-          <option
-            value=""
-            disabled={filterMode === 'customMonth'}
-            className="bg-m3-surface text-m3-on-surface"
-          >
-            {filterMode === 'customMonth'
-              ? MONTH_NAMES[selectedMonth]
-              : 'Select Month'}
-          </option>
+          <Flex align="center" gap="xs" className="min-w-0 truncate">
+            <Calendar className="h-3.5 w-3.5 shrink-0" />
+            <span className="truncate">{MONTH_NAMES[selectedMonth]}</span>
+          </Flex>
+          <ChevronDown className="h-3.5 w-3.5 shrink-0 opacity-80" />
+        </Flex>
+
+        {/* Native Select overlaid for reliable, accessible mobile picking */}
+        <select
+          aria-label="Select month"
+          value={selectedMonth}
+          onChange={handleSelectMonth}
+          className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+        >
           {MONTH_NAMES.map((mName, idx) => (
             <option
               key={mName}
@@ -90,15 +72,21 @@ export const PeriodFilterBar: React.FC<PeriodFilterBarProps> = ({
             </option>
           ))}
         </select>
-        <ChevronDown
-          className={cn(
-            'pointer-events-none absolute right-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 transition-colors',
-            filterMode === 'customMonth'
-              ? 'text-m3-on-primary'
-              : 'text-m3-on-surface-variant',
-          )}
-        />
       </div>
-    </div>
+
+      {/* 2. YTD (Year to Date) Pill (50% equal width) */}
+      <button
+        type="button"
+        onClick={() => onFilterModeChange('ytd')}
+        className={cn(
+          'flex h-9 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-full px-3.5 text-xs font-semibold transition-all',
+          filterMode === 'ytd'
+            ? 'bg-m3-primary text-m3-on-primary shadow-sm'
+            : 'border border-m3-outline-variant bg-m3-surface-container-low text-m3-on-surface-variant hover:bg-m3-surface-container hover:text-m3-on-surface',
+        )}
+      >
+        <span className="truncate">YTD ({currentYear})</span>
+      </button>
+    </Flex>
   );
 };

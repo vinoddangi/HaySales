@@ -6,7 +6,8 @@ import {
 } from 'firebase/auth';
 import { X } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
-import { Button } from '../common/Button';
+import { Button, Input, Text } from '../common';
+import { Flex } from '../layout';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -97,34 +98,45 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
           <X className="h-5 w-5 text-m3-on-surface-variant" />
         </button>
 
-        <div className="mb-6 space-y-2 text-center">
+        <Flex
+          direction="column"
+          align="center"
+          gap="xs"
+          className="mb-6 text-center"
+        >
           <img
             src="/favicon.svg"
             alt="HaySales Logo"
             className="mx-auto h-12 w-12 rounded-2xl shadow-md"
           />
-          <h2 className="text-sm font-bold text-m3-on-surface">
+          <Text styleAs="h3" appearance="primary" weight="bold">
             Secure Sign In
-          </h2>
-          <p className="text-xs text-m3-on-surface-variant">
+          </Text>
+          <Text styleAs="body-sm" appearance="secondary">
             {!phoneSubmitted
               ? 'Confirm access using your phone number.'
               : 'Enter your 6-digit login PIN.'}
-          </p>
-        </div>
+          </Text>
+        </Flex>
 
         {error && (
-          <p className="mb-4 text-center text-xs text-red-500">{error}</p>
+          <Text
+            styleAs="caption"
+            sentiment="negative"
+            align="center"
+            className="mb-4 block"
+          >
+            {error}
+          </Text>
         )}
 
         {!phoneSubmitted ? (
           <form onSubmit={handleSendCode} className="space-y-4">
-            <input
+            <Input
               type="tel"
               placeholder="+91 98765 43210"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              className="w-full rounded-lg border border-m3-outline bg-m3-surface px-4 py-2.5 text-xs text-m3-on-surface"
               required
             />
             <Button
@@ -138,12 +150,12 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
           </form>
         ) : (
           <form onSubmit={handleVerifyPin} className="space-y-4">
-            <input
+            <Input
               type="password"
               placeholder="Enter 6-digit PIN"
               value={pin}
               onChange={(e) => setPin(e.target.value)}
-              className="w-full rounded-lg border border-m3-outline bg-m3-surface px-4 py-2.5 text-center text-xs tracking-widest text-m3-on-surface"
+              className="text-center tracking-widest"
               maxLength={6}
               required
             />
