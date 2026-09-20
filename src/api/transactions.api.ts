@@ -144,6 +144,42 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
     console.warn('Error fetching purchases in transactions API:', pErr);
   }
 
+  // 4. Fetch expenses from root 'expenses' collection if present
+  try {
+    const expensesSnap = await getDocs(collection(db, 'expenses'));
+    expensesSnap.forEach((docSnap) => {
+      if (!transactions.some((t) => t.id === docSnap.id)) {
+        const data = docSnap.data();
+        transactions.push({
+          id: docSnap.id,
+          ...data,
+          type: 'EXPENSE',
+          category: 'Expense',
+        } as Transaction);
+      }
+    });
+  } catch {
+    // Ignore if not present
+  }
+
+  // 5. Fetch services from root 'services' collection if present
+  try {
+    const servicesSnap = await getDocs(collection(db, 'services'));
+    servicesSnap.forEach((docSnap) => {
+      if (!transactions.some((t) => t.id === docSnap.id)) {
+        const data = docSnap.data();
+        transactions.push({
+          id: docSnap.id,
+          ...data,
+          type: 'SERVICE',
+          category: 'Services',
+        } as Transaction);
+      }
+    });
+  } catch {
+    // Ignore if not present
+  }
+
   // Sort descending by date
   transactions.sort((a, b) => {
     const timeA = parseTransactionDate(a.date)?.getTime() || 0;

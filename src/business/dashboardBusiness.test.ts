@@ -116,7 +116,7 @@ describe('dashboardBusiness', () => {
     expect(metrics.netCashflow).toBe(12500 - 16000); // -3500
   });
 
-  it('excludes Interest from dashboard expenses calculation', () => {
+  it('includes Interest in dashboard expenses calculation', () => {
     const txWithInterest: Transaction[] = [
       {
         id: 'tx-exp-1',
@@ -137,9 +137,9 @@ describe('dashboardBusiness', () => {
     ];
 
     const metrics = calculateDashboardMetrics(txWithInterest);
-    expect(metrics.totalExpenseAmount).toBe(2000); // 7000 Interest is excluded
-    expect(metrics.expensesCount).toBe(1);
-    expect(metrics.expensesOnCash).toBe(2000);
+    expect(metrics.totalExpenseAmount).toBe(9000); // 2000 Fuel + 7000 Interest
+    expect(metrics.expensesCount).toBe(2);
+    expect(metrics.expensesOnCash).toBe(9000);
   });
 
   it('filters transactions with Firestore timestamps and date objects correctly', () => {

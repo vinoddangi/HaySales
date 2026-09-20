@@ -43,6 +43,24 @@ export async function fetchPurchasesApi(): Promise<Transaction[]> {
     } as Transaction);
   });
 
+  // Also fetch from root 'expenses' if present
+  try {
+    const expensesSnap = await getDocs(collection(db, 'expenses'));
+    expensesSnap.forEach((docSnap) => {
+      if (!purchases.some((p) => p.id === docSnap.id)) {
+        const data = docSnap.data();
+        purchases.push({
+          id: docSnap.id,
+          ...data,
+          type: 'EXPENSE',
+          category: 'Expense',
+        } as Transaction);
+      }
+    });
+  } catch {
+    // Ignore if not present
+  }
+
   purchases.sort((a, b) => {
     const timeA = parseTransactionDate(a.date)?.getTime() || 0;
     const timeB = parseTransactionDate(b.date)?.getTime() || 0;

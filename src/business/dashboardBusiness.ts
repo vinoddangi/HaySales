@@ -54,7 +54,7 @@ export function filterTransactionsByPeriod(
     if (!txDate) return false;
 
     if (mode === 'ytd') {
-      return txDate.getFullYear() === currentYear && txDate <= referenceDate;
+      return txDate.getFullYear() === currentYear;
     }
 
     // mode === 'month'
@@ -123,21 +123,11 @@ export function calculateDashboardMetrics(
       purchasesCount += 1;
       purchaseOnCash += cash;
     } else if (rawType.includes('EXPENSE')) {
-      // Exclude Interest from business operating expenses as per business rules
-      const isInterest =
-        (tx.expenseCategory || '').toLowerCase() === 'interest' ||
-        (tx.item || '').toLowerCase() === 'interest' ||
-        (tx.note &&
-          (tx.note.toLowerCase().includes('intrest') ||
-            tx.note.toLowerCase().includes('interest')));
-
-      if (!isInterest) {
-        const amt = Number(tx.amount) || 0;
-        const cash = tx.cashPaid !== undefined ? Number(tx.cashPaid) || 0 : amt;
-        totalExpenseAmount += amt;
-        expensesCount += 1;
-        expensesOnCash += cash;
-      }
+      const amt = Number(tx.amount) || 0;
+      const cash = tx.cashPaid !== undefined ? Number(tx.cashPaid) || 0 : amt;
+      totalExpenseAmount += amt;
+      expensesCount += 1;
+      expensesOnCash += cash;
     } else if (rawType.includes('PAYMENT')) {
       paymentsReceived += Number(tx.paymentAmount) || Number(tx.amount) || 0;
       paymentsCount += 1;
