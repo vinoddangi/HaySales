@@ -5,7 +5,7 @@ import {
   getDocs,
   setDoc,
   writeBatch,
-} from 'firebase/firestore';
+} from '../services/dbBridge';
 import { db } from '../store/firebaseConfig';
 import { Transaction } from '../types';
 import { parseTransactionDate } from '../utils/formatters';

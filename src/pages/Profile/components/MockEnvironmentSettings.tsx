@@ -1,11 +1,19 @@
-import { Database, FlaskConical, RefreshCw, RotateCcw } from 'lucide-react';
+import {
+  ArrowDownToLine,
+  FlaskConical,
+  RefreshCw,
+  RotateCcw,
+} from 'lucide-react';
 import React, { useState } from 'react';
 import { fetchLiveEntitiesForMock } from '../../../api/dataBackup.api';
 import { Button, Card, Switch, Text } from '../../../components/common';
 import { Flex } from '../../../components/layout';
 import { mockDataStore } from '../../../mock/mockDataStore';
+import { dbConfig } from '../../../services/dbBridge';
+import { getStoreData } from '../../../services/indexedDBService';
 import { useAppDispatch } from '../../../store/hooks';
 import { showSnackbar } from '../../../store/slices/uiSlice';
+import { Customer, Transaction } from '../../../types';
 
 export const MockEnvironmentSettings: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -20,8 +28,8 @@ export const MockEnvironmentSettings: React.FC = () => {
     dispatch(
       showSnackbar({
         message: enabled
-          ? '🧪 Mock Sandbox Enabled! Running directly from local CSV dataset.'
-          : 'Switched back to Live Firestore connection.',
+          ? '🧪 Mock Sandbox Enabled!'
+          : 'Switched back to Database connection.',
       }),
     );
     setTimeout(() => {
@@ -29,17 +37,43 @@ export const MockEnvironmentSettings: React.FC = () => {
     }, 400);
   };
 
-  // 1. Sync DB: Copy live Firestore records into Mock Store
+  // 1. Sync DB: Copy active database (IndexedDB or Firestore) into Mock Store
   const handleSyncDb = async () => {
     try {
       setIsSyncing(true);
-      const { customers, transactions, purchases } =
-        await fetchLiveEntitiesForMock();
+      let customers: Customer[] = [];
+      let transactions: Transaction[] = [];
+      let purchases: Transaction[] = [];
+      let sourceName = 'Database';
+
+      const currentMode = dbConfig.getMode();
+
+      if (currentMode === 'local') {
+        customers = (await getStoreData('customers')) as Customer[];
+        transactions = (await getStoreData('transactions')) as Transaction[];
+        purchases = (await getStoreData('purchases')) as Transaction[];
+        sourceName = 'Local IndexedDB';
+      } else {
+        try {
+          const liveData = await fetchLiveEntitiesForMock();
+          customers = liveData.customers;
+          transactions = liveData.transactions;
+          purchases = liveData.purchases;
+          sourceName = 'Cloud Firestore';
+        } catch {
+          // Fallback to IndexedDB if Firestore is unavailable
+          customers = (await getStoreData('customers')) as Customer[];
+          transactions = (await getStoreData('transactions')) as Transaction[];
+          purchases = (await getStoreData('purchases')) as Transaction[];
+          sourceName = 'Local IndexedDB';
+        }
+      }
+
       mockDataStore.syncFromLiveDb(customers, transactions, purchases);
       setMockState({ ...mockDataStore.getState() });
       dispatch(
         showSnackbar({
-          message: `✅ Synced ${customers.length} customers and ${transactions.length + purchases.length} records from Live DB to Mock!`,
+          message: `✅ Synced ${customers.length} customers and ${transactions.length + purchases.length} records from ${sourceName} to Mock!`,
         }),
       );
       if (isMockEnabled) {
@@ -49,7 +83,7 @@ export const MockEnvironmentSettings: React.FC = () => {
       console.error('Failed to sync DB to Mock:', err);
       dispatch(
         showSnackbar({
-          message: `❌ Error syncing Live DB to Mock: ${(err as Error).message}`,
+          message: `❌ Error syncing to Mock: ${(err as Error).message}`,
         }),
       );
     } finally {
@@ -63,7 +97,7 @@ export const MockEnvironmentSettings: React.FC = () => {
     setMockState(mockDataStore.getState());
     dispatch(
       showSnackbar({
-        message: '✅ Reset Mock dataset back to original CSV baseline.',
+        message: '✅ Reset Mock dataset to default baseline.',
       }),
     );
     if (isMockEnabled) {
@@ -110,12 +144,12 @@ export const MockEnvironmentSettings: React.FC = () => {
             <div>
               <Flex align="center" gap="xs">
                 <Text styleAs="body-sm" appearance="primary" weight="bold">
-                  Mock Sandbox Mode
+                  Mock Sandbox
                 </Text>
                 <span
                   className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${isMockEnabled ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300' : 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300'}`}
                 >
-                  {isMockEnabled ? 'SANDBOX ON' : 'LIVE DB ON'}
+                  {isMockEnabled ? 'SANDBOX' : 'OFF'}
                 </span>
               </Flex>
               <Text
@@ -124,8 +158,8 @@ export const MockEnvironmentSettings: React.FC = () => {
                 className="mt-0.5 block text-[11px]"
               >
                 {isMockEnabled
-                  ? 'Active Mock Sandbox: loads offline from bundled CSV files'
-                  : 'Live Production Mode: connected directly to Firestore database'}
+                  ? 'Isolated in-memory test environment'
+                  : 'Disabled (using configured database)'}
               </Text>
             </div>
           </Flex>
@@ -159,7 +193,7 @@ export const MockEnvironmentSettings: React.FC = () => {
                 {salesCount}
               </span>
               <span className="block text-[10px] font-medium text-m3-on-surface-variant">
-                Sales Records
+                Sales
               </span>
             </div>
             <div className="rounded-xl border border-m3-outline/20 bg-m3-surface-container-lowest p-2.5 text-center">
@@ -175,7 +209,7 @@ export const MockEnvironmentSettings: React.FC = () => {
                 {servicesCount}
               </span>
               <span className="block text-[10px] font-medium text-m3-on-surface-variant">
-                Services (Daalu)
+                Services
               </span>
             </div>
             <div className="rounded-xl border border-m3-outline/20 bg-m3-surface-container-lowest p-2.5 text-center">
@@ -183,7 +217,7 @@ export const MockEnvironmentSettings: React.FC = () => {
                 {purchasesCount}
               </span>
               <span className="block text-[10px] font-medium text-m3-on-surface-variant">
-                Farm Purchases
+                Purchases
               </span>
             </div>
             <div className="rounded-xl border border-m3-outline/20 bg-m3-surface-container-lowest p-2.5 text-center">
@@ -191,41 +225,41 @@ export const MockEnvironmentSettings: React.FC = () => {
                 {expensesCount}
               </span>
               <span className="block text-[10px] font-medium text-m3-on-surface-variant">
-                Farm Expenses
+                Expenses
               </span>
             </div>
           </div>
         </div>
 
-        {/* 2 Actions: Sync DB & Reset */}
+        {/* 2 Actions: Sync & Reset */}
         <div className="space-y-2 rounded-xl border border-m3-outline/20 bg-m3-surface-container-low p-3.5">
           <Flex align="center" gap="xs">
             <RefreshCw className="h-4 w-4 text-m3-primary" />
             <span className="text-xs font-bold text-m3-on-surface">
-              Mock Actions
+              Actions
             </span>
           </Flex>
 
-          <div className="grid grid-cols-1 gap-3 pt-1 sm:grid-cols-2">
-            {/* 1. Sync DB */}
+          <div className="grid grid-cols-2 gap-2 pt-1">
+            {/* 1. Sync */}
             <Button
               variant="tonal"
-              size="md"
-              icon={<Database className="h-4 w-4" />}
+              size="sm"
+              icon={<ArrowDownToLine className="h-3.5 w-3.5" />}
               onClick={handleSyncDb}
               disabled={isSyncing}
-              className="justify-center text-xs font-semibold"
+              className="justify-center px-2 text-xs font-medium"
             >
-              {isSyncing ? 'Syncing DB...' : 'Sync DB'}
+              {isSyncing ? 'Syncing...' : 'Sync'}
             </Button>
 
             {/* 2. Reset */}
             <Button
               variant="outlined"
-              size="md"
-              icon={<RotateCcw className="h-4 w-4" />}
+              size="sm"
+              icon={<RotateCcw className="h-3.5 w-3.5" />}
               onClick={handleReset}
-              className="justify-center text-xs font-semibold"
+              className="justify-center px-2 text-xs font-medium"
             >
               Reset
             </Button>

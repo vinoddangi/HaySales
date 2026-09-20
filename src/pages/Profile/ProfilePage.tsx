@@ -16,6 +16,7 @@ import { ColorScheme, FontSize } from '../../types';
 import { APP_VERSION } from '../../utils/version';
 import { DataBackupRestoreSettings } from './components/DataBackupRestoreSettings';
 import { FontSettings } from './components/FontSettings';
+import { LocalDatabaseSettings } from './components/LocalDatabaseSettings';
 import { MockEnvironmentSettings } from './components/MockEnvironmentSettings';
 import { MonthlyRolloutSettings } from './components/MonthlyRolloutSettings';
 import { ProfileHeader } from './components/ProfileHeader';
@@ -123,16 +124,19 @@ export const ProfilePage: React.FC = () => {
         onSelectFontSize={handleSelectFontSize}
       />
 
-      {/* 3. Mock Environment & CSV Sandbox */}
+      {/* 3. Database & Offline Storage (IndexedDB / Cloud Firestore) */}
+      <LocalDatabaseSettings />
+
+      {/* 4. Mock Environment & CSV Sandbox */}
       <MockEnvironmentSettings />
 
-      {/* 4. Database Backup & Restore (.csv & Google Drive) */}
+      {/* 5. Database Backup & Restore (.csv & Google Drive) */}
       <DataBackupRestoreSettings />
 
-      {/* 5. Monthly Rollout & Trading Period Accounting */}
+      {/* 6. Monthly Rollout & Trading Period Accounting */}
       <MonthlyRolloutSettings />
 
-      {/* 6. Financial Year Rollover & Archival */}
+      {/* 7. Financial Year Rollover & Archival */}
       <TransactionBackupSettings />
 
       <div className="flex flex-col items-center gap-3 pt-2">

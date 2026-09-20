@@ -22,6 +22,7 @@ export interface ExpenseFormProps {
   onSubmit: (_data: {
     expenseCategory: ExpenseCategoryType;
     amount: number;
+    cashPaid: number;
     vendorName?: string;
     note?: string;
     date: string;
@@ -45,6 +46,8 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = ({
   );
   const [category, setCategory] = useState<ExpenseCategoryType>('Fuel');
   const [amount, setAmount] = useState(0);
+  const [cashPaid, setCashPaid] = useState(0);
+  const [allCash, setAllCash] = useState(true);
   const [vendorName, setVendorName] = useState('');
   const [note, setNote] = useState('');
 
@@ -54,17 +57,22 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = ({
   const isBlockedByRollout = isTransactionMonthLocked(date, rolloutStatus);
   const isFormBlocked = isBlockedByBackup || isBlockedByRollout;
 
+  const effectiveCashPaid = allCash ? amount : cashPaid;
+
   const handleSubmit = async () => {
     if (amount <= 0 || isFormBlocked) return;
     await onSubmit({
       expenseCategory: category,
       amount,
+      cashPaid: effectiveCashPaid,
       vendorName: vendorName.trim() || undefined,
       note: note.trim() || undefined,
       date,
     });
     // Reset form
     setAmount(0);
+    setCashPaid(0);
+    setAllCash(true);
     setVendorName('');
     setNote('');
   };
@@ -110,6 +118,29 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = ({
         onChange={(e) => setAmount(Number(e.target.value))}
       />
 
+      {/* Payment Settlement */}
+      <Flex direction="column" gap="sm" fullWidth>
+        <label className="flex cursor-pointer items-center gap-2 text-xs font-semibold text-m3-on-surface">
+          <input
+            type="checkbox"
+            checked={allCash}
+            onChange={(e) => setAllCash(e.target.checked)}
+            className="h-4 w-4 rounded border-m3-outline text-m3-primary"
+          />
+          Paid in Full (100% Cash Outflow)
+        </label>
+
+        {!allCash && (
+          <Input
+            label="Cash Paid Now (₹)"
+            type="number"
+            placeholder="0"
+            value={cashPaid || ''}
+            onChange={(e) => setCashPaid(Number(e.target.value))}
+          />
+        )}
+      </Flex>
+
       <Input
         label="Paid To / Person / Station (Optional)"
         type="text"
@@ -134,10 +165,12 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = ({
             <span className="text-rose-600 dark:text-rose-400">{category}</span>
           }
         />
+        <SummaryRow label="Total Outflow:" value={formatRupee(amount)} />
         <SummaryRow
-          label="Total Outflow:"
-          value={formatRupee(amount)}
+          label="Cash Paid:"
+          value={formatRupee(effectiveCashPaid)}
           isTotal
+          className="text-rose-600 dark:text-rose-400"
         />
       </SummaryBox>
 

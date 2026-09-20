@@ -18,6 +18,7 @@ export interface DashboardBreakdownProps {
   totalSales: number;
   salesOnCash: number;
   salesOnCredit: number;
+  servicesReceived?: number;
 }
 
 export const DashboardBreakdown: React.FC<DashboardBreakdownProps> = ({
@@ -25,6 +26,7 @@ export const DashboardBreakdown: React.FC<DashboardBreakdownProps> = ({
   totalSales,
   salesOnCash,
   salesOnCredit,
+  servicesReceived = 0,
 }) => {
   const cashPct = totalSales > 0 ? (salesOnCash / totalSales) * 100 : 0;
   const creditPct = totalSales > 0 ? (salesOnCredit / totalSales) * 100 : 0;
@@ -83,7 +85,7 @@ export const DashboardBreakdown: React.FC<DashboardBreakdownProps> = ({
       )}
 
       {/* Item-wise Performance Breakdown */}
-      {itemBreakdown.length > 0 && (
+      {(itemBreakdown.length > 0 || servicesReceived > 0) && (
         <Card
           variant="outlined"
           className="border-m3-outline-variant bg-m3-surface-container-low p-3.5"
@@ -93,13 +95,30 @@ export const DashboardBreakdown: React.FC<DashboardBreakdownProps> = ({
               <Flex align="center" gap="xs">
                 <Layers className="h-4 w-4 text-m3-primary" />
                 <Text styleAs="h4" appearance="primary" weight="bold">
-                  Crop / Item Sales & Stock
+                  Crop & Service Summary
                 </Text>
               </Flex>
               <Text styleAs="label" appearance="secondary">
                 {itemBreakdown.length} Products
               </Text>
             </Flex>
+
+            {/* Additional Services Highlights */}
+            {servicesReceived > 0 && (
+              <div className="flex items-center justify-between rounded-lg border border-purple-500/30 bg-purple-500/[0.06] p-2.5">
+                <div>
+                  <span className="block text-xs font-bold text-purple-700 dark:text-purple-300">
+                    Service Income (Daalu/Pickup)
+                  </span>
+                  <span className="block text-[10px] text-m3-on-surface-variant">
+                    Direct service earnings
+                  </span>
+                </div>
+                <span className="text-sm font-black text-purple-700 dark:text-purple-300">
+                  {formatRupee(servicesReceived)}
+                </span>
+              </div>
+            )}
 
             <Flex direction="column" gap="sm" fullWidth>
               {itemBreakdown.map((item) => {

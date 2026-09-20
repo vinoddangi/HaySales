@@ -10,7 +10,7 @@ import salesCsvRaw from './csv/sales.csv?raw';
 import servicesCsvRaw from './csv/services.csv?raw';
 
 const MOCK_MODE_STORAGE_KEY = 'haysales_mock_mode_enabled';
-const MOCK_DATA_STORAGE_KEY = 'haysales_mock_data_store_v4';
+const MOCK_DATA_STORAGE_KEY = 'haysales_mock_data_store_v5';
 
 export interface MockStoreState {
   customers: Customer[];
@@ -46,7 +46,7 @@ export function parseCustomersFromCsv(csvText: string): Customer[] {
 }
 
 /**
- * Parse sales.csv into Transaction[] (type: 'SALE')
+ * Parse sales.csv into Transaction[] (type: 'SALE' or 'SERVICE')
  */
 export function parseSalesFromCsv(csvText: string): Transaction[] {
   const rows = parseCsv(csvText);
@@ -65,20 +65,43 @@ export function parseSalesFromCsv(csvText: string): Transaction[] {
   const dueIdx = headers.indexOf('remainingdue');
   const noteIdx = headers.indexOf('notes');
 
-  return rows.slice(1).map((r, i) => ({
-    id: idIdx !== -1 && r[idIdx] ? r[idIdx] : `sale_${i + 1}`,
-    type: 'SALE',
-    customerId: custIdIdx !== -1 ? r[custIdIdx] : '',
-    customerName: nameIdx !== -1 ? r[nameIdx] : '',
-    date: dateIdx !== -1 && r[dateIdx] ? r[dateIdx] : new Date().toISOString(),
-    item: itemIdx !== -1 && r[itemIdx] ? r[itemIdx] : 'Others',
-    weightKg: wtIdx !== -1 && r[wtIdx] ? Number(r[wtIdx]) || 0 : 0,
-    rate: rateIdx !== -1 && r[rateIdx] ? Number(r[rateIdx]) || 0 : 0,
-    amount: amtIdx !== -1 && r[amtIdx] ? Number(r[amtIdx]) || 0 : 0,
-    cashPaid: cashIdx !== -1 && r[cashIdx] ? Number(r[cashIdx]) || 0 : 0,
-    remainingDue: dueIdx !== -1 && r[dueIdx] ? Number(r[dueIdx]) || 0 : 0,
-    note: noteIdx !== -1 ? r[noteIdx] : '',
-  }));
+  return rows.slice(1).map((r, i) => {
+    const rawId = idIdx !== -1 && r[idIdx] ? r[idIdx] : `sale_${i + 1}`;
+    const isService = rawId.startsWith('service_');
+    const amt = amtIdx !== -1 && r[amtIdx] ? Number(r[amtIdx]) || 0 : 0;
+    const cash =
+      cashIdx !== -1 && r[cashIdx] !== '' && r[cashIdx] !== undefined
+        ? Number(r[cashIdx]) || 0
+        : isService
+          ? amt
+          : 0;
+    const due =
+      dueIdx !== -1 && r[dueIdx] !== '' && r[dueIdx] !== undefined
+        ? Number(r[dueIdx]) || 0
+        : Math.max(0, amt - cash);
+
+    return {
+      id: rawId,
+      type: isService ? 'SERVICE' : 'SALE',
+      customerId: custIdIdx !== -1 ? r[custIdIdx] : '',
+      customerName: nameIdx !== -1 ? r[nameIdx] : '',
+      date:
+        dateIdx !== -1 && r[dateIdx] ? r[dateIdx] : new Date().toISOString(),
+      item:
+        itemIdx !== -1 && r[itemIdx]
+          ? r[itemIdx]
+          : isService
+            ? 'Pickup'
+            : 'Others',
+      weightKg: wtIdx !== -1 && r[wtIdx] ? Number(r[wtIdx]) || 0 : 0,
+      rate: rateIdx !== -1 && r[rateIdx] ? Number(r[rateIdx]) || 0 : 0,
+      amount: amt,
+      cashPaid: cash,
+      remainingDue: due,
+      note: noteIdx !== -1 ? r[noteIdx] : '',
+      category: isService ? 'Services' : undefined,
+    };
+  });
 }
 
 /**
@@ -107,6 +130,8 @@ export function parsePaymentsFromCsv(csvText: string): Transaction[] {
         dateIdx !== -1 && r[dateIdx] ? r[dateIdx] : new Date().toISOString(),
       amount: amt,
       paymentAmount: amt,
+      cashPaid: amt,
+      remainingDue: 0,
       note: noteIdx !== -1 ? r[noteIdx] : '',
     };
   });
@@ -140,13 +165,15 @@ export function parseServicesFromCsv(csvText: string): Transaction[] {
       item: itemIdx !== -1 && r[itemIdx] ? r[itemIdx] : 'Pickup',
       amount: amt,
       cashPaid: amt,
+      remainingDue: 0,
       note: noteIdx !== -1 ? r[noteIdx] : '',
+      category: 'Services',
     };
   });
 }
 
 /**
- * Parse purchases.csv into Transaction[] (type: 'PURCHASE')
+ * Parse purchases.csv into Transaction[] (type: 'PURCHASE' or 'EXPENSE')
  */
 export function parsePurchasesFromCsv(csvText: string): Transaction[] {
   const rows = parseCsv(csvText);
@@ -160,23 +187,47 @@ export function parsePurchasesFromCsv(csvText: string): Transaction[] {
   const wtIdx = headers.indexOf('weightkg');
   const rateIdx = headers.indexOf('purchaserate');
   const amtIdx = headers.indexOf('amount');
+  const cashIdx = headers.indexOf('cashpaid');
+  const dueIdx = headers.indexOf('remainingdue');
   const vendorIdx = headers.indexOf('vendorname');
   const noteIdx = headers.indexOf('notes');
 
-  return rows.slice(1).map((r, i) => ({
-    id: idIdx !== -1 && r[idIdx] ? r[idIdx] : `purchase_${i + 1}`,
-    type: 'PURCHASE',
-    category: (catIdx !== -1 && r[catIdx]
-      ? r[catIdx]
-      : 'Purchase') as Transaction['category'],
-    date: dateIdx !== -1 && r[dateIdx] ? r[dateIdx] : new Date().toISOString(),
-    item: itemIdx !== -1 && r[itemIdx] ? r[itemIdx] : 'Others',
-    weightKg: wtIdx !== -1 && r[wtIdx] ? Number(r[wtIdx]) || 0 : 0,
-    purchaseRate: rateIdx !== -1 && r[rateIdx] ? Number(r[rateIdx]) || 0 : 0,
-    amount: amtIdx !== -1 && r[amtIdx] ? Number(r[amtIdx]) || 0 : 0,
-    vendorName: vendorIdx !== -1 ? r[vendorIdx] : '',
-    note: noteIdx !== -1 ? r[noteIdx] : '',
-  }));
+  return rows.slice(1).map((r, i) => {
+    const rawId = idIdx !== -1 && r[idIdx] ? r[idIdx] : `purchase_${i + 1}`;
+    const isExpense = rawId.startsWith('expense_');
+    const amt = amtIdx !== -1 && r[amtIdx] ? Number(r[amtIdx]) || 0 : 0;
+    const cash =
+      cashIdx !== -1 && r[cashIdx] !== '' && r[cashIdx] !== undefined
+        ? Number(r[cashIdx]) || 0
+        : amt;
+    const due =
+      dueIdx !== -1 && r[dueIdx] !== '' && r[dueIdx] !== undefined
+        ? Number(r[dueIdx]) || 0
+        : 0;
+    const category =
+      catIdx !== -1 && r[catIdx]
+        ? r[catIdx]
+        : isExpense
+          ? 'Others'
+          : 'Purchase';
+
+    return {
+      id: rawId,
+      type: isExpense ? 'EXPENSE' : 'PURCHASE',
+      category: isExpense ? undefined : (category as Transaction['category']),
+      expenseCategory: isExpense ? category : undefined,
+      date:
+        dateIdx !== -1 && r[dateIdx] ? r[dateIdx] : new Date().toISOString(),
+      item: itemIdx !== -1 && r[itemIdx] ? r[itemIdx] : 'Others',
+      weightKg: wtIdx !== -1 && r[wtIdx] ? Number(r[wtIdx]) || 0 : 0,
+      purchaseRate: rateIdx !== -1 && r[rateIdx] ? Number(r[rateIdx]) || 0 : 0,
+      amount: amt,
+      cashPaid: cash,
+      remainingDue: due,
+      vendorName: vendorIdx !== -1 ? r[vendorIdx] : '',
+      note: noteIdx !== -1 ? r[noteIdx] : '',
+    };
+  });
 }
 
 /**
@@ -194,20 +245,26 @@ export function parseExpensesFromCsv(csvText: string): Transaction[] {
   const amtIdx = headers.indexOf('amount');
   const noteIdx = headers.indexOf('notes');
 
-  return rows.slice(1).map((r, i) => ({
-    id: idIdx !== -1 && r[idIdx] ? r[idIdx] : `expense_${i + 1}`,
-    type: 'EXPENSE',
-    category: 'Expense',
-    expenseCategory: catIdx !== -1 && r[catIdx] ? r[catIdx] : 'General',
-    date: dateIdx !== -1 && r[dateIdx] ? r[dateIdx] : new Date().toISOString(),
-    item: itemIdx !== -1 && r[itemIdx] ? r[itemIdx] : 'Others',
-    amount: amtIdx !== -1 && r[amtIdx] ? Number(r[amtIdx]) || 0 : 0,
-    note: noteIdx !== -1 ? r[noteIdx] : '',
-  }));
+  return rows.slice(1).map((r, i) => {
+    const amt = amtIdx !== -1 && r[amtIdx] ? Number(r[amtIdx]) || 0 : 0;
+    return {
+      id: idIdx !== -1 && r[idIdx] ? r[idIdx] : `expense_${i + 1}`,
+      type: 'EXPENSE',
+      category: 'Expense',
+      expenseCategory: catIdx !== -1 && r[catIdx] ? r[catIdx] : 'Others',
+      date:
+        dateIdx !== -1 && r[dateIdx] ? r[dateIdx] : new Date().toISOString(),
+      item: itemIdx !== -1 && r[itemIdx] ? r[itemIdx] : 'Others',
+      amount: amt,
+      cashPaid: amt,
+      remainingDue: 0,
+      note: noteIdx !== -1 ? r[noteIdx] : '',
+    };
+  });
 }
 
 /**
- * Parse all 6 core CSV files to create the default Mock dataset
+ * Parse all core CSV files to create the default Mock dataset
  */
 export function parseAllMockDataFromCsv(): MockStoreState {
   const customers = parseCustomersFromCsv(customersCsvRaw);
@@ -217,13 +274,31 @@ export function parseAllMockDataFromCsv(): MockStoreState {
   const purchases = parsePurchasesFromCsv(purchasesCsvRaw);
   const expenses = parseExpensesFromCsv(expensesCsvRaw);
 
-  const transactions = [...sales, ...payments, ...services];
-  const allPurchases = [...purchases, ...expenses];
+  // Merge transactions without duplicate IDs
+  const txMap = new Map<string, Transaction>();
+  sales.forEach((s) => {
+    if (s.id) txMap.set(s.id, s);
+  });
+  payments.forEach((p) => {
+    if (p.id) txMap.set(p.id, p);
+  });
+  services.forEach((sv) => {
+    if (sv.id) txMap.set(sv.id, sv);
+  });
+
+  // Merge purchases & expenses without duplicate IDs
+  const pMap = new Map<string, Transaction>();
+  purchases.forEach((p) => {
+    if (p.id) pMap.set(p.id, p);
+  });
+  expenses.forEach((e) => {
+    if (e.id) pMap.set(e.id, e);
+  });
 
   return {
     customers,
-    transactions,
-    purchases: allPurchases,
+    transactions: Array.from(txMap.values()),
+    purchases: Array.from(pMap.values()),
     monthlyRollout: defaultRolloutHistory as unknown as MonthlyRolloutStatus,
   };
 }
@@ -338,6 +413,68 @@ class MockDataStoreManager {
 
   public getState(): MockStoreState {
     return this.state;
+  }
+
+  // --- Generic Store Driver Methods (Identical to IndexedDB Driver) ---
+
+  public getStoreData<T = any>(storeName: string): T[] {
+    if (storeName === 'customers') return this.state.customers as any;
+    if (storeName === 'transactions') return this.state.transactions as any;
+    if (storeName === 'purchases') return this.state.purchases as any;
+    if (storeName === 'monthly_rollout')
+      return [this.state.monthlyRollout] as any;
+    if (storeName === 'metadata') return [] as any;
+    return [];
+  }
+
+  public getStoreItem<T = any>(storeName: string, key: string): T | undefined {
+    if (storeName === 'customers') {
+      return this.state.customers.find((c) => c.id === key) as any;
+    }
+    if (storeName === 'transactions') {
+      return this.state.transactions.find((t) => t.id === key) as any;
+    }
+    if (storeName === 'purchases') {
+      return this.state.purchases.find((p) => p.id === key) as any;
+    }
+    if (storeName === 'monthly_rollout') {
+      return this.state.monthlyRollout as any;
+    }
+    return undefined;
+  }
+
+  public putStoreItem<T = any>(storeName: string, item: T): void {
+    const raw = item as any;
+    const key = raw.id || raw.key || raw.month;
+    if (storeName === 'customers') {
+      const idx = this.state.customers.findIndex((c) => c.id === key);
+      if (idx >= 0) this.state.customers[idx] = raw;
+      else this.state.customers.push(raw);
+    } else if (storeName === 'transactions') {
+      const idx = this.state.transactions.findIndex((t) => t.id === key);
+      if (idx >= 0) this.state.transactions[idx] = raw;
+      else this.state.transactions.unshift(raw);
+    } else if (storeName === 'purchases') {
+      const idx = this.state.purchases.findIndex((p) => p.id === key);
+      if (idx >= 0) this.state.purchases[idx] = raw;
+      else this.state.purchases.unshift(raw);
+    } else if (storeName === 'monthly_rollout') {
+      this.state.monthlyRollout = raw;
+    }
+    this.saveState();
+  }
+
+  public deleteStoreItem(storeName: string, key: string): void {
+    if (storeName === 'customers') {
+      this.state.customers = this.state.customers.filter((c) => c.id !== key);
+    } else if (storeName === 'transactions') {
+      this.state.transactions = this.state.transactions.filter(
+        (t) => t.id !== key,
+      );
+    } else if (storeName === 'purchases') {
+      this.state.purchases = this.state.purchases.filter((p) => p.id !== key);
+    }
+    this.saveState();
   }
 
   // --- CRUD Operations for Mock Store ---

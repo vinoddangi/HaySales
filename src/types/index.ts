@@ -45,7 +45,14 @@ export interface Customer {
 }
 
 export type ExpenseCategoryType =
-  'Interest' | 'Fuel' | 'Labor' | 'Food / Drink' | 'Tools' | 'Others';
+  | 'Interest'
+  | 'Fuel'
+  | 'Maintenance'
+  | 'Depreciation'
+  | 'Labor'
+  | 'Food / Drink'
+  | 'Tools'
+  | 'Others';
 
 export type CropItemType =
   'Tuvar' | 'Chana' | 'B. Kutty' | 'M. Kutty' | 'Isabgol' | 'Others';

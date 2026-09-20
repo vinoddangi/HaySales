@@ -125,6 +125,7 @@ export const HomePage: React.FC = () => {
         totalSales={metrics.totalSalesAmount}
         salesOnCash={metrics.salesOnCash}
         salesOnCredit={metrics.salesOnCredit}
+        servicesReceived={metrics.servicesReceived}
       />
 
       {/* Recent Activity & Payments Stream */}

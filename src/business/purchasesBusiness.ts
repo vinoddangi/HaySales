@@ -3,6 +3,8 @@ import { ExpenseCategoryType } from '../types';
 export const VALID_EXPENSE_CATEGORIES: ExpenseCategoryType[] = [
   'Interest',
   'Fuel',
+  'Maintenance',
+  'Depreciation',
   'Labor',
   'Food / Drink',
   'Tools',

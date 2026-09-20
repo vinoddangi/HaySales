@@ -5,42 +5,21 @@ import {
   doc,
   getDocs,
   updateDoc,
-} from 'firebase/firestore';
-import { mockDataStore } from '../mock/mockDataStore';
+} from '../services/dbBridge';
 import { db } from '../store/firebaseConfig';
 import { Transaction } from '../types';
-
 import { parseTransactionDate } from '../utils/formatters';
+import { parseTransaction } from '../utils/parsers';
 
 /**
- * Fetch all purchases and expenses from root collection (or mock store)
+ * Fetch all purchases and expenses from root collection
  */
 export async function fetchPurchasesApi(): Promise<Transaction[]> {
-  if (mockDataStore.isEnabled()) {
-    const mockPurch = mockDataStore.getPurchases();
-    mockPurch.sort((a, b) => {
-      const timeA = parseTransactionDate(a.date)?.getTime() || 0;
-      const timeB = parseTransactionDate(b.date)?.getTime() || 0;
-      return timeB - timeA;
-    });
-    return mockPurch;
-  }
   const querySnapshot = await getDocs(collection(db, 'purchases'));
   const purchases: Transaction[] = [];
 
   querySnapshot.forEach((docSnap) => {
-    const data = docSnap.data();
-    const rawType = (data.type || data.category || 'PURCHASE')
-      .toString()
-      .toUpperCase();
-    const type: Transaction['type'] = rawType.includes('EXPENSE')
-      ? 'EXPENSE'
-      : 'PURCHASE';
-    purchases.push({
-      id: docSnap.id,
-      ...data,
-      type,
-    } as Transaction);
+    purchases.push(parseTransaction(docSnap.data(), docSnap.id));
   });
 
   // Also fetch from root 'expenses' if present
@@ -48,13 +27,9 @@ export async function fetchPurchasesApi(): Promise<Transaction[]> {
     const expensesSnap = await getDocs(collection(db, 'expenses'));
     expensesSnap.forEach((docSnap) => {
       if (!purchases.some((p) => p.id === docSnap.id)) {
-        const data = docSnap.data();
-        purchases.push({
-          id: docSnap.id,
-          ...data,
-          type: 'EXPENSE',
-          category: 'Expense',
-        } as Transaction);
+        purchases.push(
+          parseTransaction({ ...docSnap.data(), type: 'EXPENSE' }, docSnap.id),
+        );
       }
     });
   } catch {
@@ -88,18 +63,22 @@ export interface AddPurchaseParams {
  */
 export async function addPurchaseApi(data: AddPurchaseParams): Promise<void> {
   const purchasesCol = collection(db, 'purchases');
+  const amount = Number(data.amount) || 0;
+  const cashPaid = Number(data.cashPaid) || 0;
+  const remainingDue = Math.max(0, amount - cashPaid);
+
   const txData: any = {
     type: data.type,
     category: data.category,
-    amount: Number(data.amount) || 0,
+    amount,
+    cashPaid,
+    remainingDue,
     date: data.date ? new Date(data.date) : new Date(),
   };
 
   if (data.type === 'PURCHASE') {
     txData.item = data.item;
     txData.weightKg = Number(data.weightKg) || 0;
-    txData.cashPaid =
-      data.cashPaid !== undefined ? Number(data.cashPaid) : Number(data.amount);
     if (txData.weightKg > 0) {
       txData.purchaseRate = txData.amount / txData.weightKg;
     }

@@ -15,6 +15,7 @@
     "typecheck": "tsc -b",
     "test": "vitest",
     "test:run": "vitest run",
+    "db:seed": "node script/seedDatabase.js",
     "db:backup": "node script/backupToGoogleSheets.js",
     "db:clean": "node script/cleanAllRecords.js",
     "db:migrate": "node script/migrateFromSheets.js",

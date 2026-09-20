@@ -7,28 +7,16 @@ import {
   increment,
   updateDoc,
   writeBatch,
-} from 'firebase/firestore';
-import { mockDataStore } from '../mock/mockDataStore';
+} from '../services/dbBridge';
 import { db } from '../store/firebaseConfig';
 import { Transaction } from '../types';
-
 import { parseTransactionDate } from '../utils/formatters';
+import { parseTransaction } from '../utils/parsers';
 
 /**
  * Fetch all transactions across all customers and root purchases for complete data views
  */
 export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
-  if (mockDataStore.isEnabled()) {
-    const mockTx = mockDataStore.getTransactions();
-    const mockPurch = mockDataStore.getPurchases();
-    const combined = [...mockTx, ...mockPurch];
-    combined.sort((a, b) => {
-      const timeA = parseTransactionDate(a.date)?.getTime() || 0;
-      const timeB = parseTransactionDate(b.date)?.getTime() || 0;
-      return timeB - timeA;
-    });
-    return combined;
-  }
   const transactions: Transaction[] = [];
 
   // 1. Fetch customer map for associating customer names
@@ -53,29 +41,15 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
     const querySnapshot = await getDocs(colGroupRef);
     querySnapshot.forEach((docSnap) => {
       const data = docSnap.data();
-      const customerId = docSnap.ref.parent.parent?.id;
+      const customerId = docSnap.ref.parent?.parent?.id || data.customerId;
       const customerName =
         (customerId ? customerMap.get(customerId) : '') ||
         data.customerName ||
         '';
 
-      const rawType = (data.type || data.category || 'SALE')
-        .toString()
-        .toUpperCase();
-      let type: Transaction['type'] = 'SALE';
-      if (rawType.includes('SERVICE')) type = 'SERVICE';
-      else if (rawType.includes('PAYMENT')) type = 'PAYMENT';
-      else if (rawType.includes('OPENING')) type = 'OPENING_BALANCE';
-      else if (rawType.includes('EXPENSE')) type = 'EXPENSE';
-      else if (rawType.includes('PURCHASE')) type = 'PURCHASE';
-
-      transactions.push({
-        id: docSnap.id,
-        customerId,
-        customerName,
-        ...data,
-        type,
-      } as Transaction);
+      transactions.push(
+        parseTransaction(data, docSnap.id, customerId, customerName),
+      );
       customerTxCount++;
     });
   } catch (e) {
@@ -96,23 +70,9 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
           const data = docSnap.data();
           const customerName =
             customerMap.get(custId) || data.customerName || '';
-          const rawType = (data.type || data.category || 'SALE')
-            .toString()
-            .toUpperCase();
-          let type: Transaction['type'] = 'SALE';
-          if (rawType.includes('SERVICE')) type = 'SERVICE';
-          else if (rawType.includes('PAYMENT')) type = 'PAYMENT';
-          else if (rawType.includes('OPENING')) type = 'OPENING_BALANCE';
-          else if (rawType.includes('EXPENSE')) type = 'EXPENSE';
-          else if (rawType.includes('PURCHASE')) type = 'PURCHASE';
-
-          transactions.push({
-            id: docSnap.id,
-            customerId: custId,
-            customerName,
-            ...data,
-            type,
-          } as Transaction);
+          transactions.push(
+            parseTransaction(data, docSnap.id, custId, customerName),
+          );
         });
       }
     } catch (fallbackErr) {
@@ -127,18 +87,7 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
   try {
     const purchasesSnap = await getDocs(collection(db, 'purchases'));
     purchasesSnap.forEach((docSnap) => {
-      const data = docSnap.data();
-      const rawType = (data.type || data.category || 'PURCHASE')
-        .toString()
-        .toUpperCase();
-      const type: Transaction['type'] = rawType.includes('EXPENSE')
-        ? 'EXPENSE'
-        : 'PURCHASE';
-      transactions.push({
-        id: docSnap.id,
-        ...data,
-        type,
-      } as Transaction);
+      transactions.push(parseTransaction(docSnap.data(), docSnap.id));
     });
   } catch (pErr) {
     console.warn('Error fetching purchases in transactions API:', pErr);
@@ -149,13 +98,9 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
     const expensesSnap = await getDocs(collection(db, 'expenses'));
     expensesSnap.forEach((docSnap) => {
       if (!transactions.some((t) => t.id === docSnap.id)) {
-        const data = docSnap.data();
-        transactions.push({
-          id: docSnap.id,
-          ...data,
-          type: 'EXPENSE',
-          category: 'Expense',
-        } as Transaction);
+        transactions.push(
+          parseTransaction({ ...docSnap.data(), type: 'EXPENSE' }, docSnap.id),
+        );
       }
     });
   } catch {
@@ -167,13 +112,9 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
     const servicesSnap = await getDocs(collection(db, 'services'));
     servicesSnap.forEach((docSnap) => {
       if (!transactions.some((t) => t.id === docSnap.id)) {
-        const data = docSnap.data();
-        transactions.push({
-          id: docSnap.id,
-          ...data,
-          type: 'SERVICE',
-          category: 'Services',
-        } as Transaction);
+        transactions.push(
+          parseTransaction({ ...docSnap.data(), type: 'SERVICE' }, docSnap.id),
+        );
       }
     });
   } catch {
@@ -199,32 +140,12 @@ export async function fetchCustomerTransactionsApi(
 ): Promise<Transaction[]> {
   if (!customerId) return [];
 
-  if (mockDataStore.isEnabled()) {
-    const list = mockDataStore.getTransactions(customerId);
-    return limitCount && limitCount > 0 ? list.slice(0, limitCount) : list;
-  }
-
   const colRef = collection(db, 'customers', customerId, 'transactions');
   const querySnapshot = await getDocs(colRef);
   const transactions: Transaction[] = [];
 
   querySnapshot.forEach((docSnap) => {
-    const data = docSnap.data();
-    const rawType = (data.type || data.category || 'SALE')
-      .toString()
-      .toUpperCase();
-    let type: Transaction['type'] = 'SALE';
-    if (rawType.includes('SERVICE')) type = 'SERVICE';
-    else if (rawType.includes('PAYMENT')) type = 'PAYMENT';
-    else if (rawType.includes('OPENING')) type = 'OPENING_BALANCE';
-    else if (rawType.includes('EXPENSE')) type = 'EXPENSE';
-    else if (rawType.includes('PURCHASE')) type = 'PURCHASE';
-
-    transactions.push({
-      id: docSnap.id,
-      ...data,
-      type,
-    } as Transaction);
+    transactions.push(parseTransaction(docSnap.data(), docSnap.id, customerId));
   });
 
   transactions.sort((a, b) => {
@@ -349,7 +270,7 @@ export async function updateCustomerTransactionApi(
   );
   let balance = 0;
   txSnap.forEach((d) => {
-    const t = d.data();
+    const t = parseTransaction(d.data(), d.id);
     if (t.type === 'PAYMENT') {
       balance -= Number(t.paymentAmount) || 0;
     } else {
@@ -383,7 +304,7 @@ export async function deleteCustomerTransactionApi(
   );
   let balance = 0;
   txSnap.forEach((d) => {
-    const t = d.data();
+    const t = parseTransaction(d.data(), d.id);
     if (t.type === 'PAYMENT') {
       balance -= Number(t.paymentAmount) || 0;
     } else {

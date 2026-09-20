@@ -1,44 +1,31 @@
-import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { hasPendingMonthlyRollout } from '../business/monthlyRolloutBusiness';
+import baselineHistory from '../data/monthlyRolloutHistory.json';
+import { doc, getDoc, setDoc } from '../services/dbBridge';
 import { db } from '../store/firebaseConfig';
 import { MonthlyRolloutStatus, MonthlyTradingSummary } from '../types';
 import { parseTransactionDate } from '../utils/formatters';
-
-import baselineHistory from '../data/monthlyRolloutHistory.json';
+import { parseMonthlyRolloutStatus } from '../utils/parsers';
 
 export const DEFAULT_ROLLED_OUT_MONTH = '2026-08';
 
 /**
- * Fetch the latest monthly rollout status metadata from Firestore
+ * Fetch the latest monthly rollout status metadata from DB (or local IndexedDB)
  */
 export async function fetchMonthlyRolloutStatusApi(): Promise<MonthlyRolloutStatus> {
   try {
     const docRef = doc(db, 'metadata', 'monthly_rollout_status');
     const snap = await getDoc(docRef);
     if (snap.exists()) {
-      const data = snap.data();
-      return {
-        lastRolledOutMonth: data.lastRolledOutMonth || DEFAULT_ROLLED_OUT_MONTH,
-        lastRolledOutAt: data.lastRolledOutAt,
-        history:
-          data.history && data.history.length > 0
-            ? data.history
-            : (baselineHistory.history as any),
-      };
+      return parseMonthlyRolloutStatus(snap.data(), DEFAULT_ROLLED_OUT_MONTH);
     }
   } catch (err) {
     console.warn('Error fetching monthly rollout status metadata:', err);
   }
-  return {
-    lastRolledOutMonth:
-      baselineHistory.lastRolledOutMonth || DEFAULT_ROLLED_OUT_MONTH,
-    lastRolledOutAt: baselineHistory.lastRolledOutAt,
-    history: baselineHistory.history as any,
-  };
+  return parseMonthlyRolloutStatus(baselineHistory, DEFAULT_ROLLED_OUT_MONTH);
 }
 
 /**
- * Perform monthly rollout for target month and save metadata in Firestore
+ * Perform monthly rollout for target month and save metadata in DB
  */
 export async function rolloutMonthApi(
   targetMonth: string,
@@ -93,10 +80,6 @@ export function getNextMonthString(monthStr: string): string {
 
 /**
  * Check whether a transaction date is locked because prior monthly rollouts are unclosed.
- *
- * @param date - The transaction date (string, timestamp, or Date)
- * @param rolloutStatus - Current MonthlyRolloutStatus
- * @returns boolean - true if locked, false if allowed
  */
 export function isTransactionMonthLocked(
   date: any,

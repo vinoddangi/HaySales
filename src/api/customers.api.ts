@@ -4,30 +4,20 @@ import {
   getDoc,
   getDocs,
   updateDoc,
-} from 'firebase/firestore';
-import { mockDataStore } from '../mock/mockDataStore';
+} from '../services/dbBridge';
 import { db } from '../store/firebaseConfig';
 import { Customer } from '../types';
+import { parseCustomer } from '../utils/parsers';
 
 /**
- * Fetch all customers from Firestore (or mock store if mock mode enabled)
+ * Fetch all customers from DB
  */
 export async function fetchCustomersApi(): Promise<Customer[]> {
-  if (mockDataStore.isEnabled()) {
-    return mockDataStore.getCustomers();
-  }
   const querySnapshot = await getDocs(collection(db, 'customers'));
   const customers: Customer[] = [];
 
   querySnapshot.forEach((docSnap) => {
-    const data = docSnap.data();
-    customers.push({
-      id: docSnap.id,
-      name: ((data.name || data.Name || '') as string).trim(),
-      mobile: (data.mobile || data.Mobile) as string | undefined,
-      creditLimit: (data.creditLimit as number) || 35000,
-      outstandingAmount: (data.outstandingAmount as number) || 0,
-    });
+    customers.push(parseCustomer(docSnap.data(), docSnap.id));
   });
 
   customers.sort((a, b) =>
@@ -43,22 +33,11 @@ export async function fetchCustomersApi(): Promise<Customer[]> {
 export async function fetchCustomerByIdApi(
   customerId: string,
 ): Promise<Customer | null> {
-  if (mockDataStore.isEnabled()) {
-    const cust = mockDataStore.getCustomers().find((c) => c.id === customerId);
-    return cust || null;
-  }
   const docRef = doc(db, 'customers', customerId);
   const docSnap = await getDoc(docRef);
   if (!docSnap.exists()) return null;
 
-  const data = docSnap.data();
-  return {
-    id: docSnap.id,
-    name: ((data.name || data.Name || '') as string).trim(),
-    mobile: (data.mobile || data.Mobile) as string | undefined,
-    creditLimit: (data.creditLimit as number) || 35000,
-    outstandingAmount: (data.outstandingAmount as number) || 0,
-  };
+  return parseCustomer(docSnap.data(), docSnap.id);
 }
 
 /**

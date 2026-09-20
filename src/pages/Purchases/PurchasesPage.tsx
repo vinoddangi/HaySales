@@ -141,6 +141,7 @@ export const PurchasesPage: React.FC = () => {
   const handleExpenseSubmit = async (data: {
     expenseCategory: ExpenseCategoryType;
     amount: number;
+    cashPaid: number;
     vendorName?: string;
     note?: string;
     date: string;
@@ -151,6 +152,7 @@ export const PurchasesPage: React.FC = () => {
         category: 'Expense',
         expenseCategory: data.expenseCategory,
         amount: data.amount,
+        cashPaid: data.cashPaid,
         vendorName: data.vendorName,
         note: data.note,
         date: data.date,

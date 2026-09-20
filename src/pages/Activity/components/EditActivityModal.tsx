@@ -119,6 +119,7 @@ export const EditActivityModal: React.FC<EditActivityModalProps> = ({
     } else if (isExpense) {
       updated.expenseCategory = expenseCategory;
       updated.amount = amount;
+      updated.cashPaid = cashPaid;
       updated.vendorName = vendorName.trim() || undefined;
     }
 
@@ -248,7 +249,7 @@ export const EditActivityModal: React.FC<EditActivityModalProps> = ({
             </Grid>
           )}
 
-          {(isSale || isPurchase) && (
+          {(isSale || isPurchase || isExpense) && (
             <Input
               label="Cash Paid (₹)"
               type="number"
