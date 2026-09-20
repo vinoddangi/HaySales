@@ -198,7 +198,7 @@ export async function clearStore(storeName: StoreName): Promise<void> {
 }
 
 export const SNAPSHOT_VERSION_KEY = 'haysales_snapshot_version';
-export const CURRENT_SNAPSHOT_VERSION = '2026_09_20_v5';
+export const CURRENT_SNAPSHOT_VERSION = '2026_09_20_v6';
 
 /**
  * Check if the database has already been initialized / seeded with the latest snapshot

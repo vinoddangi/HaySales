@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-20T17:09:18.942Z",
+  "generatedAt": "2026-09-20T17:11:47.997Z",
   "customers": [
     {
       "id": "1",
@@ -10151,6 +10151,19 @@
       "remainingDue": 17625,
       "discount": 0,
       "note": "Sale recorded from Aug Grass 2026 (Row 49)"
+    },
+    {
+      "id": "service_2026_05_s198",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-05-31T12:00:00.000Z",
+      "type": "SERVICE",
+      "category": "Services",
+      "item": "Pickup",
+      "amount": 80000,
+      "cashPaid": 80000,
+      "remainingDue": 0,
+      "note": "Pickup Service Income from May Grass 2026"
     },
     {
       "id": "10_2026_01",

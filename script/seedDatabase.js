@@ -73,31 +73,47 @@ customers.forEach((c) => {
   custMap[c.id] = c.name;
 });
 
-// 2. Sales & Services -> Transactions
+// 2. Sales -> Transactions
 const salesCsv = fs.readFileSync(path.join(BACKUP_DIR, 'sales.csv'), 'utf8');
 const rawSales = parseCsv(salesCsv);
-const salesTransactions = rawSales.map((s, idx) => {
-  const isService = s.TransactionID && s.TransactionID.startsWith('service_');
-  return {
-    id: s.TransactionID || `sale_${idx + 1}`,
-    customerId: String(s.CustomerID || '307'),
-    customerName:
-      s.CustomerName || custMap[String(s.CustomerID)] || 'Retail Customer',
-    date: s.Date || new Date().toISOString(),
-    type: isService ? 'SERVICE' : 'SALE',
-    item: s.Item || (isService ? 'Pickup' : 'Others'),
-    weightKg: Number(s.WeightKg) || 0,
-    rate: Number(s.Rate) || 0,
-    amount: Number(s.TotalAmount) || 0,
-    cashPaid: Number(s.CashPaid) || 0,
-    remainingDue: Number(s.RemainingDue) || 0,
-    discount: Number(s.Discount) || 0,
-    note: s.Notes || '',
-    category: isService ? 'Services' : undefined,
-  };
-});
+const salesTransactions = rawSales.map((s, idx) => ({
+  id: s.TransactionID || `sale_${idx + 1}`,
+  customerId: String(s.CustomerID || '307'),
+  customerName: s.CustomerName || custMap[String(s.CustomerID)] || 'Retail',
+  date: s.Date || new Date().toISOString(),
+  type: 'SALE',
+  item: s.Item || 'Others',
+  weightKg: Number(s.WeightKg) || 0,
+  rate: Number(s.Rate) || 0,
+  amount: Number(s.TotalAmount) || 0,
+  cashPaid: Number(s.CashPaid) || 0,
+  remainingDue: Number(s.RemainingDue) || 0,
+  discount: Number(s.Discount) || 0,
+  note: s.Notes || '',
+}));
 
-// 3. Payments -> Transactions
+// 3. Services -> Transactions (e.g. Pickup Services for Retail)
+const servicesCsvPath = path.join(BACKUP_DIR, 'services.csv');
+let serviceTransactions = [];
+if (fs.existsSync(servicesCsvPath)) {
+  const servicesCsv = fs.readFileSync(servicesCsvPath, 'utf8');
+  const rawServices = parseCsv(servicesCsv);
+  serviceTransactions = rawServices.map((sv, idx) => ({
+    id: sv.ServiceID || `service_${idx + 1}`,
+    customerId: String(sv.CustomerID || '307'),
+    customerName: sv.CustomerName || custMap[String(sv.CustomerID)] || 'Retail',
+    date: sv.Date || new Date().toISOString(),
+    type: 'SERVICE',
+    category: 'Services',
+    item: sv.Item || 'Pickup',
+    amount: Number(sv.Amount) || 0,
+    cashPaid: Number(sv.Amount) || 0,
+    remainingDue: 0,
+    note: sv.Notes || '',
+  }));
+}
+
+// 4. Payments -> Transactions
 const paymentsCsv = fs.readFileSync(
   path.join(BACKUP_DIR, 'payments.csv'),
   'utf8',
@@ -116,7 +132,11 @@ const paymentTransactions = rawPayments.map((p, idx) => ({
   note: p.Notes || '',
 }));
 
-const allTransactions = [...salesTransactions, ...paymentTransactions];
+const allTransactions = [
+  ...salesTransactions,
+  ...serviceTransactions,
+  ...paymentTransactions,
+];
 
 // 4. Purchases (including merged Expenses)
 const purchasesCsv = fs.readFileSync(
