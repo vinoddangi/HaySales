@@ -10,6 +10,7 @@ import {
   useGetAllTransactionsQuery,
   useGetBackupStatusQuery,
   useGetCustomersQuery,
+  useGetMonthlyRolloutStatusQuery,
   useGetTransactionsQuery,
 } from '../../store/slices/customersApi';
 import { showSnackbar } from '../../store/slices/uiSlice';
@@ -25,6 +26,7 @@ export const LedgerPage: React.FC = () => {
     useGetCustomersQuery();
   const { data: allTransactions = [] } = useGetAllTransactionsQuery();
   const { data: backupStatus } = useGetBackupStatusQuery();
+  const { data: rolloutStatus } = useGetMonthlyRolloutStatusQuery();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [filterMode, setFilterMode] = useState<'all' | 'dueOnly'>('dueOnly');
@@ -58,15 +60,19 @@ export const LedgerPage: React.FC = () => {
     (c) => (c.outstandingAmount || 0) > 0,
   ).length;
 
-  // Filter list
-  const filteredCustomers = customers.filter((c) => {
-    const matchesSearch = c.name
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-    const matchesDueFilter =
-      filterMode === 'all' || (c.outstandingAmount || 0) > 0;
-    return matchesSearch && matchesDueFilter;
-  });
+  // Filter and sort list ascending by name (A-Z)
+  const filteredCustomers = customers
+    .filter((c) => {
+      const matchesSearch = c.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+      const matchesDueFilter =
+        filterMode === 'all' || (c.outstandingAmount || 0) > 0;
+      return matchesSearch && matchesDueFilter;
+    })
+    .sort((a, b) =>
+      a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }),
+    );
 
   const handleSelectCustomer = (customerId: string) => {
     setSelectedCustId(customerId);
@@ -205,6 +211,7 @@ export const LedgerPage: React.FC = () => {
         isLoadingTransactions={loadingTx}
         isPaying={isPaying}
         hasPendingBackup={hasPendingBackup}
+        rolloutStatus={rolloutStatus}
         currentYear={currentYear}
         onClose={handleCloseDrawer}
         onPay={handlePay}

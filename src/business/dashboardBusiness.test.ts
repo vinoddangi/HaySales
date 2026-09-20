@@ -50,6 +50,14 @@ describe('dashboardBusiness', () => {
       date: '2026-09-12T10:00:00Z',
     },
     {
+      id: 'tx-6',
+      type: 'SERVICE',
+      item: 'Pickup',
+      amount: 2000,
+      cashPaid: 2000,
+      date: '2026-09-14T10:00:00Z',
+    },
+    {
       id: 'tx-old',
       type: 'SALE',
       item: 'Tuvar',
@@ -60,23 +68,23 @@ describe('dashboardBusiness', () => {
     },
   ];
 
-  it('filters transactions accurately by currentMonth', () => {
+  it('filters transactions accurately by month', () => {
     const refDate = new Date('2026-09-19T00:00:00Z');
     const filtered = filterTransactionsByPeriod(
       mockTransactions,
-      'currentMonth',
-      8,
+      'month',
+      8, // September
       refDate,
     );
-    expect(filtered.length).toBe(5);
+    expect(filtered.length).toBe(6);
     expect(filtered.find((t) => t.id === 'tx-old')).toBeUndefined();
   });
 
-  it('filters transactions by customMonth', () => {
+  it('filters transactions by custom selected month', () => {
     const refDate = new Date('2026-09-19T00:00:00Z');
     const filtered = filterTransactionsByPeriod(
       mockTransactions,
-      'customMonth',
+      'month',
       4, // May
       refDate,
     );
@@ -85,7 +93,7 @@ describe('dashboardBusiness', () => {
   });
 
   it('calculates dashboard metrics properly', () => {
-    const septemberTx = mockTransactions.slice(0, 5);
+    const septemberTx = mockTransactions.slice(0, 6);
     const metrics = calculateDashboardMetrics(septemberTx);
 
     expect(metrics.totalSalesAmount).toBe(11000);
@@ -93,18 +101,26 @@ describe('dashboardBusiness', () => {
     expect(metrics.salesCount).toBe(2);
     expect(metrics.salesOnCash).toBe(9000);
     expect(metrics.salesOnCredit).toBe(2000);
+    expect(metrics.servicesReceived).toBe(2000);
+    expect(metrics.servicesCount).toBe(1);
     expect(metrics.totalPurchaseAmount).toBe(15000);
     expect(metrics.totalPurchaseWeightKg).toBe(500);
     expect(metrics.purchasesCount).toBe(1);
     expect(metrics.totalExpenseAmount).toBe(1000);
     expect(metrics.paymentsReceived).toBe(1500);
-    expect(metrics.totalCashIn).toBe(10500);
-    expect(metrics.netCashflow).toBe(10500 - (15000 + 1000));
+    expect(metrics.paymentsCount).toBe(1);
+    expect(metrics.totalCashIn).toBe(12500); // 9000 cash sales + 2000 service + 1500 payments
+    expect(metrics.totalCashOut).toBe(16000); // 15000 purchase cash + 1000 expense cash
+    expect(metrics.purchaseOnCash).toBe(15000);
+    expect(metrics.expensesOnCash).toBe(1000);
+    expect(metrics.netCashflow).toBe(12500 - 16000); // -3500
   });
 
   it('calculates item breakdown properly', () => {
-    const septemberTx = mockTransactions.slice(0, 5);
-    const breakdowns = calculateItemBreakdowns(mockTransactions, septemberTx);
+    const septemberTx = mockTransactions.slice(0, 6);
+    const breakdowns = calculateItemBreakdowns(mockTransactions, septemberTx, {
+      includeOpeningStock: false,
+    });
 
     const chana = breakdowns.find((b) => b.item === 'Chana');
     expect(chana).toBeDefined();
@@ -112,5 +128,48 @@ describe('dashboardBusiness', () => {
     expect(chana?.weightKg).toBe(100);
     expect(chana?.stockKg).toBe(400); // 500 purchased - 100 sold
     expect(chana?.avgBuyRate).toBe(30); // 15000 / 500
+
+    // Ensure SERVICE (Pickup) is excluded from Crop / Item Breakdown
+    const serviceItem = breakdowns.find((b) => b.item === 'Pickup');
+    expect(serviceItem).toBeUndefined();
+  });
+
+  it('calculates item breakdown with opening stock and current month purchases', () => {
+    // January 2026 transactions: baseline opening stock 13528 kg @ 141097.04 (rate ~10.43)
+    const janTx: Transaction[] = [
+      {
+        id: 'tx-jan-p',
+        type: 'PURCHASE',
+        item: 'Others',
+        weightKg: 10000,
+        amount: 90000, // 9.0/kg
+        date: '2026-01-10T10:00:00Z',
+      },
+      {
+        id: 'tx-jan-s',
+        type: 'SALE',
+        item: 'Others',
+        weightKg: 5000,
+        amount: 60000, // 12.0/kg
+        date: '2026-01-15T10:00:00Z',
+      },
+    ];
+
+    const breakdowns = calculateItemBreakdowns(janTx, janTx, {
+      mode: 'month',
+      selectedMonth: 0,
+      year: 2026,
+    });
+
+    const others = breakdowns.find((b) => b.item === 'Others');
+    expect(others).toBeDefined();
+    expect(others?.amount).toBe(60000);
+    expect(others?.weightKg).toBe(5000);
+    // Total Available Stock = 13528 (opening) + 10000 (purchase) = 23528 kg
+    // Remaining Stock = 23528 - 5000 (sold) = 18528 kg
+    expect(others?.stockKg).toBe(18528);
+    // Total Amount = 141097.04 (opening) + 90000 (purchase) = 231097.04
+    // Avg Buy Rate = 231097.04 / 23528 = 9.822...
+    expect(others?.avgBuyRate).toBeCloseTo(231097.04 / 23528, 2);
   });
 });

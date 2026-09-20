@@ -13,19 +13,37 @@ import {
   fetchBackupStatusApi,
   fetchCustomersApi,
   fetchCustomerTransactionsApi,
+  fetchMonthlyRolloutStatusApi,
   fetchPurchasesApi,
+  rolloutMonthApi,
   updateCustomerTransactionApi,
   updatePurchaseApi,
 } from '../../api';
-import { Customer, Transaction } from '../../types';
+import {
+  Customer,
+  MonthlyRolloutStatus,
+  MonthlyTradingSummary,
+  Transaction,
+} from '../../types';
 
 export type { BackupResult, BackupStatus } from '../../api';
-export type { Customer, Transaction } from '../../types';
+export type {
+  Customer,
+  MonthlyRolloutStatus,
+  MonthlyTradingSummary,
+  Transaction,
+} from '../../types';
 
 export const customersApi = createApi({
   reducerPath: 'customersApi',
   baseQuery: fakeBaseQuery(),
-  tagTypes: ['Customers', 'Transactions', 'Purchases', 'BackupStatus'],
+  tagTypes: [
+    'Customers',
+    'Transactions',
+    'Purchases',
+    'BackupStatus',
+    'MonthlyRolloutStatus',
+  ],
   endpoints: (builder) => ({
     // 0. Query: Fetch all transactions across all customers & purchases for dashboard metrics & activity
     getAllTransactions: builder.query<Transaction[], void>({
@@ -233,6 +251,23 @@ export const customersApi = createApi({
       invalidatesTags: ['Purchases', 'Transactions'],
     }),
 
+    // 0.2 Query: Fetch monthly rollout status metadata
+    getMonthlyRolloutStatus: builder.query<MonthlyRolloutStatus, void>({
+      async queryFn() {
+        try {
+          const status = await fetchMonthlyRolloutStatusApi();
+          return { data: status };
+        } catch (error) {
+          return {
+            error:
+              (error as Error).message ||
+              'Failed to fetch monthly rollout status',
+          };
+        }
+      },
+      providesTags: ['MonthlyRolloutStatus'],
+    }),
+
     // 10. Mutation: Backup/Rollout transactions by year to Transactions-(YYYY), aggregate balance, and create opening balance
     backupYearlyTransactions: builder.mutation<
       BackupResult,
@@ -255,6 +290,24 @@ export const customersApi = createApi({
         'BackupStatus',
       ],
     }),
+
+    // 11. Mutation: Rollout month and update metadata
+    rolloutMonth: builder.mutation<
+      MonthlyRolloutStatus,
+      { month: string; summary?: MonthlyTradingSummary }
+    >({
+      async queryFn({ month, summary }) {
+        try {
+          const result = await rolloutMonthApi(month, summary);
+          return { data: result };
+        } catch (error) {
+          return {
+            error: (error as Error).message || 'Failed to rollout month',
+          };
+        }
+      },
+      invalidatesTags: ['MonthlyRolloutStatus'],
+    }),
   }),
 });
 
@@ -262,6 +315,7 @@ export const customersApi = createApi({
 export const {
   useGetAllTransactionsQuery,
   useGetBackupStatusQuery,
+  useGetMonthlyRolloutStatusQuery,
   useGetCustomersQuery,
   useGetTransactionsQuery,
   useGetPurchasesQuery,
@@ -272,4 +326,5 @@ export const {
   useUpdatePurchaseTransactionMutation,
   useDeletePurchaseTransactionMutation,
   useBackupYearlyTransactionsMutation,
+  useRolloutMonthMutation,
 } = customersApi;

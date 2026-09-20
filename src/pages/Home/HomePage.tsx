@@ -22,6 +22,7 @@ import {
 } from '../../store/slices/customersApi';
 import { DashboardBreakdown } from './components/DashboardBreakdown';
 import { DashboardMetricCards } from './components/DashboardMetricCards';
+import { RecentTransactionsWidget } from './components/RecentTransactionsWidget';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -29,9 +30,8 @@ export const HomePage: React.FC = () => {
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth();
 
-  // Period Filter States
-  const [filterMode, setFilterMode] =
-    useState<PeriodFilterMode>('currentMonth');
+  // Period Filter States: 'month' (default current month) or 'ytd'
+  const [filterMode, setFilterMode] = useState<PeriodFilterMode>('month');
   const [selectedMonth, setSelectedMonth] = useState<number>(currentMonth);
 
   // Fetch all transactions across customers & purchases
@@ -66,9 +66,20 @@ export const HomePage: React.FC = () => {
     const computedBreakdowns = calculateItemBreakdowns(
       allTransactions,
       filteredTransactions,
+      {
+        mode: filterMode,
+        selectedMonth,
+        year: currentYear,
+      },
     );
     return { metrics: computedMetrics, itemBreakdown: computedBreakdowns };
-  }, [allTransactions, filteredTransactions]);
+  }, [
+    allTransactions,
+    filteredTransactions,
+    filterMode,
+    selectedMonth,
+    currentYear,
+  ]);
 
   const getPeriodLabel = () => {
     if (filterMode === 'ytd') {
@@ -114,6 +125,12 @@ export const HomePage: React.FC = () => {
         totalSales={metrics.totalSalesAmount}
         salesOnCash={metrics.salesOnCash}
         salesOnCredit={metrics.salesOnCredit}
+      />
+
+      {/* Recent Activity & Payments Stream */}
+      <RecentTransactionsWidget
+        transactions={filteredTransactions}
+        onViewAll={() => navigate('/activity')}
       />
 
       {/* Quick New Sale Floating Action Button */}

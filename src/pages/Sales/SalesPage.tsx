@@ -10,6 +10,7 @@ import {
   useGetAllTransactionsQuery,
   useGetBackupStatusQuery,
   useGetCustomersQuery,
+  useGetMonthlyRolloutStatusQuery,
 } from '../../store/slices/customersApi';
 import { showSnackbar } from '../../store/slices/uiSlice';
 import { SaleForm } from './components/SaleForm';
@@ -22,6 +23,7 @@ export const SalesPage: React.FC = () => {
   const { data: customers = [] } = useGetCustomersQuery();
   const { data: allTransactions = [] } = useGetAllTransactionsQuery();
   const { data: backupStatus } = useGetBackupStatusQuery();
+  const { data: rolloutStatus } = useGetMonthlyRolloutStatusQuery();
   const [addTransaction, { isLoading: isSaving }] = useAddTransactionMutation();
 
   const [selectedCustId, setSelectedCustId] = useState<string | null>(null);
@@ -147,6 +149,7 @@ export const SalesPage: React.FC = () => {
               isCreditAllowed={isCreditAllowed}
               isSaving={isSaving}
               hasPendingBackup={hasPendingBackup}
+              rolloutStatus={rolloutStatus}
               currentYear={currentYear}
               onSubmit={handleSaleSubmit}
             />
@@ -156,6 +159,7 @@ export const SalesPage: React.FC = () => {
               isCreditAllowed={isCreditAllowed}
               isSaving={isSaving}
               hasPendingBackup={hasPendingBackup}
+              rolloutStatus={rolloutStatus}
               currentYear={currentYear}
               onSubmit={handleServiceSubmit}
             />

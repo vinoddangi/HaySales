@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
+import { isTransactionMonthLocked } from '../../../api';
 import { calculateSaleTotals } from '../../../business/salesBusiness';
 import {
   BackupWarningBanner,
   Button,
   Input,
+  RolloutWarningBanner,
   SelectField,
   SummaryBox,
   SummaryRow,
   Text,
 } from '../../../components/common';
 import { Flex, Grid } from '../../../components/layout';
+import { MonthlyRolloutStatus } from '../../../types';
 import { formatRupee, SERVICE_ITEMS } from '../../../utils/formatters';
 
 export interface ServiceFormProps {
@@ -17,6 +20,7 @@ export interface ServiceFormProps {
   isCreditAllowed: boolean;
   isSaving: boolean;
   hasPendingBackup?: boolean;
+  rolloutStatus?: MonthlyRolloutStatus | null;
   currentYear?: number;
   onSubmit: (_serviceData: {
     item: string;
@@ -37,6 +41,7 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
   isCreditAllowed,
   isSaving,
   hasPendingBackup = false,
+  rolloutStatus,
   currentYear = new Date().getFullYear(),
   onSubmit,
 }) => {
@@ -52,13 +57,15 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
   const selectedYear = new Date(date).getFullYear();
   const isCYSelected = !isNaN(selectedYear) && selectedYear >= currentYear;
   const isBlockedByBackup = hasPendingBackup && isCYSelected;
+  const isBlockedByRollout = isTransactionMonthLocked(date, rolloutStatus);
+  const isFormBlocked = isBlockedByBackup || isBlockedByRollout;
 
   const effectiveCashPaid = allCash ? amount : cashPaid;
   const { remainingDue } = calculateSaleTotals(amount, 0, effectiveCashPaid);
   const newOutstandingDue = outstandingDue + remainingDue;
 
   const handleSubmit = async () => {
-    if (!selectedItem || amount <= 0 || isBlockedByBackup) return;
+    if (!selectedItem || amount <= 0 || isFormBlocked) return;
     await onSubmit({
       item: selectedItem,
       amount,
@@ -79,6 +86,14 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
       {/* Banner if CY selected and previous year backup is pending */}
       {isBlockedByBackup && (
         <BackupWarningBanner currentYear={currentYear} isFormBanner />
+      )}
+
+      {/* Banner if month requires prior rollout */}
+      {isBlockedByRollout && (
+        <RolloutWarningBanner
+          lastRolledOutMonth={rolloutStatus?.lastRolledOutMonth}
+          isFormBanner
+        />
       )}
 
       <Grid columns={2} gap="md" fullWidth>
@@ -163,13 +178,15 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
         variant="filled"
         className="w-full"
         onClick={handleSubmit}
-        disabled={isSaving || !selectedItem || amount <= 0 || isBlockedByBackup}
+        disabled={isSaving || !selectedItem || amount <= 0 || isFormBlocked}
       >
         {isSaving
           ? 'Processing...'
           : isBlockedByBackup
             ? `Backup Required for ${currentYear}`
-            : 'Record Service'}
+            : isBlockedByRollout
+              ? 'Monthly Rollout Required'
+              : 'Record Service'}
       </Button>
     </Flex>
   );

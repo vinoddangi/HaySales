@@ -15,39 +15,6 @@ const serviceAccount = JSON.parse(readFileSync(serviceAccountPath, 'utf-8'));
 initializeApp({ credential: cert(serviceAccount) });
 const db = getFirestore();
 
-async function deleteCollection(collectionPath, batchSize = 250) {
-  const collectionRef = db.collection(collectionPath);
-  const query = collectionRef.limit(batchSize);
-
-  return new Promise((resolve, reject) => {
-    deleteQueryBatch(query, resolve, reject);
-  });
-}
-
-async function deleteQueryBatch(query, resolve, reject) {
-  try {
-    const snapshot = await query.get();
-
-    const batchSize = snapshot.size;
-    if (batchSize === 0) {
-      resolve();
-      return;
-    }
-
-    const batch = db.batch();
-    snapshot.docs.forEach((doc) => {
-      batch.delete(doc.ref);
-    });
-    await batch.commit();
-
-    process.nextTick(() => {
-      deleteQueryBatch(query, resolve, reject);
-    });
-  } catch (err) {
-    reject(err);
-  }
-}
-
 async function deleteDocumentRecursively(docRef) {
   // 1. First delete all subcollections
   const subCollections = await docRef.listCollections();
@@ -93,15 +60,27 @@ async function cleanAllRecords() {
   }
 
   // 2. Extra safeguard for common collections if not returned in listCollections
-  for (const colName of ['customers', 'purchases', 'metadata']) {
-    const docRefs = await db.collection(colName).listDocuments();
-    for (const docRef of docRefs) {
-      await deleteDocumentRecursively(docRef);
+  const explicitCollections = [
+    'customers',
+    'purchases',
+    'metadata',
+    'monthly_periods',
+    'yearly_periods',
+  ];
+
+  for (const colName of explicitCollections) {
+    try {
+      const docRefs = await db.collection(colName).listDocuments();
+      for (const docRef of docRefs) {
+        await deleteDocumentRecursively(docRef);
+      }
+    } catch {
+      // Ignore if collection does not exist
     }
   }
 
   console.log(
-    '\n✨ All Firestore root documents, phantom parent paths, subcollections, and metadata have been completely wiped!',
+    '\n✨ All Firestore root documents, phantom parent paths, subcollections, monthly periods, and metadata have been completely wiped!',
   );
 }
 

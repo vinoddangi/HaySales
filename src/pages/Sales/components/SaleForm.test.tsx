@@ -101,4 +101,27 @@ describe('SaleForm component', () => {
       screen.getByRole('button', { name: /process sale/i }),
     ).toBeInTheDocument();
   });
+
+  it('shows rollout warning banner and blocks submission when date is in unrolled month', () => {
+    const handleSubmit = vi.fn();
+    const { container } = render(
+      <SaleForm
+        outstandingDue={0}
+        isCreditAllowed={true}
+        isSaving={false}
+        hasPendingBackup={false}
+        rolloutStatus={{ lastRolledOutMonth: '2026-08' }}
+        onSubmit={handleSubmit}
+      />,
+    );
+
+    const dateInput = container.querySelector('input[type="date"]')!;
+    fireEvent.change(dateInput, { target: { value: '2026-11-15' } });
+
+    const rolloutMessages = screen.getAllByText(/Monthly Rollout Required/i);
+    expect(rolloutMessages.length).toBeGreaterThanOrEqual(1);
+    expect(
+      screen.getByRole('button', { name: /monthly rollout required/i }),
+    ).toBeDisabled();
+  });
 });

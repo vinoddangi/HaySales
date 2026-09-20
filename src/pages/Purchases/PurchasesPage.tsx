@@ -9,13 +9,19 @@ import {
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { hasPendingPreviousYearRecords } from '../../api';
+import { filterTransactionsByPeriod } from '../../business/dashboardBusiness';
 import { Card } from '../../components/common/Card';
 import { PageContainer } from '../../components/common/PageContainer';
+import {
+  PeriodFilterBar,
+  PeriodFilterMode,
+} from '../../components/common/PeriodFilterBar';
 import { useAppDispatch } from '../../store/hooks';
 import {
   useAddPurchaseTransactionMutation,
   useGetAllTransactionsQuery,
   useGetBackupStatusQuery,
+  useGetMonthlyRolloutStatusQuery,
 } from '../../store/slices/customersApi';
 import { showSnackbar } from '../../store/slices/uiSlice';
 import { ExpenseCategoryType } from '../../types';
@@ -27,13 +33,21 @@ import { PurchaseForm } from './components/PurchaseForm';
 export const PurchasesPage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const currentYear = new Date().getFullYear();
+  const currentDate = useMemo(() => new Date(), []);
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
+
   const [activeCategory, setActiveCategory] = useState<'PURCHASE' | 'EXPENSE'>(
     'PURCHASE',
   );
 
+  // Period Filter States for Purchases: 'month' (default current month) or 'ytd'
+  const [filterMode, setFilterMode] = useState<PeriodFilterMode>('month');
+  const [selectedMonth, setSelectedMonth] = useState<number>(currentMonth);
+
   const { data: allTransactions = [] } = useGetAllTransactionsQuery();
   const { data: backupStatus } = useGetBackupStatusQuery();
+  const { data: rolloutStatus } = useGetMonthlyRolloutStatusQuery();
   const [addPurchaseTransaction, { isLoading: isSaving }] =
     useAddPurchaseTransactionMutation();
 
@@ -42,6 +56,16 @@ export const PurchasesPage: React.FC = () => {
     currentYear,
     backupStatus,
   );
+
+  // Filter transactions based on active period
+  const filteredTransactions = useMemo(() => {
+    return filterTransactionsByPeriod(
+      allTransactions,
+      filterMode,
+      selectedMonth,
+      currentDate,
+    );
+  }, [allTransactions, filterMode, selectedMonth, currentDate]);
 
   // Summary Metrics: Stock, Avg Buying, Expenses
   const {
@@ -57,7 +81,8 @@ export const PurchasesPage: React.FC = () => {
     let eAmt = 0;
     let sWt = 0;
 
-    allTransactions.forEach((tx) => {
+    // Calculate totals based on filtered period
+    filteredTransactions.forEach((tx) => {
       if (tx.type === 'PURCHASE') {
         pAmt += Number(tx.amount) || 0;
         pWt += Number(tx.weightKg) || 0;
@@ -79,7 +104,7 @@ export const PurchasesPage: React.FC = () => {
       currentStockKg: stock,
       avgBuyRate: avgRate,
     };
-  }, [allTransactions]);
+  }, [filteredTransactions]);
 
   const handlePurchaseSubmit = async (data: {
     item: string;
@@ -152,6 +177,14 @@ export const PurchasesPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Period Filter Bar */}
+      <PeriodFilterBar
+        filterMode={filterMode}
+        selectedMonth={selectedMonth}
+        onFilterModeChange={setFilterMode}
+        onMonthChange={setSelectedMonth}
+      />
+
       {/* 1. Header Overview Metrics: Purchases, Expenses, Current Stock, Avg Buying */}
       <div className="grid grid-cols-2 gap-3">
         {/* Stock Purchases */}
@@ -223,66 +256,66 @@ export const PurchasesPage: React.FC = () => {
             <Coins className="h-4 w-4 text-emerald-600" />
           </div>
           <div className="text-lg font-black text-m3-on-surface">
-            {avgBuyRate > 0 ? `₹${avgBuyRate.toFixed(2)}` : '₹0.00'}
+            {formatRupee(avgBuyRate)}
             <span className="text-xs font-normal text-m3-on-surface-variant">
               /kg
             </span>
           </div>
           <div className="text-[10px] font-medium text-m3-on-surface-variant">
-            Procurement cost
+            Weighted Average Cost
           </div>
         </Card>
       </div>
 
-      {/* 2. Category Switcher Tabs & Entry Form */}
-      <Card variant="outlined" className="space-y-4 p-4">
-        <div className="flex rounded-xl bg-m3-surface-container-high p-1">
-          <button
-            type="button"
-            onClick={() => setActiveCategory('PURCHASE')}
-            className={cn(
-              'flex flex-1 items-center justify-center gap-1.5 rounded-lg py-2 text-xs font-bold transition-all',
-              activeCategory === 'PURCHASE'
-                ? 'shadow-xs bg-m3-primary text-m3-on-primary'
-                : 'text-m3-on-surface-variant hover:text-m3-on-surface',
-            )}
-          >
-            <ArrowDownLeft className="h-3.5 w-3.5" />
-            <span>Stock Purchase</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveCategory('EXPENSE')}
-            className={cn(
-              'flex flex-1 items-center justify-center gap-1.5 rounded-lg py-2 text-xs font-bold transition-all',
-              activeCategory === 'EXPENSE'
-                ? 'shadow-xs bg-rose-600 text-white'
-                : 'text-m3-on-surface-variant hover:text-m3-on-surface',
-            )}
-          >
-            <DollarSign className="h-3.5 w-3.5" />
-            <span>Farm Expense</span>
-          </button>
-        </div>
+      {/* 2. Type Selector Tabs: Stock Purchase vs Farm Expense */}
+      <div className="flex rounded-xl bg-m3-surface-container p-1 shadow-inner">
+        <button
+          type="button"
+          onClick={() => setActiveCategory('PURCHASE')}
+          className={cn(
+            'flex flex-1 items-center justify-center gap-2 rounded-lg py-2.5 text-xs font-bold transition-all',
+            activeCategory === 'PURCHASE'
+              ? 'bg-m3-surface text-amber-700 shadow-sm dark:text-amber-400'
+              : 'text-m3-on-surface-variant hover:text-m3-on-surface',
+          )}
+        >
+          <DollarSign className="h-4 w-4" />
+          Stock Purchase
+        </button>
 
-        {/* 3. Active Form */}
-        {activeCategory === 'PURCHASE' ? (
-          <PurchaseForm
-            isSaving={isSaving}
-            hasPendingBackup={hasPendingBackup}
-            currentYear={currentYear}
-            onSubmit={handlePurchaseSubmit}
-          />
-        ) : (
-          <ExpenseForm
-            isSaving={isSaving}
-            hasPendingBackup={hasPendingBackup}
-            currentYear={currentYear}
-            onSubmit={handleExpenseSubmit}
-          />
-        )}
-      </Card>
+        <button
+          type="button"
+          onClick={() => setActiveCategory('EXPENSE')}
+          className={cn(
+            'flex flex-1 items-center justify-center gap-2 rounded-lg py-2.5 text-xs font-bold transition-all',
+            activeCategory === 'EXPENSE'
+              ? 'bg-m3-surface text-rose-700 shadow-sm dark:text-rose-400'
+              : 'text-m3-on-surface-variant hover:text-m3-on-surface',
+          )}
+        >
+          <ArrowDownLeft className="h-4 w-4" />
+          Farm Expense
+        </button>
+      </div>
+
+      {/* 3. Forms Container */}
+      {activeCategory === 'PURCHASE' ? (
+        <PurchaseForm
+          onSubmit={handlePurchaseSubmit}
+          isSaving={isSaving}
+          hasPendingBackup={hasPendingBackup}
+          rolloutStatus={rolloutStatus}
+          currentYear={currentYear}
+        />
+      ) : (
+        <ExpenseForm
+          onSubmit={handleExpenseSubmit}
+          isSaving={isSaving}
+          hasPendingBackup={hasPendingBackup}
+          rolloutStatus={rolloutStatus}
+          currentYear={currentYear}
+        />
+      )}
     </PageContainer>
   );
 };
-export default PurchasesPage;

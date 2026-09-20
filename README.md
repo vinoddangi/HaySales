@@ -11,7 +11,7 @@ A modern, mobile-first business and farm commerce management application built w
   - **Redux Toolkit & RTK Query** for reactive data fetching, automatic caching, and optimistic updates.
   - **Firebase Firestore** backend database for customer ledgers, sales, purchases, expenses, and archives.
 - **🎨 Material Design 3 (M3) System**:
-  - Full M3 design token palette (*Primary, Secondary, Tertiary, Surface containers 1–5, Outlines, Error states*).
+  - Full M3 design token palette (_Primary, Secondary, Tertiary, Surface containers 1–5, Outlines, Error states_).
   - Instantaneous Light & Dark mode synchronization.
 - **🌾 Farm & Agro Commerce Workflows**:
   - **Dashboard**: Real-time sales, collections, cash/credit settlement split, stock analytics, and monthly/YTD performance filtering.
@@ -43,7 +43,8 @@ HaySales/
 │   ├── backupToGoogleSheets.js               # Export Firestore data to Google Sheets
 │   ├── cleanAllRecords.js                    # Deep clean Firestore database & metadata
 │   ├── mergeCustomersFromSheets.js           # Merge & sync customers from Google Sheets
-│   └── migrateFromSheets.js                  # Initial migration from Google Sheets
+│   ├── migrateFromSheets.js                  # Initial migration from Google Sheets
+│   └── readDriveFolder.js                    # Read and list files from shared Google Drive folder
 ├── src/
 │   ├── api/                                  # Pure Firebase API modules
 │   │   ├── backup.api.ts                     # Backup status & annual archival
@@ -82,16 +83,19 @@ HaySales/
 ## 🛠️ Getting Started
 
 ### 1. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 2. Start Local Development Server
+
 ```bash
 npm run dev
 ```
 
 ### 3. Run Automated Tests & Quality Checks
+
 ```bash
 # Run Vitest test suite
 npm run test:run
