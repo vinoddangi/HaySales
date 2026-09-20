@@ -202,7 +202,25 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
                     appearance="secondary"
                     className="block"
                   >
-                    {tx.weightKg ? `${tx.weightKg} kg • ` : ''}
+                    {!isPayment &&
+                    !isOpening &&
+                    !isService &&
+                    tx.weightKg &&
+                    tx.weightKg > 0 ? (
+                      <>
+                        {tx.weightKg.toLocaleString('en-IN')} kg
+                        {tx.rate
+                          ? ` @ ₹${tx.rate}/kg`
+                          : tx.amount
+                            ? ` @ ₹${(tx.amount / tx.weightKg).toFixed(2).replace(/\.00$/, '')}/kg`
+                            : ''}
+                        {' • '}
+                      </>
+                    ) : tx.weightKg ? (
+                      `${tx.weightKg.toLocaleString('en-IN')} kg • `
+                    ) : (
+                      ''
+                    )}
                     {formatDate(tx.date)}
                   </Text>
                 </div>
