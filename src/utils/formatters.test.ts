@@ -52,11 +52,40 @@ describe('formatters utility', () => {
       expect(date?.getTime()).toBe(1773782400 * 1000);
     });
 
+    it('parses Firestore admin timestamps with _seconds', () => {
+      const adminTimestamp = { _seconds: 1773782400, _nanoseconds: 0 };
+      const date = parseTransactionDate(adminTimestamp);
+      expect(date).toBeInstanceOf(Date);
+      expect(date?.getTime()).toBe(1773782400 * 1000);
+    });
+
+    it('parses Firestore Timestamp objects with toDate()', () => {
+      const mockTimestamp = {
+        toDate: () => new Date('2026-05-15T12:00:00.000Z'),
+      };
+      const date = parseTransactionDate(mockTimestamp);
+      expect(date).toBeInstanceOf(Date);
+      expect(date?.toISOString()).toBe('2026-05-15T12:00:00.000Z');
+    });
+
     it('parses standard ISO date strings', () => {
       const isoStr = '2026-09-18T10:00:00.000Z';
       const date = parseTransactionDate(isoStr);
       expect(date).toBeInstanceOf(Date);
       expect(date?.toISOString()).toBe(isoStr);
+    });
+
+    it('parses DD/MM/YYYY and DD-MM-YYYY with time', () => {
+      const date1 = parseTransactionDate('15/05/2026');
+      expect(date1?.getDate()).toBe(15);
+      expect(date1?.getMonth()).toBe(4); // May
+      expect(date1?.getFullYear()).toBe(2026);
+
+      const date2 = parseTransactionDate('15/05/2026, 14:30:00');
+      expect(date2?.getDate()).toBe(15);
+      expect(date2?.getMonth()).toBe(4);
+      expect(date2?.getHours()).toBe(14);
+      expect(date2?.getMinutes()).toBe(30);
     });
 
     it('returns null for empty/invalid dates', () => {
@@ -68,6 +97,9 @@ describe('formatters utility', () => {
       expect(formatDate(undefined)).toBe('');
       const firestoreTimestamp = { seconds: 1773782400 };
       expect(formatDate(firestoreTimestamp)).toBeTruthy();
+      const adminTimestamp = { _seconds: 1773782400 };
+      expect(formatDate(adminTimestamp)).toBeTruthy();
+      expect(formatDate('15/05/2026')).toBeTruthy();
     });
   });
 

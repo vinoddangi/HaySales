@@ -116,6 +116,74 @@ describe('dashboardBusiness', () => {
     expect(metrics.netCashflow).toBe(12500 - 16000); // -3500
   });
 
+  it('excludes Interest from dashboard expenses calculation', () => {
+    const txWithInterest: Transaction[] = [
+      {
+        id: 'tx-exp-1',
+        type: 'EXPENSE',
+        expenseCategory: 'Fuel',
+        amount: 2000,
+        cashPaid: 2000,
+        date: '2026-09-05T10:00:00Z',
+      },
+      {
+        id: 'tx-exp-int',
+        type: 'EXPENSE',
+        expenseCategory: 'Interest',
+        amount: 7000,
+        cashPaid: 7000,
+        date: '2026-09-05T10:00:00Z',
+      },
+    ];
+
+    const metrics = calculateDashboardMetrics(txWithInterest);
+    expect(metrics.totalExpenseAmount).toBe(2000); // 7000 Interest is excluded
+    expect(metrics.expensesCount).toBe(1);
+    expect(metrics.expensesOnCash).toBe(2000);
+  });
+
+  it('filters transactions with Firestore timestamps and date objects correctly', () => {
+    const firestoreTxs: Transaction[] = [
+      {
+        id: 'tx-ts-1',
+        type: 'SERVICE',
+        item: 'Pickup',
+        amount: 80000,
+        date: { seconds: 1779970800 } as any, // May 2026
+      },
+      {
+        id: 'tx-ts-2',
+        type: 'EXPENSE',
+        expenseCategory: 'Fuel',
+        amount: 51100,
+        date: { _seconds: 1779970800 } as any, // May 2026
+      },
+      {
+        id: 'tx-ts-3',
+        type: 'EXPENSE',
+        expenseCategory: 'Fuel',
+        amount: 15000,
+        date: '15/05/2026, 10:00:00', // May 2026 string format
+      },
+    ];
+
+    const refDate = new Date('2026-09-19T00:00:00Z');
+    const filteredMay = filterTransactionsByPeriod(
+      firestoreTxs,
+      'month',
+      4,
+      refDate,
+    );
+    expect(filteredMay.length).toBe(3);
+
+    const metrics = calculateDashboardMetrics(filteredMay);
+    expect(metrics.servicesReceived).toBe(80000);
+    expect(metrics.totalExpenseAmount).toBe(66100);
+    expect(metrics.totalCashIn).toBe(80000);
+    expect(metrics.totalCashOut).toBe(66100);
+    expect(metrics.netCashflow).toBe(80000 - 66100);
+  });
+
   it('calculates item breakdown properly', () => {
     const septemberTx = mockTransactions.slice(0, 6);
     const breakdowns = calculateItemBreakdowns(mockTransactions, septemberTx, {

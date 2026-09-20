@@ -93,7 +93,9 @@ export function calculateDashboardMetrics(
   let paymentsCount = 0;
 
   filteredTransactions.forEach((tx) => {
-    if (tx.type === 'SALE') {
+    const rawType = (tx.type || tx.category || '').toString().toUpperCase();
+
+    if (rawType.includes('SALE')) {
       const amt = Number(tx.amount) || 0;
       const wt = Number(tx.weightKg) || 0;
       const cash = Number(tx.cashPaid) || 0;
@@ -107,12 +109,12 @@ export function calculateDashboardMetrics(
       salesCount += 1;
       salesOnCash += cash;
       salesOnCredit += credit;
-    } else if (tx.type === 'SERVICE') {
+    } else if (rawType.includes('SERVICE')) {
       const amt = Number(tx.amount) || 0;
       const cash = tx.cashPaid !== undefined ? Number(tx.cashPaid) || 0 : amt;
       servicesReceived += cash;
       servicesCount += 1;
-    } else if (tx.type === 'PURCHASE') {
+    } else if (rawType.includes('PURCHASE')) {
       const amt = Number(tx.amount) || 0;
       const wt = Number(tx.weightKg) || 0;
       const cash = tx.cashPaid !== undefined ? Number(tx.cashPaid) || 0 : amt;
@@ -120,13 +122,23 @@ export function calculateDashboardMetrics(
       totalPurchaseWeightKg += wt;
       purchasesCount += 1;
       purchaseOnCash += cash;
-    } else if (tx.type === 'EXPENSE') {
-      const amt = Number(tx.amount) || 0;
-      const cash = tx.cashPaid !== undefined ? Number(tx.cashPaid) || 0 : amt;
-      totalExpenseAmount += amt;
-      expensesCount += 1;
-      expensesOnCash += cash;
-    } else if (tx.type === 'PAYMENT') {
+    } else if (rawType.includes('EXPENSE')) {
+      // Exclude Interest from business operating expenses as per business rules
+      const isInterest =
+        (tx.expenseCategory || '').toLowerCase() === 'interest' ||
+        (tx.item || '').toLowerCase() === 'interest' ||
+        (tx.note &&
+          (tx.note.toLowerCase().includes('intrest') ||
+            tx.note.toLowerCase().includes('interest')));
+
+      if (!isInterest) {
+        const amt = Number(tx.amount) || 0;
+        const cash = tx.cashPaid !== undefined ? Number(tx.cashPaid) || 0 : amt;
+        totalExpenseAmount += amt;
+        expensesCount += 1;
+        expensesOnCash += cash;
+      }
+    } else if (rawType.includes('PAYMENT')) {
       paymentsReceived += Number(tx.paymentAmount) || Number(tx.amount) || 0;
       paymentsCount += 1;
     }

@@ -465,9 +465,22 @@ export async function restoreFromCsvApi(
           : 'serviceid',
     );
     const dateIdx = headers.indexOf('date');
-    const amtIdx = headers.indexOf(
-      type === 'payments' ? 'amountpaid' : 'totalamount',
-    );
+    const amtIdx =
+      headers.indexOf(
+        type === 'payments'
+          ? 'amountpaid'
+          : type === 'services'
+            ? 'amount'
+            : 'totalamount',
+      ) !== -1
+        ? headers.indexOf(
+            type === 'payments'
+              ? 'amountpaid'
+              : type === 'services'
+                ? 'amount'
+                : 'totalamount',
+          )
+        : headers.indexOf('amount');
     const wtIdx = headers.indexOf('weightkg');
     const rateIdx = headers.indexOf('rate');
     const cashIdx = headers.indexOf('cashpaid');
@@ -490,6 +503,7 @@ export async function restoreFromCsvApi(
         idIdx !== -1 && row[idIdx] ? row[idIdx] : `tx_${Date.now()}_${i}`;
       const txRef = doc(db, 'customers', custId, 'transactions', docId);
 
+      const parsedAmount = amtIdx !== -1 ? Number(row[amtIdx]) || 0 : 0;
       const txRecord: Record<string, unknown> = {
         type:
           type === 'sales'
@@ -501,7 +515,7 @@ export async function restoreFromCsvApi(
           dateIdx !== -1 && row[dateIdx]
             ? row[dateIdx]
             : new Date().toISOString(),
-        amount: amtIdx !== -1 ? Number(row[amtIdx]) || 0 : 0,
+        amount: parsedAmount,
         note: noteIdx !== -1 ? row[noteIdx] : '',
       };
 
@@ -516,6 +530,8 @@ export async function restoreFromCsvApi(
         txRecord.item =
           itemIdx !== -1 && row[itemIdx] ? row[itemIdx] : 'Pickup';
         txRecord.category = 'Services';
+        txRecord.cashPaid =
+          cashIdx !== -1 ? Number(row[cashIdx]) || parsedAmount : parsedAmount;
       }
 
       batch.set(txRef, txRecord, { merge: true });

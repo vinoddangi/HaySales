@@ -104,15 +104,17 @@ export function calculateMonthlyTradingSummary(
   let operatingExpenses = 0;
 
   for (const tx of monthTx) {
-    if (tx.type === 'PURCHASE') {
+    const rawType = (tx.type || tx.category || '').toString().toUpperCase();
+
+    if (rawType.includes('PURCHASE')) {
       purchaseKg += Number(tx.weightKg) || 0;
       purchaseAmount += Number(tx.amount) || 0;
-    } else if (tx.type === 'SALE') {
+    } else if (rawType.includes('SALE')) {
       salesKg += Number(tx.weightKg) || 0;
       salesAmount += Number(tx.amount) || 0;
-    } else if (tx.type === 'SERVICE') {
+    } else if (rawType.includes('SERVICE')) {
       daaluIncome += Number(tx.amount) || 0;
-    } else if (tx.type === 'EXPENSE') {
+    } else if (rawType.includes('EXPENSE')) {
       if (
         tx.expenseCategory === 'Fuel' ||
         (tx.note && tx.note.toLowerCase().includes('daalu'))

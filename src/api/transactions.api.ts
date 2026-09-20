@@ -12,6 +12,8 @@ import { mockDataStore } from '../mock/mockDataStore';
 import { db } from '../store/firebaseConfig';
 import { Transaction } from '../types';
 
+import { parseTransactionDate } from '../utils/formatters';
+
 /**
  * Fetch all transactions across all customers and root purchases for complete data views
  */
@@ -21,15 +23,9 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
     const mockPurch = mockDataStore.getPurchases();
     const combined = [...mockTx, ...mockPurch];
     combined.sort((a, b) => {
-      const getTime = (d: any) => {
-        if (!d) return 0;
-        if (typeof d === 'object' && 'seconds' in d && d.seconds) {
-          return d.seconds * 1000;
-        }
-        const parsed = new Date(d).getTime();
-        return isNaN(parsed) ? 0 : parsed;
-      };
-      return getTime(b.date) - getTime(a.date);
+      const timeA = parseTransactionDate(a.date)?.getTime() || 0;
+      const timeB = parseTransactionDate(b.date)?.getTime() || 0;
+      return timeB - timeA;
     });
     return combined;
   }
@@ -37,9 +33,11 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
 
   // 1. Fetch customer map for associating customer names
   const customerMap = new Map<string, string>();
+  let customerDocIds: string[] = [];
   try {
     const custSnap = await getDocs(collection(db, 'customers'));
     custSnap.forEach((cDoc) => {
+      customerDocIds.push(cDoc.id);
       const cData = cDoc.data();
       const cName = ((cData.name || cData.Name || '') as string).trim();
       if (cName) customerMap.set(cDoc.id, cName);
@@ -49,6 +47,7 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
   }
 
   // 2. Fetch customer transactions from subcollections
+  let customerTxCount = 0;
   try {
     const colGroupRef = collectionGroup(db, 'transactions');
     const querySnapshot = await getDocs(colGroupRef);
@@ -59,18 +58,69 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
         (customerId ? customerMap.get(customerId) : '') ||
         data.customerName ||
         '';
+
+      const rawType = (data.type || data.category || 'SALE')
+        .toString()
+        .toUpperCase();
+      let type: Transaction['type'] = 'SALE';
+      if (rawType.includes('SERVICE')) type = 'SERVICE';
+      else if (rawType.includes('PAYMENT')) type = 'PAYMENT';
+      else if (rawType.includes('OPENING')) type = 'OPENING_BALANCE';
+      else if (rawType.includes('EXPENSE')) type = 'EXPENSE';
+      else if (rawType.includes('PURCHASE')) type = 'PURCHASE';
+
       transactions.push({
         id: docSnap.id,
         customerId,
         customerName,
         ...data,
+        type,
       } as Transaction);
+      customerTxCount++;
     });
   } catch (e) {
     console.warn(
-      'Error fetching customer transactions in transactions API:',
+      'Error fetching collectionGroup transactions in transactions API:',
       e,
     );
+  }
+
+  // Fallback: If collectionGroup returned 0 transactions but customers exist, fetch each customer's transactions
+  if (customerTxCount === 0 && customerDocIds.length > 0) {
+    try {
+      for (const custId of customerDocIds) {
+        const subSnap = await getDocs(
+          collection(db, 'customers', custId, 'transactions'),
+        );
+        subSnap.forEach((docSnap) => {
+          const data = docSnap.data();
+          const customerName =
+            customerMap.get(custId) || data.customerName || '';
+          const rawType = (data.type || data.category || 'SALE')
+            .toString()
+            .toUpperCase();
+          let type: Transaction['type'] = 'SALE';
+          if (rawType.includes('SERVICE')) type = 'SERVICE';
+          else if (rawType.includes('PAYMENT')) type = 'PAYMENT';
+          else if (rawType.includes('OPENING')) type = 'OPENING_BALANCE';
+          else if (rawType.includes('EXPENSE')) type = 'EXPENSE';
+          else if (rawType.includes('PURCHASE')) type = 'PURCHASE';
+
+          transactions.push({
+            id: docSnap.id,
+            customerId: custId,
+            customerName,
+            ...data,
+            type,
+          } as Transaction);
+        });
+      }
+    } catch (fallbackErr) {
+      console.warn(
+        'Error fetching customer transactions via fallback:',
+        fallbackErr,
+      );
+    }
   }
 
   // 3. Fetch purchases & expenses from root 'purchases' collection
@@ -78,10 +128,16 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
     const purchasesSnap = await getDocs(collection(db, 'purchases'));
     purchasesSnap.forEach((docSnap) => {
       const data = docSnap.data();
+      const rawType = (data.type || data.category || 'PURCHASE')
+        .toString()
+        .toUpperCase();
+      const type: Transaction['type'] = rawType.includes('EXPENSE')
+        ? 'EXPENSE'
+        : 'PURCHASE';
       transactions.push({
         id: docSnap.id,
-        type: (data.type || 'PURCHASE') as Transaction['type'],
         ...data,
+        type,
       } as Transaction);
     });
   } catch (pErr) {
@@ -90,15 +146,9 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
 
   // Sort descending by date
   transactions.sort((a, b) => {
-    const getTime = (d: any) => {
-      if (!d) return 0;
-      if (typeof d === 'object' && 'seconds' in d && d.seconds) {
-        return d.seconds * 1000;
-      }
-      const parsed = new Date(d).getTime();
-      return isNaN(parsed) ? 0 : parsed;
-    };
-    return getTime(b.date) - getTime(a.date);
+    const timeA = parseTransactionDate(a.date)?.getTime() || 0;
+    const timeB = parseTransactionDate(b.date)?.getTime() || 0;
+    return timeB - timeA;
   });
 
   return transactions;
@@ -123,22 +173,28 @@ export async function fetchCustomerTransactionsApi(
   const transactions: Transaction[] = [];
 
   querySnapshot.forEach((docSnap) => {
+    const data = docSnap.data();
+    const rawType = (data.type || data.category || 'SALE')
+      .toString()
+      .toUpperCase();
+    let type: Transaction['type'] = 'SALE';
+    if (rawType.includes('SERVICE')) type = 'SERVICE';
+    else if (rawType.includes('PAYMENT')) type = 'PAYMENT';
+    else if (rawType.includes('OPENING')) type = 'OPENING_BALANCE';
+    else if (rawType.includes('EXPENSE')) type = 'EXPENSE';
+    else if (rawType.includes('PURCHASE')) type = 'PURCHASE';
+
     transactions.push({
       id: docSnap.id,
-      ...docSnap.data(),
+      ...data,
+      type,
     } as Transaction);
   });
 
   transactions.sort((a, b) => {
-    const getTime = (d: any) => {
-      if (!d) return 0;
-      if (typeof d === 'object' && 'seconds' in d && d.seconds) {
-        return d.seconds * 1000;
-      }
-      const parsed = new Date(d).getTime();
-      return isNaN(parsed) ? 0 : parsed;
-    };
-    return getTime(b.date) - getTime(a.date);
+    const timeA = parseTransactionDate(a.date)?.getTime() || 0;
+    const timeB = parseTransactionDate(b.date)?.getTime() || 0;
+    return timeB - timeA;
   });
 
   return limitCount && limitCount > 0

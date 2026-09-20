@@ -374,14 +374,12 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
                     {formatRupee(metrics.salesOnCash)}
                   </span>
                 </div>
-                {(metrics.servicesReceived ?? 0) > 0 && (
-                  <div className="flex items-center justify-between text-m3-on-surface-variant">
-                    <span>Service:</span>
-                    <span className="font-semibold text-m3-on-surface">
-                      {formatRupee(metrics.servicesReceived || 0)}
-                    </span>
-                  </div>
-                )}
+                <div className="flex items-center justify-between text-m3-on-surface-variant">
+                  <span>Service:</span>
+                  <span className="font-semibold text-m3-on-surface">
+                    {formatRupee(metrics.servicesReceived || 0)}
+                  </span>
+                </div>
               </div>
             </div>
 

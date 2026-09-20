@@ -10,6 +10,8 @@ import { mockDataStore } from '../mock/mockDataStore';
 import { db } from '../store/firebaseConfig';
 import { Transaction } from '../types';
 
+import { parseTransactionDate } from '../utils/formatters';
+
 /**
  * Fetch all purchases and expenses from root collection (or mock store)
  */
@@ -17,15 +19,9 @@ export async function fetchPurchasesApi(): Promise<Transaction[]> {
   if (mockDataStore.isEnabled()) {
     const mockPurch = mockDataStore.getPurchases();
     mockPurch.sort((a, b) => {
-      const getTime = (d: any) => {
-        if (!d) return 0;
-        if (typeof d === 'object' && 'seconds' in d && d.seconds) {
-          return d.seconds * 1000;
-        }
-        const parsed = new Date(d).getTime();
-        return isNaN(parsed) ? 0 : parsed;
-      };
-      return getTime(b.date) - getTime(a.date);
+      const timeA = parseTransactionDate(a.date)?.getTime() || 0;
+      const timeB = parseTransactionDate(b.date)?.getTime() || 0;
+      return timeB - timeA;
     });
     return mockPurch;
   }
@@ -34,23 +30,23 @@ export async function fetchPurchasesApi(): Promise<Transaction[]> {
 
   querySnapshot.forEach((docSnap) => {
     const data = docSnap.data();
+    const rawType = (data.type || data.category || 'PURCHASE')
+      .toString()
+      .toUpperCase();
+    const type: Transaction['type'] = rawType.includes('EXPENSE')
+      ? 'EXPENSE'
+      : 'PURCHASE';
     purchases.push({
       id: docSnap.id,
-      type: (data.type || 'PURCHASE') as Transaction['type'],
       ...data,
+      type,
     } as Transaction);
   });
 
   purchases.sort((a, b) => {
-    const getTime = (d: any) => {
-      if (!d) return 0;
-      if (typeof d === 'object' && 'seconds' in d && d.seconds) {
-        return d.seconds * 1000;
-      }
-      const parsed = new Date(d).getTime();
-      return isNaN(parsed) ? 0 : parsed;
-    };
-    return getTime(b.date) - getTime(a.date);
+    const timeA = parseTransactionDate(a.date)?.getTime() || 0;
+    const timeB = parseTransactionDate(b.date)?.getTime() || 0;
+    return timeB - timeA;
   });
 
   return purchases;
