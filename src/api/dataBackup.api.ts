@@ -38,17 +38,13 @@ export interface RestoreCsvResult {
   errors: string[];
 }
 
+import { parseTransactionDate } from '../utils/formatters';
+
 function formatDateForCsv(dateVal: unknown): string {
   if (!dateVal) return '';
-  if (
-    typeof dateVal === 'object' &&
-    'seconds' in (dateVal as Record<string, unknown>)
-  ) {
-    const sec = (dateVal as { seconds: number }).seconds;
-    return new Date(sec * 1000).toISOString();
-  }
-  if (dateVal instanceof Date) {
-    return dateVal.toISOString();
+  const parsed = parseTransactionDate(dateVal as any);
+  if (parsed) {
+    return parsed.toISOString();
   }
   return String(dateVal);
 }
@@ -158,15 +154,27 @@ export async function exportAllDataAsCsv(): Promise<
       collection(db, 'customers', docSnap.id, 'transactions'),
     );
     txSnap.forEach((tDoc) => {
+      const data = tDoc.data();
+      const rawType = (data.type || data.category || 'SALE')
+        .toString()
+        .toUpperCase();
+      let type: Transaction['type'] = 'SALE';
+      if (rawType.includes('SERVICE')) type = 'SERVICE';
+      else if (rawType.includes('PAYMENT')) type = 'PAYMENT';
+      else if (rawType.includes('OPENING')) type = 'OPENING_BALANCE';
+      else if (rawType.includes('EXPENSE')) type = 'EXPENSE';
+      else if (rawType.includes('PURCHASE')) type = 'PURCHASE';
+
       const t = {
         id: tDoc.id,
         customerId: docSnap.id,
         customerName: cust.name,
-        ...tDoc.data(),
+        ...data,
+        type,
       } as Transaction;
-      if (t.type === 'SALE') sales.push(t);
-      else if (t.type === 'PAYMENT') payments.push(t);
-      else if (t.type === 'SERVICE') services.push(t);
+      if (type === 'SALE') sales.push(t);
+      else if (type === 'PAYMENT') payments.push(t);
+      else if (type === 'SERVICE') services.push(t);
     });
   }
 
@@ -176,8 +184,15 @@ export async function exportAllDataAsCsv(): Promise<
   const expenses: Transaction[] = [];
 
   purchasesSnap.forEach((pDoc) => {
-    const p = { id: pDoc.id, ...pDoc.data() } as Transaction;
-    if (p.type === 'EXPENSE') {
+    const data = pDoc.data();
+    const rawType = (data.type || data.category || 'PURCHASE')
+      .toString()
+      .toUpperCase();
+    const type: Transaction['type'] = rawType.includes('EXPENSE')
+      ? 'EXPENSE'
+      : 'PURCHASE';
+    const p = { id: pDoc.id, ...data, type } as Transaction;
+    if (type === 'EXPENSE') {
       expenses.push(p);
     } else {
       purchases.push(p);

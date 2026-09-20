@@ -144,15 +144,25 @@ export async function runDriveBackup() {
 
     const txSnap = await docSnap.ref.collection('transactions').get();
     txSnap.forEach((tDoc) => {
+      const data = tDoc.data();
+      const rawType = (data.type || data.category || 'SALE').toString().toUpperCase();
+      let type = 'SALE';
+      if (rawType.includes('SERVICE')) type = 'SERVICE';
+      else if (rawType.includes('PAYMENT')) type = 'PAYMENT';
+      else if (rawType.includes('OPENING')) type = 'OPENING_BALANCE';
+      else if (rawType.includes('EXPENSE')) type = 'EXPENSE';
+      else if (rawType.includes('PURCHASE')) type = 'PURCHASE';
+
       const t = {
         id: tDoc.id,
         customerId: cust.id,
         customerName: cust.name,
-        ...tDoc.data(),
+        ...data,
+        type,
       };
-      if (t.type === 'SALE') sales.push(t);
-      else if (t.type === 'PAYMENT') payments.push(t);
-      else if (t.type === 'SERVICE') services.push(t);
+      if (type === 'SALE') sales.push(t);
+      else if (type === 'PAYMENT') payments.push(t);
+      else if (type === 'SERVICE') services.push(t);
     });
   }
 
@@ -163,10 +173,31 @@ export async function runDriveBackup() {
   const expenses = [];
 
   purchSnap.forEach((pDoc) => {
-    const p = { id: pDoc.id, ...pDoc.data() };
-    if (p.type === 'EXPENSE') expenses.push(p);
+    const data = pDoc.data();
+    const rawType = (data.type || data.category || 'PURCHASE').toString().toUpperCase();
+    const type = rawType.includes('EXPENSE') ? 'EXPENSE' : 'PURCHASE';
+    const p = { id: pDoc.id, ...data, type };
+    if (type === 'EXPENSE') expenses.push(p);
     else purchases.push(p);
   });
+
+function formatDateForCsv(dateVal) {
+  if (!dateVal) return '';
+  if (typeof dateVal === 'object' && typeof dateVal.toDate === 'function') {
+    return dateVal.toDate().toISOString();
+  }
+  if (typeof dateVal === 'object' && typeof dateVal._seconds === 'number') {
+    return new Date(dateVal._seconds * 1000).toISOString();
+  }
+  if (typeof dateVal === 'object' && typeof dateVal.seconds === 'number') {
+    return new Date(dateVal.seconds * 1000).toISOString();
+  }
+  if (dateVal instanceof Date) {
+    return dateVal.toISOString();
+  }
+  const d = new Date(dateVal);
+  return isNaN(d.getTime()) ? String(dateVal) : d.toISOString();
+}
 
   // 3. Convert all datasets to CSV format
   const customerCsv = convertToCsv(customers, [
@@ -182,7 +213,7 @@ export async function runDriveBackup() {
     { header: 'TransactionID', accessor: (t) => t.id },
     { header: 'CustomerID', accessor: (t) => t.customerId },
     { header: 'CustomerName', accessor: (t) => t.customerName },
-    { header: 'Date', accessor: (t) => t.date || '' },
+    { header: 'Date', accessor: (t) => formatDateForCsv(t.date) },
     { header: 'Item', accessor: (t) => t.item || 'Others' },
     { header: 'WeightKg', accessor: (t) => t.weightKg || 0 },
     { header: 'Rate', accessor: (t) => t.rate || 0 },
@@ -196,14 +227,14 @@ export async function runDriveBackup() {
     { header: 'PaymentID', accessor: (t) => t.id },
     { header: 'CustomerID', accessor: (t) => t.customerId },
     { header: 'CustomerName', accessor: (t) => t.customerName },
-    { header: 'Date', accessor: (t) => t.date || '' },
+    { header: 'Date', accessor: (t) => formatDateForCsv(t.date) },
     { header: 'AmountPaid', accessor: (t) => t.amount || t.paymentAmount || 0 },
     { header: 'Notes', accessor: (t) => t.note || '' },
   ]);
 
   const purchasesCsv = convertToCsv(purchases, [
     { header: 'PurchaseID', accessor: (t) => t.id },
-    { header: 'Date', accessor: (t) => t.date || '' },
+    { header: 'Date', accessor: (t) => formatDateForCsv(t.date) },
     { header: 'Category', accessor: (t) => t.category || 'Purchase' },
     { header: 'Item', accessor: (t) => t.item || 'Others' },
     { header: 'WeightKg', accessor: (t) => t.weightKg || 0 },
@@ -215,7 +246,7 @@ export async function runDriveBackup() {
 
   const expensesCsv = convertToCsv(expenses, [
     { header: 'ExpenseID', accessor: (t) => t.id },
-    { header: 'Date', accessor: (t) => t.date || '' },
+    { header: 'Date', accessor: (t) => formatDateForCsv(t.date) },
     {
       header: 'ExpenseCategory',
       accessor: (t) => t.expenseCategory || 'Others',
@@ -232,7 +263,7 @@ export async function runDriveBackup() {
       header: 'CustomerName',
       accessor: (t) => t.customerName || 'Retail Customer',
     },
-    { header: 'Date', accessor: (t) => t.date || '' },
+    { header: 'Date', accessor: (t) => formatDateForCsv(t.date) },
     { header: 'Item', accessor: (t) => t.item || 'Pickup' },
     { header: 'Amount', accessor: (t) => t.amount || 0 },
     { header: 'Notes', accessor: (t) => t.note || '' },
