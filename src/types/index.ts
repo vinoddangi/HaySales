@@ -47,16 +47,72 @@ export interface Customer {
 export type ExpenseCategoryType =
   'Interest' | 'Fuel' | 'Labor' | 'Food / Drink' | 'Tools' | 'Others';
 
+export type CropItemType =
+  'Tuvar' | 'Chana' | 'B. Kutty' | 'M. Kutty' | 'Isabgol' | 'Others';
+
+export interface MonthlyTradingSummary {
+  period: string; // e.g. '2026_01'
+  label: string; // e.g. 'Jan 2026'
+  openingStock: {
+    weightKg: number;
+    rate: number;
+    amount: number;
+  };
+  purchases: {
+    weightKg: number;
+    rate: number;
+    amount: number;
+  };
+  totalStock: {
+    weightKg: number;
+    weightedRate: number;
+    amount: number;
+  };
+  sales: {
+    weightKg: number;
+    avgRate: number;
+    amount: number;
+  };
+  closingStock: {
+    weightKg: number;
+    rate: number;
+    amount: number;
+  };
+  commission: {
+    cm: number;
+    prev: number;
+    discountC2?: number;
+    total: number;
+  };
+  daalu: {
+    cm: number;
+    prev: number;
+    total: number;
+  };
+  expenses: {
+    cm: number;
+    prev: number;
+    total: number;
+  };
+  netProfit: {
+    cm: number;
+    total: number;
+  };
+  lendingToCustomers: number;
+  cashBalance: number;
+  totalCapital: number;
+}
+
 export interface Transaction {
   id?: string;
   customerId?: string;
   customerName?: string;
   type:
     'SALE' | 'SERVICE' | 'PAYMENT' | 'OPENING_BALANCE' | 'PURCHASE' | 'EXPENSE';
-  category?: 'Purchase' | 'Expense';
+  category?: 'Purchase' | 'Expense' | 'Sales' | 'Services';
   expenseCategory?: ExpenseCategoryType | string;
   date?: { seconds?: number } | string | number | Date;
-  item?: string;
+  item?: CropItemType | string;
   weightKg?: number;
   amount?: number;
   discount?: number;
@@ -67,4 +123,14 @@ export interface Transaction {
   purchaseRate?: number;
   vendorName?: string;
   note?: string;
+}
+
+export interface MonthlyRolloutStatus {
+  lastRolledOutMonth: string; // e.g. "2026-08" (YYYY-MM)
+  lastRolledOutAt?: string;
+  history?: {
+    month: string;
+    rolledOutAt: string;
+    summary?: MonthlyTradingSummary;
+  }[];
 }

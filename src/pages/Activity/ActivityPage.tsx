@@ -1,6 +1,7 @@
 import { Banknote, CreditCard, History, Search } from 'lucide-react';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { filterTransactionsByPeriod } from '../../business/dashboardBusiness';
 import { Card } from '../../components/common/Card';
 import { EmptyState } from '../../components/common/EmptyState';
 import { PageContainer } from '../../components/common/PageContainer';
@@ -19,7 +20,6 @@ import {
 import { showSnackbar } from '../../store/slices/uiSlice';
 import { Transaction } from '../../types';
 import { cn } from '../../utils/cn';
-import { parseTransactionDate } from '../../utils/formatters';
 import {
   ActivityCategory,
   ActivityCategoryTabs,
@@ -34,9 +34,8 @@ export const ActivityPage: React.FC = () => {
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth();
 
-  // Period Filter States: Current Month, YTD, Select Month (same year)
-  const [filterMode, setFilterMode] =
-    useState<PeriodFilterMode>('currentMonth');
+  // Period Filter States: 'month' (default current month) or 'ytd'
+  const [filterMode, setFilterMode] = useState<PeriodFilterMode>('month');
   const [selectedMonth, setSelectedMonth] = useState<number>(currentMonth);
 
   const categoryParam = searchParams.get('category')?.toUpperCase();
@@ -114,38 +113,13 @@ export const ActivityPage: React.FC = () => {
 
   // Filter all transactions based on active period
   const periodFilteredTransactions = useMemo(() => {
-    return allTransactions.filter((tx: Transaction) => {
-      const txDate = parseTransactionDate(tx.date);
-      if (!txDate) return false;
-
-      if (filterMode === 'currentMonth') {
-        return (
-          txDate.getFullYear() === currentYear &&
-          txDate.getMonth() === currentMonth
-        );
-      }
-
-      if (filterMode === 'ytd') {
-        return txDate.getFullYear() === currentYear && txDate <= currentDate;
-      }
-
-      if (filterMode === 'customMonth') {
-        return (
-          txDate.getFullYear() === currentYear &&
-          txDate.getMonth() === selectedMonth
-        );
-      }
-
-      return true;
-    });
-  }, [
-    allTransactions,
-    filterMode,
-    selectedMonth,
-    currentYear,
-    currentMonth,
-    currentDate,
-  ]);
+    return filterTransactionsByPeriod(
+      allTransactions,
+      filterMode,
+      selectedMonth,
+      currentDate,
+    );
+  }, [allTransactions, filterMode, selectedMonth, currentDate]);
 
   // Split and count by category & nature
   const {
@@ -295,12 +269,6 @@ export const ActivityPage: React.FC = () => {
   };
 
   const getPeriodLabel = () => {
-    if (filterMode === 'currentMonth') {
-      return currentDate.toLocaleString('default', {
-        month: 'long',
-        year: 'numeric',
-      });
-    }
     if (filterMode === 'ytd') {
       return `YTD ${currentYear}`;
     }

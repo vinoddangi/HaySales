@@ -1,5 +1,9 @@
 import { Transaction } from '../types';
 import { parseTransactionDate } from '../utils/formatters';
+import {
+  JAN_2026_BASELINE,
+  calculateMonthlyTradingSummary,
+} from './monthlyRolloutBusiness';
 
 export interface DashboardMetricsResult {
   totalSalesAmount: number;
@@ -13,10 +17,16 @@ export interface DashboardMetricsResult {
   avgSalesRate: number;
   avgBuyRate: number;
   totalCashIn: number;
+  totalCashOut: number;
   netCashflow: number;
   salesOnCredit: number;
   salesOnCash: number;
+  servicesReceived: number;
+  servicesCount: number;
   paymentsReceived: number;
+  paymentsCount: number;
+  purchaseOnCash: number;
+  expensesOnCash: number;
 }
 
 export interface ItemBreakdownResult {
@@ -33,12 +43,11 @@ export interface ItemBreakdownResult {
  */
 export function filterTransactionsByPeriod(
   transactions: Transaction[],
-  mode: 'currentMonth' | 'ytd' | 'customMonth' | 'month',
+  mode: 'month' | 'ytd',
   selectedMonth: number,
   referenceDate: Date = new Date(),
 ): Transaction[] {
   const currentYear = referenceDate.getFullYear();
-  const currentMonth = referenceDate.getMonth();
 
   return transactions.filter((tx: Transaction) => {
     const txDate = parseTransactionDate(tx.date);
@@ -48,14 +57,7 @@ export function filterTransactionsByPeriod(
       return txDate.getFullYear() === currentYear && txDate <= referenceDate;
     }
 
-    if (mode === 'currentMonth') {
-      return (
-        txDate.getFullYear() === currentYear &&
-        txDate.getMonth() === currentMonth
-      );
-    }
-
-    // 'customMonth' or 'month'
+    // mode === 'month'
     return (
       txDate.getFullYear() === currentYear &&
       txDate.getMonth() === selectedMonth
@@ -75,17 +77,23 @@ export function calculateDashboardMetrics(
   let salesOnCash = 0;
   let salesOnCredit = 0;
 
+  let servicesReceived = 0;
+  let servicesCount = 0;
+
   let totalPurchaseAmount = 0;
   let totalPurchaseWeightKg = 0;
   let purchasesCount = 0;
+  let purchaseOnCash = 0;
 
   let totalExpenseAmount = 0;
   let expensesCount = 0;
+  let expensesOnCash = 0;
 
   let paymentsReceived = 0;
+  let paymentsCount = 0;
 
   filteredTransactions.forEach((tx) => {
-    if (tx.type === 'SALE' || tx.type === 'SERVICE') {
+    if (tx.type === 'SALE') {
       const amt = Number(tx.amount) || 0;
       const wt = Number(tx.weightKg) || 0;
       const cash = Number(tx.cashPaid) || 0;
@@ -99,18 +107,28 @@ export function calculateDashboardMetrics(
       salesCount += 1;
       salesOnCash += cash;
       salesOnCredit += credit;
+    } else if (tx.type === 'SERVICE') {
+      const amt = Number(tx.amount) || 0;
+      const cash = tx.cashPaid !== undefined ? Number(tx.cashPaid) || 0 : amt;
+      servicesReceived += cash;
+      servicesCount += 1;
     } else if (tx.type === 'PURCHASE') {
       const amt = Number(tx.amount) || 0;
       const wt = Number(tx.weightKg) || 0;
+      const cash = tx.cashPaid !== undefined ? Number(tx.cashPaid) || 0 : amt;
       totalPurchaseAmount += amt;
       totalPurchaseWeightKg += wt;
       purchasesCount += 1;
+      purchaseOnCash += cash;
     } else if (tx.type === 'EXPENSE') {
       const amt = Number(tx.amount) || 0;
+      const cash = tx.cashPaid !== undefined ? Number(tx.cashPaid) || 0 : amt;
       totalExpenseAmount += amt;
       expensesCount += 1;
+      expensesOnCash += cash;
     } else if (tx.type === 'PAYMENT') {
       paymentsReceived += Number(tx.paymentAmount) || Number(tx.amount) || 0;
+      paymentsCount += 1;
     }
   });
 
@@ -118,8 +136,9 @@ export function calculateDashboardMetrics(
     totalSalesWeightKg > 0 ? totalSalesAmount / totalSalesWeightKg : 0;
   const avgBuyRate =
     totalPurchaseWeightKg > 0 ? totalPurchaseAmount / totalPurchaseWeightKg : 0;
-  const totalCashIn = salesOnCash + paymentsReceived;
-  const netCashflow = totalCashIn - (totalPurchaseAmount + totalExpenseAmount);
+  const totalCashIn = salesOnCash + servicesReceived + paymentsReceived;
+  const totalCashOut = purchaseOnCash + expensesOnCash;
+  const netCashflow = totalCashIn - totalCashOut;
 
   return {
     totalSalesAmount,
@@ -133,30 +152,70 @@ export function calculateDashboardMetrics(
     avgSalesRate,
     avgBuyRate,
     totalCashIn,
+    totalCashOut,
     netCashflow,
     salesOnCredit,
     salesOnCash,
+    servicesReceived,
+    servicesCount,
     paymentsReceived,
+    paymentsCount,
+    purchaseOnCash,
+    expensesOnCash,
   };
 }
 
 /**
- * Calculate per-item breakdown comparing sales with purchases
+ * Get opening stock for a specified month in a year
+ */
+export function getOpeningStockForMonth(
+  allTransactions: Transaction[],
+  year: number,
+  monthIndex: number,
+): { weightKg: number; rate: number; amount: number } {
+  if (monthIndex === 0) {
+    return { ...JAN_2026_BASELINE.openingStock };
+  }
+
+  let currentSummary = null;
+  for (let m = 0; m < monthIndex; m++) {
+    const period = `${year}_${String(m + 1).padStart(2, '0')}`;
+    currentSummary = calculateMonthlyTradingSummary(
+      period,
+      allTransactions,
+      currentSummary,
+    );
+  }
+
+  return currentSummary?.closingStock
+    ? { ...currentSummary.closingStock }
+    : { ...JAN_2026_BASELINE.openingStock };
+}
+
+/**
+ * Calculate per-item breakdown comparing sales with purchases and opening stock
  */
 export function calculateItemBreakdowns(
   allTransactions: Transaction[],
   filteredTransactions: Transaction[],
+  options?: {
+    mode?: 'month' | 'ytd';
+    selectedMonth?: number;
+    year?: number;
+    includeOpeningStock?: boolean;
+  },
 ): ItemBreakdownResult[] {
   const itemMap = new Map<
     string,
     { amount: number; weightKg: number; count: number }
   >();
 
+  // Only count product SALE transactions in the active period
   filteredTransactions.forEach((tx) => {
-    if (tx.type === 'SALE' || tx.type === 'SERVICE') {
+    if (tx.type === 'SALE') {
       const amt = Number(tx.amount) || 0;
       const wt = Number(tx.weightKg) || 0;
-      const itemName = (tx.item || 'General').trim();
+      const itemName = (tx.item || 'Others').trim();
 
       const existing = itemMap.get(itemName) || {
         amount: 0,
@@ -176,9 +235,10 @@ export function calculateItemBreakdowns(
     { amount: number; weightKg: number }
   >();
 
-  allTransactions.forEach((tx) => {
+  // Ingest purchases for the active period from filteredTransactions
+  filteredTransactions.forEach((tx) => {
     if (tx.type === 'PURCHASE') {
-      const pItem = (tx.item || 'General').trim();
+      const pItem = (tx.item || 'Others').trim();
       const existing = purchaseStatsMap.get(pItem) || {
         amount: 0,
         weightKg: 0,
@@ -189,6 +249,34 @@ export function calculateItemBreakdowns(
       });
     }
   });
+
+  // Calculate opening stock if requested or when month/year options are present
+  if (
+    options?.includeOpeningStock !== false &&
+    options?.selectedMonth !== undefined
+  ) {
+    const year = options.year || 2026;
+    const openingStock =
+      options.mode === 'ytd'
+        ? { ...JAN_2026_BASELINE.openingStock }
+        : getOpeningStockForMonth(allTransactions, year, options.selectedMonth);
+
+    if (openingStock && openingStock.weightKg > 0) {
+      // Attribute baseline/prior closing opening stock to 'Others' or the primary item
+      const defaultItemKey = itemMap.has('Others')
+        ? 'Others'
+        : itemMap.keys().next().value || 'Others';
+
+      const existing = purchaseStatsMap.get(defaultItemKey) || {
+        amount: 0,
+        weightKg: 0,
+      };
+      purchaseStatsMap.set(defaultItemKey, {
+        amount: existing.amount + openingStock.amount,
+        weightKg: existing.weightKg + openingStock.weightKg,
+      });
+    }
+  }
 
   return Array.from(itemMap.entries())
     .map(([item, stats]) => {

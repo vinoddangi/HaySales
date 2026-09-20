@@ -7,6 +7,7 @@ export interface SwitchProps {
   onChange: (_checked: boolean) => void;
   disabled?: boolean;
   label?: string;
+  activeColor?: string;
   className?: string;
 }
 
@@ -15,13 +16,14 @@ export const Switch: React.FC<SwitchProps> = ({
   onChange,
   disabled = false,
   label,
+  activeColor,
   className,
 }) => {
   return (
     <label
       className={cn(
-        'inline-flex cursor-pointer select-none items-center gap-3',
-        disabled && 'opacity-38 pointer-events-none cursor-not-allowed',
+        'inline-flex cursor-pointer select-none items-center gap-2.5',
+        disabled && 'pointer-events-none cursor-not-allowed opacity-40',
         className,
       )}
     >
@@ -33,31 +35,31 @@ export const Switch: React.FC<SwitchProps> = ({
           disabled={disabled}
           onChange={(e) => onChange(e.target.checked)}
         />
-        {/* Track */}
+        {/* Track - width 52px (w-[52px]), height 32px (h-8) with clear borders and background */}
         <div
           className={cn(
-            'w-13 h-8 rounded-full border-2 transition-all duration-200',
+            'h-8 w-[52px] rounded-full border-2 shadow-inner transition-all duration-200',
             checked
-              ? 'border-m3-primary bg-m3-primary'
-              : 'border-m3-outline bg-m3-surface-container-highest',
+              ? activeColor || 'border-m3-primary bg-m3-primary'
+              : 'border-m3-outline/60 bg-m3-surface-container-highest dark:bg-neutral-800',
           )}
         />
         {/* Thumb */}
         <div
           className={cn(
-            'absolute left-1 top-1 flex items-center justify-center rounded-full shadow-sm transition-all duration-200',
+            'absolute flex items-center justify-center rounded-full shadow-md transition-all duration-200',
             checked
-              ? 'h-6 w-6 translate-x-5 bg-m3-on-primary'
-              : 'my-1 h-4 w-4 translate-x-0.5 bg-m3-outline',
+              ? 'left-1 top-1 h-6 w-6 translate-x-5 bg-white text-m3-primary'
+              : 'left-1.5 top-1.5 h-5 w-5 translate-x-0 bg-m3-outline dark:bg-neutral-400',
           )}
         >
-          {checked && (
-            <Check className="h-3.5 w-3.5 stroke-[3] text-m3-primary" />
-          )}
+          {checked && <Check className="h-3.5 w-3.5 stroke-[3] text-current" />}
         </div>
       </div>
       {label && (
-        <span className="text-sm font-medium text-m3-on-surface">{label}</span>
+        <span className="text-xs font-semibold text-m3-on-surface">
+          {label}
+        </span>
       )}
     </label>
   );

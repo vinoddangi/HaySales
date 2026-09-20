@@ -8,6 +8,7 @@ import {
   updateDoc,
   writeBatch,
 } from 'firebase/firestore';
+import { mockDataStore } from '../mock/mockDataStore';
 import { db } from '../store/firebaseConfig';
 import { Transaction } from '../types';
 
@@ -15,6 +16,23 @@ import { Transaction } from '../types';
  * Fetch all transactions across all customers and root purchases for complete data views
  */
 export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
+  if (mockDataStore.isEnabled()) {
+    const mockTx = mockDataStore.getTransactions();
+    const mockPurch = mockDataStore.getPurchases();
+    const combined = [...mockTx, ...mockPurch];
+    combined.sort((a, b) => {
+      const getTime = (d: any) => {
+        if (!d) return 0;
+        if (typeof d === 'object' && 'seconds' in d && d.seconds) {
+          return d.seconds * 1000;
+        }
+        const parsed = new Date(d).getTime();
+        return isNaN(parsed) ? 0 : parsed;
+      };
+      return getTime(b.date) - getTime(a.date);
+    });
+    return combined;
+  }
   const transactions: Transaction[] = [];
 
   // 1. Fetch customer map for associating customer names
@@ -94,6 +112,11 @@ export async function fetchCustomerTransactionsApi(
   limitCount?: number,
 ): Promise<Transaction[]> {
   if (!customerId) return [];
+
+  if (mockDataStore.isEnabled()) {
+    const list = mockDataStore.getTransactions(customerId);
+    return limitCount && limitCount > 0 ? list.slice(0, limitCount) : list;
+  }
 
   const colRef = collection(db, 'customers', customerId, 'transactions');
   const querySnapshot = await getDocs(colRef);

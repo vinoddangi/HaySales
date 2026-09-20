@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
+import { isTransactionMonthLocked } from '../../../api';
+import { VALID_CROP_ITEMS } from '../../../business/monthlyRolloutBusiness';
 import { calculateSaleTotals } from '../../../business/salesBusiness';
 import {
   BackupWarningBanner,
   Button,
   Input,
+  RolloutWarningBanner,
   SelectField,
   SummaryBox,
   SummaryRow,
   Text,
 } from '../../../components/common';
 import { Flex, Grid } from '../../../components/layout';
+import { MonthlyRolloutStatus } from '../../../types';
 import { formatRupee } from '../../../utils/formatters';
 
 export interface SaleFormProps {
@@ -17,6 +21,7 @@ export interface SaleFormProps {
   isCreditAllowed: boolean;
   isSaving: boolean;
   hasPendingBackup?: boolean;
+  rolloutStatus?: MonthlyRolloutStatus | null;
   currentYear?: number;
   onSubmit: (_saleData: {
     item: string;
@@ -29,12 +34,7 @@ export interface SaleFormProps {
 
 const ITEM_OPTIONS = [
   { value: '', label: 'Select type' },
-  { value: 'Chana', label: 'Chana' },
-  { value: 'Gavatri', label: 'Gavatri' },
-  { value: 'B. Kutty', label: 'B. Kutty' },
-  { value: 'Kutty', label: 'Kutty' },
-  { value: 'Tuvar', label: 'Tuvar' },
-  { value: 'Others', label: 'Others' },
+  ...VALID_CROP_ITEMS.map((c) => ({ value: c, label: c })),
 ];
 
 export const SaleForm: React.FC<SaleFormProps> = ({
@@ -42,6 +42,7 @@ export const SaleForm: React.FC<SaleFormProps> = ({
   isCreditAllowed,
   isSaving,
   hasPendingBackup = false,
+  rolloutStatus,
   currentYear = new Date().getFullYear(),
   onSubmit,
 }) => {
@@ -57,6 +58,8 @@ export const SaleForm: React.FC<SaleFormProps> = ({
   const selectedYear = new Date(date).getFullYear();
   const isCYSelected = !isNaN(selectedYear) && selectedYear >= currentYear;
   const isBlockedByBackup = hasPendingBackup && isCYSelected;
+  const isBlockedByRollout = isTransactionMonthLocked(date, rolloutStatus);
+  const isFormBlocked = isBlockedByBackup || isBlockedByRollout;
 
   const avgRate = weightKg > 0 ? amount / weightKg : 0;
   const effectiveCashPaid = allCash ? amount : cashPaid;
@@ -64,7 +67,7 @@ export const SaleForm: React.FC<SaleFormProps> = ({
   const newOutstandingDue = outstandingDue + remainingDue;
 
   const handleSubmit = async () => {
-    if (!selectedItem || amount <= 0 || isBlockedByBackup) return;
+    if (!selectedItem || amount <= 0 || isFormBlocked) return;
     await onSubmit({
       item: selectedItem,
       weightKg,
@@ -85,6 +88,14 @@ export const SaleForm: React.FC<SaleFormProps> = ({
       {/* Banner if CY selected and previous year backup is pending */}
       {isBlockedByBackup && (
         <BackupWarningBanner currentYear={currentYear} isFormBanner />
+      )}
+
+      {/* Banner if month requires prior rollout */}
+      {isBlockedByRollout && (
+        <RolloutWarningBanner
+          lastRolledOutMonth={rolloutStatus?.lastRolledOutMonth}
+          isFormBanner
+        />
       )}
 
       <Grid columns={2} gap="md" fullWidth>
@@ -168,13 +179,15 @@ export const SaleForm: React.FC<SaleFormProps> = ({
         variant="filled"
         className="w-full"
         onClick={handleSubmit}
-        disabled={isSaving || !selectedItem || amount <= 0 || isBlockedByBackup}
+        disabled={isSaving || !selectedItem || amount <= 0 || isFormBlocked}
       >
         {isSaving
           ? 'Processing...'
           : isBlockedByBackup
             ? `Backup Required for ${currentYear}`
-            : 'Process Sale'}
+            : isBlockedByRollout
+              ? 'Monthly Rollout Required'
+              : 'Process Sale'}
       </Button>
     </Flex>
   );

@@ -1,12 +1,15 @@
 import { cert, initializeApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { google } from 'googleapis';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+const DATA_DIR = join(__dirname, 'data');
+const LOCAL_REGISTRY_FILE = join(DATA_DIR, 'local_customer_registry.json');
 
 // Read Service Account credentials securely
 const serviceAccountPath = join(__dirname, 'service-account.json');
@@ -38,157 +41,106 @@ function normalizeName(name) {
 }
 
 async function migrateFromSheets() {
-  console.log('🚀 Starting Migration from Google Sheets...');
-  const sheets = google.sheets({ version: 'v4', auth });
+  console.log('🚀 Starting Jan-2026 Baseline Migration from Google Sheets...');
 
-  const MASTER_SPREADSHEET_ID = '1Q7NTxdeE7xQ7XBNGijn0xjoxkZK4Y1Glu3bMBfmxH-c';
-  const DEBT_SPREADSHEET_ID = '1FyT2Oxx8iQm0qxP6_BPOGLeWcPWKFk_33Kz8asQ2dos';
+  let customerList = [];
 
-  // 1. Fetch Master Customers (Customers!A:Z)
-  console.log(
-    `📊 Reading Master Customers from ${MASTER_SPREADSHEET_ID} [Customers!A:Z]...`,
-  );
-  const masterResponse = await sheets.spreadsheets.values.get({
-    spreadsheetId: MASTER_SPREADSHEET_ID,
-    range: 'Customers!A:Z',
-  });
-  const masterAllRows = masterResponse.data.values || [];
-
-  // Detect column header indices dynamically
-  const headerRow = masterAllRows[0] || [];
-  let nameColIdx = 0;
-  let mobileColIdx = -1;
-  let villageColIdx = -1;
-  let creditLimitColIdx = -1;
-
-  headerRow.forEach((col, idx) => {
-    const header = String(col).trim().toLowerCase();
-    if (header.includes('name')) nameColIdx = idx;
-    else if (
-      header.includes('mobile') ||
-      header.includes('phone') ||
-      header.includes('contact')
-    )
-      mobileColIdx = idx;
-    else if (
-      header.includes('village') ||
-      header.includes('city') ||
-      header.includes('address')
-    )
-      villageColIdx = idx;
-    else if (header.includes('credit') || header.includes('limit'))
-      creditLimitColIdx = idx;
-  });
-
-  console.log(
-    `Column Mapping -> Name: ${nameColIdx}, Phone: ${mobileColIdx}, Village: ${villageColIdx}, CreditLimit: ${creditLimitColIdx}`,
-  );
-
-  const masterRows = masterAllRows.slice(1);
-  console.log(`Found ${masterRows.length} customers in master list.`);
-
-  // 2. Fetch Outstanding / Debt Sheet (Sheet1!A2:K)
-  console.log(
-    `📊 Reading Outstanding Dues from ${DEBT_SPREADSHEET_ID} [Sheet1!A2:K]...`,
-  );
-  const debtResponse = await sheets.spreadsheets.values.get({
-    spreadsheetId: DEBT_SPREADSHEET_ID,
-    range: 'Sheet1!A2:K',
-  });
-  const debtRows = debtResponse.data.values || [];
-  console.log(`Found ${debtRows.length} rows in debt sheet.`);
-
-  // Map outstanding amounts by normalized customer name
-  const debtMap = new Map();
-  for (const row of debtRows) {
-    const rawName = (row[0] || '').trim();
-    if (!rawName) continue;
-    const due = parseRupeeValue(row[10], 0);
-    debtMap.set(normalizeName(rawName), due);
-  }
-
-  // Combine customer records maintaining order and extracting metadata
-  const customerList = [];
-  const seenNormalized = new Set();
-
-  for (const row of masterRows) {
-    const rawName = (row[nameColIdx] || '').trim();
-    if (!rawName) continue;
-    const norm = normalizeName(rawName);
-    if (!seenNormalized.has(norm)) {
-      seenNormalized.add(norm);
-
-      const mobileRaw =
-        mobileColIdx !== -1 && row[mobileColIdx]
-          ? String(row[mobileColIdx]).trim()
-          : '';
-      const villageRaw =
-        villageColIdx !== -1 && row[villageColIdx]
-          ? String(row[villageColIdx]).trim()
-          : '';
-      const creditLimitRaw =
-        creditLimitColIdx !== -1 ? row[creditLimitColIdx] : undefined;
-      const creditLimit = parseRupeeValue(creditLimitRaw, 35000);
-
-      customerList.push({
-        name: rawName,
-        mobile: mobileRaw || undefined,
-        village: villageRaw || undefined,
-        creditLimit: creditLimit,
-      });
-    }
-  }
-
-  // Also include any customers who are in the debt sheet but not in master list
-  const extraFromDebtSheet = [];
-  for (const row of debtRows) {
-    const rawName = (row[0] || '').trim();
-    if (!rawName) continue;
-    const norm = normalizeName(rawName);
-    if (!seenNormalized.has(norm)) {
-      seenNormalized.add(norm);
-      const dueAmount = debtMap.get(norm) || 0;
-      extraFromDebtSheet.push({ name: rawName, dueAmount });
-      customerList.push({
-        name: rawName,
-        mobile: undefined,
-        village: undefined,
-        creditLimit: 35000,
-      });
-    }
-  }
-
-  if (extraFromDebtSheet.length > 0) {
-    console.log(`\n⚠️ [Scenario Detected] Found ${extraFromDebtSheet.length} customer(s) in Debt Sheet NOT present in Master Sheet:`);
-    extraFromDebtSheet.forEach((c, idx) => {
-      console.log(`   ${idx + 1}. "${c.name}" (Outstanding Due: ₹${c.dueAmount}) -> Added to migration list`);
-    });
+  // Check if compiled local registry is available
+  if (existsSync(LOCAL_REGISTRY_FILE)) {
+    console.log(
+      `📖 Loading customer baseline from local compiled registry: ${LOCAL_REGISTRY_FILE}...`,
+    );
+    const localData = JSON.parse(readFileSync(LOCAL_REGISTRY_FILE, 'utf-8'));
+    customerList = localData.map((c) => ({
+      name: c.canonicalName,
+      mobile: c.mobile || undefined,
+      village: c.village || undefined,
+      creditLimit: c.creditLimit || 35000,
+      dueAmount: c.baselineOutstanding20251231 || 0,
+    }));
+    console.log(
+      `✅ Loaded ${customerList.length} verified customers from local registry.`,
+    );
   } else {
-    console.log(`\n✅ All debt sheet customers matched the Master list.`);
+    // Fallback: Fetch directly from Google Sheets
+    const sheets = google.sheets({ version: 'v4', auth });
+    const MASTER_SPREADSHEET_ID =
+      process.env.MASTER_SPREADSHEET_ID ||
+      '1Q7NTxdeE7xQ7XBNGijn0xjoxkZK4Y1Glu3bMBfmxH-c';
+    const BASELINE_DEBT_SPREADSHEET_ID =
+      process.env.BASELINE_DEBT_SPREADSHEET_ID ||
+      '1o6D4OtAPEDLGNVZXWSz5zPX6xwdhosm-Yez5B-t8lXg';
+
+    console.log(
+      `📊 Reading Master Customers from ${MASTER_SPREADSHEET_ID} [Customers!A:Z]...`,
+    );
+    const masterResponse = await sheets.spreadsheets.values.get({
+      spreadsheetId: MASTER_SPREADSHEET_ID,
+      range: 'Customers!A:Z',
+    });
+    const masterAllRows = masterResponse.data.values || [];
+    const masterRows = masterAllRows.slice(1);
+
+    console.log(
+      `📊 Reading 2025-12-31 Baseline Outstanding Dues from ${BASELINE_DEBT_SPREADSHEET_ID} [Sheet1!A2:K]...`,
+    );
+    const debtResponse = await sheets.spreadsheets.values.get({
+      spreadsheetId: BASELINE_DEBT_SPREADSHEET_ID,
+      range: 'Sheet1!A2:K',
+    });
+    const debtRows = debtResponse.data.values || [];
+
+    const debtMap = new Map();
+    for (const row of debtRows) {
+      const rawName = (row[0] || '').trim();
+      if (!rawName) continue;
+      const due = parseRupeeValue(row[10], 0);
+      debtMap.set(normalizeName(rawName), due);
+    }
+
+    const seenNormalized = new Set();
+    for (const row of masterRows) {
+      const rawName = (row[0] || '').trim();
+      if (!rawName) continue;
+      const norm = normalizeName(rawName);
+      if (!seenNormalized.has(norm)) {
+        seenNormalized.add(norm);
+        const dueAmount = debtMap.get(norm) || 0;
+        customerList.push({
+          name: rawName,
+          mobile: (row[1] || '').trim() || undefined,
+          village: (row[2] || '').trim() || undefined,
+          creditLimit: parseRupeeValue(row[3], 35000),
+          dueAmount,
+        });
+      }
+    }
   }
 
   console.log(`\n📋 Total unique customers to seed: ${customerList.length}`);
 
-  // 3. Process customers and opening balances into Firestore
+  // Seed customers and Jan 1, 2026 opening balances into Firestore
   const CHUNK_SIZE = 200;
   let customerIndex = 1;
   let seededCustomersCount = 0;
   let seededOpeningDuesCount = 0;
+  let totalOpeningDebtSum = 0;
 
   for (let i = 0; i < customerList.length; i += CHUNK_SIZE) {
     const chunk = customerList.slice(i, i + CHUNK_SIZE);
     const batch = db.batch();
 
     for (const cust of chunk) {
-      const norm = normalizeName(cust.name);
-      const dueAmount = debtMap.get(norm) || 0;
+      const dueAmount = cust.dueAmount || 0;
+      totalOpeningDebtSum += dueAmount;
       const docId = String(customerIndex);
       const custDocRef = db.collection('customers').doc(docId);
 
-      // Build customer doc
+      // Build customer document
       const customerDocData = {
         name: cust.name,
         creditLimit: cust.creditLimit || 35000,
+        openingDebt: dueAmount,
         outstandingAmount: dueAmount,
       };
       if (cust.mobile) customerDocData.mobile = cust.mobile;
@@ -196,19 +148,19 @@ async function migrateFromSheets() {
 
       batch.set(custDocRef, customerDocData);
 
-      // If customer has opening outstanding due, seed opening_balance transaction
+      // If customer has opening outstanding due as of 2025-12-31, seed opening_balance_2026_01
       if (dueAmount > 0) {
         const txRef = custDocRef
           .collection('transactions')
-          .doc('opening_balance');
+          .doc('opening_balance_2026_01');
         batch.set(txRef, {
           type: 'OPENING_BALANCE',
           item: 'Previous Outstanding',
           amount: dueAmount,
           cashPaid: 0,
           remainingDue: dueAmount,
-          date: new Date(),
-          note: 'Initial balance from Google Sheet',
+          date: new Date('2026-01-01T00:00:00.000Z'),
+          note: 'Opening balance from 2025-12-31 credit ledger',
         });
         seededOpeningDuesCount++;
       }
@@ -223,11 +175,23 @@ async function migrateFromSheets() {
     );
   }
 
-  console.log('\n🎉 Migration Successfully Finished!');
+  // Seed monthly status and Jan-2026 baseline metadata
+  const statusRef = db.collection('metadata').doc('monthly_status');
+  await statusRef.set(
+    {
+      activeMonth: '2026_01',
+      lastRolledMonth: '2025_12',
+      updatedAt: new Date().toISOString(),
+    },
+    { merge: true },
+  );
+
+  console.log('\n🎉 Jan-2026 Baseline Migration Successfully Finished!');
   console.log(`👥 Created ${seededCustomersCount} customer records.`);
   console.log(
-    `💰 Created ${seededOpeningDuesCount} initial opening balance transactions.`,
+    `💰 Created ${seededOpeningDuesCount} initial opening balance transactions (Total Customer Lending: ₹${totalOpeningDebtSum.toLocaleString('en-IN')}).`,
   );
+  console.log(`📅 Active Period set to: 2026_01`);
 }
 
 migrateFromSheets().catch((err) => {

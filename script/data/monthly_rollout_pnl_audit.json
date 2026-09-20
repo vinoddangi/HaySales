@@ -1,0 +1,418 @@
+[
+  {
+    "period": "2026_01",
+    "label": "Jan 2026",
+    "openingStock": {
+      "weightKg": 13528,
+      "rate": 10.43,
+      "amount": 141097.04
+    },
+    "purchases": {
+      "weightKg": 95890,
+      "rate": 9.53,
+      "amount": 913410
+    },
+    "totalStock": {
+      "weightKg": 109418,
+      "weightedRate": 9.6374,
+      "amount": 1054507.04
+    },
+    "sales": {
+      "weightKg": 105108,
+      "avgRate": 10.67,
+      "amount": 1121090
+    },
+    "closingStock": {
+      "weightKg": 4310,
+      "rate": 9.64,
+      "amount": 41537.27
+    },
+    "commission": {
+      "cm": 108120.23,
+      "prev": 2209098,
+      "discountC2": 2286,
+      "total": 2317218.23
+    },
+    "daalu": {
+      "cm": 0,
+      "prev": 269360,
+      "total": 269360
+    },
+    "expenses": {
+      "cm": 0,
+      "prev": 395350,
+      "total": 395350
+    },
+    "netProfit": {
+      "cm": 108120.23,
+      "total": 2191228.23
+    },
+    "lendingToCustomers": 3134624,
+    "cashBalance": 180266.96,
+    "totalCapital": 4441228.23
+  },
+  {
+    "period": "2026_02",
+    "label": "Feb 2026",
+    "openingStock": {
+      "weightKg": 4310,
+      "rate": 9.64,
+      "amount": 41537.27
+    },
+    "purchases": {
+      "weightKg": 116225,
+      "rate": 8.12,
+      "amount": 943350
+    },
+    "totalStock": {
+      "weightKg": 120535,
+      "weightedRate": 8.171,
+      "amount": 984887.27
+    },
+    "sales": {
+      "weightKg": 110213,
+      "avgRate": 9.11,
+      "amount": 1004299
+    },
+    "closingStock": {
+      "weightKg": 10322,
+      "rate": 8.17,
+      "amount": 84340.7
+    },
+    "commission": {
+      "cm": 103752.43,
+      "prev": 2315989.23,
+      "discountC2": 1229,
+      "total": 2419741.66
+    },
+    "daalu": {
+      "cm": 0,
+      "prev": 269360,
+      "total": 269360
+    },
+    "expenses": {
+      "cm": 9286,
+      "prev": 395350,
+      "total": 404636
+    },
+    "netProfit": {
+      "cm": 94466.43,
+      "total": 2284465.66
+    },
+    "lendingToCustomers": 3112026,
+    "cashBalance": 253298.96,
+    "totalCapital": 4534465.66
+  },
+  {
+    "period": "2026_03",
+    "label": "Mar 2026",
+    "openingStock": {
+      "weightKg": 10322,
+      "rate": 8.17,
+      "amount": 84340.7
+    },
+    "purchases": {
+      "weightKg": 115925,
+      "rate": 7.75,
+      "amount": 898200
+    },
+    "totalStock": {
+      "weightKg": 126247,
+      "weightedRate": 7.7827,
+      "amount": 982540.7
+    },
+    "sales": {
+      "weightKg": 109384,
+      "avgRate": 8.79,
+      "amount": 961110
+    },
+    "closingStock": {
+      "weightKg": 16863,
+      "rate": 7.78,
+      "amount": 131239.43
+    },
+    "commission": {
+      "cm": 109808.73,
+      "prev": 2418061.66,
+      "discountC2": 1680,
+      "total": 2527870.39
+    },
+    "daalu": {
+      "cm": 0,
+      "prev": 269360,
+      "total": 269360
+    },
+    "expenses": {
+      "cm": 8229,
+      "prev": 404636,
+      "total": 412865
+    },
+    "netProfit": {
+      "cm": 101579.73,
+      "total": 2384365.39
+    },
+    "lendingToCustomers": 3174188,
+    "cashBalance": 244137.96,
+    "totalCapital": 4634365.39
+  },
+  {
+    "period": "2026_04",
+    "label": "Apr 2026",
+    "openingStock": {
+      "weightKg": 16863,
+      "rate": 7.78,
+      "amount": 131239.43
+    },
+    "purchases": {
+      "weightKg": 90660,
+      "rate": 7.77,
+      "amount": 704650
+    },
+    "totalStock": {
+      "weightKg": 107523,
+      "weightedRate": 7.7741,
+      "amount": 835889.4299999999
+    },
+    "sales": {
+      "weightKg": 84574,
+      "avgRate": 8.58,
+      "amount": 725584
+    },
+    "closingStock": {
+      "weightKg": 22949,
+      "rate": 7.77,
+      "amount": 178406.73
+    },
+    "commission": {
+      "cm": 68101.3,
+      "prev": 2525669.39,
+      "discountC2": 2201,
+      "total": 2593770.69
+    },
+    "daalu": {
+      "cm": 0,
+      "prev": 269360,
+      "total": 269360
+    },
+    "expenses": {
+      "cm": 8680,
+      "prev": 412865,
+      "total": 421545
+    },
+    "netProfit": {
+      "cm": 59421.3,
+      "total": 2441585.69
+    },
+    "lendingToCustomers": 3280045,
+    "cashBalance": 148333.96,
+    "totalCapital": 4691585.69
+  },
+  {
+    "period": "2026_05",
+    "label": "May 2026",
+    "openingStock": {
+      "weightKg": 22949,
+      "rate": 7.77,
+      "amount": 178406.73
+    },
+    "purchases": {
+      "weightKg": 122890,
+      "rate": 8.87,
+      "amount": 1089650
+    },
+    "totalStock": {
+      "weightKg": 145839,
+      "weightedRate": 8.6949,
+      "amount": 1268056.73
+    },
+    "sales": {
+      "weightKg": 120962,
+      "avgRate": 10.16,
+      "amount": 1228640
+    },
+    "closingStock": {
+      "weightKg": 24877,
+      "rate": 8.69,
+      "amount": 216303.23
+    },
+    "commission": {
+      "cm": 176886.5,
+      "prev": 2591370.69,
+      "discountC2": 2400,
+      "total": 2768257.19
+    },
+    "daalu": {
+      "cm": 0,
+      "prev": 269360,
+      "total": 269360
+    },
+    "expenses": {
+      "cm": 9201,
+      "prev": 421545,
+      "total": 430746
+    },
+    "netProfit": {
+      "cm": 167685.5,
+      "total": 2606871.19
+    },
+    "lendingToCustomers": 3221480,
+    "cashBalance": 334287.96,
+    "totalCapital": 4856871.19
+  },
+  {
+    "period": "2026_06",
+    "label": "Jun 2026",
+    "openingStock": {
+      "weightKg": 24877,
+      "rate": 8.69,
+      "amount": 216303.23
+    },
+    "purchases": {
+      "weightKg": 38240,
+      "rate": 9.29,
+      "amount": 355400
+    },
+    "totalStock": {
+      "weightKg": 63117,
+      "weightedRate": 9.0578,
+      "amount": 571703.23
+    },
+    "sales": {
+      "weightKg": 37410,
+      "avgRate": 10.69,
+      "amount": 399823
+    },
+    "closingStock": {
+      "weightKg": 25707,
+      "rate": 9.06,
+      "amount": 232849.71
+    },
+    "commission": {
+      "cm": 60969.48,
+      "prev": 2766606.19,
+      "discountC2": 1651,
+      "total": 2827575.67
+    },
+    "daalu": {
+      "cm": 28900,
+      "prev": 269360,
+      "total": 298260
+    },
+    "expenses": {
+      "cm": 9400,
+      "prev": 430746,
+      "total": 440146
+    },
+    "netProfit": {
+      "cm": 80469.48,
+      "total": 2685689.67
+    },
+    "lendingToCustomers": 3099102,
+    "cashBalance": 518937.96,
+    "totalCapital": 4935689.67
+  },
+  {
+    "period": "2026_07",
+    "label": "Jul 2026",
+    "openingStock": {
+      "weightKg": 25707,
+      "rate": 9.06,
+      "amount": 232849.71
+    },
+    "purchases": {
+      "weightKg": 84970,
+      "rate": 10.29,
+      "amount": 874000
+    },
+    "totalStock": {
+      "weightKg": 110677,
+      "weightedRate": 10.0007,
+      "amount": 1106849.71
+    },
+    "sales": {
+      "weightKg": 81225,
+      "avgRate": 11.62,
+      "amount": 944124
+    },
+    "closingStock": {
+      "weightKg": 29452,
+      "rate": 10,
+      "amount": 294541.21
+    },
+    "commission": {
+      "cm": 131815.5,
+      "prev": 2826113.67,
+      "discountC2": 1462,
+      "total": 2957929.17
+    },
+    "daalu": {
+      "cm": 0,
+      "prev": 298260,
+      "total": 298260
+    },
+    "expenses": {
+      "cm": 8651,
+      "prev": 440146,
+      "total": 448797
+    },
+    "netProfit": {
+      "cm": 123164.5,
+      "total": 2807392.17
+    },
+    "lendingToCustomers": 3511564,
+    "cashBalance": 166486.96,
+    "totalCapital": 5057392.17
+  },
+  {
+    "period": "2026_08",
+    "label": "Aug 2026",
+    "openingStock": {
+      "weightKg": 29452,
+      "rate": 10,
+      "amount": 294541.21
+    },
+    "purchases": {
+      "weightKg": 67220,
+      "rate": 10.74,
+      "amount": 721900
+    },
+    "totalStock": {
+      "weightKg": 96672,
+      "weightedRate": 10.5143,
+      "amount": 1016441.21
+    },
+    "sales": {
+      "weightKg": 70300,
+      "avgRate": 12.21,
+      "amount": 858158
+    },
+    "closingStock": {
+      "weightKg": 26372,
+      "rate": 10.51,
+      "amount": 277283.88
+    },
+    "commission": {
+      "cm": 119000.67,
+      "prev": 2956660.17,
+      "discountC2": 1269,
+      "total": 3075660.84
+    },
+    "daalu": {
+      "cm": 0,
+      "prev": 298260,
+      "total": 298260
+    },
+    "expenses": {
+      "cm": 8462,
+      "prev": 448797,
+      "total": 457259
+    },
+    "netProfit": {
+      "cm": 110538.67,
+      "total": 2916661.84
+    },
+    "lendingToCustomers": 3653295,
+    "cashBalance": 151282.96,
+    "totalCapital": 5166661.84
+  }
+]

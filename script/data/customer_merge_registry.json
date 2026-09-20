@@ -1,0 +1,1257 @@
+{
+  "generatedAt": "2026-09-19T10:33:17.262Z",
+  "totalMergedCustomers": 56,
+  "mergedCustomers": [
+    {
+      "id": "5",
+      "canonicalName": "Akoliya Ashokbhai Dhanrajbhai",
+      "aliasesMerged": [
+        "Akoliya Ashokbhai Dhanrajbhai",
+        "Akoliya.Ashokbhai Dhanrajbhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260731",
+        "July Grass 2026"
+      ]
+    },
+    {
+      "id": "11",
+      "canonicalName": "Akoliya Devabhai Shomabhai Chadotar",
+      "aliasesMerged": [
+        "Akoliya Devabhai Shomabhai Chadotar",
+        "Akoliya Devabhai Shomabhai",
+        "Akoliya Devabhai Somabhai"
+      ],
+      "openingDebt": 11027,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Jan Grass 2026",
+        "March Grass 2026"
+      ]
+    },
+    {
+      "id": "17",
+      "canonicalName": "Akoliya Meghrajbhai Parthibhai",
+      "aliasesMerged": [
+        "Akoliya Meghrajbhai Parthibhai",
+        "Akoliya Megharajbhai Parthibhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Jan Grass 2026"
+      ]
+    },
+    {
+      "id": "21",
+      "canonicalName": "Bavji Vedancha",
+      "aliasesMerged": [
+        "Bavji Vedancha",
+        "Bavaji Vedancha"
+      ],
+      "openingDebt": 14750,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131"
+      ]
+    },
+    {
+      "id": "37",
+      "canonicalName": "Bera Praveenbhai Parthibhai",
+      "aliasesMerged": [
+        "Bera Praveenbhai Parthibhai",
+        "Bera Preveenbhai Parthibhai",
+        "Bera Parveenbhai Parthibhai"
+      ],
+      "openingDebt": 71146,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Feb Grass 2026",
+        "Jan Grass 2026",
+        "July Grass 2026",
+        "Jun Grass 2026",
+        "March Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "38",
+      "canonicalName": "Bera Rajsangbhai Dohjibhai",
+      "aliasesMerged": [
+        "Bera Rajsangbhai Dohjibhai",
+        "Bera Rashangbhai Dohjibhai",
+        "Bera Rashanghbhai Dohjibhai",
+        "Bera Rasangbhai Dohjibhai"
+      ],
+      "openingDebt": 52972,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "April Grass 2026",
+        "Aug Grass 2026",
+        "Jan Grass 2026",
+        "March Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "50",
+      "canonicalName": "Bhutadiya Babubhai Bhemabhai",
+      "aliasesMerged": [
+        "Bhutadiya Babubhai Bhemabhai",
+        "Bhutdaiya Babubhai Bhemabhai"
+      ],
+      "openingDebt": 10370,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "March Grass 2026"
+      ]
+    },
+    {
+      "id": "62",
+      "canonicalName": "Bhutadiya Laljibhai Veerabhai",
+      "aliasesMerged": [
+        "Bhutadiya Laljibhai Veerabhai",
+        "Bhutdaiya Laljibhai Veerabhai"
+      ],
+      "openingDebt": 39212,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Aug Grass 2026",
+        "Feb Grass 2026",
+        "July Grass 2026",
+        "Jun Grass 2026",
+        "March Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "67",
+      "canonicalName": "Boka Dhanrajbhai Bhemjibhai",
+      "aliasesMerged": [
+        "Boka Dhanrajbhai Bhemjibhai",
+        "Boka Dhanrajbhai Bhemabhai"
+      ],
+      "openingDebt": 12923,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Jun Grass 2026"
+      ]
+    },
+    {
+      "id": "68",
+      "canonicalName": "Boka Dipakbhai Parthibhai",
+      "aliasesMerged": [
+        "Boka Dipakbhai Parthibhai",
+        "Boka Deepakbhai Parthibhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Feb Grass 2026",
+        "March Grass 2026"
+      ]
+    },
+    {
+      "id": "77",
+      "canonicalName": "Chaudhary Narshibhai Kalubhai",
+      "aliasesMerged": [
+        "Chaudhary Narshibhai Kalubhai",
+        "Choudhary narshibhai kalubhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "July Grass 2026"
+      ]
+    },
+    {
+      "id": "78",
+      "canonicalName": "Choudhary Daljibhai Rajsagbhai",
+      "aliasesMerged": [
+        "Choudhary Daljibhai Rajsagbhai",
+        "Choudhary daljibhai Rajsagbhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List-20260731",
+        "July Grass 2026"
+      ]
+    },
+    {
+      "id": "85",
+      "canonicalName": "Dangi Megharajbhai Veerabhai",
+      "aliasesMerged": [
+        "Dangi Megharajbhai Veerabhai",
+        "Dangi Meghrajbhai Veerabhai"
+      ],
+      "openingDebt": 2726,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Feb Grass 2026",
+        "March Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "97",
+      "canonicalName": "Dhudiya Dineshbhai Mafabhai",
+      "aliasesMerged": [
+        "Dhudiya Dineshbhai Mafabhai",
+        "Dhudiya DIneshbhai Mafabhai"
+      ],
+      "openingDebt": 38136,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Feb Grass 2026",
+        "March Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "107",
+      "canonicalName": "Foshi Prabhubhai Maganbhai (Vedancha)",
+      "aliasesMerged": [
+        "Foshi Prabhubhai Maganbhai (Vedancha)",
+        "Foshi Prapubhai Maganbhai",
+        "Fosi Prabhubhai Manganbhai"
+      ],
+      "openingDebt": 123455,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Feb Grass 2026",
+        "March Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "159",
+      "canonicalName": "Judal Dineshbhai Nanjibhai",
+      "aliasesMerged": [
+        "Judal Dineshbhai Nanjibhai",
+        "Judal.Dineshbhai nanjibhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260731",
+        "Jan Grass 2026",
+        "July Grass 2026"
+      ]
+    },
+    {
+      "id": "166",
+      "canonicalName": "Judal Ghemarbhai Rashangbhai",
+      "aliasesMerged": [
+        "Judal Ghemarbhai Rashangbhai",
+        "Judal Ghemarbhai Rajshangbhai",
+        "Judal Ghemarbhai Rasangbhai"
+      ],
+      "openingDebt": 9132,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Feb Grass 2026",
+        "Jan Grass 2026",
+        "July Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "188",
+      "canonicalName": "Judal Laljibhai Shomabhai",
+      "aliasesMerged": [
+        "Judal Laljibhai Shomabhai",
+        "Judal Laljibhai Somabhai"
+      ],
+      "openingDebt": 42172,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "March Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "196",
+      "canonicalName": "Judal Nareshbhai Parthibhai",
+      "aliasesMerged": [
+        "Judal Nareshbhai Parthibhai",
+        "Judal Narshbhai Parthibhai"
+      ],
+      "openingDebt": 18360,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Aug Grass 2026",
+        "Feb Grass 2026",
+        "Jan Grass 2026",
+        "July Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "199",
+      "canonicalName": "Judal Prakashbhai Virshangbhai",
+      "aliasesMerged": [
+        "Judal Prakashbhai Virshangbhai",
+        "Judal Prakashbhai Veershangbhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Jan Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "201",
+      "canonicalName": "Judal Pravinbhai Veershangbhai",
+      "aliasesMerged": [
+        "Judal Pravinbhai Veershangbhai",
+        "Judal Preveenbhai Veershangbhai"
+      ],
+      "openingDebt": 32530,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Aug Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "202",
+      "canonicalName": "Judal Rajnibhai Mafabhai",
+      "aliasesMerged": [
+        "Judal Rajnibhai Mafabhai",
+        "Judal Rajanibhai Mafabhai"
+      ],
+      "openingDebt": 14742,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "April Grass 2026",
+        "Jan Grass 2026",
+        "July Grass 2026"
+      ]
+    },
+    {
+      "id": "209",
+      "canonicalName": "Judal Sadabhai Kalubhai",
+      "aliasesMerged": [
+        "Judal Sadabhai Kalubhai",
+        "Judal Sadbhai Kalubhai"
+      ],
+      "openingDebt": 19800,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "April Grass 2026",
+        "Aug Grass 2026",
+        "Jan Grass 2026",
+        "July Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "218",
+      "canonicalName": "Judal Valjibhai Virshangbhai",
+      "aliasesMerged": [
+        "Judal Valjibhai Virshangbhai",
+        "Judal Valjibhai Vireshangbhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "April Grass 2026",
+        "Aug Grass 2026"
+      ]
+    },
+    {
+      "id": "228",
+      "canonicalName": "Kag Dineshbhai Jasungbhai",
+      "aliasesMerged": [
+        "Kag Dineshbhai Jasungbhai",
+        "Kag Dineshbhai Jeshungbhai"
+      ],
+      "openingDebt": 16170,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Feb Grass 2026"
+      ]
+    },
+    {
+      "id": "232",
+      "canonicalName": "Kag Mafatbhai Ramshungbhai",
+      "aliasesMerged": [
+        "Kag Mafatbhai Ramshungbhai",
+        "Kag Mafatbhaibhai RamshungBhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Jun Grass 2026",
+        "March Grass 2026"
+      ]
+    },
+    {
+      "id": "242",
+      "canonicalName": "Kakvadiya Bhagavanbhai Chandisar",
+      "aliasesMerged": [
+        "Kakavadiya Bhagvanbhai Chandisar",
+        "Kakvadiya Bhagavanbhai Chandisar"
+      ],
+      "openingDebt": 10231,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Customer Credit List-20260228",
+        "Customer Credit List-20250131",
+        "Feb Grass 2026"
+      ]
+    },
+    {
+      "id": "243",
+      "canonicalName": "Kakvadiya Maheshbhai Ramjibhai",
+      "aliasesMerged": [
+        "Kakvadiya Maheshbhai Ramjibhai",
+        "Kakavadiya Maheshbhai Ramjibhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "April Grass 2026",
+        "Aug Grass 2026",
+        "Jan Grass 2026",
+        "Jun Grass 2026"
+      ]
+    },
+    {
+      "id": "246",
+      "canonicalName": "Kakvadiya Sureshbhai Chandisar",
+      "aliasesMerged": [
+        "Kakvadiya Sureshbhai Chandisar",
+        "Kakavadiya Sureshbhai Chandisar"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "April Grass 2026",
+        "Jan Grass 2026",
+        "July Grass 2026",
+        "March Grass 2026"
+      ]
+    },
+    {
+      "id": "249",
+      "canonicalName": "Khabhala Kantibhai Jeevabhai",
+      "aliasesMerged": [
+        "Khabhala Kantibhai Jeevabhai",
+        "Khabhla Kantibhai Jeeva bhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Feb Grass 2026",
+        "March Grass 2026"
+      ]
+    },
+    {
+      "id": "257",
+      "canonicalName": "Khasa Vajeerkhan",
+      "aliasesMerged": [
+        "Khasa Vajeerkhan",
+        "Kasha Vajeerkhan"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Feb Grass 2026",
+        "March Grass 2026"
+      ]
+    },
+    {
+      "id": "258",
+      "canonicalName": "Khasha Jafarkhan",
+      "aliasesMerged": [
+        "Khasha Jafarkhan",
+        "Kasha Jafarkhan",
+        "Khasa Jafarkhan",
+        "Jafarkhan Khasa"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Feb Grass 2026",
+        "Jan Grass 2026"
+      ]
+    },
+    {
+      "id": "277",
+      "canonicalName": "Loh Dineshbhai Sadabhai",
+      "aliasesMerged": [
+        "Loh Dineshbhai Sadabhai",
+        "Loh Dineshbhai Savabhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Feb Grass 2026"
+      ]
+    },
+    {
+      "id": "291",
+      "canonicalName": "Loh Ramjibhai Moghabhai",
+      "aliasesMerged": [
+        "Loh Ramjibhai Moghabhai",
+        "LohRamjibhai Moghabhai"
+      ],
+      "openingDebt": 2177,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Feb Grass 2026",
+        "Jan Grass 2026"
+      ]
+    },
+    {
+      "id": "300",
+      "canonicalName": "Mor Ashokbhai Vedancha",
+      "aliasesMerged": [
+        "Mor Ashokbhai Vedancha",
+        "Mor Ashokbhai vedcha"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260731",
+        "July Grass 2026"
+      ]
+    },
+    {
+      "id": "302",
+      "canonicalName": "Mor Cheharabhai Abhubhai",
+      "aliasesMerged": [
+        "Mor Cheharabhai Abhubhai",
+        "Mor Chehrabhai Abhubhai"
+      ],
+      "openingDebt": 18100,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20250131"
+      ]
+    },
+    {
+      "id": "312",
+      "canonicalName": "Mor Rameshbhai Nathabhai",
+      "aliasesMerged": [
+        "Mor Rameshbhai Nathabhai",
+        "Mor Rameshbhai Nanjibhai"
+      ],
+      "openingDebt": 28335,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Aug Grass 2026",
+        "Feb Grass 2026",
+        "July Grass 2026"
+      ]
+    },
+    {
+      "id": "320",
+      "canonicalName": "Palani Magabhai Khodabhai",
+      "aliasesMerged": [
+        "Palani Magabhai Khodabhai",
+        "Palani Mangabhai Khodabhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "April Grass 2026",
+        "March Grass 2026"
+      ]
+    },
+    {
+      "id": "327",
+      "canonicalName": "Palani Nareshbhai Ishvarbhai",
+      "aliasesMerged": [
+        "Palani Nareshbhai Ishvarbhai",
+        "Plani Nareshbhai Ishvarbhai",
+        "Palani Nareshbhai Ishavrbhai"
+      ],
+      "openingDebt": 1994,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "April Grass 2026"
+      ]
+    },
+    {
+      "id": "345",
+      "canonicalName": "Shukhatbhai Kubhasan",
+      "aliasesMerged": [
+        "Shukhatbhai Kubhasan",
+        "Shokhatbhai Kubhasan"
+      ],
+      "openingDebt": 7568,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "351",
+      "canonicalName": "Thakor Amratbhai Manabhai",
+      "aliasesMerged": [
+        "Thakor Amratbhai Manabhai",
+        "Thakor Amaratbhai Manabhai"
+      ],
+      "openingDebt": 1445,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Jan Grass 2026"
+      ]
+    },
+    {
+      "id": "355",
+      "canonicalName": "Thakor Balvantbhai Chaganbhai",
+      "aliasesMerged": [
+        "Thakor Balvantbhai Chaganbhai",
+        "Thakor Balvatbhai Chaganbhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260228",
+        "Aug Grass 2026"
+      ]
+    },
+    {
+      "id": "356",
+      "canonicalName": "Thakor Balvatbhai Chaganbhai",
+      "aliasesMerged": [
+        "Thakor Balvatbhai Chaganbhai",
+        "Takor Balvatbhai Chaganbhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Feb Grass 2026"
+      ]
+    },
+    {
+      "id": "363",
+      "canonicalName": "Thakor Bhupatbhai Veerchandbhai",
+      "aliasesMerged": [
+        "Thakor Bhupatbhai Veerchandbhai",
+        "Thakor Bhupatbhai Virchandbhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Jan Grass 2026",
+        "July Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "366",
+      "canonicalName": "Thakor Dharjibhai Galbabhai",
+      "aliasesMerged": [
+        "Thakor Dharjibhai Galbabhai",
+        "Takor Dharjibhai Galbabhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Feb Grass 2026",
+        "Jan Grass 2026"
+      ]
+    },
+    {
+      "id": "370",
+      "canonicalName": "Thakor Jagdishbhai Ishavrbhai",
+      "aliasesMerged": [
+        "Thakor Jagdishbhai Ishavrbhai",
+        "Thakor Jagdishbhai Ishvarbhai"
+      ],
+      "openingDebt": 5650,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "April Grass 2026",
+        "July Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "375",
+      "canonicalName": "Thakor Jyantibhai Madhubhai",
+      "aliasesMerged": [
+        "Thakor Jyantibhai Madhubhai",
+        "Thakor JyantibhaiMadhubhai"
+      ],
+      "openingDebt": 5357,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List-20250131"
+      ]
+    },
+    {
+      "id": "381",
+      "canonicalName": "Thakor Nagjibhai Hamirbhai",
+      "aliasesMerged": [
+        "Thakor Nagjibhai Hamirbhai",
+        "Thakor Nagjibhai Hameerbhai",
+        "Takor Nagjibhai Hameerbhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "April Grass 2026",
+        "Feb Grass 2026",
+        "Jan Grass 2026"
+      ]
+    },
+    {
+      "id": "385",
+      "canonicalName": "Thakor Rameshbhai Poojabhai",
+      "aliasesMerged": [
+        "Thakor Rameshbhai Poojabhai",
+        "Thakor Rameshbhai Pujabhai",
+        "Thakor.Rameshbhai Pujabhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260731",
+        "Jan Grass 2026",
+        "July Grass 2026"
+      ]
+    },
+    {
+      "id": "388",
+      "canonicalName": "Thakor Rangnathji Khodla",
+      "aliasesMerged": [
+        "Thakor Rangnathji Khodla",
+        "Thakor Rangnathji"
+      ],
+      "openingDebt": 16950,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Jan Grass 2026",
+        "Jun Grass 2026",
+        "March Grass 2026"
+      ]
+    },
+    {
+      "id": "389",
+      "canonicalName": "Thakor Ransaji Raghjiji",
+      "aliasesMerged": [
+        "Thakor Ransaji Raghjiji",
+        "Thakor Ranshodji Raghjiji",
+        "Thakor Ransabhai Ragjibhai",
+        "Takor Ransabhai Ragjibhai",
+        "Thakor Ransabhai Raghjibhai"
+      ],
+      "openingDebt": 2025,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Feb Grass 2026",
+        "Jan Grass 2026",
+        "March Grass 2026"
+      ]
+    },
+    {
+      "id": "391",
+      "canonicalName": "Thakor Savjibhai Hamirbhai",
+      "aliasesMerged": [
+        "Thakor Savjibhai Hamirbhai",
+        "Thakor Savjibhai Hameerbhai",
+        "Thakor Savabhai Hameerbhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Feb Grass 2026",
+        "Jan Grass 2026",
+        "July Grass 2026"
+      ]
+    },
+    {
+      "id": "395",
+      "canonicalName": "Thakor Shankarbhai Ranpur",
+      "aliasesMerged": [
+        "Thakor Shankarbhai Ranpur",
+        "Thakor Sankarbhai Ranpur"
+      ],
+      "openingDebt": 23845,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "Aug Grass 2026",
+        "Feb Grass 2026",
+        "Jan Grass 2026",
+        "July Grass 2026",
+        "March Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "398",
+      "canonicalName": "Thakor Vinshubhai Dheerajbhai",
+      "aliasesMerged": [
+        "Thakor Vinshubhai Dheerajbhai",
+        "Thakor Vishunbhai Dheerajbhai"
+      ],
+      "openingDebt": 5700,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Customer Credit List-20250131",
+        "March Grass 2026"
+      ]
+    },
+    {
+      "id": "400",
+      "canonicalName": "Thakor Vipulbhai Chaganbhai",
+      "aliasesMerged": [
+        "Thakor Vipulbhai Chaganbhai",
+        "Thakor Vipulbbhai Changanbhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260131",
+        "Customer Credit List-20260228",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "Jan Grass 2026",
+        "March Grass 2026",
+        "May Grass 2026"
+      ]
+    },
+    {
+      "id": "418",
+      "canonicalName": "Valagot Prakashbhai Karshanbhai",
+      "aliasesMerged": [
+        "Valagot Prakashbhai Karshanbhai",
+        "Valagot Parkashbhai Karsanbhai"
+      ],
+      "openingDebt": 0,
+      "totalSalesCount": 0,
+      "totalSalesRevenue": 0,
+      "sourceFiles": [
+        "Master Customer Sheet",
+        "Customer Credit List",
+        "Customer Credit List-20260331",
+        "Customer Credit List-20260430",
+        "Customer Credit List-20260531",
+        "Customer Credit List-20260630",
+        "Customer Credit List-20260731",
+        "April Grass 2026",
+        "Aug Grass 2026",
+        "March Grass 2026"
+      ]
+    }
+  ]
+}

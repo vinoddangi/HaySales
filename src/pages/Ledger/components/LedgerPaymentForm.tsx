@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
+import { isTransactionMonthLocked } from '../../../api';
 import {
   BackupWarningBanner,
   Button,
   Input,
+  RolloutWarningBanner,
   Text,
 } from '../../../components/common';
 import { Flex, Grid } from '../../../components/layout';
+import { MonthlyRolloutStatus } from '../../../types';
 import { formatRupee } from '../../../utils/formatters';
 
 export interface LedgerPaymentFormProps {
   outstandingDue: number;
   isPaying: boolean;
   hasPendingBackup?: boolean;
+  rolloutStatus?: MonthlyRolloutStatus | null;
   currentYear?: number;
   onPay: (_paymentAmount: number, _date?: string) => Promise<void>;
 }
@@ -20,6 +24,7 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
   outstandingDue,
   isPaying,
   hasPendingBackup = false,
+  rolloutStatus,
   currentYear = new Date().getFullYear(),
   onPay,
 }) => {
@@ -32,17 +37,32 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
   const selectedYear = new Date(date).getFullYear();
   const isCYSelected = !isNaN(selectedYear) && selectedYear >= currentYear;
   const isBlockedByBackup = hasPendingBackup && isCYSelected;
+  const isBlockedByRollout = isTransactionMonthLocked(date, rolloutStatus);
+  const isFormBlocked = isBlockedByBackup || isBlockedByRollout;
 
   const discountDuringPayment = allDueClear
     ? Math.max(0, outstandingDue - paymentAmount)
     : 0;
   const effectivePaymentAmount = allDueClear ? outstandingDue : paymentAmount;
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = async () => {
-    if (effectivePaymentAmount <= 0 || isBlockedByBackup) return;
-    await onPay(effectivePaymentAmount, date);
-    setPaymentAmount(0);
-    setAllDueClear(false);
+    if (
+      effectivePaymentAmount <= 0 ||
+      isFormBlocked ||
+      isPaying ||
+      isSubmitting
+    )
+      return;
+    try {
+      setIsSubmitting(true);
+      await onPay(effectivePaymentAmount, date);
+      setPaymentAmount(0);
+      setAllDueClear(false);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -60,6 +80,14 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
       {/* Banner if CY selected and previous year backup is pending */}
       {isBlockedByBackup && (
         <BackupWarningBanner currentYear={currentYear} isFormBanner />
+      )}
+
+      {/* Banner if month requires prior rollout */}
+      {isBlockedByRollout && (
+        <RolloutWarningBanner
+          lastRolledOutMonth={rolloutStatus?.lastRolledOutMonth}
+          isFormBanner
+        />
       )}
 
       <Input
@@ -115,14 +143,16 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
           isPaying ||
           effectivePaymentAmount <= 0 ||
           effectivePaymentAmount > outstandingDue ||
-          isBlockedByBackup
+          isFormBlocked
         }
       >
         {isPaying
           ? 'Processing...'
           : isBlockedByBackup
             ? `Backup Required for ${currentYear}`
-            : 'Process Payment'}
+            : isBlockedByRollout
+              ? 'Monthly Rollout Required'
+              : 'Process Payment'}
       </Button>
     </Flex>
   );

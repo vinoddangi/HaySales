@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
+import { isTransactionMonthLocked } from '../../../api';
 import {
   BackupWarningBanner,
   Button,
   Input,
+  RolloutWarningBanner,
   SummaryBox,
   SummaryRow,
 } from '../../../components/common';
 import { Flex, Grid } from '../../../components/layout';
+import { MonthlyRolloutStatus } from '../../../types';
 import { formatRupee } from '../../../utils/formatters';
 
 export interface PaymentFormProps {
   outstandingDue: number;
   isSaving: boolean;
   hasPendingBackup?: boolean;
+  rolloutStatus?: MonthlyRolloutStatus | null;
   currentYear?: number;
   onSubmit: (_effectivePaymentAmount: number, _date?: string) => Promise<void>;
 }
@@ -21,6 +25,7 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
   outstandingDue,
   isSaving,
   hasPendingBackup = false,
+  rolloutStatus,
   currentYear = new Date().getFullYear(),
   onSubmit,
 }) => {
@@ -33,6 +38,8 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
   const selectedYear = new Date(date).getFullYear();
   const isCYSelected = !isNaN(selectedYear) && selectedYear >= currentYear;
   const isBlockedByBackup = hasPendingBackup && isCYSelected;
+  const isBlockedByRollout = isTransactionMonthLocked(date, rolloutStatus);
+  const isFormBlocked = isBlockedByBackup || isBlockedByRollout;
 
   const discountDuringPayment = allDueClear
     ? Math.max(0, outstandingDue - paymentAmount)
@@ -44,7 +51,7 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
   );
 
   const handleSubmit = async () => {
-    if (effectivePaymentAmount <= 0 || isBlockedByBackup) return;
+    if (effectivePaymentAmount <= 0 || isFormBlocked) return;
     await onSubmit(effectivePaymentAmount, date);
     setPaymentAmount(0);
     setAllDueClear(false);
@@ -55,6 +62,14 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
       {/* Banner if CY selected and previous year backup is pending */}
       {isBlockedByBackup && (
         <BackupWarningBanner currentYear={currentYear} isFormBanner />
+      )}
+
+      {/* Banner if month requires prior rollout */}
+      {isBlockedByRollout && (
+        <RolloutWarningBanner
+          lastRolledOutMonth={rolloutStatus?.lastRolledOutMonth}
+          isFormBanner
+        />
       )}
 
       {/* Date Field */}
@@ -125,14 +140,16 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
           isSaving ||
           effectivePaymentAmount <= 0 ||
           effectivePaymentAmount > outstandingDue ||
-          isBlockedByBackup
+          isFormBlocked
         }
       >
         {isSaving
           ? 'Processing...'
           : isBlockedByBackup
             ? `Backup Required for ${currentYear}`
-            : 'Process Payment'}
+            : isBlockedByRollout
+              ? 'Monthly Rollout Required'
+              : 'Process Payment'}
       </Button>
     </Flex>
   );
