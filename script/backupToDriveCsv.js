@@ -29,13 +29,22 @@ const driveAuth = new google.auth.GoogleAuth({
 });
 const drive = google.drive({ version: 'v3', auth: driveAuth });
 
-function formatCsvDate(d) {
-  if (!d) return '';
-  if (typeof d === 'string') return d;
-  if (d.toISOString) return d.toISOString();
-  if (d._seconds) return new Date(d._seconds * 1000).toISOString();
-  if (d.seconds) return new Date(d.seconds * 1000).toISOString();
-  return String(d);
+function formatCsvDate(dateVal) {
+  if (!dateVal) return '';
+  if (typeof dateVal === 'object' && typeof dateVal.toDate === 'function') {
+    return dateVal.toDate().toISOString();
+  }
+  if (typeof dateVal === 'object' && typeof dateVal._seconds === 'number') {
+    return new Date(dateVal._seconds * 1000).toISOString();
+  }
+  if (typeof dateVal === 'object' && typeof dateVal.seconds === 'number') {
+    return new Date(dateVal.seconds * 1000).toISOString();
+  }
+  if (dateVal instanceof Date) {
+    return dateVal.toISOString();
+  }
+  const d = new Date(dateVal);
+  return isNaN(d.getTime()) ? String(dateVal) : d.toISOString();
 }
 
 function escapeCsvCell(value) {
@@ -145,7 +154,9 @@ export async function runDriveBackup() {
     const txSnap = await docSnap.ref.collection('transactions').get();
     txSnap.forEach((tDoc) => {
       const data = tDoc.data();
-      const rawType = (data.type || data.category || 'SALE').toString().toUpperCase();
+      const rawType = (data.type || data.category || 'SALE')
+        .toString()
+        .toUpperCase();
       let type = 'SALE';
       if (rawType.includes('SERVICE')) type = 'SERVICE';
       else if (rawType.includes('PAYMENT')) type = 'PAYMENT';
@@ -174,30 +185,32 @@ export async function runDriveBackup() {
 
   purchSnap.forEach((pDoc) => {
     const data = pDoc.data();
-    const rawType = (data.type || data.category || 'PURCHASE').toString().toUpperCase();
+    const rawType = (data.type || data.category || 'PURCHASE')
+      .toString()
+      .toUpperCase();
     const type = rawType.includes('EXPENSE') ? 'EXPENSE' : 'PURCHASE';
     const p = { id: pDoc.id, ...data, type };
     if (type === 'EXPENSE') expenses.push(p);
     else purchases.push(p);
   });
 
-function formatDateForCsv(dateVal) {
-  if (!dateVal) return '';
-  if (typeof dateVal === 'object' && typeof dateVal.toDate === 'function') {
-    return dateVal.toDate().toISOString();
+  function formatDateForCsv(dateVal) {
+    if (!dateVal) return '';
+    if (typeof dateVal === 'object' && typeof dateVal.toDate === 'function') {
+      return dateVal.toDate().toISOString();
+    }
+    if (typeof dateVal === 'object' && typeof dateVal._seconds === 'number') {
+      return new Date(dateVal._seconds * 1000).toISOString();
+    }
+    if (typeof dateVal === 'object' && typeof dateVal.seconds === 'number') {
+      return new Date(dateVal.seconds * 1000).toISOString();
+    }
+    if (dateVal instanceof Date) {
+      return dateVal.toISOString();
+    }
+    const d = new Date(dateVal);
+    return isNaN(d.getTime()) ? String(dateVal) : d.toISOString();
   }
-  if (typeof dateVal === 'object' && typeof dateVal._seconds === 'number') {
-    return new Date(dateVal._seconds * 1000).toISOString();
-  }
-  if (typeof dateVal === 'object' && typeof dateVal.seconds === 'number') {
-    return new Date(dateVal.seconds * 1000).toISOString();
-  }
-  if (dateVal instanceof Date) {
-    return dateVal.toISOString();
-  }
-  const d = new Date(dateVal);
-  return isNaN(d.getTime()) ? String(dateVal) : d.toISOString();
-}
 
   // 3. Convert all datasets to CSV format
   const customerCsv = convertToCsv(customers, [
