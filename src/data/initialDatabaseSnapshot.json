@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-20T17:11:47.997Z",
+  "generatedAt": "2026-09-20T17:19:36.249Z",
   "customers": [
     {
       "id": "1",
@@ -4363,6 +4363,21 @@
       "note": "Sale recorded from Feb Grass 2026 (Row 14)"
     },
     {
+      "id": "sale_2026_02_15",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-02-04T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1,
+      "rate": 2000,
+      "amount": 2000,
+      "cashPaid": 2000,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Feb Grass 2026 (Row 15)"
+    },
+    {
       "id": "sale_2026_02_16",
       "customerId": "235",
       "customerName": "Kuva Devabhai Mavabhai",
@@ -4483,6 +4498,21 @@
       "note": "Sale recorded from Feb Grass 2026 (Row 23)"
     },
     {
+      "id": "sale_2026_02_24",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-02-06T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 270,
+      "rate": 9.26,
+      "amount": 2500,
+      "cashPaid": 2500,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Feb Grass 2026 (Row 24)"
+    },
+    {
       "id": "sale_2026_02_25",
       "customerId": "154",
       "customerName": "Judal Hasmukhbhai Bhagvanbhai",
@@ -4526,6 +4556,21 @@
       "remainingDue": 23275,
       "discount": 0,
       "note": "Sale recorded from Feb Grass 2026 (Row 27)"
+    },
+    {
+      "id": "sale_2026_02_28",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-02-07T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1,
+      "rate": 3100,
+      "amount": 3100,
+      "cashPaid": 3100,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Feb Grass 2026 (Row 28)"
     },
     {
       "id": "sale_2026_02_29",
@@ -4708,6 +4753,21 @@
       "note": "Sale recorded from Feb Grass 2026 (Row 40)"
     },
     {
+      "id": "sale_2026_02_41",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-02-11T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1,
+      "rate": 1500,
+      "amount": 1500,
+      "cashPaid": 1500,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Feb Grass 2026 (Row 41)"
+    },
+    {
       "id": "sale_2026_02_42",
       "customerId": "377",
       "customerName": "Vedancha Kantibhai Solaki - 9408040888",
@@ -4781,6 +4841,21 @@
       "remainingDue": 11430,
       "discount": 0,
       "note": "Sale recorded from Feb Grass 2026 (Row 46)"
+    },
+    {
+      "id": "sale_2026_02_47",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-02-12T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1,
+      "rate": 2400,
+      "amount": 2400,
+      "cashPaid": 2400,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Feb Grass 2026 (Row 47)"
     },
     {
       "id": "sale_2026_02_48",
@@ -4961,6 +5036,21 @@
       "remainingDue": 760,
       "discount": 0,
       "note": "Sale recorded from Feb Grass 2026 (Row 59)"
+    },
+    {
+      "id": "sale_2026_02_60",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-02-18T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1,
+      "rate": 1400,
+      "amount": 1400,
+      "cashPaid": 1400,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Feb Grass 2026 (Row 60)"
     },
     {
       "id": "sale_2026_02_61",
@@ -5203,6 +5293,21 @@
       "note": "Sale recorded from Feb Grass 2026 (Row 76)"
     },
     {
+      "id": "sale_2026_02_77",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-02-23T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 100,
+      "rate": 39,
+      "amount": 3900,
+      "cashPaid": 3900,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Feb Grass 2026 (Row 77)"
+    },
+    {
       "id": "sale_2026_02_78",
       "customerId": "46",
       "customerName": "Bhutadiya Dineshbhai Veerabhai",
@@ -5291,6 +5396,21 @@
       "remainingDue": 11745,
       "discount": 0,
       "note": "Sale recorded from Feb Grass 2026 (Row 83)"
+    },
+    {
+      "id": "sale_2026_02_84",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-02-26T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1,
+      "rate": 6200,
+      "amount": 6200,
+      "cashPaid": 6200,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Feb Grass 2026 (Row 84)"
     },
     {
       "id": "sale_2026_02_85",
@@ -5486,6 +5606,36 @@
       "remainingDue": 0,
       "discount": 0,
       "note": "Sale recorded from March Grass 2026 (Row 6)"
+    },
+    {
+      "id": "sale_2026_03_7",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-03-02T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1,
+      "rate": 800,
+      "amount": 800,
+      "cashPaid": 800,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from March Grass 2026 (Row 7)"
+    },
+    {
+      "id": "sale_2026_03_8",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-03-02T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 66,
+      "rate": 9.09,
+      "amount": 600,
+      "cashPaid": 600,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from March Grass 2026 (Row 8)"
     },
     {
       "id": "sale_2026_03_9",
@@ -5743,6 +5893,21 @@
       "note": "Sale recorded from March Grass 2026 (Row 25)"
     },
     {
+      "id": "sale_2026_03_26",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-03-09T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1355,
+      "rate": 8.86,
+      "amount": 12000,
+      "cashPaid": 12000,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from March Grass 2026 (Row 26)"
+    },
+    {
       "id": "sale_2026_03_27",
       "customerId": "111",
       "customerName": "Gudol Alpeshbhai Laxmanbhai",
@@ -5863,6 +6028,21 @@
       "note": "Sale recorded from March Grass 2026 (Row 34)"
     },
     {
+      "id": "sale_2026_03_35",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-03-11T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 70,
+      "rate": 9.57,
+      "amount": 670,
+      "cashPaid": 670,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from March Grass 2026 (Row 35)"
+    },
+    {
       "id": "sale_2026_03_36",
       "customerId": "18",
       "customerName": "Autiya Karsanbhai",
@@ -5876,6 +6056,21 @@
       "remainingDue": 0,
       "discount": 0,
       "note": "Sale recorded from March Grass 2026 (Row 36)"
+    },
+    {
+      "id": "sale_2026_03_37",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-03-16T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 4760,
+      "rate": 8.3,
+      "amount": 39500,
+      "cashPaid": 39500,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from March Grass 2026 (Row 37)"
     },
     {
       "id": "sale_2026_03_38",
@@ -6493,6 +6688,36 @@
       "note": "Sale recorded from March Grass 2026 (Row 78)"
     },
     {
+      "id": "sale_2026_03_79",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-03-31T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1,
+      "rate": 4500,
+      "amount": 4500,
+      "cashPaid": 4500,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from March Grass 2026 (Row 79)"
+    },
+    {
+      "id": "sale_2026_03_80",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-03-31T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1,
+      "rate": 3600,
+      "amount": 3600,
+      "cashPaid": 3600,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from March Grass 2026 (Row 80)"
+    },
+    {
       "id": "sale_2026_04_2",
       "customerId": "34",
       "customerName": "Bera Rajsangbhai Dohjibhai",
@@ -6523,6 +6748,21 @@
       "note": "Sale recorded from April Grass 2026 (Row 3)"
     },
     {
+      "id": "sale_2026_04_4",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-04-01T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 73,
+      "rate": 9.45,
+      "amount": 690,
+      "cashPaid": 690,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from April Grass 2026 (Row 4)"
+    },
+    {
       "id": "sale_2026_04_5",
       "customerId": "296",
       "customerName": "Palani Nareshbhai Ishvarbhai",
@@ -6551,6 +6791,21 @@
       "remainingDue": 0,
       "discount": 0,
       "note": "Sale recorded from April Grass 2026 (Row 6)"
+    },
+    {
+      "id": "sale_2026_04_7",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-04-05T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1,
+      "rate": 1700,
+      "amount": 1700,
+      "cashPaid": 1700,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from April Grass 2026 (Row 7)"
     },
     {
       "id": "sale_2026_04_8",
@@ -6656,6 +6911,21 @@
       "remainingDue": 3942,
       "discount": 0,
       "note": "Sale recorded from April Grass 2026 (Row 14)"
+    },
+    {
+      "id": "sale_2026_04_15",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-04-10T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1,
+      "rate": 2200,
+      "amount": 2200,
+      "cashPaid": 2200,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from April Grass 2026 (Row 15)"
     },
     {
       "id": "sale_2026_04_16",
@@ -7333,6 +7603,21 @@
       "note": "Sale recorded from May Grass 2026 (Row 19)"
     },
     {
+      "id": "sale_2026_05_20",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-05-07T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 110,
+      "rate": 10,
+      "amount": 1100,
+      "cashPaid": 1100,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from May Grass 2026 (Row 20)"
+    },
+    {
       "id": "sale_2026_05_21",
       "customerId": "75",
       "customerName": "Dangi Galbabhai Veerabhai",
@@ -7661,6 +7946,21 @@
       "remainingDue": 0,
       "discount": 0,
       "note": "Sale recorded from May Grass 2026 (Row 42)"
+    },
+    {
+      "id": "sale_2026_05_43",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-05-18T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 145,
+      "rate": 11.03,
+      "amount": 1600,
+      "cashPaid": 1600,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from May Grass 2026 (Row 43)"
     },
     {
       "id": "sale_2026_05_44",
@@ -8248,6 +8548,21 @@
       "note": "Sale recorded from Jun Grass 2026 (Row 5)"
     },
     {
+      "id": "sale_2026_06_6",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-06-02T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 3710,
+      "rate": 10,
+      "amount": 37100,
+      "cashPaid": 37100,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Jun Grass 2026 (Row 6)"
+    },
+    {
       "id": "sale_2026_06_7",
       "customerId": "317",
       "customerName": "Thakor Amartbhai Chamanbhai",
@@ -8278,6 +8593,21 @@
       "note": "Sale recorded from Jun Grass 2026 (Row 8)"
     },
     {
+      "id": "sale_2026_06_9",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-06-03T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1190,
+      "rate": 10.67,
+      "amount": 12700,
+      "cashPaid": 12700,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Jun Grass 2026 (Row 9)"
+    },
+    {
       "id": "sale_2026_06_10",
       "customerId": "50",
       "customerName": "Bhutadiya Heerabhai Fatabhai",
@@ -8291,6 +8621,21 @@
       "remainingDue": 12265,
       "discount": 0,
       "note": "Sale recorded from Jun Grass 2026 (Row 10)"
+    },
+    {
+      "id": "sale_2026_06_11",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-06-05T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1065,
+      "rate": 10.8,
+      "amount": 11500,
+      "cashPaid": 11500,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Jun Grass 2026 (Row 11)"
     },
     {
       "id": "sale_2026_06_12",
@@ -8623,6 +8968,21 @@
       "note": "Sale recorded from Jun Grass 2026 (Row 33)"
     },
     {
+      "id": "sale_2026_07_2",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-07-02T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1270,
+      "rate": 10.94,
+      "amount": 13900,
+      "cashPaid": 13900,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from July Grass 2026 (Row 2)"
+    },
+    {
       "id": "sale_2026_07_3",
       "customerId": "33",
       "customerName": "Bera Praveenbhai Parthibhai",
@@ -8666,6 +9026,21 @@
       "remainingDue": 30762,
       "discount": 0,
       "note": "Sale recorded from July Grass 2026 (Row 5)"
+    },
+    {
+      "id": "sale_2026_07_6",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-07-03T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1380,
+      "rate": 11.45,
+      "amount": 15800,
+      "cashPaid": 15800,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from July Grass 2026 (Row 6)"
     },
     {
       "id": "sale_2026_07_7",
@@ -8743,21 +9118,6 @@
       "note": "Sale recorded from July Grass 2026 (Row 11)"
     },
     {
-      "id": "sale_2026_07_16",
-      "customerId": "14",
-      "customerName": "Akoliya M. P.",
-      "date": "2026-07-04T12:00:00.000Z",
-      "type": "SALE",
-      "item": "Others",
-      "weightKg": 2875,
-      "rate": 10.96,
-      "amount": 31500,
-      "cashPaid": 31500,
-      "remainingDue": 0,
-      "discount": 0,
-      "note": "Sale recorded from July Grass 2026 (Row 16)"
-    },
-    {
       "id": "sale_2026_07_12",
       "customerId": "196",
       "customerName": "Judal Sureshbhai Bhikhabhai",
@@ -8801,6 +9161,36 @@
       "remainingDue": 16847,
       "discount": 0,
       "note": "Sale recorded from July Grass 2026 (Row 14)"
+    },
+    {
+      "id": "sale_2026_07_15",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-07-05T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 435,
+      "rate": 11.38,
+      "amount": 4950,
+      "cashPaid": 4950,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from July Grass 2026 (Row 15)"
+    },
+    {
+      "id": "sale_2026_07_16",
+      "customerId": "14",
+      "customerName": "Akoliya M. P.",
+      "date": "2026-07-04T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 2875,
+      "rate": 10.96,
+      "amount": 31500,
+      "cashPaid": 31500,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from July Grass 2026 (Row 16)"
     },
     {
       "id": "sale_2026_07_17",
@@ -8848,21 +9238,6 @@
       "note": "Sale recorded from July Grass 2026 (Row 19)"
     },
     {
-      "id": "sale_2026_07_21",
-      "customerId": "55",
-      "customerName": "Bhutadiya Laljibhai Veerabhai",
-      "date": "2026-07-09T12:00:00.000Z",
-      "type": "SALE",
-      "item": "Others",
-      "weightKg": 1270,
-      "rate": 11.5,
-      "amount": 14605,
-      "cashPaid": 9100,
-      "remainingDue": 5505,
-      "discount": 0,
-      "note": "Sale recorded from July Grass 2026 (Row 21)"
-    },
-    {
       "id": "sale_2026_07_20",
       "customerId": "69",
       "customerName": "Choudhary Daljibhai Rajsagbhai",
@@ -8876,6 +9251,21 @@
       "remainingDue": 15065,
       "discount": 0,
       "note": "Sale recorded from July Grass 2026 (Row 20)"
+    },
+    {
+      "id": "sale_2026_07_21",
+      "customerId": "55",
+      "customerName": "Bhutadiya Laljibhai Veerabhai",
+      "date": "2026-07-09T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1270,
+      "rate": 11.5,
+      "amount": 14605,
+      "cashPaid": 9100,
+      "remainingDue": 5505,
+      "discount": 0,
+      "note": "Sale recorded from July Grass 2026 (Row 21)"
     },
     {
       "id": "sale_2026_07_22",
@@ -8953,19 +9343,19 @@
       "note": "Sale recorded from July Grass 2026 (Row 26)"
     },
     {
-      "id": "sale_2026_07_29",
-      "customerId": "334",
-      "customerName": "Thakor Jagdishbhai Ishavrbhai",
-      "date": "2026-07-11T12:00:00.000Z",
+      "id": "sale_2026_07_27",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-07-12T12:00:00.000Z",
       "type": "SALE",
       "item": "Others",
-      "weightKg": 700,
-      "rate": 11.5,
-      "amount": 8050,
-      "cashPaid": 0,
-      "remainingDue": 8050,
+      "weightKg": 9,
+      "rate": 12.22,
+      "amount": 110,
+      "cashPaid": 110,
+      "remainingDue": 0,
       "discount": 0,
-      "note": "Sale recorded from July Grass 2026 (Row 29)"
+      "note": "Sale recorded from July Grass 2026 (Row 27)"
     },
     {
       "id": "sale_2026_07_28",
@@ -8981,6 +9371,21 @@
       "remainingDue": 0,
       "discount": 0,
       "note": "Sale recorded from July Grass 2026 (Row 28)"
+    },
+    {
+      "id": "sale_2026_07_29",
+      "customerId": "334",
+      "customerName": "Thakor Jagdishbhai Ishavrbhai",
+      "date": "2026-07-11T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 700,
+      "rate": 11.5,
+      "amount": 8050,
+      "cashPaid": 0,
+      "remainingDue": 8050,
+      "discount": 0,
+      "note": "Sale recorded from July Grass 2026 (Row 29)"
     },
     {
       "id": "sale_2026_07_30",
@@ -9448,6 +9853,21 @@
       "note": "Sale recorded from July Grass 2026 (Row 60)"
     },
     {
+      "id": "sale_2026_07_61",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-07-31T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1375,
+      "rate": 12.22,
+      "amount": 16800,
+      "cashPaid": 16800,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from July Grass 2026 (Row 61)"
+    },
+    {
       "id": "sale_2026_07_62",
       "customerId": "8",
       "customerName": "Akoliya Bhagvanbhai Valubhai",
@@ -9673,21 +10093,6 @@
       "note": "Sale recorded from Aug Grass 2026 (Row 15)"
     },
     {
-      "id": "sale_2026_08_19",
-      "customerId": "107",
-      "customerName": "Gori Irshad",
-      "date": "2026-08-08T12:00:00.000Z",
-      "type": "SALE",
-      "item": "Others",
-      "weightKg": 480,
-      "rate": 12.5,
-      "amount": 6000,
-      "cashPaid": 0,
-      "remainingDue": 6000,
-      "discount": 0,
-      "note": "Sale recorded from Aug Grass 2026 (Row 19)"
-    },
-    {
       "id": "sale_2026_08_16",
       "customerId": "228",
       "customerName": "Kharsan Rameshbhai Laxmanbhai",
@@ -9701,21 +10106,6 @@
       "remainingDue": 16680,
       "discount": 0,
       "note": "Sale recorded from Aug Grass 2026 (Row 16)"
-    },
-    {
-      "id": "sale_2026_08_20",
-      "customerId": "67",
-      "customerName": "Chaudhary Muljibhai Angola",
-      "date": "2026-08-09T12:00:00.000Z",
-      "type": "SALE",
-      "item": "Others",
-      "weightKg": 1370,
-      "rate": 12.04,
-      "amount": 16500,
-      "cashPaid": 16500,
-      "remainingDue": 0,
-      "discount": 0,
-      "note": "Sale recorded from Aug Grass 2026 (Row 20)"
     },
     {
       "id": "sale_2026_08_17",
@@ -9748,6 +10138,36 @@
       "note": "Sale recorded from Aug Grass 2026 (Row 18)"
     },
     {
+      "id": "sale_2026_08_19",
+      "customerId": "107",
+      "customerName": "Gori Irshad",
+      "date": "2026-08-08T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 480,
+      "rate": 12.5,
+      "amount": 6000,
+      "cashPaid": 0,
+      "remainingDue": 6000,
+      "discount": 0,
+      "note": "Sale recorded from Aug Grass 2026 (Row 19)"
+    },
+    {
+      "id": "sale_2026_08_20",
+      "customerId": "67",
+      "customerName": "Chaudhary Muljibhai Angola",
+      "date": "2026-08-09T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1370,
+      "rate": 12.04,
+      "amount": 16500,
+      "cashPaid": 16500,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Aug Grass 2026 (Row 20)"
+    },
+    {
       "id": "sale_2026_08_21",
       "customerId": "321",
       "customerName": "Thakor Balvantbhai Chaganbhai",
@@ -9761,6 +10181,21 @@
       "remainingDue": 6000,
       "discount": 0,
       "note": "Sale recorded from Aug Grass 2026 (Row 21)"
+    },
+    {
+      "id": "sale_2026_08_22",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-08-11T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1070,
+      "rate": 11.96,
+      "amount": 12800,
+      "cashPaid": 12800,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Aug Grass 2026 (Row 22)"
     },
     {
       "id": "sale_2026_08_23",
@@ -9838,6 +10273,36 @@
       "note": "Sale recorded from Aug Grass 2026 (Row 27)"
     },
     {
+      "id": "sale_2026_08_28",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-08-15T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1390,
+      "rate": 12.23,
+      "amount": 17000,
+      "cashPaid": 17000,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Aug Grass 2026 (Row 28)"
+    },
+    {
+      "id": "sale_2026_08_29",
+      "customerId": "307",
+      "customerName": "Retail",
+      "date": "2026-08-16T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 60,
+      "rate": 12.5,
+      "amount": 750,
+      "cashPaid": 750,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Aug Grass 2026 (Row 29)"
+    },
+    {
       "id": "sale_2026_08_30",
       "customerId": "47",
       "customerName": "Bhutadiya Dineshbhai Veershangbhai",
@@ -9913,21 +10378,6 @@
       "note": "Sale recorded from Aug Grass 2026 (Row 34)"
     },
     {
-      "id": "sale_2026_08_46",
-      "customerId": "174",
-      "customerName": "Judal Laxmanbhai Jashugbhai Bhajivala",
-      "date": "2026-08-20T12:00:00.000Z",
-      "type": "SALE",
-      "item": "Others",
-      "weightKg": 1265,
-      "rate": 12.49,
-      "amount": 15800,
-      "cashPaid": 15800,
-      "remainingDue": 0,
-      "discount": 0,
-      "note": "Sale recorded from Aug Grass 2026 (Row 46)"
-    },
-    {
       "id": "sale_2026_08_35",
       "customerId": "274",
       "customerName": "Mor Daljibhai Vedancha",
@@ -9958,19 +10408,19 @@
       "note": "Sale recorded from Aug Grass 2026 (Row 36)"
     },
     {
-      "id": "sale_2026_08_42",
-      "customerId": "136",
-      "customerName": "Judal Bakulbhai Laljibhai",
+      "id": "sale_2026_08_37",
+      "customerId": "307",
+      "customerName": "Retail",
       "date": "2026-08-22T12:00:00.000Z",
       "type": "SALE",
       "item": "Others",
-      "weightKg": 1305,
-      "rate": 12.5,
-      "amount": 16312,
-      "cashPaid": 0,
-      "remainingDue": 16312,
+      "weightKg": 1205,
+      "rate": 12.2,
+      "amount": 14700,
+      "cashPaid": 14700,
+      "remainingDue": 0,
       "discount": 0,
-      "note": "Sale recorded from Aug Grass 2026 (Row 42)"
+      "note": "Sale recorded from Aug Grass 2026 (Row 37)"
     },
     {
       "id": "sale_2026_08_38",
@@ -10033,6 +10483,21 @@
       "note": "Sale recorded from Aug Grass 2026 (Row 41)"
     },
     {
+      "id": "sale_2026_08_42",
+      "customerId": "136",
+      "customerName": "Judal Bakulbhai Laljibhai",
+      "date": "2026-08-22T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1305,
+      "rate": 12.5,
+      "amount": 16312,
+      "cashPaid": 0,
+      "remainingDue": 16312,
+      "discount": 0,
+      "note": "Sale recorded from Aug Grass 2026 (Row 42)"
+    },
+    {
       "id": "sale_2026_08_43",
       "customerId": "42",
       "customerName": "Bhutadiy Galbabhai Dalubhai",
@@ -10078,6 +10543,21 @@
       "note": "Sale recorded from Aug Grass 2026 (Row 45)"
     },
     {
+      "id": "sale_2026_08_46",
+      "customerId": "174",
+      "customerName": "Judal Laxmanbhai Jashugbhai Bhajivala",
+      "date": "2026-08-20T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1265,
+      "rate": 12.49,
+      "amount": 15800,
+      "cashPaid": 15800,
+      "remainingDue": 0,
+      "discount": 0,
+      "note": "Sale recorded from Aug Grass 2026 (Row 46)"
+    },
+    {
       "id": "sale_2026_08_47",
       "customerId": "375",
       "customerName": "Valagot Kantibhai Vedancha",
@@ -10091,36 +10571,6 @@
       "remainingDue": 17187,
       "discount": 0,
       "note": "Sale recorded from Aug Grass 2026 (Row 47)"
-    },
-    {
-      "id": "sale_2026_08_50",
-      "customerId": "32",
-      "customerName": "Bera Nareshbhai Karshanbhai",
-      "date": "2026-08-30T12:00:00.000Z",
-      "type": "SALE",
-      "item": "Others",
-      "weightKg": 1470,
-      "rate": 12.5,
-      "amount": 18375,
-      "cashPaid": 0,
-      "remainingDue": 18375,
-      "discount": 0,
-      "note": "Sale recorded from Aug Grass 2026 (Row 50)"
-    },
-    {
-      "id": "sale_2026_08_51",
-      "customerId": "199",
-      "customerName": "Judal Valjibhai Virshangbhai",
-      "date": "2026-08-30T12:00:00.000Z",
-      "type": "SALE",
-      "item": "Others",
-      "weightKg": 1345,
-      "rate": 12.5,
-      "amount": 16812,
-      "cashPaid": 0,
-      "remainingDue": 16812,
-      "discount": 0,
-      "note": "Sale recorded from Aug Grass 2026 (Row 51)"
     },
     {
       "id": "sale_2026_08_48",
@@ -10151,6 +10601,36 @@
       "remainingDue": 17625,
       "discount": 0,
       "note": "Sale recorded from Aug Grass 2026 (Row 49)"
+    },
+    {
+      "id": "sale_2026_08_50",
+      "customerId": "32",
+      "customerName": "Bera Nareshbhai Karshanbhai",
+      "date": "2026-08-30T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1470,
+      "rate": 12.5,
+      "amount": 18375,
+      "cashPaid": 0,
+      "remainingDue": 18375,
+      "discount": 0,
+      "note": "Sale recorded from Aug Grass 2026 (Row 50)"
+    },
+    {
+      "id": "sale_2026_08_51",
+      "customerId": "199",
+      "customerName": "Judal Valjibhai Virshangbhai",
+      "date": "2026-08-30T12:00:00.000Z",
+      "type": "SALE",
+      "item": "Others",
+      "weightKg": 1345,
+      "rate": 12.5,
+      "amount": 16812,
+      "cashPaid": 0,
+      "remainingDue": 16812,
+      "discount": 0,
+      "note": "Sale recorded from Aug Grass 2026 (Row 51)"
     },
     {
       "id": "service_2026_05_s198",
