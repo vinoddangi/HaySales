@@ -1,17 +1,9 @@
 import { User as FirebaseUser, onAuthStateChanged } from 'firebase/auth';
-import {
-  ArrowLeft,
-  Bell,
-  RefreshCw,
-  Search,
-  User as UserIcon,
-  X,
-} from 'lucide-react';
+import { ArrowLeft, Bell, Search, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { auth } from '../../store/firebaseConfig';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { useAppInit } from '../../store/hooks/useAppInit';
 import {
   setSearchQuery,
   showSnackbar,
@@ -35,7 +27,6 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
   const location = useLocation();
   const dispatch = useAppDispatch();
   const { isSearchOpen, searchQuery } = useAppSelector((state) => state.ui);
-  const { isRefreshing, refreshAllData } = useAppInit();
   const [currentUser, setCurrentUser] = useState<FirebaseUser | null>(
     auth.currentUser,
   );
@@ -54,7 +45,7 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
 
   const avatarInitial = currentUser?.displayName
     ? currentUser.displayName.trim().charAt(0).toUpperCase()
-    : null;
+    : 'V';
 
   return (
     <header className="pt-safe sticky top-0 z-40 w-full border-b border-m3-outline-variant/30 bg-m3-surface/90 backdrop-blur-md transition-colors">
@@ -102,17 +93,7 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
                   title="Profile & Settings"
                   className="shadow-xs flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-m3-primary-container text-xs font-bold text-m3-on-primary-container ring-1 ring-m3-outline-variant/40 transition-transform hover:scale-105 active:scale-95"
                 >
-                  {currentUser?.photoURL ? (
-                    <img
-                      src={currentUser.photoURL}
-                      alt={currentUser.displayName || 'Profile'}
-                      className="h-full w-full object-cover"
-                    />
-                  ) : avatarInitial ? (
-                    <span>{avatarInitial}</span>
-                  ) : (
-                    <UserIcon className="h-4 w-4 text-m3-on-primary-container" />
-                  )}
+                  <span>{avatarInitial}</span>
                 </button>
               )}
               <Text
@@ -132,19 +113,6 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
                 actions
               ) : (
                 <>
-                  <button
-                    onClick={() => refreshAllData()}
-                    disabled={isRefreshing}
-                    aria-label="Refresh All Data"
-                    title="Refresh all data"
-                    className="rounded-full p-2.5 text-m3-on-surface-variant transition-colors hover:bg-m3-surface-container-highest active:scale-95 disabled:opacity-50"
-                  >
-                    <RefreshCw
-                      className={`h-4 w-4 ${
-                        isRefreshing ? 'animate-spin text-m3-primary' : ''
-                      }`}
-                    />
-                  </button>
                   <button
                     onClick={() => dispatch(toggleSearch())}
                     aria-label="Search"

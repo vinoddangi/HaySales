@@ -16,12 +16,14 @@ import {
 
 export type BackupCsvType =
   | 'customers'
+  | 'transactions'
+  | 'purchases'
+  | 'monthly_rollout'
+  // Legacy types for compatibility:
   | 'sales'
   | 'payments'
-  | 'purchases'
-  | 'expenses'
   | 'services'
-  | 'monthly_rollout';
+  | 'expenses';
 
 export interface CsvExportResult {
   fileName: string;
@@ -49,7 +51,7 @@ function formatDateForCsv(dateVal: unknown): string {
   return String(dateVal);
 }
 
-// Columns definition for Customers
+// 1. Columns definition for Customers (/customers collection)
 export const customerCsvColumns: CsvColumn<Customer>[] = [
   { header: 'CustomerID', accessor: (c) => c.id },
   { header: 'CustomerName', accessor: (c) => c.name },
@@ -59,37 +61,43 @@ export const customerCsvColumns: CsvColumn<Customer>[] = [
   { header: 'OutstandingAmount', accessor: (c) => c.outstandingAmount || 0 },
 ];
 
-// Columns definition for Sales
-export const salesCsvColumns: CsvColumn<Transaction>[] = [
+// 2. Columns definition for Customer Transactions (/customers/{id}/transactions subcollections)
+export const transactionCsvColumns: CsvColumn<Transaction>[] = [
   { header: 'TransactionID', accessor: (t) => t.id || '' },
   { header: 'CustomerID', accessor: (t) => t.customerId || '' },
   { header: 'CustomerName', accessor: (t) => t.customerName || '' },
+  { header: 'Type', accessor: (t) => t.type || 'SALE' },
   { header: 'Date', accessor: (t) => formatDateForCsv(t.date) },
-  { header: 'Item', accessor: (t) => t.item || 'Others' },
+  {
+    header: 'Item',
+    accessor: (t) => t.item || (t.type === 'SERVICE' ? 'Pickup' : 'Others'),
+  },
+  {
+    header: 'Category',
+    accessor: (t) => t.category || (t.type === 'SERVICE' ? 'Services' : ''),
+  },
   { header: 'WeightKg', accessor: (t) => t.weightKg || 0 },
   { header: 'Rate', accessor: (t) => t.rate || 0 },
-  { header: 'TotalAmount', accessor: (t) => t.amount || 0 },
+  { header: 'Amount', accessor: (t) => t.amount || t.paymentAmount || 0 },
   { header: 'CashPaid', accessor: (t) => t.cashPaid || 0 },
   { header: 'RemainingDue', accessor: (t) => t.remainingDue || 0 },
   { header: 'Discount', accessor: (t) => t.discount || 0 },
   { header: 'Notes', accessor: (t) => t.note || '' },
 ];
 
-// Columns definition for Payments
-export const paymentsCsvColumns: CsvColumn<Transaction>[] = [
-  { header: 'PaymentID', accessor: (t) => t.id || '' },
-  { header: 'CustomerID', accessor: (t) => t.customerId || '' },
-  { header: 'CustomerName', accessor: (t) => t.customerName || '' },
-  { header: 'Date', accessor: (t) => formatDateForCsv(t.date) },
-  { header: 'AmountPaid', accessor: (t) => t.amount || t.paymentAmount || 0 },
-  { header: 'Notes', accessor: (t) => t.note || '' },
-];
-
-// Columns definition for Purchases
+// 3. Columns definition for Purchases & Farm Expenses (/purchases collection)
 export const purchasesCsvColumns: CsvColumn<Transaction>[] = [
   { header: 'PurchaseID', accessor: (t) => t.id || '' },
+  { header: 'Type', accessor: (t) => t.type || 'PURCHASE' },
   { header: 'Date', accessor: (t) => formatDateForCsv(t.date) },
-  { header: 'Category', accessor: (t) => t.category || 'Purchase' },
+  {
+    header: 'Category',
+    accessor: (t) =>
+      t.category ||
+      t.expenseCategory ||
+      (t.type === 'EXPENSE' ? 'Others' : 'Purchase'),
+  },
+  { header: 'ExpenseCategory', accessor: (t) => t.expenseCategory || '' },
   { header: 'Item', accessor: (t) => t.item || 'Others' },
   { header: 'WeightKg', accessor: (t) => t.weightKg || 0 },
   { header: 'PurchaseRate', accessor: (t) => t.purchaseRate || t.rate || 0 },
@@ -98,44 +106,29 @@ export const purchasesCsvColumns: CsvColumn<Transaction>[] = [
   { header: 'Notes', accessor: (t) => t.note || '' },
 ];
 
-// Columns definition for Expenses
-export const expensesCsvColumns: CsvColumn<Transaction>[] = [
-  { header: 'ExpenseID', accessor: (t) => t.id || '' },
-  { header: 'Date', accessor: (t) => formatDateForCsv(t.date) },
-  { header: 'ExpenseCategory', accessor: (t) => t.expenseCategory || 'Others' },
-  { header: 'Item', accessor: (t) => t.item || 'Others' },
-  { header: 'Amount', accessor: (t) => t.amount || 0 },
-  { header: 'Notes', accessor: (t) => t.note || '' },
-];
-
-// Columns definition for Services
-export const servicesCsvColumns: CsvColumn<Transaction>[] = [
-  { header: 'ServiceID', accessor: (t) => t.id || '' },
-  { header: 'CustomerID', accessor: (t) => t.customerId || '307' },
-  {
-    header: 'CustomerName',
-    accessor: (t) => t.customerName || 'Retail Customer',
-  },
-  { header: 'Date', accessor: (t) => formatDateForCsv(t.date) },
-  { header: 'Item', accessor: (t) => t.item || 'Pickup' },
-  { header: 'Amount', accessor: (t) => t.amount || 0 },
-  { header: 'Notes', accessor: (t) => t.note || '' },
-];
+// Legacy column definitions kept for backwards compatibility
+export const salesCsvColumns: CsvColumn<Transaction>[] = transactionCsvColumns;
+export const paymentsCsvColumns: CsvColumn<Transaction>[] =
+  transactionCsvColumns;
+export const servicesCsvColumns: CsvColumn<Transaction>[] =
+  transactionCsvColumns;
+export const expensesCsvColumns: CsvColumn<Transaction>[] = purchasesCsvColumns;
 
 /**
- * Exports all live data from Firestore as formatted CSV datasets
+ * Exports all live data from Firestore as formatted CSV datasets (1:1 exact match to Firestore tables)
  */
 export async function exportAllDataAsCsv(): Promise<
-  Record<BackupCsvType, CsvExportResult>
+  Record<
+    'customers' | 'transactions' | 'purchases' | 'monthly_rollout',
+    CsvExportResult
+  >
 > {
   const timestamp = new Date().toISOString().split('T')[0];
 
-  // 1. Fetch Customers
+  // 1. Fetch Customers & Customer Transactions (/customers & /customers/{id}/transactions)
   const custSnap = await getDocs(collection(db, 'customers'));
   const customers: Customer[] = [];
-  const sales: Transaction[] = [];
-  const payments: Transaction[] = [];
-  const services: Transaction[] = [];
+  const transactions: Transaction[] = [];
 
   for (const docSnap of custSnap.docs) {
     const cData = docSnap.data();
@@ -149,7 +142,7 @@ export async function exportAllDataAsCsv(): Promise<
     };
     customers.push(cust);
 
-    // Fetch transactions
+    // Fetch customer transactions subcollection
     const txSnap = await getDocs(
       collection(db, 'customers', docSnap.id, 'transactions'),
     );
@@ -172,16 +165,13 @@ export async function exportAllDataAsCsv(): Promise<
         ...data,
         type,
       } as Transaction;
-      if (type === 'SALE') sales.push(t);
-      else if (type === 'PAYMENT') payments.push(t);
-      else if (type === 'SERVICE') services.push(t);
+      transactions.push(t);
     });
   }
 
-  // 2. Fetch Purchases & Expenses
+  // 2. Fetch All Purchases & Expenses (/purchases collection)
   const purchasesSnap = await getDocs(collection(db, 'purchases'));
   const purchases: Transaction[] = [];
-  const expenses: Transaction[] = [];
 
   purchasesSnap.forEach((pDoc) => {
     const data = pDoc.data();
@@ -192,20 +182,13 @@ export async function exportAllDataAsCsv(): Promise<
       ? 'EXPENSE'
       : 'PURCHASE';
     const p = { id: pDoc.id, ...data, type } as Transaction;
-    if (type === 'EXPENSE') {
-      expenses.push(p);
-    } else {
-      purchases.push(p);
-    }
+    purchases.push(p);
   });
 
-  // Convert each to CSV
+  // Convert exact database tables to CSV
   const customersCsv = convertToCsv(customers, customerCsvColumns);
-  const salesCsv = convertToCsv(sales, salesCsvColumns);
-  const paymentsCsv = convertToCsv(payments, paymentsCsvColumns);
+  const transactionsCsv = convertToCsv(transactions, transactionCsvColumns);
   const purchasesCsv = convertToCsv(purchases, purchasesCsvColumns);
-  const expensesCsv = convertToCsv(expenses, expensesCsvColumns);
-  const servicesCsv = convertToCsv(services, servicesCsvColumns);
 
   return {
     customers: {
@@ -214,35 +197,17 @@ export async function exportAllDataAsCsv(): Promise<
       recordCount: customers.length,
       csvContent: customersCsv,
     },
-    sales: {
-      fileName: `sales_${timestamp}.csv`,
-      type: 'sales',
-      recordCount: sales.length,
-      csvContent: salesCsv,
-    },
-    payments: {
-      fileName: `payments_${timestamp}.csv`,
-      type: 'payments',
-      recordCount: payments.length,
-      csvContent: paymentsCsv,
+    transactions: {
+      fileName: `transactions_${timestamp}.csv`,
+      type: 'transactions',
+      recordCount: transactions.length,
+      csvContent: transactionsCsv,
     },
     purchases: {
       fileName: `purchases_${timestamp}.csv`,
       type: 'purchases',
       recordCount: purchases.length,
       csvContent: purchasesCsv,
-    },
-    expenses: {
-      fileName: `expenses_${timestamp}.csv`,
-      type: 'expenses',
-      recordCount: expenses.length,
-      csvContent: expensesCsv,
-    },
-    services: {
-      fileName: `services_${timestamp}.csv`,
-      type: 'services',
-      recordCount: services.length,
-      csvContent: servicesCsv,
     },
     monthly_rollout: {
       fileName: `monthly_rollout_${timestamp}.csv`,
@@ -336,7 +301,7 @@ export async function downloadAllCsvBackups(): Promise<number> {
  * Downloads a single dataset as CSV
  */
 export async function downloadSingleDatasetCsv(
-  type: BackupCsvType,
+  type: 'customers' | 'transactions' | 'purchases' | 'monthly_rollout',
 ): Promise<CsvExportResult> {
   const allExports = await exportAllDataAsCsv();
   const target = allExports[type];
@@ -411,31 +376,49 @@ export async function restoreFromCsvApi(
       await batch.commit();
     }
   } else if (type === 'purchases' || type === 'expenses') {
-    const idIdx = headers.indexOf(
-      type === 'purchases' ? 'purchaseid' : 'expenseid',
-    );
+    const idIdx =
+      headers.indexOf(type === 'purchases' ? 'purchaseid' : 'expenseid') !== -1
+        ? headers.indexOf(type === 'purchases' ? 'purchaseid' : 'expenseid')
+        : headers.indexOf('id');
+    const typeIdx = headers.indexOf('type');
     const dateIdx = headers.indexOf('date');
     const itemIdx = headers.indexOf('item');
     const amtIdx = headers.indexOf('amount');
     const wtIdx = headers.indexOf('weightkg');
-    const rateIdx = headers.indexOf('purchaserate');
-    const catIdx = headers.indexOf(
-      type === 'purchases' ? 'category' : 'expensecategory',
-    );
-    const noteIdx = headers.indexOf('notes');
+    const rateIdx =
+      headers.indexOf('purchaserate') !== -1
+        ? headers.indexOf('purchaserate')
+        : headers.indexOf('rate');
+    const catIdx = headers.indexOf('category');
+    const expCatIdx = headers.indexOf('expensecategory');
+    const vendorIdx = headers.indexOf('vendorname');
+    const noteIdx =
+      headers.indexOf('notes') !== -1
+        ? headers.indexOf('notes')
+        : headers.indexOf('note');
 
     let batch = writeBatch(db);
     let batchCount = 0;
 
     for (let i = 0; i < dataRows.length; i++) {
       const row = dataRows[i];
-      const amount = amtIdx !== -1 ? Number(row[amtIdx]) || 0 : 0;
+      const rawType =
+        typeIdx !== -1 && row[typeIdx] ? row[typeIdx].toUpperCase() : '';
       const docId =
         idIdx !== -1 && row[idIdx] ? row[idIdx] : `${type}_${Date.now()}_${i}`;
+
+      const isExpense =
+        type === 'expenses' ||
+        rawType.includes('EXPENSE') ||
+        docId.startsWith('expense_');
+      const resolvedType: Transaction['type'] = isExpense
+        ? 'EXPENSE'
+        : 'PURCHASE';
+      const amount = amtIdx !== -1 ? Number(row[amtIdx]) || 0 : 0;
       const pRef = doc(db, 'purchases', docId);
 
       const record: Record<string, unknown> = {
-        type: type === 'purchases' ? 'PURCHASE' : 'EXPENSE',
+        type: resolvedType,
         date:
           dateIdx !== -1 && row[dateIdx]
             ? row[dateIdx]
@@ -445,14 +428,19 @@ export async function restoreFromCsvApi(
         note: noteIdx !== -1 ? row[noteIdx] : '',
       };
 
-      if (type === 'purchases') {
+      if (!isExpense) {
         record.category =
           catIdx !== -1 && row[catIdx] ? row[catIdx] : 'Purchase';
         record.weightKg = wtIdx !== -1 ? Number(row[wtIdx]) || 0 : 0;
         record.purchaseRate = rateIdx !== -1 ? Number(row[rateIdx]) || 0 : 0;
+        record.vendorName = vendorIdx !== -1 ? row[vendorIdx] : '';
       } else {
         record.expenseCategory =
-          catIdx !== -1 && row[catIdx] ? row[catIdx] : 'Others';
+          expCatIdx !== -1 && row[expCatIdx]
+            ? row[expCatIdx]
+            : catIdx !== -1 && row[catIdx]
+              ? row[catIdx]
+              : 'Others';
       }
 
       batch.set(pRef, record, { merge: true });
@@ -470,38 +458,35 @@ export async function restoreFromCsvApi(
       await batch.commit();
     }
   } else {
-    // Sales / Payments / Services
+    // Customer Transactions: transactions (or legacy sales / payments / services)
     const custIdIdx = headers.indexOf('customerid');
-    const idIdx = headers.indexOf(
-      type === 'sales'
-        ? 'transactionid'
-        : type === 'payments'
-          ? 'paymentid'
-          : 'serviceid',
-    );
+    const idIdx =
+      headers.indexOf('transactionid') !== -1
+        ? headers.indexOf('transactionid')
+        : headers.indexOf('paymentid') !== -1
+          ? headers.indexOf('paymentid')
+          : headers.indexOf('serviceid') !== -1
+            ? headers.indexOf('serviceid')
+            : headers.indexOf('id');
+    const typeIdx = headers.indexOf('type');
     const dateIdx = headers.indexOf('date');
     const amtIdx =
-      headers.indexOf(
-        type === 'payments'
-          ? 'amountpaid'
-          : type === 'services'
-            ? 'amount'
-            : 'totalamount',
-      ) !== -1
-        ? headers.indexOf(
-            type === 'payments'
-              ? 'amountpaid'
-              : type === 'services'
-                ? 'amount'
-                : 'totalamount',
-          )
-        : headers.indexOf('amount');
+      headers.indexOf('amount') !== -1
+        ? headers.indexOf('amount')
+        : headers.indexOf('amountpaid') !== -1
+          ? headers.indexOf('amountpaid')
+          : headers.indexOf('totalamount');
     const wtIdx = headers.indexOf('weightkg');
     const rateIdx = headers.indexOf('rate');
     const cashIdx = headers.indexOf('cashpaid');
     const dueIdx = headers.indexOf('remainingdue');
+    const discIdx = headers.indexOf('discount');
     const itemIdx = headers.indexOf('item');
-    const noteIdx = headers.indexOf('notes');
+    const catIdx = headers.indexOf('category');
+    const noteIdx =
+      headers.indexOf('notes') !== -1
+        ? headers.indexOf('notes')
+        : headers.indexOf('note');
 
     let batch = writeBatch(db);
     let batchCount = 0;
@@ -519,13 +504,20 @@ export async function restoreFromCsvApi(
       const txRef = doc(db, 'customers', custId, 'transactions', docId);
 
       const parsedAmount = amtIdx !== -1 ? Number(row[amtIdx]) || 0 : 0;
+      const rawType =
+        typeIdx !== -1 && row[typeIdx] ? row[typeIdx].toUpperCase() : '';
+
+      let txType: Transaction['type'] = 'SALE';
+      if (rawType.includes('SERVICE') || type === 'services')
+        txType = 'SERVICE';
+      else if (rawType.includes('PAYMENT') || type === 'payments')
+        txType = 'PAYMENT';
+      else if (rawType.includes('OPENING')) txType = 'OPENING_BALANCE';
+      else if (rawType.includes('EXPENSE')) txType = 'EXPENSE';
+      else if (rawType.includes('PURCHASE')) txType = 'PURCHASE';
+
       const txRecord: Record<string, unknown> = {
-        type:
-          type === 'sales'
-            ? 'SALE'
-            : type === 'payments'
-              ? 'PAYMENT'
-              : 'SERVICE',
+        type: txType,
         date:
           dateIdx !== -1 && row[dateIdx]
             ? row[dateIdx]
@@ -534,19 +526,26 @@ export async function restoreFromCsvApi(
         note: noteIdx !== -1 ? row[noteIdx] : '',
       };
 
-      if (type === 'sales') {
+      if (txType === 'SALE') {
         txRecord.item =
           itemIdx !== -1 && row[itemIdx] ? row[itemIdx] : 'Others';
         txRecord.weightKg = wtIdx !== -1 ? Number(row[wtIdx]) || 0 : 0;
         txRecord.rate = rateIdx !== -1 ? Number(row[rateIdx]) || 0 : 0;
         txRecord.cashPaid = cashIdx !== -1 ? Number(row[cashIdx]) || 0 : 0;
-        txRecord.remainingDue = dueIdx !== -1 ? Number(row[dueIdx]) || 0 : 0;
-      } else if (type === 'services') {
+        txRecord.remainingDue =
+          dueIdx !== -1
+            ? Number(row[dueIdx]) || 0
+            : Math.max(0, parsedAmount - (Number(txRecord.cashPaid) || 0));
+        txRecord.discount = discIdx !== -1 ? Number(row[discIdx]) || 0 : 0;
+      } else if (txType === 'SERVICE') {
         txRecord.item =
           itemIdx !== -1 && row[itemIdx] ? row[itemIdx] : 'Pickup';
-        txRecord.category = 'Services';
+        txRecord.category =
+          catIdx !== -1 && row[catIdx] ? row[catIdx] : 'Services';
         txRecord.cashPaid =
           cashIdx !== -1 ? Number(row[cashIdx]) || parsedAmount : parsedAmount;
+      } else if (txType === 'PAYMENT') {
+        txRecord.paymentAmount = parsedAmount;
       }
 
       batch.set(txRef, txRecord, { merge: true });
@@ -600,6 +599,10 @@ export async function restoreAllBundledCsvsToFirestoreApi(): Promise<{
     totalRestored: total,
     breakdown: {
       customers: custRes.successCount,
+      transactions:
+        salesRes.successCount +
+        paymentsRes.successCount +
+        servicesRes.successCount,
       sales: salesRes.successCount,
       payments: paymentsRes.successCount,
       services: servicesRes.successCount,
@@ -611,17 +614,20 @@ export async function restoreAllBundledCsvsToFirestoreApi(): Promise<{
 }
 
 /**
- * Clears all customer, transaction, and purchase documents from Firestore
+ * Clears all customer, transaction, purchase, and yearly archive documents from Firestore
  */
 export async function clearAllFirestoreDataApi(): Promise<void> {
   const BATCH_SIZE = 400;
+  const currentYear = new Date().getFullYear();
+  const archiveYears = [2023, 2024, 2025, 2026, currentYear - 1, currentYear];
 
-  // 1. Delete all customers & subcollection transactions
+  // 1. Delete all customers, active transactions & historical yearly subcollections
   const custSnap = await getDocs(collection(db, 'customers'));
   let batch = writeBatch(db);
   let batchCount = 0;
 
   for (const docSnap of custSnap.docs) {
+    // A. Active transactions subcollection
     const txSnap = await getDocs(
       collection(db, 'customers', docSnap.id, 'transactions'),
     );
@@ -635,6 +641,23 @@ export async function clearAllFirestoreDataApi(): Promise<void> {
       }
     }
 
+    // B. Legacy subcollections (transactions-YYYY) if any
+    for (const year of archiveYears) {
+      const archSnap = await getDocs(
+        collection(db, 'customers', docSnap.id, `transactions-${year}`),
+      );
+      for (const aDoc of archSnap.docs) {
+        batch.delete(aDoc.ref);
+        batchCount++;
+        if (batchCount >= BATCH_SIZE) {
+          await batch.commit();
+          batch = writeBatch(db);
+          batchCount = 0;
+        }
+      }
+    }
+
+    // C. Customer doc
     batch.delete(docSnap.ref);
     batchCount++;
     if (batchCount >= BATCH_SIZE) {
@@ -644,7 +667,33 @@ export async function clearAllFirestoreDataApi(): Promise<void> {
     }
   }
 
-  // 2. Delete all purchases
+  // 2. Delete yearly archive customer collections: customers-(YYYY) and their transactions
+  for (const year of archiveYears) {
+    const archCustSnap = await getDocs(collection(db, `customers-${year}`));
+    for (const acDoc of archCustSnap.docs) {
+      const acTxSnap = await getDocs(
+        collection(db, `customers-${year}`, acDoc.id, 'transactions'),
+      );
+      for (const tDoc of acTxSnap.docs) {
+        batch.delete(tDoc.ref);
+        batchCount++;
+        if (batchCount >= BATCH_SIZE) {
+          await batch.commit();
+          batch = writeBatch(db);
+          batchCount = 0;
+        }
+      }
+      batch.delete(acDoc.ref);
+      batchCount++;
+      if (batchCount >= BATCH_SIZE) {
+        await batch.commit();
+        batch = writeBatch(db);
+        batchCount = 0;
+      }
+    }
+  }
+
+  // 3. Delete all active purchases
   const purchasesSnap = await getDocs(collection(db, 'purchases'));
   for (const pDoc of purchasesSnap.docs) {
     batch.delete(pDoc.ref);
@@ -654,6 +703,28 @@ export async function clearAllFirestoreDataApi(): Promise<void> {
       batch = writeBatch(db);
       batchCount = 0;
     }
+  }
+
+  // 4. Delete historical yearly purchases collections (e.g., purchases-2025, purchases-2024)
+  for (const year of archiveYears) {
+    const archPurchSnap = await getDocs(collection(db, `purchases-${year}`));
+    for (const apDoc of archPurchSnap.docs) {
+      batch.delete(apDoc.ref);
+      batchCount++;
+      if (batchCount >= BATCH_SIZE) {
+        await batch.commit();
+        batch = writeBatch(db);
+        batchCount = 0;
+      }
+    }
+  }
+
+  // 5. Reset backup_status metadata doc
+  try {
+    batch.delete(doc(db, 'metadata', 'backup_status'));
+    batchCount++;
+  } catch {
+    // Ignore if not present
   }
 
   if (batchCount > 0) {

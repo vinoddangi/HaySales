@@ -1,9 +1,9 @@
 import {
-  ArrowDownLeft,
   BookOpen,
   History,
   Home,
   ShoppingBag,
+  ShoppingCart,
 } from 'lucide-react';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -36,7 +36,7 @@ const navItems: NavItem[] = [
     id: 'purchases',
     label: 'Buy',
     path: '/purchases',
-    icon: ArrowDownLeft,
+    icon: ShoppingCart,
   },
   {
     id: 'activity',

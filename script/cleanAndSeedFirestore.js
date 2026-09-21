@@ -90,34 +90,50 @@ class FirestoreBatcher {
   }
 }
 
-async function cleanCollection(collectionName) {
+async function cleanFast(collectionName) {
   console.log(`Cleaning collection '${collectionName}'...`);
   const snap = await db.collection(collectionName).get();
   const batcher = new FirestoreBatcher(db);
   for (const doc of snap.docs) {
-    // If it has subcollections (like customers/transactions), clean subcollection first
-    const subcols = await doc.ref.listCollections();
-    for (const subcol of subcols) {
-      const subSnap = await subcol.get();
-      for (const sDoc of subSnap.docs) {
-        await batcher.delete(sDoc.ref);
-      }
-    }
     await batcher.delete(doc.ref);
   }
   await batcher.commit();
   console.log(`Deleted ${snap.size} documents from '${collectionName}'.`);
 }
 
-async function run() {
-  console.log('🚀 Starting Clean & Seed process for Cloud Firestore...');
+async function cleanSubcollectionsFast(subcolName) {
+  console.log(`Cleaning subcollectionGroup '${subcolName}'...`);
+  const snap = await db.collectionGroup(subcolName).get();
+  const batcher = new FirestoreBatcher(db);
+  for (const doc of snap.docs) {
+    await batcher.delete(doc.ref);
+  }
+  await batcher.commit();
+  console.log(
+    `Deleted ${snap.size} documents from subcollection '${subcolName}'.`,
+  );
+}
 
-  // 1. Clean existing Firestore collections
-  await cleanCollection('customers');
-  await cleanCollection('purchases');
-  await cleanCollection('expenses');
-  await cleanCollection('monthly_rollout');
-  await cleanCollection('metadata');
+async function run() {
+  console.log('🚀 Starting Fast Clean & Seed process for Cloud Firestore...');
+
+  // 1. Clean subcollections first via collectionGroup
+  await cleanSubcollectionsFast('transactions');
+  await cleanSubcollectionsFast('transactions-2024');
+  await cleanSubcollectionsFast('transactions-2025');
+
+  // 2. Clean root collections
+  await cleanFast('customers');
+  await cleanFast('customers-2024');
+  await cleanFast('customers-2025');
+  await cleanFast('customers-2026');
+  await cleanFast('purchases');
+  await cleanFast('purchases-2024');
+  await cleanFast('purchases-2025');
+  await cleanFast('purchases-2026');
+  await cleanFast('expenses');
+  await cleanFast('monthly_rollout');
+  await cleanFast('metadata');
 
   console.log('✨ All old collections cleaned successfully.\n');
 

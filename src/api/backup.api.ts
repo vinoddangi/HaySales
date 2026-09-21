@@ -5,7 +5,7 @@ import {
   getDocs,
   setDoc,
   writeBatch,
-} from '../services/dbBridge';
+} from 'firebase/firestore';
 import { db } from '../store/firebaseConfig';
 import { Transaction } from '../types';
 import { parseTransactionDate } from '../utils/formatters';
@@ -70,7 +70,9 @@ export function hasPendingPreviousYearRecords(
       if (d && d.getFullYear() >= currentYear) return false;
       if (
         typeof tx.note === 'string' &&
-        (tx.note.includes(`transactions-${currentYear - 1}`) ||
+        (tx.note.includes(`customers-${currentYear - 1}`) ||
+          tx.note.includes(`Customers-${currentYear - 1}`) ||
+          tx.note.includes(`transactions-${currentYear - 1}`) ||
           tx.note.includes(`Transactions-${currentYear - 1}`))
       ) {
         return false;
@@ -95,33 +97,48 @@ export function hasPendingPreviousYearRecords(
 }
 
 /**
- * Backup/Rollout transactions & purchases by year to transactions-(YYYY) & purchases-(YYYY),
- * aggregate balance, create opening balance, and update metadata/backup_status
+ * Backup/Rollout transactions & purchases by year to customers-(YYYY) with transactions subcollection
+ * & purchases-(YYYY), aggregate balance, create opening balance, and update metadata/backup_status
  */
 export async function backupYearlyTransactionsApi(
   year?: number,
 ): Promise<BackupResult> {
   const currentYear = new Date().getFullYear();
   const targetYear = year || currentYear - 1;
-  const backupTxColName = `transactions-${targetYear}`;
+  const backupCustomersColName = `customers-${targetYear}`;
   const backupPurchasesColName = `purchases-${targetYear}`;
 
   let backedUpCount = 0;
   let customersProcessed = 0;
   let purchasesBackedUpCount = 0;
 
-  // 1. Process customer subcollections (Transactions)
+  // 1. Process all customers -> archive profile snapshot into customers-(YYYY) and transactions into subcollections
   const customersSnap = await getDocs(collection(db, 'customers'));
 
   for (const custDoc of customersSnap.docs) {
     const custId = custDoc.id;
+    const custData = custDoc.data();
     const currentTxCol = collection(db, 'customers', custId, 'transactions');
     const txSnap = await getDocs(currentTxCol);
 
-    if (txSnap.empty) continue;
-
     const batch = writeBatch(db);
-    const backupColRef = collection(db, 'customers', custId, backupTxColName);
+    const backupCustDocRef = doc(db, backupCustomersColName, custId);
+    const backupTxColRef = collection(
+      db,
+      backupCustomersColName,
+      custId,
+      'transactions',
+    );
+
+    // Save customer profile snapshot into customers-(YYYY)
+    batch.set(
+      backupCustDocRef,
+      {
+        ...custData,
+        year: targetYear,
+      },
+      { merge: true },
+    );
 
     let cumulativeDue = 0;
     let custMovedCount = 0;
@@ -133,7 +150,7 @@ export async function backupYearlyTransactionsApi(
 
       // Only backup and roll forward transactions from targetYear or earlier (< currentYear)
       if (txYear <= targetYear) {
-        const backupDocRef = doc(backupColRef, tDoc.id);
+        const backupDocRef = doc(backupTxColRef, tDoc.id);
         batch.set(backupDocRef, data, { merge: true });
 
         if (data.type === 'PAYMENT') {
@@ -155,6 +172,14 @@ export async function backupYearlyTransactionsApi(
     if (custMovedCount > 0) {
       const finalOpeningDue = Math.max(0, cumulativeDue);
 
+      batch.set(
+        backupCustDocRef,
+        {
+          outstandingAmountAtYearEnd: finalOpeningDue,
+        },
+        { merge: true },
+      );
+
       if (finalOpeningDue > 0) {
         const newOpeningRef = doc(
           currentTxCol,
@@ -167,7 +192,7 @@ export async function backupYearlyTransactionsApi(
           cashPaid: 0,
           remainingDue: finalOpeningDue,
           date: new Date(currentYear, 0, 1),
-          note: `Cumulative balance rolled over into ${backupTxColName}`,
+          note: `Cumulative balance rolled over into ${backupCustomersColName}`,
         });
       }
 
@@ -176,13 +201,13 @@ export async function backupYearlyTransactionsApi(
         { outstandingAmount: finalOpeningDue },
         { merge: true },
       );
-
-      await batch.commit();
-      customersProcessed++;
     }
+
+    await batch.commit();
+    customersProcessed++;
   }
 
-  // 2. Process root Purchases collection
+  // 2. Process root Purchases collection -> archive into purchases-(YYYY)
   const purchasesSnap = await getDocs(collection(db, 'purchases'));
   if (!purchasesSnap.empty) {
     const purchaseBatch = writeBatch(db);

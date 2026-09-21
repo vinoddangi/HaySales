@@ -2,11 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { Customer, Transaction } from '../types';
 import {
   customerCsvColumns,
-  expensesCsvColumns,
-  paymentsCsvColumns,
   purchasesCsvColumns,
-  salesCsvColumns,
-  servicesCsvColumns,
+  transactionCsvColumns,
 } from './dataBackup.api';
 
 describe('dataBackup.api column definitions', () => {
@@ -41,7 +38,7 @@ describe('dataBackup.api column definitions', () => {
     ]);
   });
 
-  it('formats sales transaction rows properly', () => {
+  it('formats sales transaction rows properly in transactionCsvColumns', () => {
     const sale: Transaction = {
       id: 'sale-1',
       type: 'SALE',
@@ -57,18 +54,19 @@ describe('dataBackup.api column definitions', () => {
       note: 'First load',
     };
 
-    const values = salesCsvColumns.map((c) => c.accessor(sale));
+    const values = transactionCsvColumns.map((c) => c.accessor(sale));
     expect(values[0]).toBe('sale-1');
     expect(values[1]).toBe('cust-10');
     expect(values[2]).toBe('Ramesh Patel');
-    expect(values[5]).toBe(1200);
-    expect(values[6]).toBe(10.5);
-    expect(values[7]).toBe(12600);
-    expect(values[8]).toBe(2600);
-    expect(values[9]).toBe(10000);
+    expect(values[3]).toBe('SALE');
+    expect(values[7]).toBe(1200);
+    expect(values[8]).toBe(10.5);
+    expect(values[9]).toBe(12600);
+    expect(values[10]).toBe(2600);
+    expect(values[11]).toBe(10000);
   });
 
-  it('formats payments and services properly', () => {
+  it('formats payments and services properly in transactionCsvColumns', () => {
     const payment: Transaction = {
       id: 'pay-1',
       type: 'PAYMENT',
@@ -78,9 +76,10 @@ describe('dataBackup.api column definitions', () => {
       amount: 5000,
       note: 'Partial cash payment',
     };
-    const payValues = paymentsCsvColumns.map((c) => c.accessor(payment));
+    const payValues = transactionCsvColumns.map((c) => c.accessor(payment));
     expect(payValues[0]).toBe('pay-1');
-    expect(payValues[4]).toBe(5000);
+    expect(payValues[3]).toBe('PAYMENT');
+    expect(payValues[9]).toBe(5000);
 
     const service: Transaction = {
       id: 'serv-1',
@@ -91,10 +90,11 @@ describe('dataBackup.api column definitions', () => {
       item: 'Pickup',
       amount: 80000,
     };
-    const servValues = servicesCsvColumns.map((c) => c.accessor(service));
+    const servValues = transactionCsvColumns.map((c) => c.accessor(service));
     expect(servValues[0]).toBe('serv-1');
-    expect(servValues[4]).toBe('Pickup');
-    expect(servValues[5]).toBe(80000);
+    expect(servValues[3]).toBe('SERVICE');
+    expect(servValues[5]).toBe('Pickup');
+    expect(servValues[9]).toBe(80000);
   });
 
   it('formats purchases and expenses properly', () => {
@@ -111,9 +111,12 @@ describe('dataBackup.api column definitions', () => {
     };
     const purchValues = purchasesCsvColumns.map((c) => c.accessor(purchase));
     expect(purchValues[0]).toBe('purch-1');
-    expect(purchValues[4]).toBe(5000);
-    expect(purchValues[5]).toBe(8.5);
-    expect(purchValues[6]).toBe(42500);
+    expect(purchValues[1]).toBe('PURCHASE');
+    expect(purchValues[3]).toBe('Purchase');
+    expect(purchValues[5]).toBe('Others');
+    expect(purchValues[6]).toBe(5000);
+    expect(purchValues[7]).toBe(8.5);
+    expect(purchValues[8]).toBe(42500);
 
     const expense: Transaction = {
       id: 'exp-1',
@@ -123,10 +126,11 @@ describe('dataBackup.api column definitions', () => {
       item: 'Diesel',
       amount: 3500,
     };
-    const expValues = expensesCsvColumns.map((c) => c.accessor(expense));
+    const expValues = purchasesCsvColumns.map((c) => c.accessor(expense));
     expect(expValues[0]).toBe('exp-1');
-    expect(expValues[2]).toBe('Fuel');
-    expect(expValues[3]).toBe('Diesel');
-    expect(expValues[4]).toBe(3500);
+    expect(expValues[1]).toBe('EXPENSE');
+    expect(expValues[3]).toBe('Fuel');
+    expect(expValues[5]).toBe('Diesel');
+    expect(expValues[8]).toBe(3500);
   });
 });

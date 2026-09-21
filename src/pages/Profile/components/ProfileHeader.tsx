@@ -1,4 +1,4 @@
-import { Edit3, Sparkles, User } from 'lucide-react';
+import { Edit3, Sparkles } from 'lucide-react';
 import React, { useState } from 'react';
 import { Card, Text } from '../../../components/common';
 import { Flex } from '../../../components/layout';
@@ -35,8 +35,8 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   return (
     <Card variant="filled" className="space-y-3 bg-m3-surface-container p-4">
       <Flex align="center" gap="md" fullWidth>
-        <div className="shadow-xs flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-m3-primary-container text-lg font-bold text-m3-on-primary-container">
-          <User className="h-7 w-7" />
+        <div className="shadow-xs flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-m3-primary-container text-xl font-bold text-m3-on-primary-container ring-2 ring-m3-primary/20">
+          <span>{name ? name.trim().charAt(0).toUpperCase() : 'V'}</span>
         </div>
         <div className="min-w-0 flex-1">
           <Flex align="center" gap="xs">

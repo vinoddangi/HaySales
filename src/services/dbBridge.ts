@@ -114,10 +114,32 @@ export interface GenericQuerySnapshot<T = any> {
   forEach(callback: (doc: GenericDocumentSnapshot<T>) => void): void;
 }
 
-export function doc(dbOrPath: any, ...pathSegments: string[]): GenericDocRef {
-  const segments = (
-    typeof dbOrPath === 'string' ? [dbOrPath, ...pathSegments] : pathSegments
-  ).filter(Boolean);
+export function doc(
+  dbOrColOrPath: any,
+  ...pathSegments: string[]
+): GenericDocRef {
+  let segments: string[] = [];
+
+  if (
+    dbOrColOrPath &&
+    typeof dbOrColOrPath === 'object' &&
+    dbOrColOrPath.type === 'collection'
+  ) {
+    // e.g. doc(collectionRef) or doc(collectionRef, 'customId')
+    const customId =
+      pathSegments[0] ||
+      `tx_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
+    segments = [...dbOrColOrPath.segments, customId];
+  } else if (typeof dbOrColOrPath === 'string') {
+    segments = [dbOrColOrPath, ...pathSegments]
+      .join('/')
+      .split('/')
+      .filter(Boolean);
+  } else {
+    // db instance passed as first argument: e.g. doc(db, 'customers', custId, 'transactions', txId)
+    segments = pathSegments.join('/').split('/').filter(Boolean);
+  }
+
   const parentSegments = segments.slice(0, -1);
   return {
     type: 'doc',
@@ -129,12 +151,31 @@ export function doc(dbOrPath: any, ...pathSegments: string[]): GenericDocRef {
 }
 
 export function collection(
-  dbOrPath: any,
+  dbOrDocOrPath: any,
   ...pathSegments: string[]
 ): GenericCollectionRef {
-  const segments = (
-    typeof dbOrPath === 'string' ? [dbOrPath, ...pathSegments] : pathSegments
-  ).filter(Boolean);
+  let segments: string[] = [];
+
+  if (
+    dbOrDocOrPath &&
+    typeof dbOrDocOrPath === 'object' &&
+    dbOrDocOrPath.type === 'doc'
+  ) {
+    // e.g. collection(docRef, 'transactions')
+    segments = [...dbOrDocOrPath.segments, ...pathSegments]
+      .join('/')
+      .split('/')
+      .filter(Boolean);
+  } else if (typeof dbOrDocOrPath === 'string') {
+    segments = [dbOrDocOrPath, ...pathSegments]
+      .join('/')
+      .split('/')
+      .filter(Boolean);
+  } else {
+    // db instance passed as first argument: e.g. collection(db, 'customers', custId, 'transactions')
+    segments = pathSegments.join('/').split('/').filter(Boolean);
+  }
+
   const parentSegments = segments.slice(0, -1);
   return {
     type: 'collection',

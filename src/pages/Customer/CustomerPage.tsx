@@ -1,4 +1,4 @@
-import { ChevronRight, Phone, User, Users } from 'lucide-react';
+import { ChevronRight, Phone, Users } from 'lucide-react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -65,8 +65,12 @@ export const CustomerPage: React.FC = () => {
               className="flex items-center justify-between p-3.5 transition-colors hover:border-m3-primary/40"
             >
               <Flex align="center" gap="md">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-m3-primary-container text-m3-on-primary-container">
-                  <User className="h-4 w-4" />
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-m3-primary-container text-sm font-bold text-m3-on-primary-container">
+                  <span>
+                    {customer.name
+                      ? customer.name.trim().charAt(0).toUpperCase()
+                      : 'C'}
+                  </span>
                 </div>
                 <div className="space-y-0.5">
                   <Text

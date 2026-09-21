@@ -84,7 +84,7 @@ export const TransactionBackupSettings: React.FC = () => {
           >
             Archives previous year customer transactions into{' '}
             <code className="rounded bg-m3-surface-container-high px-1 py-0.5 font-mono text-[10px] text-m3-primary">
-              transactions-{targetYear}
+              customers-{targetYear}
             </code>{' '}
             and farm purchases into{' '}
             <code className="rounded bg-m3-surface-container-high px-1 py-0.5 font-mono text-[10px] text-m3-primary">
@@ -124,7 +124,7 @@ export const TransactionBackupSettings: React.FC = () => {
             </Text>
             <Text styleAs="caption" appearance="secondary" className="block">
               Previous year customer transactions and purchases will be archived
-              to <code>transactions-{targetYear}</code> and{' '}
+              to <code>customers-{targetYear}</code> and{' '}
               <code>purchases-{targetYear}</code>. Active balances will roll
               forward as opening balances.
             </Text>
