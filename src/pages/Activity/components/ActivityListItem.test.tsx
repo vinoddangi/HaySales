@@ -45,6 +45,6 @@ describe('ActivityListItem component', () => {
 
     expect(screen.getByText('Suresh Kumar')).toBeInTheDocument();
     expect(screen.getAllByText(/service/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/credit/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/credit/i).length).toBeGreaterThan(0);
   });
 });

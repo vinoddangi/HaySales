@@ -1,15 +1,12 @@
-import { Banknote, CreditCard, History, Search } from 'lucide-react';
+import { Banknote, CreditCard, History, Search, X } from 'lucide-react';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { filterTransactionsByPeriod } from '../../business/dashboardBusiness';
 import { Card } from '../../components/common/Card';
 import { EmptyState } from '../../components/common/EmptyState';
 import { PageContainer } from '../../components/common/PageContainer';
-import {
-  PeriodFilterBar,
-  PeriodFilterMode,
-} from '../../components/common/PeriodFilterBar';
-import { useAppDispatch } from '../../store/hooks';
+import { PeriodFilterBar } from '../../components/common/PeriodFilterBar';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   useDeletePurchaseTransactionMutation,
   useDeleteTransactionMutation,
@@ -17,7 +14,11 @@ import {
   useUpdatePurchaseTransactionMutation,
   useUpdateTransactionMutation,
 } from '../../store/slices/customersApi';
-import { showSnackbar } from '../../store/slices/uiSlice';
+import {
+  setFilterMode,
+  setSelectedMonth,
+  showSnackbar,
+} from '../../store/slices/uiSlice';
 import { Transaction } from '../../types';
 import { cn } from '../../utils/cn';
 import {
@@ -32,11 +33,10 @@ export const ActivityPage: React.FC = () => {
   const [searchParams] = useSearchParams();
   const currentDate = useMemo(() => new Date(), []);
   const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth();
 
-  // Period Filter States: 'month' (default current month) or 'ytd'
-  const [filterMode, setFilterMode] = useState<PeriodFilterMode>('month');
-  const [selectedMonth, setSelectedMonth] = useState<number>(currentMonth);
+  // Period Filter States: 'month' (default current month) or 'ytd' persisted globally
+  const filterMode = useAppSelector((state) => state.ui.filterMode);
+  const selectedMonth = useAppSelector((state) => state.ui.selectedMonth);
 
   const categoryParam = searchParams.get('category')?.toUpperCase();
   const natureParam = searchParams.get('nature')?.toUpperCase();
@@ -296,8 +296,8 @@ export const ActivityPage: React.FC = () => {
       <PeriodFilterBar
         filterMode={filterMode}
         selectedMonth={selectedMonth}
-        onFilterModeChange={setFilterMode}
-        onMonthChange={setSelectedMonth}
+        onFilterModeChange={(mode) => dispatch(setFilterMode(mode))}
+        onMonthChange={(month) => dispatch(setSelectedMonth(month))}
       />
 
       {/* 3. Category Selector Tabs */}
@@ -311,15 +311,15 @@ export const ActivityPage: React.FC = () => {
 
       {/* 3b. Sales Nature Sub-Filter Chips (All, Cash, Credit) */}
       {activeCategory === 'SALES' && (
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-0.5 pt-0.5">
           <button
             type="button"
             onClick={() => setSaleNature('ALL')}
             className={cn(
-              'rounded-full px-3 py-1 text-xs font-semibold transition-all',
+              'rounded-full px-3 py-1 text-xs font-bold transition-all',
               saleNature === 'ALL'
                 ? 'shadow-xs bg-m3-primary text-m3-on-primary'
-                : 'bg-m3-surface-container-high text-m3-on-surface-variant hover:bg-m3-surface-container-highest',
+                : 'border border-m3-outline-variant/60 bg-m3-surface-container-low text-m3-on-surface-variant hover:bg-m3-surface-container hover:text-m3-on-surface',
             )}
           >
             All Sales ({allSalesCount})
@@ -328,10 +328,10 @@ export const ActivityPage: React.FC = () => {
             type="button"
             onClick={() => setSaleNature('CASH')}
             className={cn(
-              'flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold transition-all',
+              'flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold transition-all',
               saleNature === 'CASH'
-                ? 'shadow-xs bg-teal-600 text-white'
-                : 'bg-m3-surface-container-high text-m3-on-surface-variant hover:bg-m3-surface-container-highest',
+                ? 'shadow-xs bg-emerald-600 text-white'
+                : 'border border-emerald-500/30 bg-emerald-500/[0.04] text-emerald-700 hover:bg-emerald-500/[0.08] dark:text-emerald-300',
             )}
           >
             <Banknote className="h-3.5 w-3.5" />
@@ -341,10 +341,10 @@ export const ActivityPage: React.FC = () => {
             type="button"
             onClick={() => setSaleNature('CREDIT')}
             className={cn(
-              'flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold transition-all',
+              'flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold transition-all',
               saleNature === 'CREDIT'
                 ? 'shadow-xs bg-purple-600 text-white'
-                : 'bg-m3-surface-container-high text-m3-on-surface-variant hover:bg-m3-surface-container-highest',
+                : 'border border-purple-500/30 bg-purple-500/[0.04] text-purple-700 hover:bg-purple-500/[0.08] dark:text-purple-300',
             )}
           >
             <CreditCard className="h-3.5 w-3.5" />
@@ -355,14 +355,23 @@ export const ActivityPage: React.FC = () => {
 
       {/* 4. Search Bar */}
       <div className="relative">
-        <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-m3-on-surface-variant" />
+        <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-m3-on-surface-variant" />
         <input
           type="text"
           placeholder="Search by name, crop, payee..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full rounded-xl border border-m3-outline-variant bg-m3-surface-container-low py-2 pl-9 pr-3 text-xs text-m3-on-surface placeholder:text-m3-on-surface-variant/70 focus:border-m3-primary focus:outline-none"
+          className="shadow-xs w-full rounded-2xl border border-m3-outline-variant/60 bg-m3-surface-container-low py-2.5 pl-10 pr-9 text-xs text-m3-on-surface placeholder:text-m3-on-surface-variant/70 focus:border-m3-primary focus:outline-none"
         />
+        {searchTerm && (
+          <button
+            type="button"
+            onClick={() => setSearchTerm('')}
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-m3-on-surface-variant hover:bg-m3-surface-container hover:text-m3-on-surface"
+          >
+            <X className="h-3.5 w-3.5" />
+          </button>
+        )}
       </div>
 
       {/* 5. Transactions Stream */}

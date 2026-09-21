@@ -1,14 +1,10 @@
-import { Edit3 } from 'lucide-react';
+import { Calendar, Edit3 } from 'lucide-react';
 import React from 'react';
-import { Badge, Text } from '../../../components/common';
-import { Flex } from '../../../components/layout';
+import { Badge } from '../../../components/common';
 import { Transaction } from '../../../types';
-import {
-  formatRupee,
-  formatWeight,
-  getTransactionFinancials,
-  parseTransactionDate,
-} from '../../../utils/formatters';
+import { cn } from '../../../utils/cn';
+import { sanitizeTransactionDisplay } from '../../../utils/dataSanitizer';
+import { formatRupee } from '../../../utils/formatters';
 
 export interface ActivityListItemProps {
   transaction: Transaction;
@@ -19,141 +15,113 @@ export const ActivityListItem: React.FC<ActivityListItemProps> = ({
   transaction,
   onEdit,
 }) => {
-  const isSale = transaction.type === 'SALE';
-  const isService = transaction.type === 'SERVICE';
-  const isPayment = transaction.type === 'PAYMENT';
-  const isPurchase = transaction.type === 'PURCHASE';
-  const isExpense = transaction.type === 'EXPENSE';
+  const itemData = sanitizeTransactionDisplay(transaction);
 
-  const txDate = parseTransactionDate(transaction.date) || new Date();
-  const dayStr = txDate.getDate().toString().padStart(2, '0');
-  const monthStr = txDate.toLocaleString('default', { month: 'short' });
-
-  const { amount, cash, credit, paymentVal } =
-    getTransactionFinancials(transaction);
-  const effectiveAmount = isPayment ? paymentVal : amount;
-  const isFullCashSale = (isSale || isService) && credit === 0 && cash > 0;
-  const avgRate =
-    transaction.weightKg && transaction.weightKg > 0
-      ? effectiveAmount / transaction.weightKg
-      : 0;
-
-  const displayName =
-    isSale || isService || isPayment
-      ? transaction.customerName || 'Customer'
-      : transaction.vendorName ||
-        (isPurchase
-          ? 'Stock Procurement'
-          : transaction.expenseCategory || 'Expense Payee');
-
-  const displaySubtitle = isSale
-    ? `${transaction.item || 'Crop'} • ${formatWeight(transaction.weightKg || 0)} @ ₹${avgRate.toFixed(2)}/kg`
-    : isService
-      ? `Service: ${transaction.item || 'General'}${transaction.note ? ` • ${transaction.note}` : ''}`
-      : isPayment
-        ? 'Payment Received & Dues Settled'
-        : isPurchase
-          ? `${transaction.item || 'Crop'} • ${formatWeight(transaction.weightKg || 0)} @ ₹${avgRate.toFixed(2)}/kg`
-          : `${transaction.expenseCategory || 'General Expense'}${transaction.note ? ` • ${transaction.note}` : ''}`;
-
-  const amountColor = isPayment
-    ? 'success'
-    : isPurchase
-      ? 'warning'
-      : isExpense
-        ? 'error'
-        : 'onSurface';
-
-  const typeLabel = isPayment
-    ? 'Payment'
-    : isService
-      ? 'Service'
-      : isSale
-        ? 'Sale'
-        : isPurchase
-          ? 'Purchase'
-          : 'Expense';
+  // Subtle border / background accent by activity nature
+  const getNatureCardStyle = () => {
+    if (itemData.isPayment)
+      return 'border-emerald-500/30 bg-emerald-500/[0.02]';
+    if (itemData.isFullCash)
+      return 'border-emerald-500/20 bg-emerald-500/[0.02]';
+    if (itemData.isFullCredit || itemData.isPartialCash)
+      return 'border-purple-500/20 bg-purple-500/[0.02]';
+    if (itemData.isService) return 'border-sky-500/20 bg-sky-500/[0.02]';
+    if (itemData.isPurchase) return 'border-amber-500/20 bg-amber-500/[0.02]';
+    if (itemData.isExpense) return 'border-rose-500/20 bg-rose-500/[0.02]';
+    return 'border-m3-outline-variant/60 bg-m3-surface-container-low';
+  };
 
   return (
-    <Flex
-      align="center"
-      justify="between"
-      gap="md"
-      fullWidth
-      padding="md"
-      className="rounded-2xl border border-m3-outline-variant/60 bg-m3-surface-container-low transition-all hover:bg-m3-surface-container"
+    <div
+      className={cn(
+        'hover:shadow-xs rounded-2xl border p-3.5 transition-all hover:border-m3-outline-variant hover:bg-m3-surface-container/60',
+        getNatureCardStyle(),
+      )}
     >
-      {/* 1. Date badge */}
-      <Flex
-        direction="column"
-        align="center"
-        justify="center"
-        paddingHorizontal="sm"
-        paddingVertical="xs"
-        className="shadow-2xs min-w-[44px] rounded-xl bg-m3-surface-container-high text-center"
-      >
-        <span className="text-base font-black leading-tight text-m3-primary">
-          {dayStr}
-        </span>
-        <span className="text-[9px] font-extrabold uppercase tracking-wider text-m3-on-surface-variant">
-          {monthStr}
-        </span>
-      </Flex>
+      {/* Header Row: Large Customer Name & Amount */}
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
+          {/* Customer / Party Name - Large size */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            <h3 className="truncate text-base font-black tracking-tight text-m3-on-surface sm:text-lg">
+              {itemData.displayName}
+            </h3>
 
-      {/* 2. Details: Name, Item, Subtitle, Tags */}
-      <div className="min-w-0 flex-1 space-y-0.5">
-        <Flex align="center" gap="xs">
-          <Text
-            variant="body"
-            weight="bold"
-            color="onSurface"
-            className="truncate text-sm font-bold"
-          >
-            {displayName}
-          </Text>
-
-          {/* Status / Category Badges */}
-          {isFullCashSale && <Badge variant="cash">Cash</Badge>}
-          {(isSale || isService) && credit > 0 && (
-            <Badge variant="credit">Credit</Badge>
-          )}
-          {isService && <Badge variant="service">Service</Badge>}
-          {isPurchase && (
-            <Badge variant="purchase">{transaction.item || 'Stock'}</Badge>
-          )}
-          {isExpense && (
-            <Badge variant="expense">
-              {transaction.expenseCategory || 'Expense'}
+            {/* Badges */}
+            <Badge variant={itemData.badgeSentiment} size="sm">
+              {itemData.badgeLabel}
             </Badge>
-          )}
-        </Flex>
+          </div>
 
-        <Text variant="caption" color="muted" className="block truncate">
-          {displaySubtitle}
-        </Text>
-      </div>
-
-      {/* 3. Amount & Edit Action */}
-      <Flex align="center" gap="sm">
-        <div className="text-right">
-          <Text variant="amount" color={amountColor} className="block">
-            {formatRupee(effectiveAmount)}
-          </Text>
-          <Text variant="caption" color="muted">
-            {typeLabel}
-          </Text>
+          {/* Subtitle / Item & Rate Specs */}
+          <p className="mt-1 line-clamp-1 text-xs font-medium text-m3-on-surface-variant">
+            {itemData.displaySubtitle}
+          </p>
         </div>
 
-        {/* Edit Button */}
+        {/* Right Section: Large Amount & Type */}
+        <div className="shrink-0 text-right">
+          <div
+            className={cn(
+              'text-base font-black tracking-tight sm:text-lg',
+              itemData.amountColorClass,
+            )}
+          >
+            {itemData.formattedAmount}
+          </div>
+          <div className="text-[10px] font-bold uppercase tracking-wider text-m3-on-surface-variant">
+            {itemData.typeLabel}
+          </div>
+        </div>
+      </div>
+
+      {/* Footer / Meta Row: Date, Payment Nature & Edit Action */}
+      <div className="mt-2.5 flex items-center justify-between border-t border-m3-outline-variant/40 pt-2 text-[11px] text-m3-on-surface-variant">
+        <div className="flex flex-wrap items-center gap-2">
+          {/* Date */}
+          <div className="flex items-center gap-1.5 font-medium">
+            <Calendar className="h-3 w-3 opacity-70" />
+            <span>{itemData.formattedDate}</span>
+          </div>
+
+          {/* Settlement Status */}
+          {itemData.isPartialCash ? (
+            <div className="flex items-center gap-1.5 font-semibold">
+              <span className="text-emerald-600 dark:text-emerald-400">
+                Paid: {formatRupee(itemData.cashPaid)}
+              </span>
+              <span className="text-m3-outline">•</span>
+              <span className="text-rose-600 dark:text-rose-400">
+                Due: {formatRupee(itemData.remainingDue)}
+              </span>
+            </div>
+          ) : itemData.isFullCash ? (
+            <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+              Paid in Full
+            </span>
+          ) : itemData.isFullCredit ? (
+            <span className="font-semibold text-purple-600 dark:text-purple-400">
+              Full Credit Due
+            </span>
+          ) : itemData.isPayment ? (
+            <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+              Payment Received
+            </span>
+          ) : null}
+        </div>
+
+        {/* Edit Action Button in Footer */}
         <button
           type="button"
           onClick={() => onEdit(transaction)}
-          className="rounded-full border border-m3-outline-variant/80 bg-m3-surface p-2 text-m3-on-surface-variant transition-all hover:border-m3-primary hover:bg-m3-primary/10 hover:text-m3-primary active:scale-95"
+          className="flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-bold text-m3-primary transition-all hover:bg-m3-primary/10 active:scale-95"
           title="Edit Record"
+          aria-label="Edit Record"
         >
-          <Edit3 className="h-3.5 w-3.5" />
+          <Edit3 className="h-3 w-3" />
+          <span>Edit</span>
         </button>
-      </Flex>
-    </Flex>
+      </div>
+    </div>
   );
 };

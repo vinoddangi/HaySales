@@ -4,12 +4,8 @@ import { Badge, Text } from '../../../components/common';
 import { Flex } from '../../../components/layout';
 import { Transaction } from '../../../types';
 import { cn } from '../../../utils/cn';
-import {
-  formatDate,
-  formatRupee,
-  formatWeightWithRate,
-  getTransactionFinancials,
-} from '../../../utils/formatters';
+import { sanitizeTransactionDisplay } from '../../../utils/dataSanitizer';
+import { formatRupee } from '../../../utils/formatters';
 
 export interface TransactionHistoryItemProps {
   transaction: Transaction;
@@ -20,31 +16,35 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
   transaction: tx,
   isCleared,
 }) => {
-  const isPayment = tx.type === 'PAYMENT';
-  const isService = tx.type === 'SERVICE';
-  const isOpening =
-    tx.type === 'OPENING_BALANCE' || tx.item === 'Previous Outstanding';
+  const data = sanitizeTransactionDisplay(tx);
 
-  const { amount, cash, credit, paymentVal } = getTransactionFinancials(tx);
-  const isFullCashSale = !isPayment && !isOpening && credit === 0 && cash > 0;
-  const isPartialCash = !isPayment && !isOpening && cash > 0 && credit > 0;
+  const isFullCashSale =
+    !data.isPayment &&
+    !data.isOpening &&
+    data.remainingDue === 0 &&
+    data.cashPaid > 0;
+  const isPartialCash =
+    !data.isPayment &&
+    !data.isOpening &&
+    data.cashPaid > 0 &&
+    data.remainingDue > 0;
 
-  const title = isPayment
+  const title = data.isPayment
     ? 'Payment Received'
-    : isOpening
+    : data.isOpening
       ? 'Previous Outstanding'
-      : isService
-        ? `Service: ${tx.item || 'Service'}`
+      : data.isService
+        ? `Service: ${data.item}`
         : isFullCashSale
-          ? `Cash Sale: ${tx.item || 'Item'}`
-          : `Sale: ${tx.item || 'Item'}`;
+          ? `Cash Sale: ${data.item}`
+          : `Sale: ${data.item}`;
 
   const subtitle =
-    !isPayment && !isOpening && !isService && tx.weightKg && tx.weightKg > 0
-      ? `${formatWeightWithRate(tx.weightKg, tx.rate, tx.amount)} • ${formatDate(tx.date)}`
-      : tx.weightKg
-        ? `${tx.weightKg.toLocaleString('en-IN')} kg • ${formatDate(tx.date)}`
-        : formatDate(tx.date);
+    !data.isPayment && !data.isOpening && !data.isService && data.weightKg > 0
+      ? `${data.formattedWeight} @ ${data.formattedRate} • ${data.formattedDate}`
+      : data.weightKg > 0
+        ? `${data.formattedWeight} • ${data.formattedDate}`
+        : data.formattedDate;
 
   return (
     <Flex
@@ -54,19 +54,20 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
       padding="md"
       className={cn('relative rounded-xl border text-xs transition-all', {
         'shadow-xs border-emerald-500/40 bg-emerald-500/[0.08]': isCleared,
-        'border-teal-500/30 bg-teal-500/[0.05]': !isCleared && isFullCashSale,
+        'border-emerald-500/30 bg-emerald-500/[0.05]':
+          !isCleared && isFullCashSale,
         'border-emerald-500/20 bg-emerald-500/[0.03]':
-          !isCleared && !isFullCashSale && isPayment,
+          !isCleared && !isFullCashSale && data.isPayment,
         'border-amber-500/30 bg-amber-500/[0.04]':
-          !isCleared && !isFullCashSale && isOpening,
-        'border-cyan-500/30 bg-cyan-500/[0.05]':
-          !isCleared && !isFullCashSale && isService,
+          !isCleared && !isFullCashSale && data.isOpening,
+        'border-sky-500/30 bg-sky-500/[0.05]':
+          !isCleared && !isFullCashSale && data.isService,
         'border-m3-outline-variant bg-m3-surface-container-low':
           !isCleared &&
           !isFullCashSale &&
-          !isPayment &&
-          !isOpening &&
-          !isService,
+          !data.isPayment &&
+          !data.isOpening &&
+          !data.isService,
       })}
     >
       {/* 1. Left Section: Title, Badges, and Details */}
@@ -76,7 +77,7 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
             {title}
           </Text>
 
-          {isPayment && (
+          {data.isPayment && (
             <Badge sentiment="positive" size="sm">
               Cash In
             </Badge>
@@ -86,7 +87,7 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
               💵 100% Cash
             </Badge>
           )}
-          {isOpening && (
+          {data.isOpening && (
             <Badge sentiment="warning" size="sm">
               Opening Due
             </Badge>
@@ -96,11 +97,14 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
               Part-Cash
             </Badge>
           )}
-          {!isPayment && !isFullCashSale && !isOpening && !isPartialCash && (
-            <Badge sentiment="neutral" size="sm">
-              Credit Invoice
-            </Badge>
-          )}
+          {!data.isPayment &&
+            !isFullCashSale &&
+            !data.isOpening &&
+            !isPartialCash && (
+              <Badge sentiment="neutral" size="sm">
+                Credit Invoice
+              </Badge>
+            )}
 
           {/* Zero Due / Settled Milestone Highlight */}
           {isCleared && (
@@ -116,26 +120,24 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
         </Text>
       </div>
 
-      {/* 2. Right Section: Amounts & Balances */}
+      {/* 2. Right Section: Amounts & Balances with Payment-Nature Colors */}
       <div className="space-y-0.5 text-right">
-        {isPayment ? (
+        {data.isPayment ? (
           <Text
             styleAs="amount"
-            sentiment="positive"
             weight="black"
-            className="block"
+            className={cn('block', data.amountColorClass)}
           >
-            {formatRupee(paymentVal)}
+            {formatRupee(data.paymentAmount)}
           </Text>
         ) : isFullCashSale ? (
           <div>
             <Text
               styleAs="amount"
-              sentiment="positive"
               weight="black"
-              className="block"
+              className={cn('block', data.amountColorClass)}
             >
-              {formatRupee(cash)}
+              {formatRupee(data.cashPaid)}
             </Text>
             <Text
               styleAs="caption"
@@ -149,26 +151,25 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
         ) : (
           <>
             <Text styleAs="caption" appearance="secondary" className="block">
-              Total: {formatRupee(amount)}
+              Total: {formatRupee(data.amount)}
             </Text>
-            {cash > 0 && (
+            {data.cashPaid > 0 && (
               <Text
                 styleAs="caption"
                 sentiment="positive"
                 weight="semibold"
                 className="block"
               >
-                Cash: {formatRupee(cash)}
+                Cash: {formatRupee(data.cashPaid)}
               </Text>
             )}
-            {credit > 0 && (
+            {data.remainingDue > 0 && (
               <Text
                 styleAs="body-sm"
-                sentiment="negative"
                 weight="bold"
-                className="block"
+                className={cn('block', data.amountColorClass)}
               >
-                Due: {formatRupee(credit)}
+                Due: {formatRupee(data.remainingDue)}
               </Text>
             )}
           </>

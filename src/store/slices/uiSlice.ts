@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PeriodFilterMode } from '../../types';
 
 export type SnackbarType = 'success' | 'error' | 'warning' | 'info';
 
@@ -23,7 +24,29 @@ interface UIState {
   loadingMessage?: string;
   searchQuery: string;
   isSearchOpen: boolean;
+  filterMode: PeriodFilterMode;
+  selectedMonth: number;
 }
+
+const savedFilterMode =
+  typeof localStorage !== 'undefined'
+    ? (localStorage.getItem('hay_period_filter_mode') as PeriodFilterMode)
+    : null;
+const initialFilterMode: PeriodFilterMode =
+  savedFilterMode === 'month' || savedFilterMode === 'ytd'
+    ? savedFilterMode
+    : 'month';
+
+const savedSelectedMonth =
+  typeof localStorage !== 'undefined'
+    ? localStorage.getItem('hay_period_selected_month')
+    : null;
+const parsedMonth =
+  savedSelectedMonth !== null ? parseInt(savedSelectedMonth, 10) : NaN;
+const initialSelectedMonth: number =
+  !isNaN(parsedMonth) && parsedMonth >= 0 && parsedMonth <= 11
+    ? parsedMonth
+    : new Date().getMonth();
 
 const initialState: UIState = {
   bottomSheet: {
@@ -39,6 +62,8 @@ const initialState: UIState = {
   loadingMessage: '',
   searchQuery: '',
   isSearchOpen: false,
+  filterMode: initialFilterMode,
+  selectedMonth: initialSelectedMonth,
 };
 
 export const uiSlice = createSlice({
@@ -114,6 +139,21 @@ export const uiSlice = createSlice({
       state.isSearchOpen = false;
       state.searchQuery = '';
     },
+    setFilterMode: (state, action: PayloadAction<PeriodFilterMode>) => {
+      state.filterMode = action.payload;
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('hay_period_filter_mode', action.payload);
+      }
+    },
+    setSelectedMonth: (state, action: PayloadAction<number>) => {
+      state.selectedMonth = action.payload;
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem(
+          'hay_period_selected_month',
+          String(action.payload),
+        );
+      }
+    },
   },
 });
 
@@ -128,6 +168,8 @@ export const {
   setSearchQuery,
   toggleSearch,
   closeSearch,
+  setFilterMode,
+  setSelectedMonth,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

@@ -1,5 +1,5 @@
 import { Plus } from 'lucide-react';
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { hasPendingPreviousYearRecords } from '../../api';
 import {
@@ -10,29 +10,27 @@ import {
 import { BackupWarningBanner } from '../../components/common/BackupWarningBanner';
 import { Fab } from '../../components/common/Fab';
 import { PageContainer } from '../../components/common/PageContainer';
-import {
-  PeriodFilterBar as DashboardFilterBar,
-  PeriodFilterMode,
-} from '../../components/common/PeriodFilterBar';
+import { PeriodFilterBar as DashboardFilterBar } from '../../components/common/PeriodFilterBar';
 import { Text } from '../../components/common/Text';
 import { Flex } from '../../components/layout/Flex';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   useGetAllTransactionsQuery,
   useGetBackupStatusQuery,
 } from '../../store/slices/customersApi';
+import { setFilterMode, setSelectedMonth } from '../../store/slices/uiSlice';
 import { DashboardBreakdown } from './components/DashboardBreakdown';
 import { DashboardMetricCards } from './components/DashboardMetricCards';
-import { RecentTransactionsWidget } from './components/RecentTransactionsWidget';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const currentDate = useMemo(() => new Date(), []);
   const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth();
 
-  // Period Filter States: 'month' (default current month) or 'ytd'
-  const [filterMode, setFilterMode] = useState<PeriodFilterMode>('month');
-  const [selectedMonth, setSelectedMonth] = useState<number>(currentMonth);
+  // Period Filter States: 'month' (default current month) or 'ytd' persisted globally
+  const filterMode = useAppSelector((state) => state.ui.filterMode);
+  const selectedMonth = useAppSelector((state) => state.ui.selectedMonth);
 
   // Fetch all transactions across customers & purchases
   const { data: allTransactions = [], isLoading } =
@@ -112,8 +110,8 @@ export const HomePage: React.FC = () => {
       <DashboardFilterBar
         filterMode={filterMode}
         selectedMonth={selectedMonth}
-        onFilterModeChange={setFilterMode}
-        onMonthChange={setSelectedMonth}
+        onFilterModeChange={(mode) => dispatch(setFilterMode(mode))}
+        onMonthChange={(month) => dispatch(setSelectedMonth(month))}
       />
 
       {/* Key Metric Cards */}
@@ -126,12 +124,6 @@ export const HomePage: React.FC = () => {
         salesOnCash={metrics.salesOnCash}
         salesOnCredit={metrics.salesOnCredit}
         servicesReceived={metrics.servicesReceived}
-      />
-
-      {/* Recent Activity & Payments Stream */}
-      <RecentTransactionsWidget
-        transactions={filteredTransactions}
-        onViewAll={() => navigate('/activity')}
       />
 
       {/* Quick New Sale Floating Action Button */}

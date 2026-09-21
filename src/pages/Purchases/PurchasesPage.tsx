@@ -12,18 +12,19 @@ import { hasPendingPreviousYearRecords } from '../../api';
 import { filterTransactionsByPeriod } from '../../business/dashboardBusiness';
 import { Card } from '../../components/common/Card';
 import { PageContainer } from '../../components/common/PageContainer';
-import {
-  PeriodFilterBar,
-  PeriodFilterMode,
-} from '../../components/common/PeriodFilterBar';
-import { useAppDispatch } from '../../store/hooks';
+import { PeriodFilterBar } from '../../components/common/PeriodFilterBar';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   useAddPurchaseTransactionMutation,
   useGetAllTransactionsQuery,
   useGetBackupStatusQuery,
   useGetMonthlyRolloutStatusQuery,
 } from '../../store/slices/customersApi';
-import { showSnackbar } from '../../store/slices/uiSlice';
+import {
+  setFilterMode,
+  setSelectedMonth,
+  showSnackbar,
+} from '../../store/slices/uiSlice';
 import { ExpenseCategoryType } from '../../types';
 import { cn } from '../../utils/cn';
 import { formatRupee, formatWeight } from '../../utils/formatters';
@@ -35,15 +36,14 @@ export const PurchasesPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const currentDate = useMemo(() => new Date(), []);
   const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth();
 
   const [activeCategory, setActiveCategory] = useState<'PURCHASE' | 'EXPENSE'>(
     'PURCHASE',
   );
 
-  // Period Filter States for Purchases: 'month' (default current month) or 'ytd'
-  const [filterMode, setFilterMode] = useState<PeriodFilterMode>('month');
-  const [selectedMonth, setSelectedMonth] = useState<number>(currentMonth);
+  // Period Filter States for Purchases: 'month' (default current month) or 'ytd' persisted globally
+  const filterMode = useAppSelector((state) => state.ui.filterMode);
+  const selectedMonth = useAppSelector((state) => state.ui.selectedMonth);
 
   const { data: allTransactions = [] } = useGetAllTransactionsQuery();
   const { data: backupStatus } = useGetBackupStatusQuery();
@@ -183,8 +183,8 @@ export const PurchasesPage: React.FC = () => {
       <PeriodFilterBar
         filterMode={filterMode}
         selectedMonth={selectedMonth}
-        onFilterModeChange={setFilterMode}
-        onMonthChange={setSelectedMonth}
+        onFilterModeChange={(mode) => dispatch(setFilterMode(mode))}
+        onMonthChange={(month) => dispatch(setSelectedMonth(month))}
       />
 
       {/* 1. Header Overview Metrics: Purchases, Expenses, Current Stock, Avg Buying */}

@@ -5,7 +5,9 @@ import uiReducer, {
   hideLoading,
   hideSnackbar,
   openBottomSheet,
+  setFilterMode,
   setLoading,
+  setSelectedMonth,
   setSearchQuery,
   showLoading,
   showSnackbar,
@@ -72,5 +74,18 @@ describe('uiSlice', () => {
 
     const toggledBool = uiReducer(hiddenState, setLoading(true));
     expect(toggledBool.isLoading).toBe(true);
+  });
+
+  it('handles setFilterMode and setSelectedMonth with persistence', () => {
+    const initialState = uiReducer(undefined, { type: 'unknown' });
+    expect(initialState.filterMode).toBe('month');
+
+    const ytdState = uiReducer(initialState, setFilterMode('ytd'));
+    expect(ytdState.filterMode).toBe('ytd');
+    expect(localStorage.getItem('hay_period_filter_mode')).toBe('ytd');
+
+    const monthState = uiReducer(ytdState, setSelectedMonth(5));
+    expect(monthState.selectedMonth).toBe(5);
+    expect(localStorage.getItem('hay_period_selected_month')).toBe('5');
   });
 });
