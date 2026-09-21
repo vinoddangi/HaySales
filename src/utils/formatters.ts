@@ -143,6 +143,20 @@ export const formatWeight = (kg: number): string => {
   return `${kg.toLocaleString('en-IN', { maximumFractionDigits: 2 })} kg`;
 };
 
+export const formatWeightWithRate = (
+  weightKg?: number,
+  rate?: number,
+  amount?: number,
+): string => {
+  if (!weightKg || weightKg <= 0) return '';
+  const weightStr = `${weightKg.toLocaleString('en-IN')} kg`;
+  const effectiveRate =
+    rate || (amount && weightKg > 0 ? amount / weightKg : 0);
+  if (!effectiveRate || effectiveRate <= 0) return weightStr;
+  const rateStr = `₹${effectiveRate.toFixed(2).replace(/\.00$/, '')}/kg`;
+  return `${weightStr} @ ${rateStr}`;
+};
+
 export const calculateCustomerBalance = (
   transactions: {
     type?: string;

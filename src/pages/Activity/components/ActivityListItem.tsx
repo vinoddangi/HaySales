@@ -105,10 +105,10 @@ export const ActivityListItem: React.FC<ActivityListItemProps> = ({
       <div className="min-w-0 flex-1 space-y-0.5">
         <Flex align="center" gap="xs">
           <Text
-            variant="body-sm"
+            variant="body"
             weight="bold"
             color="onSurface"
-            className="truncate"
+            className="truncate text-sm font-bold"
           >
             {displayName}
           </Text>

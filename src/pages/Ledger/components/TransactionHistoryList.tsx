@@ -7,6 +7,7 @@ import { cn } from '../../../utils/cn';
 import {
   formatDate,
   formatRupee,
+  formatWeightWithRate,
   parseTransactionDate,
 } from '../../../utils/formatters';
 
@@ -206,21 +207,11 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
                     !isOpening &&
                     !isService &&
                     tx.weightKg &&
-                    tx.weightKg > 0 ? (
-                      <>
-                        {tx.weightKg.toLocaleString('en-IN')} kg
-                        {tx.rate
-                          ? ` @ ₹${tx.rate}/kg`
-                          : tx.amount
-                            ? ` @ ₹${(tx.amount / tx.weightKg).toFixed(2).replace(/\.00$/, '')}/kg`
-                            : ''}
-                        {' • '}
-                      </>
-                    ) : tx.weightKg ? (
-                      `${tx.weightKg.toLocaleString('en-IN')} kg • `
-                    ) : (
-                      ''
-                    )}
+                    tx.weightKg > 0
+                      ? `${formatWeightWithRate(tx.weightKg, tx.rate, tx.amount)} • `
+                      : tx.weightKg
+                        ? `${tx.weightKg.toLocaleString('en-IN')} kg • `
+                        : ''}
                     {formatDate(tx.date)}
                   </Text>
                 </div>
