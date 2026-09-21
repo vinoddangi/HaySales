@@ -1,5 +1,5 @@
 PurchaseID,Date,Category,Item,WeightKg,PurchaseRate,Amount,CashPaid,RemainingDue,VendorName,Notes
-purchase_2026_01_2,2025-12-31T12:00:00.000Z,Purchase,Others,6635,11,73000,73000,0,,Purchase recorded from Jan Grass 2026
+purchase_2026_01_2,2026-01-01T12:00:00.000Z,Purchase,Others,6635,11,73000,73000,0,,Purchase recorded from Jan Grass 2026
 purchase_2026_01_3,2026-01-07T12:00:00.000Z,Purchase,Others,2520,10,25200,25200,0,,Purchase recorded from Jan Grass 2026
 purchase_2026_01_4,2026-01-12T12:00:00.000Z,Purchase,Others,2850,10,28500,28500,0,,Purchase recorded from Jan Grass 2026
 purchase_2026_01_5,2026-01-13T12:00:00.000Z,Purchase,Others,5400,9.44,51000,51000,0,,Purchase recorded from Jan Grass 2026

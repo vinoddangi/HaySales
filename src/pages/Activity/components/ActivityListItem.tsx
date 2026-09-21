@@ -6,6 +6,7 @@ import { Transaction } from '../../../types';
 import {
   formatRupee,
   formatWeight,
+  getTransactionFinancials,
   parseTransactionDate,
 } from '../../../utils/formatters';
 
@@ -28,15 +29,13 @@ export const ActivityListItem: React.FC<ActivityListItemProps> = ({
   const dayStr = txDate.getDate().toString().padStart(2, '0');
   const monthStr = txDate.toLocaleString('default', { month: 'short' });
 
-  const amount = isPayment
-    ? transaction.paymentAmount || transaction.amount || 0
-    : transaction.amount || 0;
-  const cash = transaction.cashPaid || 0;
-  const credit = transaction.remainingDue ?? Math.max(0, amount - cash);
+  const { amount, cash, credit, paymentVal } =
+    getTransactionFinancials(transaction);
+  const effectiveAmount = isPayment ? paymentVal : amount;
   const isFullCashSale = (isSale || isService) && credit === 0 && cash > 0;
   const avgRate =
     transaction.weightKg && transaction.weightKg > 0
-      ? amount / transaction.weightKg
+      ? effectiveAmount / transaction.weightKg
       : 0;
 
   const displayName =
@@ -138,7 +137,7 @@ export const ActivityListItem: React.FC<ActivityListItemProps> = ({
       <Flex align="center" gap="sm">
         <div className="text-right">
           <Text variant="amount" color={amountColor} className="block">
-            {formatRupee(amount)}
+            {formatRupee(effectiveAmount)}
           </Text>
           <Text variant="caption" color="muted">
             {typeLabel}

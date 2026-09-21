@@ -1,10 +1,13 @@
 import {
   ArrowDownToLine,
   ArrowUpRight,
+  ChevronDown,
+  ChevronUp,
   Database,
   HardDrive,
+  List,
   RefreshCw,
-  RotateCcw,
+  Trash2,
   UploadCloud,
 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
@@ -12,9 +15,12 @@ import { Button, Card, Switch, Text } from '../../../components/common';
 import { Flex } from '../../../components/layout';
 import { DatabaseMode, dbConfig } from '../../../services/dbBridge';
 import {
+  clearAllLocalData,
+  getPendingChanges,
+  getPendingChangesCount,
   getStoreData,
-  isLocalDatabaseSeeded,
-  seedLocalDatabaseFromSnapshot,
+  PendingChange,
+  publishPendingChangesToCloud,
   syncLocalDatabaseFromCloud,
 } from '../../../services/indexedDBService';
 import { useAppDispatch } from '../../../store/hooks';
@@ -44,6 +50,9 @@ export const LocalDatabaseSettings: React.FC = () => {
     expenses: 0,
     rollouts: 0,
   });
+  const [pendingCount, setPendingCount] = useState<number>(0);
+  const [pendingItems, setPendingItems] = useState<PendingChange[]>([]);
+  const [showPendingDetails, setShowPendingDetails] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
   const [syncingCloud, setSyncingCloud] = useState(false);
   const [syncingPull, setSyncingPull] = useState(false);
@@ -51,10 +60,6 @@ export const LocalDatabaseSettings: React.FC = () => {
   const loadStats = async () => {
     try {
       setLoading(true);
-      const isSeeded = await isLocalDatabaseSeeded();
-      if (!isSeeded) {
-        await seedLocalDatabaseFromSnapshot(false);
-      }
 
       const customers = (await getStoreData('customers')) as Customer[];
       const transactions = (await getStoreData(
@@ -62,6 +67,7 @@ export const LocalDatabaseSettings: React.FC = () => {
       )) as Transaction[];
       const purchases = (await getStoreData('purchases')) as Transaction[];
       const rollouts = (await getStoreData('monthly_rollout')) as any[];
+      const allPending = await getPendingChanges();
 
       const sales = transactions.filter((t) => t.type === 'SALE').length;
       const payments = transactions.filter((t) => t.type === 'PAYMENT').length;
@@ -80,6 +86,8 @@ export const LocalDatabaseSettings: React.FC = () => {
         expenses,
         rollouts: rollouts.length,
       });
+      setPendingCount(allPending.length);
+      setPendingItems(allPending);
     } catch (err) {
       console.error('Failed to load local DB stats:', err);
     } finally {
@@ -108,25 +116,25 @@ export const LocalDatabaseSettings: React.FC = () => {
     }, 400);
   };
 
-  // 1. Reset / Seed Local DB from snapshot
-  const handleSeedFromSnapshot = async () => {
+  // 1. Clear Local DB
+  const handleClearLocalDb = async () => {
     try {
       setLoading(true);
-      const res = await seedLocalDatabaseFromSnapshot(true);
+      await clearAllLocalData();
       await loadStats();
       dispatch(
         showSnackbar({
-          message: `✅ Local DB reloaded from snapshot: ${res.customersCount} customers, ${res.transactionsCount} txs, ${res.purchasesCount} purchases.`,
+          message: '🗑️ Local DB cleared. Click "Sync" to fetch from Firestore.',
         }),
       );
       if (dbMode === 'local') {
         setTimeout(() => window.location.reload(), 400);
       }
     } catch (err) {
-      console.error('Failed to reload snapshot:', err);
+      console.error('Failed to clear local DB:', err);
       dispatch(
         showSnackbar({
-          message: `❌ Error reloading snapshot: ${(err as Error).message}`,
+          message: `❌ Error clearing local DB: ${(err as Error).message}`,
         }),
       );
     } finally {
@@ -160,116 +168,28 @@ export const LocalDatabaseSettings: React.FC = () => {
     }
   };
 
-  // 3. Publish Local Data to Cloud Firestore
+  // 3. Publish Modified / Delta Records to Cloud Firestore
   const handlePublishToCloud = async () => {
     try {
       setSyncingCloud(true);
-      const customers = (await getStoreData('customers')) as Customer[];
-      const transactions = (await getStoreData(
-        'transactions',
-      )) as Transaction[];
-      const purchases = (await getStoreData('purchases')) as Transaction[];
-      const rollouts = (await getStoreData('monthly_rollout')) as any[];
-      const metadata = (await getStoreData('metadata')) as any[];
-
-      const { writeBatch: serverWriteBatch, doc: serverDoc } =
-        await import('firebase/firestore');
-      const { db: firestoreInstance } =
-        await import('../../../store/firebaseConfig');
-
-      // Helper to chunk operations into batches of 450 (Firestore limit is 500)
-      const batchList: Array<() => Promise<void>> = [];
-      let currentBatch = serverWriteBatch(firestoreInstance);
-      let opCount = 0;
-
-      const commitAndRenew = () => {
-        const batchToCommit = currentBatch;
-        batchList.push(() => batchToCommit.commit());
-        currentBatch = serverWriteBatch(firestoreInstance);
-        opCount = 0;
-      };
-
-      const addOp = (action: () => void) => {
-        action();
-        opCount++;
-        if (opCount >= 450) {
-          commitAndRenew();
-        }
-      };
-
-      // 1. Customers
-      for (const cust of customers) {
-        if (!cust.id) continue;
-        addOp(() => {
-          const ref = serverDoc(
-            firestoreInstance,
-            'customers',
-            String(cust.id),
-          );
-          currentBatch.set(ref, cust, { merge: true });
-        });
+      const count = await getPendingChangesCount();
+      if (count === 0) {
+        dispatch(
+          showSnackbar({
+            message:
+              '✨ Database is already in sync with Cloud Firestore. No pending changes to publish.',
+          }),
+        );
+        return;
       }
 
-      // 2. Transactions
-      for (const tx of transactions) {
-        if (!tx.customerId || !tx.id) continue;
-        addOp(() => {
-          const ref = serverDoc(
-            firestoreInstance,
-            'customers',
-            String(tx.customerId),
-            'transactions',
-            String(tx.id),
-          );
-          currentBatch.set(ref, tx, { merge: true });
-        });
-      }
-
-      // 3. Purchases & Expenses
-      for (const p of purchases) {
-        if (!p.id) continue;
-        addOp(() => {
-          const ref = serverDoc(firestoreInstance, 'purchases', String(p.id));
-          currentBatch.set(ref, p, { merge: true });
-        });
-      }
-
-      // 4. Monthly Rollout
-      for (const r of rollouts) {
-        const key = r.month || r.id;
-        if (!key) continue;
-        addOp(() => {
-          const ref = serverDoc(
-            firestoreInstance,
-            'monthly_rollout',
-            String(key),
-          );
-          currentBatch.set(ref, r, { merge: true });
-        });
-      }
-
-      // 5. Metadata
-      for (const m of metadata) {
-        const key = m.key || m.id;
-        if (!key) continue;
-        addOp(() => {
-          const ref = serverDoc(firestoreInstance, 'metadata', String(key));
-          currentBatch.set(ref, m, { merge: true });
-        });
-      }
-
-      if (opCount > 0) {
-        commitAndRenew();
-      }
-
-      // Execute batches sequentially
-      for (const commitBatch of batchList) {
-        await commitBatch();
-      }
-
+      const res = await publishPendingChangesToCloud();
+      await loadStats();
       dispatch(
         showSnackbar({
-          message: `🚀 Successfully published all local data (${customers.length} customers, ${transactions.length + purchases.length} records) to Cloud Firestore!`,
+          message: `🚀 Successfully published ${res.publishedCount} modified record${
+            res.publishedCount === 1 ? '' : 's'
+          } to Cloud Firestore!`,
         }),
       );
     } catch (err) {
@@ -421,6 +341,132 @@ export const LocalDatabaseSettings: React.FC = () => {
           </div>
         </div>
 
+        {/* Pending Sync / Delta Status */}
+        {isLocalMode && (
+          <div className="space-y-2">
+            <button
+              type="button"
+              onClick={async () => {
+                const latest = await getPendingChanges();
+                setPendingItems(latest);
+                setPendingCount(latest.length);
+                if (latest.length > 0 || !showPendingDetails) {
+                  setShowPendingDetails((prev) => !prev);
+                }
+              }}
+              className={`flex w-full items-center justify-between rounded-xl border p-2.5 text-left transition-all ${
+                pendingCount > 0
+                  ? 'border-amber-500/30 bg-amber-500/10 text-amber-900 hover:bg-amber-500/15 dark:text-amber-200'
+                  : 'border-emerald-500/30 bg-emerald-500/10 text-emerald-900 dark:text-emerald-200'
+              }`}
+            >
+              <Flex align="center" gap="xs">
+                <List className="h-4 w-4" />
+                <span className="text-xs font-semibold">
+                  {pendingCount > 0
+                    ? `⚡ ${pendingCount} modified record${
+                        pendingCount === 1 ? '' : 's'
+                      } pending publish`
+                    : '✅ All changes synced with Cloud Firestore'}
+                </span>
+              </Flex>
+              {pendingCount > 0 && (
+                <Flex align="center" gap="xs">
+                  <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-700 dark:text-amber-300">
+                    {showPendingDetails ? 'HIDE' : 'VIEW DETAILS'}
+                  </span>
+                  {showPendingDetails ? (
+                    <ChevronUp className="h-4 w-4 text-amber-700 dark:text-amber-300" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4 text-amber-700 dark:text-amber-300" />
+                  )}
+                </Flex>
+              )}
+            </button>
+
+            {/* Expandable Pending Changes Details List */}
+            {isLocalMode && pendingCount > 0 && showPendingDetails && (
+              <div className="max-h-64 space-y-1.5 overflow-y-auto rounded-xl border border-amber-500/20 bg-m3-surface-container-lowest p-2.5 text-xs">
+                <Flex align="center" justify="between" className="px-1 pb-1">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-m3-on-surface-variant">
+                    Pending Delta Changes ({pendingItems.length})
+                  </span>
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      const latest = await getPendingChanges();
+                      setPendingItems(latest);
+                      setPendingCount(latest.length);
+                    }}
+                    className="text-[10px] text-m3-primary hover:underline"
+                  >
+                    Refresh List
+                  </button>
+                </Flex>
+                {pendingItems.length === 0 ? (
+                  <div className="p-3 text-center text-m3-on-surface-variant">
+                    No pending changes found.
+                  </div>
+                ) : (
+                  pendingItems.map((item, idx) => {
+                    const d = item.data || {};
+                    const isDelete = item.action === 'DELETE';
+                    const summaryText =
+                      d.customerName ||
+                      d.name ||
+                      d.vendorName ||
+                      d.item ||
+                      d.month ||
+                      d.lastBackedUpYear ||
+                      item.path.split('/').pop() ||
+                      item.id;
+                    const amountText =
+                      d.amount !== undefined
+                        ? ` • ₹${Number(d.amount).toLocaleString('en-IN')}`
+                        : '';
+
+                    return (
+                      <div
+                        key={item.id || item.path || idx}
+                        className="flex items-center justify-between rounded-lg border border-m3-outline-variant/30 bg-m3-surface-container-low p-2"
+                      >
+                        <div className="min-w-0 flex-1 pr-2">
+                          <Flex align="center" gap="xs">
+                            <span
+                              className={`rounded px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase ${
+                                isDelete
+                                  ? 'bg-rose-500/20 text-rose-700 dark:text-rose-300'
+                                  : 'bg-blue-500/20 text-blue-700 dark:text-blue-300'
+                              }`}
+                            >
+                              {item.action}
+                            </span>
+                            <span className="truncate font-semibold text-m3-on-surface">
+                              {summaryText}
+                              {amountText}
+                            </span>
+                          </Flex>
+                          <span className="mt-0.5 block truncate font-mono text-[10px] text-m3-on-surface-variant">
+                            {item.path}
+                          </span>
+                        </div>
+                        <span className="shrink-0 text-[10px] text-m3-on-surface-variant">
+                          {item.timestamp
+                            ? new Date(item.timestamp).toLocaleTimeString([], {
+                                hour: '2-digit',
+                                minute: '2-digit',
+                              })
+                            : ''}
+                        </span>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Action Buttons */}
         <div className="space-y-2 rounded-xl border border-m3-outline/20 bg-m3-surface-container-low p-3.5">
           <Flex align="center" gap="xs">
@@ -452,19 +498,23 @@ export const LocalDatabaseSettings: React.FC = () => {
               disabled={syncingCloud || syncingPull || loading}
               className="justify-center px-2 text-xs font-medium"
             >
-              {syncingCloud ? 'Publishing...' : 'Publish'}
+              {syncingCloud
+                ? 'Publishing...'
+                : pendingCount > 0
+                  ? `Publish (${pendingCount})`
+                  : 'Publish'}
             </Button>
 
-            {/* 3. Reset to Baseline DB Snapshot */}
+            {/* 3. Clear Local DB */}
             <Button
               variant="outlined"
               size="sm"
-              icon={<RotateCcw className="h-3.5 w-3.5" />}
-              onClick={handleSeedFromSnapshot}
+              icon={<Trash2 className="h-3.5 w-3.5" />}
+              onClick={handleClearLocalDb}
               disabled={loading || syncingCloud || syncingPull}
-              className="justify-center px-2 text-xs font-medium"
+              className="justify-center px-2 text-xs font-medium text-rose-600 hover:bg-rose-500/10 dark:text-rose-400"
             >
-              {loading ? 'Resetting...' : 'Reset'}
+              {loading ? 'Clearing...' : 'Clear'}
             </Button>
           </div>
         </div>

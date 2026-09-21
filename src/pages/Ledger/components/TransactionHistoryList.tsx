@@ -2,7 +2,10 @@ import React from 'react';
 import { Badge, Text } from '../../../components/common';
 import { Flex } from '../../../components/layout';
 import { Transaction } from '../../../types';
-import { parseTransactionDate } from '../../../utils/formatters';
+import {
+  getTransactionFinancials,
+  parseTransactionDate,
+} from '../../../utils/formatters';
 import { TransactionHistoryItem } from './TransactionHistoryItem';
 
 export interface TransactionHistoryListProps {
@@ -41,14 +44,10 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
   let runningDue = 0;
 
   chronological.forEach((tx) => {
+    const { credit, paymentVal } = getTransactionFinancials(tx);
     if (tx.type === 'PAYMENT') {
-      const pAmt = Number(tx.paymentAmount) || Number(tx.amount) || 0;
-      runningDue -= pAmt;
+      runningDue -= paymentVal;
     } else {
-      const credit =
-        tx.remainingDue !== undefined
-          ? Number(tx.remainingDue) || 0
-          : (Number(tx.amount) || 0) - (Number(tx.cashPaid) || 0);
       runningDue += credit;
     }
 

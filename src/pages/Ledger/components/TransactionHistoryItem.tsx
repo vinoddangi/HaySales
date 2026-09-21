@@ -8,6 +8,7 @@ import {
   formatDate,
   formatRupee,
   formatWeightWithRate,
+  getTransactionFinancials,
 } from '../../../utils/formatters';
 
 export interface TransactionHistoryItemProps {
@@ -23,15 +24,8 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
   const isService = tx.type === 'SERVICE';
   const isOpening =
     tx.type === 'OPENING_BALANCE' || tx.item === 'Previous Outstanding';
-  const paymentVal = isPayment
-    ? Number(tx.paymentAmount) || Number(tx.amount) || 0
-    : 0;
-  const amount = Number(tx.amount) || 0;
-  const cash = Number(tx.cashPaid) || 0;
-  const credit =
-    tx.remainingDue !== undefined
-      ? Number(tx.remainingDue) || 0
-      : Math.max(0, amount - cash);
+
+  const { amount, cash, credit, paymentVal } = getTransactionFinancials(tx);
   const isFullCashSale = !isPayment && !isOpening && credit === 0 && cash > 0;
   const isPartialCash = !isPayment && !isOpening && cash > 0 && credit > 0;
 

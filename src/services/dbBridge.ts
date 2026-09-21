@@ -21,10 +21,9 @@ import {
   deleteStoreItem,
   getStoreData,
   getStoreItem,
-  isLocalDatabaseSeeded,
   openLocalDatabase,
   putStoreItem,
-  seedLocalDatabaseFromSnapshot,
+  recordPendingChange,
   StoreName,
 } from './indexedDBService';
 
@@ -73,14 +72,11 @@ class DatabaseConfig {
 export const dbConfig = new DatabaseConfig();
 
 /**
- * Ensures local IndexedDB is initialized from snapshot when in local mode.
+ * Ensures local IndexedDB is opened when in local mode.
  */
 export async function ensureLocalInitialized(): Promise<void> {
   if (typeof window === 'undefined') return;
-  const isSeeded = await isLocalDatabaseSeeded();
-  if (!isSeeded) {
-    await seedLocalDatabaseFromSnapshot(false);
-  }
+  await openLocalDatabase();
 }
 
 // ----------------------------------------------------------------------
@@ -166,40 +162,67 @@ export function increment(n: number) {
   return { __isIncrement: true, value: n };
 }
 
+const KNOWN_STORES = new Set([
+  'customers',
+  'transactions',
+  'purchases',
+  'monthly_rollout',
+  'metadata',
+  'pending_changes',
+  'archives',
+]);
+
 /**
  * Pure generic path resolver:
  * - root collection path 'customers' -> store 'customers'
  * - subcollection path 'customers/123/transactions' -> store 'transactions', parentId '123'
  * - doc path 'customers/123/transactions/456' -> store 'transactions', id '456', parentId '123'
+ * - archive path 'customers/123/transactions-2025/456' -> store 'archives', id '456', parentId '123', collectionName 'transactions-2025'
  */
 function resolvePath(segments: string[]): {
   storeName: StoreName;
   id?: string;
   parentId?: string;
   isGroup?: boolean;
+  collectionName?: string;
 } {
   if (segments[0] === '__group__') {
-    return { storeName: segments[1] as StoreName, isGroup: true };
-  }
-
-  if (segments.length === 1) {
-    return { storeName: segments[0] as StoreName };
-  }
-  if (segments.length === 2) {
-    return { storeName: segments[0] as StoreName, id: segments[1] };
-  }
-  if (segments.length === 3) {
-    return { storeName: segments[2] as StoreName, parentId: segments[1] };
-  }
-  if (segments.length >= 4) {
+    const col = segments[1] as StoreName;
     return {
-      storeName: segments[2] as StoreName,
-      parentId: segments[1],
-      id: segments[3],
+      storeName: KNOWN_STORES.has(col) ? col : 'archives',
+      isGroup: true,
+      collectionName: col,
     };
   }
 
-  return { storeName: segments[0] as StoreName };
+  let rawStore: string;
+  let id: string | undefined;
+  let parentId: string | undefined;
+
+  if (segments.length === 1) {
+    rawStore = segments[0];
+  } else if (segments.length === 2) {
+    rawStore = segments[0];
+    id = segments[1];
+  } else if (segments.length === 3) {
+    rawStore = segments[2];
+    parentId = segments[1];
+  } else {
+    rawStore = segments[2];
+    parentId = segments[1];
+    id = segments[3];
+  }
+
+  if (KNOWN_STORES.has(rawStore)) {
+    return { storeName: rawStore as StoreName, id, parentId };
+  }
+
+  return {
+    storeName: 'archives',
+    id: id || segments.join('/'),
+    parentId,
+    collectionName: rawStore,
+  };
 }
 
 // ----------------------------------------------------------------------
@@ -333,12 +356,20 @@ export async function getDocs<T = any>(
 
   // Local IndexedDB
   await ensureLocalInitialized();
-  const { storeName, parentId } = resolvePath(ref.segments);
+  const { storeName, parentId, collectionName } = resolvePath(ref.segments);
 
   const db = await openLocalDatabase();
   let items: any[] = [];
 
-  if (parentId) {
+  if (storeName === 'archives') {
+    const all = await getStoreData('archives');
+    items = all.filter((item) => {
+      const matchCol =
+        !collectionName || item.collectionName === collectionName;
+      const matchParent = !parentId || item.parentId === parentId;
+      return matchCol && matchParent;
+    });
+  } else if (parentId) {
     const all = await getStoreData(storeName);
     items = all.filter(
       (item) => item.customerId === parentId || item.parentId === parentId,
@@ -392,7 +423,7 @@ export async function setDoc(
 
   // Local IndexedDB
   await ensureLocalInitialized();
-  const { storeName, id, parentId } = resolvePath(ref.segments);
+  const { storeName, id, parentId, collectionName } = resolvePath(ref.segments);
   const key = id || ref.id;
 
   let existing: any = {};
@@ -412,8 +443,19 @@ export async function setDoc(
   if (parentId && !merged.customerId) merged.customerId = parentId;
   if (storeName === 'metadata' && !merged.key) merged.key = key;
   if (storeName === 'monthly_rollout' && !merged.month) merged.month = key;
+  if (storeName === 'archives') {
+    merged.collectionName = collectionName;
+    if (parentId) merged.parentId = parentId;
+  }
 
   await putStoreItem(storeName, merged);
+  await recordPendingChange({
+    id: ref.path,
+    path: ref.path,
+    action: 'SET',
+    data: merged,
+    timestamp: new Date().toISOString(),
+  });
 }
 
 export async function updateDoc(
@@ -459,6 +501,13 @@ export async function updateDoc(
   }
 
   await putStoreItem(storeName, merged);
+  await recordPendingChange({
+    id: ref.path,
+    path: ref.path,
+    action: 'SET',
+    data: merged,
+    timestamp: new Date().toISOString(),
+  });
 }
 
 export async function deleteDoc(ref: GenericDocRef): Promise<void> {
@@ -484,6 +533,12 @@ export async function deleteDoc(ref: GenericDocRef): Promise<void> {
   const { storeName, id } = resolvePath(ref.segments);
   const key = id || ref.id;
   await deleteStoreItem(storeName, key);
+  await recordPendingChange({
+    id: ref.path,
+    path: ref.path,
+    action: 'DELETE',
+    timestamp: new Date().toISOString(),
+  });
 }
 
 export async function addDoc(

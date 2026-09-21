@@ -157,6 +157,32 @@ export const formatWeightWithRate = (
   return `${weightStr} @ ${rateStr}`;
 };
 
+export const getTransactionFinancials = (tx: {
+  amount?: number;
+  cashPaid?: number;
+  remainingDue?: number;
+  paymentAmount?: number;
+  type?: string;
+}): {
+  amount: number;
+  cash: number;
+  credit: number;
+  paymentVal: number;
+} => {
+  const isPayment = tx.type === 'PAYMENT';
+  const paymentVal = isPayment
+    ? Number(tx.paymentAmount) || Number(tx.amount) || 0
+    : 0;
+  const amount = Number(tx.amount) || 0;
+  const cash = Number(tx.cashPaid) || 0;
+  const credit =
+    tx.remainingDue !== undefined
+      ? Number(tx.remainingDue) || 0
+      : Math.max(0, amount - cash);
+
+  return { amount, cash, credit, paymentVal };
+};
+
 export const calculateCustomerBalance = (
   transactions: {
     type?: string;
@@ -172,7 +198,7 @@ export const calculateCustomerBalance = (
       return acc - (tx.paymentAmount || 0);
     }
     // All charges: SALE, SERVICE, OPENING_BALANCE, etc.
-    const credit = tx.remainingDue ?? (tx.amount || 0) - (tx.cashPaid || 0);
+    const { credit } = getTransactionFinancials(tx);
     return acc + credit;
   }, 0);
 
