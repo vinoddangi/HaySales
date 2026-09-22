@@ -4,7 +4,7 @@
   "totalPurchasesCost": 6631660,
   "totalExpensesCount": 8,
   "totalExpensesAmount": 14178,
-  "generatedAt": "2026-09-19T12:47:09.308Z",
+  "generatedAt": "2026-09-22T14:32:48.662Z",
   "records": [
     {
       "docId": "purchase_2026_01_2",
@@ -1604,7 +1604,7 @@
       "weightKg": 12200,
       "purchaseRate": 10.75,
       "amount": 131100,
-      "date": "2026-09-10T18:30:00.000Z",
+      "date": "2026-08-10T18:30:00.000Z",
       "sourceFile": "Aug Grass 2026",
       "rowNumber": 6,
       "note": "Purchase recorded from Aug Grass 2026"

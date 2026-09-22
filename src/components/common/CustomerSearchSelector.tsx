@@ -55,7 +55,7 @@ export const CustomerSearchSelector: React.FC<CustomerSearchSelectorProps> = ({
           placeholder={placeholder}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full rounded-lg border border-m3-outline bg-m3-surface py-2.5 pl-9 pr-8 text-xs text-m3-on-surface focus:border-m3-primary focus:outline-none"
+          className="w-full rounded-m3-sm border border-m3-outline bg-m3-surface py-2.5 pl-9 pr-8 text-sm font-bold text-m3-on-surface placeholder:font-normal placeholder:text-m3-on-surface-variant/50 focus:border-m3-primary focus:outline-none focus:ring-1 focus:ring-m3-primary"
         />
         {searchTerm && (
           <button

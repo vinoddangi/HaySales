@@ -70,7 +70,7 @@ const styleAsClasses: Record<TextStyleAs, string> = {
   h4: 'text-sm font-semibold',
   body: 'text-sm font-normal leading-relaxed',
   'body-sm': 'text-xs font-normal leading-normal',
-  label: 'text-[11px] font-bold uppercase tracking-wider',
+  label: 'text-[11px] font-medium uppercase tracking-wider',
   caption: 'text-[10px] font-medium',
   amount: 'text-sm font-bold tabular-nums',
 };

@@ -275,12 +275,14 @@
     "id": "13"
   },
   {
-    "canonicalName": "Akoliya M. P.",
-    "canonicalNorm": "akoliya m p",
+    "canonicalName": "Akoliya Meghrajbhai Parthibhai",
+    "canonicalNorm": "akoliya meghrajbhai parthibhai",
     "masterIndex": 8,
     "creditLimit": 35000,
     "aliases": [
-      "Akoliya M. P."
+      "Akoliya M. P.",
+      "Akoliya Meghrajbhai Parthibhai",
+      "Akoliya Megharajbhai Parthibhai"
     ],
     "sourceFiles": [
       "Master Customer Sheet",
@@ -291,29 +293,13 @@
       "Customer Credit List-20260531",
       "Customer Credit List-20260630",
       "Customer Credit List-20250131",
+      "Jan Grass 2026",
       "July Grass 2026"
     ],
     "baselineOutstanding20251231": 18895,
-    "salesTransactionsCount2026": 1,
+    "salesTransactionsCount2026": 2,
     "openingDebt": 18895,
     "id": "14"
-  },
-  {
-    "canonicalName": "Akoliya Meghrajbhai Parthibhai",
-    "canonicalNorm": "akoliya meghrajbhai parthibhai",
-    "masterIndex": 269,
-    "creditLimit": 35000,
-    "aliases": [
-      "Akoliya Meghrajbhai Parthibhai",
-      "Akoliya Megharajbhai Parthibhai"
-    ],
-    "sourceFiles": [
-      "Master Customer Sheet",
-      "Jan Grass 2026"
-    ],
-    "baselineOutstanding20251231": 0,
-    "salesTransactionsCount2026": 1,
-    "id": "15"
   },
   {
     "canonicalName": "Akoliya Nareshbhai Becharbhai",
@@ -339,7 +325,7 @@
     "baselineOutstanding20251231": 3354,
     "salesTransactionsCount2026": 1,
     "openingDebt": 3354,
-    "id": "16"
+    "id": "15"
   },
   {
     "canonicalName": "Akoliya Sardarbhai Shomabhai",
@@ -364,7 +350,7 @@
     "baselineOutstanding20251231": 6056,
     "salesTransactionsCount2026": 0,
     "openingDebt": 6056,
-    "id": "17"
+    "id": "16"
   },
   {
     "canonicalName": "Autiya Karsanbhai",
@@ -380,7 +366,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "18"
+    "id": "17"
   },
   {
     "canonicalName": "Bavji Vedancha",
@@ -406,7 +392,7 @@
     "baselineOutstanding20251231": 60582,
     "salesTransactionsCount2026": 0,
     "openingDebt": 60582,
-    "id": "19"
+    "id": "18"
   },
   {
     "canonicalName": "Bera Amartbhai Karsanbhai",
@@ -426,7 +412,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "20"
+    "id": "19"
   },
   {
     "canonicalName": "Bera Ashokbhai Laxmanbhai",
@@ -442,7 +428,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "21"
+    "id": "20"
   },
   {
     "canonicalName": "Bera Bharatbhai Dhanrajbhai",
@@ -456,7 +442,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "22"
+    "id": "21"
   },
   {
     "canonicalName": "Bera Dhanarajbhai Chelabhai",
@@ -474,7 +460,7 @@
     "baselineOutstanding20251231": 29546,
     "salesTransactionsCount2026": 0,
     "openingDebt": 29546,
-    "id": "23"
+    "id": "22"
   },
   {
     "canonicalName": "Bera Dineshbhai Savabhai",
@@ -502,7 +488,7 @@
     "baselineOutstanding20251231": 27814,
     "salesTransactionsCount2026": 4,
     "openingDebt": 27814,
-    "id": "24"
+    "id": "23"
   },
   {
     "canonicalName": "Bera Hareshbhai Shomabhai",
@@ -522,7 +508,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
     "openingDebt": 0,
-    "id": "25"
+    "id": "24"
   },
   {
     "canonicalName": "Bera Jankiben Rakeshbhai",
@@ -548,7 +534,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
     "openingDebt": 0,
-    "id": "26"
+    "id": "25"
   },
   {
     "canonicalName": "Bera Jankiben Rakeshbhai - Vedancha",
@@ -562,7 +548,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "27"
+    "id": "26"
   },
   {
     "canonicalName": "Bera Kantibhai Ujabhai",
@@ -580,7 +566,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "28"
+    "id": "27"
   },
   {
     "canonicalName": "Bera Kushalbhai Rajabhai",
@@ -596,7 +582,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "29"
+    "id": "28"
   },
   {
     "canonicalName": "Bera Laxmanbhai Meghabhai",
@@ -627,7 +613,7 @@
     "baselineOutstanding20251231": 20862,
     "salesTransactionsCount2026": 5,
     "openingDebt": 20862,
-    "id": "30"
+    "id": "29"
   },
   {
     "canonicalName": "Bera Mafatbhai Parthibhai",
@@ -652,7 +638,7 @@
     "baselineOutstanding20251231": 32119,
     "salesTransactionsCount2026": 0,
     "openingDebt": 32119,
-    "id": "31"
+    "id": "30"
   },
   {
     "canonicalName": "Bera Nareshbhai Karshanbhai",
@@ -669,7 +655,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "32"
+    "id": "31"
   },
   {
     "canonicalName": "Bera Praveenbhai Parthibhai",
@@ -702,7 +688,7 @@
     "baselineOutstanding20251231": 93527,
     "salesTransactionsCount2026": 7,
     "openingDebt": 93527,
-    "id": "33"
+    "id": "32"
   },
   {
     "canonicalName": "Bera Rajsangbhai Dohjibhai",
@@ -735,7 +721,7 @@
     "baselineOutstanding20251231": 52317,
     "salesTransactionsCount2026": 6,
     "openingDebt": 52317,
-    "id": "34"
+    "id": "33"
   },
   {
     "canonicalName": "Bera Rameshbhai Dalubhai",
@@ -750,7 +736,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "35"
+    "id": "34"
   },
   {
     "canonicalName": "Bera Rameshbhai Meghabhai",
@@ -774,7 +760,7 @@
     "baselineOutstanding20251231": 21140,
     "salesTransactionsCount2026": 1,
     "openingDebt": 21140,
-    "id": "36"
+    "id": "35"
   },
   {
     "canonicalName": "Bera Ramshungbhai Parthibhai",
@@ -801,7 +787,7 @@
     "baselineOutstanding20251231": 13263,
     "salesTransactionsCount2026": 2,
     "openingDebt": 13263,
-    "id": "37"
+    "id": "36"
   },
   {
     "canonicalName": "Bharkavada Bhikhabhai",
@@ -823,7 +809,7 @@
     "baselineOutstanding20251231": 11160,
     "salesTransactionsCount2026": 0,
     "openingDebt": 11160,
-    "id": "38"
+    "id": "37"
   },
   {
     "canonicalName": "Bhatol Ashwinbhai Sudha",
@@ -839,7 +825,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "39"
+    "id": "38"
   },
   {
     "canonicalName": "Bhilocha Bhaveshbhai",
@@ -856,7 +842,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "40"
+    "id": "39"
   },
   {
     "canonicalName": "Bhilocha Bhaveshbhai Kantibhai",
@@ -870,7 +856,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "41"
+    "id": "40"
   },
   {
     "canonicalName": "Bhutadiy Galbabhai Dalubhai",
@@ -887,7 +873,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "42"
+    "id": "41"
   },
   {
     "canonicalName": "Bhutadiya Babubhai Bhemabhai",
@@ -914,7 +900,7 @@
     "baselineOutstanding20251231": 10370,
     "salesTransactionsCount2026": 1,
     "openingDebt": 10370,
-    "id": "43"
+    "id": "42"
   },
   {
     "canonicalName": "Bhutadiya Babubhai Kanjibhai",
@@ -933,7 +919,7 @@
     "baselineOutstanding20251231": 13300,
     "salesTransactionsCount2026": 0,
     "openingDebt": 13300,
-    "id": "44"
+    "id": "43"
   },
   {
     "canonicalName": "Bhutadiya Devabhai Pujabhai",
@@ -950,7 +936,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "45"
+    "id": "44"
   },
   {
     "canonicalName": "Bhutadiya Dineshbhai Veerabhai",
@@ -979,7 +965,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 4,
     "openingDebt": 0,
-    "id": "46"
+    "id": "45"
   },
   {
     "canonicalName": "Bhutadiya Dineshbhai Veershangbhai",
@@ -999,7 +985,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "47"
+    "id": "46"
   },
   {
     "canonicalName": "Bhutadiya Ganeshbhai Jethabhai",
@@ -1025,7 +1011,7 @@
     "baselineOutstanding20251231": 35098,
     "salesTransactionsCount2026": 2,
     "openingDebt": 35098,
-    "id": "48"
+    "id": "47"
   },
   {
     "canonicalName": "Bhutadiya Ghemarbhai Dalubhai",
@@ -1053,7 +1039,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 7,
     "openingDebt": 0,
-    "id": "49"
+    "id": "48"
   },
   {
     "canonicalName": "Bhutadiya Heerabhai Fatabhai",
@@ -1076,7 +1062,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "50"
+    "id": "49"
   },
   {
     "canonicalName": "Bhutadiya Jagdishbhai Bhagvanbhai",
@@ -1103,7 +1089,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 4,
     "openingDebt": 0,
-    "id": "51"
+    "id": "50"
   },
   {
     "canonicalName": "Bhutadiya Jashungbhai Ramshungbbhai",
@@ -1128,7 +1114,7 @@
     "baselineOutstanding20251231": 7347,
     "salesTransactionsCount2026": 0,
     "openingDebt": 7347,
-    "id": "52"
+    "id": "51"
   },
   {
     "canonicalName": "Bhutadiya Kesabhai Sadabhai",
@@ -1144,7 +1130,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "53"
+    "id": "52"
   },
   {
     "canonicalName": "Bhutadiya Kirtibhai Ramshungbhai",
@@ -1168,7 +1154,7 @@
     "baselineOutstanding20251231": 910,
     "salesTransactionsCount2026": 0,
     "openingDebt": 910,
-    "id": "54"
+    "id": "53"
   },
   {
     "canonicalName": "Bhutadiya Laljibhai Veerabhai",
@@ -1200,7 +1186,7 @@
     "baselineOutstanding20251231": 43432,
     "salesTransactionsCount2026": 8,
     "openingDebt": 43432,
-    "id": "55"
+    "id": "54"
   },
   {
     "canonicalName": "Bhutadiya Poojabhai Fatabhai",
@@ -1216,7 +1202,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "56"
+    "id": "55"
   },
   {
     "canonicalName": "Bhutadiya Ujabhai Fatabhai",
@@ -1232,7 +1218,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "57"
+    "id": "56"
   },
   {
     "canonicalName": "Boka Dhanrajbhai Bhemjibhai",
@@ -1259,7 +1245,7 @@
     "baselineOutstanding20251231": 585,
     "salesTransactionsCount2026": 1,
     "openingDebt": 585,
-    "id": "58"
+    "id": "57"
   },
   {
     "canonicalName": "Boka Dipakbhai Parthibhai",
@@ -1288,7 +1274,7 @@
     "baselineOutstanding20251231": 15529,
     "salesTransactionsCount2026": 5,
     "openingDebt": 15529,
-    "id": "59"
+    "id": "58"
   },
   {
     "canonicalName": "Boka Jynatibhai Dalubhai",
@@ -1313,7 +1299,7 @@
     "baselineOutstanding20251231": 15882,
     "salesTransactionsCount2026": 0,
     "openingDebt": 15882,
-    "id": "60"
+    "id": "59"
   },
   {
     "canonicalName": "Boka Kantibhai Dalubhai",
@@ -1330,7 +1316,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "61"
+    "id": "60"
   },
   {
     "canonicalName": "Boka Katibhai Dalubhai",
@@ -1346,7 +1332,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "62"
+    "id": "61"
   },
   {
     "canonicalName": "Boka Rameshbhai Narshibhai",
@@ -1362,7 +1348,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "63"
+    "id": "62"
   },
   {
     "canonicalName": "Chaudhary Dipakbhai Ghemarbhai",
@@ -1378,7 +1364,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "64"
+    "id": "63"
   },
   {
     "canonicalName": "Chaudhary Jayeshbhai Agola",
@@ -1394,7 +1380,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "65"
+    "id": "64"
   },
   {
     "canonicalName": "Chaudhary Mogajibhai Agola",
@@ -1411,7 +1397,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "66"
+    "id": "65"
   },
   {
     "canonicalName": "Chaudhary Muljibhai Angola",
@@ -1427,7 +1413,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "67"
+    "id": "66"
   },
   {
     "canonicalName": "Chaudhary Narshibhai Kalubhai",
@@ -1444,7 +1430,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "68"
+    "id": "67"
   },
   {
     "canonicalName": "Choudhary Daljibhai Rajsagbhai",
@@ -1462,7 +1448,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "69"
+    "id": "68"
   },
   {
     "canonicalName": "Daalu Diesel + Depreciation",
@@ -1485,7 +1471,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 8,
-    "id": "70"
+    "id": "69"
   },
   {
     "canonicalName": "Daka Ashokbhai Madhubhai",
@@ -1503,7 +1489,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 3,
-    "id": "71"
+    "id": "70"
   },
   {
     "canonicalName": "Daka Dineshbhai Devabhai",
@@ -1517,7 +1503,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "72"
+    "id": "71"
   },
   {
     "canonicalName": "Dangi Chelabhai Heerabhai",
@@ -1542,7 +1528,7 @@
     "baselineOutstanding20251231": 5630,
     "salesTransactionsCount2026": 0,
     "openingDebt": 5630,
-    "id": "73"
+    "id": "72"
   },
   {
     "canonicalName": "Dangi Galababhai Veershangbhai",
@@ -1556,7 +1542,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "74"
+    "id": "73"
   },
   {
     "canonicalName": "Dangi Galbabhai Veerabhai",
@@ -1573,7 +1559,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "75"
+    "id": "74"
   },
   {
     "canonicalName": "Dangi Megharajbhai Veerabhai",
@@ -1602,7 +1588,7 @@
     "baselineOutstanding20251231": 8545,
     "salesTransactionsCount2026": 3,
     "openingDebt": 8545,
-    "id": "76"
+    "id": "75"
   },
   {
     "canonicalName": "Dangi Valjibhai Parthibhai",
@@ -1619,7 +1605,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "77"
+    "id": "76"
   },
   {
     "canonicalName": "Dangi Vinodbhai Premjibhai",
@@ -1639,7 +1625,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
     "openingDebt": 0,
-    "id": "78"
+    "id": "77"
   },
   {
     "canonicalName": "Dangi Vipulbhai Laxmanbhai (Badarpura)",
@@ -1664,7 +1650,7 @@
     "baselineOutstanding20251231": 58903,
     "salesTransactionsCount2026": 0,
     "openingDebt": 58903,
-    "id": "79"
+    "id": "78"
   },
   {
     "canonicalName": "Darbar Bhayuji Gadh",
@@ -1678,7 +1664,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "80"
+    "id": "79"
   },
   {
     "canonicalName": "Darbar Kanshing Bhai",
@@ -1697,7 +1683,7 @@
     "baselineOutstanding20251231": 6450,
     "salesTransactionsCount2026": 0,
     "openingDebt": 6450,
-    "id": "81"
+    "id": "80"
   },
   {
     "canonicalName": "Desai Babubhai Khurshibhai",
@@ -1722,7 +1708,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "82"
+    "id": "81"
   },
   {
     "canonicalName": "Desai Bhurabhai Samdhi",
@@ -1747,7 +1733,7 @@
     "baselineOutstanding20251231": 3132,
     "salesTransactionsCount2026": 0,
     "openingDebt": 3132,
-    "id": "83"
+    "id": "82"
   },
   {
     "canonicalName": "Desai Maxibhai Sudha",
@@ -1764,7 +1750,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "84"
+    "id": "83"
   },
   {
     "canonicalName": "Desai Rajubhai Maganbhai Rasana",
@@ -1789,7 +1775,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "85"
+    "id": "84"
   },
   {
     "canonicalName": "Dhudiya Dineshbhai Mafabhai",
@@ -1818,7 +1804,7 @@
     "baselineOutstanding20251231": 71603,
     "salesTransactionsCount2026": 4,
     "openingDebt": 71603,
-    "id": "86"
+    "id": "85"
   },
   {
     "canonicalName": "Dhudiya Laljibhai Ramshungbhai",
@@ -1845,7 +1831,7 @@
     "baselineOutstanding20251231": 25587,
     "salesTransactionsCount2026": 2,
     "openingDebt": 25587,
-    "id": "87"
+    "id": "86"
   },
   {
     "canonicalName": "Dhudiya Rameshbhai Jeetabhai",
@@ -1868,7 +1854,7 @@
     "baselineOutstanding20251231": 4987,
     "salesTransactionsCount2026": 3,
     "openingDebt": 4987,
-    "id": "88"
+    "id": "87"
   },
   {
     "canonicalName": "Dhudiya Sureshbhai Ramshungbhai",
@@ -1884,7 +1870,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "89"
+    "id": "88"
   },
   {
     "canonicalName": "Fof Babubhai Ujabhai",
@@ -1909,7 +1895,7 @@
     "baselineOutstanding20251231": 23100,
     "salesTransactionsCount2026": 1,
     "openingDebt": 23100,
-    "id": "90"
+    "id": "89"
   },
   {
     "canonicalName": "Fof Rameshbhai Ujabhai",
@@ -1923,7 +1909,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "91"
+    "id": "90"
   },
   {
     "canonicalName": "Fof Sureshbhai Ujabhai",
@@ -1949,7 +1935,7 @@
     "baselineOutstanding20251231": 97153,
     "salesTransactionsCount2026": 3,
     "openingDebt": 97153,
-    "id": "92"
+    "id": "91"
   },
   {
     "canonicalName": "Foshi Ashokbhai Vedancha",
@@ -1965,7 +1951,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "93"
+    "id": "92"
   },
   {
     "canonicalName": "Foshi Maganbhai Kalubhai",
@@ -1990,7 +1976,7 @@
     "baselineOutstanding20251231": 9520,
     "salesTransactionsCount2026": 0,
     "openingDebt": 9520,
-    "id": "94"
+    "id": "93"
   },
   {
     "canonicalName": "Foshi Prabhubhai Maganbhai (Vedancha)",
@@ -2021,7 +2007,7 @@
     "baselineOutstanding20251231": 149085,
     "salesTransactionsCount2026": 3,
     "openingDebt": 149085,
-    "id": "95"
+    "id": "94"
   },
   {
     "canonicalName": "Galvada Bavji",
@@ -2046,7 +2032,7 @@
     "baselineOutstanding20251231": 10830,
     "salesTransactionsCount2026": 0,
     "openingDebt": 10830,
-    "id": "96"
+    "id": "95"
   },
   {
     "canonicalName": "Gamar Rameshbhai (Deepo)",
@@ -2066,7 +2052,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "97"
+    "id": "96"
   },
   {
     "canonicalName": "Garashiya Rameshbhai Valabhai (Chetan Galba)",
@@ -2083,7 +2069,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "98"
+    "id": "97"
   },
   {
     "canonicalName": "Gauvshala",
@@ -2103,7 +2089,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "99"
+    "id": "98"
   },
   {
     "canonicalName": "Ghabhala Karshanbhai Vedancha",
@@ -2119,7 +2105,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "100"
+    "id": "99"
   },
   {
     "canonicalName": "Gol Karshanbhai Ghemarbhai",
@@ -2143,7 +2129,7 @@
     "baselineOutstanding20251231": 2900,
     "salesTransactionsCount2026": 0,
     "openingDebt": 2900,
-    "id": "101"
+    "id": "100"
   },
   {
     "canonicalName": "Gol Karshanbhai Ghemarbhai - Chandisar",
@@ -2157,7 +2143,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "102"
+    "id": "101"
   },
   {
     "canonicalName": "Gol Rameshbhai Govabhai",
@@ -2182,7 +2168,7 @@
     "baselineOutstanding20251231": 842,
     "salesTransactionsCount2026": 0,
     "openingDebt": 842,
-    "id": "103"
+    "id": "102"
   },
   {
     "canonicalName": "Gol Sureshbhai Chandisar",
@@ -2198,7 +2184,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "104"
+    "id": "103"
   },
   {
     "canonicalName": "Gori Abbaskhan Subelkhan",
@@ -2223,7 +2209,7 @@
     "baselineOutstanding20251231": 1950,
     "salesTransactionsCount2026": 0,
     "openingDebt": 1950,
-    "id": "105"
+    "id": "104"
   },
   {
     "canonicalName": "Gori Bhikhabhai",
@@ -2248,7 +2234,7 @@
     "baselineOutstanding20251231": 280,
     "salesTransactionsCount2026": 0,
     "openingDebt": 280,
-    "id": "106"
+    "id": "105"
   },
   {
     "canonicalName": "Gori Irshad",
@@ -2265,7 +2251,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "107"
+    "id": "106"
   },
   {
     "canonicalName": "Gori Ishrad",
@@ -2281,7 +2267,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "108"
+    "id": "107"
   },
   {
     "canonicalName": "Gori Muradkhan Khodla",
@@ -2297,7 +2283,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "109"
+    "id": "108"
   },
   {
     "canonicalName": "Gori Yunishkhan Muradkhan",
@@ -2322,7 +2308,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 4,
     "openingDebt": 0,
-    "id": "110"
+    "id": "109"
   },
   {
     "canonicalName": "Gudol Alpeshbhai Laxmanbhai",
@@ -2346,7 +2332,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 3,
-    "id": "111"
+    "id": "110"
   },
   {
     "canonicalName": "Gudol Amaratbhai Cheharabhai",
@@ -2361,7 +2347,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "112"
+    "id": "111"
   },
   {
     "canonicalName": "Gudol Amaratbhai Parthibhai",
@@ -2378,7 +2364,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "113"
+    "id": "112"
   },
   {
     "canonicalName": "Gudol Amartbhai Parthibhai",
@@ -2396,7 +2382,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "114"
+    "id": "113"
   },
   {
     "canonicalName": "Gudol Babubhai Veerabhai",
@@ -2421,7 +2407,7 @@
     "baselineOutstanding20251231": 42932,
     "salesTransactionsCount2026": 0,
     "openingDebt": 42932,
-    "id": "115"
+    "id": "114"
   },
   {
     "canonicalName": "Gudol Dhanrajbhai Valjibhai",
@@ -2443,7 +2429,7 @@
     "baselineOutstanding20251231": 2092,
     "salesTransactionsCount2026": 0,
     "openingDebt": 2092,
-    "id": "116"
+    "id": "115"
   },
   {
     "canonicalName": "Gudol Jytibhai Chehrabhai",
@@ -2460,7 +2446,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "117"
+    "id": "116"
   },
   {
     "canonicalName": "Gudol Kesarbhai Valjibhai",
@@ -2488,7 +2474,7 @@
     "baselineOutstanding20251231": 51743,
     "salesTransactionsCount2026": 3,
     "openingDebt": 51743,
-    "id": "118"
+    "id": "117"
   },
   {
     "canonicalName": "Gudol Sureshbhai Laljibhai Agola",
@@ -2504,7 +2490,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "119"
+    "id": "118"
   },
   {
     "canonicalName": "Gudol Valjibhai Rajshangbhai",
@@ -2520,7 +2506,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "120"
+    "id": "119"
   },
   {
     "canonicalName": "Gujor Sonalben Agola",
@@ -2545,7 +2531,7 @@
     "baselineOutstanding20251231": 41117,
     "salesTransactionsCount2026": 0,
     "openingDebt": 41117,
-    "id": "121"
+    "id": "120"
   },
   {
     "canonicalName": "Hoda Jagdish Bharthi",
@@ -2569,7 +2555,7 @@
     "baselineOutstanding20251231": 1050,
     "salesTransactionsCount2026": 0,
     "openingDebt": 1050,
-    "id": "122"
+    "id": "121"
   },
   {
     "canonicalName": "Hoda Sanjaybhai 8980525816",
@@ -2593,7 +2579,7 @@
     "baselineOutstanding20251231": 10815,
     "salesTransactionsCount2026": 0,
     "openingDebt": 10815,
-    "id": "123"
+    "id": "122"
   },
   {
     "canonicalName": "Jarmol Babubhai Chelabhai",
@@ -2617,7 +2603,7 @@
     "baselineOutstanding20251231": 12302,
     "salesTransactionsCount2026": 0,
     "openingDebt": 12302,
-    "id": "124"
+    "id": "123"
   },
   {
     "canonicalName": "Jarmol Bhikhabhai Jeevabhai",
@@ -2644,7 +2630,7 @@
     "baselineOutstanding20251231": 27862,
     "salesTransactionsCount2026": 2,
     "openingDebt": 27862,
-    "id": "125"
+    "id": "124"
   },
   {
     "canonicalName": "Jarmol Shantubhai Jampura",
@@ -2662,7 +2648,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "126"
+    "id": "125"
   },
   {
     "canonicalName": "Jarmol Sureshbhai Cheharabhai",
@@ -2680,7 +2666,7 @@
     "baselineOutstanding20251231": 14980,
     "salesTransactionsCount2026": 0,
     "openingDebt": 14980,
-    "id": "127"
+    "id": "126"
   },
   {
     "canonicalName": "Judal Amaratbhai Daljibhai",
@@ -2705,7 +2691,7 @@
     "baselineOutstanding20251231": 18102,
     "salesTransactionsCount2026": 0,
     "openingDebt": 18102,
-    "id": "128"
+    "id": "127"
   },
   {
     "canonicalName": "Judal Amaratbhai Laljibhai",
@@ -2721,7 +2707,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "129"
+    "id": "128"
   },
   {
     "canonicalName": "Judal Amratbhai Laljibhai",
@@ -2747,7 +2733,7 @@
     "baselineOutstanding20251231": 27070,
     "salesTransactionsCount2026": 2,
     "openingDebt": 27070,
-    "id": "130"
+    "id": "129"
   },
   {
     "canonicalName": "Judal Ashokbhai Muljibhai",
@@ -2761,7 +2747,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "131"
+    "id": "130"
   },
   {
     "canonicalName": "Judal B.C.",
@@ -2777,7 +2763,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "132"
+    "id": "131"
   },
   {
     "canonicalName": "Judal Babhubhai Dalubhai",
@@ -2802,7 +2788,7 @@
     "baselineOutstanding20251231": 8070,
     "salesTransactionsCount2026": 0,
     "openingDebt": 8070,
-    "id": "133"
+    "id": "132"
   },
   {
     "canonicalName": "Judal Babhubhai Ramubhai",
@@ -2816,7 +2802,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "134"
+    "id": "133"
   },
   {
     "canonicalName": "Judal Bakabhai Jasungbhai",
@@ -2843,7 +2829,7 @@
     "baselineOutstanding20251231": 13125,
     "salesTransactionsCount2026": 1,
     "openingDebt": 13125,
-    "id": "135"
+    "id": "134"
   },
   {
     "canonicalName": "Judal Bakulbhai Laljibhai",
@@ -2860,7 +2846,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "136"
+    "id": "135"
   },
   {
     "canonicalName": "Judal Bhagvanbhai Dalubhai",
@@ -2876,7 +2862,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "137"
+    "id": "136"
   },
   {
     "canonicalName": "Judal Bhagvanbhai Jeshungbhai",
@@ -2892,7 +2878,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "138"
+    "id": "137"
   },
   {
     "canonicalName": "Judal Chetanbhai Galbabhai",
@@ -2911,7 +2897,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "139"
+    "id": "138"
   },
   {
     "canonicalName": "Judal Daljibhai Virshangbhai",
@@ -2927,7 +2913,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "140"
+    "id": "139"
   },
   {
     "canonicalName": "Judal Dayabhai Parthibhai",
@@ -2953,7 +2939,7 @@
     "baselineOutstanding20251231": 10052,
     "salesTransactionsCount2026": 1,
     "openingDebt": 10052,
-    "id": "141"
+    "id": "140"
   },
   {
     "canonicalName": "Judal Dhanrajbhai Shantubhai",
@@ -2969,7 +2955,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "142"
+    "id": "141"
   },
   {
     "canonicalName": "Judal Dineshbhai Bacchan",
@@ -2987,7 +2973,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "143"
+    "id": "142"
   },
   {
     "canonicalName": "Judal Dineshbhai Jeshungbhai",
@@ -3010,7 +2996,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "144"
+    "id": "143"
   },
   {
     "canonicalName": "Judal Dineshbhai Muljibhai",
@@ -3038,7 +3024,7 @@
     "baselineOutstanding20251231": 28909,
     "salesTransactionsCount2026": 4,
     "openingDebt": 28909,
-    "id": "145"
+    "id": "144"
   },
   {
     "canonicalName": "Judal Dineshbhai Nanjibhai",
@@ -3058,7 +3044,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "146"
+    "id": "145"
   },
   {
     "canonicalName": "Judal Dineshbhai Ramubhai",
@@ -3075,7 +3061,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "147"
+    "id": "146"
   },
   {
     "canonicalName": "Judal Dineshbhai Ujabhai",
@@ -3102,7 +3088,7 @@
     "baselineOutstanding20251231": 5300,
     "salesTransactionsCount2026": 4,
     "openingDebt": 5300,
-    "id": "148"
+    "id": "147"
   },
   {
     "canonicalName": "Judal Galbabhai Hirabhai",
@@ -3116,7 +3102,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "149"
+    "id": "148"
   },
   {
     "canonicalName": "Judal Galbabhai Ramshungbhai",
@@ -3133,7 +3119,7 @@
     "baselineOutstanding20251231": 17750,
     "salesTransactionsCount2026": 0,
     "openingDebt": 17750,
-    "id": "150"
+    "id": "149"
   },
   {
     "canonicalName": "Judal Ghemarbhai Dhudabhai",
@@ -3159,7 +3145,7 @@
     "baselineOutstanding20251231": 12391,
     "salesTransactionsCount2026": 2,
     "openingDebt": 12391,
-    "id": "151"
+    "id": "150"
   },
   {
     "canonicalName": "Judal Ghemarbhai Rashangbhai",
@@ -3191,7 +3177,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 6,
     "openingDebt": 0,
-    "id": "152"
+    "id": "151"
   },
   {
     "canonicalName": "Judal Haribhai Mavabhai",
@@ -3205,7 +3191,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "153"
+    "id": "152"
   },
   {
     "canonicalName": "Judal Hasmukhbhai Bhagvanbhai",
@@ -3222,7 +3208,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "154"
+    "id": "153"
   },
   {
     "canonicalName": "Judal Hasmukhbhai Bhgvanbhai",
@@ -3239,7 +3225,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "155"
+    "id": "154"
   },
   {
     "canonicalName": "Judal Jeetuben Manjibhai",
@@ -3266,7 +3252,7 @@
     "baselineOutstanding20251231": 10935,
     "salesTransactionsCount2026": 2,
     "openingDebt": 10935,
-    "id": "156"
+    "id": "155"
   },
   {
     "canonicalName": "Judal Jyantibhai Narthabhai (Guru)",
@@ -3280,7 +3266,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "157"
+    "id": "156"
   },
   {
     "canonicalName": "Judal Jyantibhai Nathabhai",
@@ -3307,7 +3293,7 @@
     "baselineOutstanding20251231": 17850,
     "salesTransactionsCount2026": 4,
     "openingDebt": 17850,
-    "id": "158"
+    "id": "157"
   },
   {
     "canonicalName": "Judal Kalpeshbhai Veershangbhai",
@@ -3327,7 +3313,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "159"
+    "id": "158"
   },
   {
     "canonicalName": "Judal Kameshbhai Virtshangbhai",
@@ -3344,7 +3330,7 @@
     "baselineOutstanding20251231": 18060,
     "salesTransactionsCount2026": 0,
     "openingDebt": 18060,
-    "id": "160"
+    "id": "159"
   },
   {
     "canonicalName": "Judal Kamleshbhai Laljibhai",
@@ -3370,7 +3356,7 @@
     "baselineOutstanding20251231": 24355,
     "salesTransactionsCount2026": 1,
     "openingDebt": 24355,
-    "id": "161"
+    "id": "160"
   },
   {
     "canonicalName": "Judal Kamleshbhai Laxmanbhai",
@@ -3393,7 +3379,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 3,
-    "id": "162"
+    "id": "161"
   },
   {
     "canonicalName": "Judal Kantibhai Bhikhabhai",
@@ -3407,7 +3393,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "163"
+    "id": "162"
   },
   {
     "canonicalName": "Judal Kantibhai Dalajibhai",
@@ -3432,7 +3418,7 @@
     "baselineOutstanding20251231": 8179,
     "salesTransactionsCount2026": 0,
     "openingDebt": 8179,
-    "id": "164"
+    "id": "163"
   },
   {
     "canonicalName": "Judal Kantibhai Nanjibhai",
@@ -3459,7 +3445,7 @@
     "baselineOutstanding20251231": 2165,
     "salesTransactionsCount2026": 2,
     "openingDebt": 2165,
-    "id": "165"
+    "id": "164"
   },
   {
     "canonicalName": "Judal Kantibhai Ramshungbhai",
@@ -3483,7 +3469,7 @@
     "baselineOutstanding20251231": 600,
     "salesTransactionsCount2026": 0,
     "openingDebt": 600,
-    "id": "166"
+    "id": "165"
   },
   {
     "canonicalName": "Judal Kantibhai Ramshungbhai Bajivala",
@@ -3497,7 +3483,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "167"
+    "id": "166"
   },
   {
     "canonicalName": "Judal Kantibhai Shomabhai",
@@ -3513,7 +3499,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "168"
+    "id": "167"
   },
   {
     "canonicalName": "Judal Karshanbhai Daljibhai",
@@ -3539,7 +3525,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
     "openingDebt": 0,
-    "id": "169"
+    "id": "168"
   },
   {
     "canonicalName": "Judal Kesarbhai Laxmanbhai",
@@ -3564,7 +3550,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
     "openingDebt": 0,
-    "id": "170"
+    "id": "169"
   },
   {
     "canonicalName": "Judal Kesarbhai Narshinhbhai",
@@ -3588,7 +3574,7 @@
     "baselineOutstanding20251231": 14175,
     "salesTransactionsCount2026": 0,
     "openingDebt": 14175,
-    "id": "171"
+    "id": "170"
   },
   {
     "canonicalName": "Judal Kirtibhai Nathabhai",
@@ -3609,7 +3595,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "172"
+    "id": "171"
   },
   {
     "canonicalName": "Judal Laljibhai Shomabhai",
@@ -3632,7 +3618,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "173"
+    "id": "172"
   },
   {
     "canonicalName": "Judal Laxmanbhai Jashugbhai Bhajivala",
@@ -3658,7 +3644,7 @@
     "baselineOutstanding20251231": 71407,
     "salesTransactionsCount2026": 1,
     "openingDebt": 71407,
-    "id": "174"
+    "id": "173"
   },
   {
     "canonicalName": "Judal Laxmanbhai Ramubhai",
@@ -3674,7 +3660,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "175"
+    "id": "174"
   },
   {
     "canonicalName": "Judal Maheshbhai Sadabhai",
@@ -3700,7 +3686,7 @@
     "baselineOutstanding20251231": 2585,
     "salesTransactionsCount2026": 1,
     "openingDebt": 2585,
-    "id": "176"
+    "id": "175"
   },
   {
     "canonicalName": "Judal Muljibhai Kalubhai",
@@ -3726,7 +3712,7 @@
     "baselineOutstanding20251231": 488,
     "salesTransactionsCount2026": 1,
     "openingDebt": 488,
-    "id": "177"
+    "id": "176"
   },
   {
     "canonicalName": "Judal Nagjibhai Nanjibhai",
@@ -3742,7 +3728,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "178"
+    "id": "177"
   },
   {
     "canonicalName": "Judal Nareshbhai Devabhai",
@@ -3766,7 +3752,7 @@
     "baselineOutstanding20251231": 375,
     "salesTransactionsCount2026": 0,
     "openingDebt": 375,
-    "id": "179"
+    "id": "178"
   },
   {
     "canonicalName": "Judal Nareshbhai Parthibhai",
@@ -3797,7 +3783,7 @@
     "baselineOutstanding20251231": 35067,
     "salesTransactionsCount2026": 6,
     "openingDebt": 35067,
-    "id": "180"
+    "id": "179"
   },
   {
     "canonicalName": "Judal Nathabhai Fatabhai",
@@ -3813,7 +3799,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "181"
+    "id": "180"
   },
   {
     "canonicalName": "Judal Prakashbhai Virshangbhai",
@@ -3834,7 +3820,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
     "openingDebt": 0,
-    "id": "182"
+    "id": "181"
   },
   {
     "canonicalName": "Judal Praveenbhai Bhagvanbhai",
@@ -3848,7 +3834,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "183"
+    "id": "182"
   },
   {
     "canonicalName": "Judal Pravinbhai Veershangbhai",
@@ -3871,7 +3857,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "184"
+    "id": "183"
   },
   {
     "canonicalName": "Judal Rajnibhai Mafabhai",
@@ -3899,7 +3885,7 @@
     "baselineOutstanding20251231": 4742,
     "salesTransactionsCount2026": 3,
     "openingDebt": 4742,
-    "id": "185"
+    "id": "184"
   },
   {
     "canonicalName": "Judal Rameshbhai Babubhai",
@@ -3916,7 +3902,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "186"
+    "id": "185"
   },
   {
     "canonicalName": "Judal Rameshbhai Ramubhai",
@@ -3932,7 +3918,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "187"
+    "id": "186"
   },
   {
     "canonicalName": "Judal Rameshbhai Shomabhai",
@@ -3948,7 +3934,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "188"
+    "id": "187"
   },
   {
     "canonicalName": "Judal Ramjibhai Karshanbhai",
@@ -3969,7 +3955,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "189"
+    "id": "188"
   },
   {
     "canonicalName": "Judal Rasabhai Paragbhai",
@@ -3997,7 +3983,7 @@
     "baselineOutstanding20251231": 16885,
     "salesTransactionsCount2026": 3,
     "openingDebt": 16885,
-    "id": "190"
+    "id": "189"
   },
   {
     "canonicalName": "Judal Sadabhai Kalubhai",
@@ -4028,7 +4014,7 @@
     "baselineOutstanding20251231": 44972,
     "salesTransactionsCount2026": 5,
     "openingDebt": 44972,
-    "id": "191"
+    "id": "190"
   },
   {
     "canonicalName": "Judal Sanjaybhai Bhagvanbhai",
@@ -4049,7 +4035,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 3,
-    "id": "192"
+    "id": "191"
   },
   {
     "canonicalName": "Judal Sardarbhai Nanjibhai",
@@ -4063,7 +4049,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "193"
+    "id": "192"
   },
   {
     "canonicalName": "Judal Shileshbhai Daljibhai Kubhasan",
@@ -4088,7 +4074,7 @@
     "baselineOutstanding20251231": 17127,
     "salesTransactionsCount2026": 0,
     "openingDebt": 17127,
-    "id": "194"
+    "id": "193"
   },
   {
     "canonicalName": "Judal Shileshbhai Ghemarbhai",
@@ -4105,7 +4091,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "195"
+    "id": "194"
   },
   {
     "canonicalName": "Judal Sureshbhai Bhikhabhai",
@@ -4131,7 +4117,7 @@
     "baselineOutstanding20251231": 450,
     "salesTransactionsCount2026": 2,
     "openingDebt": 450,
-    "id": "196"
+    "id": "195"
   },
   {
     "canonicalName": "Judal Valjibhai Savabhai",
@@ -4150,7 +4136,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
     "openingDebt": 0,
-    "id": "197"
+    "id": "196"
   },
   {
     "canonicalName": "Judal Valjibhai Vedcha",
@@ -4166,7 +4152,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "198"
+    "id": "197"
   },
   {
     "canonicalName": "Judal Valjibhai Virshangbhai",
@@ -4185,7 +4171,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "199"
+    "id": "198"
   },
   {
     "canonicalName": "Judal Veerabhai Fatabhai",
@@ -4201,7 +4187,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "200"
+    "id": "199"
   },
   {
     "canonicalName": "Judal Virshangbhai Shomabhai",
@@ -4215,7 +4201,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "201"
+    "id": "200"
   },
   {
     "canonicalName": "Juva Chelabhai Jeevabhai Chadotar",
@@ -4245,7 +4231,7 @@
     "baselineOutstanding20251231": 13863,
     "salesTransactionsCount2026": 4,
     "openingDebt": 13863,
-    "id": "202"
+    "id": "201"
   },
   {
     "canonicalName": "Juva Karshanbhai Lakhori",
@@ -4270,7 +4256,7 @@
     "baselineOutstanding20251231": 8165,
     "salesTransactionsCount2026": 3,
     "openingDebt": 8165,
-    "id": "203"
+    "id": "202"
   },
   {
     "canonicalName": "Juva Ratubhai Jeevabhai",
@@ -4290,7 +4276,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "204"
+    "id": "203"
   },
   {
     "canonicalName": "Kag Babubhai Dalshangbhai",
@@ -4310,7 +4296,7 @@
     "baselineOutstanding20251231": 13860,
     "salesTransactionsCount2026": 0,
     "openingDebt": 13860,
-    "id": "205"
+    "id": "204"
   },
   {
     "canonicalName": "Kag Dhudabhai Vedancha",
@@ -4326,7 +4312,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "206"
+    "id": "205"
   },
   {
     "canonicalName": "Kag Dineshbhai Jasungbhai",
@@ -4353,7 +4339,7 @@
     "baselineOutstanding20251231": 16170,
     "salesTransactionsCount2026": 1,
     "openingDebt": 16170,
-    "id": "207"
+    "id": "206"
   },
   {
     "canonicalName": "Kag Dineshbhai Vedancha",
@@ -4370,7 +4356,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "208"
+    "id": "207"
   },
   {
     "canonicalName": "Kag Kantibhai Ramshungbhai",
@@ -4386,7 +4372,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "209"
+    "id": "208"
   },
   {
     "canonicalName": "Kag Mafatbhai Ramshungbhai",
@@ -4404,7 +4390,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "210"
+    "id": "209"
   },
   {
     "canonicalName": "Kag Nathubhai Laxmanbhai",
@@ -4420,7 +4406,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "211"
+    "id": "210"
   },
   {
     "canonicalName": "Kag Praveenbhai Laxmanbhai",
@@ -4436,7 +4422,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "212"
+    "id": "211"
   },
   {
     "canonicalName": "Kag Riteshbhai Dalijibhai",
@@ -4452,7 +4438,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "213"
+    "id": "212"
   },
   {
     "canonicalName": "Kakavadiya Alpeshbhai Ghemarbhai (Deny)",
@@ -4470,7 +4456,7 @@
     "baselineOutstanding20251231": 12777,
     "salesTransactionsCount2026": 0,
     "openingDebt": 12777,
-    "id": "214"
+    "id": "213"
   },
   {
     "canonicalName": "Kakavadiya Bhagvanbhai",
@@ -4487,7 +4473,7 @@
     "baselineOutstanding20251231": 17167,
     "salesTransactionsCount2026": 0,
     "openingDebt": 17167,
-    "id": "215"
+    "id": "214"
   },
   {
     "canonicalName": "Kakvadiya Bhagavanbhai Chandisar",
@@ -4506,7 +4492,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "216"
+    "id": "215"
   },
   {
     "canonicalName": "Kakvadiya Maheshbhai Ramjibhai",
@@ -4532,7 +4518,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 5,
     "openingDebt": 0,
-    "id": "217"
+    "id": "216"
   },
   {
     "canonicalName": "Kakvadiya Sanjaybhai Chandisar",
@@ -4549,7 +4535,7 @@
     "baselineOutstanding20251231": 8033,
     "salesTransactionsCount2026": 0,
     "openingDebt": 8033,
-    "id": "218"
+    "id": "217"
   },
   {
     "canonicalName": "Kakvadiya Sanjaybhai Kantibhai",
@@ -4569,7 +4555,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "219"
+    "id": "218"
   },
   {
     "canonicalName": "Kakvadiya Sureshbhai Chandisar",
@@ -4598,7 +4584,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 5,
     "openingDebt": 0,
-    "id": "220"
+    "id": "219"
   },
   {
     "canonicalName": "Kanubhai Muljibhai Kushkal",
@@ -4615,7 +4601,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "221"
+    "id": "220"
   },
   {
     "canonicalName": "Khabhala Kantibhai Jeevabhai",
@@ -4633,7 +4619,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "222"
+    "id": "221"
   },
   {
     "canonicalName": "Khabhla Kantibhai Jeevabhai",
@@ -4650,7 +4636,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "223"
+    "id": "222"
   },
   {
     "canonicalName": "Kharsan Babubhai Chadotar",
@@ -4666,7 +4652,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "224"
+    "id": "223"
   },
   {
     "canonicalName": "Kharsan Bhupatbhai Savjibhai",
@@ -4687,7 +4673,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
     "openingDebt": 0,
-    "id": "225"
+    "id": "224"
   },
   {
     "canonicalName": "Kharsan Dineshbhai Manjibhai",
@@ -4713,7 +4699,7 @@
     "baselineOutstanding20251231": 13545,
     "salesTransactionsCount2026": 4,
     "openingDebt": 13545,
-    "id": "226"
+    "id": "225"
   },
   {
     "canonicalName": "Kharsan Mogjibhai Daljibhai",
@@ -4737,7 +4723,7 @@
     "baselineOutstanding20251231": 25754,
     "salesTransactionsCount2026": 0,
     "openingDebt": 25754,
-    "id": "227"
+    "id": "226"
   },
   {
     "canonicalName": "Kharsan Rameshbhai Laxmanbhai",
@@ -4762,7 +4748,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 3,
     "openingDebt": 0,
-    "id": "228"
+    "id": "227"
   },
   {
     "canonicalName": "Kharshan Kalubhai Laxmanbhai",
@@ -4779,7 +4765,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "229"
+    "id": "228"
   },
   {
     "canonicalName": "Khasa Vajeerkhan",
@@ -4803,7 +4789,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "230"
+    "id": "229"
   },
   {
     "canonicalName": "Khasha Jafarkhan",
@@ -4832,7 +4818,7 @@
     "baselineOutstanding20251231": 34167,
     "salesTransactionsCount2026": 3,
     "openingDebt": 34167,
-    "id": "231"
+    "id": "230"
   },
   {
     "canonicalName": "Kubhasan Shokatbhai",
@@ -4853,7 +4839,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "232"
+    "id": "231"
   },
   {
     "canonicalName": "Kumatiya Rafikbhai Ismilbhai",
@@ -4867,7 +4853,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "233"
+    "id": "232"
   },
   {
     "canonicalName": "Kuniya Ramjibhai Premjibhai Agola",
@@ -4892,7 +4878,7 @@
     "baselineOutstanding20251231": 30774,
     "salesTransactionsCount2026": 0,
     "openingDebt": 30774,
-    "id": "234"
+    "id": "233"
   },
   {
     "canonicalName": "Kuva Devabhai Mavabhai",
@@ -4911,7 +4897,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "235"
+    "id": "234"
   },
   {
     "canonicalName": "Kuva Nareshbhai Parthibhai",
@@ -4928,7 +4914,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "236"
+    "id": "235"
   },
   {
     "canonicalName": "Kuva Nareshbhai Sudha",
@@ -4953,7 +4939,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
     "openingDebt": 0,
-    "id": "237"
+    "id": "236"
   },
   {
     "canonicalName": "Kuva Rajubhai Ramshungbhai",
@@ -4967,7 +4953,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "238"
+    "id": "237"
   },
   {
     "canonicalName": "Kuva Rameshbhai Somabhai",
@@ -4990,7 +4976,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "239"
+    "id": "238"
   },
   {
     "canonicalName": "Kuva Sureshbhai Laxmanbhai",
@@ -5015,7 +5001,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "240"
+    "id": "239"
   },
   {
     "canonicalName": "Kuva.Rajubhai Ramsugbhai",
@@ -5031,7 +5017,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "241"
+    "id": "240"
   },
   {
     "canonicalName": "Loh Amaratbhai Fatabhai",
@@ -5045,7 +5031,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "242"
+    "id": "241"
   },
   {
     "canonicalName": "Loh Babubhai Bhagvanbhai",
@@ -5061,7 +5047,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "243"
+    "id": "242"
   },
   {
     "canonicalName": "Loh Babubhai Chadotar",
@@ -5077,7 +5063,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "244"
+    "id": "243"
   },
   {
     "canonicalName": "Loh Dhanrajbhai Parthibhai",
@@ -5097,7 +5083,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "245"
+    "id": "244"
   },
   {
     "canonicalName": "Loh Dilipbhai Ramjibhai",
@@ -5121,7 +5107,7 @@
     "baselineOutstanding20251231": 375,
     "salesTransactionsCount2026": 0,
     "openingDebt": 375,
-    "id": "246"
+    "id": "245"
   },
   {
     "canonicalName": "Loh Dineshbhai Fatabhai",
@@ -5147,7 +5133,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 4,
-    "id": "247"
+    "id": "246"
   },
   {
     "canonicalName": "Loh Dineshbhai Nanjibhai",
@@ -5174,7 +5160,7 @@
     "baselineOutstanding20251231": 17692,
     "salesTransactionsCount2026": 3,
     "openingDebt": 17692,
-    "id": "248"
+    "id": "247"
   },
   {
     "canonicalName": "Loh Dineshbhai Ramshugbhai",
@@ -5199,7 +5185,7 @@
     "baselineOutstanding20251231": 35819,
     "salesTransactionsCount2026": 0,
     "openingDebt": 35819,
-    "id": "249"
+    "id": "248"
   },
   {
     "canonicalName": "Loh Dineshbhai Sadabhai",
@@ -5224,7 +5210,7 @@
     "baselineOutstanding20251231": 18402,
     "salesTransactionsCount2026": 1,
     "openingDebt": 18402,
-    "id": "250"
+    "id": "249"
   },
   {
     "canonicalName": "Loh Dineshbhai Savabhai",
@@ -5248,7 +5234,7 @@
     "baselineOutstanding20251231": 13450,
     "salesTransactionsCount2026": 0,
     "openingDebt": 13450,
-    "id": "251"
+    "id": "250"
   },
   {
     "canonicalName": "Loh Dineshbhai Shantubhai",
@@ -5264,7 +5250,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "252"
+    "id": "251"
   },
   {
     "canonicalName": "Loh Hiteshbhai Shomabhai",
@@ -5278,7 +5264,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "253"
+    "id": "252"
   },
   {
     "canonicalName": "Loh Jyantibhai Moghabhai",
@@ -5304,7 +5290,7 @@
     "baselineOutstanding20251231": 40769,
     "salesTransactionsCount2026": 2,
     "openingDebt": 40769,
-    "id": "254"
+    "id": "253"
   },
   {
     "canonicalName": "Loh Kantibhai Dalubhai",
@@ -5320,7 +5306,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "255"
+    "id": "254"
   },
   {
     "canonicalName": "Loh Kantibhai Sadabhai",
@@ -5334,7 +5320,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "256"
+    "id": "255"
   },
   {
     "canonicalName": "Loh Laxmanbhai Parthibhai",
@@ -5350,7 +5336,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "257"
+    "id": "256"
   },
   {
     "canonicalName": "Loh Mafatbhai Nanjibhai",
@@ -5366,7 +5352,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "258"
+    "id": "257"
   },
   {
     "canonicalName": "Loh Manjibhai Fatabhai",
@@ -5382,7 +5368,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "259"
+    "id": "258"
   },
   {
     "canonicalName": "Loh Manjibhai Narshangbhai",
@@ -5408,7 +5394,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
     "openingDebt": 0,
-    "id": "260"
+    "id": "259"
   },
   {
     "canonicalName": "Loh Nikhilbhai Manjibhai",
@@ -5433,7 +5419,7 @@
     "baselineOutstanding20251231": 8150,
     "salesTransactionsCount2026": 0,
     "openingDebt": 8150,
-    "id": "261"
+    "id": "260"
   },
   {
     "canonicalName": "Loh Prahaladbhai Poojabhai - Agola",
@@ -5458,7 +5444,7 @@
     "baselineOutstanding20251231": 465,
     "salesTransactionsCount2026": 0,
     "openingDebt": 465,
-    "id": "262"
+    "id": "261"
   },
   {
     "canonicalName": "Loh Preveenbhai Savabhai",
@@ -5479,7 +5465,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "263"
+    "id": "262"
   },
   {
     "canonicalName": "Loh Ramjibhai Moghabhai",
@@ -5507,7 +5493,7 @@
     "baselineOutstanding20251231": 2177,
     "salesTransactionsCount2026": 2,
     "openingDebt": 2177,
-    "id": "264"
+    "id": "263"
   },
   {
     "canonicalName": "Loh Rashubhai Umedbhai",
@@ -5524,7 +5510,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "265"
+    "id": "264"
   },
   {
     "canonicalName": "Loh Sardarbhai Bhikhabhai",
@@ -5541,7 +5527,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "266"
+    "id": "265"
   },
   {
     "canonicalName": "Loh Shantubhai Veerabhai",
@@ -5561,7 +5547,7 @@
     "baselineOutstanding20251231": 1200,
     "salesTransactionsCount2026": 1,
     "openingDebt": 1200,
-    "id": "267"
+    "id": "266"
   },
   {
     "canonicalName": "Loh Shileshbhai Manjibhai",
@@ -5575,7 +5561,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "268"
+    "id": "267"
   },
   {
     "canonicalName": "Loh Sureshbhai Shantubhai",
@@ -5591,7 +5577,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "269"
+    "id": "268"
   },
   {
     "canonicalName": "Menat Prakashbhai Madana",
@@ -5615,7 +5601,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 3,
-    "id": "270"
+    "id": "269"
   },
   {
     "canonicalName": "Mor Ashokbhai Vedancha",
@@ -5634,7 +5620,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "271"
+    "id": "270"
   },
   {
     "canonicalName": "Mor Bhikhabhai Gadha",
@@ -5648,7 +5634,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "272"
+    "id": "271"
   },
   {
     "canonicalName": "Mor Cheharabhai Abhubhai",
@@ -5670,7 +5656,7 @@
     "baselineOutstanding20251231": 16065,
     "salesTransactionsCount2026": 0,
     "openingDebt": 16065,
-    "id": "273"
+    "id": "272"
   },
   {
     "canonicalName": "Mor Daljibhai Vedancha",
@@ -5689,7 +5675,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "274"
+    "id": "273"
   },
   {
     "canonicalName": "Mor Dineshbhai Ratubhai Vasna",
@@ -5714,7 +5700,7 @@
     "baselineOutstanding20251231": 10455,
     "salesTransactionsCount2026": 0,
     "openingDebt": 10455,
-    "id": "275"
+    "id": "274"
   },
   {
     "canonicalName": "Mor Galbabhai Vedancha",
@@ -5730,7 +5716,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "276"
+    "id": "275"
   },
   {
     "canonicalName": "Mor Jyantibhai Nathabhai Vedancha",
@@ -5755,7 +5741,7 @@
     "baselineOutstanding20251231": 10760,
     "salesTransactionsCount2026": 0,
     "openingDebt": 10760,
-    "id": "277"
+    "id": "276"
   },
   {
     "canonicalName": "Mor Kantibhai Vedancha",
@@ -5771,7 +5757,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "278"
+    "id": "277"
   },
   {
     "canonicalName": "Mor Keshabhai Abhubhai",
@@ -5785,7 +5771,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "279"
+    "id": "278"
   },
   {
     "canonicalName": "Mor Lavjibhai Abhubhai",
@@ -5809,7 +5795,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 3,
-    "id": "280"
+    "id": "279"
   },
   {
     "canonicalName": "Mor Lavjibhai Abhubhai (Badarpura)",
@@ -5823,7 +5809,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "281"
+    "id": "280"
   },
   {
     "canonicalName": "Mor Prakashbhai Parthibhai",
@@ -5846,7 +5832,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
     "openingDebt": 0,
-    "id": "282"
+    "id": "281"
   },
   {
     "canonicalName": "Mor Rameshbhai Nathabhai",
@@ -5873,7 +5859,7 @@
     "baselineOutstanding20251231": 17485,
     "salesTransactionsCount2026": 3,
     "openingDebt": 17485,
-    "id": "283"
+    "id": "282"
   },
   {
     "canonicalName": "Mor Ushaben Vedancha",
@@ -5899,7 +5885,7 @@
     "baselineOutstanding20251231": 37174,
     "salesTransactionsCount2026": 1,
     "openingDebt": 37174,
-    "id": "284"
+    "id": "283"
   },
   {
     "canonicalName": "Mujadiya Ashokbhai Jagmalbhai",
@@ -5925,7 +5911,7 @@
     "baselineOutstanding20251231": 230,
     "salesTransactionsCount2026": 1,
     "openingDebt": 230,
-    "id": "285"
+    "id": "284"
   },
   {
     "canonicalName": "Palani Amthabhai Savabbhai",
@@ -5950,7 +5936,7 @@
     "baselineOutstanding20251231": 10700,
     "salesTransactionsCount2026": 0,
     "openingDebt": 10700,
-    "id": "286"
+    "id": "285"
   },
   {
     "canonicalName": "Palani Bhagvanbhai Ratnabhai",
@@ -5975,7 +5961,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
     "openingDebt": 0,
-    "id": "287"
+    "id": "286"
   },
   {
     "canonicalName": "Palani Bhikhabhai Gamabhai",
@@ -6000,7 +5986,7 @@
     "baselineOutstanding20251231": 10013,
     "salesTransactionsCount2026": 0,
     "openingDebt": 10013,
-    "id": "288"
+    "id": "287"
   },
   {
     "canonicalName": "Palani Dalpatrbhai Shantubhai",
@@ -6025,7 +6011,7 @@
     "baselineOutstanding20251231": 800,
     "salesTransactionsCount2026": 0,
     "openingDebt": 800,
-    "id": "289"
+    "id": "288"
   },
   {
     "canonicalName": "Palani Ishvarbhai Bababhai",
@@ -6051,7 +6037,7 @@
     "baselineOutstanding20251231": 1200,
     "salesTransactionsCount2026": 1,
     "openingDebt": 1200,
-    "id": "290"
+    "id": "289"
   },
   {
     "canonicalName": "Palani Magabhai Khodabhai",
@@ -6078,7 +6064,7 @@
     "baselineOutstanding20251231": 2400,
     "salesTransactionsCount2026": 2,
     "openingDebt": 2400,
-    "id": "291"
+    "id": "290"
   },
   {
     "canonicalName": "Palani Mahendra",
@@ -6094,7 +6080,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "292"
+    "id": "291"
   },
   {
     "canonicalName": "Palani Mahendrabhai Parthibhai",
@@ -6118,7 +6104,7 @@
     "baselineOutstanding20251231": 600,
     "salesTransactionsCount2026": 0,
     "openingDebt": 600,
-    "id": "293"
+    "id": "292"
   },
   {
     "canonicalName": "Palani Maheshbhai Khemabhai",
@@ -6143,7 +6129,7 @@
     "baselineOutstanding20251231": 15530,
     "salesTransactionsCount2026": 0,
     "openingDebt": 15530,
-    "id": "294"
+    "id": "293"
   },
   {
     "canonicalName": "Palani Naranbhai Shantubhai",
@@ -6168,7 +6154,7 @@
     "baselineOutstanding20251231": 700,
     "salesTransactionsCount2026": 0,
     "openingDebt": 700,
-    "id": "295"
+    "id": "294"
   },
   {
     "canonicalName": "Palani Nareshbhai Ishvarbhai",
@@ -6196,7 +6182,7 @@
     "baselineOutstanding20251231": 5238,
     "salesTransactionsCount2026": 2,
     "openingDebt": 5238,
-    "id": "296"
+    "id": "295"
   },
   {
     "canonicalName": "Patel Nareshbhai Vedancha",
@@ -6212,7 +6198,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "297"
+    "id": "296"
   },
   {
     "canonicalName": "Potrod Sureshbhai Karshanbhai",
@@ -6236,7 +6222,7 @@
     "baselineOutstanding20251231": 35070,
     "salesTransactionsCount2026": 0,
     "openingDebt": 35070,
-    "id": "298"
+    "id": "297"
   },
   {
     "canonicalName": "Prajapati Jethabhai Kalubhai",
@@ -6261,7 +6247,7 @@
     "baselineOutstanding20251231": 9857,
     "salesTransactionsCount2026": 0,
     "openingDebt": 9857,
-    "id": "299"
+    "id": "298"
   },
   {
     "canonicalName": "Prajapati Jyantibhai Dugarbhai",
@@ -6277,7 +6263,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "300"
+    "id": "299"
   },
   {
     "canonicalName": "Prajapti Maganbhai Kalubhai",
@@ -6291,7 +6277,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "301"
+    "id": "300"
   },
   {
     "canonicalName": "Rajput Kesarbhai Vedancha",
@@ -6310,7 +6296,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "302"
+    "id": "301"
   },
   {
     "canonicalName": "Ramatar Parkashbhai Tajpura",
@@ -6329,7 +6315,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
     "openingDebt": 0,
-    "id": "303"
+    "id": "302"
   },
   {
     "canonicalName": "Rameshbhai Bhagat Jasu",
@@ -6354,7 +6340,7 @@
     "baselineOutstanding20251231": 3430,
     "salesTransactionsCount2026": 0,
     "openingDebt": 3430,
-    "id": "304"
+    "id": "303"
   },
   {
     "canonicalName": "Ratada Haribhai Laxmanbhai Badharpura",
@@ -6384,7 +6370,7 @@
     "baselineOutstanding20251231": 30161,
     "salesTransactionsCount2026": 5,
     "openingDebt": 30161,
-    "id": "305"
+    "id": "304"
   },
   {
     "canonicalName": "Ratada Lavjibhai Laxmanbhai",
@@ -6411,7 +6397,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 4,
-    "id": "306"
+    "id": "305"
   },
   {
     "canonicalName": "Retail",
@@ -6426,7 +6412,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "307"
+    "id": "306"
   },
   {
     "canonicalName": "Savaya Jyantibhai Kanjibhai",
@@ -6450,7 +6436,7 @@
     "baselineOutstanding20251231": 352,
     "salesTransactionsCount2026": 0,
     "openingDebt": 352,
-    "id": "308"
+    "id": "307"
   },
   {
     "canonicalName": "Savaya Kantibhai Vedancha",
@@ -6464,7 +6450,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "309"
+    "id": "308"
   },
   {
     "canonicalName": "Shipai Musabhai",
@@ -6489,7 +6475,7 @@
     "baselineOutstanding20251231": 3035,
     "salesTransactionsCount2026": 0,
     "openingDebt": 3035,
-    "id": "310"
+    "id": "309"
   },
   {
     "canonicalName": "Shokhatbhai Kubhalmer",
@@ -6507,7 +6493,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
     "openingDebt": 0,
-    "id": "311"
+    "id": "310"
   },
   {
     "canonicalName": "Shukhatbhai Kubhasan",
@@ -6529,7 +6515,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "312"
+    "id": "311"
   },
   {
     "canonicalName": "Takor Bajubhai Galbabhai",
@@ -6556,7 +6542,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
     "openingDebt": 0,
-    "id": "313"
+    "id": "312"
   },
   {
     "canonicalName": "Talegadh",
@@ -6580,7 +6566,7 @@
     "baselineOutstanding20251231": 520,
     "salesTransactionsCount2026": 0,
     "openingDebt": 520,
-    "id": "314"
+    "id": "313"
   },
   {
     "canonicalName": "Thakor Amaratbhai Dharmabhai",
@@ -6604,7 +6590,7 @@
     "baselineOutstanding20251231": 500,
     "salesTransactionsCount2026": 0,
     "openingDebt": 500,
-    "id": "315"
+    "id": "314"
   },
   {
     "canonicalName": "Thakor Amaratbhai Ramchandbhai",
@@ -6631,7 +6617,7 @@
     "baselineOutstanding20251231": 16115,
     "salesTransactionsCount2026": 3,
     "openingDebt": 16115,
-    "id": "316"
+    "id": "315"
   },
   {
     "canonicalName": "Thakor Amartbhai Chamanbhai",
@@ -6654,7 +6640,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 4,
-    "id": "317"
+    "id": "316"
   },
   {
     "canonicalName": "Thakor Amratbhai Manabhai",
@@ -6681,7 +6667,7 @@
     "baselineOutstanding20251231": 1445,
     "salesTransactionsCount2026": 1,
     "openingDebt": 1445,
-    "id": "318"
+    "id": "317"
   },
   {
     "canonicalName": "Thakor Arvindbhai Khasa",
@@ -6699,7 +6685,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "319"
+    "id": "318"
   },
   {
     "canonicalName": "Thakor Ashokbhai Bijanbhai",
@@ -6724,7 +6710,7 @@
     "baselineOutstanding20251231": 18707,
     "salesTransactionsCount2026": 0,
     "openingDebt": 18707,
-    "id": "320"
+    "id": "319"
   },
   {
     "canonicalName": "Thakor Balvantbhai Chaganbhai",
@@ -6743,7 +6729,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "321"
+    "id": "320"
   },
   {
     "canonicalName": "Thakor Balvatbhai Chaganbhai",
@@ -6757,7 +6743,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "322"
+    "id": "321"
   },
   {
     "canonicalName": "Thakor Bhagvanbhai Shantubhai",
@@ -6782,7 +6768,7 @@
     "baselineOutstanding20251231": 1430,
     "salesTransactionsCount2026": 0,
     "openingDebt": 1430,
-    "id": "323"
+    "id": "322"
   },
   {
     "canonicalName": "Thakor Bharatbhai Vedancha",
@@ -6797,7 +6783,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "324"
+    "id": "323"
   },
   {
     "canonicalName": "Thakor Bhaveshbhai Vedancha",
@@ -6822,7 +6808,7 @@
     "baselineOutstanding20251231": 756,
     "salesTransactionsCount2026": 0,
     "openingDebt": 756,
-    "id": "325"
+    "id": "324"
   },
   {
     "canonicalName": "Thakor Bhikhiben Veershangbhai",
@@ -6840,7 +6826,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "326"
+    "id": "325"
   },
   {
     "canonicalName": "Thakor Bhubhabhai Durabhai",
@@ -6856,7 +6842,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "327"
+    "id": "326"
   },
   {
     "canonicalName": "Thakor Bhupatbhai Banabhai",
@@ -6874,7 +6860,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
     "openingDebt": 0,
-    "id": "328"
+    "id": "327"
   },
   {
     "canonicalName": "Thakor Bhupatbhai Veerchandbhai",
@@ -6901,7 +6887,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 3,
     "openingDebt": 0,
-    "id": "329"
+    "id": "328"
   },
   {
     "canonicalName": "Thakor Chamanji Takhaji",
@@ -6926,7 +6912,7 @@
     "baselineOutstanding20251231": 227,
     "salesTransactionsCount2026": 0,
     "openingDebt": 227,
-    "id": "330"
+    "id": "329"
   },
   {
     "canonicalName": "Thakor Dharjibhai Galbabhai Chandisar",
@@ -6955,7 +6941,7 @@
     "baselineOutstanding20251231": 13591,
     "salesTransactionsCount2026": 2,
     "openingDebt": 13591,
-    "id": "331"
+    "id": "330"
   },
   {
     "canonicalName": "Thakor Harchandji Laxmanji",
@@ -6980,7 +6966,7 @@
     "baselineOutstanding20251231": 1010,
     "salesTransactionsCount2026": 0,
     "openingDebt": 1010,
-    "id": "332"
+    "id": "331"
   },
   {
     "canonicalName": "Thakor Hemchandji",
@@ -7004,7 +6990,7 @@
     "baselineOutstanding20251231": 550,
     "salesTransactionsCount2026": 0,
     "openingDebt": 550,
-    "id": "333"
+    "id": "332"
   },
   {
     "canonicalName": "Thakor Jagdishbhai Ishavrbhai",
@@ -7033,7 +7019,7 @@
     "baselineOutstanding20251231": 5650,
     "salesTransactionsCount2026": 3,
     "openingDebt": 5650,
-    "id": "334"
+    "id": "333"
   },
   {
     "canonicalName": "Thakor Jagdishbhai Khegarbhai",
@@ -7057,7 +7043,7 @@
     "baselineOutstanding20251231": 5330,
     "salesTransactionsCount2026": 0,
     "openingDebt": 5330,
-    "id": "335"
+    "id": "334"
   },
   {
     "canonicalName": "Thakor Jasungji Parthiji",
@@ -7082,7 +7068,7 @@
     "baselineOutstanding20251231": 350,
     "salesTransactionsCount2026": 0,
     "openingDebt": 350,
-    "id": "336"
+    "id": "335"
   },
   {
     "canonicalName": "Thakor Javanbhai Motibhai",
@@ -7096,7 +7082,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "337"
+    "id": "336"
   },
   {
     "canonicalName": "Thakor Jaxshibhai Hurabhai",
@@ -7122,7 +7108,7 @@
     "baselineOutstanding20251231": 4942,
     "salesTransactionsCount2026": 1,
     "openingDebt": 4942,
-    "id": "338"
+    "id": "337"
   },
   {
     "canonicalName": "Thakor Jyantibhai Madhubhai",
@@ -7139,7 +7125,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "339"
+    "id": "338"
   },
   {
     "canonicalName": "Thakor Kubhaji Huraji",
@@ -7162,7 +7148,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "340"
+    "id": "339"
   },
   {
     "canonicalName": "Thakor Laxmanji Menaji",
@@ -7187,7 +7173,7 @@
     "baselineOutstanding20251231": 1286,
     "salesTransactionsCount2026": 0,
     "openingDebt": 1286,
-    "id": "341"
+    "id": "340"
   },
   {
     "canonicalName": "Thakor Mahendrabhai Sudha Ronera",
@@ -7206,7 +7192,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
     "openingDebt": 0,
-    "id": "342"
+    "id": "341"
   },
   {
     "canonicalName": "Thakor Maheshbhai Bajubhai",
@@ -7227,7 +7213,7 @@
     "baselineOutstanding20251231": 1300,
     "salesTransactionsCount2026": 0,
     "openingDebt": 1300,
-    "id": "343"
+    "id": "342"
   },
   {
     "canonicalName": "Thakor Momatji Saradarji",
@@ -7252,7 +7238,7 @@
     "baselineOutstanding20251231": 310,
     "salesTransactionsCount2026": 0,
     "openingDebt": 310,
-    "id": "344"
+    "id": "343"
   },
   {
     "canonicalName": "Thakor Nagjibhai Hamirbhai",
@@ -7276,7 +7262,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 3,
     "openingDebt": 0,
-    "id": "345"
+    "id": "344"
   },
   {
     "canonicalName": "Thakor Parbatbhai Ghemarbhai",
@@ -7303,7 +7289,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 4,
     "openingDebt": 0,
-    "id": "346"
+    "id": "345"
   },
   {
     "canonicalName": "Thakor Prabhatbhai Khengarbhai",
@@ -7326,7 +7312,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "347"
+    "id": "346"
   },
   {
     "canonicalName": "Thakor Praveenbhai Gulabbhai",
@@ -7345,7 +7331,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "348"
+    "id": "347"
   },
   {
     "canonicalName": "Thakor Rameshbhai Poojabhai",
@@ -7368,7 +7354,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
     "openingDebt": 0,
-    "id": "349"
+    "id": "348"
   },
   {
     "canonicalName": "Thakor Rameshji Samdhi",
@@ -7392,7 +7378,7 @@
     "baselineOutstanding20251231": 1782,
     "salesTransactionsCount2026": 0,
     "openingDebt": 1782,
-    "id": "350"
+    "id": "349"
   },
   {
     "canonicalName": "Thakor Rangnathji Khodla",
@@ -7421,7 +7407,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 3,
     "openingDebt": 0,
-    "id": "351"
+    "id": "350"
   },
   {
     "canonicalName": "Thakor Ransaji Raghjiji",
@@ -7453,7 +7439,7 @@
     "baselineOutstanding20251231": 18606,
     "salesTransactionsCount2026": 10,
     "openingDebt": 18606,
-    "id": "352"
+    "id": "351"
   },
   {
     "canonicalName": "Thakor Savjibhai Hamirbhai",
@@ -7482,7 +7468,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 5,
     "openingDebt": 0,
-    "id": "353"
+    "id": "352"
   },
   {
     "canonicalName": "Thakor Savjibhai Ramchandbhai",
@@ -7496,7 +7482,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "354"
+    "id": "353"
   },
   {
     "canonicalName": "Thakor Sevantibhai Kapoorbhai",
@@ -7520,7 +7506,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "355"
+    "id": "354"
   },
   {
     "canonicalName": "Thakor Shanjiji Jagmalji",
@@ -7544,7 +7530,7 @@
     "baselineOutstanding20251231": 6662,
     "salesTransactionsCount2026": 0,
     "openingDebt": 6662,
-    "id": "356"
+    "id": "355"
   },
   {
     "canonicalName": "Thakor Shankarbhai Ranpur",
@@ -7576,7 +7562,7 @@
     "baselineOutstanding20251231": 31860,
     "salesTransactionsCount2026": 7,
     "openingDebt": 31860,
-    "id": "357"
+    "id": "356"
   },
   {
     "canonicalName": "Thakor Shavjibhai Ramchandbhai (Bhai)",
@@ -7590,7 +7576,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "358"
+    "id": "357"
   },
   {
     "canonicalName": "Thakor Vashrambhai Danshungbhai",
@@ -7615,7 +7601,7 @@
     "baselineOutstanding20251231": 2442,
     "salesTransactionsCount2026": 0,
     "openingDebt": 2442,
-    "id": "359"
+    "id": "358"
   },
   {
     "canonicalName": "Thakor Vinshubhai Dheerajbhai",
@@ -7642,7 +7628,7 @@
     "baselineOutstanding20251231": 17958,
     "salesTransactionsCount2026": 1,
     "openingDebt": 17958,
-    "id": "360"
+    "id": "359"
   },
   {
     "canonicalName": "Thakor Vipulbhai Chaganbhai",
@@ -7670,7 +7656,7 @@
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 4,
     "openingDebt": 0,
-    "id": "361"
+    "id": "360"
   },
   {
     "canonicalName": "Thakor. Ramesh bhai pujabhai",
@@ -7686,7 +7672,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "362"
+    "id": "361"
   },
   {
     "canonicalName": "Uplana Amaratbhai Laljibhai",
@@ -7703,7 +7689,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "363"
+    "id": "362"
   },
   {
     "canonicalName": "Vaghela Mukeshbhai Chelabhai",
@@ -7728,7 +7714,7 @@
     "baselineOutstanding20251231": 2100,
     "salesTransactionsCount2026": 0,
     "openingDebt": 2100,
-    "id": "364"
+    "id": "363"
   },
   {
     "canonicalName": "Vaghela Praveenbhai Chelabhai",
@@ -7753,7 +7739,7 @@
     "baselineOutstanding20251231": 1470,
     "salesTransactionsCount2026": 0,
     "openingDebt": 1470,
-    "id": "365"
+    "id": "364"
   },
   {
     "canonicalName": "Vaghela Veerchandbhai Bhathibhai",
@@ -7778,7 +7764,7 @@
     "baselineOutstanding20251231": 2100,
     "salesTransactionsCount2026": 0,
     "openingDebt": 2100,
-    "id": "366"
+    "id": "365"
   },
   {
     "canonicalName": "Valagot Ashokbhai Parthibhai",
@@ -7797,7 +7783,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "367"
+    "id": "366"
   },
   {
     "canonicalName": "Valagot Babubhai Chelabhai",
@@ -7822,7 +7808,7 @@
     "baselineOutstanding20251231": 13510,
     "salesTransactionsCount2026": 0,
     "openingDebt": 13510,
-    "id": "368"
+    "id": "367"
   },
   {
     "canonicalName": "Valagot Babubhai Parthibhai",
@@ -7848,7 +7834,7 @@
     "baselineOutstanding20251231": 5220,
     "salesTransactionsCount2026": 1,
     "openingDebt": 5220,
-    "id": "369"
+    "id": "368"
   },
   {
     "canonicalName": "Valagot Devabhai",
@@ -7868,7 +7854,7 @@
     "baselineOutstanding20251231": 14280,
     "salesTransactionsCount2026": 0,
     "openingDebt": 14280,
-    "id": "370"
+    "id": "369"
   },
   {
     "canonicalName": "Valagot Dipakbhai Mavjibhai",
@@ -7894,7 +7880,7 @@
     "baselineOutstanding20251231": 16562,
     "salesTransactionsCount2026": 1,
     "openingDebt": 16562,
-    "id": "371"
+    "id": "370"
   },
   {
     "canonicalName": "Valagot Ghemarbhai Manjibhai",
@@ -7908,7 +7894,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 0,
-    "id": "372"
+    "id": "371"
   },
   {
     "canonicalName": "Valagot Kantibhai Parthibhai",
@@ -7924,7 +7910,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "373"
+    "id": "372"
   },
   {
     "canonicalName": "Valagot Kantibhai Somabhai",
@@ -7940,7 +7926,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "374"
+    "id": "373"
   },
   {
     "canonicalName": "Valagot Kantibhai Vedancha",
@@ -7958,7 +7944,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 2,
-    "id": "375"
+    "id": "374"
   },
   {
     "canonicalName": "Valagot Prakashbhai Karshanbhai",
@@ -7983,7 +7969,7 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 3,
-    "id": "376"
+    "id": "375"
   },
   {
     "canonicalName": "Vedancha Kantibhai Solaki - 9408040888",
@@ -8006,6 +7992,6 @@
     ],
     "baselineOutstanding20251231": 0,
     "salesTransactionsCount2026": 1,
-    "id": "377"
+    "id": "376"
   }
 ]

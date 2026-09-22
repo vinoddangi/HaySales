@@ -47,8 +47,8 @@ export const SelectField: React.FC<SelectFieldProps> = ({
         id={selectId}
         required={required}
         className={cn(
-          'w-full rounded-lg border border-m3-outline bg-m3-surface p-2 text-xs text-m3-on-surface transition-colors focus:border-m3-primary focus:outline-none',
-          error && 'border-m3-error focus:border-m3-error',
+          'w-full rounded-m3-sm border border-m3-outline bg-m3-surface px-3 py-2.5 text-sm font-bold text-m3-on-surface transition-colors focus:border-m3-primary focus:outline-none focus:ring-1 focus:ring-m3-primary',
+          error && 'border-m3-error focus:border-m3-error focus:ring-m3-error',
           className,
         )}
         {...props}

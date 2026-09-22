@@ -83,6 +83,8 @@ const ALIAS_MAP = new Map([
   ['boka deepkabhai parathibhai', 'Boka Dipakbhai Parthibhai'],
   ['akoliya devabhai somabhai', 'Akoliya Devabhai Shomabhai'],
   ['akoliya megharajbhai parthibhai', 'Akoliya Meghrajbhai Parthibhai'],
+  ['akoliya m p', 'Akoliya Meghrajbhai Parthibhai'],
+  ['akoliya m. p.', 'Akoliya Meghrajbhai Parthibhai'],
   ['judal narshbhai parthibhai', 'Judal Nareshbhai Parthibhai'],
   ['judal sadbhai kalubhai', 'Judal Sadabhai Kalubhai'],
   ['choudhary narshibhai kalubhai', 'Chaudhary Narshibhai Kalubhai'],

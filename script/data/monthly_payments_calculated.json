@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-19T12:13:37.235Z",
+  "generatedAt": "2026-09-22T14:33:01.664Z",
   "grandTotalPaymentCount": 283,
   "grandTotalExplicitPayments": 2028075,
   "grandTotalDroppedPayments": 1002809,
@@ -3690,7 +3690,7 @@
     },
     {
       "type": "FULL_SETTLEMENT_DROPPED",
-      "customerName": "Akoliya M. P.",
+      "customerName": "Akoliya Meghrajbhai Parthibhai",
       "rawNameInSheet": "Akoliya M. P.",
       "amount": 33690,
       "period": "2026_07",
