@@ -389,177 +389,163 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 390,Bhutadiya Bhikhabhai Ganeshbhai,,,35000,0
 391,Kakvadiya Babubhai Chandisar,,,35000,0
 392,Bera Laljibhai Sadabhai,,,35000,0
-393,Retail - Vedancha,,,35000,0
-394,Sudha 1,,,35000,0
-395,Valagot Ashwinbhai Daljibhai - Vedancha,,,35000,0
-396,Kharshan Bhupatbhai Savjibhai,,,35000,0
-397,Satoliya Rameshbhai Vedancha,,,35000,0
-398,Loh Sureshbha Shantubhai,,,35000,0
-399,Judal Mogajibhai Bhikhabhai Chadotar,,,35000,0
-400,Thakor Bharatji Samdhi,,,35000,0
-401,Thakor Manchaji Samdhi,,,35000,0
-402,Judal Galbabhai Ramjibhai,,,35000,0
-403,Valagot Mavjibhai (Fuva),,,35000,0
-404,Gamar Rameshbhai Lalabhai (Chetan Galba Judal),,,35000,0
-405,Vajirkhan Kasa,,,35000,0
-406,Thakor Rameshbhai Danshungbhai,,,35000,0
-407,Thakor Hemchandbhai Khodla,,,35000,0
-408,Kuva Nareshbhai Sudha (Bhai),,,35000,0
-409,Gudol Kalpeshbhai Kushkal,,,35000,0
-410,Judal Lajibhai Somabhai,,,35000,0
-411,Boka Ramjibhai Jethabhai,,,35000,0
-412,Kuva Nareshbhai - 9723128992,,,35000,0
-413,Desai Maganbhai Rasana,,,35000,0
-414,Valagot Jayntibhai Surati,,,35000,0
-415,Mor Kirtibhai Vedancha,,,35000,0
-416,Fof Meghrajbhai Ujabhai,,,35000,0
-417,Fof Laxmanbhai Ujabhai,,,35000,0
-418,Judal Praveenbhai Bhagavanbhai,,,35000,0
-419,Judal Rameshbhai Somabhai,,,35000,0
-420,Judal Neeruben Ashokbhai Kushkal,,,35000,0
-421,Valagot Manjibhai Fuva,,,35000,0
-422,Palani Bharatbhai Ratnabhai,,,35000,0
-423,Judal Rajubhai Valjibhai,,,35000,0
-424,Kharsan Bhupatbhai Savajibhai,,,35000,0
-425,Boka Narshibhai Bhikabhai,,,35000,0
-426,Gudol Bhaveshbhai Parthibhai,,,35000,0
-427,Judal Veerabhai Somabhai,,,35000,0
-428,Jarmol Neetaben K Gadh,,,35000,0
-429,Bharatbhai Patel Vedancha,,,35000,0
-430,Gobhalya Kantibhai Jeevabhai,,,35000,0
-431,Judal Kesarbhai Narshibhai,,,35000,0
-432,Thakor Radhuji Ghemarji,,,35000,0
-433,Bhutadiya Dhanrajbhai Somabhai,,,35000,0
-434,Ratada Megharajbhai Badarpura,,,35000,0
-435,Patel Ambaram Devpura,,,35000,0
-436,Prakashpuri Khodla,,,35000,0
-437,Bhutadiya Kiritibhai Ramshungbhai,,,35000,0
-438,Loh Mogjibhai Fatabhai,,,35000,0
-439,Judal Maheshbhai Ramshungbhai,,,35000,0
-440,Judal Kantibhai Somabhai,,,35000,0
-441,TaalPatri,,,35000,0
-442,Bera Karshanbhai Shomabhai Akeshan,,,35000,0
-443,Loh Babubhai Bhagvanabhai,,,35000,0
-444,Shudha Retail,,,35000,0
-445,Dangi Jagdishbhai Chelabhai,,,35000,0
-446,Juva Karshanbhai,,,35000,0
-447,Judal Ghemarbhai Ramshungbhai,,,35000,0
-448,Loh Kantibhai Poojabhai,,,35000,0
-449,Khasa Jafarkhan Vajeer,,,35000,0
-450,Gobhala Kantibhai 9099318634,,,35000,0
-451,Jarmol Laxmanbhai Jeshungbhai,,,35000,0
-452,Loh Raghubhai Poojabhai,,,35000,0
-453,Judal Nareshbhai Ramshungbhai,,,35000,0
-454,Jeetuben Manjibhai,,,35000,0
-455,Bera Ramjibhai Nanjibhai,,,35000,0
-456,Judal Laxmanbhai Parthibhai,,,35000,0
-457,Chaudhary Rameshbhai Jethabhai,,,35000,0
-458,Kasha Vajeer Khan,,,35000,0
-459,Judal Dineshbhai Bhikhabhai,,,35000,0
-460,Kubhasan Shokatbhai 9898775295,,,35000,0
-461,Patel Karshanbhai Vedancha,,,35000,0
-462,Gudol Jaguben Muljibhai,,,35000,0
-463,Judal Neeruben Hasmukhbhai,,,35000,0
-464,Judal Rameshbhai Ramshungbhai,,,35000,0
-465,Thakor Bhoobhaji Dhooraji,,,35000,0
-466,Loh Sardarbhai Bheekhabhai,,,35000,0
-467,Judal Bhagvanbhai Karshanbhai,,,35000,0
-468,Loh Rameshbhai Bhagvanbhai,,,35000,0
-469,Daalu Diesel + Depreciation,,,35000,0
-470,Darabar Kanshing Samdhi,,,35000,0
-471,Mor Babubhai Vedancha,,,35000,0
-472,Darbar Kanshingbhai Saamdhi,,,35000,0
-473,Judal Jeetabhai Moghabhai,,,35000,0
-474,Judal Ramshungbhai Shomabhai,,,35000,0
-475,Shudha,,,35000,0
-476,Bera Dineshbhai Shavabhai,,,35000,0
-477,Gabhala Kantibhai Jeevabhai,,,35000,0
-478,Gudol Jayntibhai Cheharabhai,,,35000,0
-479,Sudha Retail,,,35000,0
-480,Loh Deepakbhai Ramjibhai,,,35000,0
-481,Bhutadiya Jeetabhai Ganeshbhai,,,35000,0
-482,Kuta/Kutti,,,35000,0
-483,Dharpada Hiraji Darbar,,,35000,0
-484,Kakvadiya Maheshbhai Ramshungbhai,,,35000,0
-485,Thakor Bharatbhai Bajubhai,,,35000,0
-486,Judal Mukeshbhai Laxmanbhai,,,35000,0
-487,Kakavadiya Sureshbhai Chandichar,,,35000,0
-488,Boka Jivrambhai Parthibhai,,,35000,0
-489,Gudol Amaratbhai Parathibhai,,,35000,0
-490,Gudalo Amaratbhai Cheharbhai,,,35000,0
-491,Darbar Kanshing Samdhi,,,35000,0
-492,Dharpada Hiraji (Vershingji),,,35000,0
-493,Bhutatiday Babubhai Kanjibhai,,,35000,0
-494,Dhudiya Sureshbhai Jeetabhai,,,35000,0
-495,Bhutadiya Dhanrajbhai Shomabhai,,,35000,0
-496,Judal Sadabhai Jeevabhai,,,35000,0
-497,Judal Daljibhai Veershangbhai,,,35000,0
-498,Valagot Ashwinbhai Daljibhai,,,35000,0
-499,Judal Valjibhai Veershangbhai,,,35000,0
-500,Judal Kamleshbhai Shomabhai,,,35000,0
-501,Dharpada Hiraji Thakor,,,35000,0
-502,Loh Jayeshbhai Kanjibhai,,,35000,0
-503,Thakor Dhanrajbhai Dharpada,,,35000,0
-504,Bhutadiya Virshangbhai Fatabhai,,,35000,0
-505,Thakor Hemchandji Khodla,,,35000,0
-506,Kag Kamleshbhai Galbabhai,,,35000,0
-507,Judal Heenaben Dineshbhai,,,35000,0
-508,Boka Jayeshbhai Bhikhabhai,,,35000,0
-509,Darbar Gokalsingh Samdhi,,,35000,0
-510,Thakor Dineshbhai Dharpada,,,35000,0
-511,Thakor Pochaji Dharpada,,,35000,0
-512,Valagot Vedancha,,,35000,0
-513,Judal Kalpeshbhai Virshangbhai,,,35000,0
-514,Valagot Jyantibhai Vedancha,,,35000,0
-515,Sadabhai Jeevabhai,,,35000,0
-516,Loh Jeetabhai Moghabhai,,,35000,0
-517,Kakavadiya Maheshbhai Romjibhai,,,35000,0
-518,Dharpada Dhiraji,,,35000,0
-519,Dharpada Devchandji,,,35000,0
-520,Gudol Valjibhai Rashangbhai,,,35000,0
-521,Kubhasan Bavji,,,35000,0
-522,Bhutadiya Dineshbhai Virshangbhai,,,35000,0
-523,Valagot Kantibhai,,,35000,0
-524,Hoda Bavji,,,35000,0
-525,Patel Dipakbhai Vedancha,,,35000,0
-526,Judal Kirtibhai Bhagvanbhai,,,35000,0
-527,Kharsan Bhikhabhai Godadbhai,,,35000,0
-528,Loh Bhagvanbhai Virshangbhai,,,35000,0
-529,Bhutadiya Narshibhai Karshanbhai,,,35000,0
-530,Judal Mehulbhai Sadabhai,,,35000,0
-531,Judal Sileshbhai Nanjibhai Badarpura,,,35000,0
-532,Dharpada Sheliji (Hiraji),,,35000,0
-533,Thakor Jadishbhai Ishavarbhai,,,35000,0
-534,Desai Devkanbhai Delvada,,,35000,0
-535,Judal Manjibhai Parthibhai,,,35000,0
-536,Darpada Harkhaji,,,35000,0
-537,Loh Santubhai Veerabhai,,,35000,0
-538,Darpada Vikrambhai Na Bhai,,,35000,0
-539,Loh Sureshbhai Santubhai,,,35000,0
-540,Gori Muradkhan Jafarkhan,,,35000,0
-541,Patel Gangaram Devpura,,,35000,0
-542,Judal Jeshungbhai Bhikhabhai,,,35000,0
-543,Judal Jashungbhai Bhikhabhai,,,35000,0
-544,Darbar Gokalshing Samdhi,,,35000,0
-545,Menat Parkashbhai Madana,,,35000,0
-546,Kasha Jafarkhan,,,35000,0
-547,Karshan Bhikhabhai Godadbhai,,,35000,0
-548,Valagot Kantibhai Shomabhai,,,35000,0
-549,Umarbhai Kotavala Chadotar,,,35000,0
-550,Unava Satishbhai,,,35000,0
-551,Tractor Mhurut,,,35000,0
-552,Judal Hashmukhbhai Bhagvanbhai,,,35000,0
-553,Dhudabhai Vedancha,,,35000,0
-554,Valagot Nikulbhai,,,35000,0
-555,Judal Mafatbhai Virshangbhai,,,35000,0
-556,Gadhvala Desai Palanpur,,,35000,0
-557,Bhutadiya Kantibhai Ramshungbhai,,,35000,0
-558,Tractor expenses,,,35000,0
-559,Loh Narshibhai Veerabhai Chadotar,,,35000,0
-560,Judal Dhanrajbhai Fatabhai,,,35000,0
-561,Thakor Prabhatbhai,,,35000,0
-562,Thakor Vishnubhai Dheerajbhai,,,35000,0
-563,Stationery,,,35000,0
-564,Thakor Bhoobhaji Hooraji,,,35000,0
-565,Thakor Devchandji Dharpada,,,35000,0
-566,Thakor Dheeraji Dharpada,,,35000,0
+393,Valagot Ashwinbhai Daljibhai - Vedancha,,,35000,0
+394,Kharshan Bhupatbhai Savjibhai,,,35000,0
+395,Satoliya Rameshbhai Vedancha,,,35000,0
+396,Loh Sureshbha Shantubhai,,,35000,0
+397,Judal Mogajibhai Bhikhabhai Chadotar,,,35000,0
+398,Thakor Bharatji Samdhi,,,35000,0
+399,Thakor Manchaji Samdhi,,,35000,0
+400,Judal Galbabhai Ramjibhai,,,35000,0
+401,Valagot Mavjibhai (Fuva),,,35000,0
+402,Gamar Rameshbhai Lalabhai (Chetan Galba Judal),,,35000,0
+403,Vajirkhan Kasa,,,35000,0
+404,Thakor Rameshbhai Danshungbhai,,,35000,0
+405,Thakor Hemchandbhai Khodla,,,35000,0
+406,Gudol Kalpeshbhai Kushkal,,,35000,0
+407,Judal Lajibhai Somabhai,,,35000,0
+408,Boka Ramjibhai Jethabhai,,,35000,0
+409,Kuva Nareshbhai - 9723128992,,,35000,0
+410,Desai Maganbhai Rasana,,,35000,0
+411,Valagot Jayntibhai Surati,,,35000,0
+412,Mor Kirtibhai Vedancha,,,35000,0
+413,Fof Meghrajbhai Ujabhai,,,35000,0
+414,Fof Laxmanbhai Ujabhai,,,35000,0
+415,Judal Praveenbhai Bhagavanbhai,,,35000,0
+416,Judal Rameshbhai Somabhai,,,35000,0
+417,Judal Neeruben Ashokbhai Kushkal,,,35000,0
+418,Valagot Manjibhai Fuva,,,35000,0
+419,Palani Bharatbhai Ratnabhai,,,35000,0
+420,Judal Rajubhai Valjibhai,,,35000,0
+421,Kharsan Bhupatbhai Savajibhai,,,35000,0
+422,Boka Narshibhai Bhikabhai,,,35000,0
+423,Gudol Bhaveshbhai Parthibhai,,,35000,0
+424,Judal Veerabhai Somabhai,,,35000,0
+425,Jarmol Neetaben K Gadh,,,35000,0
+426,Bharatbhai Patel Vedancha,,,35000,0
+427,Gobhalya Kantibhai Jeevabhai,,,35000,0
+428,Judal Kesarbhai Narshibhai,,,35000,0
+429,Thakor Radhuji Ghemarji,,,35000,0
+430,Bhutadiya Dhanrajbhai Somabhai,,,35000,0
+431,Ratada Megharajbhai Badarpura,,,35000,0
+432,Patel Ambaram Devpura,,,35000,0
+433,Prakashpuri Khodla,,,35000,0
+434,Bhutadiya Kiritibhai Ramshungbhai,,,35000,0
+435,Loh Mogjibhai Fatabhai,,,35000,0
+436,Judal Maheshbhai Ramshungbhai,,,35000,0
+437,Judal Kantibhai Somabhai,,,35000,0
+438,TaalPatri,,,35000,0
+439,Bera Karshanbhai Shomabhai Akeshan,,,35000,0
+440,Loh Babubhai Bhagvanabhai,,,35000,0
+441,Dangi Jagdishbhai Chelabhai,,,35000,0
+442,Judal Ghemarbhai Ramshungbhai,,,35000,0
+443,Loh Kantibhai Poojabhai,,,35000,0
+444,Khasa Jafarkhan Vajeer,,,35000,0
+445,Gobhala Kantibhai 9099318634,,,35000,0
+446,Jarmol Laxmanbhai Jeshungbhai,,,35000,0
+447,Loh Raghubhai Poojabhai,,,35000,0
+448,Judal Nareshbhai Ramshungbhai,,,35000,0
+449,Bera Ramjibhai Nanjibhai,,,35000,0
+450,Judal Laxmanbhai Parthibhai,,,35000,0
+451,Chaudhary Rameshbhai Jethabhai,,,35000,0
+452,Kasha Vajeer Khan,,,35000,0
+453,Judal Dineshbhai Bhikhabhai,,,35000,0
+454,Patel Karshanbhai Vedancha,,,35000,0
+455,Gudol Jaguben Muljibhai,,,35000,0
+456,Judal Neeruben Hasmukhbhai,,,35000,0
+457,Judal Rameshbhai Ramshungbhai,,,35000,0
+458,Thakor Bhoobhaji Dhooraji,,,35000,0
+459,Loh Sardarbhai Bheekhabhai,,,35000,0
+460,Judal Bhagvanbhai Karshanbhai,,,35000,0
+461,Loh Rameshbhai Bhagvanbhai,,,35000,0
+462,Daalu Diesel + Depreciation,,,35000,0
+463,Darabar Kanshing Samdhi,,,35000,0
+464,Mor Babubhai Vedancha,,,35000,0
+465,Darbar Kanshingbhai Saamdhi,,,35000,0
+466,Judal Jeetabhai Moghabhai,,,35000,0
+467,Judal Ramshungbhai Shomabhai,,,35000,0
+468,Bera Dineshbhai Shavabhai,,,35000,0
+469,Gabhala Kantibhai Jeevabhai,,,35000,0
+470,Gudol Jayntibhai Cheharabhai,,,35000,0
+471,Loh Deepakbhai Ramjibhai,,,35000,0
+472,Bhutadiya Jeetabhai Ganeshbhai,,,35000,0
+473,Kuta/Kutti,,,35000,0
+474,Dharpada Hiraji Darbar,,,35000,0
+475,Kakvadiya Maheshbhai Ramshungbhai,,,35000,0
+476,Thakor Bharatbhai Bajubhai,,,35000,0
+477,Judal Mukeshbhai Laxmanbhai,,,35000,0
+478,Kakavadiya Sureshbhai Chandichar,,,35000,0
+479,Boka Jivrambhai Parthibhai,,,35000,0
+480,Gudol Amaratbhai Parathibhai,,,35000,0
+481,Gudalo Amaratbhai Cheharbhai,,,35000,0
+482,Darbar Kanshing Samdhi,,,35000,0
+483,Dharpada Hiraji (Vershingji),,,35000,0
+484,Bhutatiday Babubhai Kanjibhai,,,35000,0
+485,Dhudiya Sureshbhai Jeetabhai,,,35000,0
+486,Bhutadiya Dhanrajbhai Shomabhai,,,35000,0
+487,Judal Sadabhai Jeevabhai,,,35000,0
+488,Judal Daljibhai Veershangbhai,,,35000,0
+489,Judal Valjibhai Veershangbhai,,,35000,0
+490,Judal Kamleshbhai Shomabhai,,,35000,0
+491,Dharpada Hiraji Thakor,,,35000,0
+492,Loh Jayeshbhai Kanjibhai,,,35000,0
+493,Thakor Dhanrajbhai Dharpada,,,35000,0
+494,Bhutadiya Virshangbhai Fatabhai,,,35000,0
+495,Thakor Hemchandji Khodla,,,35000,0
+496,Kag Kamleshbhai Galbabhai,,,35000,0
+497,Judal Heenaben Dineshbhai,,,35000,0
+498,Boka Jayeshbhai Bhikhabhai,,,35000,0
+499,Darbar Gokalsingh Samdhi,,,35000,0
+500,Thakor Dineshbhai Dharpada,,,35000,0
+501,Thakor Pochaji Dharpada,,,35000,0
+502,Valagot Vedancha,,,35000,0
+503,Judal Kalpeshbhai Virshangbhai,,,35000,0
+504,Valagot Jyantibhai Vedancha,,,35000,0
+505,Loh Jeetabhai Moghabhai,,,35000,0
+506,Kakavadiya Maheshbhai Romjibhai,,,35000,0
+507,Dharpada Dhiraji,,,35000,0
+508,Dharpada Devchandji,,,35000,0
+509,Gudol Valjibhai Rashangbhai,,,35000,0
+510,Kubhasan Bavji,,,35000,0
+511,Bhutadiya Dineshbhai Virshangbhai,,,35000,0
+512,Valagot Kantibhai,,,35000,0
+513,Hoda Bavji,,,35000,0
+514,Patel Dipakbhai Vedancha,,,35000,0
+515,Judal Kirtibhai Bhagvanbhai,,,35000,0
+516,Kharsan Bhikhabhai Godadbhai,,,35000,0
+517,Loh Bhagvanbhai Virshangbhai,,,35000,0
+518,Bhutadiya Narshibhai Karshanbhai,,,35000,0
+519,Judal Mehulbhai Sadabhai,,,35000,0
+520,Judal Sileshbhai Nanjibhai Badarpura,,,35000,0
+521,Dharpada Sheliji (Hiraji),,,35000,0
+522,Thakor Jadishbhai Ishavarbhai,,,35000,0
+523,Desai Devkanbhai Delvada,,,35000,0
+524,Judal Manjibhai Parthibhai,,,35000,0
+525,Darpada Harkhaji,,,35000,0
+526,Loh Santubhai Veerabhai,,,35000,0
+527,Darpada Vikrambhai Na Bhai,,,35000,0
+528,Loh Sureshbhai Santubhai,,,35000,0
+529,Gori Muradkhan Jafarkhan,,,35000,0
+530,Patel Gangaram Devpura,,,35000,0
+531,Judal Jeshungbhai Bhikhabhai,,,35000,0
+532,Judal Jashungbhai Bhikhabhai,,,35000,0
+533,Darbar Gokalshing Samdhi,,,35000,0
+534,Menat Parkashbhai Madana,,,35000,0
+535,Kasha Jafarkhan,,,35000,0
+536,Karshan Bhikhabhai Godadbhai,,,35000,0
+537,Valagot Kantibhai Shomabhai,,,35000,0
+538,Umarbhai Kotavala Chadotar,,,35000,0
+539,Unava Satishbhai,,,35000,0
+540,Tractor Mhurut,,,35000,0
+541,Judal Hashmukhbhai Bhagvanbhai,,,35000,0
+542,Judal Mafatbhai Virshangbhai,,,35000,0
+543,Gadhvala Desai Palanpur,,,35000,0
+544,Bhutadiya Kantibhai Ramshungbhai,,,35000,0
+545,Tractor expenses,,,35000,0
+546,Loh Narshibhai Veerabhai Chadotar,,,35000,0
+547,Judal Dhanrajbhai Fatabhai,,,35000,0
+548,Thakor Vishnubhai Dheerajbhai,,,35000,0
+549,Stationery,,,35000,0
+550,Thakor Bhoobhaji Hooraji,,,35000,0
+551,Thakor Devchandji Dharpada,,,35000,0
+552,Thakor Dheeraji Dharpada,,,35000,0

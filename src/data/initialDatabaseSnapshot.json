@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-22T17:10:21.121Z",
+  "generatedAt": "2026-09-22T17:12:10.218Z",
   "customers": [
     {
       "id": "1",
@@ -3124,22 +3124,6 @@
     },
     {
       "id": "393",
-      "name": "Retail - Vedancha",
-      "mobile": "",
-      "village": "",
-      "creditLimit": 35000,
-      "outstandingAmount": 0
-    },
-    {
-      "id": "394",
-      "name": "Sudha 1",
-      "mobile": "",
-      "village": "",
-      "creditLimit": 35000,
-      "outstandingAmount": 0
-    },
-    {
-      "id": "395",
       "name": "Valagot Ashwinbhai Daljibhai - Vedancha",
       "mobile": "",
       "village": "",
@@ -3147,7 +3131,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "396",
+      "id": "394",
       "name": "Kharshan Bhupatbhai Savjibhai",
       "mobile": "",
       "village": "",
@@ -3155,7 +3139,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "397",
+      "id": "395",
       "name": "Satoliya Rameshbhai Vedancha",
       "mobile": "",
       "village": "",
@@ -3163,7 +3147,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "398",
+      "id": "396",
       "name": "Loh Sureshbha Shantubhai",
       "mobile": "",
       "village": "",
@@ -3171,7 +3155,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "399",
+      "id": "397",
       "name": "Judal Mogajibhai Bhikhabhai Chadotar",
       "mobile": "",
       "village": "",
@@ -3179,7 +3163,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "400",
+      "id": "398",
       "name": "Thakor Bharatji Samdhi",
       "mobile": "",
       "village": "",
@@ -3187,7 +3171,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "401",
+      "id": "399",
       "name": "Thakor Manchaji Samdhi",
       "mobile": "",
       "village": "",
@@ -3195,7 +3179,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "402",
+      "id": "400",
       "name": "Judal Galbabhai Ramjibhai",
       "mobile": "",
       "village": "",
@@ -3203,7 +3187,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "403",
+      "id": "401",
       "name": "Valagot Mavjibhai (Fuva)",
       "mobile": "",
       "village": "",
@@ -3211,7 +3195,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "404",
+      "id": "402",
       "name": "Gamar Rameshbhai Lalabhai (Chetan Galba Judal)",
       "mobile": "",
       "village": "",
@@ -3219,7 +3203,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "405",
+      "id": "403",
       "name": "Vajirkhan Kasa",
       "mobile": "",
       "village": "",
@@ -3227,7 +3211,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "406",
+      "id": "404",
       "name": "Thakor Rameshbhai Danshungbhai",
       "mobile": "",
       "village": "",
@@ -3235,7 +3219,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "407",
+      "id": "405",
       "name": "Thakor Hemchandbhai Khodla",
       "mobile": "",
       "village": "",
@@ -3243,15 +3227,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "408",
-      "name": "Kuva Nareshbhai Sudha (Bhai)",
-      "mobile": "",
-      "village": "",
-      "creditLimit": 35000,
-      "outstandingAmount": 0
-    },
-    {
-      "id": "409",
+      "id": "406",
       "name": "Gudol Kalpeshbhai Kushkal",
       "mobile": "",
       "village": "",
@@ -3259,7 +3235,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "410",
+      "id": "407",
       "name": "Judal Lajibhai Somabhai",
       "mobile": "",
       "village": "",
@@ -3267,7 +3243,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "411",
+      "id": "408",
       "name": "Boka Ramjibhai Jethabhai",
       "mobile": "",
       "village": "",
@@ -3275,7 +3251,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "412",
+      "id": "409",
       "name": "Kuva Nareshbhai - 9723128992",
       "mobile": "",
       "village": "",
@@ -3283,7 +3259,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "413",
+      "id": "410",
       "name": "Desai Maganbhai Rasana",
       "mobile": "",
       "village": "",
@@ -3291,7 +3267,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "414",
+      "id": "411",
       "name": "Valagot Jayntibhai Surati",
       "mobile": "",
       "village": "",
@@ -3299,7 +3275,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "415",
+      "id": "412",
       "name": "Mor Kirtibhai Vedancha",
       "mobile": "",
       "village": "",
@@ -3307,7 +3283,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "416",
+      "id": "413",
       "name": "Fof Meghrajbhai Ujabhai",
       "mobile": "",
       "village": "",
@@ -3315,7 +3291,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "417",
+      "id": "414",
       "name": "Fof Laxmanbhai Ujabhai",
       "mobile": "",
       "village": "",
@@ -3323,7 +3299,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "418",
+      "id": "415",
       "name": "Judal Praveenbhai Bhagavanbhai",
       "mobile": "",
       "village": "",
@@ -3331,7 +3307,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "419",
+      "id": "416",
       "name": "Judal Rameshbhai Somabhai",
       "mobile": "",
       "village": "",
@@ -3339,7 +3315,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "420",
+      "id": "417",
       "name": "Judal Neeruben Ashokbhai Kushkal",
       "mobile": "",
       "village": "",
@@ -3347,7 +3323,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "421",
+      "id": "418",
       "name": "Valagot Manjibhai Fuva",
       "mobile": "",
       "village": "",
@@ -3355,7 +3331,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "422",
+      "id": "419",
       "name": "Palani Bharatbhai Ratnabhai",
       "mobile": "",
       "village": "",
@@ -3363,7 +3339,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "423",
+      "id": "420",
       "name": "Judal Rajubhai Valjibhai",
       "mobile": "",
       "village": "",
@@ -3371,7 +3347,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "424",
+      "id": "421",
       "name": "Kharsan Bhupatbhai Savajibhai",
       "mobile": "",
       "village": "",
@@ -3379,7 +3355,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "425",
+      "id": "422",
       "name": "Boka Narshibhai Bhikabhai",
       "mobile": "",
       "village": "",
@@ -3387,7 +3363,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "426",
+      "id": "423",
       "name": "Gudol Bhaveshbhai Parthibhai",
       "mobile": "",
       "village": "",
@@ -3395,7 +3371,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "427",
+      "id": "424",
       "name": "Judal Veerabhai Somabhai",
       "mobile": "",
       "village": "",
@@ -3403,7 +3379,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "428",
+      "id": "425",
       "name": "Jarmol Neetaben K Gadh",
       "mobile": "",
       "village": "",
@@ -3411,7 +3387,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "429",
+      "id": "426",
       "name": "Bharatbhai Patel Vedancha",
       "mobile": "",
       "village": "",
@@ -3419,7 +3395,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "430",
+      "id": "427",
       "name": "Gobhalya Kantibhai Jeevabhai",
       "mobile": "",
       "village": "",
@@ -3427,7 +3403,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "431",
+      "id": "428",
       "name": "Judal Kesarbhai Narshibhai",
       "mobile": "",
       "village": "",
@@ -3435,7 +3411,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "432",
+      "id": "429",
       "name": "Thakor Radhuji Ghemarji",
       "mobile": "",
       "village": "",
@@ -3443,7 +3419,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "433",
+      "id": "430",
       "name": "Bhutadiya Dhanrajbhai Somabhai",
       "mobile": "",
       "village": "",
@@ -3451,7 +3427,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "434",
+      "id": "431",
       "name": "Ratada Megharajbhai Badarpura",
       "mobile": "",
       "village": "",
@@ -3459,7 +3435,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "435",
+      "id": "432",
       "name": "Patel Ambaram Devpura",
       "mobile": "",
       "village": "",
@@ -3467,7 +3443,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "436",
+      "id": "433",
       "name": "Prakashpuri Khodla",
       "mobile": "",
       "village": "",
@@ -3475,7 +3451,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "437",
+      "id": "434",
       "name": "Bhutadiya Kiritibhai Ramshungbhai",
       "mobile": "",
       "village": "",
@@ -3483,7 +3459,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "438",
+      "id": "435",
       "name": "Loh Mogjibhai Fatabhai",
       "mobile": "",
       "village": "",
@@ -3491,7 +3467,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "439",
+      "id": "436",
       "name": "Judal Maheshbhai Ramshungbhai",
       "mobile": "",
       "village": "",
@@ -3499,7 +3475,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "440",
+      "id": "437",
       "name": "Judal Kantibhai Somabhai",
       "mobile": "",
       "village": "",
@@ -3507,7 +3483,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "441",
+      "id": "438",
       "name": "TaalPatri",
       "mobile": "",
       "village": "",
@@ -3515,7 +3491,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "442",
+      "id": "439",
       "name": "Bera Karshanbhai Shomabhai Akeshan",
       "mobile": "",
       "village": "",
@@ -3523,7 +3499,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "443",
+      "id": "440",
       "name": "Loh Babubhai Bhagvanabhai",
       "mobile": "",
       "village": "",
@@ -3531,15 +3507,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "444",
-      "name": "Shudha Retail",
-      "mobile": "",
-      "village": "",
-      "creditLimit": 35000,
-      "outstandingAmount": 0
-    },
-    {
-      "id": "445",
+      "id": "441",
       "name": "Dangi Jagdishbhai Chelabhai",
       "mobile": "",
       "village": "",
@@ -3547,15 +3515,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "446",
-      "name": "Juva Karshanbhai",
-      "mobile": "",
-      "village": "",
-      "creditLimit": 35000,
-      "outstandingAmount": 0
-    },
-    {
-      "id": "447",
+      "id": "442",
       "name": "Judal Ghemarbhai Ramshungbhai",
       "mobile": "",
       "village": "",
@@ -3563,7 +3523,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "448",
+      "id": "443",
       "name": "Loh Kantibhai Poojabhai",
       "mobile": "",
       "village": "",
@@ -3571,7 +3531,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "449",
+      "id": "444",
       "name": "Khasa Jafarkhan Vajeer",
       "mobile": "",
       "village": "",
@@ -3579,7 +3539,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "450",
+      "id": "445",
       "name": "Gobhala Kantibhai 9099318634",
       "mobile": "",
       "village": "",
@@ -3587,7 +3547,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "451",
+      "id": "446",
       "name": "Jarmol Laxmanbhai Jeshungbhai",
       "mobile": "",
       "village": "",
@@ -3595,7 +3555,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "452",
+      "id": "447",
       "name": "Loh Raghubhai Poojabhai",
       "mobile": "",
       "village": "",
@@ -3603,7 +3563,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "453",
+      "id": "448",
       "name": "Judal Nareshbhai Ramshungbhai",
       "mobile": "",
       "village": "",
@@ -3611,15 +3571,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "454",
-      "name": "Jeetuben Manjibhai",
-      "mobile": "",
-      "village": "",
-      "creditLimit": 35000,
-      "outstandingAmount": 0
-    },
-    {
-      "id": "455",
+      "id": "449",
       "name": "Bera Ramjibhai Nanjibhai",
       "mobile": "",
       "village": "",
@@ -3627,7 +3579,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "456",
+      "id": "450",
       "name": "Judal Laxmanbhai Parthibhai",
       "mobile": "",
       "village": "",
@@ -3635,7 +3587,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "457",
+      "id": "451",
       "name": "Chaudhary Rameshbhai Jethabhai",
       "mobile": "",
       "village": "",
@@ -3643,7 +3595,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "458",
+      "id": "452",
       "name": "Kasha Vajeer Khan",
       "mobile": "",
       "village": "",
@@ -3651,7 +3603,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "459",
+      "id": "453",
       "name": "Judal Dineshbhai Bhikhabhai",
       "mobile": "",
       "village": "",
@@ -3659,15 +3611,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "460",
-      "name": "Kubhasan Shokatbhai 9898775295",
-      "mobile": "",
-      "village": "",
-      "creditLimit": 35000,
-      "outstandingAmount": 0
-    },
-    {
-      "id": "461",
+      "id": "454",
       "name": "Patel Karshanbhai Vedancha",
       "mobile": "",
       "village": "",
@@ -3675,7 +3619,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "462",
+      "id": "455",
       "name": "Gudol Jaguben Muljibhai",
       "mobile": "",
       "village": "",
@@ -3683,7 +3627,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "463",
+      "id": "456",
       "name": "Judal Neeruben Hasmukhbhai",
       "mobile": "",
       "village": "",
@@ -3691,7 +3635,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "464",
+      "id": "457",
       "name": "Judal Rameshbhai Ramshungbhai",
       "mobile": "",
       "village": "",
@@ -3699,7 +3643,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "465",
+      "id": "458",
       "name": "Thakor Bhoobhaji Dhooraji",
       "mobile": "",
       "village": "",
@@ -3707,7 +3651,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "466",
+      "id": "459",
       "name": "Loh Sardarbhai Bheekhabhai",
       "mobile": "",
       "village": "",
@@ -3715,7 +3659,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "467",
+      "id": "460",
       "name": "Judal Bhagvanbhai Karshanbhai",
       "mobile": "",
       "village": "",
@@ -3723,7 +3667,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "468",
+      "id": "461",
       "name": "Loh Rameshbhai Bhagvanbhai",
       "mobile": "",
       "village": "",
@@ -3731,7 +3675,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "469",
+      "id": "462",
       "name": "Daalu Diesel + Depreciation",
       "mobile": "",
       "village": "",
@@ -3739,7 +3683,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "470",
+      "id": "463",
       "name": "Darabar Kanshing Samdhi",
       "mobile": "",
       "village": "",
@@ -3747,7 +3691,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "471",
+      "id": "464",
       "name": "Mor Babubhai Vedancha",
       "mobile": "",
       "village": "",
@@ -3755,7 +3699,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "472",
+      "id": "465",
       "name": "Darbar Kanshingbhai Saamdhi",
       "mobile": "",
       "village": "",
@@ -3763,7 +3707,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "473",
+      "id": "466",
       "name": "Judal Jeetabhai Moghabhai",
       "mobile": "",
       "village": "",
@@ -3771,7 +3715,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "474",
+      "id": "467",
       "name": "Judal Ramshungbhai Shomabhai",
       "mobile": "",
       "village": "",
@@ -3779,15 +3723,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "475",
-      "name": "Shudha",
-      "mobile": "",
-      "village": "",
-      "creditLimit": 35000,
-      "outstandingAmount": 0
-    },
-    {
-      "id": "476",
+      "id": "468",
       "name": "Bera Dineshbhai Shavabhai",
       "mobile": "",
       "village": "",
@@ -3795,7 +3731,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "477",
+      "id": "469",
       "name": "Gabhala Kantibhai Jeevabhai",
       "mobile": "",
       "village": "",
@@ -3803,7 +3739,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "478",
+      "id": "470",
       "name": "Gudol Jayntibhai Cheharabhai",
       "mobile": "",
       "village": "",
@@ -3811,15 +3747,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "479",
-      "name": "Sudha Retail",
-      "mobile": "",
-      "village": "",
-      "creditLimit": 35000,
-      "outstandingAmount": 0
-    },
-    {
-      "id": "480",
+      "id": "471",
       "name": "Loh Deepakbhai Ramjibhai",
       "mobile": "",
       "village": "",
@@ -3827,7 +3755,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "481",
+      "id": "472",
       "name": "Bhutadiya Jeetabhai Ganeshbhai",
       "mobile": "",
       "village": "",
@@ -3835,7 +3763,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "482",
+      "id": "473",
       "name": "Kuta/Kutti",
       "mobile": "",
       "village": "",
@@ -3843,7 +3771,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "483",
+      "id": "474",
       "name": "Dharpada Hiraji Darbar",
       "mobile": "",
       "village": "",
@@ -3851,7 +3779,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "484",
+      "id": "475",
       "name": "Kakvadiya Maheshbhai Ramshungbhai",
       "mobile": "",
       "village": "",
@@ -3859,7 +3787,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "485",
+      "id": "476",
       "name": "Thakor Bharatbhai Bajubhai",
       "mobile": "",
       "village": "",
@@ -3867,7 +3795,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "486",
+      "id": "477",
       "name": "Judal Mukeshbhai Laxmanbhai",
       "mobile": "",
       "village": "",
@@ -3875,7 +3803,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "487",
+      "id": "478",
       "name": "Kakavadiya Sureshbhai Chandichar",
       "mobile": "",
       "village": "",
@@ -3883,7 +3811,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "488",
+      "id": "479",
       "name": "Boka Jivrambhai Parthibhai",
       "mobile": "",
       "village": "",
@@ -3891,7 +3819,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "489",
+      "id": "480",
       "name": "Gudol Amaratbhai Parathibhai",
       "mobile": "",
       "village": "",
@@ -3899,7 +3827,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "490",
+      "id": "481",
       "name": "Gudalo Amaratbhai Cheharbhai",
       "mobile": "",
       "village": "",
@@ -3907,7 +3835,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "491",
+      "id": "482",
       "name": "Darbar Kanshing Samdhi",
       "mobile": "",
       "village": "",
@@ -3915,7 +3843,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "492",
+      "id": "483",
       "name": "Dharpada Hiraji (Vershingji)",
       "mobile": "",
       "village": "",
@@ -3923,7 +3851,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "493",
+      "id": "484",
       "name": "Bhutatiday Babubhai Kanjibhai",
       "mobile": "",
       "village": "",
@@ -3931,7 +3859,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "494",
+      "id": "485",
       "name": "Dhudiya Sureshbhai Jeetabhai",
       "mobile": "",
       "village": "",
@@ -3939,7 +3867,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "495",
+      "id": "486",
       "name": "Bhutadiya Dhanrajbhai Shomabhai",
       "mobile": "",
       "village": "",
@@ -3947,7 +3875,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "496",
+      "id": "487",
       "name": "Judal Sadabhai Jeevabhai",
       "mobile": "",
       "village": "",
@@ -3955,7 +3883,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "497",
+      "id": "488",
       "name": "Judal Daljibhai Veershangbhai",
       "mobile": "",
       "village": "",
@@ -3963,15 +3891,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "498",
-      "name": "Valagot Ashwinbhai Daljibhai",
-      "mobile": "",
-      "village": "",
-      "creditLimit": 35000,
-      "outstandingAmount": 0
-    },
-    {
-      "id": "499",
+      "id": "489",
       "name": "Judal Valjibhai Veershangbhai",
       "mobile": "",
       "village": "",
@@ -3979,7 +3899,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "500",
+      "id": "490",
       "name": "Judal Kamleshbhai Shomabhai",
       "mobile": "",
       "village": "",
@@ -3987,7 +3907,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "501",
+      "id": "491",
       "name": "Dharpada Hiraji Thakor",
       "mobile": "",
       "village": "",
@@ -3995,7 +3915,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "502",
+      "id": "492",
       "name": "Loh Jayeshbhai Kanjibhai",
       "mobile": "",
       "village": "",
@@ -4003,7 +3923,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "503",
+      "id": "493",
       "name": "Thakor Dhanrajbhai Dharpada",
       "mobile": "",
       "village": "",
@@ -4011,7 +3931,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "504",
+      "id": "494",
       "name": "Bhutadiya Virshangbhai Fatabhai",
       "mobile": "",
       "village": "",
@@ -4019,7 +3939,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "505",
+      "id": "495",
       "name": "Thakor Hemchandji Khodla",
       "mobile": "",
       "village": "",
@@ -4027,7 +3947,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "506",
+      "id": "496",
       "name": "Kag Kamleshbhai Galbabhai",
       "mobile": "",
       "village": "",
@@ -4035,7 +3955,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "507",
+      "id": "497",
       "name": "Judal Heenaben Dineshbhai",
       "mobile": "",
       "village": "",
@@ -4043,7 +3963,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "508",
+      "id": "498",
       "name": "Boka Jayeshbhai Bhikhabhai",
       "mobile": "",
       "village": "",
@@ -4051,7 +3971,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "509",
+      "id": "499",
       "name": "Darbar Gokalsingh Samdhi",
       "mobile": "",
       "village": "",
@@ -4059,7 +3979,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "510",
+      "id": "500",
       "name": "Thakor Dineshbhai Dharpada",
       "mobile": "",
       "village": "",
@@ -4067,7 +3987,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "511",
+      "id": "501",
       "name": "Thakor Pochaji Dharpada",
       "mobile": "",
       "village": "",
@@ -4075,7 +3995,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "512",
+      "id": "502",
       "name": "Valagot Vedancha",
       "mobile": "",
       "village": "",
@@ -4083,7 +4003,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "513",
+      "id": "503",
       "name": "Judal Kalpeshbhai Virshangbhai",
       "mobile": "",
       "village": "",
@@ -4091,7 +4011,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "514",
+      "id": "504",
       "name": "Valagot Jyantibhai Vedancha",
       "mobile": "",
       "village": "",
@@ -4099,15 +4019,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "515",
-      "name": "Sadabhai Jeevabhai",
-      "mobile": "",
-      "village": "",
-      "creditLimit": 35000,
-      "outstandingAmount": 0
-    },
-    {
-      "id": "516",
+      "id": "505",
       "name": "Loh Jeetabhai Moghabhai",
       "mobile": "",
       "village": "",
@@ -4115,7 +4027,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "517",
+      "id": "506",
       "name": "Kakavadiya Maheshbhai Romjibhai",
       "mobile": "",
       "village": "",
@@ -4123,7 +4035,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "518",
+      "id": "507",
       "name": "Dharpada Dhiraji",
       "mobile": "",
       "village": "",
@@ -4131,7 +4043,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "519",
+      "id": "508",
       "name": "Dharpada Devchandji",
       "mobile": "",
       "village": "",
@@ -4139,7 +4051,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "520",
+      "id": "509",
       "name": "Gudol Valjibhai Rashangbhai",
       "mobile": "",
       "village": "",
@@ -4147,7 +4059,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "521",
+      "id": "510",
       "name": "Kubhasan Bavji",
       "mobile": "",
       "village": "",
@@ -4155,7 +4067,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "522",
+      "id": "511",
       "name": "Bhutadiya Dineshbhai Virshangbhai",
       "mobile": "",
       "village": "",
@@ -4163,7 +4075,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "523",
+      "id": "512",
       "name": "Valagot Kantibhai",
       "mobile": "",
       "village": "",
@@ -4171,7 +4083,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "524",
+      "id": "513",
       "name": "Hoda Bavji",
       "mobile": "",
       "village": "",
@@ -4179,7 +4091,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "525",
+      "id": "514",
       "name": "Patel Dipakbhai Vedancha",
       "mobile": "",
       "village": "",
@@ -4187,7 +4099,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "526",
+      "id": "515",
       "name": "Judal Kirtibhai Bhagvanbhai",
       "mobile": "",
       "village": "",
@@ -4195,7 +4107,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "527",
+      "id": "516",
       "name": "Kharsan Bhikhabhai Godadbhai",
       "mobile": "",
       "village": "",
@@ -4203,7 +4115,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "528",
+      "id": "517",
       "name": "Loh Bhagvanbhai Virshangbhai",
       "mobile": "",
       "village": "",
@@ -4211,7 +4123,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "529",
+      "id": "518",
       "name": "Bhutadiya Narshibhai Karshanbhai",
       "mobile": "",
       "village": "",
@@ -4219,7 +4131,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "530",
+      "id": "519",
       "name": "Judal Mehulbhai Sadabhai",
       "mobile": "",
       "village": "",
@@ -4227,7 +4139,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "531",
+      "id": "520",
       "name": "Judal Sileshbhai Nanjibhai Badarpura",
       "mobile": "",
       "village": "",
@@ -4235,7 +4147,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "532",
+      "id": "521",
       "name": "Dharpada Sheliji (Hiraji)",
       "mobile": "",
       "village": "",
@@ -4243,7 +4155,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "533",
+      "id": "522",
       "name": "Thakor Jadishbhai Ishavarbhai",
       "mobile": "",
       "village": "",
@@ -4251,7 +4163,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "534",
+      "id": "523",
       "name": "Desai Devkanbhai Delvada",
       "mobile": "",
       "village": "",
@@ -4259,7 +4171,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "535",
+      "id": "524",
       "name": "Judal Manjibhai Parthibhai",
       "mobile": "",
       "village": "",
@@ -4267,7 +4179,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "536",
+      "id": "525",
       "name": "Darpada Harkhaji",
       "mobile": "",
       "village": "",
@@ -4275,7 +4187,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "537",
+      "id": "526",
       "name": "Loh Santubhai Veerabhai",
       "mobile": "",
       "village": "",
@@ -4283,7 +4195,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "538",
+      "id": "527",
       "name": "Darpada Vikrambhai Na Bhai",
       "mobile": "",
       "village": "",
@@ -4291,7 +4203,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "539",
+      "id": "528",
       "name": "Loh Sureshbhai Santubhai",
       "mobile": "",
       "village": "",
@@ -4299,7 +4211,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "540",
+      "id": "529",
       "name": "Gori Muradkhan Jafarkhan",
       "mobile": "",
       "village": "",
@@ -4307,7 +4219,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "541",
+      "id": "530",
       "name": "Patel Gangaram Devpura",
       "mobile": "",
       "village": "",
@@ -4315,7 +4227,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "542",
+      "id": "531",
       "name": "Judal Jeshungbhai Bhikhabhai",
       "mobile": "",
       "village": "",
@@ -4323,7 +4235,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "543",
+      "id": "532",
       "name": "Judal Jashungbhai Bhikhabhai",
       "mobile": "",
       "village": "",
@@ -4331,7 +4243,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "544",
+      "id": "533",
       "name": "Darbar Gokalshing Samdhi",
       "mobile": "",
       "village": "",
@@ -4339,7 +4251,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "545",
+      "id": "534",
       "name": "Menat Parkashbhai Madana",
       "mobile": "",
       "village": "",
@@ -4347,7 +4259,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "546",
+      "id": "535",
       "name": "Kasha Jafarkhan",
       "mobile": "",
       "village": "",
@@ -4355,7 +4267,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "547",
+      "id": "536",
       "name": "Karshan Bhikhabhai Godadbhai",
       "mobile": "",
       "village": "",
@@ -4363,7 +4275,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "548",
+      "id": "537",
       "name": "Valagot Kantibhai Shomabhai",
       "mobile": "",
       "village": "",
@@ -4371,7 +4283,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "549",
+      "id": "538",
       "name": "Umarbhai Kotavala Chadotar",
       "mobile": "",
       "village": "",
@@ -4379,7 +4291,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "550",
+      "id": "539",
       "name": "Unava Satishbhai",
       "mobile": "",
       "village": "",
@@ -4387,7 +4299,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "551",
+      "id": "540",
       "name": "Tractor Mhurut",
       "mobile": "",
       "village": "",
@@ -4395,7 +4307,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "552",
+      "id": "541",
       "name": "Judal Hashmukhbhai Bhagvanbhai",
       "mobile": "",
       "village": "",
@@ -4403,23 +4315,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "553",
-      "name": "Dhudabhai Vedancha",
-      "mobile": "",
-      "village": "",
-      "creditLimit": 35000,
-      "outstandingAmount": 0
-    },
-    {
-      "id": "554",
-      "name": "Valagot Nikulbhai",
-      "mobile": "",
-      "village": "",
-      "creditLimit": 35000,
-      "outstandingAmount": 0
-    },
-    {
-      "id": "555",
+      "id": "542",
       "name": "Judal Mafatbhai Virshangbhai",
       "mobile": "",
       "village": "",
@@ -4427,7 +4323,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "556",
+      "id": "543",
       "name": "Gadhvala Desai Palanpur",
       "mobile": "",
       "village": "",
@@ -4435,7 +4331,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "557",
+      "id": "544",
       "name": "Bhutadiya Kantibhai Ramshungbhai",
       "mobile": "",
       "village": "",
@@ -4443,7 +4339,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "558",
+      "id": "545",
       "name": "Tractor expenses",
       "mobile": "",
       "village": "",
@@ -4451,7 +4347,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "559",
+      "id": "546",
       "name": "Loh Narshibhai Veerabhai Chadotar",
       "mobile": "",
       "village": "",
@@ -4459,7 +4355,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "560",
+      "id": "547",
       "name": "Judal Dhanrajbhai Fatabhai",
       "mobile": "",
       "village": "",
@@ -4467,15 +4363,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "561",
-      "name": "Thakor Prabhatbhai",
-      "mobile": "",
-      "village": "",
-      "creditLimit": 35000,
-      "outstandingAmount": 0
-    },
-    {
-      "id": "562",
+      "id": "548",
       "name": "Thakor Vishnubhai Dheerajbhai",
       "mobile": "",
       "village": "",
@@ -4483,7 +4371,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "563",
+      "id": "549",
       "name": "Stationery",
       "mobile": "",
       "village": "",
@@ -4491,7 +4379,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "564",
+      "id": "550",
       "name": "Thakor Bhoobhaji Hooraji",
       "mobile": "",
       "village": "",
@@ -4499,7 +4387,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "565",
+      "id": "551",
       "name": "Thakor Devchandji Dharpada",
       "mobile": "",
       "village": "",
@@ -4507,7 +4395,7 @@
       "outstandingAmount": 0
     },
     {
-      "id": "566",
+      "id": "552",
       "name": "Thakor Dheeraji Dharpada",
       "mobile": "",
       "village": "",
@@ -4923,8 +4811,8 @@
     },
     {
       "id": "sale_2025_01_28",
-      "customerId": "393",
-      "customerName": "Retail - Vedancha",
+      "customerId": "307",
+      "customerName": "Retail",
       "date": "2025-01-08T18:30:00.000Z",
       "type": "SALE",
       "item": "Others",
@@ -4938,8 +4826,8 @@
     },
     {
       "id": "sale_2025_01_29",
-      "customerId": "394",
-      "customerName": "Sudha 1",
+      "customerId": "237",
+      "customerName": "Kuva Nareshbhai Sudha",
       "date": "2025-01-13T18:30:00.000Z",
       "type": "SALE",
       "item": "Others",
@@ -4953,7 +4841,7 @@
     },
     {
       "id": "sale_2025_01_30",
-      "customerId": "395",
+      "customerId": "393",
       "customerName": "Valagot Ashwinbhai Daljibhai - Vedancha",
       "date": "2025-01-14T18:30:00.000Z",
       "type": "SALE",
@@ -5238,7 +5126,7 @@
     },
     {
       "id": "sale_2025_01_49",
-      "customerId": "396",
+      "customerId": "394",
       "customerName": "Kharshan Bhupatbhai Savjibhai",
       "date": "2025-01-22T18:30:00.000Z",
       "type": "SALE",
@@ -5463,7 +5351,7 @@
     },
     {
       "id": "sale_2025_01_64",
-      "customerId": "397",
+      "customerId": "395",
       "customerName": "Satoliya Rameshbhai Vedancha",
       "date": "2025-01-30T18:30:00.000Z",
       "type": "SALE",
@@ -5478,7 +5366,7 @@
     },
     {
       "id": "sale_2025_01_65",
-      "customerId": "398",
+      "customerId": "396",
       "customerName": "Loh Sureshbha Shantubhai",
       "date": "2025-01-30T18:30:00.000Z",
       "type": "SALE",
@@ -5613,7 +5501,7 @@
     },
     {
       "id": "sale_2025_02_5",
-      "customerId": "399",
+      "customerId": "397",
       "customerName": "Judal Mogajibhai Bhikhabhai Chadotar",
       "date": "2025-01-31T18:30:00.000Z",
       "type": "SALE",
@@ -5658,7 +5546,7 @@
     },
     {
       "id": "sale_2025_02_8",
-      "customerId": "400",
+      "customerId": "398",
       "customerName": "Thakor Bharatji Samdhi",
       "date": "2025-01-31T18:30:00.000Z",
       "type": "SALE",
@@ -5673,7 +5561,7 @@
     },
     {
       "id": "sale_2025_02_9",
-      "customerId": "401",
+      "customerId": "399",
       "customerName": "Thakor Manchaji Samdhi",
       "date": "2025-01-31T18:30:00.000Z",
       "type": "SALE",
@@ -5748,7 +5636,7 @@
     },
     {
       "id": "sale_2025_02_14",
-      "customerId": "402",
+      "customerId": "400",
       "customerName": "Judal Galbabhai Ramjibhai",
       "date": "2025-02-01T18:30:00.000Z",
       "type": "SALE",
@@ -5793,7 +5681,7 @@
     },
     {
       "id": "sale_2025_02_17",
-      "customerId": "403",
+      "customerId": "401",
       "customerName": "Valagot Mavjibhai (Fuva)",
       "date": "2025-02-02T18:30:00.000Z",
       "type": "SALE",
@@ -5883,7 +5771,7 @@
     },
     {
       "id": "sale_2025_02_23",
-      "customerId": "404",
+      "customerId": "402",
       "customerName": "Gamar Rameshbhai Lalabhai (Chetan Galba Judal)",
       "date": "2025-02-02T18:30:00.000Z",
       "type": "SALE",
@@ -6093,7 +5981,7 @@
     },
     {
       "id": "sale_2025_02_37",
-      "customerId": "405",
+      "customerId": "403",
       "customerName": "Vajirkhan Kasa",
       "date": "2025-02-07T18:30:00.000Z",
       "type": "SALE",
@@ -6243,7 +6131,7 @@
     },
     {
       "id": "sale_2025_02_47",
-      "customerId": "406",
+      "customerId": "404",
       "customerName": "Thakor Rameshbhai Danshungbhai",
       "date": "2025-02-10T18:30:00.000Z",
       "type": "SALE",
@@ -6258,7 +6146,7 @@
     },
     {
       "id": "sale_2025_02_48",
-      "customerId": "407",
+      "customerId": "405",
       "customerName": "Thakor Hemchandbhai Khodla",
       "date": "2025-02-10T18:30:00.000Z",
       "type": "SALE",
@@ -6273,8 +6161,8 @@
     },
     {
       "id": "sale_2025_02_49",
-      "customerId": "408",
-      "customerName": "Kuva Nareshbhai Sudha (Bhai)",
+      "customerId": "237",
+      "customerName": "Kuva Nareshbhai Sudha",
       "date": "2025-02-10T18:30:00.000Z",
       "type": "SALE",
       "item": "Others",
@@ -6318,7 +6206,7 @@
     },
     {
       "id": "sale_2025_02_52",
-      "customerId": "409",
+      "customerId": "406",
       "customerName": "Gudol Kalpeshbhai Kushkal",
       "date": "2025-02-10T18:30:00.000Z",
       "type": "SALE",
@@ -6333,7 +6221,7 @@
     },
     {
       "id": "sale_2025_02_53",
-      "customerId": "410",
+      "customerId": "407",
       "customerName": "Judal Lajibhai Somabhai",
       "date": "2025-02-11T18:30:00.000Z",
       "type": "SALE",
@@ -6378,7 +6266,7 @@
     },
     {
       "id": "sale_2025_02_56",
-      "customerId": "411",
+      "customerId": "408",
       "customerName": "Boka Ramjibhai Jethabhai",
       "date": "2025-02-12T18:30:00.000Z",
       "type": "SALE",
@@ -6408,7 +6296,7 @@
     },
     {
       "id": "sale_2025_02_58",
-      "customerId": "412",
+      "customerId": "409",
       "customerName": "Kuva Nareshbhai - 9723128992",
       "date": "2025-02-12T18:30:00.000Z",
       "type": "SALE",
@@ -6423,7 +6311,7 @@
     },
     {
       "id": "sale_2025_02_59",
-      "customerId": "413",
+      "customerId": "410",
       "customerName": "Desai Maganbhai Rasana",
       "date": "2025-02-12T18:30:00.000Z",
       "type": "SALE",
@@ -6468,7 +6356,7 @@
     },
     {
       "id": "sale_2025_02_62",
-      "customerId": "414",
+      "customerId": "411",
       "customerName": "Valagot Jayntibhai Surati",
       "date": "2025-02-13T18:30:00.000Z",
       "type": "SALE",
@@ -6558,7 +6446,7 @@
     },
     {
       "id": "sale_2025_02_68",
-      "customerId": "415",
+      "customerId": "412",
       "customerName": "Mor Kirtibhai Vedancha",
       "date": "2025-02-16T18:30:00.000Z",
       "type": "SALE",
@@ -6573,7 +6461,7 @@
     },
     {
       "id": "sale_2025_02_69",
-      "customerId": "416",
+      "customerId": "413",
       "customerName": "Fof Meghrajbhai Ujabhai",
       "date": "2025-02-17T18:30:00.000Z",
       "type": "SALE",
@@ -6648,7 +6536,7 @@
     },
     {
       "id": "sale_2025_02_74",
-      "customerId": "417",
+      "customerId": "414",
       "customerName": "Fof Laxmanbhai Ujabhai",
       "date": "2025-02-19T18:30:00.000Z",
       "type": "SALE",
@@ -7098,7 +6986,7 @@
     },
     {
       "id": "sale_2025_03_4",
-      "customerId": "418",
+      "customerId": "415",
       "customerName": "Judal Praveenbhai Bhagavanbhai",
       "date": "2025-03-01T18:30:00.000Z",
       "type": "SALE",
@@ -7128,7 +7016,7 @@
     },
     {
       "id": "sale_2025_03_6",
-      "customerId": "400",
+      "customerId": "398",
       "customerName": "Thakor Bharatji Samdhi",
       "date": "2025-03-02T18:30:00.000Z",
       "type": "SALE",
@@ -7188,7 +7076,7 @@
     },
     {
       "id": "sale_2025_03_10",
-      "customerId": "419",
+      "customerId": "416",
       "customerName": "Judal Rameshbhai Somabhai",
       "date": "2025-03-03T18:30:00.000Z",
       "type": "SALE",
@@ -7218,7 +7106,7 @@
     },
     {
       "id": "sale_2025_03_12",
-      "customerId": "420",
+      "customerId": "417",
       "customerName": "Judal Neeruben Ashokbhai Kushkal",
       "date": "2025-03-03T18:30:00.000Z",
       "type": "SALE",
@@ -7233,7 +7121,7 @@
     },
     {
       "id": "sale_2025_03_13",
-      "customerId": "421",
+      "customerId": "418",
       "customerName": "Valagot Manjibhai Fuva",
       "date": "2025-03-03T18:30:00.000Z",
       "type": "SALE",
@@ -7278,7 +7166,7 @@
     },
     {
       "id": "sale_2025_03_16",
-      "customerId": "422",
+      "customerId": "419",
       "customerName": "Palani Bharatbhai Ratnabhai",
       "date": "2025-03-03T18:30:00.000Z",
       "type": "SALE",
@@ -7308,7 +7196,7 @@
     },
     {
       "id": "sale_2025_03_18",
-      "customerId": "423",
+      "customerId": "420",
       "customerName": "Judal Rajubhai Valjibhai",
       "date": "2025-03-04T18:30:00.000Z",
       "type": "SALE",
@@ -7428,7 +7316,7 @@
     },
     {
       "id": "sale_2025_03_26",
-      "customerId": "424",
+      "customerId": "421",
       "customerName": "Kharsan Bhupatbhai Savajibhai",
       "date": "2025-03-05T18:30:00.000Z",
       "type": "SALE",
@@ -7668,7 +7556,7 @@
     },
     {
       "id": "sale_2025_03_42",
-      "customerId": "425",
+      "customerId": "422",
       "customerName": "Boka Narshibhai Bhikabhai",
       "date": "2025-03-08T18:30:00.000Z",
       "type": "SALE",
@@ -7713,7 +7601,7 @@
     },
     {
       "id": "sale_2025_03_45",
-      "customerId": "426",
+      "customerId": "423",
       "customerName": "Gudol Bhaveshbhai Parthibhai",
       "date": "2025-03-08T18:30:00.000Z",
       "type": "SALE",
@@ -7818,7 +7706,7 @@
     },
     {
       "id": "sale_2025_03_52",
-      "customerId": "427",
+      "customerId": "424",
       "customerName": "Judal Veerabhai Somabhai",
       "date": "2025-03-10T18:30:00.000Z",
       "type": "SALE",
@@ -7923,7 +7811,7 @@
     },
     {
       "id": "sale_2025_03_59",
-      "customerId": "428",
+      "customerId": "425",
       "customerName": "Jarmol Neetaben K Gadh",
       "date": "2025-03-13T18:30:00.000Z",
       "type": "SALE",
@@ -8178,7 +8066,7 @@
     },
     {
       "id": "sale_2025_03_76",
-      "customerId": "429",
+      "customerId": "426",
       "customerName": "Bharatbhai Patel Vedancha",
       "date": "2025-03-15T18:30:00.000Z",
       "type": "SALE",
@@ -8298,7 +8186,7 @@
     },
     {
       "id": "sale_2025_03_84",
-      "customerId": "430",
+      "customerId": "427",
       "customerName": "Gobhalya Kantibhai Jeevabhai",
       "date": "2025-03-19T18:30:00.000Z",
       "type": "SALE",
@@ -8313,7 +8201,7 @@
     },
     {
       "id": "sale_2025_03_85",
-      "customerId": "431",
+      "customerId": "428",
       "customerName": "Judal Kesarbhai Narshibhai",
       "date": "2025-03-19T18:30:00.000Z",
       "type": "SALE",
@@ -8328,7 +8216,7 @@
     },
     {
       "id": "sale_2025_03_86",
-      "customerId": "432",
+      "customerId": "429",
       "customerName": "Thakor Radhuji Ghemarji",
       "date": "2025-03-19T18:30:00.000Z",
       "type": "SALE",
@@ -8358,7 +8246,7 @@
     },
     {
       "id": "sale_2025_03_88",
-      "customerId": "433",
+      "customerId": "430",
       "customerName": "Bhutadiya Dhanrajbhai Somabhai",
       "date": "2025-03-20T18:30:00.000Z",
       "type": "SALE",
@@ -8388,7 +8276,7 @@
     },
     {
       "id": "sale_2025_03_90",
-      "customerId": "434",
+      "customerId": "431",
       "customerName": "Ratada Megharajbhai Badarpura",
       "date": "2025-03-21T18:30:00.000Z",
       "type": "SALE",
@@ -8403,7 +8291,7 @@
     },
     {
       "id": "sale_2025_03_91",
-      "customerId": "435",
+      "customerId": "432",
       "customerName": "Patel Ambaram Devpura",
       "date": "2025-03-21T18:30:00.000Z",
       "type": "SALE",
@@ -8523,7 +8411,7 @@
     },
     {
       "id": "sale_2025_03_99",
-      "customerId": "436",
+      "customerId": "433",
       "customerName": "Prakashpuri Khodla",
       "date": "2025-03-24T18:30:00.000Z",
       "type": "SALE",
@@ -8553,7 +8441,7 @@
     },
     {
       "id": "sale_2025_03_101",
-      "customerId": "437",
+      "customerId": "434",
       "customerName": "Bhutadiya Kiritibhai Ramshungbhai",
       "date": "2025-03-25T18:30:00.000Z",
       "type": "SALE",
@@ -8568,7 +8456,7 @@
     },
     {
       "id": "sale_2025_03_102",
-      "customerId": "438",
+      "customerId": "435",
       "customerName": "Loh Mogjibhai Fatabhai",
       "date": "2025-03-26T18:30:00.000Z",
       "type": "SALE",
@@ -8598,7 +8486,7 @@
     },
     {
       "id": "sale_2025_03_104",
-      "customerId": "439",
+      "customerId": "436",
       "customerName": "Judal Maheshbhai Ramshungbhai",
       "date": "2025-03-26T18:30:00.000Z",
       "type": "SALE",
@@ -8733,7 +8621,7 @@
     },
     {
       "id": "sale_2025_03_113",
-      "customerId": "440",
+      "customerId": "437",
       "customerName": "Judal Kantibhai Somabhai",
       "date": "2025-03-29T18:30:00.000Z",
       "type": "SALE",
@@ -8778,7 +8666,7 @@
     },
     {
       "id": "sale_2025_03_198",
-      "customerId": "441",
+      "customerId": "438",
       "customerName": "TaalPatri",
       "date": "2025-03-15T12:00:00.000Z",
       "type": "SALE",
@@ -8793,7 +8681,7 @@
     },
     {
       "id": "sale_2025_04_1",
-      "customerId": "442",
+      "customerId": "439",
       "customerName": "Bera Karshanbhai Shomabhai Akeshan",
       "date": "2025-03-31T18:30:00.000Z",
       "type": "SALE",
@@ -8958,7 +8846,7 @@
     },
     {
       "id": "sale_2025_04_12",
-      "customerId": "443",
+      "customerId": "440",
       "customerName": "Loh Babubhai Bhagvanabhai",
       "date": "2025-04-03T18:30:00.000Z",
       "type": "SALE",
@@ -8973,8 +8861,8 @@
     },
     {
       "id": "sale_2025_04_13",
-      "customerId": "444",
-      "customerName": "Shudha Retail",
+      "customerId": "307",
+      "customerName": "Retail",
       "date": "2025-04-04T18:30:00.000Z",
       "type": "SALE",
       "item": "Others",
@@ -8988,7 +8876,7 @@
     },
     {
       "id": "sale_2025_04_14",
-      "customerId": "438",
+      "customerId": "435",
       "customerName": "Loh Mogjibhai Fatabhai",
       "date": "2025-04-04T18:30:00.000Z",
       "type": "SALE",
@@ -9003,7 +8891,7 @@
     },
     {
       "id": "sale_2025_04_15",
-      "customerId": "445",
+      "customerId": "441",
       "customerName": "Dangi Jagdishbhai Chelabhai",
       "date": "2025-04-04T18:30:00.000Z",
       "type": "SALE",
@@ -9063,8 +8951,8 @@
     },
     {
       "id": "sale_2025_04_19",
-      "customerId": "446",
-      "customerName": "Juva Karshanbhai",
+      "customerId": "203",
+      "customerName": "Juva Karshanbhai Lakhori",
       "date": "2025-04-06T18:30:00.000Z",
       "type": "SALE",
       "item": "Others",
@@ -9078,7 +8966,7 @@
     },
     {
       "id": "sale_2025_04_20",
-      "customerId": "447",
+      "customerId": "442",
       "customerName": "Judal Ghemarbhai Ramshungbhai",
       "date": "2025-04-06T18:30:00.000Z",
       "type": "SALE",
@@ -9138,7 +9026,7 @@
     },
     {
       "id": "sale_2025_04_24",
-      "customerId": "448",
+      "customerId": "443",
       "customerName": "Loh Kantibhai Poojabhai",
       "date": "2025-04-07T18:30:00.000Z",
       "type": "SALE",
@@ -9183,7 +9071,7 @@
     },
     {
       "id": "sale_2025_04_27",
-      "customerId": "449",
+      "customerId": "444",
       "customerName": "Khasa Jafarkhan Vajeer",
       "date": "2025-04-08T18:30:00.000Z",
       "type": "SALE",
@@ -9243,7 +9131,7 @@
     },
     {
       "id": "sale_2025_04_31",
-      "customerId": "450",
+      "customerId": "445",
       "customerName": "Gobhala Kantibhai 9099318634",
       "date": "2025-04-09T18:30:00.000Z",
       "type": "SALE",
@@ -9288,7 +9176,7 @@
     },
     {
       "id": "sale_2025_04_34",
-      "customerId": "451",
+      "customerId": "446",
       "customerName": "Jarmol Laxmanbhai Jeshungbhai",
       "date": "2025-04-09T18:30:00.000Z",
       "type": "SALE",
@@ -9303,7 +9191,7 @@
     },
     {
       "id": "sale_2025_04_35",
-      "customerId": "452",
+      "customerId": "447",
       "customerName": "Loh Raghubhai Poojabhai",
       "date": "2025-04-09T18:30:00.000Z",
       "type": "SALE",
@@ -9348,7 +9236,7 @@
     },
     {
       "id": "sale_2025_04_38",
-      "customerId": "453",
+      "customerId": "448",
       "customerName": "Judal Nareshbhai Ramshungbhai",
       "date": "2025-04-12T18:30:00.000Z",
       "type": "SALE",
@@ -9363,8 +9251,8 @@
     },
     {
       "id": "sale_2025_04_39",
-      "customerId": "454",
-      "customerName": "Jeetuben Manjibhai",
+      "customerId": "156",
+      "customerName": "Judal Jeetuben Manjibhai",
       "date": "2025-04-12T18:30:00.000Z",
       "type": "SALE",
       "item": "Others",
@@ -9408,7 +9296,7 @@
     },
     {
       "id": "sale_2025_04_42",
-      "customerId": "455",
+      "customerId": "449",
       "customerName": "Bera Ramjibhai Nanjibhai",
       "date": "2025-04-13T18:30:00.000Z",
       "type": "SALE",
@@ -9423,7 +9311,7 @@
     },
     {
       "id": "sale_2025_04_43",
-      "customerId": "456",
+      "customerId": "450",
       "customerName": "Judal Laxmanbhai Parthibhai",
       "date": "2025-04-13T18:30:00.000Z",
       "type": "SALE",
@@ -9453,7 +9341,7 @@
     },
     {
       "id": "sale_2025_04_45",
-      "customerId": "457",
+      "customerId": "451",
       "customerName": "Chaudhary Rameshbhai Jethabhai",
       "date": "2025-04-14T18:30:00.000Z",
       "type": "SALE",
@@ -9468,7 +9356,7 @@
     },
     {
       "id": "sale_2025_04_46",
-      "customerId": "458",
+      "customerId": "452",
       "customerName": "Kasha Vajeer Khan",
       "date": "2025-04-14T18:30:00.000Z",
       "type": "SALE",
@@ -9498,7 +9386,7 @@
     },
     {
       "id": "sale_2025_04_48",
-      "customerId": "459",
+      "customerId": "453",
       "customerName": "Judal Dineshbhai Bhikhabhai",
       "date": "2025-04-16T18:30:00.000Z",
       "type": "SALE",
@@ -9513,8 +9401,8 @@
     },
     {
       "id": "sale_2025_04_49",
-      "customerId": "460",
-      "customerName": "Kubhasan Shokatbhai 9898775295",
+      "customerId": "232",
+      "customerName": "Kubhasan Shokatbhai",
       "date": "2025-04-16T18:30:00.000Z",
       "type": "SALE",
       "item": "Others",
@@ -9603,7 +9491,7 @@
     },
     {
       "id": "sale_2025_04_55",
-      "customerId": "461",
+      "customerId": "454",
       "customerName": "Patel Karshanbhai Vedancha",
       "date": "2025-04-19T18:30:00.000Z",
       "type": "SALE",
@@ -9648,7 +9536,7 @@
     },
     {
       "id": "sale_2025_04_58",
-      "customerId": "462",
+      "customerId": "455",
       "customerName": "Gudol Jaguben Muljibhai",
       "date": "2025-04-21T18:30:00.000Z",
       "type": "SALE",
@@ -9753,7 +9641,7 @@
     },
     {
       "id": "sale_2025_04_65",
-      "customerId": "455",
+      "customerId": "449",
       "customerName": "Bera Ramjibhai Nanjibhai",
       "date": "2025-04-25T18:30:00.000Z",
       "type": "SALE",
@@ -9768,7 +9656,7 @@
     },
     {
       "id": "sale_2025_04_66",
-      "customerId": "463",
+      "customerId": "456",
       "customerName": "Judal Neeruben Hasmukhbhai",
       "date": "2025-04-25T18:30:00.000Z",
       "type": "SALE",
@@ -9813,7 +9701,7 @@
     },
     {
       "id": "sale_2025_04_69",
-      "customerId": "464",
+      "customerId": "457",
       "customerName": "Judal Rameshbhai Ramshungbhai",
       "date": "2025-04-26T18:30:00.000Z",
       "type": "SALE",
@@ -9843,7 +9731,7 @@
     },
     {
       "id": "sale_2025_04_71",
-      "customerId": "465",
+      "customerId": "458",
       "customerName": "Thakor Bhoobhaji Dhooraji",
       "date": "2025-04-26T18:30:00.000Z",
       "type": "SALE",
@@ -9933,7 +9821,7 @@
     },
     {
       "id": "sale_2025_04_77",
-      "customerId": "466",
+      "customerId": "459",
       "customerName": "Loh Sardarbhai Bheekhabhai",
       "date": "2025-04-28T18:30:00.000Z",
       "type": "SALE",
@@ -9963,7 +9851,7 @@
     },
     {
       "id": "sale_2025_04_79",
-      "customerId": "467",
+      "customerId": "460",
       "customerName": "Judal Bhagvanbhai Karshanbhai",
       "date": "2025-04-28T18:30:00.000Z",
       "type": "SALE",
@@ -10008,7 +9896,7 @@
     },
     {
       "id": "sale_2025_04_82",
-      "customerId": "468",
+      "customerId": "461",
       "customerName": "Loh Rameshbhai Bhagvanbhai",
       "date": "2025-04-29T18:30:00.000Z",
       "type": "SALE",
@@ -10068,7 +9956,7 @@
     },
     {
       "id": "sale_2025_04_197",
-      "customerId": "469",
+      "customerId": "462",
       "customerName": "Daalu Diesel + Depreciation",
       "date": "2025-04-15T12:00:00.000Z",
       "type": "SALE",
@@ -10083,7 +9971,7 @@
     },
     {
       "id": "sale_2025_05_1",
-      "customerId": "470",
+      "customerId": "463",
       "customerName": "Darabar Kanshing Samdhi",
       "date": "2025-04-30T18:30:00.000Z",
       "type": "SALE",
@@ -10158,7 +10046,7 @@
     },
     {
       "id": "sale_2025_05_6",
-      "customerId": "471",
+      "customerId": "464",
       "customerName": "Mor Babubhai Vedancha",
       "date": "2025-05-02T18:30:00.000Z",
       "type": "SALE",
@@ -10173,7 +10061,7 @@
     },
     {
       "id": "sale_2025_05_7",
-      "customerId": "472",
+      "customerId": "465",
       "customerName": "Darbar Kanshingbhai Saamdhi",
       "date": "2025-05-02T18:30:00.000Z",
       "type": "SALE",
@@ -10188,7 +10076,7 @@
     },
     {
       "id": "sale_2025_05_8",
-      "customerId": "426",
+      "customerId": "423",
       "customerName": "Gudol Bhaveshbhai Parthibhai",
       "date": "2025-05-03T18:30:00.000Z",
       "type": "SALE",
@@ -10233,7 +10121,7 @@
     },
     {
       "id": "sale_2025_05_11",
-      "customerId": "473",
+      "customerId": "466",
       "customerName": "Judal Jeetabhai Moghabhai",
       "date": "2025-05-05T18:30:00.000Z",
       "type": "SALE",
@@ -10323,7 +10211,7 @@
     },
     {
       "id": "sale_2025_05_17",
-      "customerId": "474",
+      "customerId": "467",
       "customerName": "Judal Ramshungbhai Shomabhai",
       "date": "2025-05-07T18:30:00.000Z",
       "type": "SALE",
@@ -10368,7 +10256,7 @@
     },
     {
       "id": "sale_2025_05_20",
-      "customerId": "407",
+      "customerId": "405",
       "customerName": "Thakor Hemchandbhai Khodla",
       "date": "2025-05-07T18:30:00.000Z",
       "type": "SALE",
@@ -10383,8 +10271,8 @@
     },
     {
       "id": "sale_2025_05_21",
-      "customerId": "475",
-      "customerName": "Shudha",
+      "customerId": "307",
+      "customerName": "Retail",
       "date": "2025-05-08T18:30:00.000Z",
       "type": "SALE",
       "item": "Others",
@@ -10398,7 +10286,7 @@
     },
     {
       "id": "sale_2025_05_22",
-      "customerId": "476",
+      "customerId": "468",
       "customerName": "Bera Dineshbhai Shavabhai",
       "date": "2025-05-08T18:30:00.000Z",
       "type": "SALE",
@@ -10488,7 +10376,7 @@
     },
     {
       "id": "sale_2025_05_28",
-      "customerId": "477",
+      "customerId": "469",
       "customerName": "Gabhala Kantibhai Jeevabhai",
       "date": "2025-05-11T18:30:00.000Z",
       "type": "SALE",
@@ -10518,7 +10406,7 @@
     },
     {
       "id": "sale_2025_05_30",
-      "customerId": "472",
+      "customerId": "465",
       "customerName": "Darbar Kanshingbhai Saamdhi",
       "date": "2025-05-12T18:30:00.000Z",
       "type": "SALE",
@@ -10578,7 +10466,7 @@
     },
     {
       "id": "sale_2025_05_34",
-      "customerId": "478",
+      "customerId": "470",
       "customerName": "Gudol Jayntibhai Cheharabhai",
       "date": "2025-05-16T18:30:00.000Z",
       "type": "SALE",
@@ -10638,7 +10526,7 @@
     },
     {
       "id": "sale_2025_05_38",
-      "customerId": "417",
+      "customerId": "414",
       "customerName": "Fof Laxmanbhai Ujabhai",
       "date": "2025-05-18T18:30:00.000Z",
       "type": "SALE",
@@ -10668,8 +10556,8 @@
     },
     {
       "id": "sale_2025_05_40",
-      "customerId": "479",
-      "customerName": "Sudha Retail",
+      "customerId": "307",
+      "customerName": "Retail",
       "date": "2025-05-18T18:30:00.000Z",
       "type": "SALE",
       "item": "Others",
@@ -10758,7 +10646,7 @@
     },
     {
       "id": "sale_2025_05_46",
-      "customerId": "480",
+      "customerId": "471",
       "customerName": "Loh Deepakbhai Ramjibhai",
       "date": "2025-05-21T18:30:00.000Z",
       "type": "SALE",
@@ -10773,7 +10661,7 @@
     },
     {
       "id": "sale_2025_05_47",
-      "customerId": "472",
+      "customerId": "465",
       "customerName": "Darbar Kanshingbhai Saamdhi",
       "date": "2025-05-23T18:30:00.000Z",
       "type": "SALE",
@@ -10788,7 +10676,7 @@
     },
     {
       "id": "sale_2025_05_48",
-      "customerId": "481",
+      "customerId": "472",
       "customerName": "Bhutadiya Jeetabhai Ganeshbhai",
       "date": "2025-05-23T18:30:00.000Z",
       "type": "SALE",
@@ -10938,7 +10826,7 @@
     },
     {
       "id": "sale_2025_05_197",
-      "customerId": "469",
+      "customerId": "462",
       "customerName": "Daalu Diesel + Depreciation",
       "date": "2025-05-15T12:00:00.000Z",
       "type": "SALE",
@@ -10953,7 +10841,7 @@
     },
     {
       "id": "sale_2025_05_199",
-      "customerId": "482",
+      "customerId": "473",
       "customerName": "Kuta/Kutti",
       "date": "2025-05-15T12:00:00.000Z",
       "type": "SALE",
@@ -10983,7 +10871,7 @@
     },
     {
       "id": "sale_2025_06_2",
-      "customerId": "483",
+      "customerId": "474",
       "customerName": "Dharpada Hiraji Darbar",
       "date": "2025-05-31T18:30:00.000Z",
       "type": "SALE",
@@ -11013,7 +10901,7 @@
     },
     {
       "id": "sale_2025_06_4",
-      "customerId": "407",
+      "customerId": "405",
       "customerName": "Thakor Hemchandbhai Khodla",
       "date": "2025-05-31T18:30:00.000Z",
       "type": "SALE",
@@ -11058,7 +10946,7 @@
     },
     {
       "id": "sale_2025_06_7",
-      "customerId": "484",
+      "customerId": "475",
       "customerName": "Kakvadiya Maheshbhai Ramshungbhai",
       "date": "2025-06-02T18:30:00.000Z",
       "type": "SALE",
@@ -11088,7 +10976,7 @@
     },
     {
       "id": "sale_2025_06_9",
-      "customerId": "485",
+      "customerId": "476",
       "customerName": "Thakor Bharatbhai Bajubhai",
       "date": "2025-06-02T18:30:00.000Z",
       "type": "SALE",
@@ -11118,7 +11006,7 @@
     },
     {
       "id": "sale_2025_06_11",
-      "customerId": "486",
+      "customerId": "477",
       "customerName": "Judal Mukeshbhai Laxmanbhai",
       "date": "2025-06-02T18:30:00.000Z",
       "type": "SALE",
@@ -11178,7 +11066,7 @@
     },
     {
       "id": "sale_2025_06_16",
-      "customerId": "476",
+      "customerId": "468",
       "customerName": "Bera Dineshbhai Shavabhai",
       "date": "2025-06-07T18:30:00.000Z",
       "type": "SALE",
@@ -11193,7 +11081,7 @@
     },
     {
       "id": "sale_2025_06_17",
-      "customerId": "487",
+      "customerId": "478",
       "customerName": "Kakavadiya Sureshbhai Chandichar",
       "date": "2025-06-07T18:30:00.000Z",
       "type": "SALE",
@@ -11268,7 +11156,7 @@
     },
     {
       "id": "sale_2025_06_22",
-      "customerId": "488",
+      "customerId": "479",
       "customerName": "Boka Jivrambhai Parthibhai",
       "date": "2025-06-19T18:30:00.000Z",
       "type": "SALE",
@@ -11328,7 +11216,7 @@
     },
     {
       "id": "sale_2025_06_26",
-      "customerId": "489",
+      "customerId": "480",
       "customerName": "Gudol Amaratbhai Parathibhai",
       "date": "2025-06-22T18:30:00.000Z",
       "type": "SALE",
@@ -11343,7 +11231,7 @@
     },
     {
       "id": "sale_2025_06_27",
-      "customerId": "490",
+      "customerId": "481",
       "customerName": "Gudalo Amaratbhai Cheharbhai",
       "date": "2025-06-22T18:30:00.000Z",
       "type": "SALE",
@@ -11373,7 +11261,7 @@
     },
     {
       "id": "sale_2025_06_29",
-      "customerId": "491",
+      "customerId": "482",
       "customerName": "Darbar Kanshing Samdhi",
       "date": "2025-06-24T18:30:00.000Z",
       "type": "SALE",
@@ -11403,7 +11291,7 @@
     },
     {
       "id": "sale_2025_06_197",
-      "customerId": "469",
+      "customerId": "462",
       "customerName": "Daalu Diesel + Depreciation",
       "date": "2025-06-15T12:00:00.000Z",
       "type": "SALE",
@@ -11418,7 +11306,7 @@
     },
     {
       "id": "sale_2025_07_1",
-      "customerId": "491",
+      "customerId": "482",
       "customerName": "Darbar Kanshing Samdhi",
       "date": "2025-06-30T18:30:00.000Z",
       "type": "SALE",
@@ -11433,7 +11321,7 @@
     },
     {
       "id": "sale_2025_07_2",
-      "customerId": "492",
+      "customerId": "483",
       "customerName": "Dharpada Hiraji (Vershingji)",
       "date": "2025-06-30T18:30:00.000Z",
       "type": "SALE",
@@ -11463,7 +11351,7 @@
     },
     {
       "id": "sale_2025_07_4",
-      "customerId": "493",
+      "customerId": "484",
       "customerName": "Bhutatiday Babubhai Kanjibhai",
       "date": "2025-07-01T18:30:00.000Z",
       "type": "SALE",
@@ -11523,7 +11411,7 @@
     },
     {
       "id": "sale_2025_07_8",
-      "customerId": "491",
+      "customerId": "482",
       "customerName": "Darbar Kanshing Samdhi",
       "date": "2025-07-04T18:30:00.000Z",
       "type": "SALE",
@@ -11553,7 +11441,7 @@
     },
     {
       "id": "sale_2025_07_10",
-      "customerId": "467",
+      "customerId": "460",
       "customerName": "Judal Bhagvanbhai Karshanbhai",
       "date": "2025-07-04T18:30:00.000Z",
       "type": "SALE",
@@ -11598,7 +11486,7 @@
     },
     {
       "id": "sale_2025_07_13",
-      "customerId": "494",
+      "customerId": "485",
       "customerName": "Dhudiya Sureshbhai Jeetabhai",
       "date": "2025-07-06T18:30:00.000Z",
       "type": "SALE",
@@ -11643,7 +11531,7 @@
     },
     {
       "id": "sale_2025_07_16",
-      "customerId": "495",
+      "customerId": "486",
       "customerName": "Bhutadiya Dhanrajbhai Shomabhai",
       "date": "2025-07-08T18:30:00.000Z",
       "type": "SALE",
@@ -11688,7 +11576,7 @@
     },
     {
       "id": "sale_2025_07_19",
-      "customerId": "496",
+      "customerId": "487",
       "customerName": "Judal Sadabhai Jeevabhai",
       "date": "2025-07-09T18:30:00.000Z",
       "type": "SALE",
@@ -11718,7 +11606,7 @@
     },
     {
       "id": "sale_2025_07_21",
-      "customerId": "497",
+      "customerId": "488",
       "customerName": "Judal Daljibhai Veershangbhai",
       "date": "2025-07-10T18:30:00.000Z",
       "type": "SALE",
@@ -11733,8 +11621,8 @@
     },
     {
       "id": "sale_2025_07_22",
-      "customerId": "498",
-      "customerName": "Valagot Ashwinbhai Daljibhai",
+      "customerId": "393",
+      "customerName": "Valagot Ashwinbhai Daljibhai - Vedancha",
       "date": "2025-07-10T18:30:00.000Z",
       "type": "SALE",
       "item": "Others",
@@ -11838,7 +11726,7 @@
     },
     {
       "id": "sale_2025_07_29",
-      "customerId": "499",
+      "customerId": "489",
       "customerName": "Judal Valjibhai Veershangbhai",
       "date": "2025-07-12T18:30:00.000Z",
       "type": "SALE",
@@ -11853,7 +11741,7 @@
     },
     {
       "id": "sale_2025_07_30",
-      "customerId": "500",
+      "customerId": "490",
       "customerName": "Judal Kamleshbhai Shomabhai",
       "date": "2025-07-12T18:30:00.000Z",
       "type": "SALE",
@@ -11868,7 +11756,7 @@
     },
     {
       "id": "sale_2025_07_31",
-      "customerId": "501",
+      "customerId": "491",
       "customerName": "Dharpada Hiraji Thakor",
       "date": "2025-07-14T18:30:00.000Z",
       "type": "SALE",
@@ -11883,7 +11771,7 @@
     },
     {
       "id": "sale_2025_07_32",
-      "customerId": "502",
+      "customerId": "492",
       "customerName": "Loh Jayeshbhai Kanjibhai",
       "date": "2025-07-15T18:30:00.000Z",
       "type": "SALE",
@@ -11898,7 +11786,7 @@
     },
     {
       "id": "sale_2025_07_33",
-      "customerId": "503",
+      "customerId": "493",
       "customerName": "Thakor Dhanrajbhai Dharpada",
       "date": "2025-07-15T18:30:00.000Z",
       "type": "SALE",
@@ -11928,7 +11816,7 @@
     },
     {
       "id": "sale_2025_07_35",
-      "customerId": "504",
+      "customerId": "494",
       "customerName": "Bhutadiya Virshangbhai Fatabhai",
       "date": "2025-07-16T18:30:00.000Z",
       "type": "SALE",
@@ -11958,7 +11846,7 @@
     },
     {
       "id": "sale_2025_07_37",
-      "customerId": "491",
+      "customerId": "482",
       "customerName": "Darbar Kanshing Samdhi",
       "date": "2025-07-16T18:30:00.000Z",
       "type": "SALE",
@@ -11973,7 +11861,7 @@
     },
     {
       "id": "sale_2025_07_38",
-      "customerId": "505",
+      "customerId": "495",
       "customerName": "Thakor Hemchandji Khodla",
       "date": "2025-07-16T18:30:00.000Z",
       "type": "SALE",
@@ -12003,7 +11891,7 @@
     },
     {
       "id": "sale_2025_07_40",
-      "customerId": "506",
+      "customerId": "496",
       "customerName": "Kag Kamleshbhai Galbabhai",
       "date": "2025-07-20T18:30:00.000Z",
       "type": "SALE",
@@ -12093,7 +11981,7 @@
     },
     {
       "id": "sale_2025_07_46",
-      "customerId": "507",
+      "customerId": "497",
       "customerName": "Judal Heenaben Dineshbhai",
       "date": "2025-07-24T18:30:00.000Z",
       "type": "SALE",
@@ -12123,7 +12011,7 @@
     },
     {
       "id": "sale_2025_07_48",
-      "customerId": "508",
+      "customerId": "498",
       "customerName": "Boka Jayeshbhai Bhikhabhai",
       "date": "2025-07-27T18:30:00.000Z",
       "type": "SALE",
@@ -12183,7 +12071,7 @@
     },
     {
       "id": "sale_2025_07_52",
-      "customerId": "509",
+      "customerId": "499",
       "customerName": "Darbar Gokalsingh Samdhi",
       "date": "2025-07-28T18:30:00.000Z",
       "type": "SALE",
@@ -12243,7 +12131,7 @@
     },
     {
       "id": "sale_2025_07_197",
-      "customerId": "469",
+      "customerId": "462",
       "customerName": "Daalu Diesel + Depreciation",
       "date": "2025-07-15T12:00:00.000Z",
       "type": "SALE",
@@ -12258,7 +12146,7 @@
     },
     {
       "id": "sale_2025_08_1",
-      "customerId": "510",
+      "customerId": "500",
       "customerName": "Thakor Dineshbhai Dharpada",
       "date": "2025-07-31T18:30:00.000Z",
       "type": "SALE",
@@ -12303,7 +12191,7 @@
     },
     {
       "id": "sale_2025_08_4",
-      "customerId": "511",
+      "customerId": "501",
       "customerName": "Thakor Pochaji Dharpada",
       "date": "2025-08-01T18:30:00.000Z",
       "type": "SALE",
@@ -12363,7 +12251,7 @@
     },
     {
       "id": "sale_2025_08_8",
-      "customerId": "512",
+      "customerId": "502",
       "customerName": "Valagot Vedancha",
       "date": "2025-08-03T18:30:00.000Z",
       "type": "SALE",
@@ -12393,7 +12281,7 @@
     },
     {
       "id": "sale_2025_08_10",
-      "customerId": "513",
+      "customerId": "503",
       "customerName": "Judal Kalpeshbhai Virshangbhai",
       "date": "2025-08-05T18:30:00.000Z",
       "type": "SALE",
@@ -12423,7 +12311,7 @@
     },
     {
       "id": "sale_2025_08_12",
-      "customerId": "416",
+      "customerId": "413",
       "customerName": "Fof Meghrajbhai Ujabhai",
       "date": "2025-08-06T18:30:00.000Z",
       "type": "SALE",
@@ -12438,7 +12326,7 @@
     },
     {
       "id": "sale_2025_08_13",
-      "customerId": "514",
+      "customerId": "504",
       "customerName": "Valagot Jyantibhai Vedancha",
       "date": "2025-08-07T18:30:00.000Z",
       "type": "SALE",
@@ -12483,8 +12371,8 @@
     },
     {
       "id": "sale_2025_08_16",
-      "customerId": "515",
-      "customerName": "Sadabhai Jeevabhai",
+      "customerId": "487",
+      "customerName": "Judal Sadabhai Jeevabhai",
       "date": "2025-08-09T18:30:00.000Z",
       "type": "SALE",
       "item": "Others",
@@ -12498,7 +12386,7 @@
     },
     {
       "id": "sale_2025_08_17",
-      "customerId": "516",
+      "customerId": "505",
       "customerName": "Loh Jeetabhai Moghabhai",
       "date": "2025-08-10T18:30:00.000Z",
       "type": "SALE",
@@ -12633,7 +12521,7 @@
     },
     {
       "id": "sale_2025_08_26",
-      "customerId": "517",
+      "customerId": "506",
       "customerName": "Kakavadiya Maheshbhai Romjibhai",
       "date": "2025-08-24T18:30:00.000Z",
       "type": "SALE",
@@ -12723,7 +12611,7 @@
     },
     {
       "id": "sale_2025_08_32",
-      "customerId": "518",
+      "customerId": "507",
       "customerName": "Dharpada Dhiraji",
       "date": "2025-08-26T18:30:00.000Z",
       "type": "SALE",
@@ -12768,7 +12656,7 @@
     },
     {
       "id": "sale_2025_08_35",
-      "customerId": "519",
+      "customerId": "508",
       "customerName": "Dharpada Devchandji",
       "date": "2025-08-27T18:30:00.000Z",
       "type": "SALE",
@@ -12858,7 +12746,7 @@
     },
     {
       "id": "sale_2025_08_197",
-      "customerId": "469",
+      "customerId": "462",
       "customerName": "Daalu Diesel + Depreciation",
       "date": "2025-08-15T12:00:00.000Z",
       "type": "SALE",
@@ -12888,7 +12776,7 @@
     },
     {
       "id": "sale_2025_09_2",
-      "customerId": "520",
+      "customerId": "509",
       "customerName": "Gudol Valjibhai Rashangbhai",
       "date": "2025-08-31T18:30:00.000Z",
       "type": "SALE",
@@ -12918,7 +12806,7 @@
     },
     {
       "id": "sale_2025_09_4",
-      "customerId": "521",
+      "customerId": "510",
       "customerName": "Kubhasan Bavji",
       "date": "2025-08-31T18:30:00.000Z",
       "type": "SALE",
@@ -12933,7 +12821,7 @@
     },
     {
       "id": "sale_2025_09_5",
-      "customerId": "522",
+      "customerId": "511",
       "customerName": "Bhutadiya Dineshbhai Virshangbhai",
       "date": "2025-09-01T18:30:00.000Z",
       "type": "SALE",
@@ -12963,7 +12851,7 @@
     },
     {
       "id": "sale_2025_09_7",
-      "customerId": "523",
+      "customerId": "512",
       "customerName": "Valagot Kantibhai",
       "date": "2025-09-01T18:30:00.000Z",
       "type": "SALE",
@@ -12978,7 +12866,7 @@
     },
     {
       "id": "sale_2025_09_8",
-      "customerId": "524",
+      "customerId": "513",
       "customerName": "Hoda Bavji",
       "date": "2025-09-01T18:30:00.000Z",
       "type": "SALE",
@@ -13008,7 +12896,7 @@
     },
     {
       "id": "sale_2025_09_10",
-      "customerId": "525",
+      "customerId": "514",
       "customerName": "Patel Dipakbhai Vedancha",
       "date": "2025-09-02T18:30:00.000Z",
       "type": "SALE",
@@ -13038,7 +12926,7 @@
     },
     {
       "id": "sale_2025_09_12",
-      "customerId": "526",
+      "customerId": "515",
       "customerName": "Judal Kirtibhai Bhagvanbhai",
       "date": "2025-09-02T18:30:00.000Z",
       "type": "SALE",
@@ -13068,7 +12956,7 @@
     },
     {
       "id": "sale_2025_09_14",
-      "customerId": "527",
+      "customerId": "516",
       "customerName": "Kharsan Bhikhabhai Godadbhai",
       "date": "2025-09-04T18:30:00.000Z",
       "type": "SALE",
@@ -13083,7 +12971,7 @@
     },
     {
       "id": "sale_2025_09_15",
-      "customerId": "528",
+      "customerId": "517",
       "customerName": "Loh Bhagvanbhai Virshangbhai",
       "date": "2025-09-04T18:30:00.000Z",
       "type": "SALE",
@@ -13098,7 +12986,7 @@
     },
     {
       "id": "sale_2025_09_16",
-      "customerId": "504",
+      "customerId": "494",
       "customerName": "Bhutadiya Virshangbhai Fatabhai",
       "date": "2025-09-04T18:30:00.000Z",
       "type": "SALE",
@@ -13158,7 +13046,7 @@
     },
     {
       "id": "sale_2025_09_20",
-      "customerId": "529",
+      "customerId": "518",
       "customerName": "Bhutadiya Narshibhai Karshanbhai",
       "date": "2025-09-08T18:30:00.000Z",
       "type": "SALE",
@@ -13173,7 +13061,7 @@
     },
     {
       "id": "sale_2025_09_21",
-      "customerId": "530",
+      "customerId": "519",
       "customerName": "Judal Mehulbhai Sadabhai",
       "date": "2025-09-08T18:30:00.000Z",
       "type": "SALE",
@@ -13233,7 +13121,7 @@
     },
     {
       "id": "sale_2025_09_25",
-      "customerId": "531",
+      "customerId": "520",
       "customerName": "Judal Sileshbhai Nanjibhai Badarpura",
       "date": "2025-09-08T18:30:00.000Z",
       "type": "SALE",
@@ -13263,7 +13151,7 @@
     },
     {
       "id": "sale_2025_09_27",
-      "customerId": "532",
+      "customerId": "521",
       "customerName": "Dharpada Sheliji (Hiraji)",
       "date": "2025-09-08T18:30:00.000Z",
       "type": "SALE",
@@ -13278,7 +13166,7 @@
     },
     {
       "id": "sale_2025_09_28",
-      "customerId": "533",
+      "customerId": "522",
       "customerName": "Thakor Jadishbhai Ishavarbhai",
       "date": "2025-09-08T18:30:00.000Z",
       "type": "SALE",
@@ -13398,7 +13286,7 @@
     },
     {
       "id": "sale_2025_09_36",
-      "customerId": "534",
+      "customerId": "523",
       "customerName": "Desai Devkanbhai Delvada",
       "date": "2025-09-09T18:30:00.000Z",
       "type": "SALE",
@@ -13413,7 +13301,7 @@
     },
     {
       "id": "sale_2025_09_37",
-      "customerId": "535",
+      "customerId": "524",
       "customerName": "Judal Manjibhai Parthibhai",
       "date": "2025-09-09T18:30:00.000Z",
       "type": "SALE",
@@ -13473,7 +13361,7 @@
     },
     {
       "id": "sale_2025_09_41",
-      "customerId": "494",
+      "customerId": "485",
       "customerName": "Dhudiya Sureshbhai Jeetabhai",
       "date": "2025-09-10T18:30:00.000Z",
       "type": "SALE",
@@ -13563,7 +13451,7 @@
     },
     {
       "id": "sale_2025_09_47",
-      "customerId": "536",
+      "customerId": "525",
       "customerName": "Darpada Harkhaji",
       "date": "2025-09-11T18:30:00.000Z",
       "type": "SALE",
@@ -13578,7 +13466,7 @@
     },
     {
       "id": "sale_2025_09_48",
-      "customerId": "537",
+      "customerId": "526",
       "customerName": "Loh Santubhai Veerabhai",
       "date": "2025-09-12T18:30:00.000Z",
       "type": "SALE",
@@ -13623,7 +13511,7 @@
     },
     {
       "id": "sale_2025_09_51",
-      "customerId": "538",
+      "customerId": "527",
       "customerName": "Darpada Vikrambhai Na Bhai",
       "date": "2025-09-12T18:30:00.000Z",
       "type": "SALE",
@@ -13653,7 +13541,7 @@
     },
     {
       "id": "sale_2025_09_53",
-      "customerId": "539",
+      "customerId": "528",
       "customerName": "Loh Sureshbhai Santubhai",
       "date": "2025-09-13T18:30:00.000Z",
       "type": "SALE",
@@ -13683,7 +13571,7 @@
     },
     {
       "id": "sale_2025_09_55",
-      "customerId": "540",
+      "customerId": "529",
       "customerName": "Gori Muradkhan Jafarkhan",
       "date": "2025-09-15T18:30:00.000Z",
       "type": "SALE",
@@ -13713,7 +13601,7 @@
     },
     {
       "id": "sale_2025_09_57",
-      "customerId": "541",
+      "customerId": "530",
       "customerName": "Patel Gangaram Devpura",
       "date": "2025-09-15T18:30:00.000Z",
       "type": "SALE",
@@ -13728,7 +13616,7 @@
     },
     {
       "id": "sale_2025_09_58",
-      "customerId": "542",
+      "customerId": "531",
       "customerName": "Judal Jeshungbhai Bhikhabhai",
       "date": "2025-09-15T18:30:00.000Z",
       "type": "SALE",
@@ -13743,7 +13631,7 @@
     },
     {
       "id": "sale_2025_09_59",
-      "customerId": "542",
+      "customerId": "531",
       "customerName": "Judal Jeshungbhai Bhikhabhai",
       "date": "2025-09-15T18:30:00.000Z",
       "type": "SALE",
@@ -13848,7 +13736,7 @@
     },
     {
       "id": "sale_2025_09_66",
-      "customerId": "543",
+      "customerId": "532",
       "customerName": "Judal Jashungbhai Bhikhabhai",
       "date": "2025-09-18T18:30:00.000Z",
       "type": "SALE",
@@ -13863,7 +13751,7 @@
     },
     {
       "id": "sale_2025_09_67",
-      "customerId": "544",
+      "customerId": "533",
       "customerName": "Darbar Gokalshing Samdhi",
       "date": "2025-09-19T18:30:00.000Z",
       "type": "SALE",
@@ -13878,7 +13766,7 @@
     },
     {
       "id": "sale_2025_09_68",
-      "customerId": "500",
+      "customerId": "490",
       "customerName": "Judal Kamleshbhai Shomabhai",
       "date": "2025-09-19T18:30:00.000Z",
       "type": "SALE",
@@ -13983,7 +13871,7 @@
     },
     {
       "id": "sale_2025_09_75",
-      "customerId": "545",
+      "customerId": "534",
       "customerName": "Menat Parkashbhai Madana",
       "date": "2025-09-25T18:30:00.000Z",
       "type": "SALE",
@@ -14043,7 +13931,7 @@
     },
     {
       "id": "sale_2025_09_79",
-      "customerId": "545",
+      "customerId": "534",
       "customerName": "Menat Parkashbhai Madana",
       "date": "2025-09-26T18:30:00.000Z",
       "type": "SALE",
@@ -14058,7 +13946,7 @@
     },
     {
       "id": "sale_2025_09_80",
-      "customerId": "546",
+      "customerId": "535",
       "customerName": "Kasha Jafarkhan",
       "date": "2025-09-26T18:30:00.000Z",
       "type": "SALE",
@@ -14088,7 +13976,7 @@
     },
     {
       "id": "sale_2025_09_82",
-      "customerId": "522",
+      "customerId": "511",
       "customerName": "Bhutadiya Dineshbhai Virshangbhai",
       "date": "2025-09-27T18:30:00.000Z",
       "type": "SALE",
@@ -14103,7 +13991,7 @@
     },
     {
       "id": "sale_2025_09_83",
-      "customerId": "547",
+      "customerId": "536",
       "customerName": "Karshan Bhikhabhai Godadbhai",
       "date": "2025-09-27T18:30:00.000Z",
       "type": "SALE",
@@ -14133,7 +14021,7 @@
     },
     {
       "id": "sale_2025_09_85",
-      "customerId": "548",
+      "customerId": "537",
       "customerName": "Valagot Kantibhai Shomabhai",
       "date": "2025-09-28T18:30:00.000Z",
       "type": "SALE",
@@ -14178,7 +14066,7 @@
     },
     {
       "id": "sale_2025_09_88",
-      "customerId": "488",
+      "customerId": "479",
       "customerName": "Boka Jivrambhai Parthibhai",
       "date": "2025-09-29T18:30:00.000Z",
       "type": "SALE",
@@ -14208,7 +14096,7 @@
     },
     {
       "id": "sale_2025_09_197",
-      "customerId": "469",
+      "customerId": "462",
       "customerName": "Daalu Diesel + Depreciation",
       "date": "2025-09-15T12:00:00.000Z",
       "type": "SALE",
@@ -14253,7 +14141,7 @@
     },
     {
       "id": "sale_2025_10_3",
-      "customerId": "455",
+      "customerId": "449",
       "customerName": "Bera Ramjibhai Nanjibhai",
       "date": "2025-10-03T18:30:00.000Z",
       "type": "SALE",
@@ -14373,7 +14261,7 @@
     },
     {
       "id": "sale_2025_10_11",
-      "customerId": "424",
+      "customerId": "421",
       "customerName": "Kharsan Bhupatbhai Savajibhai",
       "date": "2025-10-08T18:30:00.000Z",
       "type": "SALE",
@@ -14388,7 +14276,7 @@
     },
     {
       "id": "sale_2025_10_12",
-      "customerId": "516",
+      "customerId": "505",
       "customerName": "Loh Jeetabhai Moghabhai",
       "date": "2025-10-09T18:30:00.000Z",
       "type": "SALE",
@@ -14508,7 +14396,7 @@
     },
     {
       "id": "sale_2025_10_20",
-      "customerId": "549",
+      "customerId": "538",
       "customerName": "Umarbhai Kotavala Chadotar",
       "date": "2025-10-19T18:30:00.000Z",
       "type": "SALE",
@@ -14643,7 +14531,7 @@
     },
     {
       "id": "sale_2025_10_29",
-      "customerId": "550",
+      "customerId": "539",
       "customerName": "Unava Satishbhai",
       "date": "2025-10-30T18:30:00.000Z",
       "type": "SALE",
@@ -14658,7 +14546,7 @@
     },
     {
       "id": "sale_2025_10_197",
-      "customerId": "469",
+      "customerId": "462",
       "customerName": "Daalu Diesel + Depreciation",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "SALE",
@@ -14673,7 +14561,7 @@
     },
     {
       "id": "sale_2025_10_199",
-      "customerId": "551",
+      "customerId": "540",
       "customerName": "Tractor Mhurut",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "SALE",
@@ -14688,7 +14576,7 @@
     },
     {
       "id": "sale_2025_11_1",
-      "customerId": "552",
+      "customerId": "541",
       "customerName": "Judal Hashmukhbhai Bhagvanbhai",
       "date": "2025-11-03T18:30:00.000Z",
       "type": "SALE",
@@ -14838,7 +14726,7 @@
     },
     {
       "id": "sale_2025_11_11",
-      "customerId": "516",
+      "customerId": "505",
       "customerName": "Loh Jeetabhai Moghabhai",
       "date": "2025-11-08T18:30:00.000Z",
       "type": "SALE",
@@ -14853,8 +14741,8 @@
     },
     {
       "id": "sale_2025_11_12",
-      "customerId": "553",
-      "customerName": "Dhudabhai Vedancha",
+      "customerId": "206",
+      "customerName": "Kag Dhudabhai Vedancha",
       "date": "2025-11-08T18:30:00.000Z",
       "type": "SALE",
       "item": "Others",
@@ -14928,8 +14816,8 @@
     },
     {
       "id": "sale_2025_11_17",
-      "customerId": "554",
-      "customerName": "Valagot Nikulbhai",
+      "customerId": "387",
+      "customerName": "Valagot Nikulbhai Shantubhai",
       "date": "2025-11-09T18:30:00.000Z",
       "type": "SALE",
       "item": "Others",
@@ -15018,7 +14906,7 @@
     },
     {
       "id": "sale_2025_11_23",
-      "customerId": "555",
+      "customerId": "542",
       "customerName": "Judal Mafatbhai Virshangbhai",
       "date": "2025-11-16T18:30:00.000Z",
       "type": "SALE",
@@ -15033,7 +14921,7 @@
     },
     {
       "id": "sale_2025_11_24",
-      "customerId": "556",
+      "customerId": "543",
       "customerName": "Gadhvala Desai Palanpur",
       "date": "2025-11-17T18:30:00.000Z",
       "type": "SALE",
@@ -15138,7 +15026,7 @@
     },
     {
       "id": "sale_2025_11_31",
-      "customerId": "557",
+      "customerId": "544",
       "customerName": "Bhutadiya Kantibhai Ramshungbhai",
       "date": "2025-11-23T18:30:00.000Z",
       "type": "SALE",
@@ -15258,7 +15146,7 @@
     },
     {
       "id": "sale_2025_11_197",
-      "customerId": "469",
+      "customerId": "462",
       "customerName": "Daalu Diesel + Depreciation",
       "date": "2025-11-15T12:00:00.000Z",
       "type": "SALE",
@@ -15273,7 +15161,7 @@
     },
     {
       "id": "sale_2025_11_199",
-      "customerId": "558",
+      "customerId": "545",
       "customerName": "Tractor expenses",
       "date": "2025-11-15T12:00:00.000Z",
       "type": "SALE",
@@ -15333,7 +15221,7 @@
     },
     {
       "id": "sale_2025_12_4",
-      "customerId": "559",
+      "customerId": "546",
       "customerName": "Loh Narshibhai Veerabhai Chadotar",
       "date": "2025-12-06T18:30:00.000Z",
       "type": "SALE",
@@ -15453,7 +15341,7 @@
     },
     {
       "id": "sale_2025_12_12",
-      "customerId": "560",
+      "customerId": "547",
       "customerName": "Judal Dhanrajbhai Fatabhai",
       "date": "2025-12-14T18:30:00.000Z",
       "type": "SALE",
@@ -15663,8 +15551,8 @@
     },
     {
       "id": "sale_2025_12_26",
-      "customerId": "561",
-      "customerName": "Thakor Prabhatbhai",
+      "customerId": "347",
+      "customerName": "Thakor Prabhatbhai Khengarbhai",
       "date": "2025-12-23T18:30:00.000Z",
       "type": "SALE",
       "item": "Others",
@@ -15828,7 +15716,7 @@
     },
     {
       "id": "sale_2025_12_37",
-      "customerId": "562",
+      "customerId": "548",
       "customerName": "Thakor Vishnubhai Dheerajbhai",
       "date": "2025-12-28T18:30:00.000Z",
       "type": "SALE",
@@ -15903,7 +15791,7 @@
     },
     {
       "id": "sale_2025_12_197",
-      "customerId": "469",
+      "customerId": "462",
       "customerName": "Daalu Diesel + Depreciation",
       "date": "2025-12-15T12:00:00.000Z",
       "type": "SALE",
@@ -15918,7 +15806,7 @@
     },
     {
       "id": "sale_2025_12_200",
-      "customerId": "563",
+      "customerId": "549",
       "customerName": "Stationery",
       "date": "2025-12-15T12:00:00.000Z",
       "type": "SALE",
@@ -24804,8 +24692,8 @@
       "note": "Payment received in Customer Credit List-20250430"
     },
     {
-      "id": "411_2025_04_exp_30",
-      "customerId": "411",
+      "id": "408_2025_04_exp_30",
+      "customerId": "408",
       "customerName": "Boka Ramjibhai Jethabhai",
       "date": "2025-04-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25044,8 +24932,8 @@
       "note": "Payment received in Customer Credit List-20250430"
     },
     {
-      "id": "400_2025_04_exp_156",
-      "customerId": "400",
+      "id": "398_2025_04_exp_156",
+      "customerId": "398",
       "customerName": "Thakor Bharatji Samdhi",
       "date": "2025-04-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25128,8 +25016,8 @@
       "note": "Customer settled previous balance of ₹6,820 and was cleared in Customer Credit List-20250430"
     },
     {
-      "id": "402_2025_04_drop",
-      "customerId": "402",
+      "id": "400_2025_04_drop",
+      "customerId": "400",
       "customerName": "Judal Galbabhai Ramjibhai",
       "date": "2025-04-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25188,8 +25076,8 @@
       "note": "Customer settled previous balance of ₹4,887 and was cleared in Customer Credit List-20250430"
     },
     {
-      "id": "399_2025_04_drop",
-      "customerId": "399",
+      "id": "397_2025_04_drop",
+      "customerId": "397",
       "customerName": "Judal Mogajibhai Bhikhabhai Chadotar",
       "date": "2025-04-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25224,8 +25112,8 @@
       "note": "Customer settled previous balance of ₹11,007 and was cleared in Customer Credit List-20250430"
     },
     {
-      "id": "412_2025_04_drop",
-      "customerId": "412",
+      "id": "409_2025_04_drop",
+      "customerId": "409",
       "customerName": "Kuva Nareshbhai - 9723128992",
       "date": "2025-04-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25234,18 +25122,6 @@
       "cashPaid": 13683,
       "remainingDue": 0,
       "note": "Customer settled previous balance of ₹13,683 and was cleared in Customer Credit List-20250430"
-    },
-    {
-      "id": "408_2025_04_drop",
-      "customerId": "408",
-      "customerName": "Kuva Nareshbhai Sudha (Bhai)",
-      "date": "2025-04-15T12:00:00.000Z",
-      "type": "PAYMENT",
-      "amount": 13273,
-      "paymentAmount": 13273,
-      "cashPaid": 13273,
-      "remainingDue": 0,
-      "note": "Customer settled previous balance of ₹13,273 and was cleared in Customer Credit List-20250430"
     },
     {
       "id": "242_2025_04_drop",
@@ -25272,8 +25148,8 @@
       "note": "Customer settled previous balance of ₹30,892 and was cleared in Customer Credit List-20250430"
     },
     {
-      "id": "415_2025_04_drop",
-      "customerId": "415",
+      "id": "412_2025_04_drop",
+      "customerId": "412",
       "customerName": "Mor Kirtibhai Vedancha",
       "date": "2025-04-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25320,8 +25196,8 @@
       "note": "Customer settled previous balance of ₹7,568 and was cleared in Customer Credit List-20250430"
     },
     {
-      "id": "407_2025_04_drop",
-      "customerId": "407",
+      "id": "405_2025_04_drop",
+      "customerId": "405",
       "customerName": "Thakor Hemchandbhai Khodla",
       "date": "2025-04-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25344,8 +25220,8 @@
       "note": "Customer settled previous balance of ₹12,694 and was cleared in Customer Credit List-20250430"
     },
     {
-      "id": "414_2025_04_drop",
-      "customerId": "414",
+      "id": "411_2025_04_drop",
+      "customerId": "411",
       "customerName": "Valagot Jayntibhai Surati",
       "date": "2025-04-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25356,8 +25232,8 @@
       "note": "Customer settled previous balance of ₹6,100 and was cleared in Customer Credit List-20250430"
     },
     {
-      "id": "403_2025_04_drop",
-      "customerId": "403",
+      "id": "401_2025_04_drop",
+      "customerId": "401",
       "customerName": "Valagot Mavjibhai (Fuva)",
       "date": "2025-04-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25440,8 +25316,8 @@
       "note": "Payment received in Customer Credit List-20250531"
     },
     {
-      "id": "411_2025_05_exp_29",
-      "customerId": "411",
+      "id": "408_2025_05_exp_29",
+      "customerId": "408",
       "customerName": "Boka Ramjibhai Jethabhai",
       "date": "2025-05-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25596,8 +25472,8 @@
       "note": "Payment received in Customer Credit List-20250531"
     },
     {
-      "id": "400_2025_05_exp_161",
-      "customerId": "400",
+      "id": "398_2025_05_exp_161",
+      "customerId": "398",
       "customerName": "Thakor Bharatji Samdhi",
       "date": "2025-05-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25656,8 +25532,8 @@
       "note": "Customer settled previous balance of ₹7,440 and was cleared in Customer Credit List-20250531"
     },
     {
-      "id": "413_2025_05_drop",
-      "customerId": "413",
+      "id": "410_2025_05_drop",
+      "customerId": "410",
       "customerName": "Desai Maganbhai Rasana",
       "date": "2025-05-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25668,8 +25544,8 @@
       "note": "Customer settled previous balance of ₹13,120 and was cleared in Customer Credit List-20250531"
     },
     {
-      "id": "430_2025_05_drop",
-      "customerId": "430",
+      "id": "427_2025_05_drop",
+      "customerId": "427",
       "customerName": "Gobhalya Kantibhai Jeevabhai",
       "date": "2025-05-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25680,8 +25556,8 @@
       "note": "Customer settled previous balance of ₹2,100 and was cleared in Customer Credit List-20250531"
     },
     {
-      "id": "428_2025_05_drop",
-      "customerId": "428",
+      "id": "425_2025_05_drop",
+      "customerId": "425",
       "customerName": "Jarmol Neetaben K Gadh",
       "date": "2025-05-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25728,8 +25604,8 @@
       "note": "Customer settled previous balance of ₹10,242 and was cleared in Customer Credit List-20250531"
     },
     {
-      "id": "439_2025_05_drop",
-      "customerId": "439",
+      "id": "436_2025_05_drop",
+      "customerId": "436",
       "customerName": "Judal Maheshbhai Ramshungbhai",
       "date": "2025-05-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25740,8 +25616,8 @@
       "note": "Customer settled previous balance of ₹11,347 and was cleared in Customer Credit List-20250531"
     },
     {
-      "id": "420_2025_05_drop",
-      "customerId": "420",
+      "id": "417_2025_05_drop",
+      "customerId": "417",
       "customerName": "Judal Neeruben Ashokbhai Kushkal",
       "date": "2025-05-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25764,8 +25640,8 @@
       "note": "Customer settled previous balance of ₹9,137 and was cleared in Customer Credit List-20250531"
     },
     {
-      "id": "427_2025_05_drop",
-      "customerId": "427",
+      "id": "424_2025_05_drop",
+      "customerId": "424",
       "customerName": "Judal Veerabhai Somabhai",
       "date": "2025-05-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25776,8 +25652,8 @@
       "note": "Customer settled previous balance of ₹10,972 and was cleared in Customer Credit List-20250531"
     },
     {
-      "id": "424_2025_05_drop",
-      "customerId": "424",
+      "id": "421_2025_05_drop",
+      "customerId": "421",
       "customerName": "Kharsan Bhupatbhai Savajibhai",
       "date": "2025-05-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25788,8 +25664,8 @@
       "note": "Customer settled previous balance of ₹9,112 and was cleared in Customer Credit List-20250531"
     },
     {
-      "id": "435_2025_05_drop",
-      "customerId": "435",
+      "id": "432_2025_05_drop",
+      "customerId": "432",
       "customerName": "Patel Ambaram Devpura",
       "date": "2025-05-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25812,8 +25688,8 @@
       "note": "Customer settled previous balance of ₹550 and was cleared in Customer Credit List-20250531"
     },
     {
-      "id": "436_2025_05_drop",
-      "customerId": "436",
+      "id": "433_2025_05_drop",
+      "customerId": "433",
       "customerName": "Prakashpuri Khodla",
       "date": "2025-05-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25968,8 +25844,8 @@
       "note": "Payment received in Customer Credit List-20250630"
     },
     {
-      "id": "442_2025_06_drop",
-      "customerId": "442",
+      "id": "439_2025_06_drop",
+      "customerId": "439",
       "customerName": "Bera Karshanbhai Shomabhai Akeshan",
       "date": "2025-06-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -25980,8 +25856,8 @@
       "note": "Customer settled previous balance of ₹1,285 and was cleared in Customer Credit List-20250630"
     },
     {
-      "id": "445_2025_06_drop",
-      "customerId": "445",
+      "id": "441_2025_06_drop",
+      "customerId": "441",
       "customerName": "Dangi Jagdishbhai Chelabhai",
       "date": "2025-06-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26004,8 +25880,8 @@
       "note": "Customer settled previous balance of ₹3,740 and was cleared in Customer Credit List-20250630"
     },
     {
-      "id": "404_2025_06_drop",
-      "customerId": "404",
+      "id": "402_2025_06_drop",
+      "customerId": "402",
       "customerName": "Gamar Rameshbhai Lalabhai (Chetan Galba Judal)",
       "date": "2025-06-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26016,8 +25892,8 @@
       "note": "Customer settled previous balance of ₹6,000 and was cleared in Customer Credit List-20250630"
     },
     {
-      "id": "450_2025_06_drop",
-      "customerId": "450",
+      "id": "445_2025_06_drop",
+      "customerId": "445",
       "customerName": "Gobhala Kantibhai 9099318634",
       "date": "2025-06-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26028,8 +25904,8 @@
       "note": "Customer settled previous balance of ₹7,390 and was cleared in Customer Credit List-20250630"
     },
     {
-      "id": "418_2025_06_drop",
-      "customerId": "418",
+      "id": "415_2025_06_drop",
+      "customerId": "415",
       "customerName": "Judal Praveenbhai Bhagavanbhai",
       "date": "2025-06-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26040,8 +25916,8 @@
       "note": "Customer settled previous balance of ₹10,845 and was cleared in Customer Credit List-20250630"
     },
     {
-      "id": "464_2025_06_drop",
-      "customerId": "464",
+      "id": "457_2025_06_drop",
+      "customerId": "457",
       "customerName": "Judal Rameshbhai Ramshungbhai",
       "date": "2025-06-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26124,8 +26000,8 @@
       "note": "Customer settled previous balance of ₹10,582 and was cleared in Customer Credit List-20250630"
     },
     {
-      "id": "421_2025_06_drop",
-      "customerId": "421",
+      "id": "418_2025_06_drop",
+      "customerId": "418",
       "customerName": "Valagot Manjibhai Fuva",
       "date": "2025-06-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26424,8 +26300,8 @@
       "note": "Customer settled previous balance of ₹2,165 and was cleared in Customer Credit List-20250731"
     },
     {
-      "id": "451_2025_07_drop",
-      "customerId": "451",
+      "id": "446_2025_07_drop",
+      "customerId": "446",
       "customerName": "Jarmol Laxmanbhai Jeshungbhai",
       "date": "2025-07-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26472,8 +26348,8 @@
       "note": "Customer settled previous balance of ₹15,685 and was cleared in Customer Credit List-20250731"
     },
     {
-      "id": "463_2025_07_drop",
-      "customerId": "463",
+      "id": "456_2025_07_drop",
+      "customerId": "456",
       "customerName": "Judal Neeruben Hasmukhbhai",
       "date": "2025-07-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26532,8 +26408,8 @@
       "note": "Customer settled previous balance of ₹16,433 and was cleared in Customer Credit List-20250731"
     },
     {
-      "id": "480_2025_07_drop",
-      "customerId": "480",
+      "id": "471_2025_07_drop",
+      "customerId": "471",
       "customerName": "Loh Deepakbhai Ramjibhai",
       "date": "2025-07-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26544,8 +26420,8 @@
       "note": "Customer settled previous balance of ₹10,683 and was cleared in Customer Credit List-20250731"
     },
     {
-      "id": "448_2025_07_drop",
-      "customerId": "448",
+      "id": "443_2025_07_drop",
+      "customerId": "443",
       "customerName": "Loh Kantibhai Poojabhai",
       "date": "2025-07-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26676,18 +26552,6 @@
       "note": "Customer settled previous balance of ₹2,726 and was cleared in Customer Credit List-20250831"
     },
     {
-      "id": "454_2025_08_drop",
-      "customerId": "454",
-      "customerName": "Jeetuben Manjibhai",
-      "date": "2025-08-15T12:00:00.000Z",
-      "type": "PAYMENT",
-      "amount": 9320,
-      "paymentAmount": 9320,
-      "cashPaid": 9320,
-      "remainingDue": 0,
-      "note": "Customer settled previous balance of ₹9,320 and was cleared in Customer Credit List-20250831"
-    },
-    {
       "id": "149_2025_08_drop",
       "customerId": "149",
       "customerName": "Judal Galbabhai Hirabhai",
@@ -26700,8 +26564,8 @@
       "note": "Customer settled previous balance of ₹6,835 and was cleared in Customer Credit List-20250831"
     },
     {
-      "id": "486_2025_08_drop",
-      "customerId": "486",
+      "id": "477_2025_08_drop",
+      "customerId": "477",
       "customerName": "Judal Mukeshbhai Laxmanbhai",
       "date": "2025-08-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26712,8 +26576,8 @@
       "note": "Customer settled previous balance of ₹2,500 and was cleared in Customer Credit List-20250831"
     },
     {
-      "id": "407_2025_08_drop",
-      "customerId": "407",
+      "id": "405_2025_08_drop",
+      "customerId": "405",
       "customerName": "Thakor Hemchandbhai Khodla",
       "date": "2025-08-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26796,8 +26660,8 @@
       "note": "Payment received in Customer Credit List-20250930"
     },
     {
-      "id": "493_2025_09_drop",
-      "customerId": "493",
+      "id": "484_2025_09_drop",
+      "customerId": "484",
       "customerName": "Bhutatiday Babubhai Kanjibhai",
       "date": "2025-09-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26808,8 +26672,8 @@
       "note": "Customer settled previous balance of ₹12,645 and was cleared in Customer Credit List-20250930"
     },
     {
-      "id": "508_2025_09_drop",
-      "customerId": "508",
+      "id": "498_2025_09_drop",
+      "customerId": "498",
       "customerName": "Boka Jayeshbhai Bhikhabhai",
       "date": "2025-09-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26820,8 +26684,8 @@
       "note": "Customer settled previous balance of ₹12,225 and was cleared in Customer Credit List-20250930"
     },
     {
-      "id": "488_2025_09_drop",
-      "customerId": "488",
+      "id": "479_2025_09_drop",
+      "customerId": "479",
       "customerName": "Boka Jivrambhai Parthibhai",
       "date": "2025-09-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26844,8 +26708,8 @@
       "note": "Customer settled previous balance of ₹1,000 and was cleared in Customer Credit List-20250930"
     },
     {
-      "id": "491_2025_09_drop",
-      "customerId": "491",
+      "id": "482_2025_09_drop",
+      "customerId": "482",
       "customerName": "Darbar Kanshing Samdhi",
       "date": "2025-09-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26856,8 +26720,8 @@
       "note": "Customer settled previous balance of ₹10,157 and was cleared in Customer Credit List-20250930"
     },
     {
-      "id": "494_2025_09_drop",
-      "customerId": "494",
+      "id": "485_2025_09_drop",
+      "customerId": "485",
       "customerName": "Dhudiya Sureshbhai Jeetabhai",
       "date": "2025-09-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26868,8 +26732,8 @@
       "note": "Customer settled previous balance of ₹12,015 and was cleared in Customer Credit List-20250930"
     },
     {
-      "id": "417_2025_09_drop",
-      "customerId": "417",
+      "id": "414_2025_09_drop",
+      "customerId": "414",
       "customerName": "Fof Laxmanbhai Ujabhai",
       "date": "2025-09-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26880,8 +26744,8 @@
       "note": "Customer settled previous balance of ₹8,840 and was cleared in Customer Credit List-20250930"
     },
     {
-      "id": "477_2025_09_drop",
-      "customerId": "477",
+      "id": "469_2025_09_drop",
+      "customerId": "469",
       "customerName": "Gabhala Kantibhai Jeevabhai",
       "date": "2025-09-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26892,8 +26756,8 @@
       "note": "Customer settled previous balance of ₹10,327 and was cleared in Customer Credit List-20250930"
     },
     {
-      "id": "490_2025_09_drop",
-      "customerId": "490",
+      "id": "481_2025_09_drop",
+      "customerId": "481",
       "customerName": "Gudalo Amaratbhai Cheharbhai",
       "date": "2025-09-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26904,8 +26768,8 @@
       "note": "Customer settled previous balance of ₹9,500 and was cleared in Customer Credit List-20250930"
     },
     {
-      "id": "489_2025_09_drop",
-      "customerId": "489",
+      "id": "480_2025_09_drop",
+      "customerId": "480",
       "customerName": "Gudol Amaratbhai Parathibhai",
       "date": "2025-09-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26916,8 +26780,8 @@
       "note": "Customer settled previous balance of ₹11,790 and was cleared in Customer Credit List-20250930"
     },
     {
-      "id": "500_2025_09_drop",
-      "customerId": "500",
+      "id": "490_2025_09_drop",
+      "customerId": "490",
       "customerName": "Judal Kamleshbhai Shomabhai",
       "date": "2025-09-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -26988,8 +26852,8 @@
       "note": "Customer settled previous balance of ₹35,698 and was cleared in Customer Credit List-20250930"
     },
     {
-      "id": "503_2025_09_drop",
-      "customerId": "503",
+      "id": "493_2025_09_drop",
+      "customerId": "493",
       "customerName": "Thakor Dhanrajbhai Dharpada",
       "date": "2025-09-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -27324,8 +27188,8 @@
       "note": "Payment received in Customer Credit List-20251031"
     },
     {
-      "id": "452_2025_10_exp_116",
-      "customerId": "452",
+      "id": "447_2025_10_exp_116",
+      "customerId": "447",
       "customerName": "Loh Raghubhai Poojabhai",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -27456,8 +27320,8 @@
       "note": "Payment received in Customer Credit List-20251031"
     },
     {
-      "id": "476_2025_10_drop",
-      "customerId": "476",
+      "id": "468_2025_10_drop",
+      "customerId": "468",
       "customerName": "Bera Dineshbhai Shavabhai",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -27492,8 +27356,8 @@
       "note": "Customer settled previous balance of ₹26,637 and was cleared in Customer Credit List-20251031"
     },
     {
-      "id": "411_2025_10_drop",
-      "customerId": "411",
+      "id": "408_2025_10_drop",
+      "customerId": "408",
       "customerName": "Boka Ramjibhai Jethabhai",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -27504,8 +27368,8 @@
       "note": "Customer settled previous balance of ₹4,350 and was cleared in Customer Credit List-20251031"
     },
     {
-      "id": "509_2025_10_drop",
-      "customerId": "509",
+      "id": "499_2025_10_drop",
+      "customerId": "499",
       "customerName": "Darbar Gokalsingh Samdhi",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -27564,8 +27428,8 @@
       "note": "Customer settled previous balance of ₹1,371 and was cleared in Customer Credit List-20251031"
     },
     {
-      "id": "431_2025_10_drop",
-      "customerId": "431",
+      "id": "428_2025_10_drop",
+      "customerId": "428",
       "customerName": "Judal Kesarbhai Narshibhai",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -27600,20 +27464,8 @@
       "note": "Customer settled previous balance of ₹12,682 and was cleared in Customer Credit List-20251031"
     },
     {
-      "id": "446_2025_10_drop",
-      "customerId": "446",
-      "customerName": "Juva Karshanbhai",
-      "date": "2025-10-15T12:00:00.000Z",
-      "type": "PAYMENT",
-      "amount": 7735,
-      "paymentAmount": 7735,
-      "cashPaid": 7735,
-      "remainingDue": 0,
-      "note": "Customer settled previous balance of ₹7,735 and was cleared in Customer Credit List-20251031"
-    },
-    {
-      "id": "517_2025_10_drop",
-      "customerId": "517",
+      "id": "506_2025_10_drop",
+      "customerId": "506",
       "customerName": "Kakavadiya Maheshbhai Romjibhai",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -27648,9 +27500,9 @@
       "note": "Customer settled previous balance of ₹10,285 and was cleared in Customer Credit List-20251031"
     },
     {
-      "id": "460_2025_10_drop",
-      "customerId": "460",
-      "customerName": "Kubhasan Shokatbhai 9898775295",
+      "id": "232_2025_10_drop",
+      "customerId": "232",
+      "customerName": "Kubhasan Shokatbhai",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "PAYMENT",
       "amount": 3570,
@@ -27732,8 +27584,8 @@
       "note": "Customer settled previous balance of ₹13,335 and was cleared in Customer Credit List-20251031"
     },
     {
-      "id": "434_2025_10_drop",
-      "customerId": "434",
+      "id": "431_2025_10_drop",
+      "customerId": "431",
       "customerName": "Ratada Megharajbhai Badarpura",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -27744,8 +27596,8 @@
       "note": "Customer settled previous balance of ₹1,000 and was cleared in Customer Credit List-20251031"
     },
     {
-      "id": "400_2025_10_drop",
-      "customerId": "400",
+      "id": "398_2025_10_drop",
+      "customerId": "398",
       "customerName": "Thakor Bharatji Samdhi",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -27756,8 +27608,8 @@
       "note": "Customer settled previous balance of ₹1,730 and was cleared in Customer Credit List-20251031"
     },
     {
-      "id": "564_2025_10_drop",
-      "customerId": "564",
+      "id": "550_2025_10_drop",
+      "customerId": "550",
       "customerName": "Thakor Bhoobhaji Hooraji",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -27780,8 +27632,8 @@
       "note": "Customer settled previous balance of ₹8,787 and was cleared in Customer Credit List-20251031"
     },
     {
-      "id": "565_2025_10_drop",
-      "customerId": "565",
+      "id": "551_2025_10_drop",
+      "customerId": "551",
       "customerName": "Thakor Devchandji Dharpada",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -27792,8 +27644,8 @@
       "note": "Customer settled previous balance of ₹12,730 and was cleared in Customer Credit List-20251031"
     },
     {
-      "id": "566_2025_10_drop",
-      "customerId": "566",
+      "id": "552_2025_10_drop",
+      "customerId": "552",
       "customerName": "Thakor Dheeraji Dharpada",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -27804,8 +27656,8 @@
       "note": "Customer settled previous balance of ₹12,777 and was cleared in Customer Credit List-20251031"
     },
     {
-      "id": "401_2025_10_drop",
-      "customerId": "401",
+      "id": "399_2025_10_drop",
+      "customerId": "399",
       "customerName": "Thakor Manchaji Samdhi",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -27852,8 +27704,8 @@
       "note": "Customer settled previous balance of ₹14,655 and was cleared in Customer Credit List-20251031"
     },
     {
-      "id": "514_2025_10_drop",
-      "customerId": "514",
+      "id": "504_2025_10_drop",
+      "customerId": "504",
       "customerName": "Valagot Jyantibhai Vedancha",
       "date": "2025-10-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -27972,8 +27824,8 @@
       "note": "Payment received in Customer Credit List-20251130"
     },
     {
-      "id": "548_2025_11_exp_160",
-      "customerId": "548",
+      "id": "537_2025_11_exp_160",
+      "customerId": "537",
       "customerName": "Valagot Kantibhai Shomabhai",
       "date": "2025-11-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -28008,8 +27860,8 @@
       "note": "Customer settled previous balance of ₹11,732 and was cleared in Customer Credit List-20251130"
     },
     {
-      "id": "488_2025_11_drop",
-      "customerId": "488",
+      "id": "479_2025_11_drop",
+      "customerId": "479",
       "customerName": "Boka Jivrambhai Parthibhai",
       "date": "2025-11-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -28032,8 +27884,8 @@
       "note": "Customer settled previous balance of ₹5,319 and was cleared in Customer Credit List-20251130"
     },
     {
-      "id": "544_2025_11_drop",
-      "customerId": "544",
+      "id": "533_2025_11_drop",
+      "customerId": "533",
       "customerName": "Darbar Gokalshing Samdhi",
       "date": "2025-11-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -28044,8 +27896,8 @@
       "note": "Customer settled previous balance of ₹13,350 and was cleared in Customer Credit List-20251130"
     },
     {
-      "id": "494_2025_11_drop",
-      "customerId": "494",
+      "id": "485_2025_11_drop",
+      "customerId": "485",
       "customerName": "Dhudiya Sureshbhai Jeetabhai",
       "date": "2025-11-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -28068,8 +27920,8 @@
       "note": "Customer settled previous balance of ₹601 and was cleared in Customer Credit List-20251130"
     },
     {
-      "id": "507_2025_11_drop",
-      "customerId": "507",
+      "id": "497_2025_11_drop",
+      "customerId": "497",
       "customerName": "Judal Heenaben Dineshbhai",
       "date": "2025-11-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -28092,8 +27944,8 @@
       "note": "Customer settled previous balance of ₹15,895 and was cleared in Customer Credit List-20251130"
     },
     {
-      "id": "513_2025_11_drop",
-      "customerId": "513",
+      "id": "503_2025_11_drop",
+      "customerId": "503",
       "customerName": "Judal Kalpeshbhai Virshangbhai",
       "date": "2025-11-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -28104,8 +27956,8 @@
       "note": "Customer settled previous balance of ₹12,920 and was cleared in Customer Credit List-20251130"
     },
     {
-      "id": "500_2025_11_drop",
-      "customerId": "500",
+      "id": "490_2025_11_drop",
+      "customerId": "490",
       "customerName": "Judal Kamleshbhai Shomabhai",
       "date": "2025-11-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -28128,8 +27980,8 @@
       "note": "Customer settled previous balance of ₹50,938 and was cleared in Customer Credit List-20251130"
     },
     {
-      "id": "530_2025_11_drop",
-      "customerId": "530",
+      "id": "519_2025_11_drop",
+      "customerId": "519",
       "customerName": "Judal Mehulbhai Sadabhai",
       "date": "2025-11-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -28176,8 +28028,8 @@
       "note": "Customer settled previous balance of ₹5,600 and was cleared in Customer Credit List-20251130"
     },
     {
-      "id": "547_2025_11_drop",
-      "customerId": "547",
+      "id": "536_2025_11_drop",
+      "customerId": "536",
       "customerName": "Karshan Bhikhabhai Godadbhai",
       "date": "2025-11-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -28188,8 +28040,8 @@
       "note": "Customer settled previous balance of ₹13,683 and was cleared in Customer Credit List-20251130"
     },
     {
-      "id": "452_2025_11_drop",
-      "customerId": "452",
+      "id": "447_2025_11_drop",
+      "customerId": "447",
       "customerName": "Loh Raghubhai Poojabhai",
       "date": "2025-11-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -28200,8 +28052,8 @@
       "note": "Customer settled previous balance of ₹8,572 and was cleared in Customer Credit List-20251130"
     },
     {
-      "id": "537_2025_11_drop",
-      "customerId": "537",
+      "id": "526_2025_11_drop",
+      "customerId": "526",
       "customerName": "Loh Santubhai Veerabhai",
       "date": "2025-11-15T12:00:00.000Z",
       "type": "PAYMENT",
@@ -28224,8 +28076,8 @@
       "note": "Customer settled previous balance of ₹17,007 and was cleared in Customer Credit List-20251130"
     },
     {
-      "id": "422_2025_11_drop",
-      "customerId": "422",
+      "id": "419_2025_11_drop",
+      "customerId": "419",
       "customerName": "Palani Bharatbhai Ratnabhai",
       "date": "2025-11-15T12:00:00.000Z",
       "type": "PAYMENT",
