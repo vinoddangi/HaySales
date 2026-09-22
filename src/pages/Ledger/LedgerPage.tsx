@@ -56,7 +56,9 @@ export const LedgerPage: React.FC = () => {
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
       const matchesDueFilter =
-        filterMode === 'all' || (c.outstandingAmount || 0) > 0;
+        filterMode === 'all' ||
+        (c.outstandingAmount || 0) > 0 ||
+        searchTerm.trim().length > 0;
       return matchesSearch && matchesDueFilter;
     })
     .sort((a, b) =>

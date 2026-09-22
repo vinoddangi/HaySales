@@ -1,5 +1,5 @@
 import { History, ReceiptCent, X } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { CustomerInfoBadge, Text } from '../../../components/common';
 import { Flex } from '../../../components/layout';
 import {
@@ -7,7 +7,11 @@ import {
   MonthlyRolloutStatus,
   Transaction,
 } from '../../../store/slices/customersApi';
-import { calculateCustomerBalance } from '../../../utils/formatters';
+import {
+  calculateCustomerBalance,
+  formatRupee,
+  formatWeight,
+} from '../../../utils/formatters';
 import { LedgerPaymentForm } from './LedgerPaymentForm';
 import { TransactionHistoryList } from './TransactionHistoryList';
 
@@ -39,6 +43,36 @@ export const LedgerDetailDrawer: React.FC<LedgerDetailDrawerProps> = ({
   onPay,
 }) => {
   const [activeTab, setActiveTab] = useState<'history' | 'payment'>('history');
+
+  const { totalBilledAmount, totalPayments, totalWeightKg, avgRate } =
+    useMemo(() => {
+      let salesAmt = 0;
+      let servicesAmt = 0;
+      let paymentsAmt = 0;
+      let weight = 0;
+
+      transactions.forEach((t) => {
+        if (t.type === 'SALE') {
+          salesAmt += t.amount || 0;
+          weight += t.weightKg || 0;
+          paymentsAmt += t.cashPaid || 0;
+        } else if (t.type === 'SERVICE') {
+          servicesAmt += t.amount || 0;
+          paymentsAmt += t.cashPaid || 0;
+        } else if (t.type === 'PAYMENT') {
+          paymentsAmt += t.amount || t.cashPaid || 0;
+        }
+      });
+
+      const totalBilled = salesAmt + servicesAmt;
+      const avg = weight > 0 ? salesAmt / weight : 0;
+      return {
+        totalBilledAmount: totalBilled,
+        totalPayments: paymentsAmt,
+        totalWeightKg: weight,
+        avgRate: avg,
+      };
+    }, [transactions]);
 
   if (!isOpen || !customer) return null;
 
@@ -104,11 +138,50 @@ export const LedgerDetailDrawer: React.FC<LedgerDetailDrawerProps> = ({
         </div>
 
         {/* Customer Info Card */}
-        <div className="px-5 pb-2 pt-3">
+        <div className="px-5 pb-1 pt-3">
           <CustomerInfoBadge
             customer={customer}
             outstandingDue={effectiveOutstandingDue}
           />
+        </div>
+
+        {/* Customer Transaction Totals Metrics */}
+        <div className="grid grid-cols-4 gap-2 px-5 py-2">
+          <div className="rounded-xl border border-m3-outline-variant/40 bg-m3-surface-container-low p-2 text-center">
+            <span className="block text-[10px] font-semibold text-m3-on-surface-variant">
+              Total Sales
+            </span>
+            <span className="block truncate text-xs font-bold text-blue-600 dark:text-blue-400">
+              {formatRupee(totalBilledAmount)}
+            </span>
+          </div>
+
+          <div className="rounded-xl border border-m3-outline-variant/40 bg-m3-surface-container-low p-2 text-center">
+            <span className="block text-[10px] font-semibold text-m3-on-surface-variant">
+              Total Paid
+            </span>
+            <span className="block truncate text-xs font-bold text-emerald-600 dark:text-emerald-400">
+              {formatRupee(totalPayments)}
+            </span>
+          </div>
+
+          <div className="rounded-xl border border-m3-outline-variant/40 bg-m3-surface-container-low p-2 text-center">
+            <span className="block text-[10px] font-semibold text-m3-on-surface-variant">
+              Quantity
+            </span>
+            <span className="block truncate text-xs font-bold text-amber-600 dark:text-amber-400">
+              {formatWeight(totalWeightKg)}
+            </span>
+          </div>
+
+          <div className="rounded-xl border border-m3-outline-variant/40 bg-m3-surface-container-low p-2 text-center">
+            <span className="block text-[10px] font-semibold text-m3-on-surface-variant">
+              Avg Rate
+            </span>
+            <span className="block truncate text-xs font-bold text-purple-600 dark:text-purple-400">
+              {avgRate > 0 ? `₹${avgRate.toFixed(2)}/kg` : '—'}
+            </span>
+          </div>
         </div>
 
         {/* Tab Navigation: Full History vs Record Payment */}

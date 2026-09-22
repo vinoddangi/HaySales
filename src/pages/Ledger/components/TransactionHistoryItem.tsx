@@ -19,15 +19,9 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
   const data = sanitizeTransactionDisplay(tx);
 
   const isFullCashSale =
-    !data.isPayment &&
-    !data.isOpening &&
-    data.remainingDue === 0 &&
-    data.cashPaid > 0;
+    data.isSale && data.remainingDue === 0 && data.cashPaid > 0;
   const isPartialCash =
-    !data.isPayment &&
-    !data.isOpening &&
-    data.cashPaid > 0 &&
-    data.remainingDue > 0;
+    data.isSale && data.cashPaid > 0 && data.remainingDue > 0;
 
   const title = data.isPayment
     ? 'Payment Received'
@@ -60,8 +54,7 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
           !isCleared && !isFullCashSale && data.isPayment,
         'border-amber-500/30 bg-amber-500/[0.04]':
           !isCleared && !isFullCashSale && data.isOpening,
-        'border-sky-500/30 bg-sky-500/[0.05]':
-          !isCleared && !isFullCashSale && data.isService,
+        'border-sky-500/40 bg-sky-500/[0.08]': !isCleared && data.isService,
         'border-m3-outline-variant bg-m3-surface-container-low':
           !isCleared &&
           !isFullCashSale &&
@@ -82,6 +75,11 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
               Cash In
             </Badge>
           )}
+          {data.isService && (
+            <Badge sentiment="service" size="sm">
+              🔧 Service Income
+            </Badge>
+          )}
           {isFullCashSale && (
             <Badge sentiment="positive" size="sm">
               💵 100% Cash
@@ -98,6 +96,7 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
             </Badge>
           )}
           {!data.isPayment &&
+            !data.isService &&
             !isFullCashSale &&
             !data.isOpening &&
             !isPartialCash && (
