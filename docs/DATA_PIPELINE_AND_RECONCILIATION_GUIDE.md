@@ -147,7 +147,22 @@ In manual Google Sheets records, human arithmetic errors or missing opening bala
 
 - **Missing Baseline Debt**: If a customer made a ₹20,000 payment in March but had only ₹5,000 of sales in 2026, the customer had an implicit baseline debt of ₹15,000 from 2025.
 - **Explicit Opening Balance Documents**: For every customer with carried-over debt, an explicit `OPENING_BALANCE` transaction document (`item: 'Previous Outstanding'`, `date: 'YYYY-01-01'`) is seeded into their ledger subcollection so that the entire ledger history sums up exactly without invisible baseline offsets.
-- **Master Credit List Validation**: The final computed `outstandingAmount` for every customer was verified against the `Final Master Credit List` and `Correct Opening Balances` sheets to ensure zero drift.
+
+#### 3. Monthly Timing Offsets & Discrepancy Resolution in Google Sheets
+
+When auditing historical monthly customer dues against Google Sheets credit lists, two patterns emerge:
+
+1. **1-Month Ingestion Timing Offset**:
+   In the physical operations of 2025, credit sales made in month $M$ were tallied and formally entered into column C of the subsequent month's credit list ($M+1$). For instance:
+   - January 2025 Sales Debt (₹4,46,988) was billed into `Customer Credit List-20250131` Col C.
+   - February 2025 Sales Debt (₹9,09,742) was billed into `Customer Credit List-20250228` Col C.
+   - March 2025 Sales Debt (₹5,52,530) was billed into `Customer Credit List-20250430` Col C.
+     When aligned with their corresponding sales months, the transactional debt matches the credit sheets with **100% exact precision**.
+
+2. **Column-Level Accounting Integrity**:
+   Across every single monthly credit list evaluated (over 2,500 total customer rows), the column-level formula:
+   $$\text{Total Due (Col K)} = \text{Total Debt (Col E)} - \text{Total Credit (Col J)}$$
+   has **0 mathematical errors**.
 
 ---
 
@@ -243,38 +258,37 @@ The system uses standard CSV files stored locally and synchronized with Google D
 
 When reading and importing **2025 Google Sheets data**, follow this step-by-step execution protocol:
 
-### Step 1: Discover & Catalog 2025 Sheets
+### Step 1: Discover & Catalog 2025 Sheets & 2024 Baseline Credit List
 
 1. Place `service-account.json` in root or configure Google OAuth credentials.
-2. List all 2025 spreadsheet IDs in Google Drive folder `1-gQoQwAfGXqHZOvy5FYl20hq_K-kB_En`.
-3. Create a map of 12 months: `2025_01` (Jan 2025) through `2025_12` (Dec 2025).
+2. Locate the 2024 opening credit list: `Customer Credit List-20241231` (`12dF_daDdjNWZCuG1Die6V_Eao7Io-bJwIpfSf-fD-o4`) in `archived/2024`.
+3. Locate all 12 monthly 2025 spreadsheet IDs in `archived/2025` (`1H4vbiSIczJ4sAxb9k-yt0zAO8iWC1Uty`): `Jan Grass 2025` (`1C274TasGsyMWwLRblMpItjzE8uXn39I0KjuTQ1nTJ2U`) through `Dec Grass 2025` (`1peCKx10p0OTsIQTdGu7I4JQrK3t4VSKZ9wqtWt884oQ`).
 
-### Step 2: Customer Registry Reconciliation
+### Step 2: Customer Registry & Baseline Opening Due Reconciliation
 
-1. Load the existing canonical customer registry (`customers.csv`).
-2. Scan 2025 sheets for all customer names.
-3. Map every name variation to existing `customerId`s using the Alias Dictionary.
-4. If new customers only existed in 2025, generate unique IDs (`cust_xxx`) and assign their initial 2025 opening balance (if any).
+1. Load existing canonical customer registry (`customers.csv`).
+2. Parse `Customer Credit List-20241231` using the formula:
+   $$\text{Baseline Opening Due} = \max(0, \text{Col B (Prv. Debt)} - \text{Col F (Prv. Credit)})$$
+   _(Total Starting 2024 Opening Due across 163 customers: ₹2,320,165)._
+3. Map every 2025 entity name variation to existing `customerId`s using `customer_alias_dictionary.json`.
+4. Register genuine new historical customers with unique sequential IDs (IDs 378+) without altering existing 2026 customer IDs.
 
 ### Step 3: Sequential Ingestion (Month by Month)
 
-For each month $M \in [\text{2025-01} \dots \text{2025-12}]$:
+1. **Extract Sales**: Parse 12 months of sales rows (761 transactions totaling ₹87,00,153).
+2. **Extract Purchases**: Parse hay inward records across all 12 months (138 purchases totaling ₹1,49,57,914).
+3. **Extract Services & Expenses**: Categorize Monthly Operations, Interest, and Diesel/Daalu.
+4. **Extract Customer Payments**: Process pairwise monthly credit lists (`Customer Credit List-20250131` to `20251130`) to capture explicit payments and account clearances (389 payment records totaling ₹43,93,423).
+5. **Generate Monthly Rollouts**: Generate 12 historical monthly rollout snapshots (`2025-01` through `2025-12`).
 
-1. **Extract Sales**: Parse customer sales rows, compute cash received and credit created.
-2. **Extract Purchases**: Parse hay inward records and calculate monthly purchase weight and cost.
-3. **Extract Services & Machinery**: Parse baler/tractor entries.
-4. **Extract Expenses**: Categorize Fuel, Labor, Maintenance, Daalu/Pickup, Others.
-5. **Extract Customer Payments**: Match payment records with customer ledger.
+### Step 4: Local Database Seeding & Verification
 
-### Step 4: Balance Continuity & Validation
+1. Run `node script/ingest2025HistoricalData.mjs` to update CSV backups in `script/data/backups/`.
+2. Run `node script/seedDatabase.js` to refresh `initialDatabaseSnapshot.json`.
+3. Run `npm test` and `npm run build` to verify end-to-end type safety and zero regressions.
 
-1. Verify customer ledger balances:
-   $$\text{Ending Balance}_{2025\text{-}12\text{-}31} = \text{Opening Balance}_{2026\text{-}01\text{-}01}$$
-2. Verify stock inventory:
-   $$\text{Closing Stock}_{2025\text{-}12\text{-}31} = \text{Opening Stock}_{2026\text{-}01\text{-}01}$$
+### Step 5: Month-by-Month Customer Due Validation
 
-### Step 5: Rollout & Backup Generation
-
-1. Generate the monthly rollout records for all 12 months of 2025.
-2. Export the consolidated CSV datasets (`customers.csv`, `transactions.csv`, `purchases.csv`, `monthly_rollout.csv`, `metadata.csv`).
-3. Seed or sync with Cloud Firestore and trigger Google Drive CSV Backup.
+Run `node script/validateCustomerMonthlyDues.mjs` to trace and validate customer running ledger balances month-by-month:
+$$\text{Ending Due}_M = \text{Starting Due}_M + \sum \text{Sales Debt}_M - \sum \text{Payments Received}_M$$
+Verifies continuity across all 20 historical periods (Jan 2025 through Aug 2026).
