@@ -1,4 +1,61 @@
 PurchaseID,Date,Category,Item,WeightKg,PurchaseRate,Amount,VendorName,Notes
+purchase_2024_04_1,2024-03-31T18:30:00.000Z,Purchase,Gavatri,6700,8,53600,Gavatri,Imported from April 2024 Purchase Sheet
+purchase_2024_04_2,2024-03-31T18:30:00.000Z,Purchase,Gavatri,8300,7.29,60500,Gavatri,Imported from April 2024 Purchase Sheet
+purchase_2024_04_3,2024-04-06T18:30:00.000Z,Purchase,Gavatri,6300,8,50400,Gavatri,Imported from April 2024 Purchase Sheet
+purchase_2024_04_4,2024-04-09T18:30:00.000Z,Purchase,Gavatri,7700,8,61600,Gavatri,Imported from April 2024 Purchase Sheet
+purchase_2024_04_5,2024-04-14T18:30:00.000Z,Purchase,Gavatri,6500,8,52000,Gavatri,Imported from April 2024 Purchase Sheet
+purchase_2024_04_6,2024-04-15T18:30:00.000Z,Purchase,Gavatri,7800,8,62400,Gavatri,Imported from April 2024 Purchase Sheet
+purchase_2024_04_7,2024-04-23T18:30:00.000Z,Purchase,Gavatri,7500,7.7,57750,Gavatri,Imported from April 2024 Purchase Sheet
+purchase_2024_04_8,2024-04-26T18:30:00.000Z,Purchase,Tuar,7000,8,56000,Tuar,Imported from April 2024 Purchase Sheet
+purchase_2024_04_9,2024-04-27T18:30:00.000Z,Purchase,Tuar,7400,8,59200,Tuar,Imported from April 2024 Purchase Sheet
+purchase_2024_05_1,2024-05-03T18:30:00.000Z,Purchase,Gavatri,10300,8.41,86600,Gavatri,Imported from May 2024 Purchase Sheet
+purchase_2024_05_2,2024-05-03T18:30:00.000Z,Purchase,Gavatri,7600,8.59,65300,Gavatri,Imported from May 2024 Purchase Sheet
+purchase_2024_05_3,2024-05-05T18:30:00.000Z,Purchase,Gavatri,6200,7.74,48000,Gavatri,Imported from May 2024 Purchase Sheet
+purchase_2024_05_4,2024-05-13T18:30:00.000Z,Purchase,Tuvar,6800,8.5,57800,Tuvar,Imported from May 2024 Purchase Sheet
+purchase_2024_05_5,2024-05-14T18:30:00.000Z,Purchase,Gavatri,8700,8.62,75000,Gavatri,Imported from May 2024 Purchase Sheet
+purchase_2024_05_6,2024-05-17T18:30:00.000Z,Purchase,Gavatri,9400,8.6,80800,Gavatri,Imported from May 2024 Purchase Sheet
+purchase_2024_05_7,2024-05-23T18:30:00.000Z,Purchase,Tuvar,7400,8,59200,Tuvar,Imported from May 2024 Purchase Sheet
+purchase_2024_05_8,2024-05-28T18:30:00.000Z,Purchase,Chana,8600,9,77400,Chana,Imported from May 2024 Purchase Sheet
+purchase_2024_05_9,2024-05-28T18:30:00.000Z,Purchase,B. Kutty,8300,9.04,75000,B. Kutty,Imported from May 2024 Purchase Sheet
+purchase_2024_05_10,2024-05-30T18:30:00.000Z,Purchase,B. Kutty,9400,9,84600,B. Kutty,Imported from May 2024 Purchase Sheet
+purchase_2024_05_11,2024-05-30T18:30:00.000Z,Purchase,Chana,6800,9.06,61600,Chana,Imported from May 2024 Purchase Sheet
+purchase_2024_06_1,2024-06-04T18:30:00.000Z,Purchase,Gavatri,10600,9,95400,Gavatri,Imported from June 2024 Purchase Sheet
+purchase_2024_06_2,2024-06-04T18:30:00.000Z,Purchase,B. Kutty,8700,9,78300,B. Kutty,Imported from June 2024 Purchase Sheet
+purchase_2024_06_3,2024-06-05T18:30:00.000Z,Purchase,Magfali,6600,8.35,55100,Magfali,Imported from June 2024 Purchase Sheet
+purchase_2024_06_4,2024-06-06T18:30:00.000Z,Purchase,B. Kutty,8400,9,75600,B. Kutty,Imported from June 2024 Purchase Sheet
+purchase_2024_06_5,2024-06-08T18:30:00.000Z,Purchase,Gavatri,210,8.81,1850,Gavatri,Imported from June 2024 Purchase Sheet
+purchase_2024_06_6,2024-06-08T18:30:00.000Z,Purchase,B. Kutty,9500,8.5,80750,B. Kutty,Imported from June 2024 Purchase Sheet
+purchase_2024_06_7,2024-06-12T18:30:00.000Z,Purchase,B. Kutty,8600,8.65,74400,B. Kutty,Imported from June 2024 Purchase Sheet
+purchase_2024_06_8,2024-06-14T18:30:00.000Z,Purchase,B. Kutty,8600,8.59,73900,B. Kutty,Imported from June 2024 Purchase Sheet
+purchase_2024_06_9,2024-06-21T18:30:00.000Z,Purchase,B. Kutty,7200,9.25,66600,B. Kutty,Imported from June 2024 Purchase Sheet
+purchase_2024_06_10,2024-06-22T18:30:00.000Z,Purchase,B. Kutty,7900,9.49,75000,B. Kutty,Imported from June 2024 Purchase Sheet
+purchase_2024_06_11,2024-06-27T18:30:00.000Z,Purchase,B. Kutty,7200,9.29,66900,B. Kutty,Imported from June 2024 Purchase Sheet
+purchase_2024_07_1,2024-07-02T18:30:00.000Z,Purchase,Chana,8400,9.35,78500,Chana,Imported from July 2024 Purchase Sheet
+purchase_2024_07_2,2024-07-15T18:30:00.000Z,Purchase,Chana,9100,10,91000,Chana,Imported from July 2024 Purchase Sheet
+purchase_2024_07_3,2024-07-24T18:30:00.000Z,Purchase,Chana,9000,9.7,87300,Chana,Imported from July 2024 Purchase Sheet
+purchase_2024_08_1,2024-08-09T18:30:00.000Z,Purchase,Chana,6300,10,63000,Chana,Imported from Aug 2024 Purchase Sheet
+purchase_2024_08_2,2024-08-11T18:30:00.000Z,Purchase,Chana,6200,9.89,61300,Chana,Imported from Aug 2024 Purchase Sheet
+purchase_2024_08_3,2024-08-18T18:30:00.000Z,Purchase,Chana,9900,10,99000,Chana,Imported from Aug 2024 Purchase Sheet
+purchase_2024_08_4,2024-08-22T18:30:00.000Z,Purchase,Chana,11200,10.01,112100,Chana,Imported from Aug 2024 Purchase Sheet
+purchase_2024_09_1,2024-09-10T18:30:00.000Z,Purchase,Chana,9560,10.26,98100,Chana,Imported from Sep 2024 Purchase Sheet
+purchase_2024_09_2,2024-09-11T18:30:00.000Z,Purchase,Chana,10300,10.25,105600,Chana,Imported from Sep 2024 Purchase Sheet
+purchase_2024_09_3,2024-09-12T18:30:00.000Z,Purchase,Hutalu,10500,8.5,89300,Hutalu,Imported from Sep 2024 Purchase Sheet
+purchase_2024_09_4,2024-09-14T18:30:00.000Z,Purchase,Chana,10600,10.6,112400,Chana,Imported from Sep 2024 Purchase Sheet
+purchase_2024_09_5,2024-09-15T18:30:00.000Z,Purchase,Chana,415,9.4,3900,Chana,Imported from Sep 2024 Purchase Sheet
+purchase_2024_09_6,2024-09-17T18:30:00.000Z,Purchase,Chana,10800,10,108000,Chana,Imported from Sep 2024 Purchase Sheet
+purchase_2024_09_7,2024-09-18T18:30:00.000Z,Purchase,Chana,9040,10.61,95900,Chana,Imported from Sep 2024 Purchase Sheet
+purchase_2024_09_8,2024-09-28T18:30:00.000Z,Purchase,Chana,11000,9.46,104100,Chana,Imported from Sep 2024 Purchase Sheet
+purchase_2024_09_9,2024-09-29T18:30:00.000Z,Purchase,Chana,10700,11.01,117800,Chana,Imported from Sep 2024 Purchase Sheet
+purchase_2024_10_1,2024-09-30T18:30:00.000Z,Purchase,Chana,11600,8.5,98600,Chana,Imported from Oct 2024 Purchase Sheet
+purchase_2024_11_1,2024-10-31T18:30:00.000Z,Purchase,Chana,1,1,1,Chana,Imported from Nov 2024 Purchase Sheet
+purchase_2024_12_1,2024-12-12T18:30:00.000Z,Purchase,Gavatri,13800,8.8,121400,Gavatri,Imported from Dec 2024 Purchase Sheet
+purchase_2024_12_2,2024-12-13T18:30:00.000Z,Purchase,Gavatri,11900,8.71,103600,Gavatri,Imported from Dec 2024 Purchase Sheet
+purchase_2024_12_3,2024-12-13T18:30:00.000Z,Purchase,B Kutty,9400,10.74,101000,B Kutty,Imported from Dec 2024 Purchase Sheet
+purchase_2024_12_4,2024-12-23T18:30:00.000Z,Purchase,Gavatri,11700,8.21,96000,Gavatri,Imported from Dec 2024 Purchase Sheet
+purchase_2024_12_5,2024-12-26T18:30:00.000Z,Purchase,Gavatri,1795,8.83,15850,Gavatri,Imported from Dec 2024 Purchase Sheet
+purchase_2024_12_6,2024-12-28T18:30:00.000Z,Purchase,Gavatri,11900,8.19,97500,Gavatri,Imported from Dec 2024 Purchase Sheet
+purchase_2024_12_7,2024-12-29T18:30:00.000Z,Purchase,B Kutty,9700,9.7,94100,B Kutty,Imported from Dec 2024 Purchase Sheet
+purchase_2024_12_8,2024-12-30T18:30:00.000Z,Purchase,Gavatri,12800,8.2,105000,Gavatri,Imported from Dec 2024 Purchase Sheet
 purchase_2025_01_1,2025-01-15T12:00:00.000Z,Purchase,Hay,8300,10,83000,5 Jan 2025,Imported from Jan 2025 Purchase Sheet
 purchase_2025_01_2,2025-01-15T12:00:00.000Z,Purchase,Hay,14200,8.31,118000,6 Jan 2025,Imported from Jan 2025 Purchase Sheet
 purchase_2025_01_3,2025-01-15T12:00:00.000Z,Purchase,Hay,5065,8.98,45500,21 Jan 2025,Imported from Jan 2025 Purchase Sheet

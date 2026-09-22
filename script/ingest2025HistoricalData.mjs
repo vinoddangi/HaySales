@@ -925,8 +925,7 @@ export async function runIngestion() {
   );
 
   // E. Expenses CSV
-  const expensesCsvHeader =
-    'ExpenseID,Date,ExpenseCategory,Item,Amount,Notes';
+  const expensesCsvHeader = 'ExpenseID,Date,ExpenseCategory,Item,Amount,Notes';
   const rawExpenses2026 = parseCsv(
     readFileSync(join(sourceBaseDir, 'expenses.csv'), 'utf8'),
   );

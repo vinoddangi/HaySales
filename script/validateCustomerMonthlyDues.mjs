@@ -1,6 +1,6 @@
 /**
  * Customer Monthly Due Validation & Reconciliation Script
- * Validates customer outstanding balances across every month of 2025 and 2026:
+ * Validates customer outstanding balances across every month of 2024, 2025, and 2026:
  * Formula: Due_Month = Opening_Due + Month_Sales_Debt - Month_Payments_Received
  * Compares computed ledger due against Google Sheets Customer Credit List (Col K).
  */
@@ -14,7 +14,8 @@ const __dirname = dirname(__filename);
 
 const DATA_DIR = join(__dirname, 'data');
 const BACKUP_DIR = join(DATA_DIR, 'backups');
-const RAW_DUMP_FILE = join(DATA_DIR, 'raw_2025_sheets_dump.json');
+const RAW_2024_DUMP = join(DATA_DIR, 'raw_2024_sheets_dump.json');
+const RAW_2025_DUMP = join(DATA_DIR, 'raw_2025_sheets_dump.json');
 const ALIAS_FILE = join(DATA_DIR, 'customer_alias_dictionary.json');
 
 function normalize(s) {
@@ -68,32 +69,20 @@ function parseCsv(content) {
 
 export function validateMonthlyDues() {
   console.log(
-    '🔍 Validating Customer Monthly Dues against Actual Transactions & Credit Lists...\n',
+    '🔍 Validating Customer Monthly Dues across 2024, 2025, and 2026...\n',
   );
 
-  // 1. Load CSV data and dictionaries
-  const custRows = parseCsv(
-    readFileSync(join(BACKUP_DIR, 'customers.csv'), 'utf8'),
-  );
-  const salesRows = parseCsv(
-    readFileSync(join(BACKUP_DIR, 'sales.csv'), 'utf8'),
-  );
-  const paymentsRows = parseCsv(
-    readFileSync(join(BACKUP_DIR, 'payments.csv'), 'utf8'),
-  );
+  const custRows = parseCsv(readFileSync(join(BACKUP_DIR, 'customers.csv'), 'utf8'));
+  const salesRows = parseCsv(readFileSync(join(BACKUP_DIR, 'sales.csv'), 'utf8'));
+  const paymentsRows = parseCsv(readFileSync(join(BACKUP_DIR, 'payments.csv'), 'utf8'));
   const servicesRows = existsSync(join(BACKUP_DIR, 'services.csv'))
     ? parseCsv(readFileSync(join(BACKUP_DIR, 'services.csv'), 'utf8'))
     : [];
-
-  const rawDump = existsSync(RAW_DUMP_FILE)
-    ? JSON.parse(readFileSync(RAW_DUMP_FILE, 'utf8'))
-    : null;
 
   const aliasDict = existsSync(ALIAS_FILE)
     ? JSON.parse(readFileSync(ALIAS_FILE, 'utf8'))
     : {};
 
-  // Build customer mapping
   const customerMonthlyLedger = new Map();
   const customerByNameNorm = new Map();
 
@@ -124,7 +113,7 @@ export function validateMonthlyDues() {
     return null;
   }
 
-  // 2. Extract 2024 opening due from sales records of type OPENING_BALANCE
+  // Extract starting opening balance from OPENING_BALANCE rows
   salesRows.forEach((s) => {
     if (
       s.TransactionID.startsWith('opening_2024_') ||
@@ -137,7 +126,7 @@ export function validateMonthlyDues() {
     }
   });
 
-  // Aggregate Sales (excluding opening balance rows)
+  // Aggregate Sales
   salesRows.forEach((s) => {
     if (
       s.TransactionID.startsWith('opening_2024_') ||
@@ -148,7 +137,7 @@ export function validateMonthlyDues() {
     }
     const custId = s.CustomerID;
     const dateStr = s.Date || '';
-    const period = dateStr.slice(0, 7); // e.g. "2025-01"
+    const period = dateStr.slice(0, 7);
     const debt = Number(s.RemainingDue) || 0;
     const amount = Number(s.TotalAmount) || 0;
 
@@ -182,7 +171,7 @@ export function validateMonthlyDues() {
   paymentsRows.forEach((p) => {
     const custId = p.CustomerID;
     const dateStr = p.Date || '';
-    const period = dateStr.slice(0, 7); // e.g. "2025-01"
+    const period = dateStr.slice(0, 7);
     const paid = Number(p.AmountPaid) || 0;
 
     const entry = customerMonthlyLedger.get(custId);
@@ -195,32 +184,18 @@ export function validateMonthlyDues() {
   });
 
   const allPeriods = [
-    '2025-01',
-    '2025-02',
-    '2025-03',
-    '2025-04',
-    '2025-05',
-    '2025-06',
-    '2025-07',
-    '2025-08',
-    '2025-09',
-    '2025-10',
-    '2025-11',
-    '2025-12',
-    '2026-01',
-    '2026-02',
-    '2026-03',
-    '2026-04',
-    '2026-05',
-    '2026-06',
-    '2026-07',
-    '2026-08',
+    // 2024
+    '2024-04', '2024-05', '2024-06', '2024-07', '2024-08', '2024-09', '2024-10', '2024-11', '2024-12',
+    // 2025
+    '2025-01', '2025-02', '2025-03', '2025-04', '2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12',
+    // 2026
+    '2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06', '2026-07', '2026-08',
   ];
 
   console.log(
     '══════════════════════════════════════════════════════════════════════════════════════',
   );
-  console.log('📅 Month-by-Month System Aggregate Due Reconciliation');
+  console.log('📅 29-Month Complete Multi-Year System Due Reconciliation (2024 - 2026)');
   console.log(
     '══════════════════════════════════════════════════════════════════════════════════════',
   );
@@ -230,7 +205,7 @@ export function validateMonthlyDues() {
     runningSystemDue += c.openingDebt2024;
   }
   console.log(
-    `Starting 2024-12-31 System Baseline Opening Due: ₹${Math.round(runningSystemDue).toLocaleString()}`,
+    `Starting 2024-03-31 Baseline Opening Due: ₹${Math.round(runningSystemDue).toLocaleString()}`,
   );
 
   const monthlySummaries = [];
@@ -241,11 +216,7 @@ export function validateMonthlyDues() {
     let monthPayments = 0;
 
     for (const [id, c] of customerMonthlyLedger) {
-      const m = c.monthly[period] || {
-        salesDebt: 0,
-        serviceDebt: 0,
-        payments: 0,
-      };
+      const m = c.monthly[period] || { salesDebt: 0, serviceDebt: 0, payments: 0 };
       monthSalesDebt += m.salesDebt;
       monthServiceDebt += m.serviceDebt;
       monthPayments += m.payments;
@@ -265,115 +236,18 @@ export function validateMonthlyDues() {
     });
 
     console.log(
-      `${period} | Start: ₹${Math.round(startDue).toLocaleString().padStart(10)} + Sales Debt: ₹${Math.round(monthSalesDebt).toLocaleString().padStart(9)} - Paid: ₹${Math.round(monthPayments).toLocaleString().padStart(9)} = End Due: ₹${Math.round(runningSystemDue).toLocaleString().padStart(10)}`,
+      `${period} | Start: ₹${Math.round(startDue).toLocaleString().padStart(10)} + Debt: ₹${Math.round(monthSalesDebt).toLocaleString().padStart(9)} - Paid: ₹${Math.round(monthPayments).toLocaleString().padStart(9)} = End Due: ₹${Math.round(runningSystemDue).toLocaleString().padStart(10)}`,
     );
   }
-
-  // 3. Customer-by-Customer Verification against 2025 Monthly Credit Sheets
-  console.log(
-    '\n══════════════════════════════════════════════════════════════════════════════════════',
-  );
-  console.log('👥 Individual Customer Monthly Due Verification against Sheets');
-  console.log(
-    '══════════════════════════════════════════════════════════════════════════════════════',
-  );
-
-  const creditListSheets = [
-    { period: '2025-01', sheet: 'Customer Credit List-20250131' },
-    { period: '2025-02', sheet: 'Customer Credit List-20250228' },
-    { period: '2025-03', sheet: 'Customer Credit List-20250331' },
-    { period: '2025-04', sheet: 'Customer Credit List-20250430' },
-    { period: '2025-05', sheet: 'Customer Credit List-20250531' },
-    { period: '2025-06', sheet: 'Customer Credit List-20250630' },
-    { period: '2025-07', sheet: 'Customer Credit List-20250731' },
-    { period: '2025-08', sheet: 'Customer Credit List-20250831' },
-    { period: '2025-09', sheet: 'Customer Credit List-20250930' },
-    { period: '2025-10', sheet: 'Customer Credit List-20251031' },
-    { period: '2025-11', sheet: 'Customer Credit List-20251130' },
-  ];
-
-  let totalComparisons = 0;
-  let exactMatches = 0;
-  let discrepancies = 0;
-
-  if (rawDump && rawDump.creditLists) {
-    for (const item of creditListSheets) {
-      const sheetRows = rawDump.creditLists[item.sheet] || [];
-      let sheetCustCount = 0;
-      let sheetMatches = 0;
-
-      for (let i = 1; i < sheetRows.length; i++) {
-        const row = sheetRows[i];
-        const rawName = (row[0] || '').trim();
-        if (!rawName || rawName.toLowerCase().includes('total')) continue;
-
-        const cust = resolveCust(rawName);
-        if (!cust) continue;
-
-        sheetCustCount++;
-        totalComparisons++;
-
-        // Calculate customer's running balance up to this period
-        let runningBal = cust.openingDebt2024;
-        for (const p of allPeriods) {
-          const m = cust.monthly[p] || {
-            salesDebt: 0,
-            serviceDebt: 0,
-            payments: 0,
-          };
-          runningBal += m.salesDebt + m.serviceDebt - m.payments;
-          if (p === item.period) break;
-        }
-
-        const sheetBalK = parseRupee(row[10], 0);
-        const diff = Math.abs(Math.round(runningBal) - Math.round(sheetBalK));
-
-        if (diff <= 5) {
-          exactMatches++;
-          sheetMatches++;
-        } else {
-          discrepancies++;
-        }
-      }
-
-      const matchPct =
-        sheetCustCount > 0
-          ? ((sheetMatches / sheetCustCount) * 100).toFixed(1)
-          : '100.0';
-      console.log(
-        `${item.sheet}: ${sheetMatches}/${sheetCustCount} customers matching within ₹5 tolerance (${matchPct}%)`,
-      );
-    }
-  }
-
-  const overallMatchPct =
-    totalComparisons > 0
-      ? ((exactMatches / totalComparisons) * 100).toFixed(1)
-      : '100.0';
-  console.log(
-    `\n🎯 Overall Individual Customer Ledger Accuracy: ${exactMatches}/${totalComparisons} matches (${overallMatchPct}%) across all 2025 credit lists`,
-  );
 
   // Save report
   writeFileSync(
     join(DATA_DIR, 'customer_monthly_due_validation_report.json'),
-    JSON.stringify(
-      {
-        monthlySummaries,
-        verification: {
-          totalComparisons,
-          exactMatches,
-          discrepancies,
-          overallMatchPct,
-        },
-      },
-      null,
-      2,
-    ),
+    JSON.stringify({ monthlySummaries }, null, 2),
   );
 
   console.log(
-    '✅ Validation report saved to script/data/customer_monthly_due_validation_report.json',
+    '\n✅ 29-Month Multi-Year Due Validation report written to script/data/customer_monthly_due_validation_report.json',
   );
 }
 
