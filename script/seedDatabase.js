@@ -257,11 +257,6 @@ const monthlyRollouts = rawRollout.map((r) => ({
 // 6. Metadata
 const metadata = [
   {
-    key: 'backup_status',
-    lastBackedUpYear: 2025,
-    backedUpAt: '2026-09-01T00:00:00.000Z',
-  },
-  {
     key: 'monthly_rollout_status',
     lastRolledOutMonth: '2026-08',
     lastRolledOutAt: '2026-09-01T00:00:00.000Z',

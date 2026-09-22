@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { isTransactionMonthLocked } from '../../../api';
 import { calculateSaleTotals } from '../../../business/salesBusiness';
 import {
-  BackupWarningBanner,
   Button,
   Input,
   RolloutWarningBanner,
@@ -19,9 +18,7 @@ export interface ServiceFormProps {
   outstandingDue: number;
   isCreditAllowed: boolean;
   isSaving: boolean;
-  hasPendingBackup?: boolean;
   rolloutStatus?: MonthlyRolloutStatus | null;
-  currentYear?: number;
   onSubmit: (_serviceData: {
     item: string;
     amount: number;
@@ -40,9 +37,7 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
   outstandingDue,
   isCreditAllowed,
   isSaving,
-  hasPendingBackup = false,
   rolloutStatus,
-  currentYear = new Date().getFullYear(),
   onSubmit,
 }) => {
   const [date, setDate] = useState(
@@ -54,11 +49,8 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
   const [allCash, setAllCash] = useState(false);
   const [note, setNote] = useState('');
 
-  const selectedYear = new Date(date).getFullYear();
-  const isCYSelected = !isNaN(selectedYear) && selectedYear >= currentYear;
-  const isBlockedByBackup = hasPendingBackup && isCYSelected;
   const isBlockedByRollout = isTransactionMonthLocked(date, rolloutStatus);
-  const isFormBlocked = isBlockedByBackup || isBlockedByRollout;
+  const isFormBlocked = isBlockedByRollout;
 
   const effectiveCashPaid = allCash ? amount : cashPaid;
   const { remainingDue } = calculateSaleTotals(amount, 0, effectiveCashPaid);
@@ -83,13 +75,8 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
 
   return (
     <Flex direction="column" gap="md" fullWidth>
-      {/* Banner if CY selected and previous year backup is pending */}
-      {isBlockedByBackup && (
-        <BackupWarningBanner currentYear={currentYear} isFormBanner />
-      )}
-
       {/* Banner if month requires prior rollout */}
-      {isBlockedByRollout && (
+      {isFormBlocked && (
         <RolloutWarningBanner
           lastRolledOutMonth={rolloutStatus?.lastRolledOutMonth}
           isFormBanner
@@ -182,11 +169,9 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
       >
         {isSaving
           ? 'Processing...'
-          : isBlockedByBackup
-            ? `Backup Required for ${currentYear}`
-            : isBlockedByRollout
-              ? 'Monthly Rollout Required'
-              : 'Record Service'}
+          : isBlockedByRollout
+            ? 'Monthly Rollout Required'
+            : 'Record Service'}
       </Button>
     </Flex>
   );

@@ -8,7 +8,6 @@ import {
 } from 'lucide-react';
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { hasPendingPreviousYearRecords } from '../../api';
 import { filterTransactionsByPeriod } from '../../business/dashboardBusiness';
 import { Card } from '../../components/common/Card';
 import { PageContainer } from '../../components/common/PageContainer';
@@ -17,7 +16,6 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   useAddPurchaseTransactionMutation,
   useGetAllTransactionsQuery,
-  useGetBackupStatusQuery,
   useGetMonthlyRolloutStatusQuery,
 } from '../../store/slices/customersApi';
 import {
@@ -35,7 +33,6 @@ export const PurchasesPage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const currentDate = useMemo(() => new Date(), []);
-  const currentYear = currentDate.getFullYear();
 
   const [activeCategory, setActiveCategory] = useState<'PURCHASE' | 'EXPENSE'>(
     'PURCHASE',
@@ -46,16 +43,9 @@ export const PurchasesPage: React.FC = () => {
   const selectedMonth = useAppSelector((state) => state.ui.selectedMonth);
 
   const { data: allTransactions = [] } = useGetAllTransactionsQuery();
-  const { data: backupStatus } = useGetBackupStatusQuery();
   const { data: rolloutStatus } = useGetMonthlyRolloutStatusQuery();
   const [addPurchaseTransaction, { isLoading: isSaving }] =
     useAddPurchaseTransactionMutation();
-
-  const hasPendingBackup = hasPendingPreviousYearRecords(
-    allTransactions,
-    currentYear,
-    backupStatus,
-  );
 
   // Filter transactions based on active period
   const filteredTransactions = useMemo(() => {
@@ -305,17 +295,13 @@ export const PurchasesPage: React.FC = () => {
         <PurchaseForm
           onSubmit={handlePurchaseSubmit}
           isSaving={isSaving}
-          hasPendingBackup={hasPendingBackup}
           rolloutStatus={rolloutStatus}
-          currentYear={currentYear}
         />
       ) : (
         <ExpenseForm
           onSubmit={handleExpenseSubmit}
           isSaving={isSaving}
-          hasPendingBackup={hasPendingBackup}
           rolloutStatus={rolloutStatus}
-          currentYear={currentYear}
         />
       )}
     </PageContainer>

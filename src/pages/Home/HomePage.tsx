@@ -1,7 +1,6 @@
 import { Plus } from 'lucide-react';
 import React, { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { hasPendingPreviousYearRecords } from '../../api';
 import {
   calculateCustomerOutstandingMetrics,
   calculateDashboardMetrics,
@@ -9,7 +8,6 @@ import {
   calculateProfitMetrics,
   filterTransactionsByPeriod,
 } from '../../business/dashboardBusiness';
-import { BackupWarningBanner } from '../../components/common/BackupWarningBanner';
 import { Fab } from '../../components/common/Fab';
 import { PageContainer } from '../../components/common/PageContainer';
 import { PeriodFilterBar as DashboardFilterBar } from '../../components/common/PeriodFilterBar';
@@ -18,7 +16,6 @@ import { Flex } from '../../components/layout/Flex';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   useGetAllTransactionsQuery,
-  useGetBackupStatusQuery,
   useGetCustomersQuery,
   useGetMonthlyRolloutStatusQuery,
 } from '../../store/slices/customersApi';
@@ -45,18 +42,6 @@ export const HomePage: React.FC = () => {
 
   // Fetch monthly rollout status for historical snapshot references
   const { data: rolloutStatus } = useGetMonthlyRolloutStatusQuery();
-
-  // Fetch backup metadata status
-  const { data: backupStatus } = useGetBackupStatusQuery();
-
-  // Check if previous year records are pending backup
-  const hasPendingBackup = useMemo(() => {
-    return hasPendingPreviousYearRecords(
-      allTransactions,
-      currentYear,
-      backupStatus,
-    );
-  }, [allTransactions, currentYear, backupStatus]);
 
   // Filter transactions based on active period via Business Layer
   const filteredTransactions = useMemo(() => {
@@ -125,9 +110,6 @@ export const HomePage: React.FC = () => {
 
   return (
     <PageContainer spacing="md" bottomPadding="lg">
-      {/* Pending Annual Backup Banner */}
-      {hasPendingBackup && <BackupWarningBanner currentYear={currentYear} />}
-
       {/* Header */}
       <Flex direction="column" gap="xs" fullWidth className="pt-1">
         <Flex align="center" gap="xs">

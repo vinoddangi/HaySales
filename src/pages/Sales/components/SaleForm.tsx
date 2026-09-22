@@ -3,7 +3,6 @@ import { isTransactionMonthLocked } from '../../../api';
 import { VALID_CROP_ITEMS } from '../../../business/monthlyRolloutBusiness';
 import { calculateSaleTotals } from '../../../business/salesBusiness';
 import {
-  BackupWarningBanner,
   Button,
   Input,
   RolloutWarningBanner,
@@ -20,9 +19,7 @@ export interface SaleFormProps {
   outstandingDue: number;
   isCreditAllowed: boolean;
   isSaving: boolean;
-  hasPendingBackup?: boolean;
   rolloutStatus?: MonthlyRolloutStatus | null;
-  currentYear?: number;
   onSubmit: (_saleData: {
     item: string;
     weightKg: number;
@@ -41,9 +38,7 @@ export const SaleForm: React.FC<SaleFormProps> = ({
   outstandingDue,
   isCreditAllowed,
   isSaving,
-  hasPendingBackup = false,
   rolloutStatus,
-  currentYear = new Date().getFullYear(),
   onSubmit,
 }) => {
   const [date, setDate] = useState(
@@ -55,11 +50,8 @@ export const SaleForm: React.FC<SaleFormProps> = ({
   const [cashPaid, setCashPaid] = useState(0);
   const [allCash, setAllCash] = useState(false);
 
-  const selectedYear = new Date(date).getFullYear();
-  const isCYSelected = !isNaN(selectedYear) && selectedYear >= currentYear;
-  const isBlockedByBackup = hasPendingBackup && isCYSelected;
   const isBlockedByRollout = isTransactionMonthLocked(date, rolloutStatus);
-  const isFormBlocked = isBlockedByBackup || isBlockedByRollout;
+  const isFormBlocked = isBlockedByRollout;
 
   const avgRate = weightKg > 0 ? amount / weightKg : 0;
   const effectiveCashPaid = allCash ? amount : cashPaid;
@@ -85,13 +77,8 @@ export const SaleForm: React.FC<SaleFormProps> = ({
 
   return (
     <Flex direction="column" gap="md" fullWidth>
-      {/* Banner if CY selected and previous year backup is pending */}
-      {isBlockedByBackup && (
-        <BackupWarningBanner currentYear={currentYear} isFormBanner />
-      )}
-
       {/* Banner if month requires prior rollout */}
-      {isBlockedByRollout && (
+      {isFormBlocked && (
         <RolloutWarningBanner
           lastRolledOutMonth={rolloutStatus?.lastRolledOutMonth}
           isFormBanner
@@ -183,11 +170,9 @@ export const SaleForm: React.FC<SaleFormProps> = ({
       >
         {isSaving
           ? 'Processing...'
-          : isBlockedByBackup
-            ? `Backup Required for ${currentYear}`
-            : isBlockedByRollout
-              ? 'Monthly Rollout Required'
-              : 'Process Sale'}
+          : isBlockedByRollout
+            ? 'Monthly Rollout Required'
+            : 'Process Sale'}
       </Button>
     </Flex>
   );

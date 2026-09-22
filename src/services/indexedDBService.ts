@@ -1,7 +1,7 @@
 import { Customer, Transaction } from '../types';
 
 export const DB_NAME = 'HaySalesOfflineDB';
-export const DB_VERSION = 4; // Upgraded with archives store
+export const DB_VERSION = 5; // Cleaned up annual archives store
 
 export type StoreName =
   | 'customers'
@@ -9,8 +9,7 @@ export type StoreName =
   | 'purchases'
   | 'monthly_rollout'
   | 'metadata'
-  | 'pending_changes'
-  | 'archives';
+  | 'pending_changes';
 
 export interface PendingChange {
   id: string; // Document path, e.g. 'customers/123' or 'customers/123/transactions/456'
@@ -34,9 +33,12 @@ export async function openLocalDatabase(): Promise<IDBDatabase> {
     request.onupgradeneeded = (event) => {
       const db = (event.target as IDBOpenDBRequest).result;
 
-      // Clean delete deprecated sync_queue store if existing
+      // Clean delete deprecated sync_queue and archives stores if existing
       if (db.objectStoreNames.contains('sync_queue')) {
         db.deleteObjectStore('sync_queue');
+      }
+      if (db.objectStoreNames.contains('archives')) {
+        db.deleteObjectStore('archives');
       }
 
       // 1. Customers store
@@ -81,15 +83,6 @@ export async function openLocalDatabase(): Promise<IDBDatabase> {
         });
         pcStore.createIndex('timestamp', 'timestamp', { unique: false });
       }
-
-      // 7. Archives store (for historical yearly archives like transactions-2025, purchases-2025)
-      if (!db.objectStoreNames.contains('archives')) {
-        const arcStore = db.createObjectStore('archives', { keyPath: 'id' });
-        arcStore.createIndex('collectionName', 'collectionName', {
-          unique: false,
-        });
-        arcStore.createIndex('parentId', 'parentId', { unique: false });
-      }
     };
 
     request.onsuccess = (event) => {
@@ -126,15 +119,12 @@ export async function getStoreData<T = any>(
   storeName: StoreName,
 ): Promise<T[]> {
   const db = await openLocalDatabase();
-  const target = db.objectStoreNames.contains(storeName)
-    ? storeName
-    : 'archives';
-  if (!db.objectStoreNames.contains(target)) {
+  if (!db.objectStoreNames.contains(storeName)) {
     return [];
   }
   return new Promise((resolve, reject) => {
-    const tx = db.transaction(target, 'readonly');
-    const store = tx.objectStore(target);
+    const tx = db.transaction(storeName, 'readonly');
+    const store = tx.objectStore(storeName);
     const req = store.getAll();
     req.onsuccess = () => resolve(req.result || []);
     req.onerror = () => reject(req.error);
@@ -149,15 +139,12 @@ export async function getStoreItem<T = any>(
   key: string,
 ): Promise<T | undefined> {
   const db = await openLocalDatabase();
-  const target = db.objectStoreNames.contains(storeName)
-    ? storeName
-    : 'archives';
-  if (!db.objectStoreNames.contains(target)) {
+  if (!db.objectStoreNames.contains(storeName)) {
     return undefined;
   }
   return new Promise((resolve, reject) => {
-    const tx = db.transaction(target, 'readonly');
-    const store = tx.objectStore(target);
+    const tx = db.transaction(storeName, 'readonly');
+    const store = tx.objectStore(storeName);
     const req = store.get(key);
     req.onsuccess = () => resolve(req.result);
     req.onerror = () => reject(req.error);
@@ -172,15 +159,12 @@ export async function putStoreItem<T = any>(
   item: T,
 ): Promise<void> {
   const db = await openLocalDatabase();
-  const target = db.objectStoreNames.contains(storeName)
-    ? storeName
-    : 'archives';
-  if (!db.objectStoreNames.contains(target)) {
+  if (!db.objectStoreNames.contains(storeName)) {
     return;
   }
   return new Promise((resolve, reject) => {
-    const tx = db.transaction(target, 'readwrite');
-    const store = tx.objectStore(target);
+    const tx = db.transaction(storeName, 'readwrite');
+    const store = tx.objectStore(storeName);
     const req = store.put(item);
     req.onsuccess = () => resolve();
     req.onerror = () => reject(req.error);
@@ -195,15 +179,12 @@ export async function deleteStoreItem(
   key: string,
 ): Promise<void> {
   const db = await openLocalDatabase();
-  const target = db.objectStoreNames.contains(storeName)
-    ? storeName
-    : 'archives';
-  if (!db.objectStoreNames.contains(target)) {
+  if (!db.objectStoreNames.contains(storeName)) {
     return;
   }
   return new Promise((resolve, reject) => {
-    const tx = db.transaction(target, 'readwrite');
-    const store = tx.objectStore(target);
+    const tx = db.transaction(storeName, 'readwrite');
+    const store = tx.objectStore(storeName);
     const req = store.delete(key);
     req.onsuccess = () => resolve();
     req.onerror = () => reject(req.error);
@@ -219,13 +200,10 @@ export async function bulkSaveStoreItems<T = any>(
 ): Promise<void> {
   if (!items || items.length === 0) return;
   const db = await openLocalDatabase();
-  const target = db.objectStoreNames.contains(storeName)
-    ? storeName
-    : 'archives';
-  if (!db.objectStoreNames.contains(target)) return;
+  if (!db.objectStoreNames.contains(storeName)) return;
   return new Promise((resolve, reject) => {
-    const tx = db.transaction(target, 'readwrite');
-    const store = tx.objectStore(target);
+    const tx = db.transaction(storeName, 'readwrite');
+    const store = tx.objectStore(storeName);
     for (const item of items) {
       store.put(item);
     }
@@ -261,7 +239,6 @@ export async function clearAllLocalData(): Promise<void> {
   await clearStore('monthly_rollout');
   await clearStore('metadata');
   await clearStore('pending_changes');
-  await clearStore('archives');
 }
 
 /**

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-22T15:53:44.169Z",
+  "generatedAt": "2026-09-22T16:04:37.080Z",
   "customers": [
     {
       "id": "1",
@@ -16373,11 +16373,6 @@
     }
   ],
   "metadata": [
-    {
-      "key": "backup_status",
-      "lastBackedUpYear": 2025,
-      "backedUpAt": "2026-09-01T00:00:00.000Z"
-    },
     {
       "key": "monthly_rollout_status",
       "lastRolledOutMonth": "2026-08",

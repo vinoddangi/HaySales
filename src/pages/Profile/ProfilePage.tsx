@@ -21,7 +21,6 @@ import { MockEnvironmentSettings } from './components/MockEnvironmentSettings';
 import { MonthlyRolloutSettings } from './components/MonthlyRolloutSettings';
 import { ProfileHeader } from './components/ProfileHeader';
 import { ThemeSettings } from './components/ThemeSettings';
-import { TransactionBackupSettings } from './components/TransactionBackupSettings';
 
 export const ProfilePage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -135,9 +134,6 @@ export const ProfilePage: React.FC = () => {
 
       {/* 6. Monthly Rollout & Trading Period Accounting */}
       <MonthlyRolloutSettings />
-
-      {/* 7. Financial Year Rollover & Archival */}
-      <TransactionBackupSettings />
 
       <div className="flex flex-col items-center gap-3 pt-2">
         <Button

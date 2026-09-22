@@ -4,13 +4,9 @@ import {
   AddCustomerTransactionParams,
   addPurchaseApi,
   AddPurchaseParams,
-  BackupResult,
-  BackupStatus,
-  backupYearlyTransactionsApi,
   deleteCustomerTransactionApi,
   deletePurchaseApi,
   fetchAllTransactionsApi,
-  fetchBackupStatusApi,
   fetchCustomersApi,
   fetchCustomerTransactionsApi,
   fetchMonthlyRolloutStatusApi,
@@ -26,7 +22,6 @@ import {
   Transaction,
 } from '../../types';
 
-export type { BackupResult, BackupStatus } from '../../api';
 export type {
   Customer,
   MonthlyRolloutStatus,
@@ -37,13 +32,7 @@ export type {
 export const customersApi = createApi({
   reducerPath: 'customersApi',
   baseQuery: fakeBaseQuery(),
-  tagTypes: [
-    'Customers',
-    'Transactions',
-    'Purchases',
-    'BackupStatus',
-    'MonthlyRolloutStatus',
-  ],
+  tagTypes: ['Customers', 'Transactions', 'Purchases', 'MonthlyRolloutStatus'],
   endpoints: (builder) => ({
     // 0. Query: Fetch all transactions across all customers & purchases for dashboard metrics & activity
     getAllTransactions: builder.query<Transaction[], void>({
@@ -60,21 +49,6 @@ export const customersApi = createApi({
         }
       },
       providesTags: ['Transactions'],
-    }),
-
-    // 0.1 Query: Fetch backup status metadata
-    getBackupStatus: builder.query<BackupStatus, void>({
-      async queryFn() {
-        try {
-          const status = await fetchBackupStatusApi();
-          return { data: status };
-        } catch (error) {
-          return {
-            error: (error as Error).message || 'Failed to fetch backup status',
-          };
-        }
-      },
-      providesTags: ['BackupStatus'],
     }),
 
     // 1. Query: Fetch all customers with their running outstandingAmount
@@ -268,30 +242,7 @@ export const customersApi = createApi({
       providesTags: ['MonthlyRolloutStatus'],
     }),
 
-    // 10. Mutation: Backup/Rollout transactions by year to Transactions-(YYYY), aggregate balance, and create opening balance
-    backupYearlyTransactions: builder.mutation<
-      BackupResult,
-      { year?: number } | void
-    >({
-      async queryFn(arg) {
-        try {
-          const result = await backupYearlyTransactionsApi(arg?.year);
-          return { data: result };
-        } catch (error) {
-          return {
-            error: (error as Error).message || 'Failed to backup transactions',
-          };
-        }
-      },
-      invalidatesTags: [
-        'Customers',
-        'Transactions',
-        'Purchases',
-        'BackupStatus',
-      ],
-    }),
-
-    // 11. Mutation: Rollout month and update metadata
+    // 10. Mutation: Rollout month and update metadata
     rolloutMonth: builder.mutation<
       MonthlyRolloutStatus,
       { month: string; summary?: MonthlyTradingSummary }
@@ -314,7 +265,6 @@ export const customersApi = createApi({
 // EXPORT HOOKS HERE:
 export const {
   useGetAllTransactionsQuery,
-  useGetBackupStatusQuery,
   useGetMonthlyRolloutStatusQuery,
   useGetCustomersQuery,
   useGetTransactionsQuery,
@@ -325,6 +275,5 @@ export const {
   useAddPurchaseTransactionMutation,
   useUpdatePurchaseTransactionMutation,
   useDeletePurchaseTransactionMutation,
-  useBackupYearlyTransactionsMutation,
   useRolloutMonthMutation,
 } = customersApi;

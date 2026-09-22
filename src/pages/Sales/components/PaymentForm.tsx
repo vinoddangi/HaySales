@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { isTransactionMonthLocked } from '../../../api';
 import {
-  BackupWarningBanner,
   Button,
   Input,
   RolloutWarningBanner,
@@ -15,9 +14,7 @@ import { formatRupee } from '../../../utils/formatters';
 export interface PaymentFormProps {
   outstandingDue: number;
   isSaving: boolean;
-  hasPendingBackup?: boolean;
   rolloutStatus?: MonthlyRolloutStatus | null;
-  currentYear?: number;
   onSubmit: (
     _paymentAmount: number,
     _date?: string,
@@ -28,9 +25,7 @@ export interface PaymentFormProps {
 export const PaymentForm: React.FC<PaymentFormProps> = ({
   outstandingDue,
   isSaving,
-  hasPendingBackup = false,
   rolloutStatus,
-  currentYear = new Date().getFullYear(),
   onSubmit,
 }) => {
   const [date, setDate] = useState(
@@ -39,11 +34,8 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
   const [paymentAmount, setPaymentAmount] = useState(0);
   const [allDueClear, setAllDueClear] = useState(false);
 
-  const selectedYear = new Date(date).getFullYear();
-  const isCYSelected = !isNaN(selectedYear) && selectedYear >= currentYear;
-  const isBlockedByBackup = hasPendingBackup && isCYSelected;
   const isBlockedByRollout = isTransactionMonthLocked(date, rolloutStatus);
-  const isFormBlocked = isBlockedByBackup || isBlockedByRollout;
+  const isFormBlocked = isBlockedByRollout;
 
   const effectivePaymentAmount =
     allDueClear && paymentAmount === 0 ? outstandingDue : paymentAmount;
@@ -68,13 +60,8 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
 
   return (
     <Flex direction="column" gap="md" fullWidth>
-      {/* Banner if CY selected and previous year backup is pending */}
-      {isBlockedByBackup && (
-        <BackupWarningBanner currentYear={currentYear} isFormBanner />
-      )}
-
       {/* Banner if month requires prior rollout */}
-      {isBlockedByRollout && (
+      {isFormBlocked && (
         <RolloutWarningBanner
           lastRolledOutMonth={rolloutStatus?.lastRolledOutMonth}
           isFormBanner
@@ -154,11 +141,9 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
       >
         {isSaving
           ? 'Processing...'
-          : isBlockedByBackup
-            ? `Backup Required for ${currentYear}`
-            : isBlockedByRollout
-              ? 'Monthly Rollout Required'
-              : 'Process Payment'}
+          : isBlockedByRollout
+            ? 'Monthly Rollout Required'
+            : 'Process Payment'}
       </Button>
     </Flex>
   );

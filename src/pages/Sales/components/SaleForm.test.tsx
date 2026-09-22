@@ -57,51 +57,6 @@ describe('SaleForm component', () => {
     );
   });
 
-  it('shows backup banner and blocks submission when CY date is selected with pending backup', () => {
-    const handleSubmit = vi.fn();
-    render(
-      <SaleForm
-        outstandingDue={0}
-        isCreditAllowed={true}
-        isSaving={false}
-        hasPendingBackup={true}
-        currentYear={2026}
-        onSubmit={handleSubmit}
-      />,
-    );
-
-    expect(
-      screen.getByText(/Annual Backup Required for 2026/i),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole('button', { name: /backup required for 2026/i }),
-    ).toBeDisabled();
-  });
-
-  it('allows submission when backdated PY date is selected even if pending backup is true', () => {
-    const handleSubmit = vi.fn();
-    const { container } = render(
-      <SaleForm
-        outstandingDue={0}
-        isCreditAllowed={true}
-        isSaving={false}
-        hasPendingBackup={true}
-        currentYear={2026}
-        onSubmit={handleSubmit}
-      />,
-    );
-
-    const dateInput = container.querySelector('input[type="date"]')!;
-    fireEvent.change(dateInput, { target: { value: '2025-11-15' } });
-
-    expect(
-      screen.queryByText(/Annual Backup Required for 2026/i),
-    ).not.toBeInTheDocument();
-    expect(
-      screen.getByRole('button', { name: /process sale/i }),
-    ).toBeInTheDocument();
-  });
-
   it('shows rollout warning banner and blocks submission when date is in unrolled month', () => {
     const handleSubmit = vi.fn();
     const { container } = render(
@@ -109,7 +64,6 @@ describe('SaleForm component', () => {
         outstandingDue={0}
         isCreditAllowed={true}
         isSaving={false}
-        hasPendingBackup={false}
         rolloutStatus={{ lastRolledOutMonth: '2026-08' }}
         onSubmit={handleSubmit}
       />,

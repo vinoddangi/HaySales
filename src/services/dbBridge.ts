@@ -210,7 +210,6 @@ const KNOWN_STORES = new Set([
   'monthly_rollout',
   'metadata',
   'pending_changes',
-  'archives',
 ]);
 
 /**
@@ -218,21 +217,18 @@ const KNOWN_STORES = new Set([
  * - root collection path 'customers' -> store 'customers'
  * - subcollection path 'customers/123/transactions' -> store 'transactions', parentId '123'
  * - doc path 'customers/123/transactions/456' -> store 'transactions', id '456', parentId '123'
- * - archive path 'customers/123/transactions-2025/456' -> store 'archives', id '456', parentId '123', collectionName 'transactions-2025'
  */
 function resolvePath(segments: string[]): {
   storeName: StoreName;
   id?: string;
   parentId?: string;
   isGroup?: boolean;
-  collectionName?: string;
 } {
   if (segments[0] === '__group__') {
     const col = segments[1] as StoreName;
     return {
-      storeName: KNOWN_STORES.has(col) ? col : 'archives',
+      storeName: (KNOWN_STORES.has(col) ? col : 'transactions') as StoreName,
       isGroup: true,
-      collectionName: col,
     };
   }
 
@@ -254,15 +250,12 @@ function resolvePath(segments: string[]): {
     id = segments[3];
   }
 
-  if (KNOWN_STORES.has(rawStore)) {
-    return { storeName: rawStore as StoreName, id, parentId };
-  }
-
   return {
-    storeName: 'archives',
-    id: id || segments.join('/'),
+    storeName: (KNOWN_STORES.has(rawStore)
+      ? rawStore
+      : 'transactions') as StoreName,
+    id,
     parentId,
-    collectionName: rawStore,
   };
 }
 
@@ -397,20 +390,12 @@ export async function getDocs<T = any>(
 
   // Local IndexedDB
   await ensureLocalInitialized();
-  const { storeName, parentId, collectionName } = resolvePath(ref.segments);
+  const { storeName, parentId } = resolvePath(ref.segments);
 
   const db = await openLocalDatabase();
   let items: any[] = [];
 
-  if (storeName === 'archives') {
-    const all = await getStoreData('archives');
-    items = all.filter((item) => {
-      const matchCol =
-        !collectionName || item.collectionName === collectionName;
-      const matchParent = !parentId || item.parentId === parentId;
-      return matchCol && matchParent;
-    });
-  } else if (parentId) {
+  if (parentId) {
     const all = await getStoreData(storeName);
     items = all.filter(
       (item) => item.customerId === parentId || item.parentId === parentId,
@@ -464,7 +449,7 @@ export async function setDoc(
 
   // Local IndexedDB
   await ensureLocalInitialized();
-  const { storeName, id, parentId, collectionName } = resolvePath(ref.segments);
+  const { storeName, id, parentId } = resolvePath(ref.segments);
   const key = id || ref.id;
 
   let existing: any = {};
@@ -484,10 +469,6 @@ export async function setDoc(
   if (parentId && !merged.customerId) merged.customerId = parentId;
   if (storeName === 'metadata' && !merged.key) merged.key = key;
   if (storeName === 'monthly_rollout' && !merged.month) merged.month = key;
-  if (storeName === 'archives') {
-    merged.collectionName = collectionName;
-    if (parentId) merged.parentId = parentId;
-  }
 
   await putStoreItem(storeName, merged);
   await recordPendingChange({

@@ -17,7 +17,6 @@ export interface LedgerDetailDrawerProps {
   transactions: Transaction[];
   isLoadingTransactions: boolean;
   isPaying: boolean;
-  hasPendingBackup?: boolean;
   rolloutStatus?: MonthlyRolloutStatus | null;
   currentYear?: number;
   onClose: () => void;
@@ -34,7 +33,6 @@ export const LedgerDetailDrawer: React.FC<LedgerDetailDrawerProps> = ({
   transactions,
   isLoadingTransactions,
   isPaying,
-  hasPendingBackup = false,
   rolloutStatus,
   currentYear = new Date().getFullYear(),
   onClose,
@@ -175,9 +173,7 @@ export const LedgerDetailDrawer: React.FC<LedgerDetailDrawerProps> = ({
               <LedgerPaymentForm
                 outstandingDue={effectiveOutstandingDue}
                 isPaying={isPaying}
-                hasPendingBackup={hasPendingBackup}
                 rolloutStatus={rolloutStatus}
-                currentYear={currentYear}
                 onPay={onPay}
               />
             </div>

@@ -1,4 +1,3 @@
-export * from './BackupWarningBanner';
 export * from './Badge';
 export * from './BottomSheet';
 export * from './Button';

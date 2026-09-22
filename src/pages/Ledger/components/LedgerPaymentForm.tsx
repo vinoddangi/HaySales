@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { isTransactionMonthLocked } from '../../../api';
 import {
-  BackupWarningBanner,
   Button,
   Input,
   RolloutWarningBanner,
@@ -14,9 +13,7 @@ import { formatRupee } from '../../../utils/formatters';
 export interface LedgerPaymentFormProps {
   outstandingDue: number;
   isPaying: boolean;
-  hasPendingBackup?: boolean;
   rolloutStatus?: MonthlyRolloutStatus | null;
-  currentYear?: number;
   onPay: (
     _paymentAmount: number,
     _date?: string,
@@ -27,9 +24,7 @@ export interface LedgerPaymentFormProps {
 export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
   outstandingDue,
   isPaying,
-  hasPendingBackup = false,
   rolloutStatus,
-  currentYear = new Date().getFullYear(),
   onPay,
 }) => {
   const [date, setDate] = useState(
@@ -38,11 +33,8 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
   const [paymentAmount, setPaymentAmount] = useState(0);
   const [allDueClear, setAllDueClear] = useState(false);
 
-  const selectedYear = new Date(date).getFullYear();
-  const isCYSelected = !isNaN(selectedYear) && selectedYear >= currentYear;
-  const isBlockedByBackup = hasPendingBackup && isCYSelected;
   const isBlockedByRollout = isTransactionMonthLocked(date, rolloutStatus);
-  const isFormBlocked = isBlockedByBackup || isBlockedByRollout;
+  const isFormBlocked = isBlockedByRollout;
 
   const effectivePaymentAmount =
     allDueClear && paymentAmount === 0 ? outstandingDue : paymentAmount;
@@ -84,11 +76,6 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
       <Text variant="caption" color="primary" weight="black">
         Record Payment
       </Text>
-
-      {/* Banner if CY selected and previous year backup is pending */}
-      {isBlockedByBackup && (
-        <BackupWarningBanner currentYear={currentYear} isFormBanner />
-      )}
 
       {/* Banner if month requires prior rollout */}
       {isBlockedByRollout && (
@@ -156,11 +143,9 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
       >
         {isPaying
           ? 'Processing...'
-          : isBlockedByBackup
-            ? `Backup Required for ${currentYear}`
-            : isBlockedByRollout
-              ? 'Monthly Rollout Required'
-              : 'Process Payment'}
+          : isBlockedByRollout
+            ? 'Monthly Rollout Required'
+            : 'Process Payment'}
       </Button>
     </Flex>
   );

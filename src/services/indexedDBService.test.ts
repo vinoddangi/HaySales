@@ -199,18 +199,18 @@ describe('indexedDBService - Pending Delta Tracking', () => {
     expect(hasData).toBe(false);
   });
 
-  it('safely handles archive and custom store collections', async () => {
-    await putStoreItem('transactions-2025' as any, {
-      id: 'tx_archive_1',
+  it('safely handles purchases and metadata store collections', async () => {
+    await putStoreItem('purchases', {
+      id: 'tx_purchase_1',
       amount: 5000,
       year: 2025,
     });
 
-    const item = await getStoreItem('transactions-2025' as any, 'tx_archive_1');
+    const item = await getStoreItem('purchases', 'tx_purchase_1');
     expect(item).toBeDefined();
     expect(item?.amount).toBe(5000);
 
-    const allArchives = await getStoreData('archives');
-    expect(allArchives).toHaveLength(1);
+    const allPurchases = await getStoreData('purchases');
+    expect(allPurchases).toHaveLength(1);
   });
 });

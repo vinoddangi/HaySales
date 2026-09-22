@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { isTransactionMonthLocked } from '../../../api';
 import { VALID_EXPENSE_CATEGORIES } from '../../../business/purchasesBusiness';
 import {
-  BackupWarningBanner,
   Button,
   Input,
   RolloutWarningBanner,
@@ -16,9 +15,7 @@ import { formatRupee } from '../../../utils/formatters';
 
 export interface ExpenseFormProps {
   isSaving: boolean;
-  hasPendingBackup?: boolean;
   rolloutStatus?: MonthlyRolloutStatus | null;
-  currentYear?: number;
   onSubmit: (_data: {
     expenseCategory: ExpenseCategoryType;
     amount: number;
@@ -36,9 +33,7 @@ const CATEGORY_OPTIONS = VALID_EXPENSE_CATEGORIES.map((cat) => ({
 
 export const ExpenseForm: React.FC<ExpenseFormProps> = ({
   isSaving,
-  hasPendingBackup = false,
   rolloutStatus,
-  currentYear = new Date().getFullYear(),
   onSubmit,
 }) => {
   const [date, setDate] = useState(
@@ -51,11 +46,8 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = ({
   const [vendorName, setVendorName] = useState('');
   const [note, setNote] = useState('');
 
-  const selectedYear = new Date(date).getFullYear();
-  const isCYSelected = !isNaN(selectedYear) && selectedYear >= currentYear;
-  const isBlockedByBackup = hasPendingBackup && isCYSelected;
   const isBlockedByRollout = isTransactionMonthLocked(date, rolloutStatus);
-  const isFormBlocked = isBlockedByBackup || isBlockedByRollout;
+  const isFormBlocked = isBlockedByRollout;
 
   const effectiveCashPaid = allCash ? amount : cashPaid;
 
@@ -79,13 +71,8 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = ({
 
   return (
     <Flex direction="column" gap="md" fullWidth>
-      {/* Banner if CY selected and previous year backup is pending */}
-      {isBlockedByBackup && (
-        <BackupWarningBanner currentYear={currentYear} isFormBanner />
-      )}
-
       {/* Banner if month requires prior rollout */}
-      {isBlockedByRollout && (
+      {isFormBlocked && (
         <RolloutWarningBanner
           lastRolledOutMonth={rolloutStatus?.lastRolledOutMonth}
           isFormBanner
@@ -182,11 +169,9 @@ export const ExpenseForm: React.FC<ExpenseFormProps> = ({
       >
         {isSaving
           ? 'Recording...'
-          : isBlockedByBackup
-            ? `Backup Required for ${currentYear}`
-            : isBlockedByRollout
-              ? 'Monthly Rollout Required'
-              : 'Record Expense'}
+          : isBlockedByRollout
+            ? 'Monthly Rollout Required'
+            : 'Record Expense'}
       </Button>
     </Flex>
   );
