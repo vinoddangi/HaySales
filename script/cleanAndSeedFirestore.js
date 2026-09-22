@@ -232,8 +232,10 @@ async function run() {
       id: p.PurchaseID || `purchase_${idx + 1}`,
       date: p.Date || new Date().toISOString(),
       type: isExpense ? 'EXPENSE' : 'PURCHASE',
-      category: isExpense ? undefined : p.Category || 'Purchase',
-      expenseCategory: isExpense ? p.Category || 'Others' : undefined,
+      category: isExpense ? 'Expense' : p.Category || 'Purchase',
+      expenseCategory: isExpense
+        ? p.ExpenseCategory || p.Category || 'Others'
+        : undefined,
       item: p.Item || 'Others',
       weightKg: Number(p.WeightKg) || 0,
       rate: Number(p.PurchaseRate) || 0,
@@ -245,6 +247,30 @@ async function run() {
       note: p.Notes || '',
     };
   });
+
+  const expensesCsvPath = path.join(BACKUP_DIR, 'expenses.csv');
+  if (fs.existsSync(expensesCsvPath)) {
+    const expensesCsv = fs.readFileSync(expensesCsvPath, 'utf8');
+    const rawExpenses = parseCsv(expensesCsv);
+    rawExpenses.forEach((e, idx) => {
+      const eId = e.ExpenseID || `expense_${idx + 1}`;
+      if (!purchases.some((p) => p.id === eId)) {
+        purchases.push({
+          id: eId,
+          date: e.Date || new Date().toISOString(),
+          type: 'EXPENSE',
+          category: 'Expense',
+          expenseCategory: e.ExpenseCategory || 'Others',
+          item: e.Item || 'Others',
+          amount: Number(e.Amount) || 0,
+          cashPaid: Number(e.Amount) || 0,
+          remainingDue: 0,
+          vendorName: '',
+          note: e.Notes || '',
+        });
+      }
+    });
+  }
 
   // Monthly Rollouts
   const rolloutCsv = fs.readFileSync(

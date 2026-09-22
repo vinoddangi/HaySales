@@ -1,12 +1,18 @@
 import {
   ArrowDownLeft,
   Banknote,
+  ChevronRight,
   CreditCard,
   TrendingUp,
+  Users,
   Wallet,
 } from 'lucide-react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import {
+  CustomerOutstandingMetrics,
+  ProfitMetricsData,
+} from '../../../business/dashboardBusiness';
 import { Badge, Card, Text } from '../../../components/common';
 import { Flex, Grid } from '../../../components/layout';
 import { formatRupee, formatWeight } from '../../../utils/formatters';
@@ -37,11 +43,19 @@ export interface DashboardMetricsData {
 
 export interface DashboardMetricCardsProps {
   metrics: DashboardMetricsData;
+  profit?: ProfitMetricsData;
+  customerOutstanding?: CustomerOutstandingMetrics;
+  periodMode?: 'month' | 'ytd';
+  periodLabel?: string;
   isLoading?: boolean;
 }
 
 export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
   metrics,
+  profit,
+  customerOutstanding,
+  periodMode = 'month',
+  periodLabel,
   isLoading,
 }) => {
   const navigate = useNavigate();
@@ -296,7 +310,311 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
         </Card>
       </Grid>
 
-      {/* Row 3: Merged Net Cashflow & Payments Summary Card */}
+      {/* Row 3: Estimated Net Profit Card */}
+      {profit && (
+        <Card
+          variant="filled"
+          role="button"
+          tabIndex={0}
+          onClick={() => navigate('/profile')}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              navigate('/profile');
+            }
+          }}
+          className={`group relative cursor-pointer overflow-hidden border p-3.5 transition-all duration-200 hover:scale-[1.005] hover:shadow-md active:scale-[0.99] ${
+            profit.netProfit >= 0
+              ? 'border-emerald-500/30 bg-gradient-to-br from-emerald-500/[0.08] to-m3-surface-container hover:border-emerald-500/60 dark:from-emerald-500/[0.12]'
+              : 'border-rose-500/30 bg-gradient-to-br from-rose-500/[0.08] to-m3-surface-container hover:border-rose-500/60 dark:from-rose-500/[0.12]'
+          }`}
+        >
+          <Flex direction="column" gap="xs" fullWidth>
+            {/* Header */}
+            <Flex align="center" justify="between" fullWidth>
+              <Flex align="center" gap="sm">
+                <div
+                  className={`rounded-lg p-2 transition-transform group-hover:scale-110 ${
+                    profit.netProfit >= 0
+                      ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-300'
+                      : 'bg-rose-500/10 text-rose-600 dark:text-rose-300'
+                  }`}
+                >
+                  <TrendingUp className="h-5 w-5" />
+                </div>
+                <div>
+                  <Flex align="center" gap="xs">
+                    <Text
+                      styleAs="label"
+                      sentiment={
+                        profit.netProfit >= 0 ? 'positive' : 'negative'
+                      }
+                      uppercase
+                      className="block group-hover:underline"
+                    >
+                      Estimated Net Profit
+                    </Text>
+                    <ChevronRight
+                      className={`h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100 ${
+                        profit.netProfit >= 0
+                          ? 'text-emerald-500'
+                          : 'text-rose-500'
+                      }`}
+                    />
+                  </Flex>
+                  <Text
+                    styleAs="caption"
+                    appearance="secondary"
+                    className="block text-[11px]"
+                  >
+                    {periodMode === 'ytd'
+                      ? 'YTD Trading & Pickup Profit'
+                      : `${periodLabel || 'Monthly'} Trading Profit`}{' '}
+                    • Tap for Rollout
+                  </Text>
+                </div>
+              </Flex>
+
+              <div className="text-right">
+                <Badge
+                  sentiment={
+                    profit.profitMarginPct >= 0 ? 'positive' : 'negative'
+                  }
+                  size="sm"
+                >
+                  {profit.profitMarginPct.toFixed(1)}% Margin
+                </Badge>
+              </div>
+            </Flex>
+
+            {/* Total Profit Amount */}
+            <div className="mt-1">
+              <Text
+                styleAs="display2"
+                weight="black"
+                sentiment={profit.netProfit >= 0 ? 'positive' : 'negative'}
+                as="div"
+              >
+                {formatRupee(profit.netProfit)}
+              </Text>
+              {profit.cumulativeTotalProfit !== undefined && (
+                <Text
+                  styleAs="caption"
+                  appearance="secondary"
+                  className="block text-[10px]"
+                >
+                  Balance Sheet Cumulative:{' '}
+                  {formatRupee(profit.cumulativeTotalProfit)}
+                </Text>
+              )}
+            </div>
+
+            {/* Compact Breakdown Grid: Trading Margin, Pickup Net, Expenses */}
+            <div className="mt-1.5 grid grid-cols-3 gap-2">
+              {/* 1. Gross Trading Margin / Commission */}
+              <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/[0.08] p-2 dark:bg-emerald-500/[0.12]">
+                <span className="block text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
+                  Trading Margin
+                </span>
+                <span className="mt-0.5 block text-xs font-black text-emerald-700 dark:text-emerald-300">
+                  +{formatRupee(profit.grossCommission)}
+                </span>
+                <span className="block text-[9px] text-m3-on-surface-variant">
+                  Crop margin
+                </span>
+              </div>
+
+              {/* 2. Pickup (Service Net) */}
+              <div className="rounded-xl border border-purple-500/20 bg-purple-500/[0.08] p-2 dark:bg-purple-500/[0.12]">
+                <span className="block text-[10px] font-bold uppercase tracking-wider text-purple-800 dark:text-purple-300">
+                  Pickup Net
+                </span>
+                <span className="mt-0.5 block text-xs font-black text-purple-700 dark:text-purple-300">
+                  +{formatRupee(profit.pickupNet)}
+                </span>
+                <span className="block text-[9px] text-m3-on-surface-variant">
+                  Pickup service
+                </span>
+              </div>
+
+              {/* 3. Operating Expenses */}
+              <div className="rounded-xl border border-rose-500/20 bg-rose-500/[0.08] p-2 dark:bg-rose-500/[0.12]">
+                <span className="block text-[10px] font-bold uppercase tracking-wider text-rose-800 dark:text-rose-300">
+                  Expenses
+                </span>
+                <span className="mt-0.5 block text-xs font-black text-rose-700 dark:text-rose-300">
+                  -{formatRupee(profit.operatingExpenses)}
+                </span>
+                <span className="block text-[9px] text-m3-on-surface-variant">
+                  Operating costs
+                </span>
+              </div>
+            </div>
+          </Flex>
+        </Card>
+      )}
+
+      {/* Row 4: Customer Outstanding Card */}
+      {customerOutstanding && (
+        <Card
+          variant="filled"
+          role="button"
+          tabIndex={0}
+          onClick={() => navigate('/ledger')}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              navigate('/ledger');
+            }
+          }}
+          className="group relative cursor-pointer overflow-hidden border border-rose-500/30 bg-gradient-to-br from-rose-500/[0.06] to-m3-surface-container p-3.5 transition-all duration-200 hover:scale-[1.005] hover:border-rose-500/60 hover:shadow-md active:scale-[0.99] dark:from-rose-500/[0.10]"
+        >
+          <Flex direction="column" gap="xs" fullWidth>
+            {/* Header */}
+            <Flex align="center" justify="between" fullWidth>
+              <Flex align="center" gap="sm">
+                <div className="rounded-lg bg-rose-500/10 p-2 text-rose-600 transition-transform group-hover:scale-110 dark:text-rose-400">
+                  <Users className="h-5 w-5" />
+                </div>
+                <div>
+                  <Flex align="center" gap="xs">
+                    <Text
+                      styleAs="label"
+                      sentiment="negative"
+                      uppercase
+                      className="block group-hover:underline"
+                    >
+                      Customer Outstanding
+                    </Text>
+                    <ChevronRight className="h-3.5 w-3.5 text-rose-500 opacity-0 transition-opacity group-hover:opacity-100" />
+                  </Flex>
+                  <Text
+                    styleAs="caption"
+                    appearance="secondary"
+                    className="block text-[11px]"
+                  >
+                    {periodMode === 'ytd'
+                      ? 'YTD Total Receivables'
+                      : `${periodLabel || 'Monthly'} Receivables`}{' '}
+                    • Tap for Ledger
+                  </Text>
+                </div>
+              </Flex>
+
+              <div className="text-right">
+                <Badge sentiment="warning" size="sm">
+                  {customerOutstanding.customersWithDueCount} Due
+                </Badge>
+              </div>
+            </Flex>
+
+            {/* Total Balance Amount */}
+            <div className="mt-1">
+              <Text
+                styleAs="display2"
+                weight="black"
+                appearance="primary"
+                className="block text-rose-600 dark:text-rose-400"
+              >
+                {formatRupee(
+                  customerOutstanding.historicalPeriodOutstanding !== undefined
+                    ? customerOutstanding.historicalPeriodOutstanding
+                    : customerOutstanding.totalOutstanding,
+                )}
+              </Text>
+              {customerOutstanding.historicalPeriodOutstanding !== undefined &&
+                customerOutstanding.historicalPeriodOutstanding !==
+                  customerOutstanding.totalOutstanding && (
+                  <Text
+                    styleAs="caption"
+                    appearance="secondary"
+                    className="block text-[10px]"
+                  >
+                    Live Total:{' '}
+                    {formatRupee(customerOutstanding.totalOutstanding)} across
+                    all accounts
+                  </Text>
+                )}
+            </div>
+
+            {/* Compact Period Metrics Grid (New Credit, Collected, Net Movement) */}
+            <div className="mt-1.5 grid grid-cols-3 gap-2">
+              {/* 1. Credit Added */}
+              <div className="rounded-xl border border-purple-500/20 bg-purple-500/[0.08] p-2 dark:bg-purple-500/[0.12]">
+                <span className="block text-[10px] font-bold uppercase tracking-wider text-purple-800 dark:text-purple-300">
+                  {periodMode === 'ytd' ? 'YTD Credit' : 'Credit Added'}
+                </span>
+                <span className="mt-0.5 block text-xs font-black text-purple-700 dark:text-purple-300">
+                  +{formatRupee(customerOutstanding.periodCreditAdded)}
+                </span>
+                <span className="block text-[9px] text-m3-on-surface-variant">
+                  Sales & dues
+                </span>
+              </div>
+
+              {/* 2. Collections Received */}
+              <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/[0.08] p-2 dark:bg-emerald-500/[0.12]">
+                <span className="block text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
+                  {periodMode === 'ytd' ? 'YTD Received' : 'Collected'}
+                </span>
+                <span className="mt-0.5 block text-xs font-black text-emerald-700 dark:text-emerald-300">
+                  {formatRupee(customerOutstanding.periodCollections)}
+                </span>
+                <span className="block text-[9px] text-m3-on-surface-variant">
+                  Payments
+                </span>
+              </div>
+
+              {/* 3. Net Dues Change */}
+              <div
+                className={`rounded-xl border p-2 ${
+                  customerOutstanding.netOutstandingChange > 0
+                    ? 'border-amber-500/20 bg-amber-500/[0.08] dark:bg-amber-500/[0.12]'
+                    : customerOutstanding.netOutstandingChange < 0
+                      ? 'border-teal-500/20 bg-teal-500/[0.08] dark:bg-teal-500/[0.12]'
+                      : 'border-m3-outline-variant/30 bg-m3-surface'
+                }`}
+              >
+                <span
+                  className={`block text-[10px] font-bold uppercase tracking-wider ${
+                    customerOutstanding.netOutstandingChange > 0
+                      ? 'text-amber-800 dark:text-amber-300'
+                      : customerOutstanding.netOutstandingChange < 0
+                        ? 'text-teal-800 dark:text-teal-300'
+                        : 'text-m3-on-surface-variant'
+                  }`}
+                >
+                  Net Change
+                </span>
+                <span
+                  className={`mt-0.5 block text-xs font-black ${
+                    customerOutstanding.netOutstandingChange > 0
+                      ? 'text-amber-700 dark:text-amber-400'
+                      : customerOutstanding.netOutstandingChange < 0
+                        ? 'text-teal-700 dark:text-teal-400'
+                        : 'text-m3-on-surface'
+                  }`}
+                >
+                  {customerOutstanding.netOutstandingChange > 0
+                    ? `+${formatRupee(customerOutstanding.netOutstandingChange)}`
+                    : customerOutstanding.netOutstandingChange < 0
+                      ? `-${formatRupee(Math.abs(customerOutstanding.netOutstandingChange))}`
+                      : '₹0'}
+                </span>
+                <span className="block text-[9px] text-m3-on-surface-variant">
+                  {customerOutstanding.netOutstandingChange > 0
+                    ? 'Dues added'
+                    : customerOutstanding.netOutstandingChange < 0
+                      ? 'Recovered'
+                      : 'Balanced'}
+                </span>
+              </div>
+            </div>
+          </Flex>
+        </Card>
+      )}
+
+      {/* Row 4: Merged Net Cashflow & Payments Summary Card */}
       <Card
         variant="filled"
         className="border border-m3-outline-variant/60 bg-m3-surface-container p-3.5"

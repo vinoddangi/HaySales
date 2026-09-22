@@ -42,7 +42,7 @@ describe('LedgerPaymentForm component', () => {
     expect(submitButton).toBeEnabled();
     await user.click(submitButton);
 
-    expect(handlePay).toHaveBeenCalledWith(2500, expect.any(String));
+    expect(handlePay).toHaveBeenCalledWith(2500, expect.any(String), 0);
   });
 
   it('allows settling full balance via checkbox', async () => {
@@ -66,6 +66,34 @@ describe('LedgerPaymentForm component', () => {
     expect(submitButton).toBeEnabled();
     await user.click(submitButton);
 
-    expect(handlePay).toHaveBeenCalledWith(5000, expect.any(String));
+    expect(handlePay).toHaveBeenCalledWith(5000, expect.any(String), 0);
+  });
+
+  it('submits payment with discount when partial amount entered and settle full balance checked', async () => {
+    const handlePay = vi.fn().mockResolvedValue(undefined);
+    const user = userEvent.setup();
+
+    render(
+      <LedgerPaymentForm
+        outstandingDue={5000}
+        isPaying={false}
+        onPay={handlePay}
+      />,
+    );
+
+    const input = screen.getByPlaceholderText('0');
+    await user.type(input, '4500');
+
+    const checkbox = screen.getByRole('checkbox');
+    await user.click(checkbox);
+
+    const submitButton = screen.getByRole('button', {
+      name: 'Process Payment',
+    });
+    expect(submitButton).toBeEnabled();
+    await user.click(submitButton);
+
+    // 4500 cash paid, 500 discount given
+    expect(handlePay).toHaveBeenCalledWith(4500, expect.any(String), 500);
   });
 });

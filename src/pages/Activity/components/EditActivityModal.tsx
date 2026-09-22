@@ -1,5 +1,6 @@
 import { Trash2, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
+import { VALID_EXPENSE_CATEGORIES } from '../../../business/purchasesBusiness';
 import { Button, Input, SelectField, Text } from '../../../components/common';
 import { Flex, Grid } from '../../../components/layout';
 import { ExpenseCategoryType, Transaction } from '../../../types';
@@ -32,14 +33,10 @@ const SERVICE_OPTIONS = [
   { value: 'Others', label: 'Others' },
 ];
 
-const EXPENSE_OPTIONS = [
-  { value: 'Interest', label: 'Interest' },
-  { value: 'Fuel', label: 'Fuel' },
-  { value: 'Labor', label: 'Labor' },
-  { value: 'Food / Drink', label: 'Food / Drink' },
-  { value: 'Tools', label: 'Tools' },
-  { value: 'Others', label: 'Others' },
-];
+const EXPENSE_OPTIONS = VALID_EXPENSE_CATEGORIES.map((cat) => ({
+  value: cat,
+  label: cat,
+}));
 
 export const EditActivityModal: React.FC<EditActivityModalProps> = ({
   isOpen,

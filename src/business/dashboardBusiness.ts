@@ -1,9 +1,35 @@
-import { Transaction } from '../types';
+import {
+  Customer,
+  MonthlyRolloutStatus,
+  MonthlyTradingSummary,
+  Transaction,
+} from '../types';
 import { parseTransactionDate } from '../utils/formatters';
 import {
   JAN_2026_BASELINE,
   calculateMonthlyTradingSummary,
 } from './monthlyRolloutBusiness';
+
+export interface CustomerOutstandingMetrics {
+  totalOutstanding: number;
+  periodCreditAdded: number;
+  periodCollections: number;
+  netOutstandingChange: number;
+  customersWithDueCount: number;
+  totalCustomersCount: number;
+  historicalPeriodOutstanding?: number;
+}
+
+export interface ProfitMetricsData {
+  netProfit: number;
+  grossCommission: number;
+  pickupNet: number;
+  daaluNet?: number;
+  operatingExpenses: number;
+  profitMarginPct: number;
+  cumulativeTotalProfit?: number;
+  isPositive: boolean;
+}
 
 export interface DashboardMetricsResult {
   totalSalesAmount: number;
@@ -129,8 +155,14 @@ export function calculateDashboardMetrics(
       expensesCount += 1;
       expensesOnCash += cash;
     } else if (rawType.includes('PAYMENT')) {
-      paymentsReceived += Number(tx.paymentAmount) || Number(tx.amount) || 0;
+      const pAmt = Number(tx.paymentAmount) || Number(tx.amount) || 0;
+      const disc = Number(tx.discount) || 0;
+      paymentsReceived += pAmt;
       paymentsCount += 1;
+      if (disc > 0) {
+        totalExpenseAmount += disc;
+        expensesCount += 1;
+      }
     }
   });
 
@@ -298,4 +330,174 @@ export function calculateItemBreakdowns(
       };
     })
     .sort((a, b) => b.amount - a.amount);
+}
+
+/**
+ * Calculate Customer Outstanding (Receivables) Metrics for the active period (Month / YTD)
+ */
+export function calculateCustomerOutstandingMetrics(
+  customers: Customer[],
+  filteredTransactions: Transaction[],
+  options?: {
+    mode?: 'month' | 'ytd';
+    selectedMonth?: number;
+    year?: number;
+    rolloutStatus?: MonthlyRolloutStatus | null;
+  },
+): CustomerOutstandingMetrics {
+  // Live running total outstanding across customer accounts
+  const totalOutstanding = customers.reduce(
+    (sum, c) => sum + (c.outstandingAmount || 0),
+    0,
+  );
+  const customersWithDueCount = customers.filter(
+    (c) => (c.outstandingAmount || 0) > 0,
+  ).length;
+  const totalCustomersCount = customers.length;
+
+  let periodCreditAdded = 0;
+  let periodCollections = 0;
+
+  filteredTransactions.forEach((tx) => {
+    const rawType = (tx.type || tx.category || '').toString().toUpperCase();
+
+    if (rawType.includes('SALE') || rawType.includes('SERVICE')) {
+      const amt = Number(tx.amount) || 0;
+      const cash = Number(tx.cashPaid) || 0;
+      const credit =
+        tx.remainingDue !== undefined
+          ? Number(tx.remainingDue) || 0
+          : Math.max(0, amt - cash);
+      periodCreditAdded += credit;
+    } else if (rawType.includes('PAYMENT')) {
+      const pAmt = Number(tx.paymentAmount) || Number(tx.amount) || 0;
+      const disc = Number(tx.discount) || 0;
+      periodCollections += pAmt + disc;
+    }
+  });
+
+  const netOutstandingChange = periodCreditAdded - periodCollections;
+
+  // Check for historical rolled-out snapshot if in month mode
+  let historicalPeriodOutstanding: number | undefined;
+  if (
+    options?.mode === 'month' &&
+    options?.selectedMonth !== undefined &&
+    options.rolloutStatus?.history
+  ) {
+    const year = options.year || 2026;
+    const monthStr = String(options.selectedMonth + 1).padStart(2, '0');
+    const targetMonthKey = `${year}-${monthStr}`;
+
+    const historyEntry = options.rolloutStatus.history.find(
+      (h) => h.month === targetMonthKey,
+    );
+    if (historyEntry?.summary?.lendingToCustomers !== undefined) {
+      historicalPeriodOutstanding = historyEntry.summary.lendingToCustomers;
+    }
+  }
+
+  return {
+    totalOutstanding,
+    periodCreditAdded,
+    periodCollections,
+    netOutstandingChange,
+    customersWithDueCount,
+    totalCustomersCount,
+    historicalPeriodOutstanding,
+  };
+}
+
+/**
+ * Calculate Profit Metrics for the active period (Month / YTD)
+ */
+export function calculateProfitMetrics(
+  allTransactions: Transaction[],
+  options?: {
+    mode?: 'month' | 'ytd';
+    selectedMonth?: number;
+    year?: number;
+    totalSalesAmount?: number;
+    rolloutStatus?: MonthlyRolloutStatus | null;
+  },
+): ProfitMetricsData {
+  const mode = options?.mode || 'month';
+  const year = options?.year || 2026;
+  const selectedMonth = options?.selectedMonth ?? new Date().getMonth();
+  const totalSales = options?.totalSalesAmount || 0;
+
+  if (mode === 'month') {
+    let currentSummary: MonthlyTradingSummary | null = null;
+    for (let m = 0; m <= selectedMonth; m++) {
+      const period = `${year}_${String(m + 1).padStart(2, '0')}`;
+      currentSummary = calculateMonthlyTradingSummary(
+        period,
+        allTransactions,
+        currentSummary,
+      );
+    }
+
+    const netProfit = currentSummary?.netProfit.cm || 0;
+    const grossCommission = currentSummary?.commission.cm || 0;
+    const pickupNet = currentSummary?.daalu.cm || 0;
+    const operatingExpenses = currentSummary?.expenses.cm || 0;
+    const cumulativeTotalProfit = currentSummary?.netProfit.total || 0;
+    const profitMarginPct = totalSales > 0 ? (netProfit / totalSales) * 100 : 0;
+
+    return {
+      netProfit,
+      grossCommission,
+      pickupNet,
+      daaluNet: pickupNet,
+      operatingExpenses,
+      profitMarginPct,
+      cumulativeTotalProfit,
+      isPositive: netProfit >= 0,
+    };
+  } else {
+    // mode === 'ytd'
+    let ytdGrossCommission = 0;
+    let ytdPickupNet = 0;
+    let ytdExpenses = 0;
+    let ytdNetProfit = 0;
+    let latestSummary: MonthlyTradingSummary | null = null;
+
+    const maxMonth = 11;
+    for (let m = 0; m <= maxMonth; m++) {
+      const period = `${year}_${String(m + 1).padStart(2, '0')}`;
+      latestSummary = calculateMonthlyTradingSummary(
+        period,
+        allTransactions,
+        latestSummary,
+      );
+      if (latestSummary) {
+        const hasActivity =
+          latestSummary.sales.weightKg > 0 ||
+          latestSummary.purchases.weightKg > 0 ||
+          latestSummary.daalu.cm !== 0 ||
+          latestSummary.expenses.cm !== 0;
+
+        if (hasActivity) {
+          ytdGrossCommission += latestSummary.commission.cm;
+          ytdPickupNet += latestSummary.daalu.cm;
+          ytdExpenses += latestSummary.expenses.cm;
+          ytdNetProfit += latestSummary.netProfit.cm;
+        }
+      }
+    }
+
+    const profitMarginPct =
+      totalSales > 0 ? (ytdNetProfit / totalSales) * 100 : 0;
+
+    return {
+      netProfit: ytdNetProfit,
+      grossCommission: ytdGrossCommission,
+      pickupNet: ytdPickupNet,
+      daaluNet: ytdPickupNet,
+      operatingExpenses: ytdExpenses,
+      profitMarginPct,
+      cumulativeTotalProfit: latestSummary?.netProfit.total,
+      isPositive: ytdNetProfit >= 0,
+    };
+  }
 }

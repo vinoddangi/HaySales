@@ -269,7 +269,7 @@ async function importServicesAndExpenses() {
           id: `expense_discount_${gf.period}`,
           type: 'EXPENSE',
           category: 'Expense',
-          expenseCategory: 'Others',
+          expenseCategory: 'Discount',
           originalNameInSheet: 'Payment Discount',
           amount: discountC2,
           date: periodDate.toISOString(),

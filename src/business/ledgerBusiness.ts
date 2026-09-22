@@ -20,8 +20,9 @@ export function calculateCustomerLedgerSummary(
   transactions.forEach((t) => {
     if (t.type === 'PAYMENT') {
       const pAmt = Number(t.paymentAmount) || 0;
+      const disc = Number(t.discount) || 0;
       totalPaid += pAmt;
-      currentBalance -= pAmt;
+      currentBalance -= pAmt + disc;
     } else if (t.type === 'OPENING_BALANCE') {
       const amt = Number(t.amount) || 0;
       totalBilled += amt;

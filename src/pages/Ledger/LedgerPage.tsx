@@ -83,13 +83,19 @@ export const LedgerPage: React.FC = () => {
     setIsDrawerOpen(false);
   };
 
-  const handlePay = async (paymentAmount: number, paymentDate?: string) => {
-    if (!selectedCustId || paymentAmount <= 0) return;
+  const handlePay = async (
+    paymentAmount: number,
+    paymentDate?: string,
+    discount?: number,
+  ) => {
+    if (!selectedCustId || (paymentAmount <= 0 && (!discount || discount <= 0)))
+      return;
     try {
       await addTransaction({
         customerId: selectedCustId,
         type: 'PAYMENT',
         paymentAmount,
+        discount: discount || 0,
         date: paymentDate,
       }).unwrap();
 

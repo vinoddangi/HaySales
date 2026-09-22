@@ -21,7 +21,11 @@ export interface LedgerDetailDrawerProps {
   rolloutStatus?: MonthlyRolloutStatus | null;
   currentYear?: number;
   onClose: () => void;
-  onPay: (_paymentAmount: number, _date?: string) => Promise<void>;
+  onPay: (
+    _paymentAmount: number,
+    _date?: string,
+    _discount?: number,
+  ) => Promise<void>;
 }
 
 export const LedgerDetailDrawer: React.FC<LedgerDetailDrawerProps> = ({

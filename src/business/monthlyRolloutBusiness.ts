@@ -123,6 +123,10 @@ export function calculateMonthlyTradingSummary(
       } else {
         operatingExpenses += Number(tx.amount) || 0;
       }
+    } else if (rawType.includes('PAYMENT')) {
+      if (tx.discount && Number(tx.discount) > 0) {
+        operatingExpenses += Number(tx.discount);
+      }
     }
   }
 

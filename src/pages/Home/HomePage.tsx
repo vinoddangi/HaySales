@@ -3,8 +3,10 @@ import React, { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { hasPendingPreviousYearRecords } from '../../api';
 import {
+  calculateCustomerOutstandingMetrics,
   calculateDashboardMetrics,
   calculateItemBreakdowns,
+  calculateProfitMetrics,
   filterTransactionsByPeriod,
 } from '../../business/dashboardBusiness';
 import { BackupWarningBanner } from '../../components/common/BackupWarningBanner';
@@ -17,6 +19,8 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   useGetAllTransactionsQuery,
   useGetBackupStatusQuery,
+  useGetCustomersQuery,
+  useGetMonthlyRolloutStatusQuery,
 } from '../../store/slices/customersApi';
 import { setFilterMode, setSelectedMonth } from '../../store/slices/uiSlice';
 import { DashboardBreakdown } from './components/DashboardBreakdown';
@@ -35,6 +39,12 @@ export const HomePage: React.FC = () => {
   // Fetch all transactions across customers & purchases
   const { data: allTransactions = [], isLoading } =
     useGetAllTransactionsQuery();
+
+  // Fetch customers list for running outstanding calculations
+  const { data: customers = [] } = useGetCustomersQuery();
+
+  // Fetch monthly rollout status for historical snapshot references
+  const { data: rolloutStatus } = useGetMonthlyRolloutStatusQuery();
 
   // Fetch backup metadata status
   const { data: backupStatus } = useGetBackupStatusQuery();
@@ -58,26 +68,52 @@ export const HomePage: React.FC = () => {
     );
   }, [allTransactions, filterMode, selectedMonth, currentDate]);
 
-  // Aggregate metrics & item breakdown via Business Layer
-  const { metrics, itemBreakdown } = useMemo(() => {
-    const computedMetrics = calculateDashboardMetrics(filteredTransactions);
-    const computedBreakdowns = calculateItemBreakdowns(
-      allTransactions,
-      filteredTransactions,
-      {
+  // Aggregate metrics, customer outstanding, profit & item breakdown via Business Layer
+  const { metrics, itemBreakdown, customerOutstanding, profit } =
+    useMemo(() => {
+      const computedMetrics = calculateDashboardMetrics(filteredTransactions);
+      const computedBreakdowns = calculateItemBreakdowns(
+        allTransactions,
+        filteredTransactions,
+        {
+          mode: filterMode,
+          selectedMonth,
+          year: currentYear,
+        },
+      );
+      const computedOutstanding = calculateCustomerOutstandingMetrics(
+        customers,
+        filteredTransactions,
+        {
+          mode: filterMode,
+          selectedMonth,
+          year: currentYear,
+          rolloutStatus,
+        },
+      );
+      const computedProfit = calculateProfitMetrics(allTransactions, {
         mode: filterMode,
         selectedMonth,
         year: currentYear,
-      },
-    );
-    return { metrics: computedMetrics, itemBreakdown: computedBreakdowns };
-  }, [
-    allTransactions,
-    filteredTransactions,
-    filterMode,
-    selectedMonth,
-    currentYear,
-  ]);
+        totalSalesAmount: computedMetrics.totalSalesAmount,
+        rolloutStatus,
+      });
+
+      return {
+        metrics: computedMetrics,
+        itemBreakdown: computedBreakdowns,
+        customerOutstanding: computedOutstanding,
+        profit: computedProfit,
+      };
+    }, [
+      customers,
+      rolloutStatus,
+      allTransactions,
+      filteredTransactions,
+      filterMode,
+      selectedMonth,
+      currentYear,
+    ]);
 
   const getPeriodLabel = () => {
     if (filterMode === 'ytd') {
@@ -115,7 +151,14 @@ export const HomePage: React.FC = () => {
       />
 
       {/* Key Metric Cards */}
-      <DashboardMetricCards metrics={metrics} isLoading={isLoading} />
+      <DashboardMetricCards
+        metrics={metrics}
+        profit={profit}
+        customerOutstanding={customerOutstanding}
+        periodMode={filterMode}
+        periodLabel={getPeriodLabel()}
+        isLoading={isLoading}
+      />
 
       {/* Settlement Split & Item Breakdown */}
       <DashboardBreakdown

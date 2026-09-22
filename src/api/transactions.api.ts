@@ -211,8 +211,11 @@ export async function addCustomerTransactionApi(
     txData.cashPaid = data.cashPaid;
     txData.remainingDue = balanceChange;
   } else if (data.type === 'PAYMENT') {
-    balanceChange = -(data.paymentAmount || 0);
-    txData.paymentAmount = data.paymentAmount;
+    const cashPaid = data.paymentAmount || 0;
+    const discount = data.discount || 0;
+    balanceChange = -(cashPaid + discount);
+    txData.paymentAmount = cashPaid;
+    txData.discount = discount;
   }
 
   batch.set(newTxRef, txData);

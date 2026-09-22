@@ -8,6 +8,7 @@ export const VALID_EXPENSE_CATEGORIES: ExpenseCategoryType[] = [
   'Labor',
   'Food / Drink',
   'Tools',
+  'Discount',
   'Others',
 ];
 

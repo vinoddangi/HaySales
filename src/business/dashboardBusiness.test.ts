@@ -1,8 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { Transaction } from '../types';
 import {
+  calculateCustomerOutstandingMetrics,
   calculateDashboardMetrics,
   calculateItemBreakdowns,
+  calculateProfitMetrics,
   filterTransactionsByPeriod,
 } from './dashboardBusiness';
 
@@ -239,5 +241,173 @@ describe('dashboardBusiness', () => {
     // Total Amount = 141097.04 (opening) + 90000 (purchase) = 231097.04
     // Avg Buy Rate = 231097.04 / 23528 = 9.822...
     expect(others?.avgBuyRate).toBeCloseTo(231097.04 / 23528, 2);
+  });
+
+  it('calculates customer outstanding metrics for month and YTD', () => {
+    const mockCustomers = [
+      { id: 'c1', name: 'Ramesh', outstandingAmount: 50000 },
+      { id: 'c2', name: 'Suresh', outstandingAmount: 25000 },
+      { id: 'c3', name: 'Dinesh', outstandingAmount: 0 },
+    ];
+
+    const periodTxs: Transaction[] = [
+      {
+        id: 'tx-s1',
+        type: 'SALE',
+        amount: 30000,
+        cashPaid: 10000,
+        remainingDue: 20000,
+        date: '2026-08-05',
+      },
+      {
+        id: 'tx-s2',
+        type: 'SERVICE',
+        amount: 5000,
+        cashPaid: 0,
+        remainingDue: 5000,
+        date: '2026-08-10',
+      },
+      {
+        id: 'tx-p1',
+        type: 'PAYMENT',
+        paymentAmount: 15000,
+        date: '2026-08-12',
+      },
+    ];
+
+    const metrics = calculateCustomerOutstandingMetrics(
+      mockCustomers,
+      periodTxs,
+      {
+        mode: 'month',
+        selectedMonth: 7, // August (0-indexed)
+        year: 2026,
+        rolloutStatus: {
+          lastRolledOutMonth: '2026-08',
+          history: [
+            {
+              month: '2026-08',
+              rolledOutAt: '2026-09-01T00:00:00.000Z',
+              summary: {
+                lendingToCustomers: 3653295,
+              } as any,
+            },
+          ],
+        },
+      },
+    );
+
+    expect(metrics.totalOutstanding).toBe(75000);
+    expect(metrics.customersWithDueCount).toBe(2);
+    expect(metrics.totalCustomersCount).toBe(3);
+    expect(metrics.periodCreditAdded).toBe(25000); // 20000 sale credit + 5000 service credit
+    expect(metrics.periodCollections).toBe(15000); // 15000 payment
+    expect(metrics.netOutstandingChange).toBe(10000); // 25000 - 15000
+    expect(metrics.historicalPeriodOutstanding).toBe(3653295);
+  });
+
+  it('calculates profit metrics for month and YTD', () => {
+    // January transactions: baseline opening stock 13528 kg @ 141097.04 (rate 10.43)
+    const janTx: Transaction[] = [
+      {
+        id: 'tx-p1',
+        type: 'PURCHASE',
+        weightKg: 10000,
+        amount: 90000, // rate 9.0
+        date: '2026-01-05',
+      },
+      {
+        id: 'tx-s1',
+        type: 'SALE',
+        weightKg: 5000,
+        amount: 60000, // rate 12.0
+        date: '2026-01-15',
+      },
+      {
+        id: 'tx-e1',
+        type: 'EXPENSE',
+        amount: 5000,
+        date: '2026-01-20',
+      },
+    ];
+
+    const monthProfit = calculateProfitMetrics(janTx, {
+      mode: 'month',
+      selectedMonth: 0,
+      year: 2026,
+      totalSalesAmount: 60000,
+    });
+
+    // Opening stock = 13528 kg, amt = 141097.04
+    // Purchases = 10000 kg, amt = 90000
+    // Total stock = 23528 kg, amt = 231097.04 => weightedRate = 9.82221353...
+    // Sales = 5000 kg, amt = 60000
+    // Commission CM = 60000 - (5000 * 9.82221353) = 60000 - 49111.07 = ~10888.93
+    // Operating Expenses = 5000
+    // Net profit CM = 10888.93 - 5000 = ~5888.93
+    expect(monthProfit.netProfit).toBeCloseTo(5888.93, 1);
+    expect(monthProfit.grossCommission).toBeCloseTo(10888.93, 1);
+    expect(monthProfit.operatingExpenses).toBe(5000);
+    expect(monthProfit.profitMarginPct).toBeCloseTo((5888.93 / 60000) * 100, 1);
+
+    const ytdProfit = calculateProfitMetrics(janTx, {
+      mode: 'ytd',
+      year: 2026,
+      totalSalesAmount: 60000,
+    });
+
+    expect(ytdProfit.netProfit).toBeCloseTo(5888.93, 1);
+    expect(ytdProfit.grossCommission).toBeCloseTo(10888.93, 1);
+    expect(ytdProfit.operatingExpenses).toBe(5000);
+  });
+
+  it('aggregates payment discount as expense and reduces net profit correctly', () => {
+    const janTxWithDiscount: Transaction[] = [
+      {
+        id: 'tx-p1',
+        type: 'PURCHASE',
+        weightKg: 10000,
+        amount: 90000,
+        date: '2026-01-05',
+      },
+      {
+        id: 'tx-s1',
+        type: 'SALE',
+        weightKg: 5000,
+        amount: 60000,
+        date: '2026-01-15',
+      },
+      {
+        id: 'tx-e1',
+        type: 'EXPENSE',
+        amount: 5000,
+        date: '2026-01-20',
+      },
+      {
+        id: 'tx-pay-disc',
+        type: 'PAYMENT',
+        paymentAmount: 9000,
+        discount: 1000, // ₹1,000 discount given during payment
+        date: '2026-01-25',
+      },
+    ];
+
+    const metrics = calculateDashboardMetrics(janTxWithDiscount);
+    // 5000 general expense + 1000 payment discount = 6000 total expenses
+    expect(metrics.totalExpenseAmount).toBe(6000);
+    expect(metrics.expensesCount).toBe(2);
+
+    const profit = calculateProfitMetrics(janTxWithDiscount, {
+      mode: 'month',
+      selectedMonth: 0,
+      year: 2026,
+      totalSalesAmount: 60000,
+    });
+
+    // Commission CM = ~10888.93
+    // Operating expenses = 5000 + 1000 (discount) = 6000
+    // Net profit = 10888.93 - 6000 = ~4888.93
+    expect(profit.operatingExpenses).toBe(6000);
+    expect(profit.netProfit).toBeCloseTo(4888.93, 1);
   });
 });

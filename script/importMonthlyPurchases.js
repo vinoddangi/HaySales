@@ -372,7 +372,7 @@ async function importMonthlyPurchases() {
               docId: `expense_discount_${gf.period}`,
               type: 'EXPENSE',
               category: 'Expense',
-              expenseCategory: 'Others',
+              expenseCategory: 'Discount',
               amount: discountVal,
               date: discountDate.toISOString(),
               period: gf.period,

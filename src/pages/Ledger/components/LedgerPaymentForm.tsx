@@ -17,7 +17,11 @@ export interface LedgerPaymentFormProps {
   hasPendingBackup?: boolean;
   rolloutStatus?: MonthlyRolloutStatus | null;
   currentYear?: number;
-  onPay: (_paymentAmount: number, _date?: string) => Promise<void>;
+  onPay: (
+    _paymentAmount: number,
+    _date?: string,
+    _discount?: number,
+  ) => Promise<void>;
 }
 
 export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
@@ -40,16 +44,20 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
   const isBlockedByRollout = isTransactionMonthLocked(date, rolloutStatus);
   const isFormBlocked = isBlockedByBackup || isBlockedByRollout;
 
-  const discountDuringPayment = allDueClear
-    ? Math.max(0, outstandingDue - paymentAmount)
-    : 0;
-  const effectivePaymentAmount = allDueClear ? outstandingDue : paymentAmount;
+  const effectivePaymentAmount =
+    allDueClear && paymentAmount === 0 ? outstandingDue : paymentAmount;
+  const discountDuringPayment =
+    allDueClear && paymentAmount > 0
+      ? Math.max(0, outstandingDue - paymentAmount)
+      : 0;
+  const totalClearedAmount = effectivePaymentAmount + discountDuringPayment;
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async () => {
     if (
-      effectivePaymentAmount <= 0 ||
+      totalClearedAmount <= 0 ||
+      totalClearedAmount > outstandingDue ||
       isFormBlocked ||
       isPaying ||
       isSubmitting
@@ -57,7 +65,7 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
       return;
     try {
       setIsSubmitting(true);
-      await onPay(effectivePaymentAmount, date);
+      await onPay(effectivePaymentAmount, date, discountDuringPayment);
       setPaymentAmount(0);
       setAllDueClear(false);
     } finally {
@@ -141,8 +149,8 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
         onClick={handleSubmit}
         disabled={
           isPaying ||
-          effectivePaymentAmount <= 0 ||
-          effectivePaymentAmount > outstandingDue ||
+          totalClearedAmount <= 0 ||
+          totalClearedAmount > outstandingDue ||
           isFormBlocked
         }
       >

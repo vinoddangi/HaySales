@@ -53,6 +53,7 @@ export type ExpenseCategoryType =
   | 'Labor'
   | 'Food / Drink'
   | 'Tools'
+  | 'Discount'
   | 'Others';
 
 export type CropItemType =

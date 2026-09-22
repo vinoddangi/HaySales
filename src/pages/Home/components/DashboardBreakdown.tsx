@@ -108,7 +108,7 @@ export const DashboardBreakdown: React.FC<DashboardBreakdownProps> = ({
               <div className="flex items-center justify-between rounded-lg border border-purple-500/30 bg-purple-500/[0.06] p-2.5">
                 <div>
                   <span className="block text-xs font-bold text-purple-700 dark:text-purple-300">
-                    Service Income (Daalu/Pickup)
+                    Service Income (Pickup)
                   </span>
                   <span className="block text-[10px] text-m3-on-surface-variant">
                     Direct service earnings

@@ -18,7 +18,11 @@ export interface PaymentFormProps {
   hasPendingBackup?: boolean;
   rolloutStatus?: MonthlyRolloutStatus | null;
   currentYear?: number;
-  onSubmit: (_effectivePaymentAmount: number, _date?: string) => Promise<void>;
+  onSubmit: (
+    _paymentAmount: number,
+    _date?: string,
+    _discount?: number,
+  ) => Promise<void>;
 }
 
 export const PaymentForm: React.FC<PaymentFormProps> = ({
@@ -41,18 +45,23 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
   const isBlockedByRollout = isTransactionMonthLocked(date, rolloutStatus);
   const isFormBlocked = isBlockedByBackup || isBlockedByRollout;
 
-  const discountDuringPayment = allDueClear
-    ? Math.max(0, outstandingDue - paymentAmount)
-    : 0;
-  const effectivePaymentAmount = allDueClear ? outstandingDue : paymentAmount;
-  const newOutstandingDue = Math.max(
-    0,
-    outstandingDue - effectivePaymentAmount,
-  );
+  const effectivePaymentAmount =
+    allDueClear && paymentAmount === 0 ? outstandingDue : paymentAmount;
+  const discountDuringPayment =
+    allDueClear && paymentAmount > 0
+      ? Math.max(0, outstandingDue - paymentAmount)
+      : 0;
+  const totalClearedAmount = effectivePaymentAmount + discountDuringPayment;
+  const newOutstandingDue = Math.max(0, outstandingDue - totalClearedAmount);
 
   const handleSubmit = async () => {
-    if (effectivePaymentAmount <= 0 || isFormBlocked) return;
-    await onSubmit(effectivePaymentAmount, date);
+    if (
+      totalClearedAmount <= 0 ||
+      totalClearedAmount > outstandingDue ||
+      isFormBlocked
+    )
+      return;
+    await onSubmit(effectivePaymentAmount, date, discountDuringPayment);
     setPaymentAmount(0);
     setAllDueClear(false);
   };
@@ -138,8 +147,8 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
         onClick={handleSubmit}
         disabled={
           isSaving ||
-          effectivePaymentAmount <= 0 ||
-          effectivePaymentAmount > outstandingDue ||
+          totalClearedAmount <= 0 ||
+          totalClearedAmount > outstandingDue ||
           isFormBlocked
         }
       >
