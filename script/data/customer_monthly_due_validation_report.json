@@ -1,142 +1,170 @@
-[
-  {
-    "period": "2025-01",
-    "startDue": 2217792,
-    "monthSalesDebt": 510045,
-    "monthPayments": 590346,
-    "endDue": 2137491
-  },
-  {
-    "period": "2025-02",
-    "startDue": 2137491,
-    "monthSalesDebt": 817250,
-    "monthPayments": 318410,
-    "endDue": 2636331
-  },
-  {
-    "period": "2025-03",
-    "startDue": 2636331,
-    "monthSalesDebt": 555235,
-    "monthPayments": 231150,
-    "endDue": 2960416
-  },
-  {
-    "period": "2025-04",
-    "startDue": 2960416,
-    "monthSalesDebt": 454707,
-    "monthPayments": 596847,
-    "endDue": 2818276
-  },
-  {
-    "period": "2025-05",
-    "startDue": 2818276,
-    "monthSalesDebt": 319956,
-    "monthPayments": 411803,
-    "endDue": 2726429
-  },
-  {
-    "period": "2025-06",
-    "startDue": 2726429,
-    "monthSalesDebt": 167718,
-    "monthPayments": 207779,
-    "endDue": 2686368
-  },
-  {
-    "period": "2025-07",
-    "startDue": 2686368,
-    "monthSalesDebt": 418030,
-    "monthPayments": 412597,
-    "endDue": 2691801
-  },
-  {
-    "period": "2025-08",
-    "startDue": 2691801,
-    "monthSalesDebt": 287720,
-    "monthPayments": 128461,
-    "endDue": 2851060
-  },
-  {
-    "period": "2025-09",
-    "startDue": 2851060,
-    "monthSalesDebt": 551896,
-    "monthPayments": 244517,
-    "endDue": 3158439
-  },
-  {
-    "period": "2025-10",
-    "startDue": 3158439,
-    "monthSalesDebt": 192369,
-    "monthPayments": 868539,
-    "endDue": 2482269
-  },
-  {
-    "period": "2025-11",
-    "startDue": 2482269,
-    "monthSalesDebt": 332917,
-    "monthPayments": 382974,
-    "endDue": 2432212
-  },
-  {
-    "period": "2025-12",
-    "startDue": 2432212,
-    "monthSalesDebt": 482733,
-    "monthPayments": 0,
-    "endDue": 2914945
-  },
-  {
-    "period": "2026-01",
-    "startDue": 2914945,
-    "monthSalesDebt": 793635,
-    "monthPayments": 279000,
-    "endDue": 3429580
-  },
-  {
-    "period": "2026-02",
-    "startDue": 3429580,
-    "monthSalesDebt": 535849,
-    "monthPayments": 558394,
-    "endDue": 3407035
-  },
-  {
-    "period": "2026-03",
-    "startDue": 3407035,
-    "monthSalesDebt": 500190,
-    "monthPayments": 451948,
-    "endDue": 3455277
-  },
-  {
-    "period": "2026-04",
-    "startDue": 3455277,
-    "monthSalesDebt": 292124,
-    "monthPayments": 277531,
-    "endDue": 3469870
-  },
-  {
-    "period": "2026-05",
-    "startDue": 3469870,
-    "monthSalesDebt": 625840,
-    "monthPayments": 579056,
-    "endDue": 3516654
-  },
-  {
-    "period": "2026-06",
-    "startDue": 3516654,
-    "monthSalesDebt": 340423,
-    "monthPayments": 462801,
-    "endDue": 3394276
-  },
-  {
-    "period": "2026-07",
-    "startDue": 3394276,
-    "monthSalesDebt": 704744,
-    "monthPayments": 289802,
-    "endDue": 3809218
-  },
-  {
-    "period": "2026-08",
-    "startDue": 3809218,
-    "monthSalesDebt": 587158,
-    "monthPayments": 447869,
-    "endDue": 3948507
+{
+  "monthlySummaries": [
+    {
+      "period": "2025-01",
+      "startDue": 2320165,
+      "monthSalesDebt": 510045,
+      "monthServiceDebt": 0,
+      "monthPayments": 590346,
+      "endDue": 2239864
+    },
+    {
+      "period": "2025-02",
+      "startDue": 2239864,
+      "monthSalesDebt": 817250,
+      "monthServiceDebt": 0,
+      "monthPayments": 318410,
+      "endDue": 2738704
+    },
+    {
+      "period": "2025-03",
+      "startDue": 2738704,
+      "monthSalesDebt": 555235,
+      "monthServiceDebt": 0,
+      "monthPayments": 231150,
+      "endDue": 3062789
+    },
+    {
+      "period": "2025-04",
+      "startDue": 3062789,
+      "monthSalesDebt": 454707,
+      "monthServiceDebt": 0,
+      "monthPayments": 583574,
+      "endDue": 2933922
+    },
+    {
+      "period": "2025-05",
+      "startDue": 2933922,
+      "monthSalesDebt": 319956,
+      "monthServiceDebt": 0,
+      "monthPayments": 411803,
+      "endDue": 2842075
+    },
+    {
+      "period": "2025-06",
+      "startDue": 2842075,
+      "monthSalesDebt": 167718,
+      "monthServiceDebt": 0,
+      "monthPayments": 207779,
+      "endDue": 2802014
+    },
+    {
+      "period": "2025-07",
+      "startDue": 2802014,
+      "monthSalesDebt": 418030,
+      "monthServiceDebt": 0,
+      "monthPayments": 412597,
+      "endDue": 2807447
+    },
+    {
+      "period": "2025-08",
+      "startDue": 2807447,
+      "monthSalesDebt": 287720,
+      "monthServiceDebt": 0,
+      "monthPayments": 119141,
+      "endDue": 2976026
+    },
+    {
+      "period": "2025-09",
+      "startDue": 2976026,
+      "monthSalesDebt": 551896,
+      "monthServiceDebt": 0,
+      "monthPayments": 244517,
+      "endDue": 3283405
+    },
+    {
+      "period": "2025-10",
+      "startDue": 3283405,
+      "monthSalesDebt": 192369,
+      "monthServiceDebt": 0,
+      "monthPayments": 860804,
+      "endDue": 2614970
+    },
+    {
+      "period": "2025-11",
+      "startDue": 2614970,
+      "monthSalesDebt": 332917,
+      "monthServiceDebt": 0,
+      "monthPayments": 382974,
+      "endDue": 2564913
+    },
+    {
+      "period": "2025-12",
+      "startDue": 2564913,
+      "monthSalesDebt": 482733,
+      "monthServiceDebt": 0,
+      "monthPayments": 0,
+      "endDue": 3047646
+    },
+    {
+      "period": "2026-01",
+      "startDue": 3047646,
+      "monthSalesDebt": 774740,
+      "monthServiceDebt": 0,
+      "monthPayments": 279000,
+      "endDue": 3543386
+    },
+    {
+      "period": "2026-02",
+      "startDue": 3543386,
+      "monthSalesDebt": 535849,
+      "monthServiceDebt": 0,
+      "monthPayments": 558394,
+      "endDue": 3520841
+    },
+    {
+      "period": "2026-03",
+      "startDue": 3520841,
+      "monthSalesDebt": 500190,
+      "monthServiceDebt": 0,
+      "monthPayments": 451948,
+      "endDue": 3569083
+    },
+    {
+      "period": "2026-04",
+      "startDue": 3569083,
+      "monthSalesDebt": 292124,
+      "monthServiceDebt": 0,
+      "monthPayments": 277531,
+      "endDue": 3583676
+    },
+    {
+      "period": "2026-05",
+      "startDue": 3583676,
+      "monthSalesDebt": 625840,
+      "monthServiceDebt": 80000,
+      "monthPayments": 579056,
+      "endDue": 3710460
+    },
+    {
+      "period": "2026-06",
+      "startDue": 3710460,
+      "monthSalesDebt": 340423,
+      "monthServiceDebt": 0,
+      "monthPayments": 462801,
+      "endDue": 3588082
+    },
+    {
+      "period": "2026-07",
+      "startDue": 3588082,
+      "monthSalesDebt": 704744,
+      "monthServiceDebt": 0,
+      "monthPayments": 289802,
+      "endDue": 4003024
+    },
+    {
+      "period": "2026-08",
+      "startDue": 4003024,
+      "monthSalesDebt": 587158,
+      "monthServiceDebt": 0,
+      "monthPayments": 447869,
+      "endDue": 4142313
+    }
+  ],
+  "verification": {
+    "totalComparisons": 2000,
+    "exactMatches": 1342,
+    "discrepancies": 658,
+    "overallMatchPct": "67.1"
   }
-]
+}

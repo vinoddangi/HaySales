@@ -1,142 +1,130 @@
 PurchaseID,Date,Category,Item,WeightKg,PurchaseRate,Amount,VendorName,Notes
-purchase_2025_01_1,2025-01-04T18:30:00.000Z,Purchase,Gavatri,8300,10,83000,,Historical purchase recorded from Jan 2025
-purchase_2025_01_2,2025-01-05T18:30:00.000Z,Purchase,Gavatri,14200,8.31,118000,,Historical purchase recorded from Jan 2025
-purchase_2025_01_3,2025-01-20T18:30:00.000Z,Purchase,Magfali,5065,8.98,45500,,Historical purchase recorded from Jan 2025
-purchase_2025_01_4,2025-01-20T18:30:00.000Z,Purchase,B. Kutty,7100,10.15,72100,,Historical purchase recorded from Jan 2025
-purchase_2025_01_5,2025-01-22T18:30:00.000Z,Purchase,Tuver,7000,9.51,66600,,Historical purchase recorded from Jan 2025
-purchase_2025_01_6,2025-01-25T18:30:00.000Z,Purchase,B. Kutty,6240,10.3,64300,,Historical purchase recorded from Jan 2025
-purchase_2025_01_7,2025-01-30T18:30:00.000Z,Purchase,Tuver,11500,9.61,110500,,Historical purchase recorded from Jan 2025
-purchase_2025_01_8,2025-01-30T18:30:00.000Z,Purchase,Tuver,4730,10.02,47400,,Historical purchase recorded from Jan 2025
-purchase_2025_01_30,2025-01-15T12:00:00.000Z,Purchase,Others,64135,9.47,607400,,Historical purchase recorded from Jan 2025
-purchase_2025_02_1,2025-02-01T18:30:00.000Z,Purchase,Tuver,3810,10,38100,,Historical purchase recorded from Feb 2025
-purchase_2025_02_2,2025-02-01T18:30:00.000Z,Purchase,Tuver,9300,9.51,88400,,Historical purchase recorded from Feb 2025
-purchase_2025_02_3,2025-02-02T18:30:00.000Z,Purchase,Tuver,9540,9.4,89700,,Historical purchase recorded from Feb 2025
-purchase_2025_02_4,2025-02-03T18:30:00.000Z,Purchase,Tuver,4615,9.32,43000,,Historical purchase recorded from Feb 2025
-purchase_2025_02_5,2025-02-06T18:30:00.000Z,Purchase,Tuver,6000,9.1,54600,,Historical purchase recorded from Feb 2025
-purchase_2025_02_6,2025-02-06T18:30:00.000Z,Purchase,Tuver,5700,9.19,52400,,Historical purchase recorded from Feb 2025
-purchase_2025_02_7,2025-02-08T18:30:00.000Z,Purchase,Tuver,5300,9.36,49600,,Historical purchase recorded from Feb 2025
-purchase_2025_02_8,2025-02-10T18:30:00.000Z,Purchase,Tuver,4250,8.8,37400,,Historical purchase recorded from Feb 2025
-purchase_2025_02_9,2025-02-11T18:30:00.000Z,Purchase,Tuver,5670,8.89,50400,,Historical purchase recorded from Feb 2025
-purchase_2025_02_10,2025-02-12T18:30:00.000Z,Purchase,Tuver,5600,9.02,50500,,Historical purchase recorded from Feb 2025
-purchase_2025_02_11,2025-02-13T18:30:00.000Z,Purchase,Tuver,2510,8.01,20100,,Historical purchase recorded from Feb 2025
-purchase_2025_02_12,2025-02-14T18:30:00.000Z,Purchase,Tuver,5645,8.24,46500,,Historical purchase recorded from Feb 2025
-purchase_2025_02_13,2025-02-17T18:30:00.000Z,Purchase,Tuver,2400,8.67,20800,,Historical purchase recorded from Feb 2025
-purchase_2025_02_14,2025-02-17T18:30:00.000Z,Purchase,Tuver,3300,8.48,28000,,Historical purchase recorded from Feb 2025
-purchase_2025_02_15,2025-02-17T18:30:00.000Z,Purchase,Tuver,5950,8.49,50500,,Historical purchase recorded from Feb 2025
-purchase_2025_02_16,2025-02-19T18:30:00.000Z,Purchase,Tuver,500,8.2,4100,,Historical purchase recorded from Feb 2025
-purchase_2025_02_17,2025-02-19T18:30:00.000Z,Purchase,Tuver,4165,8.38,34900,,Historical purchase recorded from Feb 2025
-purchase_2025_02_18,2025-02-20T18:30:00.000Z,Purchase,Tuver,7400,8.24,61000,,Historical purchase recorded from Feb 2025
-purchase_2025_02_19,2025-02-23T18:30:00.000Z,Purchase,Tuver,6600,8.26,54500,,Historical purchase recorded from Feb 2025
-purchase_2025_02_20,2025-02-26T18:30:00.000Z,Purchase,Tuver,7200,8,57600,,Historical purchase recorded from Feb 2025
-purchase_2025_02_30,2025-02-15T12:00:00.000Z,Purchase,Others,105455,8.84,932100,,Historical purchase recorded from Feb 2025
-purchase_2025_03_1,2025-03-01T18:30:00.000Z,Purchase,Chana,5600,8,44800,,Historical purchase recorded from March 2025
-purchase_2025_03_2,2025-03-01T18:30:00.000Z,Purchase,Tuver,6200,7,43400,,Historical purchase recorded from March 2025
-purchase_2025_03_3,2025-03-02T18:30:00.000Z,Purchase,Tuver,4035,6.99,28200,,Historical purchase recorded from March 2025
-purchase_2025_03_4,2025-03-02T18:30:00.000Z,Purchase,Tuver,2015,7.49,15100,,Historical purchase recorded from March 2025
-purchase_2025_03_5,2025-03-03T18:30:00.000Z,Purchase,Tuver,2520,6.71,16900,,Historical purchase recorded from March 2025
-purchase_2025_03_6,2025-03-04T18:30:00.000Z,Purchase,Tuver,2335,7.28,17000,,Historical purchase recorded from March 2025
-purchase_2025_03_7,2025-03-04T18:30:00.000Z,Purchase,Chana,6600,8,52800,,Historical purchase recorded from March 2025
-purchase_2025_03_8,2025-03-04T18:30:00.000Z,Purchase,Chana,5290,7.75,41000,,Historical purchase recorded from March 2025
-purchase_2025_03_9,2025-03-06T18:30:00.000Z,Purchase,Tuver,6700,7.01,47000,,Historical purchase recorded from March 2025
-purchase_2025_03_10,2025-03-07T18:30:00.000Z,Purchase,Tuver,3355,6.97,23400,,Historical purchase recorded from March 2025
-purchase_2025_03_11,2025-03-07T18:30:00.000Z,Purchase,Chana,8600,7.4,63600,,Historical purchase recorded from March 2025
-purchase_2025_03_12,2025-03-08T18:30:00.000Z,Purchase,Chana,8200,7.74,63500,,Historical purchase recorded from March 2025
-purchase_2025_03_13,2025-03-09T18:30:00.000Z,Purchase,Tuver,6500,7,45500,,Historical purchase recorded from March 2025
-purchase_2025_03_14,2025-03-14T18:30:00.000Z,Purchase,Tuver,7300,7,51100,,Historical purchase recorded from March 2025
-purchase_2025_03_15,2025-03-15T18:30:00.000Z,Purchase,Tuver,3620,6.99,25300,,Historical purchase recorded from March 2025
-purchase_2025_03_16,2025-03-15T18:30:00.000Z,Purchase,Tuver,2505,8.46,21200,,Historical purchase recorded from March 2025
-purchase_2025_03_17,2025-03-15T18:30:00.000Z,Purchase,Tuver,5070,6.98,35400,,Historical purchase recorded from March 2025
-purchase_2025_03_18,2025-03-21T18:30:00.000Z,Purchase,Tuver,2160,6.9,14900,,Historical purchase recorded from March 2025
-purchase_2025_03_19,2025-03-21T18:30:00.000Z,Purchase,Tuver,1425,6.67,9500,,Historical purchase recorded from March 2025
-purchase_2025_03_20,2025-03-24T18:30:00.000Z,Purchase,Tuver,5995,6.99,41900,,Historical purchase recorded from March 2025
-purchase_2025_03_21,2025-03-24T18:30:00.000Z,Purchase,Tuver,5510,7.01,38600,,Historical purchase recorded from March 2025
-purchase_2025_03_22,2025-03-26T18:30:00.000Z,Purchase,Tuver,6200,7.02,43500,,Historical purchase recorded from March 2025
-purchase_2025_03_23,2025-03-26T18:30:00.000Z,Purchase,Tuver,4000,7,28000,,Historical purchase recorded from March 2025
-purchase_2025_03_24,2025-03-27T18:30:00.000Z,Purchase,Tuver,7500,7,52500,,Historical purchase recorded from March 2025
-purchase_2025_03_25,2025-03-28T18:30:00.000Z,Purchase,Tuver,3370,6.97,23500,,Historical purchase recorded from March 2025
-purchase_2025_03_26,2025-03-29T18:30:00.000Z,Purchase,Tuver,7300,7,51100,,Historical purchase recorded from March 2025
-purchase_2025_03_30,2025-03-15T12:00:00.000Z,Purchase,Others,129905,7.23,938700,,Historical purchase recorded from March 2025
-purchase_2025_04_1,2025-04-01T18:30:00.000Z,Purchase,Tuar,3150,6.98,22000,,Historical purchase recorded from April 2025
-purchase_2025_04_2,2025-04-03T18:30:00.000Z,Purchase,Chana,1145,6.99,8000,,Historical purchase recorded from April 2025
-purchase_2025_04_3,2025-04-03T18:30:00.000Z,Purchase,Chana,8600,7,60200,,Historical purchase recorded from April 2025
-purchase_2025_04_4,2025-04-04T18:30:00.000Z,Purchase,Methi,3855,5.97,23000,,Historical purchase recorded from April 2025
-purchase_2025_04_5,2025-04-05T18:30:00.000Z,Purchase,Tuar,3085,7,21600,,Historical purchase recorded from April 2025
-purchase_2025_04_6,2025-04-05T18:30:00.000Z,Purchase,Tuar,8100,7,56700,,Historical purchase recorded from April 2025
-purchase_2025_04_7,2025-04-06T18:30:00.000Z,Purchase,Chana,9000,7,63000,,Historical purchase recorded from April 2025
-purchase_2025_04_8,2025-04-12T18:30:00.000Z,Purchase,Chana,7900,6.81,53800,,Historical purchase recorded from April 2025
-purchase_2025_04_9,2025-04-13T18:30:00.000Z,Purchase,Chana,10100,7,70700,,Historical purchase recorded from April 2025
-purchase_2025_04_10,2025-04-13T18:30:00.000Z,Purchase,Tuar,9300,7,65100,,Historical purchase recorded from April 2025
-purchase_2025_04_11,2025-04-16T18:30:00.000Z,Purchase,Tuar,8300,7,58100,,Historical purchase recorded from April 2025
-purchase_2025_04_12,2025-04-19T18:30:00.000Z,Purchase,Chana,9600,7,67200,,Historical purchase recorded from April 2025
-purchase_2025_04_13,2025-04-21T18:30:00.000Z,Purchase,Chana,11700,7,81900,,Historical purchase recorded from April 2025
-purchase_2025_04_14,2025-04-23T18:30:00.000Z,Purchase,Chana,10900,7,76300,,Historical purchase recorded from April 2025
-purchase_2025_04_15,2025-04-25T18:30:00.000Z,Purchase,Tuar,8400,7.26,61000,,Historical purchase recorded from April 2025
-purchase_2025_04_16,2025-04-25T18:30:00.000Z,Purchase,Chana,10800,7,75600,,Historical purchase recorded from April 2025
-purchase_2025_04_17,2025-04-25T18:30:00.000Z,Purchase,Chana,12000,7,84000,,Historical purchase recorded from April 2025
-purchase_2025_04_18,2025-04-26T18:30:00.000Z,Purchase,Tuar,1265,7,8850,,Historical purchase recorded from April 2025
-purchase_2025_04_19,2025-04-27T18:30:00.000Z,Purchase,Chana,12900,7,90300,,Historical purchase recorded from April 2025
-purchase_2025_04_20,2025-04-27T18:30:00.000Z,Purchase,Chana,11500,7,80500,,Historical purchase recorded from April 2025
-purchase_2025_04_21,2025-04-28T18:30:00.000Z,Purchase,Tuar,7800,7,54600,,Historical purchase recorded from April 2025
-purchase_2025_04_22,2025-04-29T18:30:00.000Z,Purchase,Chana,10800,7,75600,,Historical purchase recorded from April 2025
-purchase_2025_04_23,2025-04-29T18:30:00.000Z,Purchase,Chana,10600,7,74200,,Historical purchase recorded from April 2025
-purchase_2025_04_24,2025-04-29T18:30:00.000Z,Purchase,Chana,10000,6.5,65000,,Historical purchase recorded from April 2025
-purchase_2025_04_30,2025-04-15T12:00:00.000Z,Purchase,Others,200800,6.96,1397250,,Historical purchase recorded from April 2025
-purchase_2025_05_1,2025-05-01T18:30:00.000Z,Purchase,Tuar,6100,7,42700,,Historical purchase recorded from May 2025
-purchase_2025_05_2,2025-05-01T18:30:00.000Z,Purchase,Chana,11500,7,80500,,Historical purchase recorded from May 2025
-purchase_2025_05_3,2025-05-02T18:30:00.000Z,Purchase,Tuar,8000,7,56000,,Historical purchase recorded from May 2025
-purchase_2025_05_4,2025-05-03T18:30:00.000Z,Purchase,Chana,11700,7,81900,,Historical purchase recorded from May 2025
-purchase_2025_05_5,2025-05-05T18:30:00.000Z,Purchase,Magfali,5600,6,33600,,Historical purchase recorded from May 2025
-purchase_2025_05_6,2025-05-05T18:30:00.000Z,Purchase,Tuar,5700,7,39900,,Historical purchase recorded from May 2025
-purchase_2025_05_7,2025-05-16T18:30:00.000Z,Purchase,Chana,10200,7,71400,,Historical purchase recorded from May 2025
-purchase_2025_05_8,2025-05-26T18:30:00.000Z,Purchase,Chana,9200,7,64400,,Historical purchase recorded from May 2025
-purchase_2025_05_30,2025-05-15T12:00:00.000Z,Purchase,Others,68000,6.92,470400,,Historical purchase recorded from May 2025
-purchase_2025_06_1,2025-05-31T18:30:00.000Z,Purchase,Chana,1,7,7,,Historical purchase recorded from Jun 2025
-purchase_2025_06_30,2025-06-15T12:00:00.000Z,Purchase,Others,1,7,7,,Historical purchase recorded from Jun 2025
-purchase_2025_07_1,2025-07-12T18:30:00.000Z,Purchase,Chana,6950,7.8,54200,,Historical purchase recorded from July 2025
-purchase_2025_07_2,2025-07-15T18:30:00.000Z,Purchase,Chana,6750,7.79,52600,,Historical purchase recorded from July 2025
-purchase_2025_07_3,2025-07-20T18:30:00.000Z,Purchase,Chana,7350,8.3,61000,,Historical purchase recorded from July 2025
-purchase_2025_07_4,2025-07-28T18:30:00.000Z,Purchase,Chana,8450,8.3,70100,,Historical purchase recorded from July 2025
-purchase_2025_07_5,2025-07-28T18:30:00.000Z,Purchase,Chana,7600,8.29,63000,,Historical purchase recorded from July 2025
-purchase_2025_07_30,2025-07-15T12:00:00.000Z,Purchase,Others,37100,8.11,300900,,Historical purchase recorded from July 2025
-purchase_2025_08_1,2025-07-31T18:30:00.000Z,Purchase,Chana,7150,8.29,59300,,Historical purchase recorded from Aug 2025
-purchase_2025_08_2,2025-07-31T18:30:00.000Z,Purchase,Chana,7800,8.29,64700,,Historical purchase recorded from Aug 2025
-purchase_2025_08_3,2025-08-01T18:30:00.000Z,Purchase,Chana,7150,8.29,59300,,Historical purchase recorded from Aug 2025
-purchase_2025_08_4,2025-08-05T18:30:00.000Z,Purchase,Chana,7600,8.29,63000,,Historical purchase recorded from Aug 2025
-purchase_2025_08_5,2025-08-26T18:30:00.000Z,Purchase,Chana,7200,8.29,59700,,Historical purchase recorded from Aug 2025
-purchase_2025_08_6,2025-08-29T18:30:00.000Z,Purchase,Chana,7150,8.29,59300,,Historical purchase recorded from Aug 2025
-purchase_2025_08_30,2025-08-15T12:00:00.000Z,Purchase,Others,44050,8.29,365300,,Historical purchase recorded from Aug 2025
-purchase_2025_09_1,2025-09-02T18:30:00.000Z,Purchase,Tuar,4580,9.02,41300,,Historical purchase recorded from Sep 2025
-purchase_2025_09_2,2025-09-04T18:30:00.000Z,Purchase,Chana,7900,8.29,65500,,Historical purchase recorded from Sep 2025
-purchase_2025_09_3,2025-09-04T18:30:00.000Z,Purchase,Chana,7100,8.3,58900,,Historical purchase recorded from Sep 2025
-purchase_2025_09_4,2025-09-06T18:30:00.000Z,Purchase,Tuar,5395,8.99,48500,,Historical purchase recorded from Sep 2025
-purchase_2025_09_5,2025-09-08T18:30:00.000Z,Purchase,Chana,9270,8.9,82500,,Historical purchase recorded from Sep 2025
-purchase_2025_09_6,2025-09-09T18:30:00.000Z,Purchase,Chana,7750,8.39,65000,,Historical purchase recorded from Sep 2025
-purchase_2025_09_7,2025-09-09T18:30:00.000Z,Purchase,Chana,7700,9,69300,,Historical purchase recorded from Sep 2025
-purchase_2025_09_8,2025-09-11T18:30:00.000Z,Purchase,Chana,9200,9.24,85000,,Historical purchase recorded from Sep 2025
-purchase_2025_09_9,2025-09-12T18:30:00.000Z,Purchase,Chana,8400,8.8,73900,,Historical purchase recorded from Sep 2025
-purchase_2025_09_10,2025-09-12T18:30:00.000Z,Purchase,Chana,7650,8.8,67300,,Historical purchase recorded from Sep 2025
-purchase_2025_09_11,2025-09-17T18:30:00.000Z,Purchase,Chana,8200,8.79,72100,,Historical purchase recorded from Sep 2025
-purchase_2025_09_12,2025-09-17T18:30:00.000Z,Purchase,Chana,8300,8.8,73000,,Historical purchase recorded from Sep 2025
-purchase_2025_09_13,2025-09-20T18:30:00.000Z,Purchase,Chana,8350,9.25,77200,,Historical purchase recorded from Sep 2025
-purchase_2025_09_14,2025-09-27T18:30:00.000Z,Purchase,Chana,7500,9.24,69300,,Historical purchase recorded from Sep 2025
-purchase_2025_09_15,2025-09-28T18:30:00.000Z,Purchase,Chana,11400,9.6,109400,,Historical purchase recorded from Sep 2025
-purchase_2025_09_16,2025-09-28T18:30:00.000Z,Purchase,Chana,8900,9.6,85400,,Historical purchase recorded from Sep 2025
-purchase_2025_09_30,2025-09-15T12:00:00.000Z,Purchase,Others,127595,8.96,1143600,,Historical purchase recorded from Sep 2025
-purchase_2025_10_1,2025-10-15T18:30:00.000Z,Purchase,Chana,11000,9.25,101700,,Historical purchase recorded from Oct 2025
-purchase_2025_10_30,2025-10-15T12:00:00.000Z,Purchase,Others,11000,9.25,101700,,Historical purchase recorded from Oct 2025
-purchase_2025_11_1,2025-11-02T18:30:00.000Z,Purchase,Chana,12000,9.6,115200,,Historical purchase recorded from Nov 2025
-purchase_2025_11_2,2025-11-08T18:30:00.000Z,Purchase,Chana,11500,9.9,113900,,Historical purchase recorded from Nov 2025
-purchase_2025_11_3,2025-11-15T18:30:00.000Z,Purchase,Chana,8500,10,85000,,Historical purchase recorded from Nov 2025
-purchase_2025_11_4,2025-11-17T18:30:00.000Z,Purchase,Chana,11100,10,111000,,Historical purchase recorded from Nov 2025
-purchase_2025_11_5,2025-11-22T18:30:00.000Z,Purchase,Gavatri,17600,9.51,167300,,Historical purchase recorded from Nov 2025
-purchase_2025_11_30,2025-11-15T12:00:00.000Z,Purchase,Others,60700,9.76,592400,,Historical purchase recorded from Nov 2025
-purchase_2025_12_1,2025-12-12T18:30:00.000Z,Purchase,Chana,9700,10.9,105700,,Historical purchase recorded from Dec 2025
-purchase_2025_12_2,2025-12-14T18:30:00.000Z,Purchase,Gavatri,11600,9.7,112500,,Historical purchase recorded from Dec 2025
-purchase_2025_12_3,2025-12-20T18:30:00.000Z,Purchase,Chana,9400,11,103400,,Historical purchase recorded from Dec 2025
-purchase_2025_12_4,2025-12-24T18:30:00.000Z,Purchase,B. Kutty,9600,11.02,105800,,Historical purchase recorded from Dec 2025
-purchase_2025_12_5,2025-12-26T18:30:00.000Z,Purchase,B. Kutty,9500,11,104500,,Historical purchase recorded from Dec 2025
-purchase_2025_12_6,2025-12-28T18:30:00.000Z,Purchase,Tuver,9500,10.24,97300,,Historical purchase recorded from Dec 2025
-purchase_2025_12_30,2025-12-15T12:00:00.000Z,Purchase,Others,59300,10.61,629200,,Historical purchase recorded from Dec 2025
+purchase_2025_01_1,2025-01-15T12:00:00.000Z,Purchase,Hay,8300,10,83000,5 Jan 2025,Imported from Jan 2025 Purchase Sheet
+purchase_2025_01_2,2025-01-15T12:00:00.000Z,Purchase,Hay,14200,8.31,118000,6 Jan 2025,Imported from Jan 2025 Purchase Sheet
+purchase_2025_01_3,2025-01-15T12:00:00.000Z,Purchase,Hay,5065,8.98,45500,21 Jan 2025,Imported from Jan 2025 Purchase Sheet
+purchase_2025_01_4,2025-01-15T12:00:00.000Z,Purchase,Hay,7100,10.15,72100,21 Jan 2025,Imported from Jan 2025 Purchase Sheet
+purchase_2025_01_5,2025-01-15T12:00:00.000Z,Purchase,Hay,7000,9.51,66600,23 Jan 2025,Imported from Jan 2025 Purchase Sheet
+purchase_2025_01_6,2025-01-15T12:00:00.000Z,Purchase,Hay,6240,10.3,64300,26 Jan 2025,Imported from Jan 2025 Purchase Sheet
+purchase_2025_01_7,2025-01-15T12:00:00.000Z,Purchase,Hay,11500,9.61,110500,31 Jan 2025,Imported from Jan 2025 Purchase Sheet
+purchase_2025_01_8,2025-01-15T12:00:00.000Z,Purchase,Hay,4730,10.02,47400,31 Jan 2025,Imported from Jan 2025 Purchase Sheet
+purchase_2025_02_1,2025-02-15T12:00:00.000Z,Purchase,Hay,3810,10,38100,2 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_2,2025-02-15T12:00:00.000Z,Purchase,Hay,9300,9.51,88400,2 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_3,2025-02-15T12:00:00.000Z,Purchase,Hay,9540,9.4,89700,3 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_4,2025-02-15T12:00:00.000Z,Purchase,Hay,4615,9.32,43000,4 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_5,2025-02-15T12:00:00.000Z,Purchase,Hay,6000,9.1,54600,7 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_6,2025-02-15T12:00:00.000Z,Purchase,Hay,5700,9.19,52400,7 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_7,2025-02-15T12:00:00.000Z,Purchase,Hay,5300,9.36,49600,9 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_8,2025-02-15T12:00:00.000Z,Purchase,Hay,4250,8.8,37400,11 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_9,2025-02-15T12:00:00.000Z,Purchase,Hay,5670,8.89,50400,12 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_10,2025-02-15T12:00:00.000Z,Purchase,Hay,5600,9.02,50500,13 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_11,2025-02-15T12:00:00.000Z,Purchase,Hay,2510,8.01,20100,14 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_12,2025-02-15T12:00:00.000Z,Purchase,Hay,5645,8.24,46500,15 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_13,2025-02-15T12:00:00.000Z,Purchase,Hay,2400,8.67,20800,18 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_14,2025-02-15T12:00:00.000Z,Purchase,Hay,3300,8.48,28000,18 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_15,2025-02-15T12:00:00.000Z,Purchase,Hay,5950,8.49,50500,18 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_16,2025-02-15T12:00:00.000Z,Purchase,Hay,500,8.2,4100,20 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_17,2025-02-15T12:00:00.000Z,Purchase,Hay,4165,8.38,34900,20 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_18,2025-02-15T12:00:00.000Z,Purchase,Hay,7400,8.24,61000,21 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_19,2025-02-15T12:00:00.000Z,Purchase,Hay,6600,8.26,54500,24 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_02_20,2025-02-15T12:00:00.000Z,Purchase,Hay,7200,8,57600,27 Feb 2025,Imported from Feb 2025 Purchase Sheet
+purchase_2025_03_1,2025-03-15T12:00:00.000Z,Purchase,Hay,5600,8,44800,2 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_2,2025-03-15T12:00:00.000Z,Purchase,Hay,6200,7,43400,2 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_3,2025-03-15T12:00:00.000Z,Purchase,Hay,4035,6.99,28200,3 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_4,2025-03-15T12:00:00.000Z,Purchase,Hay,2015,7.49,15100,3 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_5,2025-03-15T12:00:00.000Z,Purchase,Hay,2520,6.71,16900,4 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_6,2025-03-15T12:00:00.000Z,Purchase,Hay,2335,7.28,17000,5 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_7,2025-03-15T12:00:00.000Z,Purchase,Hay,6600,8,52800,5 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_8,2025-03-15T12:00:00.000Z,Purchase,Hay,5290,7.75,41000,5 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_9,2025-03-15T12:00:00.000Z,Purchase,Hay,6700,7.01,47000,7 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_10,2025-03-15T12:00:00.000Z,Purchase,Hay,3355,6.97,23400,8 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_11,2025-03-15T12:00:00.000Z,Purchase,Hay,8600,7.4,63600,8 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_12,2025-03-15T12:00:00.000Z,Purchase,Hay,8200,7.74,63500,9 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_13,2025-03-15T12:00:00.000Z,Purchase,Hay,6500,7,45500,10 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_14,2025-03-15T12:00:00.000Z,Purchase,Hay,7300,7,51100,15 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_15,2025-03-15T12:00:00.000Z,Purchase,Hay,3620,6.99,25300,16 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_16,2025-03-15T12:00:00.000Z,Purchase,Hay,2505,8.46,21200,16 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_17,2025-03-15T12:00:00.000Z,Purchase,Hay,5070,6.98,35400,16 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_18,2025-03-15T12:00:00.000Z,Purchase,Hay,2160,6.9,14900,22 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_19,2025-03-15T12:00:00.000Z,Purchase,Hay,1425,6.67,9500,22 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_20,2025-03-15T12:00:00.000Z,Purchase,Hay,5995,6.99,41900,25 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_21,2025-03-15T12:00:00.000Z,Purchase,Hay,5510,7.01,38600,25 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_22,2025-03-15T12:00:00.000Z,Purchase,Hay,6200,7.02,43500,27 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_23,2025-03-15T12:00:00.000Z,Purchase,Hay,4000,7,28000,27 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_24,2025-03-15T12:00:00.000Z,Purchase,Hay,7500,7,52500,28 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_25,2025-03-15T12:00:00.000Z,Purchase,Hay,3370,6.97,23500,29 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_03_26,2025-03-15T12:00:00.000Z,Purchase,Hay,7300,7,51100,30 Mar 2025,Imported from March 2025 Purchase Sheet
+purchase_2025_04_1,2025-04-15T12:00:00.000Z,Purchase,Hay,3150,6.98,22000,2 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_2,2025-04-15T12:00:00.000Z,Purchase,Hay,1145,6.99,8000,4 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_3,2025-04-15T12:00:00.000Z,Purchase,Hay,8600,7,60200,4 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_4,2025-04-15T12:00:00.000Z,Purchase,Hay,3855,5.97,23000,5 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_5,2025-04-15T12:00:00.000Z,Purchase,Hay,3085,7,21600,6 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_6,2025-04-15T12:00:00.000Z,Purchase,Hay,8100,7,56700,6 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_7,2025-04-15T12:00:00.000Z,Purchase,Hay,9000,7,63000,7 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_8,2025-04-15T12:00:00.000Z,Purchase,Hay,7900,6.81,53800,13 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_9,2025-04-15T12:00:00.000Z,Purchase,Hay,10100,7,70700,14 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_10,2025-04-15T12:00:00.000Z,Purchase,Hay,9300,7,65100,14 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_11,2025-04-15T12:00:00.000Z,Purchase,Hay,8300,7,58100,17 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_12,2025-04-15T12:00:00.000Z,Purchase,Hay,9600,7,67200,20 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_13,2025-04-15T12:00:00.000Z,Purchase,Hay,11700,7,81900,22 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_14,2025-04-15T12:00:00.000Z,Purchase,Hay,10900,7,76300,24 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_15,2025-04-15T12:00:00.000Z,Purchase,Hay,8400,7.26,61000,26 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_16,2025-04-15T12:00:00.000Z,Purchase,Hay,10800,7,75600,26 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_17,2025-04-15T12:00:00.000Z,Purchase,Hay,12000,7,84000,26 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_18,2025-04-15T12:00:00.000Z,Purchase,Hay,1265,7,8850,27 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_19,2025-04-15T12:00:00.000Z,Purchase,Hay,12900,7,90300,28 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_20,2025-04-15T12:00:00.000Z,Purchase,Hay,11500,7,80500,28 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_21,2025-04-15T12:00:00.000Z,Purchase,Hay,7800,7,54600,29 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_22,2025-04-15T12:00:00.000Z,Purchase,Hay,10800,7,75600,30 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_23,2025-04-15T12:00:00.000Z,Purchase,Hay,10600,7,74200,30 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_04_24,2025-04-15T12:00:00.000Z,Purchase,Hay,10000,6.5,65000,30 Apr 2025,Imported from April 2025 Purchase Sheet
+purchase_2025_05_1,2025-05-15T12:00:00.000Z,Purchase,Hay,6100,7,42700,2 May 2025,Imported from May 2025 Purchase Sheet
+purchase_2025_05_2,2025-05-15T12:00:00.000Z,Purchase,Hay,11500,7,80500,2 May 2025,Imported from May 2025 Purchase Sheet
+purchase_2025_05_3,2025-05-15T12:00:00.000Z,Purchase,Hay,8000,7,56000,3 May 2025,Imported from May 2025 Purchase Sheet
+purchase_2025_05_4,2025-05-15T12:00:00.000Z,Purchase,Hay,11700,7,81900,4 May 2025,Imported from May 2025 Purchase Sheet
+purchase_2025_05_5,2025-05-15T12:00:00.000Z,Purchase,Hay,5600,6,33600,6 May 2025,Imported from May 2025 Purchase Sheet
+purchase_2025_05_6,2025-05-15T12:00:00.000Z,Purchase,Hay,5700,7,39900,6 May 2025,Imported from May 2025 Purchase Sheet
+purchase_2025_05_7,2025-05-15T12:00:00.000Z,Purchase,Hay,10200,7,71400,17 May 2025,Imported from May 2025 Purchase Sheet
+purchase_2025_05_8,2025-05-15T12:00:00.000Z,Purchase,Hay,9200,7,64400,27 May 2025,Imported from May 2025 Purchase Sheet
+purchase_2025_06_1,2025-06-15T12:00:00.000Z,Purchase,Hay,1,7,7,1 Jun 2025,Imported from Jun 2025 Purchase Sheet
+purchase_2025_07_1,2025-07-15T12:00:00.000Z,Purchase,Hay,6950,7.8,54200,13 Jul 2025,Imported from July 2025 Purchase Sheet
+purchase_2025_07_2,2025-07-15T12:00:00.000Z,Purchase,Hay,6750,7.79,52600,16 Jul 2025,Imported from July 2025 Purchase Sheet
+purchase_2025_07_3,2025-07-15T12:00:00.000Z,Purchase,Hay,7350,8.3,61000,21 Jul 2025,Imported from July 2025 Purchase Sheet
+purchase_2025_07_4,2025-07-15T12:00:00.000Z,Purchase,Hay,8450,8.3,70100,29 Jul 2025,Imported from July 2025 Purchase Sheet
+purchase_2025_07_5,2025-07-15T12:00:00.000Z,Purchase,Hay,7600,8.29,63000,29 Jul 2025,Imported from July 2025 Purchase Sheet
+purchase_2025_08_1,2025-08-15T12:00:00.000Z,Purchase,Hay,7150,8.29,59300,1 Aug 2025,Imported from Aug 2025 Purchase Sheet
+purchase_2025_08_2,2025-08-15T12:00:00.000Z,Purchase,Hay,7800,8.29,64700,1 Aug 2025,Imported from Aug 2025 Purchase Sheet
+purchase_2025_08_3,2025-08-15T12:00:00.000Z,Purchase,Hay,7150,8.29,59300,2 Aug 2025,Imported from Aug 2025 Purchase Sheet
+purchase_2025_08_4,2025-08-15T12:00:00.000Z,Purchase,Hay,7600,8.29,63000,6 Aug 2025,Imported from Aug 2025 Purchase Sheet
+purchase_2025_08_5,2025-08-15T12:00:00.000Z,Purchase,Hay,7200,8.29,59700,27 Aug 2025,Imported from Aug 2025 Purchase Sheet
+purchase_2025_08_6,2025-08-15T12:00:00.000Z,Purchase,Hay,7150,8.29,59300,30 Aug 2025,Imported from Aug 2025 Purchase Sheet
+purchase_2025_09_1,2025-09-15T12:00:00.000Z,Purchase,Hay,4580,9.02,41300,3 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_2,2025-09-15T12:00:00.000Z,Purchase,Hay,7900,8.29,65500,5 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_3,2025-09-15T12:00:00.000Z,Purchase,Hay,7100,8.3,58900,5 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_4,2025-09-15T12:00:00.000Z,Purchase,Hay,5395,8.99,48500,7 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_5,2025-09-15T12:00:00.000Z,Purchase,Hay,9270,8.9,82500,9 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_6,2025-09-15T12:00:00.000Z,Purchase,Hay,7750,8.39,65000,10 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_7,2025-09-15T12:00:00.000Z,Purchase,Hay,7700,9,69300,10 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_8,2025-09-15T12:00:00.000Z,Purchase,Hay,9200,9.24,85000,12 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_9,2025-09-15T12:00:00.000Z,Purchase,Hay,8400,8.8,73900,13 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_10,2025-09-15T12:00:00.000Z,Purchase,Hay,7650,8.8,67300,13 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_11,2025-09-15T12:00:00.000Z,Purchase,Hay,8200,8.79,72100,18 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_12,2025-09-15T12:00:00.000Z,Purchase,Hay,8300,8.8,73000,18 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_13,2025-09-15T12:00:00.000Z,Purchase,Hay,8350,9.25,77200,21 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_14,2025-09-15T12:00:00.000Z,Purchase,Hay,7500,9.24,69300,28 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_15,2025-09-15T12:00:00.000Z,Purchase,Hay,11400,9.6,109400,29 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_09_16,2025-09-15T12:00:00.000Z,Purchase,Hay,8900,9.6,85400,29 Sep 2025,Imported from Sep 2025 Purchase Sheet
+purchase_2025_10_1,2025-10-15T12:00:00.000Z,Purchase,Hay,11000,9.25,101700,16 Oct 2025,Imported from Oct 2025 Purchase Sheet
+purchase_2025_11_1,2025-11-15T12:00:00.000Z,Purchase,Hay,12000,9.6,115200,3 Nov 2025,Imported from Nov 2025 Purchase Sheet
+purchase_2025_11_2,2025-11-15T12:00:00.000Z,Purchase,Hay,11500,9.9,113900,9 Nov 2025,Imported from Nov 2025 Purchase Sheet
+purchase_2025_11_3,2025-11-15T12:00:00.000Z,Purchase,Hay,8500,10,85000,16 Nov 2025,Imported from Nov 2025 Purchase Sheet
+purchase_2025_11_4,2025-11-15T12:00:00.000Z,Purchase,Hay,11100,10,111000,18 Nov 2025,Imported from Nov 2025 Purchase Sheet
+purchase_2025_11_5,2025-11-15T12:00:00.000Z,Purchase,Hay,17600,9.51,167300,23 Nov 2025,Imported from Nov 2025 Purchase Sheet
+purchase_2025_12_1,2025-12-15T12:00:00.000Z,Purchase,Hay,9700,10.9,105700,13 Dec 2025,Imported from Dec 2025 Purchase Sheet
+purchase_2025_12_2,2025-12-15T12:00:00.000Z,Purchase,Hay,11600,9.7,112500,15 Dec 2025,Imported from Dec 2025 Purchase Sheet
+purchase_2025_12_3,2025-12-15T12:00:00.000Z,Purchase,Hay,9400,11,103400,21 Dec 2025,Imported from Dec 2025 Purchase Sheet
+purchase_2025_12_4,2025-12-15T12:00:00.000Z,Purchase,Hay,9600,11.02,105800,25 Dec 2025,Imported from Dec 2025 Purchase Sheet
+purchase_2025_12_5,2025-12-15T12:00:00.000Z,Purchase,Hay,9500,11,104500,27 Dec 2025,Imported from Dec 2025 Purchase Sheet
+purchase_2025_12_6,2025-12-15T12:00:00.000Z,Purchase,Hay,9500,10.24,97300,29 Dec 2025,Imported from Dec 2025 Purchase Sheet
 purchase_2026_01_10,2026-01-17T12:00:00.000Z,Purchase,Others,5800,10,58000,,Purchase recorded from Jan Grass 2026
 purchase_2026_01_11,2026-01-18T12:00:00.000Z,Purchase,Others,3600,9.6,34560,,Purchase recorded from Jan Grass 2026
 purchase_2026_01_12,2026-01-19T12:00:00.000Z,Purchase,Others,6800,10,68000,,Purchase recorded from Jan Grass 2026

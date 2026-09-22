@@ -7,10 +7,11 @@
  * 4. 12 Months of 2025 Services & Expenses (Main & Sales tabs)
  * 5. Monthly Payments from 2025 Customer Credit Lists
  * 6. 12 Months of 2025 Monthly Rollouts (P&L & Stock)
- * 7. Reconciles customer balances and customer registry.
+ * 7. Reconciles customer balances dynamically across all transactions (2024 Opening + 2025..2026).
+ * 8. Synchronizes generated CSV backups and mock files.
  */
 
-import { existsSync, readFileSync, writeFileSync } from 'fs';
+import { copyFileSync, existsSync, readFileSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -19,6 +20,11 @@ const __dirname = dirname(__filename);
 
 const DATA_DIR = join(__dirname, 'data');
 const BACKUP_DIR = join(DATA_DIR, 'backups');
+const PRISTINE_2026_DIR = join(
+  DATA_DIR,
+  'backups_pre_2025_2026-09-22T16-50-11-836Z',
+);
+const MOCK_CSV_DIR = join(__dirname, '..', 'src', 'mock', 'csv');
 const RAW_DUMP_FILE = join(DATA_DIR, 'raw_2025_sheets_dump.json');
 const ALIAS_FILE = join(DATA_DIR, 'customer_alias_dictionary.json');
 
@@ -152,6 +158,38 @@ function toCsvField(val) {
   return str;
 }
 
+function parseCsv(content) {
+  const lines = content.trim().split('\n');
+  if (lines.length < 2) return [];
+  const headers = lines[0].split(',').map((h) => h.trim());
+  const rows = [];
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) continue;
+    const values = [];
+    let insideQuote = false;
+    let current = '';
+    for (let c = 0; c < line.length; c++) {
+      const char = line[c];
+      if (char === '"') {
+        insideQuote = !insideQuote;
+      } else if (char === ',' && !insideQuote) {
+        values.push(current.trim());
+        current = '';
+      } else {
+        current += char;
+      }
+    }
+    values.push(current.trim());
+    const obj = {};
+    headers.forEach((h, idx) => {
+      obj[h] = values[idx] !== undefined ? values[idx] : '';
+    });
+    rows.push(obj);
+  }
+  return rows;
+}
+
 export async function runIngestion() {
   console.log(
     '🚀 Starting 2025 Historical Data Ingestion & Reconciliation Pipeline...\n',
@@ -167,7 +205,15 @@ export async function runIngestion() {
     ? JSON.parse(readFileSync(ALIAS_FILE, 'utf8'))
     : {};
 
-  const currentCustCsv = readFileSync(join(BACKUP_DIR, 'customers.csv'), 'utf8')
+  const sourceBaseDir = existsSync(PRISTINE_2026_DIR)
+    ? PRISTINE_2026_DIR
+    : BACKUP_DIR;
+  console.log(`Using base 2026 data from: ${sourceBaseDir}`);
+
+  const currentCustCsv = readFileSync(
+    join(sourceBaseDir, 'customers.csv'),
+    'utf8',
+  )
     .trim()
     .split('\n');
   const existingCustomers = [];
@@ -193,8 +239,11 @@ export async function runIngestion() {
       mobile,
       village,
       creditLimit,
-      outstandingAmount,
+      outstandingAmount: 0, // will be computed dynamically
       openingDebt2024: 0,
+      salesDebt: 0,
+      serviceDebt: 0,
+      paymentsPaid: 0,
       isNewHistorical: false,
     };
     existingCustomers.push(custObj);
@@ -203,7 +252,7 @@ export async function runIngestion() {
   }
 
   console.log(
-    `Loaded ${existingCustomers.length} existing customers (Max ID: ${maxId}).`,
+    `Loaded ${existingCustomers.length} initial customers (Max ID: ${maxId}).`,
   );
 
   // Helper to resolve or register customer
@@ -238,6 +287,9 @@ export async function runIngestion() {
       creditLimit: 35000,
       outstandingAmount: 0,
       openingDebt2024: 0,
+      salesDebt: 0,
+      serviceDebt: 0,
+      paymentsPaid: 0,
       isNewHistorical: true,
     };
     existingCustomers.push(newCust);
@@ -255,6 +307,7 @@ export async function runIngestion() {
     `\n📋 Processing 2024-12-31 Baseline Customer Credit List (${credit2024.length} rows)...`,
   );
   let total2024OpeningDue = 0;
+  let count2024OpeningCustomers = 0;
 
   for (let i = 1; i < credit2024.length; i++) {
     const row = credit2024[i];
@@ -267,11 +320,14 @@ export async function runIngestion() {
     const prvDebt = parseRupee(row[1], 0);
     const prvCredit = parseRupee(row[5], 0);
     const netOpening = Math.max(0, prvDebt - prvCredit);
-    cust.openingDebt2024 = (cust.openingDebt2024 || 0) + netOpening;
-    total2024OpeningDue += netOpening;
+    if (netOpening > 0) {
+      cust.openingDebt2024 = (cust.openingDebt2024 || 0) + netOpening;
+      total2024OpeningDue += netOpening;
+      count2024OpeningCustomers++;
+    }
   }
   console.log(
-    `✅ Extracted 2024 Baseline Starting Opening Due: ₹${total2024OpeningDue.toLocaleString()}`,
+    `✅ Extracted 2024 Baseline Starting Opening Due: ₹${total2024OpeningDue.toLocaleString()} across ${count2024OpeningCustomers} customers`,
   );
 
   // 3. Process 2025 Sales Transactions
@@ -313,106 +369,96 @@ export async function runIngestion() {
         continue;
 
       const norm = normalize(rawName);
-      if (
-        norm === 'expenses' ||
-        norm === 'intrest' ||
-        norm === 'daalu diesel' ||
-        norm === 'daalu diesel + depreciation' ||
-        norm === 'fera'
-      ) {
-        // Handled in expenses
-        continue;
-      }
+      if (IGNORED_ENTRIES.has(norm)) continue;
 
       const cust = resolveCustomer(rawName);
       if (!cust) continue;
 
-      const rawDate = row[dateIdx] || '';
-      const fallbackIso = `${m.period}-15T12:00:00.000Z`;
-      const date = parseDate(rawDate, fallbackIso);
-
-      const weightKg = parseRupee(row[kgIdx], 0);
+      const rawDate = row[dateIdx];
+      const dateStr = parseDate(rawDate, `${m.period}-15T12:00:00.000Z`);
+      const kg = parseRupee(row[kgIdx], 0);
       const rate = parseRupee(row[rateIdx], 0);
-      const amount = parseRupee(row[totalIdx], 0);
-      const cashPaid = parseRupee(row[cashIdx], 0);
-      const remainingDue = parseRupee(row[debtIdx], amount - cashPaid);
+      const total = parseRupee(row[totalIdx], kg * rate);
+      const cash = parseRupee(row[cashIdx], 0);
+      const debt = parseRupee(row[debtIdx], Math.max(0, total - cash));
 
-      const saleId = `sale_${m.key}_${i}`;
       sales2025.push({
-        TransactionID: saleId,
+        TransactionID: `sale_${m.key}_${i}`,
         CustomerID: cust.id,
         CustomerName: cust.name,
-        Date: date,
-        Item: 'Others',
-        WeightKg: weightKg,
+        Date: dateStr,
+        Item: 'Hay',
+        WeightKg: kg,
         Rate: rate,
-        TotalAmount: amount,
-        CashPaid: cashPaid,
-        RemainingDue: remainingDue,
-        Notes: `Historical sale recorded from ${m.monthName} (Row ${i})`,
+        TotalAmount: total,
+        CashPaid: cash,
+        RemainingDue: debt,
+        Notes: `Imported from ${m.monthName} Sales Sheet`,
       });
 
-      total2025SalesAmount += amount;
-      total2025SalesCash += cashPaid;
-      total2025SalesDebt += remainingDue;
-      total2025SalesKg += weightKg;
+      cust.salesDebt = (cust.salesDebt || 0) + debt;
+      total2025SalesAmount += total;
+      total2025SalesCash += cash;
+      total2025SalesDebt += debt;
+      total2025SalesKg += kg;
       monthSalesCount++;
     }
-    console.log(`  ${m.monthName}: ${monthSalesCount} sales extracted`);
   }
+
   console.log(
-    `✅ Total 2025 Sales: ${sales2025.length} transactions, ₹${total2025SalesAmount.toLocaleString()} total, ₹${total2025SalesCash.toLocaleString()} cash, ₹${total2025SalesDebt.toLocaleString()} debt, ${total2025SalesKg.toLocaleString()} kg`,
+    `✅ Ingested ${sales2025.length} Sales transactions for 2025 (Total: ₹${total2025SalesAmount.toLocaleString()}, Debt: ₹${total2025SalesDebt.toLocaleString()})`,
   );
 
   // 4. Process 2025 Purchases
   console.log('\n📦 Processing 2025 Purchases across 12 months...');
   const purchases2025 = [];
-  let total2025PurchaseAmount = 0;
-  let total2025PurchaseKg = 0;
+  let total2025PurchasesAmount = 0;
+  let total2025PurchasesKg = 0;
 
   for (const m of MONTH_KEYS) {
     const monthData = dump[m.key] || {};
     const purchaseRows = monthData.Purchase || [];
-    let monthPurchaseCount = 0;
+    if (purchaseRows.length === 0) continue;
 
     for (let i = 1; i < purchaseRows.length; i++) {
       const row = purchaseRows[i];
-      const rawDate = row[0] || '';
-      const item = row[1] || 'Others';
-      const weightKg = parseRupee(row[2], 0);
+      const rawVendor = (row[0] || '').trim();
+      if (
+        !rawVendor ||
+        rawVendor.toLowerCase().includes('total') ||
+        rawVendor.toLowerCase().includes('seller') ||
+        rawVendor.toLowerCase().includes('name')
+      )
+        continue;
+
+      const rawDate = row[1];
+      const dateStr = parseDate(rawDate, `${m.period}-15T12:00:00.000Z`);
+      const kg = parseRupee(row[2], 0);
       const rate = parseRupee(row[3], 0);
-      const amount = parseRupee(row[4], 0);
-
-      if (weightKg === 0 && amount === 0) continue;
-
-      const fallbackIso = `${m.period}-15T12:00:00.000Z`;
-      const date = parseDate(rawDate, fallbackIso);
-      const purchaseId = `purchase_${m.key}_${i}`;
+      const amount = parseRupee(row[4], kg * rate);
 
       purchases2025.push({
-        PurchaseID: purchaseId,
-        Date: date,
+        PurchaseID: `purchase_${m.key}_${i}`,
+        Date: dateStr,
         Category: 'Purchase',
-        Item: item,
-        WeightKg: weightKg,
+        Item: 'Hay',
+        WeightKg: kg,
         PurchaseRate: rate,
         Amount: amount,
-        VendorName: '',
-        Notes: `Historical purchase recorded from ${m.monthName}`,
+        VendorName: rawVendor,
+        Notes: `Imported from ${m.monthName} Purchase Sheet`,
       });
 
-      total2025PurchaseAmount += amount;
-      total2025PurchaseKg += weightKg;
-      monthPurchaseCount++;
+      total2025PurchasesAmount += amount;
+      total2025PurchasesKg += kg;
     }
-    console.log(`  ${m.monthName}: ${monthPurchaseCount} purchases extracted`);
   }
   console.log(
-    `✅ Total 2025 Purchases: ${purchases2025.length} records, ₹${total2025PurchaseAmount.toLocaleString()} total, ${total2025PurchaseKg.toLocaleString()} kg`,
+    `✅ Ingested ${purchases2025.length} Purchases for 2025 (Total: ₹${total2025PurchasesAmount.toLocaleString()})`,
   );
 
-  // 5. Process 2025 Services & Expenses
-  console.log('\n⚙️ Processing 2025 Services and Expenses...');
+  // 5. Process 2025 Services & Expenses (from Main and Sales sheets)
+  console.log('\n🛠️ Processing 2025 Services & Expenses...');
   const services2025 = [];
   const expenses2025 = [];
 
@@ -421,93 +467,81 @@ export async function runIngestion() {
     const mainRows = monthData.Main || [];
     const salesRows = monthData.Sales || [];
 
-    // Check Main tab for CM expenses
-    for (const r of mainRows) {
-      const label1 = String(r[0] || '').toLowerCase();
-      const label2 = String(r[2] || '').toLowerCase();
-      if (
-        label1.includes('expenses (cm)') ||
-        label1.includes('expenses(cm)') ||
-        label1.includes('0. expenses')
-      ) {
-        const amt = parseRupee(r[1] || r[3], 0);
+    // Check Sales sheet special rows (Fera / Service / Expenses)
+    for (let i = 1; i < salesRows.length; i++) {
+      const row = salesRows[i];
+      const name0 = (row[0] || '').trim();
+      const name1 = (row[1] || '').trim();
+      const rawName = name0 || name1;
+      const norm = normalize(rawName);
+
+      if (norm === 'fera' || norm.includes('pickup') || norm.includes('fera')) {
+        const amt = parseRupee(row[4], parseRupee(row[5], 0));
         if (amt > 0) {
-          expenses2025.push({
-            ExpenseID: `expense_${m.key}_main`,
+          services2025.push({
+            ServiceID: `service_${m.key}_fera_${i}`,
+            CustomerID: '307',
+            CustomerName: 'Retail',
             Date: `${m.period}-28T12:00:00.000Z`,
-            ExpenseCategory: 'Others',
-            Item: 'Monthly Operations',
+            Item: 'Pickup / Fera',
             Amount: amt,
-            Notes: `Monthly farm expense from ${m.monthName} Main tab`,
+            Notes: `Fera charges from ${m.monthName} Sales sheet`,
           });
         }
-      } else if (
-        label2.includes('expenses (cm)') ||
-        label2.includes('expenses(cm)') ||
-        label2.includes('0. expenses')
-      ) {
-        const amt = parseRupee(r[3], 0);
+      } else if (norm === 'expenses' || norm.includes('expense')) {
+        const amt = parseRupee(row[4], parseRupee(row[5], 0));
         if (amt > 0) {
           expenses2025.push({
-            ExpenseID: `expense_${m.key}_main`,
+            ExpenseID: `expense_${m.key}_sales_${i}`,
             Date: `${m.period}-28T12:00:00.000Z`,
-            ExpenseCategory: 'Others',
-            Item: 'Monthly Operations',
+            ExpenseCategory: 'Operating',
+            Item: 'General Expenses',
             Amount: amt,
-            Notes: `Monthly farm expense from ${m.monthName} Main tab`,
+            Notes: `Operating expenses from ${m.monthName} Sales sheet`,
           });
         }
       }
     }
 
-    // Check Sales tab for Interest / Diesel / Daalu
-    for (let i = 1; i < salesRows.length; i++) {
-      const row = salesRows[i];
-      const name = String(row[0] || row[1] || '')
-        .trim()
-        .toLowerCase();
-      const amt = parseRupee(row[4] || row[3] || row[2], 0);
+    // Check Main sheet rows
+    for (let i = 0; i < mainRows.length; i++) {
+      const row = mainRows[i];
+      const label = (row[0] || '').trim();
+      const norm = normalize(label);
 
-      if (amt > 0) {
-        if (name === 'intrest') {
+      if (norm.includes('daalu diesel') || norm.includes('daalu')) {
+        const amt = parseRupee(row[2], parseRupee(row[1], 0));
+        if (amt > 0) {
           expenses2025.push({
-            ExpenseID: `expense_${m.key}_intrest_${i}`,
+            ExpenseID: `expense_${m.key}_daalu_${i}`,
             Date: `${m.period}-28T12:00:00.000Z`,
-            ExpenseCategory: 'Interest',
-            Item: 'Others',
+            ExpenseCategory: 'Vehicle',
+            Item: 'Daalu Diesel & Maintenance',
             Amount: amt,
-            Notes: `Interest expense recorded in ${m.monthName} Sales tab`,
+            Notes: `Daalu expenses from ${m.monthName} Main sheet`,
           });
-        } else if (name.includes('daalu diesel') || name === 'diesel') {
+        }
+      } else if (norm.includes('expenses') && !norm.includes('total')) {
+        const amt = parseRupee(row[2], parseRupee(row[1], 0));
+        if (amt > 0) {
           expenses2025.push({
-            ExpenseID: `expense_${m.key}_diesel_${i}`,
+            ExpenseID: `expense_${m.key}_main_${i}`,
             Date: `${m.period}-28T12:00:00.000Z`,
-            ExpenseCategory: 'Fuel',
-            Item: 'Others',
+            ExpenseCategory: 'Operating',
+            Item: 'Monthly Expenses',
             Amount: amt,
-            Notes: `Diesel / Daalu expense from ${m.monthName} Sales tab`,
-          });
-        } else if (name === 'daalu' || name.includes('pickup')) {
-          // If recorded as positive income or pickup service
-          services2025.push({
-            ServiceID: `service_${m.key}_${i}`,
-            CustomerID: '307',
-            CustomerName: 'Retail',
-            Date: `${m.period}-28T12:00:00.000Z`,
-            Item: 'Pickup',
-            Amount: amt,
-            Notes: `Service income from ${m.monthName} (${name})`,
+            Notes: `Expenses from ${m.monthName} Main sheet`,
           });
         }
       }
     }
   }
   console.log(
-    `✅ Total 2025 Services: ${services2025.length} records, Expenses: ${expenses2025.length} records`,
+    `✅ Extracted ${services2025.length} Services and ${expenses2025.length} Expenses for 2025`,
   );
 
-  // 6. Process 2025 Customer Credit Lists (Monthly Payments)
-  console.log('\n💳 Processing 2025 Customer Credit Lists and Payments...');
+  // 6. Process 2025 Customer Payments from Monthly Credit Lists
+  console.log('\n💳 Processing 2025 Customer Payments...');
   const payments2025 = [];
   const creditPairs = [
     {
@@ -612,13 +646,14 @@ export async function runIngestion() {
 
       if (explicitPaid > 0) {
         payments2025.push({
-          PaymentID: `${cust.id}_${pair.key}_exp_${i}`,
+          PaymentID: `pmt_${cust.id}_${pair.key}_exp_${i}`,
           CustomerID: cust.id,
           CustomerName: cust.name,
           Date: `${pair.period}-15T12:00:00.000Z`,
           AmountPaid: explicitPaid,
           Notes: `Payment received in ${pair.curr}`,
         });
+        cust.paymentsPaid = (cust.paymentsPaid || 0) + explicitPaid;
         total2025Payments += explicitPaid;
       }
     }
@@ -629,13 +664,14 @@ export async function runIngestion() {
         const cust = customerMapById.get(prevCustId);
         if (cust) {
           payments2025.push({
-            PaymentID: `${cust.id}_${pair.key}_drop`,
+            PaymentID: `pmt_${cust.id}_${pair.key}_drop`,
             CustomerID: cust.id,
             CustomerName: cust.name,
             Date: `${pair.period}-15T12:00:00.000Z`,
             AmountPaid: prevBal,
             Notes: `Customer settled previous balance of ₹${prevBal.toLocaleString()} and was cleared in ${pair.curr}`,
           });
+          cust.paymentsPaid = (cust.paymentsPaid || 0) + prevBal;
           total2025Payments += prevBal;
         }
       }
@@ -653,7 +689,6 @@ export async function runIngestion() {
     const monthData = dump[m.key] || {};
     const mainRows = monthData.Main || [];
 
-    // Parse Main tab metrics
     let openingStockKg = 0,
       openingStockRate = 0,
       openingStockAmt = 0;
@@ -668,15 +703,12 @@ export async function runIngestion() {
       closingStockAmt = 0;
 
     for (const r of mainRows) {
-      const label = String(r[0] || '').trim();
+      const label = (r[0] || '').trim();
       if (label.includes('A. Opening Stock')) {
         openingStockKg = parseRupee(r[1], 0);
         openingStockRate = parseRupee(r[2], 0);
         openingStockAmt = parseRupee(r[3], 0);
-      } else if (
-        label.includes('B. Purchange') ||
-        label.includes('B. Purchase')
-      ) {
+      } else if (label.includes('B. Purchases')) {
         purchaseKg = parseRupee(r[1], 0);
         purchaseRate = parseRupee(r[2], 0);
         purchaseAmt = parseRupee(r[3], 0);
@@ -728,8 +760,98 @@ export async function runIngestion() {
     `✅ Generated ${rollouts2025.length} monthly rollout snapshots for 2025`,
   );
 
-  // 8. Merge and Update CSV Files Cleanly (Preserving 2026 data!)
-  console.log('\n💾 Merging 2025 Historical Data into CSV files...');
+  // 8. Load Pristine 2026 Transactions & Compute Continuous Customer Balances
+  console.log(
+    '\n🔄 Reconciling 2026 Pristine Records and Calculating Continuous Customer Ledgers...',
+  );
+
+  // Load 2026 Sales (filtering out legacy manual opening balances like opening_bal_14)
+  const rawSales2026 = parseCsv(
+    readFileSync(join(sourceBaseDir, 'sales.csv'), 'utf8'),
+  );
+  const filteredSales2026 = rawSales2026.filter((s) => {
+    const isLegacyOpening =
+      s.TransactionID.startsWith('opening_bal_') ||
+      s.Item === 'Previous Outstanding' ||
+      (s.Notes && s.Notes.includes('Carried forward outstanding'));
+    return !isLegacyOpening;
+  });
+
+  // Count 2026 sales debt per customer
+  filteredSales2026.forEach((s) => {
+    const cust = customerMapById.get(String(s.CustomerID));
+    if (cust) {
+      const debt = Number(s.RemainingDue) || 0;
+      cust.salesDebt = (cust.salesDebt || 0) + debt;
+    }
+  });
+
+  // Load 2026 Services
+  const services2026Path = join(sourceBaseDir, 'services.csv');
+  const rawServices2026 = existsSync(services2026Path)
+    ? parseCsv(readFileSync(services2026Path, 'utf8'))
+    : [];
+  rawServices2026.forEach((srv) => {
+    const cust = customerMapById.get(String(srv.CustomerID));
+    if (cust) {
+      const debt = Number(srv.RemainingDue) || 0;
+      cust.serviceDebt = (cust.serviceDebt || 0) + debt;
+    }
+  });
+
+  // Load 2026 Payments
+  const rawPayments2026 = parseCsv(
+    readFileSync(join(sourceBaseDir, 'payments.csv'), 'utf8'),
+  );
+  rawPayments2026.forEach((p) => {
+    const cust = customerMapById.get(String(p.CustomerID));
+    if (cust) {
+      const paid = Number(p.AmountPaid) || 0;
+      cust.paymentsPaid = (cust.paymentsPaid || 0) + paid;
+    }
+  });
+
+  // Compute each customer's final dynamic outstandingAmount
+  let totalSystemFinalOutstanding = 0;
+  existingCustomers.forEach((c) => {
+    const continuousDue =
+      (c.openingDebt2024 || 0) +
+      (c.salesDebt || 0) +
+      (c.serviceDebt || 0) -
+      (c.paymentsPaid || 0);
+    c.outstandingAmount = Math.max(0, Math.round(continuousDue));
+    totalSystemFinalOutstanding += c.outstandingAmount;
+  });
+
+  console.log(
+    `✅ Continuous Dynamic Reconciled Outstanding Amount: ₹${totalSystemFinalOutstanding.toLocaleString()} across ${existingCustomers.length} customers`,
+  );
+
+  // 9. Generate 2024 Opening Balance Sales Rows (dated 2024-12-31)
+  const opening2024SalesRows = [];
+  existingCustomers.forEach((c) => {
+    if (c.openingDebt2024 > 0) {
+      opening2024SalesRows.push({
+        TransactionID: `opening_2024_${c.id}`,
+        CustomerID: c.id,
+        CustomerName: c.name,
+        Date: '2024-12-31T23:59:59.000Z',
+        Item: 'Opening Due 2024',
+        WeightKg: 0,
+        Rate: 0,
+        TotalAmount: c.openingDebt2024,
+        CashPaid: 0,
+        RemainingDue: c.openingDebt2024,
+        Notes: 'Baseline Opening Balance from 2024-12-31 Credit List',
+      });
+    }
+  });
+  console.log(
+    `✅ Generated ${opening2024SalesRows.length} opening balance records for 2024-12-31`,
+  );
+
+  // 10. Merge and Write all CSV Files
+  console.log('\n💾 Writing Reconciled CSV Backups...');
 
   // Save alias dictionary
   writeFileSync(ALIAS_FILE, JSON.stringify(aliasDict, null, 2));
@@ -746,151 +868,136 @@ export async function runIngestion() {
     [custCsvHeader, ...custCsvRows].join('\n') + '\n',
   );
   console.log(
-    `  -> Updated customers.csv (${existingCustomers.length} total customers)`,
+    `  -> Updated customers.csv (${existingCustomers.length} customers)`,
   );
 
-  // B. Sales CSV (Prepend 2025 sales before 2026 sales)
-  const currentSalesCsv = readFileSync(join(BACKUP_DIR, 'sales.csv'), 'utf8')
-    .trim()
-    .split('\n');
-  const salesCsvHeader = currentSalesCsv[0];
-  const existingSalesRows = currentSalesCsv.slice(1);
-
-  const newSalesCsvRows = sales2025.map(
+  // B. Sales CSV (2024 Opening Dues + 2025 Sales + 2026 Sales)
+  const salesCsvHeader =
+    'TransactionID,CustomerID,CustomerName,Date,Item,WeightKg,Rate,TotalAmount,CashPaid,RemainingDue,Notes';
+  const allSalesRecords = [
+    ...opening2024SalesRows,
+    ...sales2025,
+    ...filteredSales2026,
+  ];
+  const allSalesCsvRows = allSalesRecords.map(
     (s) =>
       `${s.TransactionID},${s.CustomerID},${toCsvField(s.CustomerName)},${s.Date},${toCsvField(s.Item)},${s.WeightKg},${s.Rate},${s.TotalAmount},${s.CashPaid},${s.RemainingDue},${toCsvField(s.Notes)}`,
   );
   writeFileSync(
     join(BACKUP_DIR, 'sales.csv'),
-    [salesCsvHeader, ...newSalesCsvRows, ...existingSalesRows].join('\n') +
-      '\n',
+    [salesCsvHeader, ...allSalesCsvRows].join('\n') + '\n',
   );
-  console.log(
-    `  -> Updated sales.csv (${newSalesCsvRows.length + existingSalesRows.length} total sales records)`,
+  console.log(`  -> Updated sales.csv (${allSalesCsvRows.length} total sales)`);
+
+  // C. Purchases CSV (2025 Purchases + 2026 Purchases)
+  const purchasesCsvHeader =
+    'PurchaseID,Date,Category,Item,WeightKg,PurchaseRate,Amount,VendorName,Notes';
+  const rawPurchases2026 = parseCsv(
+    readFileSync(join(sourceBaseDir, 'purchases.csv'), 'utf8'),
   );
-
-  // C. Purchases CSV (Prepend 2025 purchases)
-  const currentPurchasesCsv = readFileSync(
-    join(BACKUP_DIR, 'purchases.csv'),
-    'utf8',
-  )
-    .trim()
-    .split('\n');
-  const purchasesCsvHeader = currentPurchasesCsv[0];
-  const existingPurchasesRows = currentPurchasesCsv.slice(1);
-
-  const newPurchasesCsvRows = purchases2025.map(
+  const allPurchasesRecords = [...purchases2025, ...rawPurchases2026];
+  const allPurchasesCsvRows = allPurchasesRecords.map(
     (p) =>
       `${p.PurchaseID},${p.Date},${toCsvField(p.Category)},${toCsvField(p.Item)},${p.WeightKg},${p.PurchaseRate},${p.Amount},${toCsvField(p.VendorName)},${toCsvField(p.Notes)}`,
   );
   writeFileSync(
     join(BACKUP_DIR, 'purchases.csv'),
-    [purchasesCsvHeader, ...newPurchasesCsvRows, ...existingPurchasesRows].join(
-      '\n',
-    ) + '\n',
+    [purchasesCsvHeader, ...allPurchasesCsvRows].join('\n') + '\n',
   );
   console.log(
-    `  -> Updated purchases.csv (${newPurchasesCsvRows.length + existingPurchasesRows.length} total purchases)`,
+    `  -> Updated purchases.csv (${allPurchasesCsvRows.length} total purchases)`,
   );
 
   // D. Services CSV
-  const currentServicesCsv = readFileSync(
-    join(BACKUP_DIR, 'services.csv'),
-    'utf8',
-  )
-    .trim()
-    .split('\n');
-  const servicesCsvHeader = currentServicesCsv[0];
-  const existingServicesRows = currentServicesCsv.slice(1);
-
-  const newServicesCsvRows = services2025.map(
+  const servicesCsvHeader =
+    'ServiceID,CustomerID,CustomerName,Date,Item,Amount,Notes';
+  const allServicesRecords = [...services2025, ...rawServices2026];
+  const allServicesCsvRows = allServicesRecords.map(
     (srv) =>
       `${srv.ServiceID},${srv.CustomerID},${toCsvField(srv.CustomerName)},${srv.Date},${toCsvField(srv.Item)},${srv.Amount},${toCsvField(srv.Notes)}`,
   );
   writeFileSync(
     join(BACKUP_DIR, 'services.csv'),
-    [servicesCsvHeader, ...newServicesCsvRows, ...existingServicesRows].join(
-      '\n',
-    ) + '\n',
+    [servicesCsvHeader, ...allServicesCsvRows].join('\n') + '\n',
   );
   console.log(
-    `  -> Updated services.csv (${newServicesCsvRows.length + existingServicesRows.length} total services)`,
+    `  -> Updated services.csv (${allServicesCsvRows.length} total services)`,
   );
 
   // E. Expenses CSV
-  const currentExpensesCsv = readFileSync(
-    join(BACKUP_DIR, 'expenses.csv'),
-    'utf8',
-  )
-    .trim()
-    .split('\n');
-  const expensesCsvHeader = currentExpensesCsv[0];
-  const existingExpensesRows = currentExpensesCsv.slice(1);
-
-  const newExpensesCsvRows = expenses2025.map(
+  const expensesCsvHeader =
+    'ExpenseID,Date,ExpenseCategory,Item,Amount,Notes';
+  const rawExpenses2026 = parseCsv(
+    readFileSync(join(sourceBaseDir, 'expenses.csv'), 'utf8'),
+  );
+  const allExpensesRecords = [...expenses2025, ...rawExpenses2026];
+  const allExpensesCsvRows = allExpensesRecords.map(
     (e) =>
       `${e.ExpenseID},${e.Date},${toCsvField(e.ExpenseCategory)},${toCsvField(e.Item)},${e.Amount},${toCsvField(e.Notes)}`,
   );
   writeFileSync(
     join(BACKUP_DIR, 'expenses.csv'),
-    [expensesCsvHeader, ...newExpensesCsvRows, ...existingExpensesRows].join(
-      '\n',
-    ) + '\n',
+    [expensesCsvHeader, ...allExpensesCsvRows].join('\n') + '\n',
   );
   console.log(
-    `  -> Updated expenses.csv (${newExpensesCsvRows.length + existingExpensesRows.length} total expenses)`,
+    `  -> Updated expenses.csv (${allExpensesCsvRows.length} total expenses)`,
   );
 
-  // F. Payments CSV
-  const currentPaymentsCsv = readFileSync(
-    join(BACKUP_DIR, 'payments.csv'),
-    'utf8',
-  )
-    .trim()
-    .split('\n');
-  const paymentsCsvHeader = currentPaymentsCsv[0];
-  const existingPaymentsRows = currentPaymentsCsv.slice(1);
-
-  const newPaymentsCsvRows = payments2025.map(
+  // F. Payments CSV (2025 Payments + 2026 Payments)
+  const paymentsCsvHeader =
+    'PaymentID,CustomerID,CustomerName,Date,AmountPaid,Notes';
+  const allPaymentsRecords = [...payments2025, ...rawPayments2026];
+  const allPaymentsCsvRows = allPaymentsRecords.map(
     (p) =>
       `${p.PaymentID},${p.CustomerID},${toCsvField(p.CustomerName)},${p.Date},${p.AmountPaid},${toCsvField(p.Notes)}`,
   );
   writeFileSync(
     join(BACKUP_DIR, 'payments.csv'),
-    [paymentsCsvHeader, ...newPaymentsCsvRows, ...existingPaymentsRows].join(
-      '\n',
-    ) + '\n',
+    [paymentsCsvHeader, ...allPaymentsCsvRows].join('\n') + '\n',
   );
   console.log(
-    `  -> Updated payments.csv (${newPaymentsCsvRows.length + existingPaymentsRows.length} total payments)`,
+    `  -> Updated payments.csv (${allPaymentsCsvRows.length} total payments)`,
   );
 
   // G. Monthly Rollouts CSV
-  const currentRolloutCsv = readFileSync(
-    join(BACKUP_DIR, 'monthly_rollout.csv'),
-    'utf8',
-  )
-    .trim()
-    .split('\n');
-  const rolloutCsvHeader = currentRolloutCsv[0];
-  const existingRolloutRows = currentRolloutCsv.slice(1);
-
-  const newRolloutCsvRows = rollouts2025.map(
+  const rolloutCsvHeader =
+    'Month,PeriodKey,SpreadsheetId,RolledOutAt,OpeningStockKg,OpeningStockRate,OpeningStockAmount,PurchasesKg,PurchasesRate,PurchasesAmount,SalesKg,SalesRate,SalesAmount,ClosingStockKg,ClosingStockRate,ClosingStockAmount,GrossCommissionPrev,GrossCommissionCm,GrossCommissionTotal,DaaluPrev,DaaluCm,DaaluTotal,ExpensesPrev,ExpensesCm,ExpensesTotal,NetProfitCm,NetProfitTotal,LendingToCustomers,CashBalance,TotalCapital';
+  const rawRollouts2026 = parseCsv(
+    readFileSync(join(sourceBaseDir, 'monthly_rollout.csv'), 'utf8'),
+  );
+  const allRolloutsRecords = [...rollouts2025, ...rawRollouts2026];
+  const allRolloutCsvRows = allRolloutsRecords.map(
     (r) =>
       `${r.Month},${r.PeriodKey},${r.SpreadsheetId},${r.RolledOutAt},${r.OpeningStockKg},${r.OpeningStockRate},${r.OpeningStockAmount},${r.PurchasesKg},${r.PurchasesRate},${r.PurchasesAmount},${r.SalesKg},${r.SalesRate},${r.SalesAmount},${r.ClosingStockKg},${r.ClosingStockRate},${r.ClosingStockAmount},${r.GrossCommissionPrev},${r.GrossCommissionCm},${r.GrossCommissionTotal},${r.DaaluPrev},${r.DaaluCm},${r.DaaluTotal},${r.ExpensesPrev},${r.ExpensesCm},${r.ExpensesTotal},${r.NetProfitCm},${r.NetProfitTotal},${r.LendingToCustomers},${r.CashBalance},${r.TotalCapital}`,
   );
   writeFileSync(
     join(BACKUP_DIR, 'monthly_rollout.csv'),
-    [rolloutCsvHeader, ...newRolloutCsvRows, ...existingRolloutRows].join(
-      '\n',
-    ) + '\n',
+    [rolloutCsvHeader, ...allRolloutCsvRows].join('\n') + '\n',
   );
   console.log(
-    `  -> Updated monthly_rollout.csv (${newRolloutCsvRows.length + existingRolloutRows.length} total monthly rollouts)`,
+    `  -> Updated monthly_rollout.csv (${allRolloutCsvRows.length} total rollouts)`,
   );
 
+  // 11. Sync with src/mock/csv
+  if (existsSync(MOCK_CSV_DIR)) {
+    console.log('\n📂 Synchronizing to src/mock/csv/...');
+    const filesToSync = [
+      'customers.csv',
+      'sales.csv',
+      'purchases.csv',
+      'services.csv',
+      'expenses.csv',
+      'payments.csv',
+      'monthly_rollout.csv',
+    ];
+    for (const f of filesToSync) {
+      copyFileSync(join(BACKUP_DIR, f), join(MOCK_CSV_DIR, f));
+    }
+    console.log(`  -> Synced ${filesToSync.length} CSV files to src/mock/csv/`);
+  }
+
   console.log(
-    '\n🎉 Successfully ingested and reconciled 2025 historical data!',
+    '\n🎉 Successfully ingested and reconciled 2024 opening dues, 2025 historical data, and 2026 continuous ledgers!',
   );
 }
 

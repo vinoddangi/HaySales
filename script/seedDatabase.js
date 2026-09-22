@@ -76,21 +76,27 @@ customers.forEach((c) => {
 // 2. Sales -> Transactions
 const salesCsv = fs.readFileSync(path.join(BACKUP_DIR, 'sales.csv'), 'utf8');
 const rawSales = parseCsv(salesCsv);
-const salesTransactions = rawSales.map((s, idx) => ({
-  id: s.TransactionID || `sale_${idx + 1}`,
-  customerId: String(s.CustomerID || '307'),
-  customerName: s.CustomerName || custMap[String(s.CustomerID)] || 'Retail',
-  date: s.Date || new Date().toISOString(),
-  type: 'SALE',
-  item: s.Item || 'Others',
-  weightKg: Number(s.WeightKg) || 0,
-  rate: Number(s.Rate) || 0,
-  amount: Number(s.TotalAmount) || 0,
-  cashPaid: Number(s.CashPaid) || 0,
-  remainingDue: Number(s.RemainingDue) || 0,
-  discount: Number(s.Discount) || 0,
-  note: s.Notes || '',
-}));
+const salesTransactions = rawSales.map((s, idx) => {
+  const isOpening =
+    (s.TransactionID && s.TransactionID.startsWith('opening_')) ||
+    s.Item === 'Opening Due 2024' ||
+    s.Item === 'Previous Outstanding';
+  return {
+    id: s.TransactionID || `sale_${idx + 1}`,
+    customerId: String(s.CustomerID || '307'),
+    customerName: s.CustomerName || custMap[String(s.CustomerID)] || 'Retail',
+    date: s.Date || new Date().toISOString(),
+    type: isOpening ? 'OPENING_BALANCE' : 'SALE',
+    item: s.Item || 'Others',
+    weightKg: Number(s.WeightKg) || 0,
+    rate: Number(s.Rate) || 0,
+    amount: Number(s.TotalAmount) || 0,
+    cashPaid: Number(s.CashPaid) || 0,
+    remainingDue: Number(s.RemainingDue) || 0,
+    discount: Number(s.Discount) || 0,
+    note: s.Notes || '',
+  };
+});
 
 // 3. Services -> Transactions (e.g. Pickup Services for Retail)
 const servicesCsvPath = path.join(BACKUP_DIR, 'services.csv');

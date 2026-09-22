@@ -1,24 +1,32 @@
 ExpenseID,Date,ExpenseCategory,Item,Amount,Notes
-expense_2025_01_main,2025-01-28T12:00:00.000Z,Others,Monthly Operations,7000,Monthly farm expense from Jan 2025 Main tab
-expense_2025_01_diesel_196,2025-01-28T12:00:00.000Z,Fuel,Others,19100,Diesel / Daalu expense from Jan 2025 Sales tab
-expense_2025_02_main,2025-02-28T12:00:00.000Z,Others,Monthly Operations,7000,Monthly farm expense from Feb 2025 Main tab
-expense_2025_02_diesel_196,2025-02-28T12:00:00.000Z,Fuel,Others,24500,Diesel / Daalu expense from Feb 2025 Sales tab
-expense_2025_03_main,2025-03-28T12:00:00.000Z,Others,Monthly Operations,31000,Monthly farm expense from March 2025 Main tab
-expense_2025_03_diesel_196,2025-03-28T12:00:00.000Z,Fuel,Others,42000,Diesel / Daalu expense from March 2025 Sales tab
-expense_2025_04_main,2025-04-28T12:00:00.000Z,Others,Monthly Operations,7000,Monthly farm expense from April 2025 Main tab
-expense_2025_04_diesel_197,2025-04-28T12:00:00.000Z,Fuel,Others,20900,Diesel / Daalu expense from April 2025 Sales tab
-expense_2025_05_main,2025-05-28T12:00:00.000Z,Others,Monthly Operations,8560,Monthly farm expense from May 2025 Main tab
-expense_2025_05_diesel_197,2025-05-28T12:00:00.000Z,Fuel,Others,15800,Diesel / Daalu expense from May 2025 Sales tab
-expense_2025_06_main,2025-06-28T12:00:00.000Z,Others,Monthly Operations,7000,Monthly farm expense from Jun 2025 Main tab
-expense_2025_06_diesel_197,2025-06-28T12:00:00.000Z,Fuel,Others,9000,Diesel / Daalu expense from Jun 2025 Sales tab
-expense_2025_07_main,2025-07-28T12:00:00.000Z,Others,Monthly Operations,7000,Monthly farm expense from July 2025 Main tab
-expense_2025_07_diesel_197,2025-07-28T12:00:00.000Z,Fuel,Others,25400,Diesel / Daalu expense from July 2025 Sales tab
-expense_2025_08_main,2025-08-28T12:00:00.000Z,Others,Monthly Operations,7000,Monthly farm expense from Aug 2025 Main tab
-expense_2025_08_diesel_197,2025-08-28T12:00:00.000Z,Fuel,Others,15700,Diesel / Daalu expense from Aug 2025 Sales tab
-expense_2025_09_main,2025-09-28T12:00:00.000Z,Others,Monthly Operations,7800,Monthly farm expense from Sep 2025 Main tab
-expense_2025_10_main,2025-10-28T12:00:00.000Z,Others,Monthly Operations,8300,Monthly farm expense from Oct 2025 Main tab
-expense_2025_11_main,2025-11-28T12:00:00.000Z,Others,Monthly Operations,18800,Monthly farm expense from Nov 2025 Main tab
-expense_2025_12_main,2025-12-28T12:00:00.000Z,Others,Monthly Operations,25700,Monthly farm expense from Dec 2025 Main tab
+expense_2025_01_daalu_13,2025-01-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,340860,Daalu expenses from Jan 2025 Main sheet
+expense_2025_01_daalu_14,2025-01-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,7600,Daalu expenses from Jan 2025 Main sheet
+expense_2025_01_daalu_16,2025-01-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,348460,Daalu expenses from Jan 2025 Main sheet
+expense_2025_02_daalu_13,2025-02-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,348460,Daalu expenses from Feb 2025 Main sheet
+expense_2025_02_daalu_14,2025-02-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,17250,Daalu expenses from Feb 2025 Main sheet
+expense_2025_02_daalu_16,2025-02-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,365710,Daalu expenses from Feb 2025 Main sheet
+expense_2025_03_daalu_13,2025-03-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,365710,Daalu expenses from March 2025 Main sheet
+expense_2025_03_daalu_14,2025-03-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,25350,Daalu expenses from March 2025 Main sheet
+expense_2025_03_daalu_16,2025-03-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,391060,Daalu expenses from March 2025 Main sheet
+expense_2025_04_daalu_13,2025-04-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,391060,Daalu expenses from April 2025 Main sheet
+expense_2025_04_daalu_16,2025-04-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,374860,Daalu expenses from April 2025 Main sheet
+expense_2025_05_daalu_13,2025-05-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,374860,Daalu expenses from May 2025 Main sheet
+expense_2025_05_daalu_16,2025-05-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,355160,Daalu expenses from May 2025 Main sheet
+expense_2025_06_daalu_13,2025-06-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,355160,Daalu expenses from Jun 2025 Main sheet
+expense_2025_06_daalu_16,2025-06-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,331160,Daalu expenses from Jun 2025 Main sheet
+expense_2025_07_daalu_13,2025-07-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,331160,Daalu expenses from July 2025 Main sheet
+expense_2025_07_daalu_16,2025-07-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,318910,Daalu expenses from July 2025 Main sheet
+expense_2025_08_daalu_13,2025-08-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,311860,Daalu expenses from Aug 2025 Main sheet
+expense_2025_08_daalu_16,2025-08-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,292560,Daalu expenses from Aug 2025 Main sheet
+expense_2025_09_daalu_13,2025-09-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,292560,Daalu expenses from Sep 2025 Main sheet
+expense_2025_09_daalu_16,2025-09-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,288760,Daalu expenses from Sep 2025 Main sheet
+expense_2025_10_daalu_13,2025-10-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,288760,Daalu expenses from Oct 2025 Main sheet
+expense_2025_10_daalu_16,2025-10-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,276460,Daalu expenses from Oct 2025 Main sheet
+expense_2025_11_daalu_13,2025-11-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,276460,Daalu expenses from Nov 2025 Main sheet
+expense_2025_11_daalu_16,2025-11-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,256460,Daalu expenses from Nov 2025 Main sheet
+expense_2025_12_daalu_13,2025-12-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,256460,Daalu expenses from Dec 2025 Main sheet
+expense_2025_12_daalu_14,2025-12-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,12900,Daalu expenses from Dec 2025 Main sheet
+expense_2025_12_daalu_16,2025-12-28T12:00:00.000Z,Vehicle,Daalu Diesel & Maintenance,269360,Daalu expenses from Dec 2025 Main sheet
 expense_2026_01_s199,2026-01-31T12:00:00.000Z,Interest,Others,7000,Intrest (Recorded in Sales tab bottom summary)
 expense_2026_02_s199,2026-02-28T12:00:00.000Z,Interest,Others,7000,Intrest (Recorded in Sales tab bottom summary)
 expense_2026_03_s199,2026-03-31T12:00:00.000Z,Interest,Others,7000,Intrest (Recorded in Sales tab bottom summary)
