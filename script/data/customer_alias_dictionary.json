@@ -300,7 +300,6 @@
     "canonicalName": "Boka Dipakbhai Parthibhai"
   },
   "boka deepkabhai parathibhai": {
-    "id": "58",
     "canonicalName": "Boka Dipakbhai Parthibhai"
   },
   "boka deepakbhai parthibhai": {
@@ -352,7 +351,7 @@
     "canonicalName": "Choudhary Daljibhai Rajsagbhai"
   },
   "daalu diesel depreciation": {
-    "id": "495",
+    "id": "469",
     "canonicalName": "Daalu Diesel + Depreciation"
   },
   "daka ashokbhai madhubhai": {
@@ -448,12 +447,10 @@
     "canonicalName": "Fof Babubhai Ujabhai"
   },
   "fof rameshbhai ujabhai": {
-    "id": "90",
     "canonicalName": "Fof Rameshbhai Ujabhai"
   },
   "fof sureshbhai ujabhai": {
-    "id": "91",
-    "canonicalName": "Fof Sureshbhai Ujabhai"
+    "canonicalName": "Fof Rameshbhai Ujabhai"
   },
   "foshi ashokbhai vedancha": {
     "id": "92",
@@ -472,7 +469,6 @@
     "canonicalName": "Foshi Prabhubhai Maganbhai (Vedancha)"
   },
   "foshi prapubhai maganbhai": {
-    "id": "94",
     "canonicalName": "Foshi Prabhubhai Maganbhai (Vedancha)"
   },
   "fosi prabhubhai manganbhai": {
@@ -612,12 +608,10 @@
     "canonicalName": "Judal Amaratbhai Daljibhai"
   },
   "judal amaratbhai laljibhai": {
-    "id": "128",
-    "canonicalName": "Judal Amaratbhai Laljibhai"
+    "canonicalName": "Judal Amaratbhai Daljibhai"
   },
   "judal amratbhai laljibhai": {
-    "id": "129",
-    "canonicalName": "Judal Amratbhai Laljibhai"
+    "canonicalName": "Judal Amaratbhai Daljibhai"
   },
   "judal ashokbhai muljibhai": {
     "id": "130",
@@ -1096,8 +1090,7 @@
     "canonicalName": "Kharshan Kalubhai Laxmanbhai"
   },
   "khasa vajeerkhan": {
-    "id": "229",
-    "canonicalName": "Khasa Vajeerkhan"
+    "canonicalName": "Khasha Vajeerkhan"
   },
   "vajeerkhan khasa": {
     "id": "229",
@@ -1328,8 +1321,7 @@
     "canonicalName": "Mor Keshabhai Abhubhai"
   },
   "mor lavjibhai abhubhai": {
-    "id": "279",
-    "canonicalName": "Mor Lavjibhai Abhubhai"
+    "canonicalName": "Mor Lavjibhai Abhubhai (Badarpura)"
   },
   "mor lavjibhai abhubhai badarpura": {
     "id": "280",
@@ -1488,7 +1480,6 @@
     "canonicalName": "Takor Bajubhai Galbabhai"
   },
   "thakor bajubhai galbabhai": {
-    "id": "312",
     "canonicalName": "Takor Bajubhai Galbabhai"
   },
   "talegadh": {
@@ -1644,7 +1635,6 @@
     "canonicalName": "Thakor Momatji Saradarji"
   },
   "thakor nagjibhai hamirbhai": {
-    "id": "344",
     "canonicalName": "Thakor Nagjibhai Hamirbhai"
   },
   "takor nagjibhai hameerbhai": {
@@ -1792,7 +1782,6 @@
     "canonicalName": "Valagot Babubhai Parthibhai"
   },
   "valagot babubhai partahibhai vedancha": {
-    "id": "368",
     "canonicalName": "Valagot Babubhai Parthibhai"
   },
   "valagot devabhai": {
@@ -1880,939 +1869,885 @@
     "canonicalName": "Palani Ravjibhai Kanjibhai"
   },
   "judal praveenbhai veershangbhai": {
-    "id": "389",
-    "canonicalName": "Judal Praveenbhai Veershangbhai"
+    "canonicalName": "Judal Pravinbhai Veershangbhai"
   },
   "judal ramshungbhai dhudabhai": {
-    "id": "390",
+    "id": "389",
     "canonicalName": "Judal Ramshungbhai Dhudabhai"
   },
   "bhutadiya bhikhabhai ganeshbhai": {
-    "id": "391",
+    "id": "390",
     "canonicalName": "Bhutadiya Bhikhabhai Ganeshbhai"
   },
   "kakvadiya babubhai chandisar": {
-    "id": "392",
+    "id": "391",
     "canonicalName": "Kakvadiya Babubhai Chandisar"
   },
   "bera laljibhai sadabhai": {
-    "id": "393",
+    "id": "392",
     "canonicalName": "Bera Laljibhai Sadabhai"
   },
   "foshi prabhubhai manganbhai": {
-    "id": "394",
-    "canonicalName": "Foshi Prabhubhai Manganbhai"
+    "canonicalName": "Foshi Prabhubhai Maganbhai (Vedancha)"
   },
   "retail vedancha": {
-    "id": "395",
+    "id": "393",
     "canonicalName": "Retail - Vedancha"
   },
   "sudha 1": {
-    "id": "396",
+    "id": "394",
     "canonicalName": "Sudha 1"
   },
   "valagot ashwinbhai daljibhai vedancha": {
-    "id": "397",
+    "id": "395",
     "canonicalName": "Valagot Ashwinbhai Daljibhai - Vedancha"
   },
   "kharshan bhupatbhai savjibhai": {
-    "id": "398",
+    "id": "396",
     "canonicalName": "Kharshan Bhupatbhai Savjibhai"
   },
   "judal bakabhai jashungbhai": {
-    "id": "399",
-    "canonicalName": "Judal Bakabhai Jashungbhai"
+    "canonicalName": "Judal Bakabhai Jasungbhai"
   },
   "satoliya rameshbhai vedancha": {
-    "id": "400",
+    "id": "397",
     "canonicalName": "Satoliya Rameshbhai Vedancha"
   },
   "loh sureshbha shantubhai": {
-    "id": "401",
+    "id": "398",
     "canonicalName": "Loh Sureshbha Shantubhai"
   },
   "thakor shanjibhai jagmalbhai": {
-    "id": "402",
-    "canonicalName": "Thakor Shanjibhai Jagmalbhai"
+    "canonicalName": "Thakor Shanjiji Jagmalji"
   },
   "judal mogajibhai bhikhabhai chadotar": {
-    "id": "403",
+    "id": "399",
     "canonicalName": "Judal Mogajibhai Bhikhabhai Chadotar"
   },
   "dangi vipulbhai laxmanbhai": {
-    "id": "404",
-    "canonicalName": "Dangi Vipulbhai Laxmanbhai"
+    "canonicalName": "Dangi Vipulbhai Laxmanbhai (Badarpura)"
   },
   "thakor bharatji samdhi": {
-    "id": "405",
+    "id": "400",
     "canonicalName": "Thakor Bharatji Samdhi"
   },
   "thakor manchaji samdhi": {
-    "id": "406",
+    "id": "401",
     "canonicalName": "Thakor Manchaji Samdhi"
   },
   "akoiliya dhanrajbhai virshangbhai": {
-    "id": "407",
-    "canonicalName": "Akoiliya Dhanrajbhai Virshangbhai"
+    "canonicalName": "Akoliya Dhanrajbhai Virshangbhai"
   },
   "akoiliya galbhabhai devabhai": {
-    "id": "408",
-    "canonicalName": "Akoiliya Galbhabhai Devabhai"
+    "canonicalName": "Akoliya Galbabhai Devabhai"
   },
   "judal galbabhai ramjibhai": {
-    "id": "409",
+    "id": "402",
     "canonicalName": "Judal Galbabhai Ramjibhai"
   },
   "valagot mavjibhai fuva": {
-    "id": "410",
+    "id": "403",
     "canonicalName": "Valagot Mavjibhai (Fuva)"
   },
   "bera dinieshbhai savabhai": {
-    "id": "411",
-    "canonicalName": "Bera Dinieshbhai Savabhai"
+    "canonicalName": "Bera Dineshbhai Savabhai"
   },
   "gamar rameshbhai lalabhai chetan galba judal": {
-    "id": "412",
+    "id": "404",
     "canonicalName": "Gamar Rameshbhai Lalabhai (Chetan Galba Judal)"
   },
   "bera rasangbhai dohaajibhai": {
-    "id": "413",
-    "canonicalName": "Bera Rasangbhai Dohaajibhai"
+    "canonicalName": "Bera Rajsangbhai Dohjibhai"
   },
   "judal ghemarbhai rajsangbhai": {
-    "id": "414",
-    "canonicalName": "Judal Ghemarbhai Rajsangbhai"
+    "canonicalName": "Judal Ghemarbhai Rashangbhai"
   },
   "vajirkhan kasa": {
-    "id": "415",
+    "id": "405",
     "canonicalName": "Vajirkhan Kasa"
   },
   "jafarkhan kasa": {
-    "id": "416",
-    "canonicalName": "Jafarkhan Kasa"
+    "canonicalName": "Khasha Jafarkhan"
   },
   "kakvadiya bhagvanbhai chandisar": {
-    "id": "417",
-    "canonicalName": "Kakvadiya Bhagvanbhai Chandisar"
+    "canonicalName": "Kakvadiya Bhagavanbhai Chandisar"
   },
   "thakor rameshbhai danshungbhai": {
-    "id": "418",
+    "id": "406",
     "canonicalName": "Thakor Rameshbhai Danshungbhai"
   },
   "thakor hemchandbhai khodla": {
-    "id": "419",
+    "id": "407",
     "canonicalName": "Thakor Hemchandbhai Khodla"
   },
   "kuva nareshbhai sudha bhai": {
-    "id": "420",
+    "id": "408",
     "canonicalName": "Kuva Nareshbhai Sudha (Bhai)"
   },
   "gudol kalpeshbhai kushkal": {
-    "id": "421",
+    "id": "409",
     "canonicalName": "Gudol Kalpeshbhai Kushkal"
   },
   "judal lajibhai somabhai": {
-    "id": "422",
+    "id": "410",
     "canonicalName": "Judal Lajibhai Somabhai"
   },
   "boka ramjibhai jethabhai": {
-    "id": "423",
+    "id": "411",
     "canonicalName": "Boka Ramjibhai Jethabhai"
   },
   "kuva nareshbhai 9723128992": {
-    "id": "424",
+    "id": "412",
     "canonicalName": "Kuva Nareshbhai - 9723128992"
   },
   "desai maganbhai rasana": {
-    "id": "425",
+    "id": "413",
     "canonicalName": "Desai Maganbhai Rasana"
   },
   "valagot jayntibhai surati": {
-    "id": "426",
+    "id": "414",
     "canonicalName": "Valagot Jayntibhai Surati"
   },
   "mor kirtibhai vedancha": {
-    "id": "427",
+    "id": "415",
     "canonicalName": "Mor Kirtibhai Vedancha"
   },
   "fof meghrajbhai ujabhai": {
-    "id": "428",
+    "id": "416",
     "canonicalName": "Fof Meghrajbhai Ujabhai"
   },
   "bera laxmanbhai megabhai": {
-    "id": "429",
-    "canonicalName": "Bera Laxmanbhai Megabhai"
+    "canonicalName": "Bera Laxmanbhai Meghabhai"
   },
   "fof laxmanbhai ujabhai": {
-    "id": "430",
+    "id": "417",
     "canonicalName": "Fof Laxmanbhai Ujabhai"
   },
   "thakor ragnaji khodla": {
-    "id": "431",
-    "canonicalName": "Thakor Ragnaji - Khodla"
+    "canonicalName": "Thakor Rangnathji Khodla"
   },
   "judal praveenbhai bhagavanbhai": {
-    "id": "432",
+    "id": "418",
     "canonicalName": "Judal Praveenbhai Bhagavanbhai"
   },
   "judal rameshbhai somabhai": {
-    "id": "433",
+    "id": "419",
     "canonicalName": "Judal Rameshbhai Somabhai"
   },
   "judal neeruben ashokbhai kushkal": {
-    "id": "434",
+    "id": "420",
     "canonicalName": "Judal Neeruben Ashokbhai Kushkal"
   },
   "valagot manjibhai fuva": {
-    "id": "435",
+    "id": "421",
     "canonicalName": "Valagot Manjibhai Fuva"
   },
   "palani bharatbhai ratnabhai": {
-    "id": "436",
+    "id": "422",
     "canonicalName": "Palani Bharatbhai Ratnabhai"
   },
   "judal rajubhai valjibhai": {
-    "id": "437",
+    "id": "423",
     "canonicalName": "Judal Rajubhai Valjibhai"
   },
   "kharsan bhupatbhai savajibhai": {
-    "id": "438",
+    "id": "424",
     "canonicalName": "Kharsan Bhupatbhai Savajibhai"
   },
   "boka narshibhai bhikabhai": {
-    "id": "439",
+    "id": "425",
     "canonicalName": "Boka Narshibhai Bhikabhai"
   },
   "gudol bhaveshbhai parthibhai": {
-    "id": "440",
+    "id": "426",
     "canonicalName": "Gudol Bhaveshbhai Parthibhai"
   },
   "judal veerabhai somabhai": {
-    "id": "441",
+    "id": "427",
     "canonicalName": "Judal Veerabhai Somabhai"
   },
   "thakor ransaji ragajiji": {
-    "id": "442",
-    "canonicalName": "Thakor Ransaji Ragajiji"
+    "canonicalName": "Thakor Ransaji Raghjiji"
   },
   "judal jyantibhai nathabhai guru": {
-    "id": "443",
-    "canonicalName": "Judal Jyantibhai Nathabhai Guru"
+    "canonicalName": "Judal Jyantibhai Nathabhai"
   },
   "jarmol neetaben k gadh": {
-    "id": "444",
+    "id": "428",
     "canonicalName": "Jarmol Neetaben K Gadh"
   },
   "thakor ragnathiji": {
-    "id": "445",
-    "canonicalName": "Thakor Ragnathiji"
+    "canonicalName": "Thakor Rangnathji Khodla"
   },
   "bharatbhai patel vedancha": {
-    "id": "446",
+    "id": "429",
     "canonicalName": "Bharatbhai Patel Vedancha"
   },
   "gobhalya kantibhai jeevabhai": {
-    "id": "447",
+    "id": "430",
     "canonicalName": "Gobhalya Kantibhai Jeevabhai"
   },
   "judal kesarbhai narshibhai": {
-    "id": "448",
+    "id": "431",
     "canonicalName": "Judal Kesarbhai Narshibhai"
   },
   "thakor radhuji ghemarji": {
-    "id": "449",
+    "id": "432",
     "canonicalName": "Thakor Radhuji Ghemarji"
   },
   "bhutadiya dhanrajbhai somabhai": {
-    "id": "450",
+    "id": "433",
     "canonicalName": "Bhutadiya Dhanrajbhai Somabhai"
   },
   "ratada megharajbhai badarpura": {
-    "id": "451",
+    "id": "434",
     "canonicalName": "Ratada Megharajbhai Badarpura"
   },
   "patel ambaram devpura": {
-    "id": "452",
+    "id": "435",
     "canonicalName": "Patel Ambaram Devpura"
   },
   "foshi parbhubhai managbhai": {
-    "id": "453",
-    "canonicalName": "Foshi Parbhubhai Managbhai"
+    "canonicalName": "Foshi Prabhubhai Maganbhai (Vedancha)"
   },
   "prakashpuri khodla": {
-    "id": "454",
+    "id": "436",
     "canonicalName": "Prakashpuri Khodla"
   },
   "bhutadiya kiritibhai ramshungbhai": {
-    "id": "455",
+    "id": "437",
     "canonicalName": "Bhutadiya Kiritibhai Ramshungbhai"
   },
   "loh mogjibhai fatabhai": {
-    "id": "456",
+    "id": "438",
     "canonicalName": "Loh Mogjibhai Fatabhai"
   },
   "judal maheshbhai ramshungbhai": {
-    "id": "457",
+    "id": "439",
     "canonicalName": "Judal Maheshbhai Ramshungbhai"
   },
   "judal kantibhai somabhai": {
-    "id": "458",
+    "id": "440",
     "canonicalName": "Judal Kantibhai Somabhai"
   },
   "taalpatri": {
-    "id": "459",
+    "id": "441",
     "canonicalName": "TaalPatri"
   },
   "bera karshanbhai shomabhai akeshan": {
-    "id": "460",
+    "id": "442",
     "canonicalName": "Bera Karshanbhai Shomabhai Akeshan"
   },
   "bhutadiya ganeshbhai jedhabhai": {
-    "id": "461",
-    "canonicalName": "Bhutadiya Ganeshbhai Jedhabhai"
+    "canonicalName": "Bhutadiya Ganeshbhai Jethabhai"
   },
   "valagot babubhai parthi bhai vedancha": {
-    "id": "462",
-    "canonicalName": "Valagot Babubhai Parthi bhai -Vedancha"
+    "canonicalName": "Valagot Babubhai Parthibhai"
   },
   "dangi chelabhai heerabhai chadotar": {
-    "id": "463",
-    "canonicalName": "Dangi Chelabhai Heerabhai Chadotar"
+    "canonicalName": "Dangi Chelabhai Heerabhai"
   },
   "loh babubhai bhagvanabhai": {
-    "id": "464",
+    "id": "443",
     "canonicalName": "Loh Babubhai Bhagvanabhai"
   },
   "shudha retail": {
-    "id": "465",
+    "id": "444",
     "canonicalName": "Shudha Retail"
   },
   "dangi jagdishbhai chelabhai": {
-    "id": "466",
+    "id": "445",
     "canonicalName": "Dangi Jagdishbhai Chelabhai"
   },
   "juva karshanbhai": {
-    "id": "467",
+    "id": "446",
     "canonicalName": "Juva Karshanbhai"
   },
   "judal ghemarbhai ramshungbhai": {
-    "id": "468",
+    "id": "447",
     "canonicalName": "Judal Ghemarbhai Ramshungbhai"
   },
   "loh kantibhai poojabhai": {
-    "id": "469",
+    "id": "448",
     "canonicalName": "Loh Kantibhai Poojabhai"
   },
   "khasa jafarkhan vajeer": {
-    "id": "470",
+    "id": "449",
     "canonicalName": "Khasa Jafarkhan Vajeer"
   },
   "gobhala kantibhai 9099318634": {
-    "id": "471",
+    "id": "450",
     "canonicalName": "Gobhala Kantibhai 9099318634"
   },
   "jarmol laxmanbhai jeshungbhai": {
-    "id": "472",
+    "id": "451",
     "canonicalName": "Jarmol Laxmanbhai Jeshungbhai"
   },
   "loh raghubhai poojabhai": {
-    "id": "473",
+    "id": "452",
     "canonicalName": "Loh Raghubhai Poojabhai"
   },
   "judal nareshbhai ramshungbhai": {
-    "id": "474",
+    "id": "453",
     "canonicalName": "Judal Nareshbhai Ramshungbhai"
   },
   "jeetuben manjibhai": {
-    "id": "475",
+    "id": "454",
     "canonicalName": "Jeetuben Manjibhai"
   },
   "thakor surabhai ragjibhai": {
-    "id": "476",
-    "canonicalName": "Thakor Surabhai Ragjibhai"
+    "canonicalName": "Thakor Ransaji Raghjiji"
   },
   "bera ramjibhai nanjibhai": {
-    "id": "477",
+    "id": "455",
     "canonicalName": "Bera Ramjibhai Nanjibhai"
   },
   "judal laxmanbhai parthibhai": {
-    "id": "478",
+    "id": "456",
     "canonicalName": "Judal Laxmanbhai Parthibhai"
   },
   "chaudhary rameshbhai jethabhai": {
-    "id": "479",
+    "id": "457",
     "canonicalName": "Chaudhary Rameshbhai Jethabhai"
   },
   "kasha vajeer khan": {
-    "id": "480",
+    "id": "458",
     "canonicalName": "Kasha Vajeer Khan"
   },
   "judal dineshbhai bhikhabhai": {
-    "id": "481",
+    "id": "459",
     "canonicalName": "Judal Dineshbhai Bhikhabhai"
   },
   "kubhasan shokatbhai 9898775295": {
-    "id": "482",
+    "id": "460",
     "canonicalName": "Kubhasan Shokatbhai 9898775295"
   },
   "judal lajibhai shomabhai": {
-    "id": "483",
-    "canonicalName": "Judal Lajibhai Shomabhai"
+    "canonicalName": "Judal Laljibhai Shomabhai"
   },
   "patel karshanbhai vedancha": {
-    "id": "484",
+    "id": "461",
     "canonicalName": "Patel Karshanbhai Vedancha"
   },
   "gudol jaguben muljibhai": {
-    "id": "485",
+    "id": "462",
     "canonicalName": "Gudol Jaguben Muljibhai"
   },
   "kasa jafarkhan": {
-    "id": "486",
-    "canonicalName": "Kasa Jafarkhan"
+    "canonicalName": "Khasha Jafarkhan"
   },
   "judal neeruben hasmukhbhai": {
-    "id": "487",
+    "id": "463",
     "canonicalName": "Judal Neeruben Hasmukhbhai"
   },
   "loh manjibhai bhagvanbhai": {
-    "id": "488",
-    "canonicalName": "Loh Manjibhai Bhagvanbhai"
+    "canonicalName": "Loh Manjibhai Narshangbhai"
   },
   "judal rameshbhai ramshungbhai": {
-    "id": "489",
+    "id": "464",
     "canonicalName": "Judal Rameshbhai Ramshungbhai"
   },
   "thakor bhoobhaji dhooraji": {
-    "id": "490",
+    "id": "465",
     "canonicalName": "Thakor Bhoobhaji Dhooraji"
   },
   "loh sardarbhai bheekhabhai": {
-    "id": "491",
+    "id": "466",
     "canonicalName": "Loh Sardarbhai Bheekhabhai"
   },
   "judal bhagvanbhai karshanbhai": {
-    "id": "492",
+    "id": "467",
     "canonicalName": "Judal Bhagvanbhai Karshanbhai"
   },
   "loh rameshbhai bhagvanbhai": {
-    "id": "493",
+    "id": "468",
     "canonicalName": "Loh Rameshbhai Bhagvanbhai"
   },
   "thakor ransanji ragjiji": {
-    "id": "494",
-    "canonicalName": "Thakor Ransanji Ragjiji"
+    "canonicalName": "Thakor Ransaji Raghjiji"
   },
   "darabar kanshing samdhi": {
-    "id": "496",
+    "id": "470",
     "canonicalName": "Darabar Kanshing Samdhi"
   },
   "mor babubhai vedancha": {
-    "id": "497",
+    "id": "471",
     "canonicalName": "Mor Babubhai Vedancha"
   },
   "darbar kanshingbhai saamdhi": {
-    "id": "498",
+    "id": "472",
     "canonicalName": "Darbar Kanshingbhai Saamdhi"
   },
   "thaleghadh": {
-    "id": "499",
-    "canonicalName": "Thaleghadh"
+    "canonicalName": "Talegadh"
   },
   "judal jeetabhai moghabhai": {
-    "id": "500",
+    "id": "473",
     "canonicalName": "Judal Jeetabhai Moghabhai"
   },
   "babji vedancha": {
-    "id": "501",
-    "canonicalName": "Babji Vedancha"
+    "canonicalName": "Bavji Vedancha"
   },
   "judal ramshungbhai shomabhai": {
-    "id": "502",
+    "id": "474",
     "canonicalName": "Judal Ramshungbhai Shomabhai"
   },
   "shudha": {
-    "id": "503",
+    "id": "475",
     "canonicalName": "Shudha"
   },
   "bera dineshbhai shavabhai": {
-    "id": "504",
+    "id": "476",
     "canonicalName": "Bera Dineshbhai Shavabhai"
   },
   "gudol kesharbhai valjibhai": {
-    "id": "505",
-    "canonicalName": "Gudol Kesharbhai Valjibhai"
+    "canonicalName": "Gudol Kesarbhai Valjibhai"
   },
   "thakor jaxibhai hurabhai": {
-    "id": "506",
-    "canonicalName": "Thakor Jaxibhai Hurabhai"
+    "canonicalName": "Thakor Jaxshibhai Hurabhai"
   },
   "thakor bajubhai galababhai": {
-    "id": "507",
-    "canonicalName": "Thakor Bajubhai Galababhai"
+    "canonicalName": "Takor Bajubhai Galbabhai"
   },
   "gabhala kantibhai jeevabhai": {
-    "id": "508",
+    "id": "477",
     "canonicalName": "Gabhala Kantibhai Jeevabhai"
   },
   "boka deepakbhai parathibhai": {
-    "id": "509",
-    "canonicalName": "Boka Deepakbhai Parathibhai"
+    "canonicalName": "Boka Dipakbhai Parthibhai"
   },
   "gudol jayntibhai cheharabhai": {
-    "id": "510",
+    "id": "478",
     "canonicalName": "Gudol Jayntibhai Cheharabhai"
   },
   "boka jyantibhai dalubhai": {
-    "id": "511",
-    "canonicalName": "Boka Jyantibhai Dalubhai"
+    "canonicalName": "Boka Jynatibhai Dalubhai"
   },
   "sudha retail": {
-    "id": "512",
+    "id": "479",
     "canonicalName": "Sudha Retail"
   },
   "bera rajshangbhai dohajibhai": {
-    "id": "513",
-    "canonicalName": "Bera Rajshangbhai Dohajibhai"
+    "canonicalName": "Bera Rajsangbhai Dohjibhai"
   },
   "loh deepakbhai ramjibhai": {
-    "id": "514",
+    "id": "480",
     "canonicalName": "Loh Deepakbhai Ramjibhai"
   },
   "bhutadiya jeetabhai ganeshbhai": {
-    "id": "515",
+    "id": "481",
     "canonicalName": "Bhutadiya Jeetabhai Ganeshbhai"
   },
   "gujor sonalbean agola": {
-    "id": "516",
-    "canonicalName": "Gujor Sonalbean Agola"
+    "canonicalName": "Gujor Sonalben Agola"
   },
   "kuta kutti": {
-    "id": "517",
+    "id": "482",
     "canonicalName": "Kuta/Kutti"
   },
   "dharpada hiraji darbar": {
-    "id": "518",
+    "id": "483",
     "canonicalName": "Dharpada Hiraji Darbar"
   },
   "kakvadiya maheshbhai ramshungbhai": {
-    "id": "519",
+    "id": "484",
     "canonicalName": "Kakvadiya Maheshbhai Ramshungbhai"
   },
   "thakor bharatbhai bajubhai": {
-    "id": "520",
+    "id": "485",
     "canonicalName": "Thakor Bharatbhai Bajubhai"
   },
   "judal mukeshbhai laxmanbhai": {
-    "id": "521",
+    "id": "486",
     "canonicalName": "Judal Mukeshbhai Laxmanbhai"
   },
   "bera rajshangbhai dohjibhai": {
-    "id": "522",
-    "canonicalName": "Bera Rajshangbhai Dohjibhai"
+    "canonicalName": "Bera Rajsangbhai Dohjibhai"
   },
   "kakavadiya sureshbhai chandichar": {
-    "id": "523",
+    "id": "487",
     "canonicalName": "Kakavadiya Sureshbhai Chandichar"
   },
   "boka jivrambhai parthibhai": {
-    "id": "524",
+    "id": "488",
     "canonicalName": "Boka Jivrambhai Parthibhai"
   },
   "kharshan mogjibhai daljibhai": {
-    "id": "525",
-    "canonicalName": "Kharshan Mogjibhai Daljibhai"
+    "canonicalName": "Kharsan Mogjibhai Daljibhai"
   },
   "gudol amaratbhai parathibhai": {
-    "id": "526",
+    "id": "489",
     "canonicalName": "Gudol Amaratbhai Parathibhai"
   },
   "gudalo amaratbhai cheharbhai": {
-    "id": "527",
+    "id": "490",
     "canonicalName": "Gudalo Amaratbhai Cheharbhai"
   },
   "darbar kanshing samdhi": {
-    "id": "528",
+    "id": "491",
     "canonicalName": "Darbar Kanshing Samdhi"
   },
   "dharpada hiraji vershingji": {
-    "id": "529",
+    "id": "492",
     "canonicalName": "Dharpada Hiraji (Vershingji)"
   },
   "kakavadiya sanjaybhai chandisar": {
-    "id": "530",
-    "canonicalName": "Kakavadiya Sanjaybhai Chandisar"
+    "canonicalName": "Kakvadiya Sanjaybhai Chandisar"
   },
   "bhutatiday babubhai kanjibhai": {
-    "id": "531",
+    "id": "493",
     "canonicalName": "Bhutatiday Babubhai Kanjibhai"
   },
   "judal laxmanbhai jeshungbhai": {
-    "id": "532",
-    "canonicalName": "Judal Laxmanbhai Jeshungbhai"
+    "canonicalName": "Judal Laxmanbhai Jashugbhai Bhajivala"
   },
   "dhudiya sureshbhai jeetabhai": {
-    "id": "533",
+    "id": "494",
     "canonicalName": "Dhudiya Sureshbhai Jeetabhai"
   },
   "bhutadiya dhanrajbhai shomabhai": {
-    "id": "534",
+    "id": "495",
     "canonicalName": "Bhutadiya Dhanrajbhai Shomabhai"
   },
   "judal sadabhai jeevabhai": {
-    "id": "535",
+    "id": "496",
     "canonicalName": "Judal Sadabhai Jeevabhai"
   },
   "judal daljibhai veershangbhai": {
-    "id": "536",
+    "id": "497",
     "canonicalName": "Judal Daljibhai Veershangbhai"
   },
   "valagot ashwinbhai daljibhai": {
-    "id": "537",
+    "id": "498",
     "canonicalName": "Valagot Ashwinbhai Daljibhai"
   },
   "judal valjibhai veershangbhai": {
-    "id": "538",
+    "id": "499",
     "canonicalName": "Judal Valjibhai Veershangbhai"
   },
   "judal kamleshbhai shomabhai": {
-    "id": "539",
+    "id": "500",
     "canonicalName": "Judal Kamleshbhai Shomabhai"
   },
   "dharpada hiraji thakor": {
-    "id": "540",
+    "id": "501",
     "canonicalName": "Dharpada Hiraji Thakor"
   },
   "loh jayeshbhai kanjibhai": {
-    "id": "541",
+    "id": "502",
     "canonicalName": "Loh Jayeshbhai Kanjibhai"
   },
   "thakor dhanrajbhai dharpada": {
-    "id": "542",
+    "id": "503",
     "canonicalName": "Thakor Dhanrajbhai Dharpada"
   },
   "bhutadiya virshangbhai fatabhai": {
-    "id": "543",
+    "id": "504",
     "canonicalName": "Bhutadiya Virshangbhai Fatabhai"
   },
   "thakor hemchandji khodla": {
-    "id": "544",
+    "id": "505",
     "canonicalName": "Thakor Hemchandji Khodla"
   },
   "kag kamleshbhai galbabhai": {
-    "id": "545",
+    "id": "506",
     "canonicalName": "Kag Kamleshbhai Galbabhai"
   },
   "babvji vedancha": {
-    "id": "546",
-    "canonicalName": "Babvji Vedancha"
+    "canonicalName": "Bavji Vedancha"
   },
   "kakvadiya sanjaybhai dohjibhai": {
-    "id": "547",
-    "canonicalName": "Kakvadiya Sanjaybhai Dohjibhai"
+    "canonicalName": "Kakvadiya Sanjaybhai Chandisar"
   },
   "judal heenaben dineshbhai": {
-    "id": "548",
+    "id": "507",
     "canonicalName": "Judal Heenaben Dineshbhai"
   },
   "boka jayeshbhai bhikhabhai": {
-    "id": "549",
+    "id": "508",
     "canonicalName": "Boka Jayeshbhai Bhikhabhai"
   },
   "darbar gokalsingh samdhi": {
-    "id": "550",
+    "id": "509",
     "canonicalName": "Darbar Gokalsingh Samdhi"
   },
   "thakor dineshbhai dharpada": {
-    "id": "551",
+    "id": "510",
     "canonicalName": "Thakor Dineshbhai Dharpada"
   },
   "thakor pochaji dharpada": {
-    "id": "552",
+    "id": "511",
     "canonicalName": "Thakor Pochaji Dharpada"
   },
   "jarmol bhikhabhai jeevabhia": {
-    "id": "553",
-    "canonicalName": "Jarmol Bhikhabhai Jeevabhia"
+    "canonicalName": "Jarmol Bhikhabhai Jeevabhai"
   },
   "valagot vedancha": {
-    "id": "554",
+    "id": "512",
     "canonicalName": "Valagot Vedancha"
   },
   "judal kalpeshbhai virshangbhai": {
-    "id": "555",
+    "id": "513",
     "canonicalName": "Judal Kalpeshbhai Virshangbhai"
   },
   "bhutadiya jashungbhai ramjibhai": {
-    "id": "556",
-    "canonicalName": "Bhutadiya Jashungbhai Ramjibhai"
+    "canonicalName": "Bhutadiya Jashungbhai Ramshungbbhai"
   },
   "valagot jyantibhai vedancha": {
-    "id": "557",
+    "id": "514",
     "canonicalName": "Valagot Jyantibhai Vedancha"
   },
   "judal kantibhai daljibhai": {
-    "id": "558",
-    "canonicalName": "Judal Kantibhai Daljibhai"
+    "canonicalName": "Judal Kantibhai Dalajibhai"
   },
   "sadabhai jeevabhai": {
-    "id": "559",
+    "id": "515",
     "canonicalName": "Sadabhai Jeevabhai"
   },
   "loh jeetabhai moghabhai": {
-    "id": "560",
+    "id": "516",
     "canonicalName": "Loh Jeetabhai Moghabhai"
   },
   "gudol keshabhai valjibhai": {
-    "id": "561",
-    "canonicalName": "Gudol Keshabhai Valjibhai"
+    "canonicalName": "Gudol Kesarbhai Valjibhai"
   },
   "judal veershangbhai shomabhai": {
-    "id": "562",
-    "canonicalName": "Judal Veershangbhai Shomabhai"
+    "canonicalName": "Judal Virshangbhai Shomabhai"
   },
   "kakavadiya maheshbhai romjibhai": {
-    "id": "563",
+    "id": "517",
     "canonicalName": "Kakavadiya Maheshbhai Romjibhai"
   },
   "dharpada dhiraji": {
-    "id": "564",
+    "id": "518",
     "canonicalName": "Dharpada Dhiraji"
   },
   "dharpada devchandji": {
-    "id": "565",
+    "id": "519",
     "canonicalName": "Dharpada Devchandji"
   },
   "bera rashangbhai dhojibhai": {
-    "id": "566",
-    "canonicalName": "Bera Rashangbhai Dhojibhai"
+    "canonicalName": "Bera Rajsangbhai Dohjibhai"
   },
   "gudol valjibhai rashangbhai": {
-    "id": "567",
+    "id": "520",
     "canonicalName": "Gudol Valjibhai Rashangbhai"
   },
   "kubhasan bavji": {
-    "id": "568",
+    "id": "521",
     "canonicalName": "Kubhasan Bavji"
   },
   "bhutadiya dineshbhai virshangbhai": {
-    "id": "569",
+    "id": "522",
     "canonicalName": "Bhutadiya Dineshbhai Virshangbhai"
   },
   "valagot kantibhai": {
-    "id": "570",
+    "id": "523",
     "canonicalName": "Valagot Kantibhai"
   },
   "hoda bavji": {
-    "id": "571",
+    "id": "524",
     "canonicalName": "Hoda Bavji"
   },
   "patel dipakbhai vedancha": {
-    "id": "572",
+    "id": "525",
     "canonicalName": "Patel Dipakbhai Vedancha"
   },
   "judal kirtibhai bhagvanbhai": {
-    "id": "573",
+    "id": "526",
     "canonicalName": "Judal Kirtibhai Bhagvanbhai"
   },
   "kharsan bhikhabhai godadbhai": {
-    "id": "574",
+    "id": "527",
     "canonicalName": "Kharsan Bhikhabhai Godadbhai"
   },
   "loh bhagvanbhai virshangbhai": {
-    "id": "575",
+    "id": "528",
     "canonicalName": "Loh Bhagvanbhai Virshangbhai"
   },
   "gujor sonalben aegola": {
-    "id": "576",
-    "canonicalName": "Gujor Sonalben Aegola"
+    "canonicalName": "Gujor Sonalben Agola"
   },
   "bhutadiya narshibhai karshanbhai": {
-    "id": "577",
+    "id": "529",
     "canonicalName": "Bhutadiya Narshibhai Karshanbhai"
   },
   "judal mehulbhai sadabhai": {
-    "id": "578",
+    "id": "530",
     "canonicalName": "Judal Mehulbhai Sadabhai"
   },
   "judal sileshbhai nanjibhai badarpura": {
-    "id": "579",
+    "id": "531",
     "canonicalName": "Judal Sileshbhai Nanjibhai Badarpura"
   },
   "dharpada sheliji hiraji": {
-    "id": "580",
+    "id": "532",
     "canonicalName": "Dharpada Sheliji (Hiraji)"
   },
   "thakor jadishbhai ishavarbhai": {
-    "id": "581",
+    "id": "533",
     "canonicalName": "Thakor Jadishbhai Ishavarbhai"
   },
   "thakor shavjibhai hameerbhai": {
-    "id": "582",
-    "canonicalName": "Thakor Shavjibhai Hameerbhai"
+    "canonicalName": "Thakor Savjibhai Hamirbhai"
   },
   "bhutadiya babubhai karshanbhai": {
-    "id": "583",
-    "canonicalName": "Bhutadiya Babubhai Karshanbhai"
+    "canonicalName": "Bhutadiya Babubhai Kanjibhai"
   },
   "desai devkanbhai delvada": {
-    "id": "584",
+    "id": "534",
     "canonicalName": "Desai Devkanbhai Delvada"
   },
   "judal manjibhai parthibhai": {
-    "id": "585",
+    "id": "535",
     "canonicalName": "Judal Manjibhai Parthibhai"
   },
   "darpada harkhaji": {
-    "id": "586",
+    "id": "536",
     "canonicalName": "Darpada Harkhaji"
   },
   "loh santubhai veerabhai": {
-    "id": "587",
+    "id": "537",
     "canonicalName": "Loh Santubhai Veerabhai"
   },
   "darpada vikrambhai na bhai": {
-    "id": "588",
+    "id": "538",
     "canonicalName": "Darpada Vikrambhai Na Bhai"
   },
   "loh sureshbhai santubhai": {
-    "id": "589",
+    "id": "539",
     "canonicalName": "Loh Sureshbhai Santubhai"
   },
   "gori muradkhan jafarkhan": {
-    "id": "590",
+    "id": "540",
     "canonicalName": "Gori Muradkhan Jafarkhan"
   },
   "patel gangaram devpura": {
-    "id": "591",
+    "id": "541",
     "canonicalName": "Patel Gangaram Devpura"
   },
   "judal jeshungbhai bhikhabhai": {
-    "id": "592",
+    "id": "542",
     "canonicalName": "Judal Jeshungbhai Bhikhabhai"
   },
   "judal jashungbhai bhikhabhai": {
-    "id": "593",
+    "id": "543",
     "canonicalName": "Judal Jashungbhai Bhikhabhai"
   },
   "darbar gokalshing samdhi": {
-    "id": "594",
+    "id": "544",
     "canonicalName": "Darbar Gokalshing Samdhi"
   },
   "menat parkashbhai madana": {
-    "id": "595",
+    "id": "545",
     "canonicalName": "Menat Parkashbhai Madana"
   },
   "kasha jafarkhan": {
-    "id": "596",
+    "id": "546",
     "canonicalName": "Kasha Jafarkhan"
   },
   "karshan bhikhabhai godadbhai": {
-    "id": "597",
+    "id": "547",
     "canonicalName": "Karshan Bhikhabhai Godadbhai"
   },
   "valagot kantibhai shomabhai": {
-    "id": "598",
+    "id": "548",
     "canonicalName": "Valagot Kantibhai Shomabhai"
   },
   "mor ushaben mukeshbhai": {
-    "id": "599",
-    "canonicalName": "Mor Ushaben Mukeshbhai"
+    "canonicalName": "Mor Ushaben Vedancha"
   },
   "akoiliya devabhai shomabhai": {
-    "id": "600",
-    "canonicalName": "Akoiliya Devabhai Shomabhai"
+    "canonicalName": "Akoliya Devabhai Shomabhai Chadotar"
   },
   "thakor ranghnathji": {
-    "id": "601",
-    "canonicalName": "Thakor Ranghnathji"
+    "canonicalName": "Thakor Rangnathji Khodla"
   },
   "prajapati jedhabhai kalubhai": {
-    "id": "602",
-    "canonicalName": "Prajapati Jedhabhai Kalubhai"
+    "canonicalName": "Prajapati Jethabhai Kalubhai"
   },
   "thakor nagjibhai hameerbhai": {
-    "id": "603",
-    "canonicalName": "Thakor Nagjibhai Hameerbhai"
+    "canonicalName": "Thakor Nagjibhai Hamirbhai"
   },
   "umarbhai kotavala chadotar": {
-    "id": "604",
+    "id": "549",
     "canonicalName": "Umarbhai Kotavala Chadotar"
   },
   "thakor ranshanbhai rghjibhai": {
-    "id": "605",
-    "canonicalName": "Thakor Ranshanbhai Rghjibhai"
+    "canonicalName": "Thakor Ransaji Raghjiji"
   },
   "unava satishbhai": {
-    "id": "606",
+    "id": "550",
     "canonicalName": "Unava Satishbhai"
   },
   "tractor mhurut": {
-    "id": "607",
+    "id": "551",
     "canonicalName": "Tractor Mhurut"
   },
   "judal hashmukhbhai bhagvanbhai": {
-    "id": "608",
+    "id": "552",
     "canonicalName": "Judal Hashmukhbhai Bhagvanbhai"
   },
   "dhudabhai vedancha": {
-    "id": "609",
+    "id": "553",
     "canonicalName": "Dhudabhai Vedancha"
   },
   "valagot nikulbhai": {
-    "id": "610",
+    "id": "554",
     "canonicalName": "Valagot Nikulbhai"
   },
   "judal mafatbhai virshangbhai": {
-    "id": "611",
+    "id": "555",
     "canonicalName": "Judal Mafatbhai Virshangbhai"
   },
   "gadhvala desai palanpur": {
-    "id": "612",
+    "id": "556",
     "canonicalName": "Gadhvala Desai Palanpur"
   },
   "akoiliya galbabhai devabhai": {
-    "id": "613",
-    "canonicalName": "Akoiliya Galbabhai Devabhai"
+    "canonicalName": "Akoliya Galbabhai Devabhai"
   },
   "bhutadiya kantibhai ramshungbhai": {
-    "id": "614",
+    "id": "557",
     "canonicalName": "Bhutadiya Kantibhai Ramshungbhai"
   },
   "tractor expenses": {
-    "id": "615",
+    "id": "558",
     "canonicalName": "Tractor expenses"
   },
   "loh narshibhai veerabhai chadotar": {
-    "id": "616",
+    "id": "559",
     "canonicalName": "Loh Narshibhai Veerabhai Chadotar"
   },
   "judal dhanrajbhai fatabhai": {
-    "id": "617",
+    "id": "560",
     "canonicalName": "Judal Dhanrajbhai Fatabhai"
   },
   "thakor prabhatbhai": {
-    "id": "618",
+    "id": "561",
     "canonicalName": "Thakor Prabhatbhai"
   },
   "thakor vishnubhai dheerajbhai": {
-    "id": "619",
+    "id": "562",
     "canonicalName": "Thakor Vishnubhai Dheerajbhai"
   },
   "stationery": {
-    "id": "620",
+    "id": "563",
     "canonicalName": "Stationery"
   },
   "thakor bhoobhaji hooraji": {
-    "id": "621",
+    "id": "564",
     "canonicalName": "Thakor Bhoobhaji Hooraji"
   },
   "thakor devchandji dharpada": {
-    "id": "622",
+    "id": "565",
     "canonicalName": "Thakor Devchandji Dharpada"
   },
   "thakor dheeraji dharpada": {
-    "id": "623",
+    "id": "566",
     "canonicalName": "Thakor Dheeraji Dharpada"
+  },
+  "takor nagjibhai hamirbhai": {
+    "canonicalName": "Thakor Nagjibhai Hamirbhai"
   }
 }

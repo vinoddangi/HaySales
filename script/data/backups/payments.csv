@@ -101,7 +101,7 @@ PaymentID,CustomerID,CustomerName,Date,AmountPaid,Notes
 24_2025_04_exp_10,24,Bera Dineshbhai Savabhai,2025-04-15T12:00:00.000Z,30500,Payment received in Customer Credit List-20250430
 34_2025_04_exp_15,34,Bera Rajsangbhai Dohjibhai,2025-04-15T12:00:00.000Z,9100,Payment received in Customer Credit List-20250430
 59_2025_04_exp_26,59,Boka Dipakbhai Parthibhai,2025-04-15T12:00:00.000Z,30000,Payment received in Customer Credit List-20250430
-423_2025_04_exp_30,423,Boka Ramjibhai Jethabhai,2025-04-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250430
+411_2025_04_exp_30,411,Boka Ramjibhai Jethabhai,2025-04-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250430
 108_2025_04_exp_54,108,Gori Ishrad,2025-04-15T12:00:00.000Z,8000,Payment received in Customer Credit List-20250430
 110_2025_04_exp_55,110,Gori Yunishkhan Muradkhan,2025-04-15T12:00:00.000Z,3000,Payment received in Customer Credit List-20250430
 118_2025_04_exp_58,118,Gudol Kesarbhai Valjibhai,2025-04-15T12:00:00.000Z,5000,Payment received in Customer Credit List-20250430
@@ -121,40 +121,40 @@ PaymentID,CustomerID,CustomerName,Date,AmountPaid,Notes
 268_2025_04_exp_123,268,Loh Shileshbhai Manjibhai,2025-04-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250430
 284_2025_04_exp_131,284,Mor Ushaben Vedancha,2025-04-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250430
 305_2025_04_exp_147,305,Ratada Haribhai Laxmanbhai Badharpura,2025-04-15T12:00:00.000Z,8000,Payment received in Customer Credit List-20250430
-405_2025_04_exp_156,405,Thakor Bharatji Samdhi,2025-04-15T12:00:00.000Z,5000,Payment received in Customer Credit List-20250430
+400_2025_04_exp_156,400,Thakor Bharatji Samdhi,2025-04-15T12:00:00.000Z,5000,Payment received in Customer Credit List-20250430
 360_2025_04_exp_180,360,Thakor Vinshubhai Dheerajbhai,2025-04-15T12:00:00.000Z,4000,Payment received in Customer Credit List-20250430
 368_2025_04_exp_184,368,Valagot Babubhai Chelabhai,2025-04-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250430
 7_2025_04_drop,7,Akoliya Bhagvanbhai Valjibhai,2025-04-15T12:00:00.000Z,12635,"Customer settled previous balance of ₹12,635 and was cleared in Customer Credit List-20250430"
 22_2025_04_drop,22,Bera Bharatbhai Dhanrajbhai,2025-04-15T12:00:00.000Z,13583,"Customer settled previous balance of ₹13,583 and was cleared in Customer Credit List-20250430"
 51_2025_04_drop,51,Bhutadiya Jagdishbhai Bhagvanbhai,2025-04-15T12:00:00.000Z,9400,"Customer settled previous balance of ₹9,400 and was cleared in Customer Credit List-20250430"
 134_2025_04_drop,134,Judal Babhubhai Ramubhai,2025-04-15T12:00:00.000Z,6820,"Customer settled previous balance of ₹6,820 and was cleared in Customer Credit List-20250430"
-409_2025_04_drop,409,Judal Galbabhai Ramjibhai,2025-04-15T12:00:00.000Z,16117,"Customer settled previous balance of ₹16,117 and was cleared in Customer Credit List-20250430"
+402_2025_04_drop,402,Judal Galbabhai Ramjibhai,2025-04-15T12:00:00.000Z,16117,"Customer settled previous balance of ₹16,117 and was cleared in Customer Credit List-20250430"
 152_2025_04_drop,152,Judal Ghemarbhai Rashangbhai,2025-04-15T12:00:00.000Z,13503,"Customer settled previous balance of ₹13,503 and was cleared in Customer Credit List-20250430"
 157_2025_04_drop,157,Judal Jyantibhai Narthabhai (Guru),2025-04-15T12:00:00.000Z,8675,"Customer settled previous balance of ₹8,675 and was cleared in Customer Credit List-20250430"
 169_2025_04_drop,169,Judal Karshanbhai Daljibhai,2025-04-15T12:00:00.000Z,5219,"Customer settled previous balance of ₹5,219 and was cleared in Customer Credit List-20250430"
 176_2025_04_drop,176,Judal Maheshbhai Sadabhai,2025-04-15T12:00:00.000Z,4887,"Customer settled previous balance of ₹4,887 and was cleared in Customer Credit List-20250430"
-403_2025_04_drop,403,Judal Mogajibhai Bhikhabhai Chadotar,2025-04-15T12:00:00.000Z,12980,"Customer settled previous balance of ₹12,980 and was cleared in Customer Credit List-20250430"
+399_2025_04_drop,399,Judal Mogajibhai Bhikhabhai Chadotar,2025-04-15T12:00:00.000Z,12980,"Customer settled previous balance of ₹12,980 and was cleared in Customer Credit List-20250430"
 183_2025_04_drop,183,Judal Praveenbhai Bhagvanbhai,2025-04-15T12:00:00.000Z,13260,"Customer settled previous balance of ₹13,260 and was cleared in Customer Credit List-20250430"
 205_2025_04_drop,205,Kag Babubhai Dalshangbhai,2025-04-15T12:00:00.000Z,11007,"Customer settled previous balance of ₹11,007 and was cleared in Customer Credit List-20250430"
-424_2025_04_drop,424,Kuva Nareshbhai - 9723128992,2025-04-15T12:00:00.000Z,13683,"Customer settled previous balance of ₹13,683 and was cleared in Customer Credit List-20250430"
-420_2025_04_drop,420,Kuva Nareshbhai Sudha (Bhai),2025-04-15T12:00:00.000Z,13273,"Customer settled previous balance of ₹13,273 and was cleared in Customer Credit List-20250430"
+412_2025_04_drop,412,Kuva Nareshbhai - 9723128992,2025-04-15T12:00:00.000Z,13683,"Customer settled previous balance of ₹13,683 and was cleared in Customer Credit List-20250430"
+408_2025_04_drop,408,Kuva Nareshbhai Sudha (Bhai),2025-04-15T12:00:00.000Z,13273,"Customer settled previous balance of ₹13,273 and was cleared in Customer Credit List-20250430"
 242_2025_04_drop,242,Loh Amaratbhai Fatabhai,2025-04-15T12:00:00.000Z,7081,"Customer settled previous balance of ₹7,081 and was cleared in Customer Credit List-20250430"
 274_2025_04_drop,274,Mor Daljibhai Vedancha,2025-04-15T12:00:00.000Z,30892,"Customer settled previous balance of ₹30,892 and was cleared in Customer Credit List-20250430"
-427_2025_04_drop,427,Mor Kirtibhai Vedancha,2025-04-15T12:00:00.000Z,13350,"Customer settled previous balance of ₹13,350 and was cleared in Customer Credit List-20250430"
+415_2025_04_drop,415,Mor Kirtibhai Vedancha,2025-04-15T12:00:00.000Z,13350,"Customer settled previous balance of ₹13,350 and was cleared in Customer Credit List-20250430"
 384_2025_04_drop,384,Palani Bhagvanbhai na sasre,2025-04-15T12:00:00.000Z,2000,"Customer settled previous balance of ₹2,000 and was cleared in Customer Credit List-20250430"
 309_2025_04_drop,309,Savaya Kantibhai Vedancha,2025-04-15T12:00:00.000Z,3790,"Customer settled previous balance of ₹3,790 and was cleared in Customer Credit List-20250430"
 312_2025_04_drop,312,Shukhatbhai Kubhasan,2025-04-15T12:00:00.000Z,7568,"Customer settled previous balance of ₹7,568 and was cleared in Customer Credit List-20250430"
-419_2025_04_drop,419,Thakor Hemchandbhai Khodla,2025-04-15T12:00:00.000Z,1040,"Customer settled previous balance of ₹1,040 and was cleared in Customer Credit List-20250430"
-603_2025_04_drop,603,Thakor Nagjibhai Hameerbhai,2025-04-15T12:00:00.000Z,12694,"Customer settled previous balance of ₹12,694 and was cleared in Customer Credit List-20250430"
-426_2025_04_drop,426,Valagot Jayntibhai Surati,2025-04-15T12:00:00.000Z,6100,"Customer settled previous balance of ₹6,100 and was cleared in Customer Credit List-20250430"
-410_2025_04_drop,410,Valagot Mavjibhai (Fuva),2025-04-15T12:00:00.000Z,16590,"Customer settled previous balance of ₹16,590 and was cleared in Customer Credit List-20250430"
+407_2025_04_drop,407,Thakor Hemchandbhai Khodla,2025-04-15T12:00:00.000Z,1040,"Customer settled previous balance of ₹1,040 and was cleared in Customer Credit List-20250430"
+345_2025_04_drop,345,Thakor Nagjibhai Hamirbhai,2025-04-15T12:00:00.000Z,12694,"Customer settled previous balance of ₹12,694 and was cleared in Customer Credit List-20250430"
+414_2025_04_drop,414,Valagot Jayntibhai Surati,2025-04-15T12:00:00.000Z,6100,"Customer settled previous balance of ₹6,100 and was cleared in Customer Credit List-20250430"
+403_2025_04_drop,403,Valagot Mavjibhai (Fuva),2025-04-15T12:00:00.000Z,16590,"Customer settled previous balance of ₹16,590 and was cleared in Customer Credit List-20250430"
 19_2025_05_exp_8,19,Bavji Vedancha,2025-05-15T12:00:00.000Z,5000,Payment received in Customer Credit List-20250531
 34_2025_05_exp_15,34,Bera Rajsangbhai Dohjibhai,2025-05-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250531
 36_2025_05_exp_16,36,Bera Rameshbhai Meghabhai,2025-05-15T12:00:00.000Z,25000,Payment received in Customer Credit List-20250531
 37_2025_05_exp_17,37,Bera Ramshungbhai Parthibhai,2025-05-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250531
 58_2025_05_exp_26,58,Boka Dhanrajbhai Bhemjibhai,2025-05-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250531
 61_2025_05_exp_28,61,Boka Kantibhai Dalubhai,2025-05-15T12:00:00.000Z,15000,Payment received in Customer Credit List-20250531
-423_2025_05_exp_29,423,Boka Ramjibhai Jethabhai,2025-05-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250531
+411_2025_05_exp_29,411,Boka Ramjibhai Jethabhai,2025-05-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250531
 110_2025_05_exp_53,110,Gori Yunishkhan Muradkhan,2025-05-15T12:00:00.000Z,2000,Payment received in Customer Credit List-20250531
 159_2025_05_exp_73,159,Judal Kalpeshbhai Veershangbhai,2025-05-15T12:00:00.000Z,6000,Payment received in Customer Credit List-20250531
 165_2025_05_exp_77,165,Judal Kantibhai Nanjibhai,2025-05-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250531
@@ -167,25 +167,25 @@ PaymentID,CustomerID,CustomerName,Date,AmountPaid,Notes
 260_2025_05_exp_122,260,Loh Manjibhai Narshangbhai,2025-05-15T12:00:00.000Z,5000,Payment received in Customer Credit List-20250531
 281_2025_05_exp_133,281,Mor Lavjibhai Abhubhai (Badarpura),2025-05-15T12:00:00.000Z,25000,Payment received in Customer Credit List-20250531
 283_2025_05_exp_135,283,Mor Rameshbhai Nathabhai,2025-05-15T12:00:00.000Z,5000,Payment received in Customer Credit List-20250531
-405_2025_05_exp_161,405,Thakor Bharatji Samdhi,2025-05-15T12:00:00.000Z,3000,Payment received in Customer Credit List-20250531
+400_2025_05_exp_161,400,Thakor Bharatji Samdhi,2025-05-15T12:00:00.000Z,3000,Payment received in Customer Credit List-20250531
 357_2025_05_exp_183,357,Thakor Shankarbhai Ranpur,2025-05-15T12:00:00.000Z,17000,Payment received in Customer Credit List-20250531
 24_2025_05_drop,24,Bera Dineshbhai Savabhai,2025-05-15T12:00:00.000Z,15715,"Customer settled previous balance of ₹15,715 and was cleared in Customer Credit List-20250531"
 49_2025_05_drop,49,Bhutadiya Ghemarbhai Dalubhai,2025-05-15T12:00:00.000Z,13140,"Customer settled previous balance of ₹13,140 and was cleared in Customer Credit List-20250531"
 72_2025_05_drop,72,Daka Dineshbhai Devabhai,2025-05-15T12:00:00.000Z,7440,"Customer settled previous balance of ₹7,440 and was cleared in Customer Credit List-20250531"
-425_2025_05_drop,425,Desai Maganbhai Rasana,2025-05-15T12:00:00.000Z,13120,"Customer settled previous balance of ₹13,120 and was cleared in Customer Credit List-20250531"
-447_2025_05_drop,447,Gobhalya Kantibhai Jeevabhai,2025-05-15T12:00:00.000Z,2100,"Customer settled previous balance of ₹2,100 and was cleared in Customer Credit List-20250531"
-444_2025_05_drop,444,Jarmol Neetaben K Gadh,2025-05-15T12:00:00.000Z,10890,"Customer settled previous balance of ₹10,890 and was cleared in Customer Credit List-20250531"
+413_2025_05_drop,413,Desai Maganbhai Rasana,2025-05-15T12:00:00.000Z,13120,"Customer settled previous balance of ₹13,120 and was cleared in Customer Credit List-20250531"
+430_2025_05_drop,430,Gobhalya Kantibhai Jeevabhai,2025-05-15T12:00:00.000Z,2100,"Customer settled previous balance of ₹2,100 and was cleared in Customer Credit List-20250531"
+428_2025_05_drop,428,Jarmol Neetaben K Gadh,2025-05-15T12:00:00.000Z,10890,"Customer settled previous balance of ₹10,890 and was cleared in Customer Credit List-20250531"
 131_2025_05_drop,131,Judal Ashokbhai Muljibhai,2025-05-15T12:00:00.000Z,10400,"Customer settled previous balance of ₹10,400 and was cleared in Customer Credit List-20250531"
 139_2025_05_drop,139,Judal Chetanbhai Galbabhai,2025-05-15T12:00:00.000Z,16639,"Customer settled previous balance of ₹16,639 and was cleared in Customer Credit List-20250531"
-443_2025_05_drop,443,Judal Jyantibhai Nathabhai Guru,2025-05-15T12:00:00.000Z,10242,"Customer settled previous balance of ₹10,242 and was cleared in Customer Credit List-20250531"
-457_2025_05_drop,457,Judal Maheshbhai Ramshungbhai,2025-05-15T12:00:00.000Z,11347,"Customer settled previous balance of ₹11,347 and was cleared in Customer Credit List-20250531"
-434_2025_05_drop,434,Judal Neeruben Ashokbhai Kushkal,2025-05-15T12:00:00.000Z,12825,"Customer settled previous balance of ₹12,825 and was cleared in Customer Credit List-20250531"
+158_2025_05_drop,158,Judal Jyantibhai Nathabhai,2025-05-15T12:00:00.000Z,10242,"Customer settled previous balance of ₹10,242 and was cleared in Customer Credit List-20250531"
+439_2025_05_drop,439,Judal Maheshbhai Ramshungbhai,2025-05-15T12:00:00.000Z,11347,"Customer settled previous balance of ₹11,347 and was cleared in Customer Credit List-20250531"
+420_2025_05_drop,420,Judal Neeruben Ashokbhai Kushkal,2025-05-15T12:00:00.000Z,12825,"Customer settled previous balance of ₹12,825 and was cleared in Customer Credit List-20250531"
 200_2025_05_drop,200,Judal Veerabhai Fatabhai,2025-05-15T12:00:00.000Z,9137,"Customer settled previous balance of ₹9,137 and was cleared in Customer Credit List-20250531"
-441_2025_05_drop,441,Judal Veerabhai Somabhai,2025-05-15T12:00:00.000Z,10972,"Customer settled previous balance of ₹10,972 and was cleared in Customer Credit List-20250531"
-438_2025_05_drop,438,Kharsan Bhupatbhai Savajibhai,2025-05-15T12:00:00.000Z,9112,"Customer settled previous balance of ₹9,112 and was cleared in Customer Credit List-20250531"
-452_2025_05_drop,452,Patel Ambaram Devpura,2025-05-15T12:00:00.000Z,10370,"Customer settled previous balance of ₹10,370 and was cleared in Customer Credit List-20250531"
+427_2025_05_drop,427,Judal Veerabhai Somabhai,2025-05-15T12:00:00.000Z,10972,"Customer settled previous balance of ₹10,972 and was cleared in Customer Credit List-20250531"
+424_2025_05_drop,424,Kharsan Bhupatbhai Savajibhai,2025-05-15T12:00:00.000Z,9112,"Customer settled previous balance of ₹9,112 and was cleared in Customer Credit List-20250531"
+435_2025_05_drop,435,Patel Ambaram Devpura,2025-05-15T12:00:00.000Z,10370,"Customer settled previous balance of ₹10,370 and was cleared in Customer Credit List-20250531"
 301_2025_05_drop,301,Prajapti Maganbhai Kalubhai,2025-05-15T12:00:00.000Z,550,Customer settled previous balance of ₹550 and was cleared in Customer Credit List-20250531
-454_2025_05_drop,454,Prakashpuri Khodla,2025-05-15T12:00:00.000Z,10440,"Customer settled previous balance of ₹10,440 and was cleared in Customer Credit List-20250531"
+436_2025_05_drop,436,Prakashpuri Khodla,2025-05-15T12:00:00.000Z,10440,"Customer settled previous balance of ₹10,440 and was cleared in Customer Credit List-20250531"
 353_2025_05_drop,353,Thakor Savjibhai Hamirbhai,2025-05-15T12:00:00.000Z,3952,"Customer settled previous balance of ₹3,952 and was cleared in Customer Credit List-20250531"
 354_2025_05_drop,354,Thakor Savjibhai Ramchandbhai,2025-05-15T12:00:00.000Z,6450,"Customer settled previous balance of ₹6,450 and was cleared in Customer Credit List-20250531"
 358_2025_05_drop,358,Thakor Shavjibhai Ramchandbhai (Bhai),2025-05-15T12:00:00.000Z,1562,"Customer settled previous balance of ₹1,562 and was cleared in Customer Credit List-20250531"
@@ -198,20 +198,20 @@ PaymentID,CustomerID,CustomerName,Date,AmountPaid,Notes
 141_2025_06_exp_65,141,Judal Dayabhai Parthibhai,2025-06-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250630
 165_2025_06_exp_76,165,Judal Kantibhai Nanjibhai,2025-06-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250630
 277_2025_06_exp_125,277,Mor Jyantibhai Nathabhai Vedancha,2025-06-15T12:00:00.000Z,5000,Payment received in Customer Credit List-20250630
-460_2025_06_drop,460,Bera Karshanbhai Shomabhai Akeshan,2025-06-15T12:00:00.000Z,1285,"Customer settled previous balance of ₹1,285 and was cleared in Customer Credit List-20250630"
-466_2025_06_drop,466,Dangi Jagdishbhai Chelabhai,2025-06-15T12:00:00.000Z,11070,"Customer settled previous balance of ₹11,070 and was cleared in Customer Credit List-20250630"
+442_2025_06_drop,442,Bera Karshanbhai Shomabhai Akeshan,2025-06-15T12:00:00.000Z,1285,"Customer settled previous balance of ₹1,285 and was cleared in Customer Credit List-20250630"
+445_2025_06_drop,445,Dangi Jagdishbhai Chelabhai,2025-06-15T12:00:00.000Z,11070,"Customer settled previous balance of ₹11,070 and was cleared in Customer Credit List-20250630"
 77_2025_06_drop,77,Dangi Valjibhai Parthibhai,2025-06-15T12:00:00.000Z,3740,"Customer settled previous balance of ₹3,740 and was cleared in Customer Credit List-20250630"
-412_2025_06_drop,412,Gamar Rameshbhai Lalabhai (Chetan Galba Judal),2025-06-15T12:00:00.000Z,6000,"Customer settled previous balance of ₹6,000 and was cleared in Customer Credit List-20250630"
-471_2025_06_drop,471,Gobhala Kantibhai 9099318634,2025-06-15T12:00:00.000Z,7390,"Customer settled previous balance of ₹7,390 and was cleared in Customer Credit List-20250630"
-432_2025_06_drop,432,Judal Praveenbhai Bhagavanbhai,2025-06-15T12:00:00.000Z,10845,"Customer settled previous balance of ₹10,845 and was cleared in Customer Credit List-20250630"
-489_2025_06_drop,489,Judal Rameshbhai Ramshungbhai,2025-06-15T12:00:00.000Z,10412,"Customer settled previous balance of ₹10,412 and was cleared in Customer Credit List-20250630"
+404_2025_06_drop,404,Gamar Rameshbhai Lalabhai (Chetan Galba Judal),2025-06-15T12:00:00.000Z,6000,"Customer settled previous balance of ₹6,000 and was cleared in Customer Credit List-20250630"
+450_2025_06_drop,450,Gobhala Kantibhai 9099318634,2025-06-15T12:00:00.000Z,7390,"Customer settled previous balance of ₹7,390 and was cleared in Customer Credit List-20250630"
+418_2025_06_drop,418,Judal Praveenbhai Bhagavanbhai,2025-06-15T12:00:00.000Z,10845,"Customer settled previous balance of ₹10,845 and was cleared in Customer Credit List-20250630"
+464_2025_06_drop,464,Judal Rameshbhai Ramshungbhai,2025-06-15T12:00:00.000Z,10412,"Customer settled previous balance of ₹10,412 and was cleared in Customer Credit List-20250630"
 190_2025_06_drop,190,Judal Rasabhai Paragbhai,2025-06-15T12:00:00.000Z,3753,"Customer settled previous balance of ₹3,753 and was cleared in Customer Credit List-20250630"
 212_2025_06_drop,212,Kag Praveenbhai Laxmanbhai,2025-06-15T12:00:00.000Z,19320,"Customer settled previous balance of ₹19,320 and was cleared in Customer Credit List-20250630"
 240_2025_06_drop,240,Kuva Sureshbhai Laxmanbhai,2025-06-15T12:00:00.000Z,2015,"Customer settled previous balance of ₹2,015 and was cleared in Customer Credit List-20250630"
 242_2025_06_drop,242,Loh Amaratbhai Fatabhai,2025-06-15T12:00:00.000Z,6900,"Customer settled previous balance of ₹6,900 and was cleared in Customer Credit List-20250630"
 293_2025_06_drop,293,Palani Mahendrabhai Parthibhai,2025-06-15T12:00:00.000Z,400,Customer settled previous balance of ₹400 and was cleared in Customer Credit List-20250630
 375_2025_06_drop,375,Valagot Kantibhai Vedancha,2025-06-15T12:00:00.000Z,10582,"Customer settled previous balance of ₹10,582 and was cleared in Customer Credit List-20250630"
-435_2025_06_drop,435,Valagot Manjibhai Fuva,2025-06-15T12:00:00.000Z,11067,"Customer settled previous balance of ₹11,067 and was cleared in Customer Credit List-20250630"
+421_2025_06_drop,421,Valagot Manjibhai Fuva,2025-06-15T12:00:00.000Z,11067,"Customer settled previous balance of ₹11,067 and was cleared in Customer Credit List-20250630"
 19_2025_07_exp_9,19,Bavji Vedancha,2025-07-15T12:00:00.000Z,8000,Payment received in Customer Credit List-20250731
 30_2025_07_exp_12,30,Bera Laxmanbhai Meghabhai,2025-07-15T12:00:00.000Z,13200,Payment received in Customer Credit List-20250731
 31_2025_07_exp_13,31,Bera Mafatbhai Parthibhai,2025-07-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250731
@@ -236,17 +236,17 @@ PaymentID,CustomerID,CustomerName,Date,AmountPaid,Notes
 372_2025_07_exp_179,372,Valagot Ghemarbhai Manjibhai,2025-07-15T12:00:00.000Z,20000,Payment received in Customer Credit List-20250731
 27_2025_07_drop,27,Bera Jankiben Rakeshbhai - Vedancha,2025-07-15T12:00:00.000Z,3115,"Customer settled previous balance of ₹3,115 and was cleared in Customer Credit List-20250731"
 91_2025_07_drop,91,Fof Rameshbhai Ujabhai,2025-07-15T12:00:00.000Z,2165,"Customer settled previous balance of ₹2,165 and was cleared in Customer Credit List-20250731"
-472_2025_07_drop,472,Jarmol Laxmanbhai Jeshungbhai,2025-07-15T12:00:00.000Z,10106,"Customer settled previous balance of ₹10,106 and was cleared in Customer Credit List-20250731"
+451_2025_07_drop,451,Jarmol Laxmanbhai Jeshungbhai,2025-07-15T12:00:00.000Z,10106,"Customer settled previous balance of ₹10,106 and was cleared in Customer Credit List-20250731"
 150_2025_07_drop,150,Judal Galbabhai Ramshungbhai,2025-07-15T12:00:00.000Z,3317,"Customer settled previous balance of ₹3,317 and was cleared in Customer Credit List-20250731"
 153_2025_07_drop,153,Judal Haribhai Mavabhai,2025-07-15T12:00:00.000Z,11814,"Customer settled previous balance of ₹11,814 and was cleared in Customer Credit List-20250731"
 159_2025_07_drop,159,Judal Kalpeshbhai Veershangbhai,2025-07-15T12:00:00.000Z,15685,"Customer settled previous balance of ₹15,685 and was cleared in Customer Credit List-20250731"
-487_2025_07_drop,487,Judal Neeruben Hasmukhbhai,2025-07-15T12:00:00.000Z,6230,"Customer settled previous balance of ₹6,230 and was cleared in Customer Credit List-20250731"
+463_2025_07_drop,463,Judal Neeruben Hasmukhbhai,2025-07-15T12:00:00.000Z,6230,"Customer settled previous balance of ₹6,230 and was cleared in Customer Credit List-20250731"
 220_2025_07_drop,220,Kakvadiya Sureshbhai Chandisar,2025-07-15T12:00:00.000Z,11092,"Customer settled previous balance of ₹11,092 and was cleared in Customer Credit List-20250731"
 216_2025_07_drop,216,Kakvadiya Bhagavanbhai Chandisar,2025-07-15T12:00:00.000Z,13309,"Customer settled previous balance of ₹13,309 and was cleared in Customer Credit List-20250731"
 226_2025_07_drop,226,Kharsan Dineshbhai Manjibhai,2025-07-15T12:00:00.000Z,17280,"Customer settled previous balance of ₹17,280 and was cleared in Customer Credit List-20250731"
 228_2025_07_drop,228,Kharsan Rameshbhai Laxmanbhai,2025-07-15T12:00:00.000Z,16433,"Customer settled previous balance of ₹16,433 and was cleared in Customer Credit List-20250731"
-514_2025_07_drop,514,Loh Deepakbhai Ramjibhai,2025-07-15T12:00:00.000Z,10683,"Customer settled previous balance of ₹10,683 and was cleared in Customer Credit List-20250731"
-469_2025_07_drop,469,Loh Kantibhai Poojabhai,2025-07-15T12:00:00.000Z,12168,"Customer settled previous balance of ₹12,168 and was cleared in Customer Credit List-20250731"
+480_2025_07_drop,480,Loh Deepakbhai Ramjibhai,2025-07-15T12:00:00.000Z,10683,"Customer settled previous balance of ₹10,683 and was cleared in Customer Credit List-20250731"
+448_2025_07_drop,448,Loh Kantibhai Poojabhai,2025-07-15T12:00:00.000Z,12168,"Customer settled previous balance of ₹12,168 and was cleared in Customer Credit List-20250731"
 19_2025_08_exp_10,19,Bavji Vedancha,2025-08-15T12:00:00.000Z,5000,Payment received in Customer Credit List-20250831
 52_2025_08_exp_24,52,Bhutadiya Jashungbhai Ramshungbbhai,2025-08-15T12:00:00.000Z,2000,Payment received in Customer Credit List-20250831
 83_2025_08_exp_41,83,Desai Bhurabhai Samdhi,2025-08-15T12:00:00.000Z,20000,Payment received in Customer Credit List-20250831
@@ -257,33 +257,33 @@ PaymentID,CustomerID,CustomerName,Date,AmountPaid,Notes
 305_2025_08_exp_149,305,Ratada Haribhai Laxmanbhai Badharpura,2025-08-15T12:00:00.000Z,20000,Payment received in Customer Credit List-20250831
 360_2025_08_exp_186,360,Thakor Vinshubhai Dheerajbhai,2025-08-15T12:00:00.000Z,5000,Payment received in Customer Credit List-20250831
 76_2025_08_drop,76,Dangi Megharajbhai Veerabhai,2025-08-15T12:00:00.000Z,2726,"Customer settled previous balance of ₹2,726 and was cleared in Customer Credit List-20250831"
-475_2025_08_drop,475,Jeetuben Manjibhai,2025-08-15T12:00:00.000Z,9320,"Customer settled previous balance of ₹9,320 and was cleared in Customer Credit List-20250831"
+454_2025_08_drop,454,Jeetuben Manjibhai,2025-08-15T12:00:00.000Z,9320,"Customer settled previous balance of ₹9,320 and was cleared in Customer Credit List-20250831"
 149_2025_08_drop,149,Judal Galbabhai Hirabhai,2025-08-15T12:00:00.000Z,6835,"Customer settled previous balance of ₹6,835 and was cleared in Customer Credit List-20250831"
-521_2025_08_drop,521,Judal Mukeshbhai Laxmanbhai,2025-08-15T12:00:00.000Z,2500,"Customer settled previous balance of ₹2,500 and was cleared in Customer Credit List-20250831"
-419_2025_08_drop,419,Thakor Hemchandbhai Khodla,2025-08-15T12:00:00.000Z,980,Customer settled previous balance of ₹980 and was cleared in Customer Credit List-20250831
+486_2025_08_drop,486,Judal Mukeshbhai Laxmanbhai,2025-08-15T12:00:00.000Z,2500,"Customer settled previous balance of ₹2,500 and was cleared in Customer Credit List-20250831"
+407_2025_08_drop,407,Thakor Hemchandbhai Khodla,2025-08-15T12:00:00.000Z,980,Customer settled previous balance of ₹980 and was cleared in Customer Credit List-20250831
 19_2025_09_exp_10,19,Bavji Vedancha,2025-09-15T12:00:00.000Z,6000,Payment received in Customer Credit List-20250930
 34_2025_09_exp_17,34,Bera Rajsangbhai Dohjibhai,2025-09-15T12:00:00.000Z,5000,Payment received in Customer Credit List-20250930
 61_2025_09_exp_31,61,Boka Kantibhai Dalubhai,2025-09-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20250930
 191_2025_09_exp_85,191,Judal Sadabhai Kalubhai,2025-09-15T12:00:00.000Z,20000,Payment received in Customer Credit List-20250930
 218_2025_09_exp_98,218,Kakvadiya Sanjaybhai Chandisar,2025-09-15T12:00:00.000Z,8000,Payment received in Customer Credit List-20250930
 284_2025_09_exp_127,284,Mor Ushaben Vedancha,2025-09-15T12:00:00.000Z,7000,Payment received in Customer Credit List-20250930
-531_2025_09_drop,531,Bhutatiday Babubhai Kanjibhai,2025-09-15T12:00:00.000Z,12645,"Customer settled previous balance of ₹12,645 and was cleared in Customer Credit List-20250930"
-549_2025_09_drop,549,Boka Jayeshbhai Bhikhabhai,2025-09-15T12:00:00.000Z,12225,"Customer settled previous balance of ₹12,225 and was cleared in Customer Credit List-20250930"
-524_2025_09_drop,524,Boka Jivrambhai Parthibhai,2025-09-15T12:00:00.000Z,12105,"Customer settled previous balance of ₹12,105 and was cleared in Customer Credit List-20250930"
+493_2025_09_drop,493,Bhutatiday Babubhai Kanjibhai,2025-09-15T12:00:00.000Z,12645,"Customer settled previous balance of ₹12,645 and was cleared in Customer Credit List-20250930"
+508_2025_09_drop,508,Boka Jayeshbhai Bhikhabhai,2025-09-15T12:00:00.000Z,12225,"Customer settled previous balance of ₹12,225 and was cleared in Customer Credit List-20250930"
+488_2025_09_drop,488,Boka Jivrambhai Parthibhai,2025-09-15T12:00:00.000Z,12105,"Customer settled previous balance of ₹12,105 and was cleared in Customer Credit List-20250930"
 80_2025_09_drop,80,Darbar Bhayuji Gadh,2025-09-15T12:00:00.000Z,1000,"Customer settled previous balance of ₹1,000 and was cleared in Customer Credit List-20250930"
-528_2025_09_drop,528,Darbar Kanshing Samdhi,2025-09-15T12:00:00.000Z,10157,"Customer settled previous balance of ₹10,157 and was cleared in Customer Credit List-20250930"
-533_2025_09_drop,533,Dhudiya Sureshbhai Jeetabhai,2025-09-15T12:00:00.000Z,12015,"Customer settled previous balance of ₹12,015 and was cleared in Customer Credit List-20250930"
-430_2025_09_drop,430,Fof Laxmanbhai Ujabhai,2025-09-15T12:00:00.000Z,8840,"Customer settled previous balance of ₹8,840 and was cleared in Customer Credit List-20250930"
-508_2025_09_drop,508,Gabhala Kantibhai Jeevabhai,2025-09-15T12:00:00.000Z,10327,"Customer settled previous balance of ₹10,327 and was cleared in Customer Credit List-20250930"
-527_2025_09_drop,527,Gudalo Amaratbhai Cheharbhai,2025-09-15T12:00:00.000Z,9500,"Customer settled previous balance of ₹9,500 and was cleared in Customer Credit List-20250930"
-526_2025_09_drop,526,Gudol Amaratbhai Parathibhai,2025-09-15T12:00:00.000Z,11790,"Customer settled previous balance of ₹11,790 and was cleared in Customer Credit List-20250930"
-539_2025_09_drop,539,Judal Kamleshbhai Shomabhai,2025-09-15T12:00:00.000Z,4345,"Customer settled previous balance of ₹4,345 and was cleared in Customer Credit List-20250930"
+491_2025_09_drop,491,Darbar Kanshing Samdhi,2025-09-15T12:00:00.000Z,10157,"Customer settled previous balance of ₹10,157 and was cleared in Customer Credit List-20250930"
+494_2025_09_drop,494,Dhudiya Sureshbhai Jeetabhai,2025-09-15T12:00:00.000Z,12015,"Customer settled previous balance of ₹12,015 and was cleared in Customer Credit List-20250930"
+417_2025_09_drop,417,Fof Laxmanbhai Ujabhai,2025-09-15T12:00:00.000Z,8840,"Customer settled previous balance of ₹8,840 and was cleared in Customer Credit List-20250930"
+477_2025_09_drop,477,Gabhala Kantibhai Jeevabhai,2025-09-15T12:00:00.000Z,10327,"Customer settled previous balance of ₹10,327 and was cleared in Customer Credit List-20250930"
+490_2025_09_drop,490,Gudalo Amaratbhai Cheharbhai,2025-09-15T12:00:00.000Z,9500,"Customer settled previous balance of ₹9,500 and was cleared in Customer Credit List-20250930"
+489_2025_09_drop,489,Gudol Amaratbhai Parathibhai,2025-09-15T12:00:00.000Z,11790,"Customer settled previous balance of ₹11,790 and was cleared in Customer Credit List-20250930"
+500_2025_09_drop,500,Judal Kamleshbhai Shomabhai,2025-09-15T12:00:00.000Z,4345,"Customer settled previous balance of ₹4,345 and was cleared in Customer Credit List-20250930"
 178_2025_09_drop,178,Judal Nagjibhai Nanjibhai,2025-09-15T12:00:00.000Z,10455,"Customer settled previous balance of ₹10,455 and was cleared in Customer Credit List-20250930"
 217_2025_09_drop,217,Kakvadiya Maheshbhai Ramjibhai,2025-09-15T12:00:00.000Z,11970,"Customer settled previous balance of ₹11,970 and was cleared in Customer Credit List-20250930"
 269_2025_09_drop,269,Loh Sureshbhai Shantubhai,2025-09-15T12:00:00.000Z,11835,"Customer settled previous balance of ₹11,835 and was cleared in Customer Credit List-20250930"
 272_2025_09_drop,272,Mor Bhikhabhai Gadha,2025-09-15T12:00:00.000Z,2000,"Customer settled previous balance of ₹2,000 and was cleared in Customer Credit List-20250930"
 281_2025_09_drop,281,Mor Lavjibhai Abhubhai (Badarpura),2025-09-15T12:00:00.000Z,35698,"Customer settled previous balance of ₹35,698 and was cleared in Customer Credit List-20250930"
-542_2025_09_drop,542,Thakor Dhanrajbhai Dharpada,2025-09-15T12:00:00.000Z,11610,"Customer settled previous balance of ₹11,610 and was cleared in Customer Credit List-20250930"
+503_2025_09_drop,503,Thakor Dhanrajbhai Dharpada,2025-09-15T12:00:00.000Z,11610,"Customer settled previous balance of ₹11,610 and was cleared in Customer Credit List-20250930"
 8_2025_10_exp_3,8,Akoliya Bhagvanbhai Valubhai,2025-10-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20251031
 19_2025_10_exp_10,19,Bavji Vedancha,2025-10-15T12:00:00.000Z,8000,Payment received in Customer Credit List-20251031
 34_2025_10_exp_16,34,Bera Rajsangbhai Dohjibhai,2025-10-15T12:00:00.000Z,20000,Payment received in Customer Credit List-20251031
@@ -311,7 +311,7 @@ PaymentID,CustomerID,CustomerName,Date,AmountPaid,Notes
 218_2025_10_exp_98,218,Kakvadiya Sanjaybhai Chandisar,2025-10-15T12:00:00.000Z,20000,Payment received in Customer Credit List-20251031
 250_2025_10_exp_109,250,Loh Dineshbhai Sadabhai,2025-10-15T12:00:00.000Z,5000,Payment received in Customer Credit List-20251031
 260_2025_10_exp_113,260,Loh Manjibhai Narshangbhai,2025-10-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20251031
-473_2025_10_exp_116,473,Loh Raghubhai Poojabhai,2025-10-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20251031
+452_2025_10_exp_116,452,Loh Raghubhai Poojabhai,2025-10-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20251031
 268_2025_10_exp_119,268,Loh Shileshbhai Manjibhai,2025-10-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20251031
 277_2025_10_exp_122,277,Mor Jyantibhai Nathabhai Vedancha,2025-10-15T12:00:00.000Z,5000,Payment received in Customer Credit List-20251031
 284_2025_10_exp_125,284,Mor Ushaben Vedancha,2025-10-15T12:00:00.000Z,2500,Payment received in Customer Credit List-20251031
@@ -322,40 +322,40 @@ PaymentID,CustomerID,CustomerName,Date,AmountPaid,Notes
 357_2025_10_exp_169,357,Thakor Shankarbhai Ranpur,2025-10-15T12:00:00.000Z,25000,Payment received in Customer Credit List-20251031
 366_2025_10_exp_174,366,Vaghela Veerchandbhai Bhathibhai,2025-10-15T12:00:00.000Z,2500,Payment received in Customer Credit List-20251031
 368_2025_10_exp_175,368,Valagot Babubhai Chelabhai,2025-10-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20251031
-504_2025_10_drop,504,Bera Dineshbhai Shavabhai,2025-10-15T12:00:00.000Z,11745,"Customer settled previous balance of ₹11,745 and was cleared in Customer Credit List-20251031"
+476_2025_10_drop,476,Bera Dineshbhai Shavabhai,2025-10-15T12:00:00.000Z,11745,"Customer settled previous balance of ₹11,745 and was cleared in Customer Credit List-20251031"
 30_2025_10_drop,30,Bera Laxmanbhai Meghabhai,2025-10-15T12:00:00.000Z,15068,"Customer settled previous balance of ₹15,068 and was cleared in Customer Credit List-20251031"
 46_2025_10_drop,46,Bhutadiya Dineshbhai Veerabhai,2025-10-15T12:00:00.000Z,26637,"Customer settled previous balance of ₹26,637 and was cleared in Customer Credit List-20251031"
-423_2025_10_drop,423,Boka Ramjibhai Jethabhai,2025-10-15T12:00:00.000Z,4350,"Customer settled previous balance of ₹4,350 and was cleared in Customer Credit List-20251031"
-550_2025_10_drop,550,Darbar Gokalsingh Samdhi,2025-10-15T12:00:00.000Z,12302,"Customer settled previous balance of ₹12,302 and was cleared in Customer Credit List-20251031"
+411_2025_10_drop,411,Boka Ramjibhai Jethabhai,2025-10-15T12:00:00.000Z,4350,"Customer settled previous balance of ₹4,350 and was cleared in Customer Credit List-20251031"
+509_2025_10_drop,509,Darbar Gokalsingh Samdhi,2025-10-15T12:00:00.000Z,12302,"Customer settled previous balance of ₹12,302 and was cleared in Customer Credit List-20251031"
 102_2025_10_drop,102,Gol Karshanbhai Ghemarbhai - Chandisar,2025-10-15T12:00:00.000Z,1370,"Customer settled previous balance of ₹1,370 and was cleared in Customer Credit List-20251031"
 108_2025_10_drop,108,Gori Ishrad,2025-10-15T12:00:00.000Z,3915,"Customer settled previous balance of ₹3,915 and was cleared in Customer Credit List-20251031"
 113_2025_10_drop,113,Gudol Amaratbhai Parthibhai,2025-10-15T12:00:00.000Z,11970,"Customer settled previous balance of ₹11,970 and was cleared in Customer Credit List-20251031"
 163_2025_10_drop,163,Judal Kantibhai Bhikhabhai,2025-10-15T12:00:00.000Z,1371,"Customer settled previous balance of ₹1,371 and was cleared in Customer Credit List-20251031"
-448_2025_10_drop,448,Judal Kesarbhai Narshibhai,2025-10-15T12:00:00.000Z,22942,"Customer settled previous balance of ₹22,942 and was cleared in Customer Credit List-20251031"
+431_2025_10_drop,431,Judal Kesarbhai Narshibhai,2025-10-15T12:00:00.000Z,22942,"Customer settled previous balance of ₹22,942 and was cleared in Customer Credit List-20251031"
 189_2025_10_drop,189,Judal Ramjibhai Karshanbhai,2025-10-15T12:00:00.000Z,11732,"Customer settled previous balance of ₹11,732 and was cleared in Customer Credit List-20251031"
 190_2025_10_drop,190,Judal Rasabhai Paragbhai,2025-10-15T12:00:00.000Z,12682,"Customer settled previous balance of ₹12,682 and was cleared in Customer Credit List-20251031"
-467_2025_10_drop,467,Juva Karshanbhai,2025-10-15T12:00:00.000Z,7735,"Customer settled previous balance of ₹7,735 and was cleared in Customer Credit List-20251031"
-563_2025_10_drop,563,Kakavadiya Maheshbhai Romjibhai,2025-10-15T12:00:00.000Z,13680,"Customer settled previous balance of ₹13,680 and was cleared in Customer Credit List-20251031"
+446_2025_10_drop,446,Juva Karshanbhai,2025-10-15T12:00:00.000Z,7735,"Customer settled previous balance of ₹7,735 and was cleared in Customer Credit List-20251031"
+517_2025_10_drop,517,Kakavadiya Maheshbhai Romjibhai,2025-10-15T12:00:00.000Z,13680,"Customer settled previous balance of ₹13,680 and was cleared in Customer Credit List-20251031"
 230_2025_10_drop,230,Khasa Vajeerkhan,2025-10-15T12:00:00.000Z,15302,"Customer settled previous balance of ₹15,302 and was cleared in Customer Credit List-20251031"
 231_2025_10_drop,231,Khasha Jafarkhan,2025-10-15T12:00:00.000Z,10285,"Customer settled previous balance of ₹10,285 and was cleared in Customer Credit List-20251031"
-482_2025_10_drop,482,Kubhasan Shokatbhai 9898775295,2025-10-15T12:00:00.000Z,3570,"Customer settled previous balance of ₹3,570 and was cleared in Customer Credit List-20251031"
+460_2025_10_drop,460,Kubhasan Shokatbhai 9898775295,2025-10-15T12:00:00.000Z,3570,"Customer settled previous balance of ₹3,570 and was cleared in Customer Credit List-20251031"
 242_2025_10_drop,242,Loh Amaratbhai Fatabhai,2025-10-15T12:00:00.000Z,23400,"Customer settled previous balance of ₹23,400 and was cleared in Customer Credit List-20251031"
 247_2025_10_drop,247,Loh Dineshbhai Fatabhai,2025-10-15T12:00:00.000Z,10440,"Customer settled previous balance of ₹10,440 and was cleared in Customer Credit List-20251031"
 271_2025_10_drop,271,Mor Ashokbhai Vedancha,2025-10-15T12:00:00.000Z,11835,"Customer settled previous balance of ₹11,835 and was cleared in Customer Credit List-20251031"
 273_2025_10_drop,273,Mor Cheharabhai Abhubhai,2025-10-15T12:00:00.000Z,18100,"Customer settled previous balance of ₹18,100 and was cleared in Customer Credit List-20251031"
 282_2025_10_drop,282,Mor Prakashbhai Parthibhai,2025-10-15T12:00:00.000Z,9000,"Customer settled previous balance of ₹9,000 and was cleared in Customer Credit List-20251031"
 283_2025_10_drop,283,Mor Rameshbhai Nathabhai,2025-10-15T12:00:00.000Z,13335,"Customer settled previous balance of ₹13,335 and was cleared in Customer Credit List-20251031"
-451_2025_10_drop,451,Ratada Megharajbhai Badarpura,2025-10-15T12:00:00.000Z,1000,"Customer settled previous balance of ₹1,000 and was cleared in Customer Credit List-20251031"
-405_2025_10_drop,405,Thakor Bharatji Samdhi,2025-10-15T12:00:00.000Z,1730,"Customer settled previous balance of ₹1,730 and was cleared in Customer Credit List-20251031"
-621_2025_10_drop,621,Thakor Bhoobhaji Hooraji,2025-10-15T12:00:00.000Z,4000,"Customer settled previous balance of ₹4,000 and was cleared in Customer Credit List-20251031"
+434_2025_10_drop,434,Ratada Megharajbhai Badarpura,2025-10-15T12:00:00.000Z,1000,"Customer settled previous balance of ₹1,000 and was cleared in Customer Credit List-20251031"
+400_2025_10_drop,400,Thakor Bharatji Samdhi,2025-10-15T12:00:00.000Z,1730,"Customer settled previous balance of ₹1,730 and was cleared in Customer Credit List-20251031"
+564_2025_10_drop,564,Thakor Bhoobhaji Hooraji,2025-10-15T12:00:00.000Z,4000,"Customer settled previous balance of ₹4,000 and was cleared in Customer Credit List-20251031"
 329_2025_10_drop,329,Thakor Bhupatbhai Veerchandbhai,2025-10-15T12:00:00.000Z,8787,"Customer settled previous balance of ₹8,787 and was cleared in Customer Credit List-20251031"
-622_2025_10_drop,622,Thakor Devchandji Dharpada,2025-10-15T12:00:00.000Z,12730,"Customer settled previous balance of ₹12,730 and was cleared in Customer Credit List-20251031"
-623_2025_10_drop,623,Thakor Dheeraji Dharpada,2025-10-15T12:00:00.000Z,12777,"Customer settled previous balance of ₹12,777 and was cleared in Customer Credit List-20251031"
-406_2025_10_drop,406,Thakor Manchaji Samdhi,2025-10-15T12:00:00.000Z,3090,"Customer settled previous balance of ₹3,090 and was cleared in Customer Credit List-20251031"
+565_2025_10_drop,565,Thakor Devchandji Dharpada,2025-10-15T12:00:00.000Z,12730,"Customer settled previous balance of ₹12,730 and was cleared in Customer Credit List-20251031"
+566_2025_10_drop,566,Thakor Dheeraji Dharpada,2025-10-15T12:00:00.000Z,12777,"Customer settled previous balance of ₹12,777 and was cleared in Customer Credit List-20251031"
+401_2025_10_drop,401,Thakor Manchaji Samdhi,2025-10-15T12:00:00.000Z,3090,"Customer settled previous balance of ₹3,090 and was cleared in Customer Credit List-20251031"
 367_2025_10_drop,367,Valagot Ashokbhai Parthibhai,2025-10-15T12:00:00.000Z,11092,"Customer settled previous balance of ₹11,092 and was cleared in Customer Credit List-20251031"
 371_2025_10_drop,371,Valagot Dipakbhai Mavjibhai,2025-10-15T12:00:00.000Z,12400,"Customer settled previous balance of ₹12,400 and was cleared in Customer Credit List-20251031"
 372_2025_10_drop,372,Valagot Ghemarbhai Manjibhai,2025-10-15T12:00:00.000Z,14655,"Customer settled previous balance of ₹14,655 and was cleared in Customer Credit List-20251031"
-557_2025_10_drop,557,Valagot Jyantibhai Vedancha,2025-10-15T12:00:00.000Z,12112,"Customer settled previous balance of ₹12,112 and was cleared in Customer Credit List-20251031"
+514_2025_10_drop,514,Valagot Jyantibhai Vedancha,2025-10-15T12:00:00.000Z,12112,"Customer settled previous balance of ₹12,112 and was cleared in Customer Credit List-20251031"
 19_2025_11_exp_9,19,Bavji Vedancha,2025-11-15T12:00:00.000Z,7500,Payment received in Customer Credit List-20251130
 55_2025_11_exp_27,55,Bhutadiya Laljibhai Veerabhai,2025-11-15T12:00:00.000Z,19100,Payment received in Customer Credit List-20251130
 81_2025_11_exp_35,81,Darbar Kanshing Bhai,2025-11-15T12:00:00.000Z,5000,Payment received in Customer Credit List-20251130
@@ -365,28 +365,28 @@ PaymentID,CustomerID,CustomerName,Date,AmountPaid,Notes
 148_2025_11_exp_63,148,Judal Dineshbhai Ujabhai,2025-11-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20251130
 203_2025_11_exp_82,203,Juva Karshanbhai Lakhori,2025-11-15T12:00:00.000Z,5000,Payment received in Customer Credit List-20251130
 248_2025_11_exp_94,248,Loh Dineshbhai Nanjibhai,2025-11-15T12:00:00.000Z,9000,Payment received in Customer Credit List-20251130
-598_2025_11_exp_160,598,Valagot Kantibhai Shomabhai,2025-11-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20251130
+548_2025_11_exp_160,548,Valagot Kantibhai Shomabhai,2025-11-15T12:00:00.000Z,10000,Payment received in Customer Credit List-20251130
 11_2025_11_drop,11,Akoliya Dhanrajbhai Virshangbhai,2025-11-15T12:00:00.000Z,10890,"Customer settled previous balance of ₹10,890 and was cleared in Customer Credit List-20251130"
 25_2025_11_drop,25,Bera Hareshbhai Shomabhai,2025-11-15T12:00:00.000Z,11732,"Customer settled previous balance of ₹11,732 and was cleared in Customer Credit List-20251130"
-524_2025_11_drop,524,Boka Jivrambhai Parthibhai,2025-11-15T12:00:00.000Z,13270,"Customer settled previous balance of ₹13,270 and was cleared in Customer Credit List-20251130"
+488_2025_11_drop,488,Boka Jivrambhai Parthibhai,2025-11-15T12:00:00.000Z,13270,"Customer settled previous balance of ₹13,270 and was cleared in Customer Credit List-20251130"
 78_2025_11_drop,78,Dangi Vinodbhai Premjibhai,2025-11-15T12:00:00.000Z,5319,"Customer settled previous balance of ₹5,319 and was cleared in Customer Credit List-20251130"
-594_2025_11_drop,594,Darbar Gokalshing Samdhi,2025-11-15T12:00:00.000Z,13350,"Customer settled previous balance of ₹13,350 and was cleared in Customer Credit List-20251130"
-533_2025_11_drop,533,Dhudiya Sureshbhai Jeetabhai,2025-11-15T12:00:00.000Z,14350,"Customer settled previous balance of ₹14,350 and was cleared in Customer Credit List-20251130"
+544_2025_11_drop,544,Darbar Gokalshing Samdhi,2025-11-15T12:00:00.000Z,13350,"Customer settled previous balance of ₹13,350 and was cleared in Customer Credit List-20251130"
+494_2025_11_drop,494,Dhudiya Sureshbhai Jeetabhai,2025-11-15T12:00:00.000Z,14350,"Customer settled previous balance of ₹14,350 and was cleared in Customer Credit List-20251130"
 110_2025_11_drop,110,Gori Yunishkhan Muradkhan,2025-11-15T12:00:00.000Z,601,Customer settled previous balance of ₹601 and was cleared in Customer Credit List-20251130
-548_2025_11_drop,548,Judal Heenaben Dineshbhai,2025-11-15T12:00:00.000Z,12105,"Customer settled previous balance of ₹12,105 and was cleared in Customer Credit List-20251130"
+507_2025_11_drop,507,Judal Heenaben Dineshbhai,2025-11-15T12:00:00.000Z,12105,"Customer settled previous balance of ₹12,105 and was cleared in Customer Credit List-20251130"
 158_2025_11_drop,158,Judal Jyantibhai Nathabhai,2025-11-15T12:00:00.000Z,15895,"Customer settled previous balance of ₹15,895 and was cleared in Customer Credit List-20251130"
-555_2025_11_drop,555,Judal Kalpeshbhai Virshangbhai,2025-11-15T12:00:00.000Z,12920,"Customer settled previous balance of ₹12,920 and was cleared in Customer Credit List-20251130"
-539_2025_11_drop,539,Judal Kamleshbhai Shomabhai,2025-11-15T12:00:00.000Z,13450,"Customer settled previous balance of ₹13,450 and was cleared in Customer Credit List-20251130"
+513_2025_11_drop,513,Judal Kalpeshbhai Virshangbhai,2025-11-15T12:00:00.000Z,12920,"Customer settled previous balance of ₹12,920 and was cleared in Customer Credit List-20251130"
+500_2025_11_drop,500,Judal Kamleshbhai Shomabhai,2025-11-15T12:00:00.000Z,13450,"Customer settled previous balance of ₹13,450 and was cleared in Customer Credit List-20251130"
 172_2025_11_drop,172,Judal Kirtibhai Nathabhai,2025-11-15T12:00:00.000Z,50938,"Customer settled previous balance of ₹50,938 and was cleared in Customer Credit List-20251130"
-578_2025_11_drop,578,Judal Mehulbhai Sadabhai,2025-11-15T12:00:00.000Z,12202,"Customer settled previous balance of ₹12,202 and was cleared in Customer Credit List-20251130"
+530_2025_11_drop,530,Judal Mehulbhai Sadabhai,2025-11-15T12:00:00.000Z,12202,"Customer settled previous balance of ₹12,202 and was cleared in Customer Credit List-20251130"
 197_2025_11_drop,197,Judal Valjibhai Savabhai,2025-11-15T12:00:00.000Z,28427,"Customer settled previous balance of ₹28,427 and was cleared in Customer Credit List-20251130"
 201_2025_11_drop,201,Judal Virshangbhai Shomabhai,2025-11-15T12:00:00.000Z,7236,"Customer settled previous balance of ₹7,236 and was cleared in Customer Credit List-20251130"
 211_2025_11_drop,211,Kag Nathubhai Laxmanbhai,2025-11-15T12:00:00.000Z,5600,"Customer settled previous balance of ₹5,600 and was cleared in Customer Credit List-20251130"
-597_2025_11_drop,597,Karshan Bhikhabhai Godadbhai,2025-11-15T12:00:00.000Z,13683,"Customer settled previous balance of ₹13,683 and was cleared in Customer Credit List-20251130"
-473_2025_11_drop,473,Loh Raghubhai Poojabhai,2025-11-15T12:00:00.000Z,8572,"Customer settled previous balance of ₹8,572 and was cleared in Customer Credit List-20251130"
-587_2025_11_drop,587,Loh Santubhai Veerabhai,2025-11-15T12:00:00.000Z,13700,"Customer settled previous balance of ₹13,700 and was cleared in Customer Credit List-20251130"
+547_2025_11_drop,547,Karshan Bhikhabhai Godadbhai,2025-11-15T12:00:00.000Z,13683,"Customer settled previous balance of ₹13,683 and was cleared in Customer Credit List-20251130"
+452_2025_11_drop,452,Loh Raghubhai Poojabhai,2025-11-15T12:00:00.000Z,8572,"Customer settled previous balance of ₹8,572 and was cleared in Customer Credit List-20251130"
+537_2025_11_drop,537,Loh Santubhai Veerabhai,2025-11-15T12:00:00.000Z,13700,"Customer settled previous balance of ₹13,700 and was cleared in Customer Credit List-20251130"
 279_2025_11_drop,279,Mor Keshabhai Abhubhai,2025-11-15T12:00:00.000Z,17007,"Customer settled previous balance of ₹17,007 and was cleared in Customer Credit List-20251130"
-436_2025_11_drop,436,Palani Bharatbhai Ratnabhai,2025-11-15T12:00:00.000Z,710,Customer settled previous balance of ₹710 and was cleared in Customer Credit List-20251130
+422_2025_11_drop,422,Palani Bharatbhai Ratnabhai,2025-11-15T12:00:00.000Z,710,Customer settled previous balance of ₹710 and was cleared in Customer Credit List-20251130
 316_2025_11_drop,316,Thakor Amaratbhai Ramchandbhai,2025-11-15T12:00:00.000Z,4417,"Customer settled previous balance of ₹4,417 and was cleared in Customer Credit List-20251130"
 1_2026_04,1,Abbasbhai Chadotar,2026-04-15T12:00:00.000Z,13350,Customer settled previous balance of ₹13 350 and was removed in Customer Credit List-20260430
 1_2026_06,1,Abbasbhai Chadotar,2026-06-15T12:00:00.000Z,13500,Payment received in Jun 2026
