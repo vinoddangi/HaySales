@@ -186,14 +186,10 @@ export const ActivityPage: React.FC = () => {
     const term = searchTerm.toLowerCase();
     return list.filter((tx) => {
       const name = (tx.customerName || tx.vendorName || '').toLowerCase();
-      const item = (tx.item || '').toLowerCase();
-      const expenseCat = (tx.expenseCategory || '').toLowerCase();
+      const category = ((tx as any).category || '').toLowerCase();
       const note = (tx.note || '').toLowerCase();
       return (
-        name.includes(term) ||
-        item.includes(term) ||
-        expenseCat.includes(term) ||
-        note.includes(term)
+        name.includes(term) || category.includes(term) || note.includes(term)
       );
     });
   }, [activeCategory, sales, payments, purchasesExpenses, searchTerm]);

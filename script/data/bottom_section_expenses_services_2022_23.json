@@ -1,0 +1,77 @@
+{
+  "generated": "2026-09-23T17:56:57.704Z",
+  "summary": {
+    "grandDiesel": 8500,
+    "grandDaaluInc": 32850,
+    "grandDaaluProf": 24350,
+    "grandExpenses": 11100
+  },
+  "months": [
+    {
+      "month": "Nov-2022",
+      "daaluDieselCost": 0,
+      "daaluServiceIncome": 0,
+      "daaluNetProfit": 0,
+      "expenses": [],
+      "totalExpenses": 0,
+      "specialSalesEntries": []
+    },
+    {
+      "month": "Dec-2022",
+      "daaluDieselCost": 0,
+      "daaluServiceIncome": 0,
+      "daaluNetProfit": 0,
+      "expenses": [],
+      "totalExpenses": 0,
+      "specialSalesEntries": []
+    },
+    {
+      "month": "Jan-2023",
+      "daaluDieselCost": 0,
+      "daaluServiceIncome": 0,
+      "daaluNetProfit": 0,
+      "expenses": [],
+      "totalExpenses": 0,
+      "specialSalesEntries": []
+    },
+    {
+      "month": "Feb-2023",
+      "daaluDieselCost": 0,
+      "daaluServiceIncome": 0,
+      "daaluNetProfit": 0,
+      "expenses": [],
+      "totalExpenses": 0,
+      "specialSalesEntries": []
+    },
+    {
+      "month": "Mar-2023",
+      "daaluDieselCost": 8500,
+      "daaluServiceIncome": 32850,
+      "daaluNetProfit": 24350,
+      "expenses": [
+        {
+          "label": "Intrest",
+          "amount": 5000
+        },
+        {
+          "label": "Loader",
+          "amount": 1100
+        },
+        {
+          "label": "Petrol",
+          "amount": 5000
+        }
+      ],
+      "totalExpenses": 11100,
+      "specialSalesEntries": [
+        {
+          "name": "Brokrage",
+          "date": "31 Mar 2023",
+          "amount": 1500,
+          "cash": 1500,
+          "credit": 0
+        }
+      ]
+    }
+  ]
+}

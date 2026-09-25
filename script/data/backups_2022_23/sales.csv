@@ -1,0 +1,691 @@
+TransactionID,CustomerID,CustomerName,Date,Item,WeightKg,Rate,TotalAmount,CashPaid,RemainingDue,Notes
+opening_2022_11_53,758,Gori Rahishkhan Gulabbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,2200,0,2200,Carried forward opening balance from April-October 2022
+opening_2022_11_52,756,Parajapti Jethabhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,60,0,60,Carried forward opening balance from April-October 2022
+opening_2022_11_51,42,Bhutadiya Babubhai Bhemabhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,4900,0,4900,Carried forward opening balance from April-October 2022
+opening_2022_11_50,755,Dangi Laxmanbhai Badarpura,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,11300,0,11300,Carried forward opening balance from April-October 2022
+opening_2022_11_49,754,Thankor Ashokbhai Bijalji,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,3000,0,3000,Carried forward opening balance from April-October 2022
+opening_2022_11_48,753,Thakor Nareshji Jagmalji,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,150,0,150,Carried forward opening balance from April-October 2022
+opening_2022_11_47,752,Vajirkhan Badarpura,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,3320,0,3320,Carried forward opening balance from April-October 2022
+opening_2022_11_46,343,Thakor Momatji Saradarji,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,310,0,310,Carried forward opening balance from April-October 2022
+opening_2022_11_45,746,Thakor Mafatbhai Chaturbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,210,0,210,Carried forward opening balance from April-October 2022
+opening_2022_11_44,340,Thakor Laxmanji Menaji,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,0.11999999999989086,0,0.11999999999989086,Carried forward opening balance from April-October 2022
+opening_2022_11_43,745,Thakor Keyurbhai Ganeshbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,100,0,100,Carried forward opening balance from April-October 2022
+opening_2022_11_42,337,Thakor Jaxshibhai Hurabhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,2500,0,2500,Carried forward opening balance from April-October 2022
+opening_2022_11_41,331,Thakor Harchandji Laxmanji,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,1000,0,1000,Carried forward opening balance from April-October 2022
+opening_2022_11_40,742,Thakor Bharatji Lilaji Samdhi,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,6000,0,6000,Carried forward opening balance from April-October 2022
+opening_2022_11_39,319,Thakor Ashokbhai Bijanbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,10337,0,10337,Carried forward opening balance from April-October 2022
+opening_2022_11_38,740,Shabbirbhai Condator,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,8415,0,8415,Carried forward opening balance from April-October 2022
+opening_2022_11_37,285,Palani Amthabhai Savabbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,5000,0,5000,Carried forward opening balance from April-October 2022
+opening_2022_11_36,738,Nai Champakbhai Nagarbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,195,0,195,Carried forward opening balance from April-October 2022
+opening_2022_11_35,737,Mor Lavajibhai Abhubhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,13157,0,13157,Carried forward opening balance from April-October 2022
+opening_2022_11_34,736,Mohmand Kubhasan,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,455,0,455,Carried forward opening balance from April-October 2022
+opening_2022_11_33,264,Loh Rashubhai Umedbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,400,0,400,Carried forward opening balance from April-October 2022
+opening_2022_11_32,730,Loh Manjibhai Narasangbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,11922,0,11922,Carried forward opening balance from April-October 2022
+opening_2022_11_31,248,Loh Dineshbhai Ramshugbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,45399,0,45399,Carried forward opening balance from April-October 2022
+opening_2022_11_30,726,Kharasan Remeshbhai Laxmanbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,24414,0,24414,Carried forward opening balance from April-October 2022
+opening_2022_11_29,215,Kakvadiya Bhagavanbhai Chandisar,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,30400,0,30400,Carried forward opening balance from April-October 2022
+opening_2022_11_28,725,Kag Ashokbhai Jesangbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,11340,0,11340,Carried forward opening balance from April-October 2022
+opening_2022_11_27,724,Judal Shilieshbhai Ghemarbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,4600,0,4600,Carried forward opening balance from April-October 2022
+opening_2022_11_26,723,Judal Shileshbhai Becharbhai Hoda,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,12350,0,12350,Carried forward opening balance from April-October 2022
+opening_2022_11_25,721,Judal Jayantibhai Nathabhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,2310,0,2310,Carried forward opening balance from April-October 2022
+opening_2022_11_24,149,Judal Galbabhai Ramshungbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,9950,0,9950,Carried forward opening balance from April-October 2022
+opening_2022_11_23,137,Judal Bhagvanbhai Jeshungbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,13200,0,13200,Carried forward opening balance from April-October 2022
+opening_2022_11_22,126,Jarmol Sureshbhai Cheharabhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,12682,0,12682,Carried forward opening balance from April-October 2022
+opening_2022_11_21,717,Gudol Parashbhai Parthibhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,12777,0,12777,Carried forward opening balance from April-October 2022
+opening_2022_11_20,385,Gudol Dhanrajbhai Valajibhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,4300,0,4300,Carried forward opening balance from April-October 2022
+opening_2022_11_19,446,Gudol Alpashbhai Laxmanbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,2390,0,2390,Carried forward opening balance from April-October 2022
+opening_2022_11_18,715,Gori Yashinkhan Ibrahimbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,5000,0,5000,Carried forward opening balance from April-October 2022
+opening_2022_11_17,714,Gori Rahishkhan Gulabkhan,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,5112,0,5112,Carried forward opening balance from April-October 2022
+opening_2022_11_16,713,Foshi Prabhubhai Vedancha,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,70650,0,70650,Carried forward opening balance from April-October 2022
+opening_2022_11_15,658,Fof Rameshbhai Ujabhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,30999.5,0,30999.5,Carried forward opening balance from April-October 2022
+opening_2022_11_14,88,Dhudiya Sureshbhai Ramshungbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,445,0,445,Carried forward opening balance from April-October 2022
+opening_2022_11_13,85,Dhudiya Dineshbhai Mafabhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,10200,0,10200,Carried forward opening balance from April-October 2022
+opening_2022_11_12,711,Desai Rameshbhai Nagjibhai Samdhi,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,12660,0,12660,Carried forward opening balance from April-October 2022
+opening_2022_11_11,710,Desai Kesarbhai Nagjibhai Samdhi,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,12420,0,12420,Carried forward opening balance from April-October 2022
+opening_2022_11_10,79,Darbar Bhayuji Gadh,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,16136,0,16136,Carried forward opening balance from April-October 2022
+opening_2022_11_9,76,Dangi Valjibhai Parthibhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,2000,0,2000,Carried forward opening balance from April-October 2022
+opening_2022_11_8,73,Dangi Galababhai Veershangbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,12825,0,12825,Carried forward opening balance from April-October 2022
+opening_2022_11_7,708,Boka Jayntibhai Dalubhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,15100,0,15100,Carried forward opening balance from April-October 2022
+opening_2022_11_6,707,Bhutadiya Nareshbhai Ramshungbhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,6780,0,6780,Carried forward opening balance from April-October 2022
+opening_2022_11_5,706,Bhutadiya Motibhai Gadha,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,1500,0,1500,Carried forward opening balance from April-October 2022
+opening_2022_11_4,54,Bhutadiya Laljibhai Veerabhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,9620,0,9620,Carried forward opening balance from April-October 2022
+opening_2022_11_3,704,Bhutadiya Deepkabhai Muljibhai (Poto),2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,23990,0,23990,Carried forward opening balance from April-October 2022
+opening_2022_11_2,703,Bera Ramasungbhai Parthibhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,4512,0,4512,Carried forward opening balance from April-October 2022
+opening_2022_11_1,32,Bera Praveenbhai Parthibhai,2022-11-01T00:00:00.000Z,Opening Due 2022,0,0,70786,0,70786,Carried forward opening balance from April-October 2022
+sale_2022_11_1,248,Loh Dineshbhai Ramshugbhai,2022-11-15T12:00:00.000Z,Others,920,10,9200,9200,0,Grass Sale Nov-2022
+sale_2022_11_2,306,Retail,2022-11-15T12:00:00.000Z,Others,20,10,200,200,0,Grass Sale Nov-2022
+sale_2022_11_3,729,Loh Ghemarbhai Rupabhai,2022-11-15T12:00:00.000Z,Others,1035,10,10350,2900,7850,Grass Sale Nov-2022
+sale_2022_11_4,611,Loh Jeetabhai Moghabhai,2022-11-15T12:00:00.000Z,Others,3200,9,28800,28800,0,Grass Sale Nov-2022
+sale_2022_11_5,306,Retail,2022-11-15T12:00:00.000Z,Others,60,10,600,600,0,Grass Sale Nov-2022
+sale_2022_11_6,759,Kaag Babubhai Dalsangbhai,2022-11-15T12:00:00.000Z,Others,2020,10,20200,0,20200,Grass Sale Nov-2022
+sale_2022_11_7,79,Darbar Bhayuji Gadh,2022-11-15T12:00:00.000Z,Others,1210,9.26,11200,11200,0,Grass Sale Nov-2022
+sale_2022_11_8,306,Retail,2022-11-15T12:00:00.000Z,Others,32,10,320,320,0,Grass Sale Nov-2022
+sale_2022_11_9,306,Retail,2022-11-15T12:00:00.000Z,Others,10,10,100,100,0,Grass Sale Nov-2022
+sale_2022_11_10,82,Desai Bhurabhai Samdhi,2022-11-15T12:00:00.000Z,Others,705,10,7000,7000,0,Grass Sale Nov-2022
+sale_2022_11_11,760,Loh Santubhai Chadotar,2022-11-15T12:00:00.000Z,Others,2060,8.75,18025,0,18025,Grass Sale Nov-2022
+sale_2022_11_12,431,Judal Praveenbhai Virshangbhai,2022-11-15T12:00:00.000Z,Others,1125,10,11100,11100,0,Grass Sale Nov-2022
+sale_2022_11_13,306,Retail,2022-11-15T12:00:00.000Z,Others,40,10,400,400,0,Grass Sale Nov-2022
+sale_2022_11_14,378,Bera Rajabhai Rupabhai,2022-11-15T12:00:00.000Z,Others,1810,9.5,17100,17100,0,Grass Sale Nov-2022
+sale_2022_11_15,30,Bera Mafatbhai Parthibhai,2022-11-15T12:00:00.000Z,Others,1795,9.5,17052.5,400,17052.5,Grass Sale Nov-2022
+sale_2022_11_16,20,Bera Ashokbhai Laxmanbhai,2022-11-15T12:00:00.000Z,Others,1845,9.5,17527.5,5700,12227.5,Grass Sale Nov-2022
+sale_2022_11_17,761,Loh Rameshbhai Santubhai,2022-11-15T12:00:00.000Z,Others,1790,9.5,17000,17000,0,Grass Sale Nov-2022
+sale_2022_11_18,190,Judal Sadabhai Kalubhai,2022-11-15T12:00:00.000Z,Others,1675,9.5,15912.5,11500,4812.5,Grass Sale Nov-2022
+sale_2022_11_19,762,Upalana Sureshbhai Chandisar,2022-11-15T12:00:00.000Z,Others,1650,10,16500,500,16500,Grass Sale Nov-2022
+sale_2022_11_20,763,Loh Kantibhai Nanjibhai,2022-11-15T12:00:00.000Z,Others,45,9.56,430,430,0,Grass Sale Nov-2022
+sale_2022_11_21,112,Gudol Amaratbhai Parthibhai,2022-11-15T12:00:00.000Z,Others,2045,10.3,21000,21000,0,Grass Sale Nov-2022
+sale_2022_11_22,418,Fof Laxmanbhai Ujabhai,2022-11-15T12:00:00.000Z,Others,2035,10.5,21367,400,21367,Grass Sale Nov-2022
+sale_2022_11_23,763,Loh Kantibhai Nanjibhai,2022-11-15T12:00:00.000Z,Others,1485,10.5,15470,15470,0,Grass Sale Nov-2022
+sale_2022_11_24,764,Kag kirtibhai Pujabhai,2022-11-15T12:00:00.000Z,Others,1850,10.5,19425,400,19425,Grass Sale Nov-2022
+sale_2022_11_25,765,Judal Vedancha fera1,2022-11-15T12:00:00.000Z,Others,1090,9,9800,9800,0,Grass Sale Nov-2022
+sale_2022_11_26,306,Retail,2022-11-15T12:00:00.000Z,Others,10,11,110,110,0,Grass Sale Nov-2022
+sale_2022_11_27,766,Ayubbhai Kubhasan,2022-11-15T12:00:00.000Z,Others,13,10,130,0,130,Grass Sale Nov-2022
+sale_2022_11_28,45,Bhutadiya Dineshbhai Veerabhai,2022-11-15T12:00:00.000Z,Others,1865,10.5,19582.5,400,19582.5,Grass Sale Nov-2022
+sale_2022_11_29,306,Retail,2022-11-15T12:00:00.000Z,Others,217,10,2170,2170,0,Grass Sale Nov-2022
+sale_2022_11_30,227,Kharsan Rameshbhai Laxmanbhai,2022-11-15T12:00:00.000Z,Others,1930,10,19300,500,19300,Grass Sale Nov-2022
+sale_2022_11_31,767,Gudol Babubhai Veerabahi,2022-11-15T12:00:00.000Z,Others,1845,10.3,19003.5,0,19403.5,Grass Sale Nov-2022
+sale_2022_11_32,768,Gudol Praveenbhai Haribhai,2022-11-15T12:00:00.000Z,Others,2090,10,20800,20800,0,Grass Sale Nov-2022
+sale_2022_11_33,171,Judal Kirtibhai Nathabhai,2022-11-15T12:00:00.000Z,Others,1245,10,12450,400,12450,Grass Sale Nov-2022
+sale_2022_11_34,82,Desai Bhurabhai Samdhi,2022-11-15T12:00:00.000Z,Others,1150,10.5,12000,12000,0,Grass Sale Nov-2022
+sale_2022_11_35,712,Dhudiya Laljibhai Ramsugbhai,2022-11-15T12:00:00.000Z,Others,1725,10.5,18112.5,15000,3112.5,Grass Sale Nov-2022
+sale_2022_11_36,82,Desai Bhurabhai Samdhi,2022-11-15T12:00:00.000Z,Others,830,11.25,9300,9300,0,Grass Sale Nov-2022
+sale_2022_11_37,390,Judal Shileshbhai Daljibhai,2022-11-15T12:00:00.000Z,Others,1120,10,11200,300,11300,Grass Sale Nov-2022
+sale_2022_11_38,12,Akoliya Galbabhai Devabhai,2022-11-15T12:00:00.000Z,Others,1155,8,9240,400,9240,Grass Sale Nov-2022
+sale_2022_11_39,82,Desai Bhurabhai Samdhi,2022-11-15T12:00:00.000Z,Others,200,10.3,2060,2060,0,Grass Sale Nov-2022
+sale_2022_11_40,769,Judal Kantibhai Fatabhai,2022-11-15T12:00:00.000Z,Others,1875,10.3,19200,19200,0,Grass Sale Nov-2022
+sale_2022_11_41,306,Retail,2022-11-15T12:00:00.000Z,Others,167,10.42,1740,1740,0,Grass Sale Nov-2022
+sale_2022_11_42,47,Bhutadiya Ganeshbhai Jethabhai,2022-11-15T12:00:00.000Z,Others,1065,10,10650,400,10650,Grass Sale Nov-2022
+sale_2022_11_43,306,Retail,2022-11-15T12:00:00.000Z,Others,141,10.65,1500,1500,0,Grass Sale Nov-2022
+sale_2022_11_44,306,Retail,2022-11-15T12:00:00.000Z,Others,34,10,340,340,0,Grass Sale Nov-2022
+sale_2022_11_45,306,Retail,2022-11-15T12:00:00.000Z,Others,10,10,100,100,0,Grass Sale Nov-2022
+sale_2022_11_46,658,Fof Rameshbhai Ujabhai,2022-11-15T12:00:00.000Z,Others,1975,10.5,20737.5,400,20737.5,Grass Sale Nov-2022
+sale_2022_11_47,164,Judal Kantibhai Nanjibhai,2022-11-15T12:00:00.000Z,Others,1995,10.5,20947.5,400,20947.5,Grass Sale Nov-2022
+sale_2022_12_1,260,Loh Nikhilbhai Manjibhai,2022-12-15T12:00:00.000Z,Others,1540,10.5,16170,6500,10070,Grass Sale Dec-2022
+sale_2022_12_2,214,Kakavadiya Bhagvanbhai,2022-12-15T12:00:00.000Z,Others,1845,10.5,19372.5,400,19372.5,Grass Sale Dec-2022
+sale_2022_12_3,214,Kakavadiya Bhagvanbhai,2022-12-15T12:00:00.000Z,Others,1890,10.5,19845,400,19845,Grass Sale Dec-2022
+sale_2022_12_4,306,Retail,2022-12-15T12:00:00.000Z,Others,238,10.5,2499,2499,0,Grass Sale Dec-2022
+sale_2022_12_5,700,Aayubbhai Kubhasan,2022-12-15T12:00:00.000Z,Others,81,10.45,846,0,846,Grass Sale Dec-2022
+sale_2022_12_6,306,Retail,2022-12-15T12:00:00.000Z,Others,4,10,40,40,0,Grass Sale Dec-2022
+sale_2022_12_7,306,Retail,2022-12-15T12:00:00.000Z,Others,815,10.5,8500,8500,0,Grass Sale Dec-2022
+sale_2022_12_8,306,Retail,2022-12-15T12:00:00.000Z,Others,250,10,2500,2500,0,Grass Sale Dec-2022
+sale_2022_12_9,306,Retail,2022-12-15T12:00:00.000Z,Others,20,11,220,220,0,Grass Sale Dec-2022
+sale_2022_12_10,658,Fof Rameshbhai Ujabhai,2022-12-15T12:00:00.000Z,Others,930,9,8370,400,8370,Grass Sale Dec-2022
+sale_2022_12_11,171,Judal Kirtibhai Nathabhai,2022-12-15T12:00:00.000Z,Others,960,9.5,9120,400,9120,Grass Sale Dec-2022
+sale_2022_12_12,770,Loh Mukeshbhai Nanjibhai,2022-12-15T12:00:00.000Z,Others,940,10,9400,9400,0,Grass Sale Dec-2022
+sale_2022_12_13,735,Meriya Gulambhai Chadotar,2022-12-15T12:00:00.000Z,Others,1790,7.9,14000,14000,0,Grass Sale Dec-2022
+sale_2022_12_14,23,Bera Dineshbhai Savabhai,2022-12-15T12:00:00.000Z,Others,1040,9.5,9880,400,9880,Grass Sale Dec-2022
+sale_2022_12_15,306,Retail,2022-12-15T12:00:00.000Z,Others,1870,10.5,19600,19600,0,Grass Sale Dec-2022
+sale_2022_12_16,306,Retail,2022-12-15T12:00:00.000Z,Others,260,10.05,2610,2610,0,Grass Sale Dec-2022
+sale_2022_12_17,771,Judal Kantibhai Ramshugbhai,2022-12-15T12:00:00.000Z,Others,1415,9.5,13092,13092,0,Grass Sale Dec-2022
+sale_2022_12_18,771,Judal Kantibhai Ramshugbhai,2022-12-15T12:00:00.000Z,Others,1225,9.5,11307,11307,0,Grass Sale Dec-2022
+sale_2022_12_19,772,Thakor Vrishnubhai Dhirajbhai,2022-12-15T12:00:00.000Z,Others,505,10,5050,4000,1050,Grass Sale Dec-2022
+sale_2022_12_20,248,Loh Dineshbhai Ramshugbhai,2022-12-15T12:00:00.000Z,Others,1995,10.5,20947.5,400,20947.5,Grass Sale Dec-2022
+sale_2022_12_21,248,Loh Dineshbhai Ramshugbhai,2022-12-15T12:00:00.000Z,Others,1045,9.5,9927.5,400,9927.5,Grass Sale Dec-2022
+sale_2022_12_22,735,Meriya Gulambhai Chadotar,2022-12-15T12:00:00.000Z,Others,1255,8.3,10416.5,1000,9416.5,Grass Sale Dec-2022
+sale_2022_12_23,172,Judal Laljibhai Shomabhai,2022-12-15T12:00:00.000Z,Others,1050,9.5,9975,400,9975,Grass Sale Dec-2022
+sale_2022_12_24,700,Aayubbhai Kubhasan,2022-12-15T12:00:00.000Z,Others,550,10.67,5868.5,0,5868.5,Grass Sale Dec-2022
+sale_2022_12_25,306,Retail,2022-12-15T12:00:00.000Z,Others,10,11,110,110,0,Grass Sale Dec-2022
+sale_2022_12_26,27,Bera Kantibhai Ujabhai,2022-12-15T12:00:00.000Z,Others,1170,10,11500,11500,0,Grass Sale Dec-2022
+sale_2022_12_27,773,Laljibhai Khubhasan,2022-12-15T12:00:00.000Z,Others,1120,9.3,10350,10350,0,Grass Sale Dec-2022
+sale_2022_12_28,774,Karmaji,2022-12-15T12:00:00.000Z,Others,35,10,350,350,0,Grass Sale Dec-2022
+sale_2022_12_29,775,Shabbirbhai Condotor,2022-12-15T12:00:00.000Z,Others,765,11,8415,0,8415,Grass Sale Dec-2022
+sale_2022_12_30,29,Bera Laxmanbhai Meghabhai,2022-12-15T12:00:00.000Z,Others,2140,10.5,22470,400,22470,Grass Sale Dec-2022
+sale_2022_12_31,776,Thakor Savjibhai Ramchandji,2022-12-15T12:00:00.000Z,Others,1215,10,12000,12000,0,Grass Sale Dec-2022
+sale_2022_12_32,57,Boka Dhanrajbhai Bhemjibhai,2022-12-15T12:00:00.000Z,Others,2085,10.5,21892.5,0,21892.5,Grass Sale Dec-2022
+sale_2022_12_33,30,Bera Mafatbhai Parthibhai,2022-12-15T12:00:00.000Z,Others,40,10,400,400,0,Grass Sale Dec-2022
+sale_2022_12_34,777,Judal M. R.,2022-12-15T12:00:00.000Z,Others,1340,10,13100,13100,0,Grass Sale Dec-2022
+sale_2022_12_35,502,Bhutadiya Bhikhabhai Ganeshbhai,2022-12-15T12:00:00.000Z,Others,1220,10,12200,400,12200,Grass Sale Dec-2022
+sale_2022_12_36,47,Bhutadiya Ganeshbhai Jethabhai,2022-12-15T12:00:00.000Z,Others,1705,9.5,16197.5,400,16197.5,Grass Sale Dec-2022
+sale_2022_12_37,658,Fof Rameshbhai Ujabhai,2022-12-15T12:00:00.000Z,Others,1720,9.5,16340,400,16340,Grass Sale Dec-2022
+sale_2022_12_38,43,Bhutadiya Babubhai Kanjibhai,2022-12-15T12:00:00.000Z,Others,2025,10.4,21000,21000,0,Grass Sale Dec-2022
+sale_2022_12_39,306,Retail,2022-12-15T12:00:00.000Z,Others,321,10,3210,3210,0,Grass Sale Dec-2022
+sale_2022_12_40,306,Retail,2022-12-15T12:00:00.000Z,Others,210,10,2100,2100,0,Grass Sale Dec-2022
+sale_2022_12_41,117,Gudol Kesarbhai Valjibhai,2022-12-15T12:00:00.000Z,Others,1030,9.75,10042.5,400,10042.5,Grass Sale Dec-2022
+sale_2022_12_42,33,Bera Rajsangbhai Dohjibhai,2022-12-15T12:00:00.000Z,Others,1075,10,10750,400,10750,Grass Sale Dec-2022
+sale_2022_12_43,749,Thakor Samjibhai Jagmalbhai,2022-12-15T12:00:00.000Z,Others,154,10.05,1547.7,850,697.7,Grass Sale Dec-2022
+sale_2022_12_44,306,Retail,2022-12-15T12:00:00.000Z,Others,25,10.8,270,270,0,Grass Sale Dec-2022
+sale_2022_12_45,404,Prajapati Maganbhai Kalubhai,2022-12-15T12:00:00.000Z,Others,31,9.67,299.77,299.77,0,Grass Sale Dec-2022
+sale_2022_12_46,306,Retail,2022-12-15T12:00:00.000Z,Others,262,10.5,2750,2750,0,Grass Sale Dec-2022
+sale_2022_12_47,306,Retail,2022-12-15T12:00:00.000Z,Others,100,10,1000,1000,0,Grass Sale Dec-2022
+sale_2022_12_48,82,Desai Bhurabhai Samdhi,2022-12-15T12:00:00.000Z,Others,1925,10,19200,19200,0,Grass Sale Dec-2022
+sale_2022_12_49,306,Retail,2022-12-15T12:00:00.000Z,Others,48,10.41,499.68,499.68,0,Grass Sale Dec-2022
+sale_2022_12_50,306,Retail,2022-12-15T12:00:00.000Z,Others,170,10,1700,1700,0,Grass Sale Dec-2022
+sale_2022_12_51,266,Loh Shantubhai Veerabhai,2022-12-15T12:00:00.000Z,Others,2760,9.25,25530,0,25530,Grass Sale Dec-2022
+sale_2022_12_52,306,Retail,2022-12-15T12:00:00.000Z,Others,550,10,5500,5500,0,Grass Sale Dec-2022
+sale_2022_12_53,306,Retail,2022-12-15T12:00:00.000Z,Others,200,10.5,2100,2100,0,Grass Sale Dec-2022
+sale_2022_12_54,306,Retail,2022-12-15T12:00:00.000Z,Others,410,10,4100,4100,0,Grass Sale Dec-2022
+sale_2022_12_55,269,Menat Prakashbhai Madana,2022-12-15T12:00:00.000Z,Others,1095,10.5,11450,11450,0,Grass Sale Dec-2022
+sale_2022_12_56,306,Retail,2022-12-15T12:00:00.000Z,Others,42,9.3,390,390,0,Grass Sale Dec-2022
+sale_2022_12_57,404,Prajapati Maganbhai Kalubhai,2022-12-15T12:00:00.000Z,Others,139,10.08,1400.43,700,700.43,Grass Sale Dec-2022
+sale_2022_12_58,94,Foshi Prabhubhai Maganbhai (Vedancha),2022-12-15T12:00:00.000Z,Others,1110,10,11100,500,11100,Grass Sale Dec-2022
+sale_2022_12_59,378,Bera Rajabhai Rupabhai,2022-12-15T12:00:00.000Z,Others,1895,10.5,19897.5,400,19897.5,Grass Sale Dec-2022
+sale_2022_12_60,306,Retail,2022-12-15T12:00:00.000Z,Others,50,10,500,500,0,Grass Sale Dec-2022
+sale_2022_12_61,778,Judal Kesarbhai Rajshangbhai,2022-12-15T12:00:00.000Z,Others,980,9.25,9065,400,9065,Grass Sale Dec-2022
+sale_2022_12_62,15,Akoliya Nareshbhai Becharbhai,2022-12-15T12:00:00.000Z,Others,970,9.25,8972.5,400,8972.5,Grass Sale Dec-2022
+sale_2022_12_63,306,Retail,2022-12-15T12:00:00.000Z,Others,26,10.4,270.4,270.4,0,Grass Sale Dec-2022
+sale_2022_12_64,306,Retail,2022-12-15T12:00:00.000Z,Others,335,9.52,3189.2,3189.2,0,Grass Sale Dec-2022
+sale_2022_12_65,779,Thakor Mafatlal,2022-12-15T12:00:00.000Z,Others,12,10,120,120,0,Grass Sale Dec-2022
+sale_2022_12_66,175,Judal Maheshbhai Sadabhai,2022-12-15T12:00:00.000Z,Others,1910,10.5,20055,400,20055,Grass Sale Dec-2022
+sale_2022_12_67,323,Thakor Bharatbhai Vedancha,2022-12-15T12:00:00.000Z,Others,750,9.5,7125,0,7125,Grass Sale Dec-2022
+sale_2022_12_68,780,Valagot Santubhai Virshangbhai,2022-12-15T12:00:00.000Z,Others,1950,10.5,20475,14500,6375,Grass Sale Dec-2022
+sale_2022_12_69,306,Retail,2022-12-15T12:00:00.000Z,Others,51,9.6,489.6,489.6,0,Grass Sale Dec-2022
+sale_2022_12_70,781,Bera Ramshugbhai Parathibhai,2022-12-15T12:00:00.000Z,Others,875,9.5,8312.5,400,8312.5,Grass Sale Dec-2022
+sale_2023_01_1,140,Judal Dayabhai Parthibhai,2023-01-15T12:00:00.000Z,Others,2080,10.5,21840,500,21740,Grass Sale Jan-2023
+sale_2023_01_2,705,Bhutadiya Ganeshbhai Rupabhai,2023-01-15T12:00:00.000Z,Others,2120,10.5,22260,400,22260,Grass Sale Jan-2023
+sale_2023_01_3,298,Prajapati Jethabhai Kalubhai,2023-01-15T12:00:00.000Z,Others,25,10.5,262.5,200,62.5,Grass Sale Jan-2023
+sale_2023_01_4,559,Bera Ramjibhai Nanjibhai,2023-01-15T12:00:00.000Z,Others,3920,10,39000,39000,0,Grass Sale Jan-2023
+sale_2023_01_5,379,Bhutadiya Dilipbhai Muljibhai,2023-01-15T12:00:00.000Z,Others,1980,10.5,20790,400,20790,Grass Sale Jan-2023
+sale_2023_01_6,328,Thakor Bhupatbhai Veerchandbhai,2023-01-15T12:00:00.000Z,Others,1180,10,11800,400,11800,Grass Sale Jan-2023
+sale_2023_01_7,287,Palani Bhikhabhai Gamabhai,2023-01-15T12:00:00.000Z,Others,1490,10.5,15645,13000,2645,Grass Sale Jan-2023
+sale_2023_01_8,306,Retail,2023-01-15T12:00:00.000Z,Others,27,10.75,290,290,0,Grass Sale Jan-2023
+sale_2023_01_9,782,Praveenbhai Vendancha,2023-01-15T12:00:00.000Z,Others,42,10,400,400,0,Grass Sale Jan-2023
+sale_2023_01_10,783,Boka Galbabhai Kalubhai,2023-01-15T12:00:00.000Z,Others,1105,10,11000,11000,0,Grass Sale Jan-2023
+sale_2023_01_11,784,Kuva Rajubhai Ramsughbhai,2023-01-15T12:00:00.000Z,Others,1140,9.04,10300,10300,0,Grass Sale Jan-2023
+sale_2023_01_12,306,Retail,2023-01-15T12:00:00.000Z,Others,390,10,3900,3900,0,Grass Sale Jan-2023
+sale_2023_01_13,785,Kotadiya Bharatbhai Sankarbhai,2023-01-15T12:00:00.000Z,Others,520,10,5200,5200,0,Grass Sale Jan-2023
+sale_2023_01_14,114,Gudol Babubhai Veerabhai,2023-01-15T12:00:00.000Z,Others,1990,10.5,20895,400,20895,Grass Sale Jan-2023
+sale_2023_01_15,306,Retail,2023-01-15T12:00:00.000Z,Others,87,10.35,900,900,0,Grass Sale Jan-2023
+sale_2023_01_16,306,Retail,2023-01-15T12:00:00.000Z,Others,39,10,390,390,0,Grass Sale Jan-2023
+sale_2023_01_17,786,Patel Pannabhai Vedanccha,2023-01-15T12:00:00.000Z,Others,1800,9,16200,16200,0,Grass Sale Jan-2023
+sale_2023_01_18,787,Bhutadiya Lalajibhai Veerabhai,2023-01-15T12:00:00.000Z,Others,1040,9.25,9620,9620,0,Grass Sale Jan-2023
+sale_2023_01_19,157,Judal Jyantibhai Nathabhai,2023-01-15T12:00:00.000Z,Others,1500,9.5,14250,7400,7250,Grass Sale Jan-2023
+sale_2023_01_20,788,Kharasan Rameshbhai Laxmanbhai,2023-01-15T12:00:00.000Z,Others,1685,10,16850,4500,12850,Grass Sale Jan-2023
+sale_2023_01_21,731,Loh Ragubhai Pujabhai,2023-01-15T12:00:00.000Z,Others,3525,10,35250,0,35250,Grass Sale Jan-2023
+sale_2023_01_22,306,Retail,2023-01-15T12:00:00.000Z,Others,30,10,300,300,0,Grass Sale Jan-2023
+sale_2023_01_23,144,Judal Dineshbhai Muljibhai,2023-01-15T12:00:00.000Z,Others,1960,10.5,20580,400,20580,Grass Sale Jan-2023
+sale_2023_01_24,789,Thakor Amaratbhai Keshabhai,2023-01-15T12:00:00.000Z,Others,600,10,6000,6000,0,Grass Sale Jan-2023
+sale_2023_01_25,293,Palani Maheshbhai Khemabhai,2023-01-15T12:00:00.000Z,Others,200,10,2000,0,2000,Grass Sale Jan-2023
+sale_2023_01_26,790,Judal Shileshbhai Becharbhai,2023-01-15T12:00:00.000Z,Others,1170,10,11700,5500,6700,Grass Sale Jan-2023
+sale_2023_01_27,791,Kharasan Jeetabhai Laxmanbhai (Chadotar),2023-01-15T12:00:00.000Z,Others,1615,10,16000,16000,0,Grass Sale Jan-2023
+sale_2023_01_28,658,Fof Rameshbhai Ujabhai,2023-01-15T12:00:00.000Z,Others,1760,9.5,16720,400,16720,Grass Sale Jan-2023
+sale_2023_01_29,792,Maraj Rameshbhai Rupabhai,2023-01-15T12:00:00.000Z,Others,1140,9.04,10300,10300,0,Grass Sale Jan-2023
+sale_2023_01_30,306,Retail,2023-01-15T12:00:00.000Z,Others,97,10.31,1000,1000,0,Grass Sale Jan-2023
+sale_2023_01_31,766,Ayubbhai Kubhasan,2023-01-15T12:00:00.000Z,Others,135,10.5,1400,1400,0,Grass Sale Jan-2023
+sale_2023_01_32,371,Valagot Ghemarbhai Manjibhai,2023-01-15T12:00:00.000Z,Others,1765,9.25,16326.25,500,16226.25,Grass Sale Jan-2023
+sale_2023_01_33,12,Akoliya Galbabhai Devabhai,2023-01-15T12:00:00.000Z,Others,1435,8.5,12197.5,400,12197.5,Grass Sale Jan-2023
+sale_2023_01_34,306,Retail,2023-01-15T12:00:00.000Z,Others,127,10,1270,1270,0,Grass Sale Jan-2023
+sale_2023_01_35,720,Judal Bhemjibhai Gadh,2023-01-15T12:00:00.000Z,Others,1545,9.75,15063.75,600,15063.75,Grass Sale Jan-2023
+sale_2023_01_36,304,Ratada Haribhai Laxmanbhai Badharpura,2023-01-15T12:00:00.000Z,Others,1460,10.07,14700,14700,0,Grass Sale Jan-2023
+sale_2023_01_37,752,Vajirkhan Badarpura,2023-01-15T12:00:00.000Z,Others,2080,10.25,21320,500,21320,Grass Sale Jan-2023
+sale_2023_01_38,190,Judal Sadabhai Kalubhai,2023-01-15T12:00:00.000Z,Others,1310,9.46,12392.6,8500,4292.6,Grass Sale Jan-2023
+sale_2023_01_39,793,Loh Ramjibhai Virshangbhai,2023-01-15T12:00:00.000Z,Others,1640,10.37,17000,17000,0,Grass Sale Jan-2023
+sale_2023_01_40,794,Bera Dineshbhai Nanjibhai,2023-01-15T12:00:00.000Z,Others,2095,10,20900,20900,0,Grass Sale Jan-2023
+sale_2023_01_41,48,Bhutadiya Ghemarbhai Dalubhai,2023-01-15T12:00:00.000Z,Others,2175,9.43,20500,20500,0,Grass Sale Jan-2023
+sale_2023_01_42,21,Bera Bharatbhai Dhanrajbhai,2023-01-15T12:00:00.000Z,Others,1265,10.5,13282.5,400,13282.5,Grass Sale Jan-2023
+sale_2023_01_43,795,Valagot Heerabhai Laxmanbhai,2023-01-15T12:00:00.000Z,Others,1200,10.5,12600,12600,0,Grass Sale Jan-2023
+sale_2023_01_44,796,Loh Meghrajbhai Fatabhai,2023-01-15T12:00:00.000Z,Others,2410,10.37,25000,25000,0,Grass Sale Jan-2023
+sale_2023_01_45,306,Retail,2023-01-15T12:00:00.000Z,Others,31,10.65,330,330,0,Grass Sale Jan-2023
+sale_2023_01_46,33,Bera Rajsangbhai Dohjibhai,2023-01-15T12:00:00.000Z,Others,1290,10.5,13545,400,13545,Grass Sale Jan-2023
+sale_2023_01_47,306,Retail,2023-01-15T12:00:00.000Z,Others,97,10.52,1020,1020,0,Grass Sale Jan-2023
+sale_2023_01_48,797,Ramjibhai Booterna bhai,2023-01-15T12:00:00.000Z,Others,1250,10.4,13000,13000,0,Grass Sale Jan-2023
+sale_2023_01_49,798,Thakor Ashokji Bijalji,2023-01-15T12:00:00.000Z,Others,720,10.5,7560,1500,6460,Grass Sale Jan-2023
+sale_2023_01_50,799,Thakor Bhaveshbhai Rikshavala Vedancha,2023-01-15T12:00:00.000Z,Others,60,10.84,650,650,0,Grass Sale Jan-2023
+sale_2023_01_51,306,Retail,2023-01-15T12:00:00.000Z,Others,15,10.7,160,160,0,Grass Sale Jan-2023
+sale_2023_01_52,232,Kumatiya Rafikbhai Ismilbhai,2023-01-15T12:00:00.000Z,Others,755,10.5,7927.5,2500,5827.5,Grass Sale Jan-2023
+sale_2023_01_53,800,Kuva Laljibhai Behmabhai,2023-01-15T12:00:00.000Z,Others,1000,10.5,10300,10300,0,Grass Sale Jan-2023
+sale_2023_01_54,801,Judal Pareshbhai Ghemarbhai,2023-01-15T12:00:00.000Z,Others,1265,10.5,13200,13200,0,Grass Sale Jan-2023
+sale_2023_01_55,802,Shipai Hayatkhan Pirijkhan,2023-01-15T12:00:00.000Z,Others,1245,9.5,11700,11700,0,Grass Sale Jan-2023
+sale_2023_01_56,404,Prajapati Maganbhai Kalubhai,2023-01-15T12:00:00.000Z,Others,40,9.5,380,300,80,Grass Sale Jan-2023
+sale_2023_01_57,340,Thakor Laxmanji Menaji,2023-01-15T12:00:00.000Z,Others,122,10.54,1285.88,0,1285.88,Grass Sale Jan-2023
+sale_2023_01_58,803,Mor Becharbhai Hemrajbhai,2023-01-15T12:00:00.000Z,Others,1005,10.5,10400,10400,0,Grass Sale Jan-2023
+sale_2023_01_59,804,Hoda fero 1,2023-01-15T12:00:00.000Z,Others,965,10.5,10100,10100,0,Grass Sale Jan-2023
+sale_2023_01_60,805,Valagot Nareshbhai Laxmanbhai,2023-01-15T12:00:00.000Z,Others,985,10.5,10300,10300,0,Grass Sale Jan-2023
+sale_2023_01_61,744,Thakor Kantibhai Bajubhai,2023-01-15T12:00:00.000Z,Others,74,10.55,780.7,500,280.7,Grass Sale Jan-2023
+sale_2023_01_62,806,Thakor Bharatbhai Bajuji,2023-01-15T12:00:00.000Z,Others,80,10.5,840,0,840,Grass Sale Jan-2023
+sale_2023_01_63,45,Bhutadiya Dineshbhai Veerabhai,2023-01-15T12:00:00.000Z,Others,1145,10.5,12000,12000,0,Grass Sale Jan-2023
+sale_2023_01_64,110,Gudol Alpeshbhai Laxmanbhai,2023-01-15T12:00:00.000Z,Others,1180,10.5,12390,400,12390,Grass Sale Jan-2023
+sale_2023_01_65,779,Thakor Mafatlal,2023-01-15T12:00:00.000Z,Others,40,10.5,420,420,0,Grass Sale Jan-2023
+sale_2023_01_66,807,Judal Bhagvanbhai Karsanbhai,2023-01-15T12:00:00.000Z,Others,1180,9.58,11300,11300,0,Grass Sale Jan-2023
+sale_2023_01_67,808,Thakor Raghaji,2023-01-15T12:00:00.000Z,Others,300,10.5,3150,3150,0,Grass Sale Jan-2023
+sale_2023_01_68,809,Gavariya Ashokbhai,2023-01-15T12:00:00.000Z,Others,30,10.33,310,310,0,Grass Sale Jan-2023
+sale_2023_01_69,410,Vaghela Ashokbhai Chelabhai,2023-01-15T12:00:00.000Z,Others,380,13.13,4990,0,4990,Grass Sale Jan-2023
+sale_2023_01_70,810,Valagot Babubhai Vedancha,2023-01-15T12:00:00.000Z,Others,1200,10.5,12600,12600,0,Grass Sale Jan-2023
+sale_2023_01_71,811,Judal Galbabhai Ramsugbhai,2023-01-15T12:00:00.000Z,Others,1505,10,15050,0,15050,Grass Sale Jan-2023
+sale_2023_01_72,763,Loh Kantibhai Nanjibhai,2023-01-15T12:00:00.000Z,Others,28,10.71,300,0,300,Grass Sale Jan-2023
+sale_2023_01_73,306,Retail,2023-01-15T12:00:00.000Z,Others,138,10.51,1450,1450,0,Grass Sale Jan-2023
+sale_2023_01_74,287,Palani Bhikhabhai Gamabhai,2023-01-15T12:00:00.000Z,Others,1035,10.5,10867,0,10867,Grass Sale Jan-2023
+sale_2023_01_75,306,Retail,2023-01-15T12:00:00.000Z,Others,50,11,550,550,0,Grass Sale Jan-2023
+sale_2023_01_76,812,Bera Deepakkumar Jampura,2023-01-15T12:00:00.000Z,Others,2185,9.47,20700,20700,0,Grass Sale Jan-2023
+sale_2023_01_77,306,Retail,2023-01-15T12:00:00.000Z,Others,95,10.53,1000,1000,0,Grass Sale Jan-2023
+sale_2023_01_78,813,Thakor Dharjibhai Chandisar,2023-01-15T12:00:00.000Z,Others,575,10,5750,0,5750,Grass Sale Jan-2023
+sale_2023_01_79,534,Gudol Bhaveshbhai Parthibhai,2023-01-15T12:00:00.000Z,Others,2090,9.67,20200,20200,0,Grass Sale Jan-2023
+sale_2023_01_80,814,Bera Premjibhai Aakesan,2023-01-15T12:00:00.000Z,Others,1510,9.93,15000,15000,0,Grass Sale Jan-2023
+sale_2023_01_81,815,Akoliya Prakashbhai Bhagvanbhai,2023-01-15T12:00:00.000Z,Others,1210,10,12100,12100,0,Grass Sale Jan-2023
+sale_2023_01_82,746,Thakor Mafatbhai Chaturbhai,2023-01-15T12:00:00.000Z,Others,12,10.83,130,80,50,Grass Sale Jan-2023
+sale_2023_01_83,267,Loh Shileshbhai Manjibhai,2023-01-15T12:00:00.000Z,Others,2105,9.64,20300,20300,0,Grass Sale Jan-2023
+sale_2023_01_84,709,Chaudhary S.K Agola,2023-01-15T12:00:00.000Z,Others,1140,10.5,11970,500,11970,Grass Sale Jan-2023
+sale_2023_01_85,428,Thakor Bajuji Galbaji,2023-01-15T12:00:00.000Z,Others,1460,10,14600,500,14600,Grass Sale Jan-2023
+sale_2023_01_86,384,Gori Aayubkhan,2023-01-15T12:00:00.000Z,Others,1635,10.5,17167,400,17167,Grass Sale Jan-2023
+sale_2023_01_87,816,Laljibhai Patel,2023-01-15T12:00:00.000Z,Others,1640,10,16400,16400,0,Grass Sale Jan-2023
+sale_2023_01_88,385,Gudol Dhanrajbhai Valajibhai,2023-01-15T12:00:00.000Z,Others,1285,10.5,13492,400,13492,Grass Sale Jan-2023
+sale_2023_01_89,107,Gori Ishrad,2023-01-15T12:00:00.000Z,Others,1115,10.5,11707,1500,10607,Grass Sale Jan-2023
+sale_2023_01_90,719,Judal Amrutbhai Daljibhai,2023-01-15T12:00:00.000Z,Others,1410,10.5,14805,400,14805,Grass Sale Jan-2023
+sale_2023_01_91,734,Loh Ramjibhai Meghabhai,2023-01-15T12:00:00.000Z,Others,1155,10.5,12127,10400,2127,Grass Sale Jan-2023
+sale_2023_01_92,257,Loh Mafatbhai Nanjibhai,2023-01-15T12:00:00.000Z,Others,60,10.5,630,630,0,Grass Sale Jan-2023
+sale_2023_01_93,817,Valagot Narshihbhai Chadotar,2023-01-15T12:00:00.000Z,Others,1340,9.25,12395,0,12395,Grass Sale Jan-2023
+sale_2023_01_94,818,Mohmand,2023-01-15T12:00:00.000Z,Others,43,10.58,455,455,0,Grass Sale Jan-2023
+sale_2023_01_95,740,Shabbirbhai Condator,2023-01-15T12:00:00.000Z,Others,2155,10.5,22627,7500,15627,Grass Sale Jan-2023
+sale_2023_01_96,819,Khubhasan,2023-01-15T12:00:00.000Z,Others,1210,10.5,12700,12700,0,Grass Sale Jan-2023
+sale_2023_01_97,820,Judal Kantibhai Ramsungbhai,2023-01-15T12:00:00.000Z,Others,1205,10.46,12600,12600,0,Grass Sale Jan-2023
+sale_2023_01_98,198,Judal Valjibhai Virshangbhai,2023-01-15T12:00:00.000Z,Others,1345,10.5,14122,400,14122,Grass Sale Jan-2023
+sale_2023_01_99,700,Aayubbhai Kubhasan,2023-01-15T12:00:00.000Z,Others,90,10.56,950,950,0,Grass Sale Jan-2023
+sale_2023_01_100,821,Bhutadiya Praveenbhai Naathabhai,2023-01-15T12:00:00.000Z,Others,2055,9.73,20000,20000,0,Grass Sale Jan-2023
+sale_2023_01_101,360,Thakor Vipulbhai Chaganbhai,2023-01-15T12:00:00.000Z,Others,1000,10,10000,10000,0,Grass Sale Jan-2023
+sale_2023_01_102,193,Judal Shileshbhai Daljibhai Kubhasan,2023-01-15T12:00:00.000Z,Others,1230,10.49,12900,12900,0,Grass Sale Jan-2023
+sale_2023_01_103,306,Retail,2023-01-15T12:00:00.000Z,Others,34,10.59,360,360,0,Grass Sale Jan-2023
+sale_2023_01_104,822,Palani Bharatbhai Mevabhai,2023-01-15T12:00:00.000Z,Others,1235,10.5,12967,400,12967,Grass Sale Jan-2023
+sale_2023_01_105,306,Retail,2023-01-15T12:00:00.000Z,Others,470,10.43,4900,4900,0,Grass Sale Jan-2023
+sale_2023_01_106,823,Ghuri Bhikhabhai,2023-01-15T12:00:00.000Z,Others,360,10.5,3780,0,3780,Grass Sale Jan-2023
+sale_2023_01_107,82,Desai Bhurabhai Samdhi,2023-01-15T12:00:00.000Z,Others,1490,10.5,15645,0,15645,Grass Sale Jan-2023
+sale_2023_01_108,824,Gol Karsanbhai Ghemarbhai,2023-01-15T12:00:00.000Z,Others,1420,10.5,14910,500,14910,Grass Sale Jan-2023
+sale_2023_01_109,306,Retail,2023-01-15T12:00:00.000Z,Others,710,10.42,7400,7400,0,Grass Sale Jan-2023
+sale_2023_01_110,825,Patel Maheshbhai Maganbhai Kubhasan,2023-01-15T12:00:00.000Z,Others,1170,10.5,12285,500,12285,Grass Sale Jan-2023
+sale_2023_01_111,268,Loh Sureshbhai Shantubhai,2023-01-15T12:00:00.000Z,Others,1955,9.97,19500,19500,0,Grass Sale Jan-2023
+sale_2023_01_112,658,Fof Rameshbhai Ujabhai,2023-01-15T12:00:00.000Z,Others,1640,9.7,15912,400,15912,Grass Sale Jan-2023
+sale_2023_01_113,747,Thakor Mukeshbhai Kubhaji,2023-01-15T12:00:00.000Z,Others,500,9,4500,0,4500,Grass Sale Jan-2023
+sale_2023_01_114,826,Thakor Visnubhai Dhirajbhai,2023-01-15T12:00:00.000Z,Others,158,10.54,1666,1000,666,Grass Sale Jan-2023
+sale_2023_01_115,743,Thakor Dharjibhai Ranpur,2023-01-15T12:00:00.000Z,Others,1675,10,16750,1000,16750,Grass Sale Jan-2023
+sale_2023_01_116,147,Judal Dineshbhai Ujabhai,2023-01-15T12:00:00.000Z,Others,935,9,8415,0,8415,Grass Sale Jan-2023
+sale_2023_01_117,306,Retail,2023-01-15T12:00:00.000Z,Others,188,10.48,1970,1970,0,Grass Sale Jan-2023
+sale_2023_01_118,827,Palani Shantubhai Tapali,2023-01-15T12:00:00.000Z,Others,138,10.22,1410,1410,0,Grass Sale Jan-2023
+sale_2023_01_119,828,Jayeshbhai Kubhasan,2023-01-15T12:00:00.000Z,Others,1330,10.3,13700,13700,0,Grass Sale Jan-2023
+sale_2023_01_120,829,Bera Jeevabhai Haribhai,2023-01-15T12:00:00.000Z,Others,745,10.5,7822,4000,3822,Grass Sale Jan-2023
+sale_2023_01_121,287,Palani Bhikhabhai Gamabhai,2023-01-15T12:00:00.000Z,Others,1430,10,14300,0,14300,Grass Sale Jan-2023
+sale_2023_01_122,304,Ratada Haribhai Laxmanbhai Badharpura,2023-01-15T12:00:00.000Z,Others,915,10.5,9607,0,9607,Grass Sale Jan-2023
+sale_2023_01_123,799,Thakor Bhaveshbhai Rikshavala Vedancha,2023-01-15T12:00:00.000Z,Others,20,10.5,210,210,0,Grass Sale Jan-2023
+sale_2023_01_124,329,Thakor Chamanji Takhaji,2023-01-15T12:00:00.000Z,Others,221,10.45,2310,2310,0,Grass Sale Jan-2023
+sale_2023_01_125,830,Thakor Jaynibhai Madhubhai,2023-01-15T12:00:00.000Z,Others,300,10.5,3150,0,3150,Grass Sale Jan-2023
+sale_2023_01_126,831,Daka Prakashbhai Lakhubhai,2023-01-15T12:00:00.000Z,Others,390,10.26,4000,4000,0,Grass Sale Jan-2023
+sale_2023_01_127,832,Thakor Jasungbhai Parathibhai,2023-01-15T12:00:00.000Z,Others,41,10.73,440,440,0,Grass Sale Jan-2023
+sale_2023_01_128,126,Jarmol Sureshbhai Cheharabhai,2023-01-15T12:00:00.000Z,Others,1130,10.5,11865,500,11865,Grass Sale Jan-2023
+sale_2023_01_129,748,Thakor Reganaji,2023-01-15T12:00:00.000Z,Others,630,10,6300,0,6300,Grass Sale Jan-2023
+sale_2023_01_130,833,Palani Hiteshbhai Senabhai,2023-01-15T12:00:00.000Z,Others,680,10,6800,1000,5800,Grass Sale Jan-2023
+sale_2023_01_131,151,Judal Ghemarbhai Rashangbhai,2023-01-15T12:00:00.000Z,Others,1440,9.5,13680,400,13680,Grass Sale Jan-2023
+sale_2023_01_132,703,Bera Ramasungbhai Parthibhai,2023-01-15T12:00:00.000Z,Others,950,9.75,9262,400,9262,Grass Sale Jan-2023
+sale_2023_01_133,306,Retail,2023-01-15T12:00:00.000Z,Others,49,10.61,520,520,0,Grass Sale Jan-2023
+sale_2023_01_134,757,Thakor Savajibhai Hamirbhai,2023-01-15T12:00:00.000Z,Others,1160,9.68,11228,400,11228,Grass Sale Jan-2023
+sale_2023_01_135,306,Retail,2023-01-15T12:00:00.000Z,Others,47,10.64,500,500,0,Grass Sale Jan-2023
+sale_2023_01_136,60,Boka Kantibhai Dalubhai,2023-01-15T12:00:00.000Z,Others,1440,9.41,13544,400,13544,Grass Sale Jan-2023
+sale_2023_01_137,834,Dangiya,2023-01-15T12:00:00.000Z,Others,1280,10.47,13400,13400,0,Grass Sale Jan-2023
+sale_2023_01_138,835,Thakor Dhasratiji Khodla,2023-01-15T12:00:00.000Z,Others,385,10.39,4000,4000,0,Grass Sale Jan-2023
+sale_2023_01_139,306,Retail,2023-01-15T12:00:00.000Z,Others,95,10.53,1000,1000,0,Grass Sale Jan-2023
+sale_2023_01_140,306,Retail,2023-01-15T12:00:00.000Z,Others,361,10.3,3720,3720,0,Grass Sale Jan-2023
+sale_2023_01_141,306,Retail,2023-01-15T12:00:00.000Z,Others,80,10,800,800,0,Grass Sale Jan-2023
+sale_2023_01_142,306,Retail,2023-01-15T12:00:00.000Z,Others,47,10,470,470,0,Grass Sale Jan-2023
+sale_2023_01_143,836,Thakor Bhavanji Samdhi,2023-01-15T12:00:00.000Z,Others,350,10.5,3675,0,3675,Grass Sale Jan-2023
+sale_2023_01_144,837,Samadhi,2023-01-15T12:00:00.000Z,Others,427,10.54,4500,4500,0,Grass Sale Jan-2023
+sale_2023_01_145,193,Judal Shileshbhai Daljibhai Kubhasan,2023-01-15T12:00:00.000Z,Others,126,10.56,1330,1330,0,Grass Sale Jan-2023
+sale_2023_01_146,741,Solanki Hayatkhan Peerojkhan,2023-01-15T12:00:00.000Z,Others,610,9.5,5795,0,5795,Grass Sale Jan-2023
+sale_2023_01_147,838,Thakor Ashokbhai Jagamalbhai,2023-01-15T12:00:00.000Z,Others,620,10,6200,0,6200,Grass Sale Jan-2023
+sale_2023_01_148,47,Bhutadiya Ganeshbhai Jethabhai,2023-01-15T12:00:00.000Z,Others,1710,10,17100,400,17100,Grass Sale Jan-2023
+sale_2023_01_149,744,Thakor Kantibhai Bajubhai,2023-01-15T12:00:00.000Z,Others,84,10.57,888,200,688,Grass Sale Jan-2023
+sale_2023_01_150,839,Thakor Shankabhai Khemabhai,2023-01-15T12:00:00.000Z,Others,520,10.25,5330,2000,3330,Grass Sale Jan-2023
+sale_2023_01_151,210,Kag Nathubhai Laxmanbhai,2023-01-15T12:00:00.000Z,Others,740,10.5,7770,0,7770,Grass Sale Jan-2023
+sale_2023_01_152,418,Fof Laxmanbhai Ujabhai,2023-01-15T12:00:00.000Z,Others,2035,10,20350,400,20350,Grass Sale Jan-2023
+sale_2023_01_153,820,Judal Kantibhai Ramsungbhai,2023-01-15T12:00:00.000Z,Others,1230,9.19,11300,11300,0,Grass Sale Jan-2023
+sale_2023_01_154,49,Bhutadiya Heerabhai Fatabhai,2023-01-15T12:00:00.000Z,Others,635,10,6350,0,6350,Grass Sale Jan-2023
+sale_2023_01_155,309,Shipai Musabhai,2023-01-15T12:00:00.000Z,Others,530,9.5,5035,0,5035,Grass Sale Jan-2023
+sale_2023_01_156,306,Retail,2023-01-15T12:00:00.000Z,Others,310,9.68,3000,3000,0,Grass Sale Jan-2023
+sale_2023_01_157,78,Dangi Vipulbhai Laxmanbhai (Badarpura),2023-01-15T12:00:00.000Z,Others,2025,10.25,20756,500,20756,Grass Sale Jan-2023
+sale_2023_01_158,826,Thakor Visnubhai Dhirajbhai,2023-01-15T12:00:00.000Z,Others,156,10,1560,1000,560,Grass Sale Jan-2023
+sale_2023_01_159,35,Bera Rameshbhai Meghabhai,2023-01-15T12:00:00.000Z,Others,1725,9.25,15956,400,15956,Grass Sale Jan-2023
+sale_2023_01_160,114,Gudol Babubhai Veerabhai,2023-01-15T12:00:00.000Z,Others,1840,10,18400,400,18400,Grass Sale Jan-2023
+sale_2023_01_161,33,Bera Rajsangbhai Dohjibhai,2023-01-15T12:00:00.000Z,Others,1705,10,17050,400,17050,Grass Sale Jan-2023
+sale_2023_01_162,840,Meriya Gulambhai,2023-01-15T12:00:00.000Z,Others,3250,8.65,28112,9050,19062,Grass Sale Jan-2023
+sale_2023_02_1,306,Retail,2023-02-15T12:00:00.000Z,Others,50,10.5,525,525,0,Grass Sale Feb-2023
+sale_2023_02_2,536,Jarmol Neetaben K Gadh,2023-02-15T12:00:00.000Z,Others,1765,10,17650,600,17650,Grass Sale Feb-2023
+sale_2023_02_3,54,Bhutadiya Laljibhai Veerabhai,2023-02-15T12:00:00.000Z,Others,920,9.75,8970,8200,770,Grass Sale Feb-2023
+sale_2023_02_4,306,Retail,2023-02-15T12:00:00.000Z,Others,43,10.47,450,450,0,Grass Sale Feb-2023
+sale_2023_02_5,841,Bhutadiya Deepakbhai Muljibhai,2023-02-15T12:00:00.000Z,Others,1820,10,18200,0,18200,Grass Sale Feb-2023
+sale_2023_02_6,82,Desai Bhurabhai Samdhi,2023-02-15T12:00:00.000Z,Others,1545,9.97,15400,15400,0,Grass Sale Feb-2023
+sale_2023_02_7,306,Retail,2023-02-15T12:00:00.000Z,Others,100,10,1000,1000,0,Grass Sale Feb-2023
+sale_2023_02_8,15,Akoliya Nareshbhai Becharbhai,2023-02-15T12:00:00.000Z,Others,1955,9.5,18572,13428,5544,Grass Sale Feb-2023
+sale_2023_02_9,724,Judal Shilieshbhai Ghemarbhai,2023-02-15T12:00:00.000Z,Others,1735,10,17350,500,17350,Grass Sale Feb-2023
+sale_2023_02_10,18,Bavji Vedancha,2023-02-15T12:00:00.000Z,Others,1010,9.8,9900,9900,0,Grass Sale Feb-2023
+sale_2023_02_11,580,Bhutadiya Jeetabhai Ganeshbhai,2023-02-15T12:00:00.000Z,Others,3350,9.88,33100,33100,0,Grass Sale Feb-2023
+sale_2023_02_12,43,Bhutadiya Babubhai Kanjibhai,2023-02-15T12:00:00.000Z,Others,1725,9.91,17100,17100,0,Grass Sale Feb-2023
+sale_2023_02_13,89,Fof Babubhai Ujabhai,2023-02-15T12:00:00.000Z,Others,800,10,8000,0,8000,Grass Sale Feb-2023
+sale_2023_02_14,306,Retail,2023-02-15T12:00:00.000Z,Others,52,10,520,520,0,Grass Sale Feb-2023
+sale_2023_02_15,842,Judal Bhagavanbhai Dalubhai,2023-02-15T12:00:00.000Z,Others,3865,10.48,40500,40500,0,Grass Sale Feb-2023
+sale_2023_02_16,111,Gudol Amaratbhai Cheharabhai,2023-02-15T12:00:00.000Z,Others,2030,10.44,21200,21200,0,Grass Sale Feb-2023
+sale_2023_02_17,843,Bhilocha Dineshbhai Devjibhai,2023-02-15T12:00:00.000Z,Others,150,10,1500,1500,0,Grass Sale Feb-2023
+sale_2023_02_18,306,Retail,2023-02-15T12:00:00.000Z,Others,39,10.77,420,420,0,Grass Sale Feb-2023
+sale_2023_02_19,172,Judal Laljibhai Shomabhai,2023-02-15T12:00:00.000Z,Others,1830,10,18300,400,18300,Grass Sale Feb-2023
+sale_2023_02_20,163,Judal Kantibhai Dalajibhai,2023-02-15T12:00:00.000Z,Others,1425,11,15675,400,15675,Grass Sale Feb-2023
+sale_2023_02_21,446,Gudol Alpashbhai Laxmanbhai,2023-02-15T12:00:00.000Z,Others,1650,11,18150,0,18150,Grass Sale Feb-2023
+sale_2023_02_22,844,Thakor Jyantibhai Mathubhai Sudha,2023-02-15T12:00:00.000Z,Others,390,10.9,4250,4250,0,Grass Sale Feb-2023
+sale_2023_02_23,273,Mor Daljibhai Vedancha,2023-02-15T12:00:00.000Z,Others,1525,10.43,15900,15900,0,Grass Sale Feb-2023
+sale_2023_02_24,164,Judal Kantibhai Nanjibhai,2023-02-15T12:00:00.000Z,Others,835,11,9185,0,9185,Grass Sale Feb-2023
+sale_2023_02_25,293,Palani Maheshbhai Khemabhai,2023-02-15T12:00:00.000Z,Others,320,11,3520,3000,520,Grass Sale Feb-2023
+sale_2023_02_26,204,Kag Babubhai Dalshangbhai,2023-02-15T12:00:00.000Z,Others,1575,10.5,16537,500,16537,Grass Sale Feb-2023
+sale_2023_02_27,111,Gudol Amaratbhai Cheharabhai,2023-02-15T12:00:00.000Z,Others,1005,10.95,11000,11000,0,Grass Sale Feb-2023
+sale_2023_02_28,287,Palani Bhikhabhai Gamabhai,2023-02-15T12:00:00.000Z,Others,1570,10,15700,0,15700,Grass Sale Feb-2023
+sale_2023_02_29,399,Loh Nareshbhai Laxmanbhai,2023-02-15T12:00:00.000Z,Others,1380,10.94,15100,15100,0,Grass Sale Feb-2023
+sale_2023_02_30,845,Judal Nanjibhai Madhabhai,2023-02-15T12:00:00.000Z,Others,3400,10.47,35600,35600,0,Grass Sale Feb-2023
+sale_2023_02_31,60,Boka Kantibhai Dalubhai,2023-02-15T12:00:00.000Z,Others,1640,10,16400,0,16400,Grass Sale Feb-2023
+sale_2023_02_32,502,Bhutadiya Bhikhabhai Ganeshbhai,2023-02-15T12:00:00.000Z,Others,1855,10.46,19400,19400,0,Grass Sale Feb-2023
+sale_2023_02_33,319,Thakor Ashokbhai Bijanbhai,2023-02-15T12:00:00.000Z,Others,1155,11,12705,540,12165,Grass Sale Feb-2023
+sale_2023_02_34,431,Judal Praveenbhai Virshangbhai,2023-02-15T12:00:00.000Z,Others,1685,11,18535,8500,10435,Grass Sale Feb-2023
+sale_2023_02_35,658,Fof Rameshbhai Ujabhai,2023-02-15T12:00:00.000Z,Others,1885,10,18850,400,18850,Grass Sale Feb-2023
+sale_2023_02_36,38,Bhatol Ashwinbhai Sudha,2023-02-15T12:00:00.000Z,Others,1170,10.94,12800,12800,0,Grass Sale Feb-2023
+sale_2023_02_37,745,Thakor Keyurbhai Ganeshbhai,2023-02-15T12:00:00.000Z,Others,55,10.91,600,300,300,Grass Sale Feb-2023
+sale_2023_02_38,846,Thakor Vadanji Hemchandji,2023-02-15T12:00:00.000Z,Others,54,11.11,600,600,0,Grass Sale Feb-2023
+sale_2023_02_39,847,Paramar Bhaveshbhai Kantibhai,2023-02-15T12:00:00.000Z,Others,43,11.63,500,500,0,Grass Sale Feb-2023
+sale_2023_02_40,306,Retail,2023-02-15T12:00:00.000Z,Others,57,11.58,660,660,0,Grass Sale Feb-2023
+sale_2023_02_41,449,Judal Valjibhai Shavabhai (Vepari),2023-02-15T12:00:00.000Z,Others,1895,9.97,18900,18900,0,Grass Sale Feb-2023
+sale_2023_02_42,729,Loh Ghemarbhai Rupabhai,2023-02-15T12:00:00.000Z,Others,1055,11,11605,9300,2705,Grass Sale Feb-2023
+sale_2023_02_43,255,Loh Kantibhai Sadabhai,2023-02-15T12:00:00.000Z,Others,1275,10.98,14000,14000,0,Grass Sale Feb-2023
+sale_2023_02_44,14,Akoliya Meghrajbhai Parthibhai,2023-02-15T12:00:00.000Z,Others,1020,11,11220,400,11220,Grass Sale Feb-2023
+sale_2023_02_45,94,Foshi Prabhubhai Maganbhai (Vedancha),2023-02-15T12:00:00.000Z,Others,1080,11,11880,400,11880,Grass Sale Feb-2023
+sale_2023_02_46,306,Retail,2023-02-15T12:00:00.000Z,Others,143,10.77,1540,1540,0,Grass Sale Feb-2023
+sale_2023_02_47,848,Bhutadiya Kirtibhai Ramshugbhai,2023-02-15T12:00:00.000Z,Others,2805,9.23,25900,25900,0,Grass Sale Feb-2023
+sale_2023_02_48,849,Akoliya Jayntibhai Becharbhai,2023-02-15T12:00:00.000Z,Others,1110,10.99,12200,12200,0,Grass Sale Feb-2023
+sale_2023_02_49,306,Retail,2023-02-15T12:00:00.000Z,Others,45,11.11,500,500,0,Grass Sale Feb-2023
+sale_2023_02_50,739,Palani Sunilbhai Babubhai,2023-02-15T12:00:00.000Z,Others,1000,11,11000,0,11000,Grass Sale Feb-2023
+sale_2023_02_51,850,Mor Govindbhai Badarpura,2023-02-15T12:00:00.000Z,Others,1225,10.94,13400,13400,0,Grass Sale Feb-2023
+sale_2023_02_52,851,Thakor Kubhasan,2023-02-15T12:00:00.000Z,Others,545,11.01,6000,6000,0,Grass Sale Feb-2023
+sale_2023_02_53,306,Retail,2023-02-15T12:00:00.000Z,Others,805,11.38,9160,9160,0,Grass Sale Feb-2023
+sale_2023_02_54,852,Retal Vaghari,2023-02-15T12:00:00.000Z,Others,282,11.52,3250,3250,0,Grass Sale Feb-2023
+sale_2023_02_55,853,Palani Mangabhai Khemabhai,2023-02-15T12:00:00.000Z,Others,85,10.94,930,930,0,Grass Sale Feb-2023
+sale_2023_02_56,854,Palani Babubhai Ratabhai,2023-02-15T12:00:00.000Z,Others,300,11,3300,3300,0,Grass Sale Feb-2023
+sale_2023_02_57,404,Prajapati Maganbhai Kalubhai,2023-02-15T12:00:00.000Z,Others,81,10.49,850,0,850,Grass Sale Feb-2023
+sale_2023_02_58,306,Retail,2023-02-15T12:00:00.000Z,Others,3,11,33,33,0,Grass Sale Feb-2023
+sale_2023_02_59,12,Akoliya Galbabhai Devabhai,2023-02-15T12:00:00.000Z,Others,1370,10,13700,400,13700,Grass Sale Feb-2023
+sale_2023_02_60,15,Akoliya Nareshbhai Becharbhai,2023-02-15T12:00:00.000Z,Others,1020,11,11220,400,11220,Grass Sale Feb-2023
+sale_2023_02_61,306,Retail,2023-02-15T12:00:00.000Z,Others,840,10.95,9200,9200,0,Grass Sale Feb-2023
+sale_2023_02_62,855,Palani Keshabhai Laxmanbhai,2023-02-15T12:00:00.000Z,Others,222,10.81,2400,2400,0,Grass Sale Feb-2023
+sale_2023_02_63,334,Thakor Jagdishbhai Khegarbhai,2023-02-15T12:00:00.000Z,Others,1080,11,11880,0,11880,Grass Sale Feb-2023
+sale_2023_02_64,856,Desai Malabhai,2023-02-15T12:00:00.000Z,Others,18,11.11,200,150,50,Grass Sale Feb-2023
+sale_2023_02_65,306,Retail,2023-02-15T12:00:00.000Z,Others,20,11,220,220,0,Grass Sale Feb-2023
+sale_2023_02_66,409,Thakor Vishubhai Dheerajbhai,2023-02-15T12:00:00.000Z,Others,220,10.97,2413,0,2413,Grass Sale Feb-2023
+sale_2023_02_67,857,Thakor Jagmalji Nathaji,2023-02-15T12:00:00.000Z,Others,89,11.01,980,980,0,Grass Sale Feb-2023
+sale_2023_02_68,858,Palani Dalpatbhai Shantubhai,2023-02-15T12:00:00.000Z,Others,72,11.11,800,800,0,Grass Sale Feb-2023
+sale_2023_02_69,859,Thakor Bhavanji Vedancha,2023-02-15T12:00:00.000Z,Others,13,11.54,150,150,0,Grass Sale Feb-2023
+sale_2023_02_70,750,Vagada Laxmanbhai Parthibhai,2023-02-15T12:00:00.000Z,Others,640,10.25,6560,0,6560,Grass Sale Feb-2023
+sale_2023_02_71,401,Maharaj Rameshbhai Rupabhai,2023-02-15T12:00:00.000Z,Others,1120,10.98,12300,12300,0,Grass Sale Feb-2023
+sale_2023_02_72,306,Retail,2023-02-15T12:00:00.000Z,Others,157,10.83,1700,1700,0,Grass Sale Feb-2023
+sale_2023_02_73,860,Loh Rameshbhai Dohajibhai,2023-02-15T12:00:00.000Z,Others,2060,10.73,22100,22100,0,Grass Sale Feb-2023
+sale_2023_02_74,306,Retail,2023-02-15T12:00:00.000Z,Others,215,11.4,2450,2450,0,Grass Sale Feb-2023
+sale_2023_02_75,861,Ghori Yunishkhan,2023-02-15T12:00:00.000Z,Others,535,10.75,5750,5750,0,Grass Sale Feb-2023
+sale_2023_02_76,306,Retail,2023-02-15T12:00:00.000Z,Others,10,11,110,110,0,Grass Sale Feb-2023
+sale_2023_02_77,305,Ratada Lavjibhai Laxmanbhai,2023-02-15T12:00:00.000Z,Others,1905,10.6,20202,400,20202,Grass Sale Feb-2023
+sale_2023_02_78,862,Vaghela Kantibhai Valabhai,2023-02-15T12:00:00.000Z,Others,191,10.99,2100,2100,0,Grass Sale Feb-2023
+sale_2023_02_79,266,Loh Shantubhai Veerabhai,2023-02-15T12:00:00.000Z,Others,2600,9.5,24700,0,24700,Grass Sale Feb-2023
+sale_2023_02_80,727,Loh Babubahi Vedancha,2023-02-15T12:00:00.000Z,Others,630,9.75,6142,0,6142,Grass Sale Feb-2023
+sale_2023_02_81,735,Meriya Gulambhai Chadotar,2023-02-15T12:00:00.000Z,Others,3145,8.79,27640,27640,0,Grass Sale Feb-2023
+sale_2023_02_82,863,Kumutiya Rafikbhai Ishmailkhan,2023-02-15T12:00:00.000Z,Others,425,10,4250,3000,1250,Grass Sale Feb-2023
+sale_2023_02_83,45,Bhutadiya Dineshbhai Veerabhai,2023-02-15T12:00:00.000Z,Others,1440,10,14400,400,14400,Grass Sale Feb-2023
+sale_2023_02_84,219,Kakvadiya Sureshbhai Chandisar,2023-02-15T12:00:00.000Z,Others,1520,9.87,15000,15000,0,Grass Sale Feb-2023
+sale_2023_02_85,306,Retail,2023-02-15T12:00:00.000Z,Others,345,10,3450,3450,0,Grass Sale Feb-2023
+sale_2023_02_86,864,Ghadh Bhayubhai,2023-02-15T12:00:00.000Z,Others,1025,9.27,9500,9500,0,Grass Sale Feb-2023
+sale_2023_02_87,865,Thakor Kapurbhai Ganeshbhai,2023-02-15T12:00:00.000Z,Others,14,11.43,160,0,160,Grass Sale Feb-2023
+sale_2023_02_88,866,Loh Veerabhai Savabhai,2023-02-15T12:00:00.000Z,Others,1335,9.96,13300,13300,0,Grass Sale Feb-2023
+sale_2023_02_89,306,Retail,2023-02-15T12:00:00.000Z,Others,50,10,500,500,0,Grass Sale Feb-2023
+sale_2023_02_90,718,Hoda Jethabhai Judal,2023-02-15T12:00:00.000Z,Others,1840,10,18400,4500,14300,Grass Sale Feb-2023
+sale_2023_02_91,306,Retail,2023-02-15T12:00:00.000Z,Others,17,10,170,170,0,Grass Sale Feb-2023
+sale_2023_02_92,867,Thakor Kapoorji Ganeshji,2023-02-15T12:00:00.000Z,Others,60,8.33,500,500,0,Grass Sale Feb-2023
+sale_2023_02_93,410,Vaghela Ashokbhai Chelabhai,2023-02-15T12:00:00.000Z,Others,385,10,3850,0,3850,Grass Sale Feb-2023
+sale_2023_02_94,306,Retail,2023-02-15T12:00:00.000Z,Others,30,10,300,300,0,Grass Sale Feb-2023
+sale_2023_02_95,85,Dhudiya Dineshbhai Mafabhai,2023-02-15T12:00:00.000Z,Others,1270,9,11430,400,11430,Grass Sale Feb-2023
+sale_2023_02_96,868,Dhudiya Laljibhai Ramshugbhai,2023-02-15T12:00:00.000Z,Others,1320,10,13200,13200,0,Grass Sale Feb-2023
+sale_2023_02_97,104,Gori Abbaskhan Subelkhan,2023-02-15T12:00:00.000Z,Others,1500,9.77,14650,400,14650,Grass Sale Feb-2023
+sale_2023_02_98,21,Bera Bharatbhai Dhanrajbhai,2023-02-15T12:00:00.000Z,Others,1305,10,13050,400,13050,Grass Sale Feb-2023
+sale_2023_02_99,306,Retail,2023-02-15T12:00:00.000Z,Others,102,10,1020,1020,0,Grass Sale Feb-2023
+sale_2023_02_100,483,Mor Cheharbhai Abhubhai,2023-02-15T12:00:00.000Z,Others,1345,10,13450,500,13450,Grass Sale Feb-2023
+sale_2023_02_101,269,Menat Prakashbhai Madana,2023-02-15T12:00:00.000Z,Others,2005,10,20050,0,20050,Grass Sale Feb-2023
+sale_2023_02_102,869,Desai Malajibhai,2023-02-15T12:00:00.000Z,Others,14,10,140,100,40,Grass Sale Feb-2023
+sale_2023_02_103,726,Kharasan Remeshbhai Laxmanbhai,2023-02-15T12:00:00.000Z,Others,1225,10,12250,2650,10100,Grass Sale Feb-2023
+sale_2023_02_104,339,Thakor Kubhaji Huraji,2023-02-15T12:00:00.000Z,Others,1570,10,15700,9500,6600,Grass Sale Feb-2023
+sale_2023_02_105,306,Retail,2023-02-15T12:00:00.000Z,Others,30,10,300,300,0,Grass Sale Feb-2023
+sale_2023_02_106,702,Bera Jeevabhai Haribhai Aakesan,2023-02-15T12:00:00.000Z,Others,1220,9.5,11590,0,11590,Grass Sale Feb-2023
+sale_2023_02_107,333,Thakor Jagdishbhai Ishavrbhai,2023-02-15T12:00:00.000Z,Others,710,10,7100,0,7100,Grass Sale Feb-2023
+sale_2023_02_108,306,Retail,2023-02-15T12:00:00.000Z,Others,905,9.56,8650,8650,0,Grass Sale Feb-2023
+sale_2023_02_109,306,Retail,2023-02-15T12:00:00.000Z,Others,50,10,500,500,0,Grass Sale Feb-2023
+sale_2023_02_110,322,Thakor Bhagvanbhai Shantubhai,2023-02-15T12:00:00.000Z,Others,88,10,880,500,380,Grass Sale Feb-2023
+sale_2023_02_111,721,Judal Jayantibhai Nathabhai,2023-02-15T12:00:00.000Z,Others,1495,9,13455,3150,10705,Grass Sale Feb-2023
+sale_2023_02_112,364,Vaghela Praveenbhai Chelabhai,2023-02-15T12:00:00.000Z,Others,95,9.8,931,0,931,Grass Sale Feb-2023
+sale_2023_02_113,870,Valagot Jayantibhai Vedancha,2023-02-15T12:00:00.000Z,Others,1680,8.75,14700,14700,0,Grass Sale Feb-2023
+sale_2023_02_114,746,Thakor Mafatbhai Chaturbhai,2023-02-15T12:00:00.000Z,Others,22,9.55,210,210,0,Grass Sale Feb-2023
+sale_2023_02_115,576,Bera Dineshbhai Shavabhai,2023-02-15T12:00:00.000Z,Others,1490,8.86,13200,13200,0,Grass Sale Feb-2023
+sale_2023_02_116,29,Bera Laxmanbhai Meghabhai,2023-02-15T12:00:00.000Z,Others,1420,10,14200,400,14200,Grass Sale Feb-2023
+sale_2023_02_117,306,Retail,2023-02-15T12:00:00.000Z,Others,50,8,400,400,0,Grass Sale Feb-2023
+sale_2023_02_118,871,Akoliya Bheekhabhai Jethabhai,2023-02-15T12:00:00.000Z,Others,101,9.9,1000,0,1000,Grass Sale Feb-2023
+sale_2023_02_119,872,Judala Rajnibhai Mafatbhai,2023-02-15T12:00:00.000Z,Others,415,10,4150,0,4150,Grass Sale Feb-2023
+sale_2023_02_120,383,Dhudiya Bhikhabhai Mafabhai,2023-02-15T12:00:00.000Z,Others,1510,10,15100,400,15100,Grass Sale Feb-2023
+sale_2023_02_121,306,Retail,2023-02-15T12:00:00.000Z,Others,900,11.89,10700,10700,0,Grass Sale Feb-2023
+sale_2023_02_122,306,Retail,2023-02-15T12:00:00.000Z,Others,62,11.29,700,700,0,Grass Sale Feb-2023
+sale_2023_02_123,735,Meriya Gulambhai Chadotar,2023-02-15T12:00:00.000Z,Others,2310,8.59,19850,19850,0,Grass Sale Feb-2023
+sale_2023_02_124,744,Thakor Kantibhai Bajubhai,2023-02-15T12:00:00.000Z,Others,65,10.77,700,700,0,Grass Sale Feb-2023
+sale_2023_02_125,190,Judal Sadabhai Kalubhai,2023-02-15T12:00:00.000Z,Others,480,10,4800,0,4800,Grass Sale Feb-2023
+sale_2023_02_126,73,Dangi Galababhai Veershangbhai,2023-02-15T12:00:00.000Z,Others,1960,10,19600,400,19600,Grass Sale Feb-2023
+sale_2023_02_127,873,Judal Amarutbhai Veershangbhai,2023-02-15T12:00:00.000Z,Others,1055,11.94,12600,12600,0,Grass Sale Feb-2023
+sale_2023_02_128,60,Boka Kantibhai Dalubhai,2023-02-15T12:00:00.000Z,Others,1555,10,15550,400,15550,Grass Sale Feb-2023
+sale_2023_02_129,6,Akoliya Bhagvanbhai Kalubhai,2023-02-15T12:00:00.000Z,Others,1090,12,13080,400,13080,Grass Sale Feb-2023
+sale_2023_02_130,874,Gori Yashinkhan Muradkhan,2023-02-15T12:00:00.000Z,Others,1000,12,12000,400,12000,Grass Sale Feb-2023
+sale_2023_02_131,875,Gaami Kunalbhai Madana,2023-02-15T12:00:00.000Z,Others,1425,9.96,14200,14200,0,Grass Sale Feb-2023
+sale_2023_02_132,82,Desai Bhurabhai Samdhi,2023-02-15T12:00:00.000Z,Others,1030,12,12360,0,12360,Grass Sale Feb-2023
+sale_2023_02_133,198,Judal Valjibhai Virshangbhai,2023-02-15T12:00:00.000Z,Others,955,12,11460,0,11460,Grass Sale Feb-2023
+sale_2023_02_134,234,Kuva Devabhai Mavabhai,2023-02-15T12:00:00.000Z,Others,960,12,11520,0,11520,Grass Sale Feb-2023
+sale_2023_02_135,114,Gudol Babubhai Veerabhai,2023-02-15T12:00:00.000Z,Others,1520,10,15200,0,15200,Grass Sale Feb-2023
+sale_2023_02_136,260,Loh Nikhilbhai Manjibhai,2023-02-15T12:00:00.000Z,Others,1190,10,11900,6000,5900,Grass Sale Feb-2023
+sale_2023_02_137,865,Thakor Kapurbhai Ganeshbhai,2023-02-15T12:00:00.000Z,Others,32,8,256,0,256,Grass Sale Feb-2023
+sale_2023_02_138,501,Palani Ravjibhai Kanjibhai,2023-02-15T12:00:00.000Z,Others,96,10.42,1000,1000,0,Grass Sale Feb-2023
+sale_2023_02_139,876,Thakor Parkashbhai Devabhai,2023-02-15T12:00:00.000Z,Others,41,12.2,500,500,0,Grass Sale Feb-2023
+sale_2023_02_140,407,Thakor Jyntibhai Madhubhai,2023-02-15T12:00:00.000Z,Others,445,10,4450,0,4450,Grass Sale Feb-2023
+sale_2023_02_141,722,Judal Rashangbhai Paragbhai,2023-02-15T12:00:00.000Z,Others,1735,12,20820,10800,10020,Grass Sale Feb-2023
+sale_2023_02_142,877,Bera Ramsungbhai Parthibhai,2023-02-15T12:00:00.000Z,Others,1240,10,12400,0,12400,Grass Sale Feb-2023
+sale_2023_02_143,735,Meriya Gulambhai Chadotar,2023-02-15T12:00:00.000Z,Others,2275,8.5,19337,3500,15837,Grass Sale Feb-2023
+sale_2023_02_144,710,Desai Kesarbhai Nagjibhai Samdhi,2023-02-15T12:00:00.000Z,Others,980,12,11760,0,11760,Grass Sale Feb-2023
+sale_2023_02_145,33,Bera Rajsangbhai Dohjibhai,2023-02-15T12:00:00.000Z,Others,1300,10,13000,8000,5000,Grass Sale Feb-2023
+sale_2023_02_146,306,Retail,2023-02-15T12:00:00.000Z,Others,222,11.71,2600,2600,0,Grass Sale Feb-2023
+sale_2023_02_147,878,Desai Rameshbhai Nanjibhai Samdhi,2023-02-15T12:00:00.000Z,Others,1055,12,12660,0,12660,Grass Sale Feb-2023
+sale_2023_02_148,407,Thakor Jyntibhai Madhubhai,2023-02-15T12:00:00.000Z,Others,325,12,3900,0,3900,Grass Sale Feb-2023
+sale_2023_02_149,306,Retail,2023-02-15T12:00:00.000Z,Others,17,11.76,200,200,0,Grass Sale Feb-2023
+sale_2023_02_150,237,Kuva Rajubhai Ramshungbhai,2023-02-15T12:00:00.000Z,Others,1095,10.96,12000,0,12000,Grass Sale Feb-2023
+sale_2023_02_151,711,Desai Rameshbhai Nagjibhai Samdhi,2023-02-15T12:00:00.000Z,Others,1045,12,12540,0,12540,Grass Sale Feb-2023
+sale_2023_02_152,743,Thakor Dharjibhai Ranpur,2023-02-15T12:00:00.000Z,Others,1160,11,12760,0,12760,Grass Sale Feb-2023
+sale_2023_02_153,306,Retail,2023-02-15T12:00:00.000Z,Others,280,12.32,3450,3450,0,Grass Sale Feb-2023
+sale_2023_02_154,879,Thakor Momutji Shardarji,2023-02-15T12:00:00.000Z,Others,81,10,810,500,310,Grass Sale Feb-2023
+sale_2023_02_155,151,Judal Ghemarbhai Rashangbhai,2023-02-15T12:00:00.000Z,Others,925,11,10175,0,10175,Grass Sale Feb-2023
+sale_2023_02_156,306,Retail,2023-02-15T12:00:00.000Z,Others,390,11.92,4650,4650,0,Grass Sale Feb-2023
+sale_2023_02_157,306,Retail,2023-02-15T12:00:00.000Z,Others,66,10,660,660,0,Grass Sale Feb-2023
+sale_2023_02_158,658,Fof Rameshbhai Ujabhai,2023-02-15T12:00:00.000Z,Others,1335,10,13350,0,13350,Grass Sale Feb-2023
+sale_2023_02_159,880,Thakor Raganathji,2023-02-15T12:00:00.000Z,Others,515,8.5,4377,0,4377,Grass Sale Feb-2023
+sale_2023_02_160,881,Akoliya Narshihbhai Jethabhai,2023-02-15T12:00:00.000Z,Others,285,11.93,3400,3400,0,Grass Sale Feb-2023
+sale_2023_02_161,882,Thakor Vipul Khodla,2023-02-15T12:00:00.000Z,Others,490,8.47,4150,4150,0,Grass Sale Feb-2023
+sale_2023_02_162,306,Retail,2023-02-15T12:00:00.000Z,Others,397,10.96,4350,4350,0,Grass Sale Feb-2023
+sale_2023_02_163,306,Retail,2023-02-15T12:00:00.000Z,Others,10,13,130,130,0,Grass Sale Feb-2023
+sale_2023_02_164,883,Thakor Ransaji Regnaji,2023-02-15T12:00:00.000Z,Others,37,11.89,440,440,0,Grass Sale Feb-2023
+sale_2023_02_165,348,Thakor Rameshbhai Poojabhai,2023-02-15T12:00:00.000Z,Others,68,15.37,1045,0,1045,Grass Sale Feb-2023
+sale_2023_02_166,884,Palani Amthabhai Savabhai,2023-02-15T12:00:00.000Z,Others,1315,9.96,13100,13100,0,Grass Sale Feb-2023
+sale_2023_02_167,746,Thakor Mafatbhai Chaturbhai,2023-02-15T12:00:00.000Z,Others,19,11.05,210,170,40,Grass Sale Feb-2023
+sale_2023_02_168,306,Retail,2023-02-15T12:00:00.000Z,Others,133,12.03,1600,1600,0,Grass Sale Feb-2023
+sale_2023_02_169,884,Palani Amthabhai Savabhai,2023-02-15T12:00:00.000Z,Others,1510,9.93,15000,15000,0,Grass Sale Feb-2023
+sale_2023_02_170,105,Gori Bhikhabhai,2023-02-15T12:00:00.000Z,Others,200,100,20000,2000,18000,Grass Sale Feb-2023
+sale_2023_02_171,747,Thakor Mukeshbhai Kubhaji,2023-02-15T12:00:00.000Z,Others,375,12,4500,0,4500,Grass Sale Feb-2023
+sale_2023_02_172,306,Retail,2023-02-15T12:00:00.000Z,Others,890,8.48,7550,7550,0,Grass Sale Feb-2023
+sale_2023_02_173,306,Retail,2023-02-15T12:00:00.000Z,Others,90,10,900,900,0,Grass Sale Feb-2023
+sale_2023_02_174,112,Gudol Amaratbhai Parthibhai,2023-02-15T12:00:00.000Z,Others,1465,9.9,14500,14500,0,Grass Sale Feb-2023
+sale_2023_02_175,884,Palani Amthabhai Savabhai,2023-02-15T12:00:00.000Z,Others,1330,10,13300,13300,0,Grass Sale Feb-2023
+sale_2023_02_176,306,Retail,2023-02-15T12:00:00.000Z,Others,47,10.64,500,500,0,Grass Sale Feb-2023
+sale_2023_02_177,884,Palani Amthabhai Savabhai,2023-02-15T12:00:00.000Z,Others,1550,10,15500,15500,0,Grass Sale Feb-2023
+sale_2023_02_178,735,Meriya Gulambhai Chadotar,2023-02-15T12:00:00.000Z,Others,2040,9.2,18768,0,18768,Grass Sale Feb-2023
+sale_2023_02_179,306,Retail,2023-02-15T12:00:00.000Z,Others,20,10,200,200,0,Grass Sale Feb-2023
+sale_2023_02_180,885,Boka Jeevarambhai Parthibhai,2023-02-15T12:00:00.000Z,Others,1275,9.88,12600,12600,0,Grass Sale Feb-2023
+sale_2023_02_181,886,Darbar Bhayuji Ghadh-Takarvada,2023-02-15T12:00:00.000Z,Others,200,10,2000,1000,1000,Grass Sale Feb-2023
+sale_2023_02_182,306,Retail,2023-02-15T12:00:00.000Z,Others,110,10.73,1180,1180,0,Grass Sale Feb-2023
+sale_2023_02_183,306,Retail,2023-02-15T12:00:00.000Z,Others,170,12.06,2050,2050,0,Grass Sale Feb-2023
+sale_2023_03_1,751,Vaghela Kantibhai Valjibhai,2023-03-15T12:00:00.000Z,Others,136,12.21,1660,1060,600,Grass Sale Mar-2023
+sale_2023_03_2,294,Palani Naranbhai Shantubhai,2023-03-15T12:00:00.000Z,Others,71,8.49,603,500,103,Grass Sale Mar-2023
+sale_2023_03_3,293,Palani Maheshbhai Khemabhai,2023-03-15T12:00:00.000Z,Others,450,10.5,4725,0,4725,Grass Sale Mar-2023
+sale_2023_03_4,23,Bera Dineshbhai Savabhai,2023-03-15T12:00:00.000Z,Others,1380,10,13800,0,13800,Grass Sale Mar-2023
+sale_2023_03_5,733,Loh Rameshbhai Shantubhai,2023-03-15T12:00:00.000Z,Others,53,10,530,0,530,Grass Sale Mar-2023
+sale_2023_03_6,887,Gudol Jynatibhai Cheharabhai,2023-03-15T12:00:00.000Z,Others,1125,11.2,12600,12600,0,Grass Sale Mar-2023
+sale_2023_03_7,306,Retail,2023-03-15T12:00:00.000Z,Others,90,11.11,1000,1000,0,Grass Sale Mar-2023
+sale_2023_03_8,306,Retail,2023-03-15T12:00:00.000Z,Others,43,12.21,525,525,0,Grass Sale Mar-2023
+sale_2023_03_9,257,Loh Mafatbhai Nanjibhai,2023-03-15T12:00:00.000Z,Others,1260,10,12600,0,12600,Grass Sale Mar-2023
+sale_2023_03_10,150,Judal Ghemarbhai Dhudabhai,2023-03-15T12:00:00.000Z,Others,1320,10,13200,0,13200,Grass Sale Mar-2023
+sale_2023_03_11,658,Fof Rameshbhai Ujabhai,2023-03-15T12:00:00.000Z,Others,1515,10.33,15655,0,15655,Grass Sale Mar-2023
+sale_2023_03_12,888,Thakor Jynatibhai Madhubhai,2023-03-15T12:00:00.000Z,Others,93,10.04,934,0,934,Grass Sale Mar-2023
+sale_2023_03_13,889,Dangi Valjibhai Paratibhai,2023-03-15T12:00:00.000Z,Others,200,10,2000,0,2000,Grass Sale Mar-2023
+sale_2023_03_14,306,Retail,2023-03-15T12:00:00.000Z,Others,30,11,330,330,0,Grass Sale Mar-2023
+sale_2023_03_15,364,Vaghela Praveenbhai Chelabhai,2023-03-15T12:00:00.000Z,Others,1000,1,1000,0,1000,Grass Sale Mar-2023
+sale_2023_03_16,890,Bhutadiya Naraeshbhai Ramshungbhai,2023-03-15T12:00:00.000Z,Others,565,12,6780,0,6780,Grass Sale Mar-2023
+sale_2023_03_17,306,Retail,2023-03-15T12:00:00.000Z,Others,1455,10.45,15200,15200,0,Grass Sale Mar-2023
+sale_2023_03_18,306,Retail,2023-03-15T12:00:00.000Z,Others,280,10,2800,2800,0,Grass Sale Mar-2023
+sale_2023_03_19,306,Retail,2023-03-15T12:00:00.000Z,Others,173,10,1730,1730,0,Grass Sale Mar-2023
+sale_2023_03_20,891,Devjibhai Premjibhai Bhatol Ghadh,2023-03-15T12:00:00.000Z,Others,885,10.4,9200,9200,0,Grass Sale Mar-2023
+sale_2023_03_21,306,Retail,2023-03-15T12:00:00.000Z,Others,47,12.77,600,600,0,Grass Sale Mar-2023
+sale_2023_03_22,884,Palani Amthabhai Savabhai,2023-03-15T12:00:00.000Z,Others,1220,9.51,11600,11600,0,Grass Sale Mar-2023
+sale_2023_03_23,306,Retail,2023-03-15T12:00:00.000Z,Others,24,10,240,240,0,Grass Sale Mar-2023
+sale_2023_03_24,892,Judal Bhagavanbhai Jesungbhai,2023-03-15T12:00:00.000Z,Others,1320,10,13200,100,13100,Grass Sale Mar-2023
+sale_2023_03_25,893,Judal Galbabhai Ramsungbhai,2023-03-15T12:00:00.000Z,Others,995,10,9950,0,9950,Grass Sale Mar-2023
+sale_2023_03_26,306,Retail,2023-03-15T12:00:00.000Z,Others,8,12.5,100,100,0,Grass Sale Mar-2023
+sale_2023_03_27,894,Aakesan,2023-03-15T12:00:00.000Z,Others,990,9.85,9750,9750,0,Grass Sale Mar-2023
+sale_2023_03_28,895,Bhutadiya Kamaleshbhai Aakesan,2023-03-15T12:00:00.000Z,Others,1485,9.9,14700,14700,0,Grass Sale Mar-2023
+sale_2023_03_29,306,Retail,2023-03-15T12:00:00.000Z,Others,101,10,1010,1010,0,Grass Sale Mar-2023
+sale_2023_03_30,896,Bharatbhai Chaudhary,2023-03-15T12:00:00.000Z,Others,1445,9.97,14400,14400,0,Grass Sale Mar-2023
+sale_2023_03_31,739,Palani Sunilbhai Babubhai,2023-03-15T12:00:00.000Z,Others,635,9.92,6300,6300,0,Grass Sale Mar-2023
+sale_2023_03_32,306,Retail,2023-03-15T12:00:00.000Z,Others,49,10.61,520,520,0,Grass Sale Mar-2023
+sale_2023_03_33,290,Palani Magabhai Khodabhai,2023-03-15T12:00:00.000Z,Others,120,10.25,1230,0,1230,Grass Sale Mar-2023
+sale_2023_03_34,306,Retail,2023-03-15T12:00:00.000Z,Others,56,11.7,655,655,0,Grass Sale Mar-2023
+sale_2023_03_35,306,Retail,2023-03-15T12:00:00.000Z,Others,200,12.05,2410,2410,0,Grass Sale Mar-2023
+sale_2023_03_36,144,Judal Dineshbhai Muljibhai,2023-03-15T12:00:00.000Z,Others,1515,10,15150,0,15150,Grass Sale Mar-2023
+sale_2023_03_37,744,Thakor Kantibhai Bajubhai,2023-03-15T12:00:00.000Z,Others,59,12.03,710,600,110,Grass Sale Mar-2023
+sale_2023_03_38,130,Judal Ashokbhai Muljibhai,2023-03-15T12:00:00.000Z,Others,1430,10,14300,0,14300,Grass Sale Mar-2023
+sale_2023_03_39,306,Retail,2023-03-15T12:00:00.000Z,Others,1130,10.22,11550,11550,0,Grass Sale Mar-2023
+sale_2023_03_40,306,Retail,2023-03-15T12:00:00.000Z,Others,142,10.42,1480,1480,0,Grass Sale Mar-2023
+sale_2023_03_41,306,Retail,2023-03-15T12:00:00.000Z,Others,30,10,300,300,0,Grass Sale Mar-2023
+sale_2023_03_42,54,Bhutadiya Laljibhai Veerabhai,2023-03-15T12:00:00.000Z,Others,1490,10,14900,0,14900,Grass Sale Mar-2023
+sale_2023_03_43,897,Thakor Ashokbhai Bijalbhai,2023-03-15T12:00:00.000Z,Others,1375,10.5,14437,0,14437,Grass Sale Mar-2023
+sale_2023_03_44,117,Gudol Kesarbhai Valjibhai,2023-03-15T12:00:00.000Z,Others,1480,10,14800,100,14700,Grass Sale Mar-2023
+sale_2023_03_45,898,Thakor Vinshnubhai Dhirajbhai,2023-03-15T12:00:00.000Z,Others,174,10.57,1839,800,1039,Grass Sale Mar-2023
+sale_2023_03_46,899,Loh Rasubhai Umedbhai,2023-03-15T12:00:00.000Z,Others,40,10,400,0,400,Grass Sale Mar-2023
+sale_2023_03_47,306,Retail,2023-03-15T12:00:00.000Z,Others,60,11.67,700,700,0,Grass Sale Mar-2023
+sale_2023_03_48,900,Loh Mafatbhai Fatabhai,2023-03-15T12:00:00.000Z,Others,1440,9.44,13600,13600,0,Grass Sale Mar-2023
+sale_2023_03_49,306,Retail,2023-03-15T12:00:00.000Z,Others,109,10.55,1150,1150,0,Grass Sale Mar-2023
+sale_2023_03_50,901,Mujadiya Shantubhai,2023-03-15T12:00:00.000Z,Others,47,11.91,560,500,60,Grass Sale Mar-2023
+sale_2023_03_51,902,Thakor Jaxshibhai Hirabhai,2023-03-15T12:00:00.000Z,Others,238,10.5,2500,0,2500,Grass Sale Mar-2023
+sale_2023_03_52,903,Boka Jyntibhai Dalubhai,2023-03-15T12:00:00.000Z,Others,1510,10,15100,0,15100,Grass Sale Mar-2023
+sale_2023_03_53,904,Thakor Karchandbhai Laxmanbhai,2023-03-15T12:00:00.000Z,Others,83,12.05,1000,0,1000,Grass Sale Mar-2023
+sale_2023_03_54,905,Nai Chamkapbhai Nagarbhai,2023-03-15T12:00:00.000Z,Others,61,11.39,695,500,195,Grass Sale Mar-2023
+sale_2023_03_55,328,Thakor Bhupatbhai Veerchandbhai,2023-03-15T12:00:00.000Z,Others,1140,12,13680,0,13680,Grass Sale Mar-2023
+sale_2023_03_56,867,Thakor Kapoorji Ganeshji,2023-03-15T12:00:00.000Z,Others,50,7.6,380,380,0,Grass Sale Mar-2023
+sale_2023_03_57,906,Bera Shantubhai Aakeshan,2023-03-15T12:00:00.000Z,Others,1450,10.21,14800,14800,0,Grass Sale Mar-2023
+sale_2023_03_58,60,Boka Kantibhai Dalubhai,2023-03-15T12:00:00.000Z,Others,3080,10,30800,0,30800,Grass Sale Mar-2023
+sale_2023_03_59,658,Fof Rameshbhai Ujabhai,2023-03-15T12:00:00.000Z,Others,1820,10,18200,0,18200,Grass Sale Mar-2023
+sale_2023_03_60,884,Palani Amthabhai Savabhai,2023-03-15T12:00:00.000Z,Others,1355,9.45,12800,10700,2100,Grass Sale Mar-2023
+sale_2023_03_61,306,Retail,2023-03-15T12:00:00.000Z,Others,172,12.03,2070,2070,0,Grass Sale Mar-2023
+sale_2023_03_62,840,Meriya Gulambhai,2023-03-15T12:00:00.000Z,Others,1440,9.5,13680,13680,-1100,Grass Sale Mar-2023
+sale_2023_03_63,907,Bhayubhai Gadh,2023-03-15T12:00:00.000Z,Others,885,10,8850,8850,0,Grass Sale Mar-2023
+sale_2023_03_64,306,Retail,2023-03-15T12:00:00.000Z,Others,161,11.43,1840,1840,0,Grass Sale Mar-2023
+sale_2023_03_65,348,Thakor Rameshbhai Poojabhai,2023-03-15T12:00:00.000Z,Others,78,11.32,883,0,883,Grass Sale Mar-2023
+sale_2023_03_66,908,Thakor Mafabhai Chaturbhai,2023-03-15T12:00:00.000Z,Others,20,10.5,210,0,210,Grass Sale Mar-2023
+sale_2023_03_67,306,Retail,2023-03-15T12:00:00.000Z,Others,120,12.5,1500,1500,0,Grass Sale Mar-2023
+sale_2023_03_68,909,Dhudiya Sureshbhai Ramsungbhai,2023-03-15T12:00:00.000Z,Others,2105,9,18945,18500,445,Grass Sale Mar-2023
+sale_2023_03_69,21,Bera Bharatbhai Dhanrajbhai,2023-03-15T12:00:00.000Z,Others,1540,10,15400,0,15400,Grass Sale Mar-2023
+sale_2023_03_70,45,Bhutadiya Dineshbhai Veerabhai,2023-03-15T12:00:00.000Z,Others,1370,10,13700,0,13700,Grass Sale Mar-2023
+sale_2023_03_71,306,Retail,2023-03-15T12:00:00.000Z,Others,40,10.5,420,420,0,Grass Sale Mar-2023
+sale_2023_03_72,910,Bhayubhai Darbar Gadh,2023-03-15T12:00:00.000Z,Others,750,10,7500,0,7500,Grass Sale Mar-2023
+sale_2023_03_73,47,Bhutadiya Ganeshbhai Jethabhai,2023-03-15T12:00:00.000Z,Others,1275,10,12750,0,12750,Grass Sale Mar-2023
+sale_2023_03_74,229,Khasa Vajeerkhan,2023-03-15T12:00:00.000Z,Others,1025,12,12300,4300,8000,Grass Sale Mar-2023
+sale_2023_03_75,911,Bhagvanbhai Kakavadiya Chandisar,2023-03-15T12:00:00.000Z,Others,3040,10,30400,0,30400,Grass Sale Mar-2023
+sale_2023_03_76,763,Loh Kantibhai Nanjibhai,2023-03-15T12:00:00.000Z,Others,1395,9.68,13500,13500,0,Grass Sale Mar-2023
+sale_2023_03_77,198,Judal Valjibhai Virshangbhai,2023-03-15T12:00:00.000Z,Others,1270,10,12700,0,12700,Grass Sale Mar-2023
+sale_2023_03_78,733,Loh Rameshbhai Shantubhai,2023-03-15T12:00:00.000Z,Others,1285,9.75,12528,0,12528,Grass Sale Mar-2023
+sale_2023_03_79,306,Retail,2023-03-15T12:00:00.000Z,Others,45,15.56,700,700,0,Grass Sale Mar-2023
+sale_2023_03_80,912,Patel Maheshbhai Maganbhai,2023-03-15T12:00:00.000Z,Others,6345,9.09,57700,57700,0,Grass Sale Mar-2023
+sale_2023_03_81,913,Valagot Nathabhai Vedancha,2023-03-15T12:00:00.000Z,Others,775,9.81,7600,7600,0,Grass Sale Mar-2023
+sale_2023_03_82,914,Judal Shilesh Ghemarbhai,2023-03-15T12:00:00.000Z,Others,1360,10,13600,0,13600,Grass Sale Mar-2023
+sale_2023_03_83,793,Loh Ramjibhai Virshangbhai,2023-03-15T12:00:00.000Z,Others,1585,9.84,15600,15600,0,Grass Sale Mar-2023
+sale_2023_03_84,115,Gudol Dhanrajbhai Valjibhai,2023-03-15T12:00:00.000Z,Others,1430,10,14300,0,14300,Grass Sale Mar-2023
+sale_2023_03_85,504,Bera Laljibhai Sadabhai,2023-03-15T12:00:00.000Z,Others,2715,10,27150,0,27150,Grass Sale Mar-2023
+sale_2023_03_86,30,Bera Mafatbhai Parthibhai,2023-03-15T12:00:00.000Z,Others,1410,10,14100,0,14100,Grass Sale Mar-2023
+sale_2023_03_87,399,Loh Nareshbhai Laxmanbhai,2023-03-15T12:00:00.000Z,Others,1400,10,14000,0,14000,Grass Sale Mar-2023
+sale_2023_03_88,401,Maharaj Rameshbhai Rupabhai,2023-03-15T12:00:00.000Z,Others,1485,9.83,14600,14600,0,Grass Sale Mar-2023
+sale_2023_03_89,33,Bera Rajsangbhai Dohjibhai,2023-03-15T12:00:00.000Z,Others,1370,10,13700,0,13700,Grass Sale Mar-2023
+sale_2023_03_90,701,Bera Amaratbhai Karshanbhai,2023-03-15T12:00:00.000Z,Others,1535,10,15350,0,15350,Grass Sale Mar-2023
+sale_2023_03_91,306,Retail,2023-03-15T12:00:00.000Z,Others,110,12,1320,1320,0,Grass Sale Mar-2023
+sale_2023_03_92,165,Judal Kantibhai Ramshungbhai,2023-03-15T12:00:00.000Z,Others,1065,12,12780,0,12780,Grass Sale Mar-2023
+sale_2023_03_93,306,Retail,2023-03-15T12:00:00.000Z,Others,370,10,3700,3700,0,Grass Sale Mar-2023
+sale_2023_03_94,306,Retail,2023-03-15T12:00:00.000Z,Others,120,10.42,1250,1250,0,Grass Sale Mar-2023
+sale_2023_03_95,306,Retail,2023-03-15T12:00:00.000Z,Others,58,11.9,690,690,0,Grass Sale Mar-2023
+sale_2023_03_96,744,Thakor Kantibhai Bajubhai,2023-03-15T12:00:00.000Z,Others,59,12,708,0,708,Grass Sale Mar-2023
+sale_2023_03_97,915,Thakor Bhatiji Lilaji Samdhi,2023-03-15T12:00:00.000Z,Others,500,12,6000,0,6000,Grass Sale Mar-2023
+sale_2023_03_98,89,Fof Babubhai Ujabhai,2023-03-15T12:00:00.000Z,Others,500,9.5,4750,0,4750,Grass Sale Mar-2023
+sale_2023_03_99,306,Retail,2023-03-15T12:00:00.000Z,Others,170,11.94,2030,2030,0,Grass Sale Mar-2023
+sale_2023_03_100,916,Judal Amarutbhai Shantubhai,2023-03-15T12:00:00.000Z,Others,600,9.67,5800,5800,0,Grass Sale Mar-2023
+sale_2023_03_101,280,Mor Lavjibhai Abhubhai (Badarpura),2023-03-15T12:00:00.000Z,Others,1385,9.5,13157,0,13157,Grass Sale Mar-2023
+sale_2023_03_102,306,Retail,2023-03-15T12:00:00.000Z,Others,222,10.81,2400,0,2400,Grass Sale Mar-2023
+sale_2023_03_103,917,Gudol Pareshbhai Parthibhai,2023-03-15T12:00:00.000Z,Others,1345,9.5,12777,0,12777,Grass Sale Mar-2023
+sale_2023_03_104,165,Judal Kantibhai Ramshungbhai,2023-03-15T12:00:00.000Z,Others,980,12,11760,0,11760,Grass Sale Mar-2023
+sale_2023_03_105,418,Fof Laxmanbhai Ujabhai,2023-03-15T12:00:00.000Z,Others,1650,10,16500,0,16500,Grass Sale Mar-2023
+sale_2023_03_106,918,Dhudiya Vijaybhai Laxmanbhai,2023-03-15T12:00:00.000Z,Others,3705,8.74,32400,32400,0,Grass Sale Mar-2023
+sale_2023_03_107,502,Bhutadiya Bhikhabhai Ganeshbhai,2023-03-15T12:00:00.000Z,Others,4420,9.28,41000,41000,0,Grass Sale Mar-2023
+sale_2023_03_108,580,Bhutadiya Jeetabhai Ganeshbhai,2023-03-15T12:00:00.000Z,Others,4010,9.28,37200,37200,0,Grass Sale Mar-2023
+sale_2023_03_109,790,Judal Shileshbhai Becharbhai,2023-03-15T12:00:00.000Z,Others,1300,9.5,12350,0,12350,Grass Sale Mar-2023
+sale_2023_03_110,306,Retail,2023-03-15T12:00:00.000Z,Others,530,8.49,4500,4500,0,Grass Sale Mar-2023
+sale_2023_03_111,306,Retail,2023-03-15T12:00:00.000Z,Others,45,9.33,420,420,0,Grass Sale Mar-2023
+sale_2023_03_112,919,Patel Kirtibhai Kubhasan,2023-03-15T12:00:00.000Z,Others,3165,9.23,29200,29200,0,Grass Sale Mar-2023
+sale_2023_03_113,350,Thakor Rangnathji Khodla,2023-03-15T12:00:00.000Z,Others,395,9.75,3852,0,3852,Grass Sale Mar-2023
+sale_2023_03_114,743,Thakor Dharjibhai Ranpur,2023-03-15T12:00:00.000Z,Others,1045,9.5,9927,0,9927,Grass Sale Mar-2023
+sale_2023_03_115,306,Retail,2023-03-15T12:00:00.000Z,Others,12,10,120,120,0,Grass Sale Mar-2023
+sale_2023_03_116,44,Bhutadiya Devabhai Pujabhai,2023-03-15T12:00:00.000Z,Others,1390,9.5,13205,6100,7105,Grass Sale Mar-2023
+sale_2023_03_117,364,Vaghela Praveenbhai Chelabhai,2023-03-15T12:00:00.000Z,Others,143,10.14,1450,0,1450,Grass Sale Mar-2023
+sale_2023_03_118,306,Retail,2023-03-15T12:00:00.000Z,Others,341,12.02,4100,4100,0,Grass Sale Mar-2023
+sale_2023_03_119,139,Judal Daljibhai Virshangbhai,2023-03-15T12:00:00.000Z,Others,4390,8.75,38400,38400,0,Grass Sale Mar-2023
+sale_2023_03_120,219,Kakvadiya Sureshbhai Chandisar,2023-03-15T12:00:00.000Z,Others,1430,9.5,13585,0,13585,Grass Sale Mar-2023
+sale_2023_03_121,304,Ratada Haribhai Laxmanbhai Badharpura,2023-03-15T12:00:00.000Z,Others,1355,9.5,12872,0,12872,Grass Sale Mar-2023
+sale_2023_03_122,306,Retail,2023-03-15T12:00:00.000Z,Others,110,10.64,1170,1170,0,Grass Sale Mar-2023
+sale_2023_03_123,711,Desai Rameshbhai Nagjibhai Samdhi,2023-03-15T12:00:00.000Z,Others,1150,12,13800,0,13800,Grass Sale Mar-2023
+sale_2023_03_124,75,Dangi Megharajbhai Veerabhai,2023-03-15T12:00:00.000Z,Others,1470,9.5,13965,0,13965,Grass Sale Mar-2023
+sale_2023_03_125,920,Desai Kesarbhai Nagjibhai,2023-03-15T12:00:00.000Z,Others,1035,12,12420,0,12420,Grass Sale Mar-2023
+sale_2023_03_126,921,Valagot Shantubhai Virshangbhai,2023-03-15T12:00:00.000Z,Others,965,11.92,11500,11500,0,Grass Sale Mar-2023
+sale_2023_03_127,306,Retail,2023-03-15T12:00:00.000Z,Others,221,12.04,2660,2660,0,Grass Sale Mar-2023
+sale_2023_03_128,751,Vaghela Kantibhai Valjibhai,2023-03-15T12:00:00.000Z,Others,115,12.04,1385,700,685,Grass Sale Mar-2023
+sale_2023_03_129,455,Loh Manjibhai Laxmanbhai,2023-03-15T12:00:00.000Z,Others,1255,9.5,11922,0,11922,Grass Sale Mar-2023
+sale_2023_03_130,922,Jarmol Neetaben Gadh,2023-03-15T12:00:00.000Z,Others,415,12,4980,0,4980,Grass Sale Mar-2023
+sale_2023_03_131,306,Retail,2023-03-15T12:00:00.000Z,Others,69,9.57,660,660,0,Grass Sale Mar-2023
+sale_2023_03_132,923,Thakor Jantibhai Madhubhai,2023-03-15T12:00:00.000Z,Others,90,12,1080,0,1080,Grass Sale Mar-2023
+sale_2023_03_133,306,Retail,2023-03-15T12:00:00.000Z,Others,173,9.54,1650,1650,0,Grass Sale Mar-2023
+sale_2023_03_134,306,Retail,2023-03-15T12:00:00.000Z,Others,41,9.76,400,400,0,Grass Sale Mar-2023
+sale_2023_03_135,157,Judal Jyantibhai Nathabhai,2023-03-15T12:00:00.000Z,Others,1370,9.5,13015,0,13015,Grass Sale Mar-2023
+sale_2023_03_136,94,Foshi Prabhubhai Maganbhai (Vedancha),2023-03-15T12:00:00.000Z,Others,1350,9.5,12825,0,12825,Grass Sale Mar-2023
+sale_2023_03_137,924,Jarmol Sureshbhai Cheharbhai,2023-03-15T12:00:00.000Z,Others,1335,9.5,12682,0,12682,Grass Sale Mar-2023
+sale_2023_03_138,744,Thakor Kantibhai Bajubhai,2023-03-15T12:00:00.000Z,Others,71,9.52,676,676,0,Grass Sale Mar-2023
+sale_2023_03_139,306,Retail,2023-03-15T12:00:00.000Z,Others,21,12.38,260,260,0,Grass Sale Mar-2023
+sale_2023_03_140,306,Retail,2023-03-15T12:00:00.000Z,Others,167,10,1670,1670,0,Grass Sale Mar-2023
+sale_2023_03_141,227,Kharsan Rameshbhai Laxmanbhai,2023-03-15T12:00:00.000Z,Others,1285,9.5,12207,0,12207,Grass Sale Mar-2023
+sale_2023_03_142,74,Dangi Galbabhai Veerabhai,2023-03-15T12:00:00.000Z,Others,1350,9.5,12825,0,12825,Grass Sale Mar-2023
+sale_2023_03_143,269,Menat Prakashbhai Madana,2023-03-15T12:00:00.000Z,Others,1330,9.5,12635,400,12235,Grass Sale Mar-2023
+sale_2023_03_144,306,Retail,2023-03-15T12:00:00.000Z,Others,366,12.02,4400,4400,0,Grass Sale Mar-2023
+sale_2023_03_145,925,Thakor Ganeshbhai Bhaychandbhai,2023-03-15T12:00:00.000Z,Others,120,9.5,1140,1140,0,Grass Sale Mar-2023
+sale_2023_03_146,317,Thakor Amratbhai Manabhai,2023-03-15T12:00:00.000Z,Others,109,10.72,1168,0,1168,Grass Sale Mar-2023
+sale_2023_03_147,926,Vajeerkhan Badarpura,2023-03-15T12:00:00.000Z,Others,985,12,11820,0,11820,Grass Sale Mar-2023
+sale_2023_03_148,927,Bhutadiya Motibhai,2023-03-15T12:00:00.000Z,Others,590,10,5900,4400,1500,Grass Sale Mar-2023
+sale_2023_03_149,306,Retail,2023-03-15T12:00:00.000Z,Others,169,12.01,2030,2030,0,Grass Sale Mar-2023
+sale_2023_03_150,112,Gudol Amaratbhai Parthibhai,2023-03-15T12:00:00.000Z,Others,1240,9.5,11780,100,11680,Grass Sale Mar-2023
+sale_2023_03_151,306,Retail,2023-03-15T12:00:00.000Z,Others,451,9.51,4290,4290,0,Grass Sale Mar-2023
+sale_2023_03_152,277,Mor Kantibhai Vedancha,2023-03-15T12:00:00.000Z,Others,600,9.5,5700,0,5700,Grass Sale Mar-2023
+sale_2023_03_153,306,Retail,2023-03-15T12:00:00.000Z,Others,41,12.2,500,500,0,Grass Sale Mar-2023
+sale_2023_03_154,378,Bera Rajabhai Rupabhai,2023-03-15T12:00:00.000Z,Others,8200,9.21,75500,75500,0,Grass Sale Mar-2023
+sale_2023_03_155,242,Loh Babubhai Bhagvanbhai,2023-03-15T12:00:00.000Z,Others,5100,9.2,46900,46900,0,Grass Sale Mar-2023
+sale_2023_03_156,14,Akoliya Meghrajbhai Parthibhai,2023-03-15T12:00:00.000Z,Others,3475,9.09,31600,31600,0,Grass Sale Mar-2023
+sale_2023_03_157,928,Loh Devabhai Ganeshbhai,2023-03-15T12:00:00.000Z,Others,3300,9.09,30000,30000,0,Grass Sale Mar-2023
+sale_2023_03_158,231,Kubhasan Shokatbhai,2023-03-15T12:00:00.000Z,Others,360,9.5,3420,0,3420,Grass Sale Mar-2023
+sale_2023_03_159,929,Loh Laxmanbhai Dalubhai,2023-03-15T12:00:00.000Z,Others,1395,9.32,13000,13000,0,Grass Sale Mar-2023
+sale_2023_03_160,930,Naveriya Jagdishbhai Vedancha,2023-03-15T12:00:00.000Z,Others,1275,9.49,12100,12100,0,Grass Sale Mar-2023
+sale_2023_03_161,716,Gudol Babubhai Manjibhai,2023-03-15T12:00:00.000Z,Others,2885,9.4,27119,15000,12119,Grass Sale Mar-2023
+sale_2023_03_162,733,Loh Rameshbhai Shantubhai,2023-03-15T12:00:00.000Z,Others,1745,9.1,15879,10000,5879,Grass Sale Mar-2023
+sale_2023_03_163,306,Retail,2023-03-15T12:00:00.000Z,Others,98,12.04,1180,1180,0,Grass Sale Mar-2023
+sale_2023_03_164,306,Retail,2023-03-15T12:00:00.000Z,Others,13,11.54,150,150,0,Grass Sale Mar-2023
+sale_2023_03_165,306,Retail,2023-03-15T12:00:00.000Z,Others,40,9.5,380,380,0,Grass Sale Mar-2023
+sale_2023_03_166,931,Bera Deepakbhai Jampura,2023-03-15T12:00:00.000Z,Others,3155,9.19,29000,29000,0,Grass Sale Mar-2023
+sale_2023_03_167,20,Bera Ashokbhai Laxmanbhai,2023-03-15T12:00:00.000Z,Others,5085,9.18,46700,46700,0,Grass Sale Mar-2023
+sale_2023_03_168,306,Retail,2023-03-15T12:00:00.000Z,Others,720,9.69,6980,6980,0,Grass Sale Mar-2023
+sale_2023_03_169,306,Retail,2023-03-15T12:00:00.000Z,Others,55,9.09,500,500,0,Grass Sale Mar-2023
+sale_2023_03_170,82,Desai Bhurabhai Samdhi,2023-03-15T12:00:00.000Z,Others,1045,10.91,11400,0,11400,Grass Sale Mar-2023
+sale_2023_03_171,732,Loh Rameshbhai Parthibhai,2023-03-15T12:00:00.000Z,Others,1375,9.5,13062,9100,3962,Grass Sale Mar-2023
+sale_2023_03_172,306,Retail,2023-03-15T12:00:00.000Z,Others,45,9.56,430,430,0,Grass Sale Mar-2023
+sale_2023_03_173,728,Loh Galbabhai Dalubhai,2023-03-15T12:00:00.000Z,Others,1150,9.5,10925,0,10925,Grass Sale Mar-2023
+sale_2023_03_174,306,Retail,2023-03-15T12:00:00.000Z,Others,15,10,150,150,0,Grass Sale Mar-2023
+sale_2023_03_175,106,Gori Irshad,2023-03-15T12:00:00.000Z,Others,1175,9.5,11162,2000,9162,Grass Sale Mar-2023

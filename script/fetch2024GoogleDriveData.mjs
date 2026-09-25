@@ -136,9 +136,16 @@ async function apiWithRetry(fn, retries = 5, backoff = 1000) {
       await sleep(350); // slight throttle
       return await fn();
     } catch (err) {
-      if (err.message && err.message.includes('Quota exceeded') && attempt < retries) {
-        const waitTime = backoff * Math.pow(2, attempt - 1) + Math.random() * 500;
-        console.warn(`    ⚠️ Quota hit. Retrying in ${(waitTime / 1000).toFixed(1)}s (attempt ${attempt}/${retries})...`);
+      if (
+        err.message &&
+        err.message.includes('Quota exceeded') &&
+        attempt < retries
+      ) {
+        const waitTime =
+          backoff * Math.pow(2, attempt - 1) + Math.random() * 500;
+        console.warn(
+          `    ⚠️ Quota hit. Retrying in ${(waitTime / 1000).toFixed(1)}s (attempt ${attempt}/${retries})...`,
+        );
         await sleep(waitTime);
       } else {
         throw err;
@@ -148,7 +155,9 @@ async function apiWithRetry(fn, retries = 5, backoff = 1000) {
 }
 
 async function fetchSpreadsheetMetadataAndValues(spreadsheetId) {
-  const meta = await apiWithRetry(() => sheets.spreadsheets.get({ spreadsheetId }));
+  const meta = await apiWithRetry(() =>
+    sheets.spreadsheets.get({ spreadsheetId }),
+  );
   const sheetTitles = (meta.data.sheets || []).map((s) => s.properties.title);
   const result = { titles: sheetTitles, data: {} };
 
@@ -170,7 +179,9 @@ async function fetchSpreadsheetMetadataAndValues(spreadsheetId) {
 }
 
 async function main() {
-  console.log('📥 Fetching 2024 Google Sheets & Credit Lists from Google Drive...\n');
+  console.log(
+    '📥 Fetching 2024 Google Sheets & Credit Lists from Google Drive...\n',
+  );
   const dump = existsSync(OUT_FILE)
     ? JSON.parse(readFileSync(OUT_FILE, 'utf8'))
     : {
@@ -181,7 +192,11 @@ async function main() {
 
   // 1. Monthly Sheets
   for (const m of MONTHLY_SPREADSHEETS_2024) {
-    if (dump.monthlySheets && dump.monthlySheets[m.key] && Object.keys(dump.monthlySheets[m.key].data || {}).length >= 4) {
+    if (
+      dump.monthlySheets &&
+      dump.monthlySheets[m.key] &&
+      Object.keys(dump.monthlySheets[m.key].data || {}).length >= 4
+    ) {
       console.log(`⏩ Monthly Sheet ${m.name} (${m.key}) already cached.`);
       continue;
     }
@@ -198,7 +213,11 @@ async function main() {
 
   // 2. Credit Lists
   for (const cl of CREDIT_LISTS_2024) {
-    if (dump.creditLists && dump.creditLists[cl.name] && Object.keys(dump.creditLists[cl.name].data || {}).length >= 1) {
+    if (
+      dump.creditLists &&
+      dump.creditLists[cl.name] &&
+      Object.keys(dump.creditLists[cl.name].data || {}).length >= 1
+    ) {
       console.log(`⏩ Credit List ${cl.name} already cached.`);
       continue;
     }

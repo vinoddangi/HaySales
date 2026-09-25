@@ -1,0 +1,182 @@
+PaymentID,CustomerID,CustomerName,Date,AmountPaid,Notes
+pmt_2023_season_1,700,Aayubbhai Kubhasan,2023-02-28T12:00:00.000Z,5000.5,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_2,12,Akoliya Galbabhai Devabhai,2023-02-28T12:00:00.000Z,0.5,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_3,15,Akoliya Nareshbhai Becharbhai,2023-02-28T12:00:00.000Z,8972.5,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_4,21,Bera Bharatbhai Dhanrajbhai,2023-02-28T12:00:00.000Z,8950.5,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_5,23,Bera Dineshbhai Savabhai,2023-02-28T12:00:00.000Z,9680,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_03_c1_6,504,Bera Laljibhai Sadabhai,2023-03-31T18:30:00.000Z,15000,Payment Credit1 recorded in Credit List
+pmt_2023_season_7,29,Bera Laxmanbhai Meghabhai,2023-02-28T12:00:00.000Z,22470,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_8,30,Bera Mafatbhai Parthibhai,2023-02-28T12:00:00.000Z,17052.5,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_9,378,Bera Rajabhai Rupabhai,2023-02-28T12:00:00.000Z,10000.5,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_10,33,Bera Rajsangbhai Dohjibhai,2023-02-28T12:00:00.000Z,6400,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_03_c1_11,703,Bera Ramasungbhai Parthibhai,2023-03-31T18:30:00.000Z,8000,Payment Credit1 recorded in Credit List
+pmt_2023_season_12,35,Bera Rameshbhai Meghabhai,2023-02-28T12:00:00.000Z,15000,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_03_c1_13,45,Bhutadiya Dineshbhai Veerabhai,2023-03-31T18:30:00.000Z,20000,Payment Credit1 recorded in Credit List
+pmt_2023_season_14,45,Bhutadiya Dineshbhai Veerabhai,2023-02-28T12:00:00.000Z,24582.5,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_15,47,Bhutadiya Ganeshbhai Jethabhai,2023-02-28T12:00:00.000Z,11400.5,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_16,705,Bhutadiya Ganeshbhai Rupabhai,2023-02-28T12:00:00.000Z,10000,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_17,57,Boka Dhanrajbhai Bhemjibhai,2023-02-28T12:00:00.000Z,20000.5,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_18,60,Boka Kantibhai Dalubhai,2023-02-28T12:00:00.000Z,13544,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_03_c1_19,79,Darbar Bhayuji Gadh,2023-03-31T18:30:00.000Z,15100,Payment Credit1 recorded in Credit List
+pmt_2023_03_kasar_20,79,Darbar Bhayuji Gadh,2023-03-31T18:30:00.000Z,36,Settlement Kasar discount waiver
+pmt_2023_season_21,82,Desai Bhurabhai Samdhi,2023-02-28T12:00:00.000Z,15645,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_03_c1_22,710,Desai Kesarbhai Nagjibhai Samdhi,2023-03-31T18:30:00.000Z,11700,Payment Credit1 recorded in Credit List
+pmt_2023_03_kasar_23,710,Desai Kesarbhai Nagjibhai Samdhi,2023-03-31T18:30:00.000Z,60,Settlement Kasar discount waiver
+pmt_2023_03_c1_24,711,Desai Rameshbhai Nagjibhai Samdhi,2023-03-31T18:30:00.000Z,25000,Payment Credit1 recorded in Credit List
+pmt_2023_03_kasar_25,711,Desai Rameshbhai Nagjibhai Samdhi,2023-03-31T18:30:00.000Z,200,Settlement Kasar discount waiver
+pmt_2023_season_26,712,Dhudiya Laljibhai Ramsugbhai,2023-02-28T12:00:00.000Z,0.5,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_27,418,Fof Laxmanbhai Ujabhai,2023-02-28T12:00:00.000Z,31367,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_28,105,Gori Bhikhabhai,2023-02-28T12:00:00.000Z,14220,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_03_c1_29,714,Gori Rahishkhan Gulabkhan,2023-03-31T18:30:00.000Z,2200,Payment Credit1 recorded in Credit List
+pmt_2023_03_c1_30,112,Gudol Amaratbhai Parthibhai,2023-03-31T18:30:00.000Z,11600,Payment Credit1 recorded in Credit List
+pmt_2023_03_kasar_31,112,Gudol Amaratbhai Parthibhai,2023-03-31T18:30:00.000Z,80,Settlement Kasar discount waiver
+pmt_2023_season_32,114,Gudol Babubhai Veerabhai,2023-02-28T12:00:00.000Z,36000,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_33,117,Gudol Kesarbhai Valjibhai,2023-02-28T12:00:00.000Z,10042.5,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_34,718,Hoda Jethabhai Judal,2023-02-28T12:00:00.000Z,12000,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_35,536,Jarmol Neetaben K Gadh,2023-02-28T12:00:00.000Z,12670,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_36,719,Judal Amrutbhai Daljibhai,2023-02-28T12:00:00.000Z,9100,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_03_c1_37,137,Judal Bhagvanbhai Jeshungbhai,2023-03-31T18:30:00.000Z,13000,Payment Credit1 recorded in Credit List
+pmt_2023_03_kasar_38,137,Judal Bhagvanbhai Jeshungbhai,2023-03-31T18:30:00.000Z,200,Settlement Kasar discount waiver
+pmt_2023_season_39,720,Judal Bhemjibhai Gadh,2023-02-28T12:00:00.000Z,9999.75,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_40,147,Judal Dineshbhai Ujabhai,2023-02-28T12:00:00.000Z,8000,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_41,164,Judal Kantibhai Nanjibhai,2023-02-28T12:00:00.000Z,28100.5,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_42,171,Judal Kirtibhai Nathabhai,2023-02-28T12:00:00.000Z,17450,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_43,172,Judal Laljibhai Shomabhai,2023-02-28T12:00:00.000Z,14975,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_44,175,Judal Maheshbhai Sadabhai,2023-02-28T12:00:00.000Z,15000,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_45,722,Judal Rashangbhai Paragbhai,2023-02-28T12:00:00.000Z,5000,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_46,190,Judal Sadabhai Kalubhai,2023-02-28T12:00:00.000Z,3840.1000000000004,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_03_c1_47,723,Judal Shileshbhai Becharbhai Hoda,2023-03-31T18:30:00.000Z,1700,Payment Credit1 recorded in Credit List
+pmt_2023_season_48,198,Judal Valjibhai Virshangbhai,2023-02-28T12:00:00.000Z,20122,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_49,232,Kumatiya Rafikbhai Ismilbhai,2023-02-28T12:00:00.000Z,1750.5,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_50,729,Loh Ghemarbhai Rupabhai,2023-02-28T12:00:00.000Z,7850,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_51,260,Loh Nikhilbhai Manjibhai,2023-02-28T12:00:00.000Z,10070,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_52,733,Loh Rameshbhai Shantubhai,2023-02-28T12:00:00.000Z,8500,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_53,266,Loh Shantubhai Veerabhai,2023-02-28T12:00:00.000Z,25530,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_54,269,Menat Prakashbhai Madana,2023-02-28T12:00:00.000Z,20050,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_55,735,Meriya Gulambhai Chadotar,2023-02-28T12:00:00.000Z,26336.5,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_56,287,Palani Bhikhabhai Gamabhai,2023-02-28T12:00:00.000Z,18000,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_03_c1_57,293,Palani Maheshbhai Khemabhai,2023-03-31T18:30:00.000Z,4000,Payment Credit1 recorded in Credit List
+pmt_2023_season_58,293,Palani Maheshbhai Khemabhai,2023-02-28T12:00:00.000Z,2000,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_59,739,Palani Sunilbhai Babubhai,2023-02-28T12:00:00.000Z,6000,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_60,404,Prajapati Maganbhai Kalubhai,2023-02-28T12:00:00.000Z,500.42999999999984,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_03_c1_61,304,Ratada Haribhai Laxmanbhai Badharpura,2023-03-31T18:30:00.000Z,10000,Payment Credit1 recorded in Credit List
+pmt_2023_season_62,304,Ratada Haribhai Laxmanbhai Badharpura,2023-02-28T12:00:00.000Z,9607,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_63,305,Ratada Lavjibhai Laxmanbhai,2023-02-28T12:00:00.000Z,16000,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_64,328,Thakor Bhupatbhai Veerchandbhai,2023-02-28T12:00:00.000Z,5000,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_65,743,Thakor Dharjibhai Ranpur,2023-02-28T12:00:00.000Z,29510,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_03_c1_66,334,Thakor Jagdishbhai Khegarbhai,2023-03-31T18:30:00.000Z,4000,Payment Credit1 recorded in Credit List
+pmt_2023_season_67,334,Thakor Jagdishbhai Khegarbhai,2023-02-28T12:00:00.000Z,4000,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_68,407,Thakor Jyntibhai Madhubhai,2023-02-28T12:00:00.000Z,5256,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_69,744,Thakor Kantibhai Bajubhai,2023-02-28T12:00:00.000Z,1026.7,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_70,747,Thakor Mukeshbhai Kubhaji,2023-02-28T12:00:00.000Z,6500,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_71,348,Thakor Rameshbhai Poojabhai,2023-02-28T12:00:00.000Z,162,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_72,748,Thakor Reganaji,2023-02-28T12:00:00.000Z,2448,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_73,749,Thakor Samjibhai Jagmalbhai,2023-02-28T12:00:00.000Z,0.7000000000000455,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_74,409,Thakor Vishubhai Dheerajbhai,2023-02-28T12:00:00.000Z,335,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_03_c1_75,751,Vaghela Kantibhai Valjibhai,2023-03-31T18:30:00.000Z,600,Payment Credit1 recorded in Credit List
+pmt_2023_season_76,751,Vaghela Kantibhai Valjibhai,2023-02-28T12:00:00.000Z,600,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_03_c1_77,364,Vaghela Praveenbhai Chelabhai,2023-03-31T18:30:00.000Z,930,Payment Credit1 recorded in Credit List
+pmt_2023_season_78,364,Vaghela Praveenbhai Chelabhai,2023-02-28T12:00:00.000Z,1931,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_79,94,Foshi Prabhubhai Maganbhai (Vedancha),2023-02-28T12:00:00.000Z,29005,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_season_80,757,Thakor Savajibhai Hamirbhai,2023-02-28T12:00:00.000Z,10708,In-season settlement payment clearing earlier monthly invoices
+pmt_2023_settled_81,306,Retail,2023-03-31T12:00:00.000Z,2400,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_82,759,Kaag Babubhai Dalsangbhai,2023-03-31T12:00:00.000Z,20200,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_83,760,Loh Santubhai Chadotar,2023-03-31T12:00:00.000Z,18025,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_84,20,Bera Ashokbhai Laxmanbhai,2023-03-31T12:00:00.000Z,12227.5,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_85,762,Upalana Sureshbhai Chandisar,2023-03-31T12:00:00.000Z,16500,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_86,763,Loh Kantibhai Nanjibhai,2023-03-31T12:00:00.000Z,300,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_87,764,Kag kirtibhai Pujabhai,2023-03-31T12:00:00.000Z,19425,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_88,766,Ayubbhai Kubhasan,2023-03-31T12:00:00.000Z,130,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_89,227,Kharsan Rameshbhai Laxmanbhai,2023-03-31T12:00:00.000Z,31507,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_90,767,Gudol Babubhai Veerabahi,2023-03-31T12:00:00.000Z,19403.5,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_91,390,Judal Shileshbhai Daljibhai,2023-03-31T12:00:00.000Z,11300,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_92,214,Kakavadiya Bhagvanbhai,2023-03-31T12:00:00.000Z,39217.5,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_93,772,Thakor Vrishnubhai Dhirajbhai,2023-03-31T12:00:00.000Z,1050,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_94,775,Shabbirbhai Condotor,2023-03-31T12:00:00.000Z,8415,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_95,502,Bhutadiya Bhikhabhai Ganeshbhai,2023-03-31T12:00:00.000Z,12200,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_96,778,Judal Kesarbhai Rajshangbhai,2023-03-31T12:00:00.000Z,9065,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_97,323,Thakor Bharatbhai Vedancha,2023-03-31T12:00:00.000Z,7125,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_98,780,Valagot Santubhai Virshangbhai,2023-03-31T12:00:00.000Z,6375,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_99,781,Bera Ramshugbhai Parathibhai,2023-03-31T12:00:00.000Z,8312.5,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_100,298,Prajapati Jethabhai Kalubhai,2023-03-31T12:00:00.000Z,62.5,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_101,379,Bhutadiya Dilipbhai Muljibhai,2023-03-31T12:00:00.000Z,20790,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_102,157,Judal Jyantibhai Nathabhai,2023-03-31T12:00:00.000Z,20265,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_103,788,Kharasan Rameshbhai Laxmanbhai,2023-03-31T12:00:00.000Z,12850,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_104,144,Judal Dineshbhai Muljibhai,2023-03-31T12:00:00.000Z,35730,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_105,790,Judal Shileshbhai Becharbhai,2023-03-31T12:00:00.000Z,19050,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_106,371,Valagot Ghemarbhai Manjibhai,2023-03-31T12:00:00.000Z,16226.25,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_107,798,Thakor Ashokji Bijalji,2023-03-31T12:00:00.000Z,6460,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_108,806,Thakor Bharatbhai Bajuji,2023-03-31T12:00:00.000Z,840,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_109,110,Gudol Alpeshbhai Laxmanbhai,2023-03-31T12:00:00.000Z,12390,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_110,410,Vaghela Ashokbhai Chelabhai,2023-03-31T12:00:00.000Z,8840,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_111,811,Judal Galbabhai Ramsugbhai,2023-03-31T12:00:00.000Z,15050,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_112,813,Thakor Dharjibhai Chandisar,2023-03-31T12:00:00.000Z,5750,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_113,428,Thakor Bajuji Galbaji,2023-03-31T12:00:00.000Z,14600,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_114,107,Gori Ishrad,2023-03-31T12:00:00.000Z,10607,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_115,257,Loh Mafatbhai Nanjibhai,2023-03-31T12:00:00.000Z,12600,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_116,817,Valagot Narshihbhai Chadotar,2023-03-31T12:00:00.000Z,12395,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_117,822,Palani Bharatbhai Mevabhai,2023-03-31T12:00:00.000Z,12967,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_118,823,Ghuri Bhikhabhai,2023-03-31T12:00:00.000Z,3780,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_119,824,Gol Karsanbhai Ghemarbhai,2023-03-31T12:00:00.000Z,14910,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_120,825,Patel Maheshbhai Maganbhai Kubhasan,2023-03-31T12:00:00.000Z,12285,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_121,826,Thakor Visnubhai Dhirajbhai,2023-03-31T12:00:00.000Z,1226,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_122,829,Bera Jeevabhai Haribhai,2023-03-31T12:00:00.000Z,3822,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_123,830,Thakor Jaynibhai Madhubhai,2023-03-31T12:00:00.000Z,3150,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_124,833,Palani Hiteshbhai Senabhai,2023-03-31T12:00:00.000Z,5800,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_125,151,Judal Ghemarbhai Rashangbhai,2023-03-31T12:00:00.000Z,23855,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_126,836,Thakor Bhavanji Samdhi,2023-03-31T12:00:00.000Z,3675,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_127,838,Thakor Ashokbhai Jagamalbhai,2023-03-31T12:00:00.000Z,6200,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_128,839,Thakor Shankabhai Khemabhai,2023-03-31T12:00:00.000Z,3330,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_129,210,Kag Nathubhai Laxmanbhai,2023-03-31T12:00:00.000Z,7770,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_130,840,Meriya Gulambhai,2023-03-31T12:00:00.000Z,17962,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_131,841,Bhutadiya Deepakbhai Muljibhai,2023-03-31T12:00:00.000Z,18200,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_132,163,Judal Kantibhai Dalajibhai,2023-03-31T12:00:00.000Z,15675,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_133,856,Desai Malabhai,2023-03-31T12:00:00.000Z,50,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_134,863,Kumutiya Rafikbhai Ishmailkhan,2023-03-31T12:00:00.000Z,1250,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_135,219,Kakvadiya Sureshbhai Chandisar,2023-03-31T12:00:00.000Z,13585,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_136,865,Thakor Kapurbhai Ganeshbhai,2023-03-31T12:00:00.000Z,416,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_137,869,Desai Malajibhai,2023-03-31T12:00:00.000Z,40,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_138,871,Akoliya Bheekhabhai Jethabhai,2023-03-31T12:00:00.000Z,1000,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_139,872,Judala Rajnibhai Mafatbhai,2023-03-31T12:00:00.000Z,4150,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_140,874,Gori Yashinkhan Muradkhan,2023-03-31T12:00:00.000Z,12000,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_141,234,Kuva Devabhai Mavabhai,2023-03-31T12:00:00.000Z,11520,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_142,877,Bera Ramsungbhai Parthibhai,2023-03-31T12:00:00.000Z,12400,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_143,878,Desai Rameshbhai Nanjibhai Samdhi,2023-03-31T12:00:00.000Z,12660,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_144,237,Kuva Rajubhai Ramshungbhai,2023-03-31T12:00:00.000Z,12000,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_145,879,Thakor Momutji Shardarji,2023-03-31T12:00:00.000Z,310,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_146,880,Thakor Raganathji,2023-03-31T12:00:00.000Z,4377,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_147,884,Palani Amthabhai Savabhai,2023-03-31T12:00:00.000Z,2100,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_148,886,Darbar Bhayuji Ghadh-Takarvada,2023-03-31T12:00:00.000Z,1000,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_149,888,Thakor Jynatibhai Madhubhai,2023-03-31T12:00:00.000Z,934,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_150,889,Dangi Valjibhai Paratibhai,2023-03-31T12:00:00.000Z,2000,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_151,890,Bhutadiya Naraeshbhai Ramshungbhai,2023-03-31T12:00:00.000Z,6780,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_152,892,Judal Bhagavanbhai Jesungbhai,2023-03-31T12:00:00.000Z,13100,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_153,893,Judal Galbabhai Ramsungbhai,2023-03-31T12:00:00.000Z,9950,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_154,130,Judal Ashokbhai Muljibhai,2023-03-31T12:00:00.000Z,14300,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_155,897,Thakor Ashokbhai Bijalbhai,2023-03-31T12:00:00.000Z,14437,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_156,898,Thakor Vinshnubhai Dhirajbhai,2023-03-31T12:00:00.000Z,1039,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_157,899,Loh Rasubhai Umedbhai,2023-03-31T12:00:00.000Z,400,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_158,901,Mujadiya Shantubhai,2023-03-31T12:00:00.000Z,60,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_159,902,Thakor Jaxshibhai Hirabhai,2023-03-31T12:00:00.000Z,2500,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_160,903,Boka Jyntibhai Dalubhai,2023-03-31T12:00:00.000Z,15100,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_161,904,Thakor Karchandbhai Laxmanbhai,2023-03-31T12:00:00.000Z,1000,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_162,905,Nai Chamkapbhai Nagarbhai,2023-03-31T12:00:00.000Z,195,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_163,908,Thakor Mafabhai Chaturbhai,2023-03-31T12:00:00.000Z,210,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_164,909,Dhudiya Sureshbhai Ramsungbhai,2023-03-31T12:00:00.000Z,445,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_165,910,Bhayubhai Darbar Gadh,2023-03-31T12:00:00.000Z,7500,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_166,229,Khasa Vajeerkhan,2023-03-31T12:00:00.000Z,8000,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_167,911,Bhagvanbhai Kakavadiya Chandisar,2023-03-31T12:00:00.000Z,30400,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_168,914,Judal Shilesh Ghemarbhai,2023-03-31T12:00:00.000Z,13600,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_169,115,Gudol Dhanrajbhai Valjibhai,2023-03-31T12:00:00.000Z,14300,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_170,915,Thakor Bhatiji Lilaji Samdhi,2023-03-31T12:00:00.000Z,6000,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_171,280,Mor Lavjibhai Abhubhai (Badarpura),2023-03-31T12:00:00.000Z,13157,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_172,917,Gudol Pareshbhai Parthibhai,2023-03-31T12:00:00.000Z,12777,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_173,350,Thakor Rangnathji Khodla,2023-03-31T12:00:00.000Z,3852,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_174,920,Desai Kesarbhai Nagjibhai,2023-03-31T12:00:00.000Z,12420,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_175,455,Loh Manjibhai Laxmanbhai,2023-03-31T12:00:00.000Z,11922,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_176,922,Jarmol Neetaben Gadh,2023-03-31T12:00:00.000Z,4980,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_177,923,Thakor Jantibhai Madhubhai,2023-03-31T12:00:00.000Z,1080,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_178,924,Jarmol Sureshbhai Cheharbhai,2023-03-31T12:00:00.000Z,12682,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_179,74,Dangi Galbabhai Veerabhai,2023-03-31T12:00:00.000Z,12825,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_180,926,Vajeerkhan Badarpura,2023-03-31T12:00:00.000Z,11820,In-season full settlement payment clearing invoice before year-end
+pmt_2023_settled_181,927,Bhutadiya Motibhai,2023-03-31T12:00:00.000Z,1500,In-season full settlement payment clearing invoice before year-end

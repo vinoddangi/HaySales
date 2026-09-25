@@ -9,9 +9,8 @@ import {
   writeBatch,
 } from '../services/dbBridge';
 import { db } from '../store/firebaseConfig';
-import { Transaction } from '../types';
+import { CustomerCategoryType, Transaction, TransactionModel } from '../types';
 import { parseTransactionDate } from '../utils/formatters';
-import { parseTransaction } from '../utils/parsers';
 
 /**
  * Fetch all transactions across all customers and root purchases for complete data views
@@ -48,7 +47,7 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
         '';
 
       transactions.push(
-        parseTransaction(data, docSnap.id, customerId, customerName),
+        TransactionModel.fromRaw(data, docSnap.id, customerId, customerName),
       );
       customerTxCount++;
     });
@@ -71,7 +70,7 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
           const customerName =
             customerMap.get(custId) || data.customerName || '';
           transactions.push(
-            parseTransaction(data, docSnap.id, custId, customerName),
+            TransactionModel.fromRaw(data, docSnap.id, custId, customerName),
           );
         });
       }
@@ -87,7 +86,7 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
   try {
     const purchasesSnap = await getDocs(collection(db, 'purchases'));
     purchasesSnap.forEach((docSnap) => {
-      transactions.push(parseTransaction(docSnap.data(), docSnap.id));
+      transactions.push(TransactionModel.fromRaw(docSnap.data(), docSnap.id));
     });
   } catch (pErr) {
     console.warn('Error fetching purchases in transactions API:', pErr);
@@ -99,7 +98,10 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
     expensesSnap.forEach((docSnap) => {
       if (!transactions.some((t) => t.id === docSnap.id)) {
         transactions.push(
-          parseTransaction({ ...docSnap.data(), type: 'EXPENSE' }, docSnap.id),
+          TransactionModel.fromRaw(
+            { ...docSnap.data(), type: 'EXPENSE' },
+            docSnap.id,
+          ),
         );
       }
     });
@@ -113,7 +115,10 @@ export async function fetchAllTransactionsApi(): Promise<Transaction[]> {
     servicesSnap.forEach((docSnap) => {
       if (!transactions.some((t) => t.id === docSnap.id)) {
         transactions.push(
-          parseTransaction({ ...docSnap.data(), type: 'SERVICE' }, docSnap.id),
+          TransactionModel.fromRaw(
+            { ...docSnap.data(), type: 'SERVICE' },
+            docSnap.id,
+          ),
         );
       }
     });
@@ -145,7 +150,9 @@ export async function fetchCustomerTransactionsApi(
   const transactions: Transaction[] = [];
 
   querySnapshot.forEach((docSnap) => {
-    transactions.push(parseTransaction(docSnap.data(), docSnap.id, customerId));
+    transactions.push(
+      TransactionModel.fromRaw(docSnap.data(), docSnap.id, customerId),
+    );
   });
 
   transactions.sort((a, b) => {
@@ -159,18 +166,10 @@ export async function fetchCustomerTransactionsApi(
     : transactions;
 }
 
-export interface AddCustomerTransactionParams {
+export type AddCustomerTransactionParams = Partial<Transaction> & {
   customerId: string;
   type: 'SALE' | 'SERVICE' | 'PAYMENT';
-  item?: string;
-  weightKg?: number;
-  amount?: number;
-  discount?: number;
-  cashPaid?: number;
-  paymentAmount?: number;
-  date?: Date | string;
-  note?: string;
-}
+};
 
 /**
  * Add a customer transaction with atomic customer balance update
@@ -191,7 +190,7 @@ export async function addCustomerTransactionApi(
   let balanceChange = 0;
   const txData: any = {
     type: data.type,
-    date: data.date ? new Date(data.date) : new Date(),
+    date: data.date ? new Date(data.date as any) : new Date(),
   };
 
   if (data.note) {
@@ -202,10 +201,13 @@ export async function addCustomerTransactionApi(
     const finalPrice = Math.max(0, (data.amount || 0) - (data.discount || 0));
     balanceChange = Math.max(0, finalPrice - (data.cashPaid || 0));
 
-    txData.item = data.item;
+    const cat: CustomerCategoryType = (data.category ||
+      'Others') as CustomerCategoryType;
+    txData.category = cat;
     if (data.type === 'SALE') {
       txData.weightKg = data.weightKg;
     }
+
     txData.amount = data.amount;
     txData.discount = data.discount;
     txData.cashPaid = data.cashPaid;
@@ -216,6 +218,25 @@ export async function addCustomerTransactionApi(
     balanceChange = -(cashPaid + discount);
     txData.paymentAmount = cashPaid;
     txData.discount = discount;
+
+    // Automatically record an EXPENSE transaction of category 'Discount' in DB
+    if (discount > 0) {
+      const discountExpenseRef = doc(collection(db, 'purchases'));
+      const customerName = data.customerName || '';
+      batch.set(discountExpenseRef, {
+        type: 'EXPENSE',
+        category: 'Discount',
+        amount: discount,
+        cashPaid: 0,
+        remainingDue: 0,
+        date: txData.date,
+        customerId: data.customerId,
+        customerName: customerName || undefined,
+        note: customerName
+          ? `Settlement discount for ${customerName}`
+          : 'Customer settlement discount',
+      });
+    }
   }
 
   batch.set(newTxRef, txData);
@@ -241,7 +262,7 @@ export async function updateCustomerTransactionApi(
 ): Promise<void> {
   const txRef = doc(db, 'customers', customerId, 'transactions', transactionId);
   const updateData: any = {};
-  if (data.item !== undefined) updateData.item = data.item;
+  if (data.category !== undefined) updateData.category = data.category;
   if (data.weightKg !== undefined)
     updateData.weightKg = Number(data.weightKg) || 0;
   if (data.amount !== undefined) updateData.amount = Number(data.amount) || 0;
@@ -273,7 +294,7 @@ export async function updateCustomerTransactionApi(
   );
   let balance = 0;
   txSnap.forEach((d) => {
-    const t = parseTransaction(d.data(), d.id);
+    const t = TransactionModel.fromRaw(d.data(), d.id, customerId);
     if (t.type === 'PAYMENT') {
       balance -= Number(t.paymentAmount) || 0;
     } else {
@@ -307,7 +328,7 @@ export async function deleteCustomerTransactionApi(
   );
   let balance = 0;
   txSnap.forEach((d) => {
-    const t = parseTransaction(d.data(), d.id);
+    const t = TransactionModel.fromRaw(d.data(), d.id, customerId);
     if (t.type === 'PAYMENT') {
       balance -= Number(t.paymentAmount) || 0;
     } else {

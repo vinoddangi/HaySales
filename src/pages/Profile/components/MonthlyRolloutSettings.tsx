@@ -273,9 +273,9 @@ export const MonthlyRolloutSettings: React.FC = () => {
                               </span>
                             </div>
                             <div>
-                              Daalu Income:{' '}
+                              Pickup Income:{' '}
                               <span className="font-semibold text-m3-on-surface">
-                                {formatRupee(summary.daalu?.cm || 0)}
+                                {formatRupee(summary.pickup?.cm || 0)}
                               </span>
                             </div>
                             <div>
@@ -294,35 +294,135 @@ export const MonthlyRolloutSettings: React.FC = () => {
                         </div>
 
                         {/* Balance Sheet Balances */}
-                        <div className="space-y-1">
-                          <p className="text-[11px] font-bold uppercase tracking-wider text-m3-primary">
-                            Balance Sheet
-                          </p>
-                          <div className="grid grid-cols-2 gap-1.5 text-[11px] text-m3-on-surface-variant">
-                            <div>
-                              Customer Lending:{' '}
-                              <span className="font-semibold text-m3-on-surface">
-                                {formatRupee(summary.lendingToCustomers || 0)}
+                        <div className="space-y-1.5">
+                          <div className="flex items-center justify-between">
+                            <p className="text-[11px] font-bold uppercase tracking-wider text-m3-primary">
+                              Balance Sheet &amp; Financial Position
+                            </p>
+                            {summary.balanceSheet && (
+                              <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
+                                Balanced (A = L + E)
                               </span>
-                            </div>
+                            )}
+                          </div>
+
+                          <div className="space-y-2 rounded border border-m3-outline/20 bg-m3-surface p-2">
+                            {/* Assets */}
                             <div>
-                              Cash in Hand:{' '}
-                              <span className="font-semibold text-emerald-600 dark:text-emerald-400">
-                                {formatRupee(summary.cashBalance || 0)}
+                              <span className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
+                                Assets (
+                                {formatRupee(
+                                  summary.balanceSheet?.assets?.totalAssets ||
+                                    summary.totalCapital ||
+                                    0,
+                                )}
+                                )
                               </span>
+                              <div className="mt-0.5 grid grid-cols-2 gap-1 text-[11px] text-m3-on-surface-variant">
+                                <div>
+                                  Cash:{' '}
+                                  <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+                                    {formatRupee(summary.cashBalance || 0)}
+                                  </span>
+                                </div>
+                                <div>
+                                  Receivables:{' '}
+                                  <span className="font-semibold text-m3-on-surface">
+                                    {formatRupee(
+                                      summary.lendingToCustomers || 0,
+                                    )}
+                                  </span>
+                                </div>
+                                <div>
+                                  Closing Stock:{' '}
+                                  <span className="font-semibold text-m3-on-surface">
+                                    {formatRupee(
+                                      summary.closingStock?.amount || 0,
+                                    )}
+                                  </span>
+                                </div>
+                                <div>
+                                  Fixed Assets:{' '}
+                                  <span className="font-semibold text-m3-on-surface">
+                                    {formatRupee(
+                                      summary.balanceSheet?.assets
+                                        ?.totalFixedAssetsValue || 0,
+                                    )}
+                                  </span>
+                                </div>
+                              </div>
                             </div>
-                            <div>
-                              Cumulative Profit:{' '}
-                              <span className="font-bold text-m3-primary">
-                                {formatRupee(summary.netProfit?.total || 0)}
+
+                            {/* Liabilities & Equity */}
+                            <div className="border-t border-m3-outline/10 pt-1.5">
+                              <span className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
+                                Liabilities &amp; Equity (
+                                {formatRupee(
+                                  summary.balanceSheet?.liabilitiesAndEquity
+                                    ?.totalCapitalAndEquity ||
+                                    summary.totalCapital ||
+                                    0,
+                                )}
+                                )
                               </span>
+                              <div className="mt-0.5 grid grid-cols-2 gap-1 text-[11px] text-m3-on-surface-variant">
+                                <div>
+                                  Partner Capital:{' '}
+                                  <span className="font-semibold text-m3-on-surface">
+                                    {formatRupee(
+                                      summary.balanceSheet?.liabilitiesAndEquity
+                                        ?.partnerCapital ||
+                                        (summary.totalCapital || 0) -
+                                          (summary.netProfit?.total || 0),
+                                    )}
+                                  </span>
+                                </div>
+                                <div>
+                                  Retained Profit:{' '}
+                                  <span className="font-semibold text-m3-primary">
+                                    {formatRupee(summary.netProfit?.total || 0)}
+                                  </span>
+                                </div>
+                                <div>
+                                  Payables:{' '}
+                                  <span className="font-semibold text-rose-600 dark:text-rose-400">
+                                    {formatRupee(
+                                      summary.balanceSheet?.liabilitiesAndEquity
+                                        ?.vendorPayables || 0,
+                                    )}
+                                  </span>
+                                </div>
+                                <div>
+                                  Total Equity:{' '}
+                                  <span className="font-bold text-m3-on-surface">
+                                    {formatRupee(summary.totalCapital || 0)}
+                                  </span>
+                                </div>
+                              </div>
                             </div>
-                            <div>
-                              Total Capital:{' '}
-                              <span className="font-bold text-m3-on-surface">
-                                {formatRupee(summary.totalCapital || 0)}
-                              </span>
-                            </div>
+
+                            {/* Fixed Assets Itemized (if present) */}
+                            {summary.fixedAssets &&
+                              summary.fixedAssets.length > 0 && (
+                                <div className="border-t border-m3-outline/10 pt-1.5">
+                                  <span className="text-[10px] font-bold uppercase text-m3-on-surface-variant">
+                                    Fixed Assets Book Values
+                                  </span>
+                                  <div className="mt-0.5 flex flex-wrap gap-2 text-[10px]">
+                                    {summary.fixedAssets.map((asset) => (
+                                      <span
+                                        key={asset.id}
+                                        className="rounded bg-m3-surface-container-high px-1.5 py-0.5 text-m3-on-surface"
+                                      >
+                                        {asset.name}:{' '}
+                                        <span className="font-semibold">
+                                          {formatRupee(asset.currentBookValue)}
+                                        </span>
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
                           </div>
                         </div>
                       </div>

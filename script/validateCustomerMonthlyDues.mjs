@@ -72,9 +72,15 @@ export function validateMonthlyDues() {
     '🔍 Validating Customer Monthly Dues across 2024, 2025, and 2026...\n',
   );
 
-  const custRows = parseCsv(readFileSync(join(BACKUP_DIR, 'customers.csv'), 'utf8'));
-  const salesRows = parseCsv(readFileSync(join(BACKUP_DIR, 'sales.csv'), 'utf8'));
-  const paymentsRows = parseCsv(readFileSync(join(BACKUP_DIR, 'payments.csv'), 'utf8'));
+  const custRows = parseCsv(
+    readFileSync(join(BACKUP_DIR, 'customers.csv'), 'utf8'),
+  );
+  const salesRows = parseCsv(
+    readFileSync(join(BACKUP_DIR, 'sales.csv'), 'utf8'),
+  );
+  const paymentsRows = parseCsv(
+    readFileSync(join(BACKUP_DIR, 'payments.csv'), 'utf8'),
+  );
   const servicesRows = existsSync(join(BACKUP_DIR, 'services.csv'))
     ? parseCsv(readFileSync(join(BACKUP_DIR, 'services.csv'), 'utf8'))
     : [];
@@ -185,17 +191,45 @@ export function validateMonthlyDues() {
 
   const allPeriods = [
     // 2024
-    '2024-04', '2024-05', '2024-06', '2024-07', '2024-08', '2024-09', '2024-10', '2024-11', '2024-12',
+    '2024-04',
+    '2024-05',
+    '2024-06',
+    '2024-07',
+    '2024-08',
+    '2024-09',
+    '2024-10',
+    '2024-11',
+    '2024-12',
     // 2025
-    '2025-01', '2025-02', '2025-03', '2025-04', '2025-05', '2025-06', '2025-07', '2025-08', '2025-09', '2025-10', '2025-11', '2025-12',
+    '2025-01',
+    '2025-02',
+    '2025-03',
+    '2025-04',
+    '2025-05',
+    '2025-06',
+    '2025-07',
+    '2025-08',
+    '2025-09',
+    '2025-10',
+    '2025-11',
+    '2025-12',
     // 2026
-    '2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06', '2026-07', '2026-08',
+    '2026-01',
+    '2026-02',
+    '2026-03',
+    '2026-04',
+    '2026-05',
+    '2026-06',
+    '2026-07',
+    '2026-08',
   ];
 
   console.log(
     '══════════════════════════════════════════════════════════════════════════════════════',
   );
-  console.log('📅 29-Month Complete Multi-Year System Due Reconciliation (2024 - 2026)');
+  console.log(
+    '📅 29-Month Complete Multi-Year System Due Reconciliation (2024 - 2026)',
+  );
   console.log(
     '══════════════════════════════════════════════════════════════════════════════════════',
   );
@@ -216,7 +250,11 @@ export function validateMonthlyDues() {
     let monthPayments = 0;
 
     for (const [id, c] of customerMonthlyLedger) {
-      const m = c.monthly[period] || { salesDebt: 0, serviceDebt: 0, payments: 0 };
+      const m = c.monthly[period] || {
+        salesDebt: 0,
+        serviceDebt: 0,
+        payments: 0,
+      };
       monthSalesDebt += m.salesDebt;
       monthServiceDebt += m.serviceDebt;
       monthPayments += m.payments;

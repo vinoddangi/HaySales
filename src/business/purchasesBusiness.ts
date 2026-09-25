@@ -9,7 +9,32 @@ export const VALID_EXPENSE_CATEGORIES: ExpenseCategoryType[] = [
   'Food / Drink',
   'Tools',
   'Discount',
+  'Profit Distribution',
   'Others',
+];
+
+export const DEFAULT_FIXED_ASSETS = [
+  {
+    id: 'asset_tractor',
+    name: 'Pickup / Tractor Machinery',
+    category: 'Machinery' as const,
+    purchaseCost: 960000,
+    currentBookValue: 960000,
+  },
+  {
+    id: 'asset_fence',
+    name: 'Boundary Fence',
+    category: 'Infrastructure' as const,
+    purchaseCost: 64800,
+    currentBookValue: 64800,
+  },
+  {
+    id: 'asset_talpatri',
+    name: 'Talpatri (Covers)',
+    category: 'Equipment' as const,
+    purchaseCost: 60000,
+    currentBookValue: 60000,
+  },
 ];
 
 /**
@@ -32,21 +57,22 @@ export function validatePurchaseInput(data: {
   type: 'PURCHASE' | 'EXPENSE';
   amount?: number;
   weightKg?: number;
-  item?: string;
-  expenseCategory?: string;
+  category?: string;
 }): { isValid: boolean; error?: string } {
   if (!data.amount || data.amount <= 0) {
     return { isValid: false, error: 'Amount must be greater than 0' };
   }
 
+  const cat = (data.category || '').trim();
+
   if (data.type === 'PURCHASE') {
-    if (!data.item || data.item.trim() === '') {
-      return { isValid: false, error: 'Crop / Item name is required' };
+    if (!cat) {
+      return { isValid: false, error: 'Crop / Category name is required' };
     }
   }
 
   if (data.type === 'EXPENSE') {
-    if (!data.expenseCategory || data.expenseCategory.trim() === '') {
+    if (!cat) {
       return { isValid: false, error: 'Expense category is required' };
     }
   }

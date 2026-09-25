@@ -21,8 +21,10 @@ import {
   getStoreData,
   PendingChange,
   publishPendingChangesToCloud,
+  seedLocalDatabaseFromSnapshot,
   syncLocalDatabaseFromCloud,
 } from '../../../services/indexedDBService';
+
 import { useAppDispatch } from '../../../store/hooks';
 import { showSnackbar } from '../../../store/slices/uiSlice';
 import { Customer, Transaction } from '../../../types';
@@ -201,6 +203,32 @@ export const LocalDatabaseSettings: React.FC = () => {
       );
     } finally {
       setSyncingCloud(false);
+    }
+  };
+
+  // 4. Reload Clean Snapshot (2026 data) into Local IndexedDB
+  const handleReloadSnapshot = async () => {
+    try {
+      setLoading(true);
+      const res = await seedLocalDatabaseFromSnapshot();
+      await loadStats();
+      dispatch(
+        showSnackbar({
+          message: `✅ Local DB loaded with clean 2026 data: ${res.transactionsCount} txs, ${res.customersCount} customers.`,
+        }),
+      );
+      if (dbMode === 'local') {
+        setTimeout(() => window.location.reload(), 400);
+      }
+    } catch (err) {
+      console.error('Failed to reload snapshot into local DB:', err);
+      dispatch(
+        showSnackbar({
+          message: `❌ Failed to load snapshot: ${(err as Error).message}`,
+        }),
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -476,7 +504,7 @@ export const LocalDatabaseSettings: React.FC = () => {
             </span>
           </Flex>
 
-          <div className="grid grid-cols-3 gap-2 pt-1">
+          <div className="grid grid-cols-2 gap-2 pt-1 sm:grid-cols-4">
             {/* 1. Sync from Live Cloud DB */}
             <Button
               variant="tonal"
@@ -489,7 +517,21 @@ export const LocalDatabaseSettings: React.FC = () => {
               {syncingPull ? 'Syncing...' : 'Sync'}
             </Button>
 
-            {/* 2. Publish to Cloud Firestore */}
+            {/* 2. Load Clean Snapshot (2026 Data) */}
+            <Button
+              variant="tonal"
+              size="sm"
+              icon={
+                <Database className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
+              }
+              onClick={handleReloadSnapshot}
+              disabled={loading || syncingCloud || syncingPull}
+              className="justify-center px-2 text-xs font-medium"
+            >
+              {loading ? 'Loading...' : 'Load 2026'}
+            </Button>
+
+            {/* 3. Publish to Cloud Firestore */}
             <Button
               variant="filled"
               size="sm"
@@ -505,7 +547,7 @@ export const LocalDatabaseSettings: React.FC = () => {
                   : 'Publish'}
             </Button>
 
-            {/* 3. Clear Local DB */}
+            {/* 4. Clear Local DB */}
             <Button
               variant="outlined"
               size="sm"

@@ -1,0 +1,192 @@
+[
+  {
+    "month": "Nov-2022",
+    "purchases": {
+      "main": {
+        "kg": 108680,
+        "rate": 8.65,
+        "amount": 940199
+      },
+      "tab": {
+        "kg": 108680,
+        "amount": 940199,
+        "txCount": 13
+      },
+      "kgDiff": 0,
+      "amtDiff": 0,
+      "isExactMatch": true
+    },
+    "sales": {
+      "main": {
+        "kg": 54209,
+        "rate": 9.9,
+        "amount": 536753
+      },
+      "tab": {
+        "kg": 54209,
+        "grassAmount": 536753,
+        "daaluAmount": 10400,
+        "totalWithDaalu": 547153,
+        "cashPaid": 262840,
+        "creditDebt": 284313,
+        "brokerage": 0,
+        "txCount": 47
+      },
+      "kgDiff": 0,
+      "grassAmtDiff": 0,
+      "isGrassMatch": true
+    }
+  },
+  {
+    "month": "Dec-2022",
+    "purchases": {
+      "main": {
+        "kg": 76405,
+        "rate": 8.05,
+        "amount": 615080
+      },
+      "tab": {
+        "kg": 76405,
+        "amount": 615080,
+        "txCount": 6
+      },
+      "kgDiff": 0,
+      "amtDiff": 0,
+      "isExactMatch": true
+    },
+    "sales": {
+      "main": {
+        "kg": 61564,
+        "rate": 9.9,
+        "amount": 609293.28
+      },
+      "tab": {
+        "kg": 61564,
+        "grassAmount": 609293.28,
+        "daaluAmount": 11930,
+        "totalWithDaalu": 621223.28,
+        "cashPaid": 250396.65,
+        "creditDebt": 370826.63,
+        "brokerage": 0,
+        "txCount": 70
+      },
+      "kgDiff": 0,
+      "grassAmtDiff": 0,
+      "isGrassMatch": true
+    }
+  },
+  {
+    "month": "Jan-2023",
+    "purchases": {
+      "main": {
+        "kg": 111700,
+        "rate": 8.94,
+        "amount": 998740
+      },
+      "tab": {
+        "kg": 111700,
+        "amount": 998740,
+        "txCount": 12
+      },
+      "kgDiff": 0,
+      "amtDiff": 0,
+      "isExactMatch": true
+    },
+    "sales": {
+      "main": {
+        "kg": 158336,
+        "rate": 10.02,
+        "amount": 1586733.18
+      },
+      "tab": {
+        "kg": 158336,
+        "grassAmount": 1586733.18,
+        "daaluAmount": 30400,
+        "totalWithDaalu": 1617133.18,
+        "cashPaid": 752115,
+        "creditDebt": 865018.1799999999,
+        "brokerage": 0,
+        "txCount": 162
+      },
+      "kgDiff": 0,
+      "grassAmtDiff": 0,
+      "isGrassMatch": true
+    }
+  },
+  {
+    "month": "Feb-2023",
+    "purchases": {
+      "main": {
+        "kg": 176240,
+        "rate": 8.96,
+        "amount": 1578390
+      },
+      "tab": {
+        "kg": 176240,
+        "amount": 1578390,
+        "txCount": 21
+      },
+      "kgDiff": 0,
+      "amtDiff": 0,
+      "isExactMatch": true
+    },
+    "sales": {
+      "main": {
+        "kg": 162045,
+        "rate": 10.35,
+        "amount": 1676843
+      },
+      "tab": {
+        "kg": 162045,
+        "grassAmount": 1676843,
+        "daaluAmount": 21200,
+        "totalWithDaalu": 1698043,
+        "cashPaid": 848686,
+        "creditDebt": 849357,
+        "brokerage": 0,
+        "txCount": 183
+      },
+      "kgDiff": 0,
+      "grassAmtDiff": 0,
+      "isGrassMatch": true
+    }
+  },
+  {
+    "month": "Mar-2023",
+    "purchases": {
+      "main": {
+        "kg": 186285,
+        "rate": 8.74,
+        "amount": 1627750
+      },
+      "tab": {
+        "kg": 186285,
+        "amount": 1627750,
+        "txCount": 25
+      },
+      "kgDiff": 0,
+      "amtDiff": 0,
+      "isExactMatch": true
+    },
+    "sales": {
+      "main": {
+        "kg": 180129,
+        "rate": 9.72,
+        "amount": 1751299
+      },
+      "tab": {
+        "kg": 180129,
+        "grassAmount": 1751299,
+        "daaluAmount": 0,
+        "totalWithDaalu": 1751299,
+        "cashPaid": 905456,
+        "creditDebt": 845843,
+        "brokerage": 1500,
+        "txCount": 175
+      },
+      "kgDiff": 0,
+      "grassAmtDiff": 0,
+      "isGrassMatch": true
+    }
+  }
+]

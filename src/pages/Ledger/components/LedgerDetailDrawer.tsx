@@ -83,9 +83,7 @@ export const LedgerDetailDrawer: React.FC<LedgerDetailDrawerProps> = ({
 
   // Compute if customer has a baseline previous year opening debt that isn't yet an explicit transaction doc
   const currentYearTransactionsBalance = calculateCustomerBalance(
-    transactions.filter(
-      (t) => t.type !== 'OPENING_BALANCE' && t.item !== 'Previous Outstanding',
-    ),
+    transactions.filter((t) => t.type !== 'OPENING_BALANCE'),
   );
   const impliedOpeningDebt = Math.max(
     0,
@@ -93,7 +91,7 @@ export const LedgerDetailDrawer: React.FC<LedgerDetailDrawerProps> = ({
   );
 
   const hasExplicitOpening = transactions.some(
-    (t) => t.type === 'OPENING_BALANCE' || t.item === 'Previous Outstanding',
+    (t) => t.type === 'OPENING_BALANCE',
   );
 
   const displayTransactions = [...transactions];
@@ -103,7 +101,7 @@ export const LedgerDetailDrawer: React.FC<LedgerDetailDrawerProps> = ({
       customerId: customer.id,
       customerName: customer.name,
       type: 'OPENING_BALANCE',
-      item: 'Previous Outstanding',
+      category: 'Previous Outstanding',
       amount: impliedOpeningDebt,
       remainingDue: impliedOpeningDebt,
       cashPaid: 0,

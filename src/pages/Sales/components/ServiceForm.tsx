@@ -20,7 +20,7 @@ export interface ServiceFormProps {
   isSaving: boolean;
   rolloutStatus?: MonthlyRolloutStatus | null;
   onSubmit: (_serviceData: {
-    item: string;
+    category: string;
     amount: number;
     cashPaid: number;
     date: string;
@@ -59,7 +59,7 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
   const handleSubmit = async () => {
     if (!selectedItem || amount <= 0 || isFormBlocked) return;
     await onSubmit({
-      item: selectedItem,
+      category: selectedItem,
       amount,
       cashPaid: effectiveCashPaid,
       date,

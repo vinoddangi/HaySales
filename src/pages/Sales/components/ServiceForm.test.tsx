@@ -44,7 +44,7 @@ describe('ServiceForm component', () => {
 
     expect(handleSubmit).toHaveBeenCalledWith(
       expect.objectContaining({
-        item: 'Tractor',
+        category: 'Tractor',
         amount: 1500,
         cashPaid: 0,
       }),

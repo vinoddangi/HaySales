@@ -1,6 +1,13 @@
 /**
  * Standalone Seed Script: Reads all CSVs from script/data/backups/
- * and generates a clean snapshot json file for the local IndexedDB.
+ * and generates a clean, normalized snapshot json file for the local IndexedDB.
+ *
+ * Normalization Rules:
+ * - Single strictly-typed 'category' field on all transactions.
+ * - Terminology strictly 'Pickup' (never 'Daalu').
+ * - Expenses properly mapped to 'Fuel', 'Pickup', 'Interest', 'Discount', 'Maintenance', 'Others'.
+ * - Purchases properly mapped to valid CropType ('Tuvar', 'Chana', 'B. Kutty', 'M. Kutty', 'Isabgol', 'Others').
+ * - Monthly rollouts use 'pickup' metric.
  */
 
 import fs from 'fs';
@@ -53,6 +60,42 @@ function parseCsv(content) {
   return rows;
 }
 
+function normalizeCropCategory(item) {
+  if (!item) return 'Others';
+  const clean = item.trim();
+  if (clean === 'Tuar' || clean === 'Tuvar') return 'Tuvar';
+  if (clean === 'Chana') return 'Chana';
+  if (clean === 'B Kutty' || clean === 'B. Kutty') return 'B. Kutty';
+  if (clean === 'M Kutty' || clean === 'M. Kutty') return 'M. Kutty';
+  if (clean === 'Isabgol') return 'Isabgol';
+  return 'Others';
+}
+
+function normalizeExpenseCategory(cat, item, note) {
+  const candidate = (cat || item || '').trim();
+  if (candidate === 'Interest') return 'Interest';
+  if (candidate === 'Discount') return 'Discount';
+  if (candidate === 'Fuel') return 'Fuel';
+  if (candidate === 'Maintenance') return 'Maintenance';
+  if (candidate === 'Depreciation') return 'Depreciation';
+  if (candidate === 'Labor') return 'Labor';
+  if (
+    candidate === 'Vehicle' ||
+    candidate === 'Pickup' ||
+    candidate.includes('Daalu') ||
+    candidate.includes('Pickup')
+  ) {
+    return 'Pickup';
+  }
+  const noteText = (note || '').toLowerCase();
+  if (noteText.includes('interest')) return 'Interest';
+  if (noteText.includes('fuel') || noteText.includes('diesel')) return 'Fuel';
+  if (noteText.includes('daalu') || noteText.includes('pickup'))
+    return 'Pickup';
+  if (noteText.includes('discount')) return 'Discount';
+  return 'Others';
+}
+
 console.log('Seeding database snapshot from CSV backups...');
 
 // 1. Customers
@@ -60,7 +103,7 @@ const custCsv = fs.readFileSync(path.join(BACKUP_DIR, 'customers.csv'), 'utf8');
 const rawCust = parseCsv(custCsv);
 const customers = rawCust.map((c) => ({
   id: String(c.CustomerID),
-  name: c.CustomerName,
+  name: c.CustomerName.replace(/Daalu/gi, 'Pickup'),
   mobile: c.Mobile || '',
   village: c.Village || '',
   creditLimit: Number(c.CreditLimit) || 35000,
@@ -84,17 +127,21 @@ const salesTransactions = rawSales.map((s, idx) => {
   return {
     id: s.TransactionID || `sale_${idx + 1}`,
     customerId: String(s.CustomerID || '307'),
-    customerName: s.CustomerName || custMap[String(s.CustomerID)] || 'Retail',
+    customerName: (
+      s.CustomerName ||
+      custMap[String(s.CustomerID)] ||
+      'Retail'
+    ).replace(/Daalu/gi, 'Pickup'),
     date: s.Date || new Date().toISOString(),
     type: isOpening ? 'OPENING_BALANCE' : 'SALE',
-    item: s.Item || 'Others',
+    category: normalizeCropCategory(s.Item),
     weightKg: Number(s.WeightKg) || 0,
     rate: Number(s.Rate) || 0,
     amount: Number(s.TotalAmount) || 0,
     cashPaid: Number(s.CashPaid) || 0,
     remainingDue: Number(s.RemainingDue) || 0,
     discount: Number(s.Discount) || 0,
-    note: s.Notes || '',
+    note: (s.Notes || '').replace(/Daalu/gi, 'Pickup'),
   };
 });
 
@@ -107,15 +154,18 @@ if (fs.existsSync(servicesCsvPath)) {
   serviceTransactions = rawServices.map((sv, idx) => ({
     id: sv.ServiceID || `service_${idx + 1}`,
     customerId: String(sv.CustomerID || '307'),
-    customerName: sv.CustomerName || custMap[String(sv.CustomerID)] || 'Retail',
+    customerName: (
+      sv.CustomerName ||
+      custMap[String(sv.CustomerID)] ||
+      'Retail'
+    ).replace(/Daalu/gi, 'Pickup'),
     date: sv.Date || new Date().toISOString(),
     type: 'SERVICE',
-    category: 'Services',
-    item: sv.Item || 'Pickup',
+    category: 'Pickup',
     amount: Number(sv.Amount) || 0,
     cashPaid: Number(sv.Amount) || 0,
     remainingDue: 0,
-    note: sv.Notes || '',
+    note: (sv.Notes || '').replace(/Daalu/gi, 'Pickup'),
   }));
 }
 
@@ -128,14 +178,19 @@ const rawPayments = parseCsv(paymentsCsv);
 const paymentTransactions = rawPayments.map((p, idx) => ({
   id: p.PaymentID || `payment_${idx + 1}`,
   customerId: String(p.CustomerID),
-  customerName: p.CustomerName || custMap[String(p.CustomerID)] || '',
+  customerName: (p.CustomerName || custMap[String(p.CustomerID)] || '').replace(
+    /Daalu/gi,
+    'Pickup',
+  ),
+
   date: p.Date || new Date().toISOString(),
   type: 'PAYMENT',
+  category: 'Others',
   amount: Number(p.AmountPaid) || 0,
   paymentAmount: Number(p.AmountPaid) || 0,
   cashPaid: Number(p.AmountPaid) || 0,
   remainingDue: 0,
-  note: p.Notes || '',
+  note: (p.Notes || '').replace(/Daalu/gi, 'Pickup'),
 }));
 
 const allTransactions = [
@@ -152,15 +207,15 @@ const purchasesCsv = fs.readFileSync(
 const rawPurchases = parseCsv(purchasesCsv);
 const purchases = rawPurchases.map((p, idx) => {
   const isExpense = p.PurchaseID && p.PurchaseID.startsWith('expense_');
+  const category = isExpense
+    ? normalizeExpenseCategory(p.ExpenseCategory, p.Category, p.Notes)
+    : normalizeCropCategory(p.Item);
+
   return {
-    id: p.PurchaseID || `purchase_${idx + 1}`,
+    id: (p.PurchaseID || `purchase_${idx + 1}`).replace(/daalu/gi, 'pickup'),
     date: p.Date || new Date().toISOString(),
     type: isExpense ? 'EXPENSE' : 'PURCHASE',
-    category: isExpense ? 'Expense' : p.Category || 'Purchase',
-    expenseCategory: isExpense
-      ? p.ExpenseCategory || p.Category || 'Others'
-      : undefined,
-    item: p.Item || 'Others',
+    category,
     weightKg: Number(p.WeightKg) || 0,
     rate: Number(p.PurchaseRate) || 0,
     purchaseRate: Number(p.PurchaseRate) || 0,
@@ -168,7 +223,7 @@ const purchases = rawPurchases.map((p, idx) => {
     cashPaid: Number(p.CashPaid) || 0,
     remainingDue: Number(p.RemainingDue) || 0,
     vendorName: p.VendorName || '',
-    note: p.Notes || '',
+    note: (p.Notes || '').replace(/Daalu/gi, 'Pickup'),
   };
 });
 
@@ -177,20 +232,25 @@ if (fs.existsSync(expensesCsvPath)) {
   const expensesCsv = fs.readFileSync(expensesCsvPath, 'utf8');
   const rawExpenses = parseCsv(expensesCsv);
   rawExpenses.forEach((e, idx) => {
-    const eId = e.ExpenseID || `expense_${idx + 1}`;
+    const eId = (e.ExpenseID || `expense_${idx + 1}`).replace(
+      /daalu/gi,
+      'pickup',
+    );
     if (!purchases.some((p) => p.id === eId)) {
       purchases.push({
         id: eId,
         date: e.Date || new Date().toISOString(),
         type: 'EXPENSE',
-        category: 'Expense',
-        expenseCategory: e.ExpenseCategory || 'Others',
-        item: e.Item || 'Others',
+        category: normalizeExpenseCategory(
+          e.ExpenseCategory,
+          e.Category,
+          e.Notes,
+        ),
         amount: Number(e.Amount) || 0,
         cashPaid: Number(e.Amount) || 0,
         remainingDue: 0,
         vendorName: '',
-        note: e.Notes || '',
+        note: (e.Notes || '').replace(/Daalu/gi, 'Pickup'),
       });
     }
   });
@@ -240,7 +300,7 @@ const monthlyRollouts = rawRollout.map((r) => ({
       cm: Number(r.GrossCommissionCm) || 0,
       total: Number(r.GrossCommissionTotal) || 0,
     },
-    daalu: {
+    pickup: {
       prev: Number(r.DaaluPrev) || 0,
       cm: Number(r.DaaluCm) || 0,
       total: Number(r.DaaluTotal) || 0,

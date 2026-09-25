@@ -1,0 +1,381 @@
+CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
+6,Akoliya Bhagvanbhai Kalubhai,,,35000,13080
+12,Akoliya Galbabhai Devabhai,,,35000,35137
+14,Akoliya Meghrajbhai Parthibhai,,,35000,11220
+15,Akoliya Nareshbhai Becharbhai,,,35000,16764
+18,Bavji Vedancha,,,35000,0
+20,Bera Ashokbhai Laxmanbhai,,,35000,0
+21,Bera Bharatbhai Dhanrajbhai,,,35000,32782
+23,Bera Dineshbhai Savabhai,,,35000,14000
+27,Bera Kantibhai Ujabhai,,,35000,0
+29,Bera Laxmanbhai Meghabhai,,,35000,14200
+30,Bera Mafatbhai Parthibhai,,,35000,14100
+32,Bera Praveenbhai Parthibhai,,,35000,70786
+33,Bera Rajsangbhai Dohjibhai,,,35000,53645
+35,Bera Rameshbhai Meghabhai,,,35000,956
+38,Bhatol Ashwinbhai Sudha,,,35000,0
+42,Bhutadiya Babubhai Bhemabhai,,,35000,4900
+43,Bhutadiya Babubhai Kanjibhai,,,35000,0
+44,Bhutadiya Devabhai Pujabhai,,,35000,7105
+45,Bhutadiya Dineshbhai Veerabhai,,,35000,3100
+47,Bhutadiya Ganeshbhai Jethabhai,,,35000,45297
+48,Bhutadiya Ghemarbhai Dalubhai,,,35000,0
+49,Bhutadiya Heerabhai Fatabhai,,,35000,6350
+54,Bhutadiya Laljibhai Veerabhai,,,35000,25290
+57,Boka Dhanrajbhai Bhemjibhai,,,35000,1892
+60,Boka Kantibhai Dalubhai,,,35000,62750
+73,Dangi Galababhai Veershangbhai,,,35000,32425
+74,Dangi Galbabhai Veerabhai,,,35000,0
+75,Dangi Megharajbhai Veerabhai,,,35000,13965
+76,Dangi Valjibhai Parthibhai,,,35000,2000
+78,Dangi Vipulbhai Laxmanbhai (Badarpura),,,35000,20756
+79,Darbar Bhayuji Gadh,,,35000,1000
+82,Desai Bhurabhai Samdhi,,,35000,23760
+85,Dhudiya Dineshbhai Mafabhai,,,35000,21630
+88,Dhudiya Sureshbhai Ramshungbhai,,,35000,445
+89,Fof Babubhai Ujabhai,,,35000,12750
+94,Foshi Prabhubhai Maganbhai (Vedancha),,,35000,6800
+104,Gori Abbaskhan Subelkhan,,,35000,14650
+105,Gori Bhikhabhai,,,35000,3780
+106,Gori Irshad,,,35000,9162
+107,Gori Ishrad,,,35000,0
+110,Gudol Alpeshbhai Laxmanbhai,,,35000,0
+111,Gudol Amaratbhai Cheharabhai,,,35000,0
+112,Gudol Amaratbhai Parthibhai,,,35000,0
+114,Gudol Babubhai Veerabhai,,,35000,18495
+115,Gudol Dhanrajbhai Valjibhai,,,35000,0
+117,Gudol Kesarbhai Valjibhai,,,35000,14700
+126,Jarmol Sureshbhai Cheharabhai,,,35000,24547
+130,Judal Ashokbhai Muljibhai,,,35000,0
+137,Judal Bhagvanbhai Jeshungbhai,,,35000,0
+139,Judal Daljibhai Virshangbhai,,,35000,0
+140,Judal Dayabhai Parthibhai,,,35000,21740
+144,Judal Dineshbhai Muljibhai,,,35000,0
+147,Judal Dineshbhai Ujabhai,,,35000,415
+149,Judal Galbabhai Ramshungbhai,,,35000,9950
+150,Judal Ghemarbhai Dhudabhai,,,35000,13200
+151,Judal Ghemarbhai Rashangbhai,,,35000,0
+157,Judal Jyantibhai Nathabhai,,,35000,0
+163,Judal Kantibhai Dalajibhai,,,35000,0
+164,Judal Kantibhai Nanjibhai,,,35000,2032
+165,Judal Kantibhai Ramshungbhai,,,35000,24540
+171,Judal Kirtibhai Nathabhai,,,35000,4120
+172,Judal Laljibhai Shomabhai,,,35000,13300
+175,Judal Maheshbhai Sadabhai,,,35000,5055
+190,Judal Sadabhai Kalubhai,,,35000,10065
+193,Judal Shileshbhai Daljibhai Kubhasan,,,35000,0
+198,Judal Valjibhai Virshangbhai,,,35000,18160
+204,Kag Babubhai Dalshangbhai,,,35000,16537
+210,Kag Nathubhai Laxmanbhai,,,35000,0
+214,Kakavadiya Bhagvanbhai,,,35000,0
+215,Kakvadiya Bhagavanbhai Chandisar,,,35000,30400
+219,Kakvadiya Sureshbhai Chandisar,,,35000,0
+227,Kharsan Rameshbhai Laxmanbhai,,,35000,0
+229,Khasa Vajeerkhan,,,35000,0
+231,Kubhasan Shokatbhai,,,35000,3420
+232,Kumatiya Rafikbhai Ismilbhai,,,35000,4077
+234,Kuva Devabhai Mavabhai,,,35000,0
+237,Kuva Rajubhai Ramshungbhai,,,35000,0
+242,Loh Babubhai Bhagvanbhai,,,35000,0
+248,Loh Dineshbhai Ramshugbhai,,,35000,76274
+255,Loh Kantibhai Sadabhai,,,35000,0
+257,Loh Mafatbhai Nanjibhai,,,35000,0
+260,Loh Nikhilbhai Manjibhai,,,35000,5900
+264,Loh Rashubhai Umedbhai,,,35000,400
+266,Loh Shantubhai Veerabhai,,,35000,24700
+267,Loh Shileshbhai Manjibhai,,,35000,0
+268,Loh Sureshbhai Shantubhai,,,35000,0
+269,Menat Prakashbhai Madana,,,35000,12235
+273,Mor Daljibhai Vedancha,,,35000,0
+277,Mor Kantibhai Vedancha,,,35000,5700
+280,Mor Lavjibhai Abhubhai (Badarpura),,,35000,0
+285,Palani Amthabhai Savabbhai,,,35000,5000
+287,Palani Bhikhabhai Gamabhai,,,35000,25512
+290,Palani Magabhai Khodabhai,,,35000,1230
+293,Palani Maheshbhai Khemabhai,,,35000,1245
+294,Palani Naranbhai Shantubhai,,,35000,103
+298,Prajapati Jethabhai Kalubhai,,,35000,0
+304,Ratada Haribhai Laxmanbhai Badharpura,,,35000,2872
+305,Ratada Lavjibhai Laxmanbhai,,,35000,4202
+306,Retail,,,35000,0
+309,Shipai Musabhai,,,35000,5035
+317,Thakor Amratbhai Manabhai,,,35000,1168
+319,Thakor Ashokbhai Bijanbhai,,,35000,22502
+322,Thakor Bhagvanbhai Shantubhai,,,35000,380
+323,Thakor Bharatbhai Vedancha,,,35000,0
+328,Thakor Bhupatbhai Veerchandbhai,,,35000,20480
+329,Thakor Chamanji Takhaji,,,35000,0
+331,Thakor Harchandji Laxmanji,,,35000,1000
+333,Thakor Jagdishbhai Ishavrbhai,,,35000,7100
+334,Thakor Jagdishbhai Khegarbhai,,,35000,3880
+337,Thakor Jaxshibhai Hurabhai,,,35000,2500
+339,Thakor Kubhaji Huraji,,,35000,6600
+340,Thakor Laxmanji Menaji,,,35000,1286
+343,Thakor Momatji Saradarji,,,35000,310
+348,Thakor Rameshbhai Poojabhai,,,35000,1766
+350,Thakor Rangnathji Khodla,,,35000,0
+360,Thakor Vipulbhai Chaganbhai,,,35000,0
+364,Vaghela Praveenbhai Chelabhai,,,35000,520
+371,Valagot Ghemarbhai Manjibhai,,,35000,0
+378,Bera Rajabhai Rupabhai,,,35000,9897
+379,Bhutadiya Dilipbhai Muljibhai,,,35000,0
+383,Dhudiya Bhikhabhai Mafabhai,,,35000,15100
+384,Gori Aayubkhan,,,35000,17167
+385,Gudol Dhanrajbhai Valajibhai,,,35000,17792
+390,Judal Shileshbhai Daljibhai,,,35000,0
+399,Loh Nareshbhai Laxmanbhai,,,35000,14000
+401,Maharaj Rameshbhai Rupabhai,,,35000,0
+404,Prajapati Maganbhai Kalubhai,,,35000,1130
+407,Thakor Jyntibhai Madhubhai,,,35000,3094
+409,Thakor Vishubhai Dheerajbhai,,,35000,2078
+410,Vaghela Ashokbhai Chelabhai,,,35000,0
+418,Fof Laxmanbhai Ujabhai,,,35000,26850
+428,Thakor Bajuji Galbaji,,,35000,0
+431,Judal Praveenbhai Virshangbhai,,,35000,10435
+446,Gudol Alpashbhai Laxmanbhai,,,35000,20540
+449,Judal Valjibhai Shavabhai (Vepari),,,35000,0
+455,Loh Manjibhai Laxmanbhai,,,35000,0
+483,Mor Cheharbhai Abhubhai,,,35000,13450
+501,Palani Ravjibhai Kanjibhai,,,35000,0
+502,Bhutadiya Bhikhabhai Ganeshbhai,,,35000,0
+504,Bera Laljibhai Sadabhai,,,35000,12150
+525,Fof Meghrajbhai Ujabhai,,,35000,0
+534,Gudol Bhaveshbhai Parthibhai,,,35000,0
+536,Jarmol Neetaben K Gadh,,,35000,4980
+559,Bera Ramjibhai Nanjibhai,,,35000,0
+576,Bera Dineshbhai Shavabhai,,,35000,0
+580,Bhutadiya Jeetabhai Ganeshbhai,,,35000,0
+611,Loh Jeetabhai Moghabhai,,,35000,0
+658,Fof Rameshbhai Ujabhai,,,35000,175134
+700,Aayubbhai Kubhasan,,,35000,1714
+701,Bera Amaratbhai Karshanbhai,,,35000,15350
+702,Bera Jeevabhai Haribhai Aakesan,,,35000,11590
+703,Bera Ramasungbhai Parthibhai,,,35000,5774
+704,Bhutadiya Deepkabhai Muljibhai (Poto),,,35000,23990
+705,Bhutadiya Ganeshbhai Rupabhai,,,35000,12260
+706,Bhutadiya Motibhai Gadha,,,35000,1500
+707,Bhutadiya Nareshbhai Ramshungbhai,,,35000,6780
+708,Boka Jayntibhai Dalubhai,,,35000,15100
+709,Chaudhary S.K Agola,,,35000,11970
+710,Desai Kesarbhai Nagjibhai Samdhi,,,35000,12420
+711,Desai Rameshbhai Nagjibhai Samdhi,,,35000,13800
+712,Dhudiya Laljibhai Ramsugbhai,,,35000,3112
+713,Foshi Prabhubhai Vedancha,,,35000,70650
+714,Gori Rahishkhan Gulabkhan,,,35000,2912
+715,Gori Yashinkhan Ibrahimbhai,,,35000,5000
+716,Gudol Babubhai Manjibhai,,,35000,12119
+717,Gudol Parashbhai Parthibhai,,,35000,12777
+718,Hoda Jethabhai Judal,,,35000,2300
+719,Judal Amrutbhai Daljibhai,,,35000,5705
+720,Judal Bhemjibhai Gadh,,,35000,5064
+721,Judal Jayantibhai Nathabhai,,,35000,13015
+722,Judal Rashangbhai Paragbhai,,,35000,5020
+723,Judal Shileshbhai Becharbhai Hoda,,,35000,10650
+724,Judal Shilieshbhai Ghemarbhai,,,35000,21950
+725,Kag Ashokbhai Jesangbhai,,,35000,11340
+726,Kharasan Remeshbhai Laxmanbhai,,,35000,34514
+727,Loh Babubahi Vedancha,,,35000,6142
+728,Loh Galbabhai Dalubhai,,,35000,10925
+729,Loh Ghemarbhai Rupabhai,,,35000,2705
+730,Loh Manjibhai Narasangbhai,,,35000,11922
+731,Loh Ragubhai Pujabhai,,,35000,35250
+732,Loh Rameshbhai Parthibhai,,,35000,3962
+733,Loh Rameshbhai Shantubhai,,,35000,10437
+734,Loh Ramjibhai Meghabhai,,,35000,2127
+735,Meriya Gulambhai Chadotar,,,35000,17685
+736,Mohmand Kubhasan,,,35000,455
+737,Mor Lavajibhai Abhubhai,,,35000,13157
+738,Nai Champakbhai Nagarbhai,,,35000,195
+739,Palani Sunilbhai Babubhai,,,35000,5000
+740,Shabbirbhai Condator,,,35000,24042
+741,Solanki Hayatkhan Peerojkhan,,,35000,5795
+742,Thakor Bharatji Lilaji Samdhi,,,35000,6000
+743,Thakor Dharjibhai Ranpur,,,35000,9927
+744,Thakor Kantibhai Bajubhai,,,35000,760
+745,Thakor Keyurbhai Ganeshbhai,,,35000,400
+746,Thakor Mafatbhai Chaturbhai,,,35000,300
+747,Thakor Mukeshbhai Kubhaji,,,35000,2500
+748,Thakor Reganaji,,,35000,3852
+749,Thakor Samjibhai Jagmalbhai,,,35000,697
+750,Vagada Laxmanbhai Parthibhai,,,35000,6560
+751,Vaghela Kantibhai Valjibhai,,,35000,85
+752,Vajirkhan Badarpura,,,35000,24640
+753,Thakor Nareshji Jagmalji,,,35000,150
+754,Thankor Ashokbhai Bijalji,,,35000,3000
+755,Dangi Laxmanbhai Badarpura,,,35000,11300
+756,Parajapti Jethabhai,,,35000,60
+757,Thakor Savajibhai Hamirbhai,,,35000,520
+758,Gori Rahishkhan Gulabbhai,,,35000,2200
+759,Kaag Babubhai Dalsangbhai,,,35000,0
+760,Loh Santubhai Chadotar,,,35000,0
+761,Loh Rameshbhai Santubhai,,,35000,0
+762,Upalana Sureshbhai Chandisar,,,35000,0
+763,Loh Kantibhai Nanjibhai,,,35000,0
+764,Kag kirtibhai Pujabhai,,,35000,0
+765,Judal Vedancha fera1,,,35000,0
+766,Ayubbhai Kubhasan,,,35000,0
+767,Gudol Babubhai Veerabahi,,,35000,0
+768,Gudol Praveenbhai Haribhai,,,35000,0
+769,Judal Kantibhai Fatabhai,,,35000,0
+770,Loh Mukeshbhai Nanjibhai,,,35000,0
+771,Judal Kantibhai Ramshugbhai,,,35000,0
+772,Thakor Vrishnubhai Dhirajbhai,,,35000,0
+773,Laljibhai Khubhasan,,,35000,0
+774,Karmaji,,,35000,0
+775,Shabbirbhai Condotor,,,35000,0
+776,Thakor Savjibhai Ramchandji,,,35000,0
+777,Judal M. R.,,,35000,0
+778,Judal Kesarbhai Rajshangbhai,,,35000,0
+779,Thakor Mafatlal,,,35000,0
+780,Valagot Santubhai Virshangbhai,,,35000,0
+781,Bera Ramshugbhai Parathibhai,,,35000,0
+782,Praveenbhai Vendancha,,,35000,0
+783,Boka Galbabhai Kalubhai,,,35000,0
+784,Kuva Rajubhai Ramsughbhai,,,35000,0
+785,Kotadiya Bharatbhai Sankarbhai,,,35000,0
+786,Patel Pannabhai Vedanccha,,,35000,0
+787,Bhutadiya Lalajibhai Veerabhai,,,35000,0
+788,Kharasan Rameshbhai Laxmanbhai,,,35000,0
+789,Thakor Amaratbhai Keshabhai,,,35000,0
+790,Judal Shileshbhai Becharbhai,,,35000,0
+791,Kharasan Jeetabhai Laxmanbhai (Chadotar),,,35000,0
+792,Maraj Rameshbhai Rupabhai,,,35000,0
+793,Loh Ramjibhai Virshangbhai,,,35000,0
+794,Bera Dineshbhai Nanjibhai,,,35000,0
+795,Valagot Heerabhai Laxmanbhai,,,35000,0
+796,Loh Meghrajbhai Fatabhai,,,35000,0
+797,Ramjibhai Booterna bhai,,,35000,0
+798,Thakor Ashokji Bijalji,,,35000,0
+799,Thakor Bhaveshbhai Rikshavala Vedancha,,,35000,0
+800,Kuva Laljibhai Behmabhai,,,35000,0
+801,Judal Pareshbhai Ghemarbhai,,,35000,0
+802,Shipai Hayatkhan Pirijkhan,,,35000,0
+803,Mor Becharbhai Hemrajbhai,,,35000,0
+804,Hoda fero 1,,,35000,0
+805,Valagot Nareshbhai Laxmanbhai,,,35000,0
+806,Thakor Bharatbhai Bajuji,,,35000,0
+807,Judal Bhagvanbhai Karsanbhai,,,35000,0
+808,Thakor Raghaji,,,35000,0
+809,Gavariya Ashokbhai,,,35000,0
+810,Valagot Babubhai Vedancha,,,35000,0
+811,Judal Galbabhai Ramsugbhai,,,35000,0
+812,Bera Deepakkumar Jampura,,,35000,0
+813,Thakor Dharjibhai Chandisar,,,35000,0
+814,Bera Premjibhai Aakesan,,,35000,0
+815,Akoliya Prakashbhai Bhagvanbhai,,,35000,0
+816,Laljibhai Patel,,,35000,0
+817,Valagot Narshihbhai Chadotar,,,35000,0
+818,Mohmand,,,35000,0
+819,Khubhasan,,,35000,0
+820,Judal Kantibhai Ramsungbhai,,,35000,0
+821,Bhutadiya Praveenbhai Naathabhai,,,35000,0
+822,Palani Bharatbhai Mevabhai,,,35000,0
+823,Ghuri Bhikhabhai,,,35000,0
+824,Gol Karsanbhai Ghemarbhai,,,35000,0
+825,Patel Maheshbhai Maganbhai Kubhasan,,,35000,0
+826,Thakor Visnubhai Dhirajbhai,,,35000,0
+827,Palani Shantubhai Tapali,,,35000,0
+828,Jayeshbhai Kubhasan,,,35000,0
+829,Bera Jeevabhai Haribhai,,,35000,0
+830,Thakor Jaynibhai Madhubhai,,,35000,0
+831,Daka Prakashbhai Lakhubhai,,,35000,0
+832,Thakor Jasungbhai Parathibhai,,,35000,0
+833,Palani Hiteshbhai Senabhai,,,35000,0
+834,Dangiya,,,35000,0
+835,Thakor Dhasratiji Khodla,,,35000,0
+836,Thakor Bhavanji Samdhi,,,35000,0
+837,Samadhi,,,35000,0
+838,Thakor Ashokbhai Jagamalbhai,,,35000,0
+839,Thakor Shankabhai Khemabhai,,,35000,0
+840,Meriya Gulambhai,,,35000,0
+841,Bhutadiya Deepakbhai Muljibhai,,,35000,0
+842,Judal Bhagavanbhai Dalubhai,,,35000,0
+843,Bhilocha Dineshbhai Devjibhai,,,35000,0
+844,Thakor Jyantibhai Mathubhai Sudha,,,35000,0
+845,Judal Nanjibhai Madhabhai,,,35000,0
+846,Thakor Vadanji Hemchandji,,,35000,0
+847,Paramar Bhaveshbhai Kantibhai,,,35000,0
+848,Bhutadiya Kirtibhai Ramshugbhai,,,35000,0
+849,Akoliya Jayntibhai Becharbhai,,,35000,0
+850,Mor Govindbhai Badarpura,,,35000,0
+851,Thakor Kubhasan,,,35000,0
+852,Retal Vaghari,,,35000,0
+853,Palani Mangabhai Khemabhai,,,35000,0
+854,Palani Babubhai Ratabhai,,,35000,0
+855,Palani Keshabhai Laxmanbhai,,,35000,0
+856,Desai Malabhai,,,35000,0
+857,Thakor Jagmalji Nathaji,,,35000,0
+858,Palani Dalpatbhai Shantubhai,,,35000,0
+859,Thakor Bhavanji Vedancha,,,35000,0
+860,Loh Rameshbhai Dohajibhai,,,35000,0
+861,Ghori Yunishkhan,,,35000,0
+862,Vaghela Kantibhai Valabhai,,,35000,0
+863,Kumutiya Rafikbhai Ishmailkhan,,,35000,0
+864,Ghadh Bhayubhai,,,35000,0
+865,Thakor Kapurbhai Ganeshbhai,,,35000,0
+866,Loh Veerabhai Savabhai,,,35000,0
+867,Thakor Kapoorji Ganeshji,,,35000,0
+868,Dhudiya Laljibhai Ramshugbhai,,,35000,0
+869,Desai Malajibhai,,,35000,0
+870,Valagot Jayantibhai Vedancha,,,35000,0
+871,Akoliya Bheekhabhai Jethabhai,,,35000,0
+872,Judala Rajnibhai Mafatbhai,,,35000,0
+873,Judal Amarutbhai Veershangbhai,,,35000,0
+874,Gori Yashinkhan Muradkhan,,,35000,0
+875,Gaami Kunalbhai Madana,,,35000,0
+876,Thakor Parkashbhai Devabhai,,,35000,0
+877,Bera Ramsungbhai Parthibhai,,,35000,0
+878,Desai Rameshbhai Nanjibhai Samdhi,,,35000,0
+879,Thakor Momutji Shardarji,,,35000,0
+880,Thakor Raganathji,,,35000,0
+881,Akoliya Narshihbhai Jethabhai,,,35000,0
+882,Thakor Vipul Khodla,,,35000,0
+883,Thakor Ransaji Regnaji,,,35000,0
+884,Palani Amthabhai Savabhai,,,35000,0
+885,Boka Jeevarambhai Parthibhai,,,35000,0
+886,Darbar Bhayuji Ghadh-Takarvada,,,35000,0
+887,Gudol Jynatibhai Cheharabhai,,,35000,0
+888,Thakor Jynatibhai Madhubhai,,,35000,0
+889,Dangi Valjibhai Paratibhai,,,35000,0
+890,Bhutadiya Naraeshbhai Ramshungbhai,,,35000,0
+891,Devjibhai Premjibhai Bhatol Ghadh,,,35000,0
+892,Judal Bhagavanbhai Jesungbhai,,,35000,0
+893,Judal Galbabhai Ramsungbhai,,,35000,0
+894,Aakesan,,,35000,0
+895,Bhutadiya Kamaleshbhai Aakesan,,,35000,0
+896,Bharatbhai Chaudhary,,,35000,0
+897,Thakor Ashokbhai Bijalbhai,,,35000,0
+898,Thakor Vinshnubhai Dhirajbhai,,,35000,0
+899,Loh Rasubhai Umedbhai,,,35000,0
+900,Loh Mafatbhai Fatabhai,,,35000,0
+901,Mujadiya Shantubhai,,,35000,0
+902,Thakor Jaxshibhai Hirabhai,,,35000,0
+903,Boka Jyntibhai Dalubhai,,,35000,0
+904,Thakor Karchandbhai Laxmanbhai,,,35000,0
+905,Nai Chamkapbhai Nagarbhai,,,35000,0
+906,Bera Shantubhai Aakeshan,,,35000,0
+907,Bhayubhai Gadh,,,35000,0
+908,Thakor Mafabhai Chaturbhai,,,35000,0
+909,Dhudiya Sureshbhai Ramsungbhai,,,35000,0
+910,Bhayubhai Darbar Gadh,,,35000,0
+911,Bhagvanbhai Kakavadiya Chandisar,,,35000,0
+912,Patel Maheshbhai Maganbhai,,,35000,0
+913,Valagot Nathabhai Vedancha,,,35000,0
+914,Judal Shilesh Ghemarbhai,,,35000,0
+915,Thakor Bhatiji Lilaji Samdhi,,,35000,0
+916,Judal Amarutbhai Shantubhai,,,35000,0
+917,Gudol Pareshbhai Parthibhai,,,35000,0
+918,Dhudiya Vijaybhai Laxmanbhai,,,35000,0
+919,Patel Kirtibhai Kubhasan,,,35000,0
+920,Desai Kesarbhai Nagjibhai,,,35000,0
+921,Valagot Shantubhai Virshangbhai,,,35000,0
+922,Jarmol Neetaben Gadh,,,35000,0
+923,Thakor Jantibhai Madhubhai,,,35000,0
+924,Jarmol Sureshbhai Cheharbhai,,,35000,0
+925,Thakor Ganeshbhai Bhaychandbhai,,,35000,0
+926,Vajeerkhan Badarpura,,,35000,0
+927,Bhutadiya Motibhai,,,35000,0
+928,Loh Devabhai Ganeshbhai,,,35000,0
+929,Loh Laxmanbhai Dalubhai,,,35000,0
+930,Naveriya Jagdishbhai Vedancha,,,35000,0
+931,Bera Deepakbhai Jampura,,,35000,0

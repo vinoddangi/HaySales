@@ -1,0 +1,372 @@
+[
+  {
+    "month": "Nov-2022",
+    "period": "2022-11",
+    "custTotalRow": [
+      "Total",
+      "",
+      "54,209 kg",
+      "₹9.90",
+      "₹823.49",
+      "₹536,753.00",
+      "₹10,400.00",
+      "₹547,153.00",
+      "₹262,840.00",
+      "₹284,313.00"
+    ],
+    "daaluDiesel": [
+      {
+        "date": "6 Nov 2022",
+        "amount": 2000,
+        "item": "Daalu Diesel",
+        "category": "Expense",
+        "expenseCategory": "Fuel"
+      },
+      {
+        "date": "23 Nov 2022",
+        "amount": 2000,
+        "item": "Daalu Diesel",
+        "category": "Expense",
+        "expenseCategory": "Fuel"
+      }
+    ],
+    "totalDiesel": 4000,
+    "daaluExtra": [
+      {
+        "description": "Fof Sureshbhai Ujabhai",
+        "amount": 400,
+        "item": "Pickup",
+        "category": "Services"
+      },
+      {
+        "description": "Fof Meghrajbhai Ujabhai",
+        "amount": 700,
+        "item": "Pickup",
+        "category": "Services"
+      },
+      {
+        "description": "Gudol Babubhai VeeraBhai",
+        "amount": 800,
+        "item": "Pickup",
+        "category": "Services"
+      }
+    ],
+    "totalExtraDaalu": 1900,
+    "expenses": [
+      {
+        "date": "2022-11-28",
+        "item": "25/11 tub",
+        "amount": 2300,
+        "category": "Expense",
+        "expenseCategory": "Tools"
+      },
+      {
+        "date": "2022-11-28",
+        "item": "26/11 tub + pavdo",
+        "amount": 1060,
+        "category": "Expense",
+        "expenseCategory": "Tools"
+      }
+    ],
+    "totalExpenses": 3360,
+    "summaryDaaluProfit": 8300,
+    "specialCustomerRows": []
+  },
+  {
+    "month": "Dec-2022",
+    "period": "2022-12",
+    "custTotalRow": [
+      "Total",
+      "",
+      "61,564 kg",
+      "₹9.90",
+      "₹1,793.05",
+      "₹609,293.28",
+      "₹11,930.00",
+      "₹621,223.28",
+      "₹250,396.65",
+      "₹370,826.63"
+    ],
+    "daaluDiesel": [
+      {
+        "date": "14 Dec 2022",
+        "amount": 2000,
+        "item": "Daalu Diesel",
+        "category": "Expense",
+        "expenseCategory": "Fuel"
+      }
+    ],
+    "totalDiesel": 2000,
+    "daaluExtra": [],
+    "totalExtraDaalu": 0,
+    "expenses": [
+      {
+        "date": "2022-12-28",
+        "item": "Jag",
+        "amount": 320,
+        "category": "Expense",
+        "expenseCategory": "Tools"
+      },
+      {
+        "date": "2022-12-28",
+        "item": "Lease",
+        "amount": 6800,
+        "category": "Expense",
+        "expenseCategory": "Others"
+      }
+    ],
+    "totalExpenses": 7120,
+    "summaryDaaluProfit": 9930,
+    "specialCustomerRows": []
+  },
+  {
+    "month": "Jan-2023",
+    "period": "2023-01",
+    "custTotalRow": [
+      "Total",
+      "",
+      "158,336 kg",
+      "₹10.02",
+      "₹1,149.76",
+      "₹1,586,733.18",
+      "₹30,400.00",
+      "₹1,617,133.18",
+      "₹752,115.00",
+      "₹865,018.18"
+    ],
+    "daaluDiesel": [
+      {
+        "date": "4 Jan 2023",
+        "amount": 2000,
+        "item": "Daalu Diesel",
+        "category": "Expense",
+        "expenseCategory": "Fuel"
+      },
+      {
+        "date": "14 Jan 2023",
+        "amount": 2000,
+        "item": "Daalu Diesel",
+        "category": "Expense",
+        "expenseCategory": "Fuel"
+      },
+      {
+        "date": "17 Jan 2023",
+        "amount": 2000,
+        "item": "Daalu Diesel",
+        "category": "Expense",
+        "expenseCategory": "Fuel"
+      },
+      {
+        "date": "20 Jan 2023",
+        "amount": 2000,
+        "item": "Daalu Diesel",
+        "category": "Expense",
+        "expenseCategory": "Fuel"
+      }
+    ],
+    "totalDiesel": 8000,
+    "daaluExtra": [
+      {
+        "description": "16 Jan 2023",
+        "amount": 1050,
+        "item": "Pickup",
+        "category": "Services"
+      },
+      {
+        "description": "28 Jan 2023",
+        "amount": 800,
+        "item": "Pickup",
+        "category": "Services"
+      },
+      {
+        "description": "28 Jan 2023",
+        "amount": 500,
+        "item": "Pickup",
+        "category": "Services"
+      },
+      {
+        "description": "24 Jan 2023",
+        "amount": 500,
+        "item": "Pickup",
+        "category": "Services"
+      },
+      {
+        "description": "30 Jan 2023",
+        "amount": 1000,
+        "item": "Pickup",
+        "category": "Services"
+      },
+      {
+        "description": "30 Jan 2023",
+        "amount": 400,
+        "item": "Pickup",
+        "category": "Services"
+      }
+    ],
+    "totalExtraDaalu": 4250,
+    "expenses": [
+      {
+        "date": "2023-01-28",
+        "item": "Chokani -2",
+        "amount": 1200,
+        "category": "Expense",
+        "expenseCategory": "Tools"
+      },
+      {
+        "date": "2023-01-28",
+        "item": "TaalPatri",
+        "amount": 3800,
+        "category": "Expense",
+        "expenseCategory": "Tools"
+      }
+    ],
+    "totalExpenses": 5000,
+    "summaryDaaluProfit": 26650,
+    "specialCustomerRows": []
+  },
+  {
+    "month": "Feb-2023",
+    "period": "2023-02",
+    "custTotalRow": [
+      "Total",
+      "",
+      "162,045 kg",
+      "₹10.35",
+      "₹0.00",
+      "₹1,676,843.00",
+      "₹21,200.00",
+      "₹1,698,043.00",
+      "₹848,686.00",
+      "₹849,357.00"
+    ],
+    "daaluDiesel": [
+      {
+        "date": "1 Feb 2023",
+        "amount": 2000,
+        "item": "Daalu Diesel",
+        "category": "Expense",
+        "expenseCategory": "Fuel"
+      },
+      {
+        "date": "19 Feb 2023",
+        "amount": 2000,
+        "item": "Daalu Diesel",
+        "category": "Expense",
+        "expenseCategory": "Fuel"
+      },
+      {
+        "date": "25 Feb 2023",
+        "amount": 2000,
+        "item": "Daalu Diesel",
+        "category": "Expense",
+        "expenseCategory": "Fuel"
+      }
+    ],
+    "totalDiesel": 6000,
+    "daaluExtra": [
+      {
+        "description": "1 Feb 2023",
+        "amount": 600,
+        "item": "Pickup",
+        "category": "Services"
+      },
+      {
+        "description": "1 Feb 2023",
+        "amount": 400,
+        "item": "Pickup",
+        "category": "Services"
+      },
+      {
+        "description": "21 Feb 2023",
+        "amount": 1100,
+        "item": "Pickup",
+        "category": "Services"
+      },
+      {
+        "description": "18 Feb 2023",
+        "amount": 550,
+        "item": "Pickup",
+        "category": "Services"
+      },
+      {
+        "description": "28 Feb 2023",
+        "amount": 10450,
+        "item": "Pickup",
+        "category": "Services"
+      }
+    ],
+    "totalExtraDaalu": 13100,
+    "expenses": [
+      {
+        "date": "2023-02-28",
+        "item": "Intrest",
+        "amount": 3000,
+        "category": "Expense",
+        "expenseCategory": "Interest"
+      }
+    ],
+    "totalExpenses": 3000,
+    "summaryDaaluProfit": 28300,
+    "specialCustomerRows": []
+  },
+  {
+    "month": "Mar-2023",
+    "period": "2023-03",
+    "custTotalRow": [
+      "Total",
+      "",
+      "180,129 kg",
+      "₹9.72",
+      "₹1,751,299.00",
+      "₹905,456.00",
+      "₹845,843.00"
+    ],
+    "daaluDiesel": [
+      {
+        "date": "2023-03-28",
+        "amount": 8500,
+        "item": "Daalu Diesel",
+        "category": "Expense",
+        "expenseCategory": "Fuel"
+      }
+    ],
+    "totalDiesel": 8500,
+    "daaluExtra": [],
+    "totalExtraDaalu": 0,
+    "expenses": [
+      {
+        "date": "2023-03-28",
+        "item": "Intrest",
+        "amount": 5000,
+        "category": "Expense",
+        "expenseCategory": "Interest"
+      },
+      {
+        "date": "2023-03-28",
+        "item": "Loader",
+        "amount": 1100,
+        "category": "Expense",
+        "expenseCategory": "Labor"
+      },
+      {
+        "date": "2023-03-28",
+        "item": "Petrol",
+        "amount": 5000,
+        "category": "Expense",
+        "expenseCategory": "Fuel"
+      }
+    ],
+    "totalExpenses": 11100,
+    "summaryDaaluProfit": 24350,
+    "specialCustomerRows": [
+      {
+        "rowIdx": 176,
+        "item": "Brokrage",
+        "date": "31 Mar 2023",
+        "amount": 1500,
+        "cash": 1500,
+        "credit": 0
+      }
+    ]
+  }
+]

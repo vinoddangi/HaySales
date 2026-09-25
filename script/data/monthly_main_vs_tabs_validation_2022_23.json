@@ -1,0 +1,177 @@
+[
+  {
+    "month": "Nov-2022",
+    "MAIN_TAB": {
+      "purchKG": 108680,
+      "purchAmt": 940199,
+      "salesKG": 54209,
+      "salesAmt": 536753,
+      "closingKG": 54471,
+      "lending": 0
+    },
+    "PURCHASE_TAB": {
+      "kg": 108680,
+      "amount": 940199,
+      "items": 13
+    },
+    "SALES_TAB": {
+      "kg": 54209,
+      "amount": 547153,
+      "cash": 262840,
+      "credit": 284313,
+      "transactions": 49
+    },
+    "CHECKS": {
+      "purchKG": true,
+      "purchAmt": true,
+      "salesKG": true,
+      "salesAmt": false,
+      "cashPlusDebtEqTotal": true
+    },
+    "DISCREPANCIES": {
+      "purchAmtDiff": 0,
+      "salesAmtDiff": -10400,
+      "salesKGDiff": 0
+    }
+  },
+  {
+    "month": "Dec-2022",
+    "MAIN_TAB": {
+      "purchKG": 76405,
+      "purchAmt": 615080,
+      "salesKG": 61564,
+      "salesAmt": 609293.28,
+      "closingKG": 69312,
+      "lending": 0
+    },
+    "PURCHASE_TAB": {
+      "kg": 76405,
+      "amount": 615080,
+      "items": 6
+    },
+    "SALES_TAB": {
+      "kg": 66564,
+      "amount": 621223.28,
+      "cash": 250396.65,
+      "credit": 370826.63,
+      "transactions": 88
+    },
+    "CHECKS": {
+      "purchKG": true,
+      "purchAmt": true,
+      "salesKG": false,
+      "salesAmt": false,
+      "cashPlusDebtEqTotal": true
+    },
+    "DISCREPANCIES": {
+      "purchAmtDiff": 0,
+      "salesAmtDiff": -11930,
+      "salesKGDiff": -5000
+    }
+  },
+  {
+    "month": "Jan-2023",
+    "MAIN_TAB": {
+      "purchKG": 111700,
+      "purchAmt": 998740,
+      "salesKG": 158336,
+      "salesAmt": 1586733.18,
+      "closingKG": 22408,
+      "lending": 0
+    },
+    "PURCHASE_TAB": {
+      "kg": 111700,
+      "amount": 998740,
+      "items": 12
+    },
+    "SALES_TAB": {
+      "kg": 158336,
+      "amount": 1617133.18,
+      "cash": 752115,
+      "credit": 865018.1799999999,
+      "transactions": 164
+    },
+    "CHECKS": {
+      "purchKG": true,
+      "purchAmt": true,
+      "salesKG": true,
+      "salesAmt": false,
+      "cashPlusDebtEqTotal": true
+    },
+    "DISCREPANCIES": {
+      "purchAmtDiff": 0,
+      "salesAmtDiff": -30400,
+      "salesKGDiff": 0
+    }
+  },
+  {
+    "month": "Feb-2023",
+    "MAIN_TAB": {
+      "purchKG": 176240,
+      "purchAmt": 1578390,
+      "salesKG": 162045,
+      "salesAmt": 1676843,
+      "closingKG": 33603,
+      "lending": 0
+    },
+    "PURCHASE_TAB": {
+      "kg": 176240,
+      "amount": 1578390,
+      "items": 21
+    },
+    "SALES_TAB": {
+      "kg": 162045,
+      "amount": 1698043,
+      "cash": 848686,
+      "credit": 849357,
+      "transactions": 185
+    },
+    "CHECKS": {
+      "purchKG": true,
+      "purchAmt": true,
+      "salesKG": true,
+      "salesAmt": false,
+      "cashPlusDebtEqTotal": true
+    },
+    "DISCREPANCIES": {
+      "purchAmtDiff": 0,
+      "salesAmtDiff": -21200,
+      "salesKGDiff": 0
+    }
+  },
+  {
+    "month": "Mar-2023",
+    "MAIN_TAB": {
+      "purchKG": 186285,
+      "purchAmt": 1627750,
+      "salesKG": 180129,
+      "salesAmt": 1751299,
+      "closingKG": 39659,
+      "lending": 0
+    },
+    "PURCHASE_TAB": {
+      "kg": 186285,
+      "amount": 1627750,
+      "items": 25
+    },
+    "SALES_TAB": {
+      "kg": 180129,
+      "amount": 1751299,
+      "cash": 905456,
+      "credit": 845843,
+      "transactions": 178
+    },
+    "CHECKS": {
+      "purchKG": true,
+      "purchAmt": true,
+      "salesKG": true,
+      "salesAmt": true,
+      "cashPlusDebtEqTotal": true
+    },
+    "DISCREPANCIES": {
+      "purchAmtDiff": 0,
+      "salesAmtDiff": 0,
+      "salesKGDiff": 0
+    }
+  }
+]

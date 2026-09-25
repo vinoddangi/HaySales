@@ -64,24 +64,24 @@ export const customerCsvColumns: CsvColumn<Customer>[] = [
 // 2. Columns definition for Customer Transactions (/customers/{id}/transactions subcollections)
 export const transactionCsvColumns: CsvColumn<Transaction>[] = [
   { header: 'TransactionID', accessor: (t) => t.id || '' },
-  { header: 'CustomerID', accessor: (t) => t.customerId || '' },
-  { header: 'CustomerName', accessor: (t) => t.customerName || '' },
+  { header: 'CustomerID', accessor: (t) => (t as any).customerId || '' },
+  { header: 'CustomerName', accessor: (t) => (t as any).customerName || '' },
   { header: 'Type', accessor: (t) => t.type || 'SALE' },
   { header: 'Date', accessor: (t) => formatDateForCsv(t.date) },
   {
-    header: 'Item',
-    accessor: (t) => t.item || (t.type === 'SERVICE' ? 'Pickup' : 'Others'),
-  },
-  {
     header: 'Category',
-    accessor: (t) => t.category || (t.type === 'SERVICE' ? 'Services' : ''),
+    accessor: (t) =>
+      (t as any).category || (t.type === 'SERVICE' ? 'Pickup' : 'Others'),
   },
   { header: 'WeightKg', accessor: (t) => t.weightKg || 0 },
   { header: 'Rate', accessor: (t) => t.rate || 0 },
-  { header: 'Amount', accessor: (t) => t.amount || t.paymentAmount || 0 },
+  {
+    header: 'Amount',
+    accessor: (t) => t.amount || (t as any).paymentAmount || 0,
+  },
   { header: 'CashPaid', accessor: (t) => t.cashPaid || 0 },
   { header: 'RemainingDue', accessor: (t) => t.remainingDue || 0 },
-  { header: 'Discount', accessor: (t) => t.discount || 0 },
+  { header: 'Discount', accessor: (t) => (t as any).discount || 0 },
   { header: 'Notes', accessor: (t) => t.note || '' },
 ];
 
@@ -93,16 +93,12 @@ export const purchasesCsvColumns: CsvColumn<Transaction>[] = [
   {
     header: 'Category',
     accessor: (t) =>
-      t.category ||
-      t.expenseCategory ||
-      (t.type === 'EXPENSE' ? 'Others' : 'Purchase'),
+      (t as any).category || (t.type === 'EXPENSE' ? 'Others' : 'Purchase'),
   },
-  { header: 'ExpenseCategory', accessor: (t) => t.expenseCategory || '' },
-  { header: 'Item', accessor: (t) => t.item || 'Others' },
   { header: 'WeightKg', accessor: (t) => t.weightKg || 0 },
-  { header: 'PurchaseRate', accessor: (t) => t.purchaseRate || t.rate || 0 },
+  { header: 'Rate', accessor: (t) => t.rate || 0 },
   { header: 'Amount', accessor: (t) => t.amount || 0 },
-  { header: 'VendorName', accessor: (t) => t.vendorName || '' },
+  { header: 'VendorName', accessor: (t) => (t as any).vendorName || '' },
   { header: 'Notes', accessor: (t) => t.note || '' },
 ];
 
@@ -390,7 +386,6 @@ export async function restoreFromCsvApi(
         ? headers.indexOf('purchaserate')
         : headers.indexOf('rate');
     const catIdx = headers.indexOf('category');
-    const expCatIdx = headers.indexOf('expensecategory');
     const vendorIdx = headers.indexOf('vendorname');
     const noteIdx =
       headers.indexOf('notes') !== -1
@@ -423,24 +418,22 @@ export async function restoreFromCsvApi(
           dateIdx !== -1 && row[dateIdx]
             ? row[dateIdx]
             : new Date().toISOString(),
-        item: itemIdx !== -1 && row[itemIdx] ? row[itemIdx] : 'Others',
+        category:
+          catIdx !== -1 && row[catIdx]
+            ? row[catIdx]
+            : itemIdx !== -1 && row[itemIdx]
+              ? row[itemIdx]
+              : isExpense
+                ? 'Others'
+                : 'Purchase',
         amount,
         note: noteIdx !== -1 ? row[noteIdx] : '',
       };
 
       if (!isExpense) {
-        record.category =
-          catIdx !== -1 && row[catIdx] ? row[catIdx] : 'Purchase';
         record.weightKg = wtIdx !== -1 ? Number(row[wtIdx]) || 0 : 0;
-        record.purchaseRate = rateIdx !== -1 ? Number(row[rateIdx]) || 0 : 0;
+        record.rate = rateIdx !== -1 ? Number(row[rateIdx]) || 0 : 0;
         record.vendorName = vendorIdx !== -1 ? row[vendorIdx] : '';
-      } else {
-        record.expenseCategory =
-          expCatIdx !== -1 && row[expCatIdx]
-            ? row[expCatIdx]
-            : catIdx !== -1 && row[catIdx]
-              ? row[catIdx]
-              : 'Others';
       }
 
       batch.set(pRef, record, { merge: true });
@@ -527,8 +520,12 @@ export async function restoreFromCsvApi(
       };
 
       if (txType === 'SALE') {
-        txRecord.item =
-          itemIdx !== -1 && row[itemIdx] ? row[itemIdx] : 'Others';
+        txRecord.category =
+          catIdx !== -1 && row[catIdx]
+            ? row[catIdx]
+            : itemIdx !== -1 && row[itemIdx]
+              ? row[itemIdx]
+              : 'Others';
         txRecord.weightKg = wtIdx !== -1 ? Number(row[wtIdx]) || 0 : 0;
         txRecord.rate = rateIdx !== -1 ? Number(row[rateIdx]) || 0 : 0;
         txRecord.cashPaid = cashIdx !== -1 ? Number(row[cashIdx]) || 0 : 0;
@@ -538,10 +535,12 @@ export async function restoreFromCsvApi(
             : Math.max(0, parsedAmount - (Number(txRecord.cashPaid) || 0));
         txRecord.discount = discIdx !== -1 ? Number(row[discIdx]) || 0 : 0;
       } else if (txType === 'SERVICE') {
-        txRecord.item =
-          itemIdx !== -1 && row[itemIdx] ? row[itemIdx] : 'Pickup';
         txRecord.category =
-          catIdx !== -1 && row[catIdx] ? row[catIdx] : 'Services';
+          catIdx !== -1 && row[catIdx]
+            ? row[catIdx]
+            : itemIdx !== -1 && row[itemIdx]
+              ? row[itemIdx]
+              : 'Pickup';
         txRecord.cashPaid =
           cashIdx !== -1 ? Number(row[cashIdx]) || parsedAmount : parsedAmount;
       } else if (txType === 'PAYMENT') {

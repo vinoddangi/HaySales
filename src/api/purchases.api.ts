@@ -7,9 +7,12 @@ import {
   updateDoc,
 } from '../services/dbBridge';
 import { db } from '../store/firebaseConfig';
-import { Transaction } from '../types';
+import {
+  OperationsCategoryType,
+  Transaction,
+  TransactionModel,
+} from '../types';
 import { parseTransactionDate } from '../utils/formatters';
-import { parseTransaction } from '../utils/parsers';
 
 /**
  * Fetch all purchases and expenses from root collection
@@ -19,7 +22,7 @@ export async function fetchPurchasesApi(): Promise<Transaction[]> {
   const purchases: Transaction[] = [];
 
   querySnapshot.forEach((docSnap) => {
-    purchases.push(parseTransaction(docSnap.data(), docSnap.id));
+    purchases.push(TransactionModel.fromRaw(docSnap.data(), docSnap.id));
   });
 
   // Also fetch from root 'expenses' if present
@@ -28,7 +31,10 @@ export async function fetchPurchasesApi(): Promise<Transaction[]> {
     expensesSnap.forEach((docSnap) => {
       if (!purchases.some((p) => p.id === docSnap.id)) {
         purchases.push(
-          parseTransaction({ ...docSnap.data(), type: 'EXPENSE' }, docSnap.id),
+          TransactionModel.fromRaw(
+            { ...docSnap.data(), type: 'EXPENSE' },
+            docSnap.id,
+          ),
         );
       }
     });
@@ -45,18 +51,10 @@ export async function fetchPurchasesApi(): Promise<Transaction[]> {
   return purchases;
 }
 
-export interface AddPurchaseParams {
-  type: 'PURCHASE' | 'EXPENSE';
-  category: 'Purchase' | 'Expense';
-  item?: string;
-  expenseCategory?: string;
-  weightKg?: number;
+export type AddPurchaseParams = Partial<Transaction> & {
+  type: 'PURCHASE' | 'EXPENSE' | 'DIVIDEND';
   amount: number;
-  cashPaid?: number;
-  vendorName?: string;
-  note?: string;
-  date?: Date | string;
-}
+};
 
 /**
  * Add a new purchase or expense transaction
@@ -67,23 +65,21 @@ export async function addPurchaseApi(data: AddPurchaseParams): Promise<void> {
   const cashPaid = Number(data.cashPaid) || 0;
   const remainingDue = Math.max(0, amount - cashPaid);
 
+  const category = (data.category || 'Others') as OperationsCategoryType;
   const txData: any = {
     type: data.type,
-    category: data.category,
+    category,
     amount,
     cashPaid,
     remainingDue,
-    date: data.date ? new Date(data.date) : new Date(),
+    date: data.date ? new Date(data.date as any) : new Date(),
   };
 
   if (data.type === 'PURCHASE') {
-    txData.item = data.item;
     txData.weightKg = Number(data.weightKg) || 0;
     if (txData.weightKg > 0) {
-      txData.purchaseRate = txData.amount / txData.weightKg;
+      txData.rate = txData.amount / txData.weightKg;
     }
-  } else if (data.type === 'EXPENSE') {
-    txData.expenseCategory = data.expenseCategory || 'Others';
   }
 
   if (data.vendorName) txData.vendorName = data.vendorName;
@@ -101,9 +97,9 @@ export async function updatePurchaseApi(
 ): Promise<void> {
   const pRef = doc(db, 'purchases', id);
   const updateData: any = {};
-  if (data.item !== undefined) updateData.item = data.item;
-  if (data.expenseCategory !== undefined)
-    updateData.expenseCategory = data.expenseCategory;
+  if (data.category !== undefined) {
+    updateData.category = data.category;
+  }
   if (data.weightKg !== undefined)
     updateData.weightKg = Number(data.weightKg) || 0;
   if (data.amount !== undefined) updateData.amount = Number(data.amount) || 0;
@@ -118,7 +114,7 @@ export async function updatePurchaseApi(
     updateData.weightKg > 0 &&
     updateData.amount > 0
   ) {
-    updateData.purchaseRate = updateData.amount / updateData.weightKg;
+    updateData.rate = updateData.amount / updateData.weightKg;
   }
 
   await updateDoc(pRef, updateData);

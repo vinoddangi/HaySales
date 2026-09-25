@@ -24,7 +24,7 @@ describe('TransactionHistoryItem component', () => {
     const tx: Transaction = {
       id: 'tx-cash-1',
       type: 'SALE',
-      item: 'Wheat Straw',
+      category: 'Wheat Straw',
       amount: 4500,
       cashPaid: 4500,
       remainingDue: 0,
@@ -44,7 +44,7 @@ describe('TransactionHistoryItem component', () => {
     const tx: Transaction = {
       id: 'tx-credit-1',
       type: 'SALE',
-      item: 'Bhoosa',
+      category: 'Bhoosa',
       amount: 10000,
       cashPaid: 2000,
       remainingDue: 8000,

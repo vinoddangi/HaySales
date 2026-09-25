@@ -21,7 +21,7 @@ export interface SaleFormProps {
   isSaving: boolean;
   rolloutStatus?: MonthlyRolloutStatus | null;
   onSubmit: (_saleData: {
-    item: string;
+    category: string;
     weightKg: number;
     amount: number;
     cashPaid: number;
@@ -61,7 +61,7 @@ export const SaleForm: React.FC<SaleFormProps> = ({
   const handleSubmit = async () => {
     if (!selectedItem || amount <= 0 || isFormBlocked) return;
     await onSubmit({
-      item: selectedItem,
+      category: selectedItem,
       weightKg,
       amount,
       cashPaid: effectiveCashPaid,

@@ -16,7 +16,7 @@ describe('purchasesBusiness', () => {
       validatePurchaseInput({
         type: 'PURCHASE',
         amount: 5000,
-        item: 'Chana',
+        category: 'Chana',
       }).isValid,
     ).toBe(true);
 
@@ -24,7 +24,7 @@ describe('purchasesBusiness', () => {
       validatePurchaseInput({
         type: 'PURCHASE',
         amount: 5000,
-        item: '',
+        category: '',
       }).isValid,
     ).toBe(false);
 
@@ -32,7 +32,7 @@ describe('purchasesBusiness', () => {
       validatePurchaseInput({
         type: 'EXPENSE',
         amount: 1000,
-        expenseCategory: 'Fuel',
+        category: 'Fuel',
       }).isValid,
     ).toBe(true);
 
@@ -40,7 +40,7 @@ describe('purchasesBusiness', () => {
       validatePurchaseInput({
         type: 'EXPENSE',
         amount: 1000,
-        expenseCategory: '',
+        category: '',
       }).isValid,
     ).toBe(false);
   });

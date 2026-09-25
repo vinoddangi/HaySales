@@ -21,7 +21,7 @@ describe('monthlyRolloutBusiness', () => {
       // Purchases
       {
         type: 'PURCHASE',
-        item: 'Tuvar',
+        category: 'Tuvar',
         weightKg: 95890,
         amount: 913410,
         date: new Date(2026, 0, 15),
@@ -29,7 +29,7 @@ describe('monthlyRolloutBusiness', () => {
       // Sales
       {
         type: 'SALE',
-        item: 'Tuvar',
+        category: 'Tuvar',
         weightKg: 105108,
         amount: 1121090,
         date: new Date(2026, 0, 20),
@@ -37,7 +37,7 @@ describe('monthlyRolloutBusiness', () => {
       // Operating Expense (Interest)
       {
         type: 'EXPENSE',
-        expenseCategory: 'Interest',
+        category: 'Interest',
         amount: 7000,
         date: new Date(2026, 0, 31),
       },

@@ -31,6 +31,20 @@ export interface ProfitMetricsData {
   isPositive: boolean;
 }
 
+export interface BalanceSheetMetricsData {
+  cashInHand: number;
+  priorCashBalance: number;
+  cashAdjustment: number;
+  customerReceivables: number;
+  closingStockValue: number;
+  fixedAssetsValue: number;
+  totalAssets: number;
+  totalLiabilities: number;
+  partnerCapital: number;
+  retainedProfit: number;
+  netWorth: number;
+}
+
 export interface DashboardMetricsResult {
   totalSalesAmount: number;
   totalSalesWeightKg: number;
@@ -56,7 +70,7 @@ export interface DashboardMetricsResult {
 }
 
 export interface ItemBreakdownResult {
-  item: string;
+  category: string;
   amount: number;
   weightKg: number;
   count: number;
@@ -156,13 +170,8 @@ export function calculateDashboardMetrics(
       expensesOnCash += cash;
     } else if (rawType.includes('PAYMENT')) {
       const pAmt = Number(tx.paymentAmount) || Number(tx.amount) || 0;
-      const disc = Number(tx.discount) || 0;
       paymentsReceived += pAmt;
       paymentsCount += 1;
-      if (disc > 0) {
-        totalExpenseAmount += disc;
-        expensesCount += 1;
-      }
     }
   });
 
@@ -246,17 +255,17 @@ export function calculateItemBreakdowns(
 
   // Only count product SALE transactions in the active period
   filteredTransactions.forEach((tx) => {
-    if (tx.type === 'SALE') {
+    if (tx.type === 'SALE' && tx.category) {
       const amt = Number(tx.amount) || 0;
       const wt = Number(tx.weightKg) || 0;
-      const itemName = (tx.item || 'Others').trim();
+      const cat = tx.category.trim();
 
-      const existing = itemMap.get(itemName) || {
+      const existing = itemMap.get(cat) || {
         amount: 0,
         weightKg: 0,
         count: 0,
       };
-      itemMap.set(itemName, {
+      itemMap.set(cat, {
         amount: existing.amount + amt,
         weightKg: existing.weightKg + wt,
         count: existing.count + 1,
@@ -271,13 +280,13 @@ export function calculateItemBreakdowns(
 
   // Ingest purchases for the active period from filteredTransactions
   filteredTransactions.forEach((tx) => {
-    if (tx.type === 'PURCHASE') {
-      const pItem = (tx.item || 'Others').trim();
-      const existing = purchaseStatsMap.get(pItem) || {
+    if (tx.type === 'PURCHASE' && tx.category) {
+      const pCat = tx.category.trim();
+      const existing = purchaseStatsMap.get(pCat) || {
         amount: 0,
         weightKg: 0,
       };
-      purchaseStatsMap.set(pItem, {
+      purchaseStatsMap.set(pCat, {
         amount: existing.amount + (Number(tx.amount) || 0),
         weightKg: existing.weightKg + (Number(tx.weightKg) || 0),
       });
@@ -313,15 +322,15 @@ export function calculateItemBreakdowns(
   }
 
   return Array.from(itemMap.entries())
-    .map(([item, stats]) => {
-      const pStats = purchaseStatsMap.get(item);
+    .map(([category, stats]) => {
+      const pStats = purchaseStatsMap.get(category);
       const pWeight = pStats?.weightKg || 0;
       const pAmt = pStats?.amount || 0;
       const stockKg = Math.max(0, pWeight - stats.weightKg);
       const avgBuyRate = pWeight > 0 ? pAmt / pWeight : 0;
 
       return {
-        item,
+        category,
         amount: stats.amount,
         weightKg: stats.weightKg,
         count: stats.count,
@@ -439,7 +448,7 @@ export function calculateProfitMetrics(
 
     const netProfit = currentSummary?.netProfit.cm || 0;
     const grossCommission = currentSummary?.commission.cm || 0;
-    const pickupNet = currentSummary?.daalu.cm || 0;
+    const pickupNet = currentSummary?.pickup.cm || 0;
     const operatingExpenses = currentSummary?.expenses.cm || 0;
     const cumulativeTotalProfit = currentSummary?.netProfit.total || 0;
     const profitMarginPct = totalSales > 0 ? (netProfit / totalSales) * 100 : 0;
@@ -474,12 +483,12 @@ export function calculateProfitMetrics(
         const hasActivity =
           latestSummary.sales.weightKg > 0 ||
           latestSummary.purchases.weightKg > 0 ||
-          latestSummary.daalu.cm !== 0 ||
+          latestSummary.pickup.cm !== 0 ||
           latestSummary.expenses.cm !== 0;
 
         if (hasActivity) {
           ytdGrossCommission += latestSummary.commission.cm;
-          ytdPickupNet += latestSummary.daalu.cm;
+          ytdPickupNet += latestSummary.pickup.cm;
           ytdExpenses += latestSummary.expenses.cm;
           ytdNetProfit += latestSummary.netProfit.cm;
         }
@@ -500,4 +509,226 @@ export function calculateProfitMetrics(
       isPositive: ytdNetProfit >= 0,
     };
   }
+}
+
+/**
+ * Calculate Balance Sheet & Cash in Hand Position with previous period adjustment
+ */
+export function calculateBalanceSheetMetrics(
+  allTransactions: Transaction[],
+  options?: {
+    mode?: 'month' | 'ytd';
+    selectedMonth?: number;
+    year?: number;
+    customers?: Customer[];
+    rolloutStatus?: MonthlyRolloutStatus | null;
+  },
+): BalanceSheetMetricsData {
+  const mode = options?.mode || 'month';
+  const year = options?.year || 2026;
+  const selectedMonth = options?.selectedMonth ?? new Date().getMonth();
+
+  // Compute monthly trading summary sequentially up to selectedMonth (or across the year for YTD)
+  let latestSummary: MonthlyTradingSummary | null = null;
+  let priorSummary: MonthlyTradingSummary | null = null;
+
+  const targetMaxMonth = mode === 'month' ? selectedMonth : 11;
+
+  // Resolve customer receivables (lending to customers)
+  let resolvedCustomerReceivables: number | undefined;
+  if (
+    mode === 'month' &&
+    options?.selectedMonth !== undefined &&
+    options?.rolloutStatus?.history
+  ) {
+    const monthStr = String(options.selectedMonth + 1).padStart(2, '0');
+    const targetMonthKey = `${year}-${monthStr}`;
+    const historyEntry = options.rolloutStatus.history.find(
+      (h) => h.month === targetMonthKey,
+    );
+    if (historyEntry?.summary?.lendingToCustomers !== undefined) {
+      resolvedCustomerReceivables = historyEntry.summary.lendingToCustomers;
+    }
+  }
+
+  if (resolvedCustomerReceivables === undefined && options?.customers) {
+    resolvedCustomerReceivables = options.customers.reduce(
+      (sum, c) => sum + (Number(c.outstandingAmount) || 0),
+      0,
+    );
+  }
+
+  for (let m = 0; m <= targetMaxMonth; m++) {
+    const period = `${year}_${String(m + 1).padStart(2, '0')}`;
+    const nextSummary = calculateMonthlyTradingSummary(
+      period,
+      allTransactions,
+      latestSummary,
+      resolvedCustomerReceivables !== undefined
+        ? { lendingToCustomers: resolvedCustomerReceivables }
+        : undefined,
+    );
+
+    if (mode === 'month') {
+      if (m === selectedMonth) {
+        priorSummary = latestSummary;
+      }
+      latestSummary = nextSummary;
+    } else {
+      // YTD: Prior is opening or Dec of previous year / Jan opening
+      if (m === 0) {
+        priorSummary = null;
+      }
+      latestSummary = nextSummary;
+    }
+  }
+
+  // Prior cash balance
+  let priorCashBalance = 0;
+  if (mode === 'month') {
+    if (priorSummary?.cashBalance !== undefined) {
+      priorCashBalance = priorSummary.cashBalance;
+    } else {
+      // Check historical rollout status if available
+      const prevMonthIdx = selectedMonth - 1;
+      if (prevMonthIdx >= 0 && options?.rolloutStatus?.history) {
+        const prevMonthKey = `${year}-${String(prevMonthIdx + 1).padStart(2, '0')}`;
+        const historyEntry = options.rolloutStatus.history.find(
+          (h) => h.month === prevMonthKey,
+        );
+        if (historyEntry?.summary?.cashBalance !== undefined) {
+          priorCashBalance = historyEntry.summary.cashBalance;
+        }
+      }
+    }
+  } else {
+    // YTD baseline opening or Jan start
+    priorCashBalance = 0;
+  }
+
+  // Check if historical rollout status has a finalized summary for the target period
+  if (options?.rolloutStatus?.history) {
+    const monthStr = String(selectedMonth + 1).padStart(2, '0');
+    const targetMonthKey = mode === 'month' ? `${year}-${monthStr}` : undefined;
+
+    // Find target history entry (specific month for 'month' mode, or latest for 'ytd' mode)
+    let historyEntry: any;
+    if (mode === 'month') {
+      historyEntry = options.rolloutStatus.history.find(
+        (h) => h.month === targetMonthKey,
+      );
+    } else {
+      const ytdHistory = options.rolloutStatus.history
+        .filter((h) => h.month.startsWith(`${year}-`) && h.summary)
+        .sort((a, b) => a.month.localeCompare(b.month));
+      if (ytdHistory.length > 0) {
+        historyEntry = ytdHistory[ytdHistory.length - 1];
+      }
+    }
+
+    if (historyEntry?.summary) {
+      const summary = historyEntry.summary;
+      const partnerCapital = JAN_2026_BASELINE.capital.total; // ₹2,250,000.00
+      const retainedProfit =
+        summary.netProfit?.total ??
+        JAN_2026_BASELINE.openingProfit + (summary.netProfit?.cm ?? 0);
+      const totalLiabilities = 0;
+      const totalLiabilitiesAndCapital =
+        partnerCapital + retainedProfit + totalLiabilities;
+
+      const customerReceivables =
+        summary.lendingToCustomers ?? resolvedCustomerReceivables ?? 0;
+      const closingStockValue = summary.closingStock?.amount ?? 0;
+      const fixedAssetsValue = JAN_2026_BASELINE.fixedAssets.total; // ₹1,084,800.00
+      const nonCashAssets =
+        customerReceivables + closingStockValue + fixedAssetsValue;
+
+      // Cash in Hand calculated as difference between Total Liabilities/Capital and Non-Cash Assets
+      const cashInHand =
+        summary.cashBalance !== undefined
+          ? summary.cashBalance
+          : totalLiabilitiesAndCapital - nonCashAssets;
+
+      // Prior cash balance
+      let priorCash = 0;
+      if (mode === 'month') {
+        const prevMonthIdx = selectedMonth - 1;
+        if (prevMonthIdx >= 0) {
+          const prevKey = `${year}-${String(prevMonthIdx + 1).padStart(2, '0')}`;
+          const prevEntry = options.rolloutStatus.history.find(
+            (h) => h.month === prevKey,
+          );
+          priorCash = prevEntry?.summary?.cashBalance ?? 0;
+        } else {
+          priorCash = JAN_2026_BASELINE.openingCashBalance;
+        }
+      } else {
+        priorCash = JAN_2026_BASELINE.openingCashBalance;
+      }
+
+      const cashAdjustment =
+        summary.cashAdj !== undefined
+          ? summary.cashAdj
+          : cashInHand - priorCash;
+      const totalAssets = nonCashAssets + cashInHand;
+      const netWorth = partnerCapital + retainedProfit;
+
+      return {
+        cashInHand: Number(cashInHand.toFixed(2)),
+        priorCashBalance: Number(priorCash.toFixed(2)),
+        cashAdjustment: Number(cashAdjustment.toFixed(2)),
+        customerReceivables: Number(customerReceivables.toFixed(2)),
+        closingStockValue: Number(closingStockValue.toFixed(2)),
+        fixedAssetsValue: Number(fixedAssetsValue.toFixed(2)),
+        totalAssets: Number(totalAssets.toFixed(2)),
+        totalLiabilities: Number(totalLiabilities.toFixed(2)),
+        partnerCapital: Number(partnerCapital.toFixed(2)),
+        retainedProfit: Number(retainedProfit.toFixed(2)),
+        netWorth: Number(netWorth.toFixed(2)),
+      };
+    }
+  }
+
+  const bs = latestSummary?.balanceSheet;
+  const partnerCapital =
+    bs?.liabilitiesAndEquity?.partnerCapital ?? JAN_2026_BASELINE.capital.total;
+  const retainedProfit =
+    bs?.liabilitiesAndEquity?.retainedProfit ??
+    latestSummary?.netProfit?.total ??
+    0;
+  const totalLiabilities =
+    bs?.liabilitiesAndEquity?.totalLiabilities ??
+    bs?.liabilitiesAndEquity?.vendorPayables ??
+    0;
+  const totalLiabilitiesAndCapital =
+    partnerCapital + retainedProfit + totalLiabilities;
+
+  const customerReceivables =
+    bs?.assets?.customerReceivables ?? latestSummary?.lendingToCustomers ?? 0;
+  const closingStockValue =
+    bs?.assets?.closingStockValue ?? latestSummary?.closingStock?.amount ?? 0;
+  const fixedAssetsValue =
+    bs?.assets?.totalFixedAssetsValue ?? JAN_2026_BASELINE.fixedAssets.total;
+  const nonCashAssets =
+    customerReceivables + closingStockValue + fixedAssetsValue;
+
+  const cashInHand =
+    bs?.assets?.cashBalance ?? totalLiabilitiesAndCapital - nonCashAssets;
+  const cashAdjustment = bs?.cashAdjustment ?? cashInHand - priorCashBalance;
+  const totalAssets = nonCashAssets + cashInHand;
+  const netWorth = partnerCapital + retainedProfit;
+
+  return {
+    cashInHand: Number(cashInHand.toFixed(2)),
+    priorCashBalance: Number(priorCashBalance.toFixed(2)),
+    cashAdjustment: Number(cashAdjustment.toFixed(2)),
+    customerReceivables: Number(customerReceivables.toFixed(2)),
+    closingStockValue: Number(closingStockValue.toFixed(2)),
+    fixedAssetsValue: Number(fixedAssetsValue.toFixed(2)),
+    totalAssets: Number(totalAssets.toFixed(2)),
+    totalLiabilities: Number(totalLiabilities.toFixed(2)),
+    partnerCapital: Number(partnerCapital.toFixed(2)),
+    retainedProfit: Number(retainedProfit.toFixed(2)),
+    netWorth: Number(netWorth.toFixed(2)),
+  };
 }

@@ -87,7 +87,7 @@ export function parseSalesFromCsv(csvText: string): Transaction[] {
       customerName: nameIdx !== -1 ? r[nameIdx] : '',
       date:
         dateIdx !== -1 && r[dateIdx] ? r[dateIdx] : new Date().toISOString(),
-      item:
+      category:
         itemIdx !== -1 && r[itemIdx]
           ? r[itemIdx]
           : isService
@@ -99,7 +99,6 @@ export function parseSalesFromCsv(csvText: string): Transaction[] {
       cashPaid: cash,
       remainingDue: due,
       note: noteIdx !== -1 ? r[noteIdx] : '',
-      category: isService ? 'Services' : undefined,
     };
   });
 }
@@ -162,12 +161,11 @@ export function parseServicesFromCsv(csvText: string): Transaction[] {
       customerName: nameIdx !== -1 ? r[nameIdx] : '',
       date:
         dateIdx !== -1 && r[dateIdx] ? r[dateIdx] : new Date().toISOString(),
-      item: itemIdx !== -1 && r[itemIdx] ? r[itemIdx] : 'Pickup',
+      category: itemIdx !== -1 && r[itemIdx] ? r[itemIdx] : 'Pickup',
       amount: amt,
       cashPaid: amt,
       remainingDue: 0,
       note: noteIdx !== -1 ? r[noteIdx] : '',
-      category: 'Services',
     };
   });
 }
@@ -214,13 +212,14 @@ export function parsePurchasesFromCsv(csvText: string): Transaction[] {
     return {
       id: rawId,
       type: isExpense ? 'EXPENSE' : 'PURCHASE',
-      category: isExpense ? undefined : (category as Transaction['category']),
-      expenseCategory: isExpense ? category : undefined,
+      category: (category ||
+        (itemIdx !== -1 && r[itemIdx]
+          ? r[itemIdx]
+          : 'Others')) as Transaction['category'],
       date:
         dateIdx !== -1 && r[dateIdx] ? r[dateIdx] : new Date().toISOString(),
-      item: itemIdx !== -1 && r[itemIdx] ? r[itemIdx] : 'Others',
       weightKg: wtIdx !== -1 && r[wtIdx] ? Number(r[wtIdx]) || 0 : 0,
-      purchaseRate: rateIdx !== -1 && r[rateIdx] ? Number(r[rateIdx]) || 0 : 0,
+      rate: rateIdx !== -1 && r[rateIdx] ? Number(r[rateIdx]) || 0 : 0,
       amount: amt,
       cashPaid: cash,
       remainingDue: due,
@@ -247,14 +246,18 @@ export function parseExpensesFromCsv(csvText: string): Transaction[] {
 
   return rows.slice(1).map((r, i) => {
     const amt = amtIdx !== -1 && r[amtIdx] ? Number(r[amtIdx]) || 0 : 0;
+    const cat =
+      catIdx !== -1 && r[catIdx]
+        ? r[catIdx]
+        : itemIdx !== -1 && r[itemIdx]
+          ? r[itemIdx]
+          : 'Others';
     return {
       id: idIdx !== -1 && r[idIdx] ? r[idIdx] : `expense_${i + 1}`,
       type: 'EXPENSE',
-      category: 'Expense',
-      expenseCategory: catIdx !== -1 && r[catIdx] ? r[catIdx] : 'Others',
+      category: (cat || 'Others') as Transaction['category'],
       date:
         dateIdx !== -1 && r[dateIdx] ? r[dateIdx] : new Date().toISOString(),
-      item: itemIdx !== -1 && r[itemIdx] ? r[itemIdx] : 'Others',
       amount: amt,
       cashPaid: amt,
       remainingDue: 0,
@@ -536,6 +539,11 @@ class MockDataStoreManager {
 
   public getPurchases(): Transaction[] {
     return [...this.state.purchases];
+  }
+
+  public addPurchase(purchase: Transaction): void {
+    this.state.purchases.unshift(purchase);
+    this.saveState();
   }
 
   public deletePurchase(id: string): void {

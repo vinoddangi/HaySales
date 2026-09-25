@@ -29,7 +29,7 @@ export const SalesPage: React.FC = () => {
   const isCreditAllowed = outstandingDue < CREDIT_LIMIT;
 
   const handleSaleSubmit = async (saleData: {
-    item: string;
+    category: string;
     weightKg: number;
     amount: number;
     cashPaid: number;
@@ -40,7 +40,7 @@ export const SalesPage: React.FC = () => {
       await addTransaction({
         customerId: selectedCustId,
         type: 'SALE',
-        item: saleData.item,
+        category: saleData.category as any,
         weightKg: saleData.weightKg,
         amount: saleData.amount,
         discount: 0,
@@ -59,7 +59,7 @@ export const SalesPage: React.FC = () => {
   };
 
   const handleServiceSubmit = async (serviceData: {
-    item: string;
+    category: string;
     amount: number;
     cashPaid: number;
     date: string;
@@ -70,7 +70,7 @@ export const SalesPage: React.FC = () => {
       await addTransaction({
         customerId: selectedCustId,
         type: 'SERVICE',
-        item: serviceData.item,
+        category: serviceData.category as any,
         amount: serviceData.amount,
         discount: 0,
         cashPaid: serviceData.cashPaid,

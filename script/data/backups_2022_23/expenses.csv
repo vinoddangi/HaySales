@@ -1,0 +1,22 @@
+ExpenseID,Date,ExpenseCategory,Item,Amount,Notes
+expense_2022_11_diesel_52,2022-11-28T12:00:00.000Z,Fuel,Daalu Diesel,2000,Daalu diesel fuel expense from Nov-2022 Sales sheet
+expense_2022_11_exp_52,2022-11-28T12:00:00.000Z,Tools,25/11 tub,2300,25/11 tub operating expense from Nov-2022 Sales sheet
+expense_2022_11_diesel_53,2022-11-28T12:00:00.000Z,Fuel,Daalu Diesel,2000,Daalu diesel fuel expense from Nov-2022 Sales sheet
+expense_2022_11_exp_53,2022-11-28T12:00:00.000Z,Tools,26/11 tub + pavdo,1060,26/11 tub + pavdo operating expense from Nov-2022 Sales sheet
+expense_2022_12_diesel_74,2022-12-28T12:00:00.000Z,Fuel,Daalu Diesel,2000,Daalu diesel fuel expense from Dec-2022 Sales sheet
+expense_2022_12_exp_74,2022-12-28T12:00:00.000Z,Tools,Jag,320,Jag operating expense from Dec-2022 Sales sheet
+expense_2022_12_exp_75,2022-12-28T12:00:00.000Z,Others,Lease,6800,Lease operating expense from Dec-2022 Sales sheet
+expense_2023_01_diesel_171,2023-01-28T12:00:00.000Z,Fuel,Daalu Diesel,2000,Daalu diesel fuel expense from Jan-2023 Sales sheet
+expense_2023_01_exp_171,2023-01-28T12:00:00.000Z,Tools,Chokani -2,1200,Chokani -2 operating expense from Jan-2023 Sales sheet
+expense_2023_01_diesel_172,2023-01-28T12:00:00.000Z,Fuel,Daalu Diesel,2000,Daalu diesel fuel expense from Jan-2023 Sales sheet
+expense_2023_01_exp_172,2023-01-28T12:00:00.000Z,Tools,TaalPatri,3800,TaalPatri operating expense from Jan-2023 Sales sheet
+expense_2023_01_diesel_173,2023-01-28T12:00:00.000Z,Fuel,Daalu Diesel,2000,Daalu diesel fuel expense from Jan-2023 Sales sheet
+expense_2023_01_diesel_174,2023-01-28T12:00:00.000Z,Fuel,Daalu Diesel,2000,Daalu diesel fuel expense from Jan-2023 Sales sheet
+expense_2023_02_diesel_194,2023-02-28T12:00:00.000Z,Fuel,Daalu Diesel,2000,Daalu diesel fuel expense from Feb-2023 Sales sheet
+expense_2023_02_exp_194,2023-02-28T12:00:00.000Z,Interest,Intrest,3000,Intrest operating expense from Feb-2023 Sales sheet
+expense_2023_02_diesel_195,2023-02-28T12:00:00.000Z,Fuel,Daalu Diesel,2000,Daalu diesel fuel expense from Feb-2023 Sales sheet
+expense_2023_02_diesel_196,2023-02-28T12:00:00.000Z,Fuel,Daalu Diesel,2000,Daalu diesel fuel expense from Feb-2023 Sales sheet
+expense_2023_03_exp_194,2023-03-28T12:00:00.000Z,Interest,Intrest,5000,Intrest operating expense from Mar-2023 Sales sheet
+expense_2023_03_exp_195,2023-03-28T12:00:00.000Z,Labor,Loader,1100,Loader operating expense from Mar-2023 Sales sheet
+expense_2023_03_exp_196,2023-03-28T12:00:00.000Z,Fuel,Petrol,5000,Petrol operating expense from Mar-2023 Sales sheet
+expense_2023_03_diesel_lump,2023-03-28T12:00:00.000Z,Fuel,Daalu Diesel,8500,Daalu diesel fuel expense from Mar-2023 Sales sheet

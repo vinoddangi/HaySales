@@ -55,8 +55,7 @@ export const RecentTransactionsWidget: React.FC<
           const isPayment = tx.type === 'PAYMENT';
           const isPurchase = tx.type === 'PURCHASE';
           const isExpense = tx.type === 'EXPENSE';
-          const isOpening =
-            tx.type === 'OPENING_BALANCE' || tx.item === 'Previous Outstanding';
+          const isOpening = tx.type === 'OPENING_BALANCE';
           const amount = isPayment
             ? tx.paymentAmount || Number(tx.amount) || 0
             : tx.amount || 0;
@@ -89,12 +88,12 @@ export const RecentTransactionsWidget: React.FC<
                     {isPayment
                       ? 'Payment Received'
                       : isPurchase
-                        ? `Purchase: ${tx.item || 'Item'}`
+                        ? `Purchase: ${(tx as any).category || 'Item'}`
                         : isExpense
-                          ? `Expense: ${tx.expenseCategory || 'General'}`
+                          ? `Expense: ${(tx as any).category || 'General'}`
                           : isOpening
                             ? 'Opening Balance'
-                            : tx.item || 'Sale Item'}
+                            : (tx as any).category || 'Sale Item'}
                   </Text>
                   {isPayment && (
                     <Badge sentiment="info" size="sm">

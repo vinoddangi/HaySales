@@ -28,10 +28,10 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
     : data.isOpening
       ? 'Previous Outstanding'
       : data.isService
-        ? `Service: ${data.item}`
+        ? `Service: ${data.category}`
         : isFullCashSale
-          ? `Cash Sale: ${data.item}`
-          : `Sale: ${data.item}`;
+          ? `Cash Sale: ${data.category}`
+          : `Sale: ${data.category}`;
 
   const subtitle =
     !data.isPayment && !data.isOpening && !data.isService && data.weightKg > 0

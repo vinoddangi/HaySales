@@ -3028,7 +3028,8 @@
       "amount": 12875,
       "cashPaid": 0,
       "remainingDue": 12875,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3040,7 +3041,8 @@
       "amount": 18060,
       "cashPaid": 0,
       "remainingDue": 18060,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3052,7 +3054,8 @@
       "amount": 18360,
       "cashPaid": 0,
       "remainingDue": 18360,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3064,7 +3067,8 @@
       "amount": 18000,
       "cashPaid": 18000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3076,7 +3080,8 @@
       "amount": 6360,
       "cashPaid": 0,
       "remainingDue": 6360,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3088,7 +3093,8 @@
       "amount": 17760,
       "cashPaid": 0,
       "remainingDue": 17760,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3100,7 +3106,8 @@
       "amount": 18000,
       "cashPaid": 18000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3112,7 +3119,8 @@
       "amount": 12665,
       "cashPaid": 0,
       "remainingDue": 12665,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3124,7 +3132,8 @@
       "amount": 12750,
       "cashPaid": 0,
       "remainingDue": 12750,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3136,7 +3145,8 @@
       "amount": 12750,
       "cashPaid": 0,
       "remainingDue": 12750,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3148,7 +3158,8 @@
       "amount": 11845,
       "cashPaid": 0,
       "remainingDue": 11845,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3160,7 +3171,8 @@
       "amount": 12250,
       "cashPaid": 0,
       "remainingDue": 12250,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3172,7 +3184,8 @@
       "amount": 13125,
       "cashPaid": 0,
       "remainingDue": 13125,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3184,7 +3197,8 @@
       "amount": 5818,
       "cashPaid": 0,
       "remainingDue": 5818,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3196,7 +3210,8 @@
       "amount": 3875,
       "cashPaid": 0,
       "remainingDue": 3875,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3208,7 +3223,8 @@
       "amount": 12500,
       "cashPaid": 0,
       "remainingDue": 12500,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3220,7 +3236,8 @@
       "amount": 4300,
       "cashPaid": 4300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3232,7 +3249,8 @@
       "amount": 13585,
       "cashPaid": 5000,
       "remainingDue": 8585,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3244,7 +3262,8 @@
       "amount": 5635,
       "cashPaid": 0,
       "remainingDue": 5635,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3256,7 +3275,8 @@
       "amount": 8347,
       "cashPaid": 0,
       "remainingDue": 8347,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3268,7 +3288,8 @@
       "amount": 16900,
       "cashPaid": 16900,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3280,7 +3301,8 @@
       "amount": 15290,
       "cashPaid": 10000,
       "remainingDue": 5290,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3292,7 +3314,8 @@
       "amount": 31100,
       "cashPaid": 31100,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3304,7 +3327,8 @@
       "amount": 14190,
       "cashPaid": 6100,
       "remainingDue": 8090,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3316,7 +3340,8 @@
       "amount": 12485,
       "cashPaid": 0,
       "remainingDue": 12485,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3328,7 +3353,8 @@
       "amount": 12045,
       "cashPaid": 0,
       "remainingDue": 12045,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3340,7 +3366,8 @@
       "amount": 13310,
       "cashPaid": 0,
       "remainingDue": 13310,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3352,7 +3379,8 @@
       "amount": 12232,
       "cashPaid": 0,
       "remainingDue": 12232,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3364,7 +3392,8 @@
       "amount": 5808,
       "cashPaid": 0,
       "remainingDue": 5808,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3376,7 +3405,8 @@
       "amount": 29100,
       "cashPaid": 29100,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3388,7 +3418,8 @@
       "amount": 18800,
       "cashPaid": 18800,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3400,7 +3431,8 @@
       "amount": 14905,
       "cashPaid": 0,
       "remainingDue": 14905,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3412,7 +3444,8 @@
       "amount": 15400,
       "cashPaid": 15400,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3424,7 +3457,8 @@
       "amount": 15510,
       "cashPaid": 0,
       "remainingDue": 15510,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3436,7 +3470,8 @@
       "amount": 5650,
       "cashPaid": 5650,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3448,7 +3483,8 @@
       "amount": 5300,
       "cashPaid": 5300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3460,7 +3496,8 @@
       "amount": 13600,
       "cashPaid": 13600,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3472,7 +3509,8 @@
       "amount": 14245,
       "cashPaid": 0,
       "remainingDue": 14245,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3484,7 +3522,8 @@
       "amount": 14080,
       "cashPaid": 0,
       "remainingDue": 14080,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3496,7 +3535,8 @@
       "amount": 6105,
       "cashPaid": 0,
       "remainingDue": 6105,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3508,7 +3548,8 @@
       "amount": 5445,
       "cashPaid": 3000,
       "remainingDue": 2445,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3520,7 +3561,8 @@
       "amount": 14800,
       "cashPaid": 14800,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3532,7 +3574,8 @@
       "amount": 15345,
       "cashPaid": 0,
       "remainingDue": 15345,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3544,7 +3587,8 @@
       "amount": 15070,
       "cashPaid": 0,
       "remainingDue": 15070,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3556,7 +3600,8 @@
       "amount": 14630,
       "cashPaid": 0,
       "remainingDue": 14630,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3568,7 +3613,8 @@
       "amount": 16390,
       "cashPaid": 0,
       "remainingDue": 16390,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3580,7 +3626,8 @@
       "amount": 15950,
       "cashPaid": 0,
       "remainingDue": 15950,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3592,7 +3639,8 @@
       "amount": 14795,
       "cashPaid": 0,
       "remainingDue": 14795,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3604,7 +3652,8 @@
       "amount": 16060,
       "cashPaid": 0,
       "remainingDue": 16060,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3616,7 +3665,8 @@
       "amount": 15950,
       "cashPaid": 0,
       "remainingDue": 15950,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3628,7 +3678,8 @@
       "amount": 385,
       "cashPaid": 0,
       "remainingDue": 385,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3640,7 +3691,8 @@
       "amount": 15620,
       "cashPaid": 0,
       "remainingDue": 15620,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3652,7 +3704,8 @@
       "amount": 15840,
       "cashPaid": 0,
       "remainingDue": 15840,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3664,7 +3717,8 @@
       "amount": 30555,
       "cashPaid": 0,
       "remainingDue": 30555,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3676,7 +3730,8 @@
       "amount": 13530,
       "cashPaid": 0,
       "remainingDue": 13530,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3688,7 +3743,8 @@
       "amount": 67150,
       "cashPaid": 0,
       "remainingDue": 67150,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3700,7 +3756,8 @@
       "amount": 13545,
       "cashPaid": 0,
       "remainingDue": 13545,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3712,7 +3769,8 @@
       "amount": 25800,
       "cashPaid": 25800,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3724,7 +3782,8 @@
       "amount": 5100,
       "cashPaid": 5100,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3736,7 +3795,8 @@
       "amount": 3960,
       "cashPaid": 0,
       "remainingDue": 3960,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3748,7 +3808,8 @@
       "amount": 30800,
       "cashPaid": 0,
       "remainingDue": 30800,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3760,7 +3821,8 @@
       "amount": 5830,
       "cashPaid": 0,
       "remainingDue": 5830,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3772,7 +3834,8 @@
       "amount": 525,
       "cashPaid": 0,
       "remainingDue": 525,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3784,7 +3847,8 @@
       "amount": 13965,
       "cashPaid": 0,
       "remainingDue": 13965,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3796,7 +3860,8 @@
       "amount": 14230,
       "cashPaid": 10000,
       "remainingDue": 4230,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3808,7 +3873,8 @@
       "amount": 13700,
       "cashPaid": 0,
       "remainingDue": 13700,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3820,7 +3886,8 @@
       "amount": 5200,
       "cashPaid": 0,
       "remainingDue": 5200,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3832,7 +3899,8 @@
       "amount": 4580,
       "cashPaid": 0,
       "remainingDue": 4580,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3844,7 +3912,8 @@
       "amount": 25900,
       "cashPaid": 20000,
       "remainingDue": 5900,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3856,7 +3925,8 @@
       "amount": 22300,
       "cashPaid": 22300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3868,7 +3938,8 @@
       "amount": 32400,
       "cashPaid": 0,
       "remainingDue": 32400,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3880,7 +3951,8 @@
       "amount": 23350,
       "cashPaid": 10000,
       "remainingDue": 13350,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3892,7 +3964,8 @@
       "amount": 13250,
       "cashPaid": 0,
       "remainingDue": 13250,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3904,7 +3977,8 @@
       "amount": 12400,
       "cashPaid": 9100,
       "remainingDue": 3300,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3916,7 +3990,8 @@
       "amount": 12825,
       "cashPaid": 0,
       "remainingDue": 12825,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3928,7 +4003,8 @@
       "amount": 29000,
       "cashPaid": 29000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3940,7 +4016,8 @@
       "amount": 0,
       "cashPaid": 0,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3952,7 +4029,8 @@
       "amount": 0,
       "cashPaid": 0,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3964,7 +4042,8 @@
       "amount": 12400,
       "cashPaid": 0,
       "remainingDue": 12400,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3976,7 +4055,8 @@
       "amount": 13015,
       "cashPaid": 0,
       "remainingDue": 13015,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -3988,7 +4068,8 @@
       "amount": 30700,
       "cashPaid": 30700,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4000,7 +4081,8 @@
       "amount": 713,
       "cashPaid": 0,
       "remainingDue": 713,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4012,7 +4094,8 @@
       "amount": 12600,
       "cashPaid": 12600,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4024,7 +4107,8 @@
       "amount": 11000,
       "cashPaid": 9100,
       "remainingDue": 1900,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4036,7 +4120,8 @@
       "amount": 12255,
       "cashPaid": 0,
       "remainingDue": 12255,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4048,7 +4133,8 @@
       "amount": 4845,
       "cashPaid": 0,
       "remainingDue": 4845,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4060,7 +4146,8 @@
       "amount": 12300,
       "cashPaid": 12300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4072,7 +4159,8 @@
       "amount": 4545,
       "cashPaid": 0,
       "remainingDue": 4545,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4084,7 +4172,8 @@
       "amount": 4950,
       "cashPaid": 0,
       "remainingDue": 4950,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4096,7 +4185,8 @@
       "amount": 760,
       "cashPaid": 0,
       "remainingDue": 760,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4108,7 +4198,8 @@
       "amount": 20900,
       "cashPaid": 20900,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4120,7 +4211,8 @@
       "amount": 5830,
       "cashPaid": 0,
       "remainingDue": 5830,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4132,7 +4224,8 @@
       "amount": 31700,
       "cashPaid": 31700,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4144,7 +4237,8 @@
       "amount": 13700,
       "cashPaid": 13700,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4156,7 +4250,8 @@
       "amount": 13822,
       "cashPaid": 0,
       "remainingDue": 13822,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4168,7 +4263,8 @@
       "amount": 13700,
       "cashPaid": 0,
       "remainingDue": 13700,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4180,7 +4276,8 @@
       "amount": 14200,
       "cashPaid": 0,
       "remainingDue": 14200,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4192,7 +4289,8 @@
       "amount": 13900,
       "cashPaid": 0,
       "remainingDue": 13900,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4204,7 +4302,8 @@
       "amount": 30900,
       "cashPaid": 25000,
       "remainingDue": 5900,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4216,7 +4315,8 @@
       "amount": 24800,
       "cashPaid": 24800,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4228,7 +4328,8 @@
       "amount": 13110,
       "cashPaid": 0,
       "remainingDue": 13110,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4240,7 +4341,8 @@
       "amount": 23275,
       "cashPaid": 0,
       "remainingDue": 23275,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4252,7 +4354,8 @@
       "amount": 13800,
       "cashPaid": 13800,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4264,7 +4367,8 @@
       "amount": 13822,
       "cashPaid": 0,
       "remainingDue": 13822,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4276,7 +4380,8 @@
       "amount": 12300,
       "cashPaid": 12300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4288,7 +4393,8 @@
       "amount": 3375,
       "cashPaid": 0,
       "remainingDue": 3375,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4300,7 +4406,8 @@
       "amount": 1000,
       "cashPaid": 0,
       "remainingDue": 1000,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4312,7 +4419,8 @@
       "amount": 1160,
       "cashPaid": 0,
       "remainingDue": 1160,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4324,7 +4432,8 @@
       "amount": 10000,
       "cashPaid": 10000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4336,7 +4445,8 @@
       "amount": 13671,
       "cashPaid": 0,
       "remainingDue": 13671,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4348,7 +4458,8 @@
       "amount": 12626,
       "cashPaid": 0,
       "remainingDue": 12626,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4360,7 +4471,8 @@
       "amount": 26300,
       "cashPaid": 26300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4372,7 +4484,8 @@
       "amount": 19475,
       "cashPaid": 0,
       "remainingDue": 19475,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4384,7 +4497,8 @@
       "amount": 26000,
       "cashPaid": 26000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4396,7 +4510,8 @@
       "amount": 12480,
       "cashPaid": 0,
       "remainingDue": 12480,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4408,7 +4523,8 @@
       "amount": 11500,
       "cashPaid": 0,
       "remainingDue": 11500,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4420,7 +4536,8 @@
       "amount": 26500,
       "cashPaid": 26500,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4432,7 +4549,8 @@
       "amount": 13250,
       "cashPaid": 13250,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4444,7 +4562,8 @@
       "amount": 11430,
       "cashPaid": 0,
       "remainingDue": 11430,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4456,7 +4575,8 @@
       "amount": 4200,
       "cashPaid": 4200,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4468,7 +4588,8 @@
       "amount": 12285,
       "cashPaid": 0,
       "remainingDue": 12285,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4480,7 +4601,8 @@
       "amount": 12465,
       "cashPaid": 0,
       "remainingDue": 12465,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4492,7 +4614,8 @@
       "amount": 950,
       "cashPaid": 500,
       "remainingDue": 450,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4504,7 +4627,8 @@
       "amount": 10212,
       "cashPaid": 0,
       "remainingDue": 10212,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4516,7 +4640,8 @@
       "amount": 11000,
       "cashPaid": 11000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4528,7 +4653,8 @@
       "amount": 2210,
       "cashPaid": 0,
       "remainingDue": 2210,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4540,7 +4666,8 @@
       "amount": 12510,
       "cashPaid": 6700,
       "remainingDue": 5810,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4552,7 +4679,8 @@
       "amount": 27900,
       "cashPaid": 27900,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4564,7 +4692,8 @@
       "amount": 12800,
       "cashPaid": 0,
       "remainingDue": 12800,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4576,7 +4705,8 @@
       "amount": 1170,
       "cashPaid": 0,
       "remainingDue": 1170,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4588,7 +4718,8 @@
       "amount": 760,
       "cashPaid": 0,
       "remainingDue": 760,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4600,7 +4731,8 @@
       "amount": 11925,
       "cashPaid": 0,
       "remainingDue": 11925,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4612,7 +4744,8 @@
       "amount": 13140,
       "cashPaid": 0,
       "remainingDue": 13140,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4624,7 +4757,8 @@
       "amount": 12302,
       "cashPaid": 0,
       "remainingDue": 12302,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4636,7 +4770,8 @@
       "amount": 11900,
       "cashPaid": 11900,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4648,7 +4783,8 @@
       "amount": 4230,
       "cashPaid": 0,
       "remainingDue": 4230,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4660,7 +4796,8 @@
       "amount": 3480,
       "cashPaid": 0,
       "remainingDue": 3480,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4672,7 +4809,8 @@
       "amount": 12375,
       "cashPaid": 0,
       "remainingDue": 12375,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4684,7 +4822,8 @@
       "amount": 11925,
       "cashPaid": 11800,
       "remainingDue": 125,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4696,7 +4835,8 @@
       "amount": 11701,
       "cashPaid": 0,
       "remainingDue": 11701,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4708,7 +4848,8 @@
       "amount": 13770,
       "cashPaid": 0,
       "remainingDue": 13770,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4720,7 +4861,8 @@
       "amount": 39000,
       "cashPaid": 39000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4732,7 +4874,8 @@
       "amount": 13000,
       "cashPaid": 13000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4744,7 +4887,8 @@
       "amount": 12420,
       "cashPaid": 0,
       "remainingDue": 12420,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4756,7 +4900,8 @@
       "amount": 12195,
       "cashPaid": 10100,
       "remainingDue": 2095,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4768,7 +4913,8 @@
       "amount": 4410,
       "cashPaid": 0,
       "remainingDue": 4410,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4780,7 +4926,8 @@
       "amount": 4505,
       "cashPaid": 0,
       "remainingDue": 4505,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4792,7 +4939,8 @@
       "amount": 11700,
       "cashPaid": 0,
       "remainingDue": 11700,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4804,7 +4952,8 @@
       "amount": 3735,
       "cashPaid": 0,
       "remainingDue": 3735,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4816,7 +4965,8 @@
       "amount": 10575,
       "cashPaid": 0,
       "remainingDue": 10575,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4828,7 +4978,8 @@
       "amount": 21500,
       "cashPaid": 0,
       "remainingDue": 21500,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4840,7 +4991,8 @@
       "amount": 11655,
       "cashPaid": 0,
       "remainingDue": 11655,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4852,7 +5004,8 @@
       "amount": 11745,
       "cashPaid": 0,
       "remainingDue": 11745,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4864,7 +5017,8 @@
       "amount": 3780,
       "cashPaid": 0,
       "remainingDue": 3780,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4876,7 +5030,8 @@
       "amount": 10400,
       "cashPaid": 10400,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4888,7 +5043,8 @@
       "amount": 10900,
       "cashPaid": 4000,
       "remainingDue": 6900,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4900,7 +5056,8 @@
       "amount": 8900,
       "cashPaid": 8900,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4912,7 +5069,8 @@
       "amount": 4005,
       "cashPaid": 0,
       "remainingDue": 4005,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4924,7 +5082,8 @@
       "amount": 10935,
       "cashPaid": 0,
       "remainingDue": 10935,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4936,7 +5095,8 @@
       "amount": 7020,
       "cashPaid": 100,
       "remainingDue": 6920,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4948,7 +5108,8 @@
       "amount": 8100,
       "cashPaid": 0,
       "remainingDue": 8100,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4960,7 +5121,8 @@
       "amount": 0,
       "cashPaid": 0,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4972,7 +5134,8 @@
       "amount": 35890,
       "cashPaid": 30000,
       "remainingDue": 5890,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4984,7 +5147,8 @@
       "amount": 22800,
       "cashPaid": 22800,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -4996,7 +5160,8 @@
       "amount": 51000,
       "cashPaid": 37000,
       "remainingDue": 14000,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5008,7 +5173,8 @@
       "amount": 5445,
       "cashPaid": 5445,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5020,7 +5186,8 @@
       "amount": 12000,
       "cashPaid": 12000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5032,7 +5199,8 @@
       "amount": 12870,
       "cashPaid": 9100,
       "remainingDue": 3770,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5044,7 +5212,8 @@
       "amount": 11600,
       "cashPaid": 10000,
       "remainingDue": 1600,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5056,7 +5225,8 @@
       "amount": 35900,
       "cashPaid": 35900,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5068,7 +5238,8 @@
       "amount": 12060,
       "cashPaid": 5000,
       "remainingDue": 7060,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5080,7 +5251,8 @@
       "amount": 12285,
       "cashPaid": 0,
       "remainingDue": 12285,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5092,7 +5264,8 @@
       "amount": 585,
       "cashPaid": 0,
       "remainingDue": 585,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5104,7 +5277,8 @@
       "amount": 4500,
       "cashPaid": 0,
       "remainingDue": 4500,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5116,7 +5290,8 @@
       "amount": 4725,
       "cashPaid": 4725,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5128,7 +5303,8 @@
       "amount": 16600,
       "cashPaid": 0,
       "remainingDue": 16600,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5140,7 +5316,8 @@
       "amount": 4500,
       "cashPaid": 4500,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5152,7 +5329,8 @@
       "amount": 24600,
       "cashPaid": 24600,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5164,7 +5342,8 @@
       "amount": 12195,
       "cashPaid": 0,
       "remainingDue": 12195,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5176,7 +5355,8 @@
       "amount": 11750,
       "cashPaid": 11750,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5188,7 +5368,8 @@
       "amount": 13320,
       "cashPaid": 6000,
       "remainingDue": 7320,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5200,7 +5381,8 @@
       "amount": 13725,
       "cashPaid": 0,
       "remainingDue": 13725,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5212,7 +5394,8 @@
       "amount": 12105,
       "cashPaid": 0,
       "remainingDue": 12105,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5224,7 +5407,8 @@
       "amount": 10000,
       "cashPaid": 10000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5236,7 +5420,8 @@
       "amount": 10890,
       "cashPaid": 0,
       "remainingDue": 10890,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5248,7 +5433,8 @@
       "amount": 11070,
       "cashPaid": 9000,
       "remainingDue": 2070,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5260,7 +5446,8 @@
       "amount": 11610,
       "cashPaid": 0,
       "remainingDue": 11610,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5272,7 +5459,8 @@
       "amount": 12105,
       "cashPaid": 0,
       "remainingDue": 12105,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5284,7 +5472,8 @@
       "amount": 630,
       "cashPaid": 0,
       "remainingDue": 630,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5296,7 +5485,8 @@
       "amount": 612,
       "cashPaid": 0,
       "remainingDue": 612,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5308,7 +5498,8 @@
       "amount": 10530,
       "cashPaid": 0,
       "remainingDue": 10530,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5320,7 +5511,8 @@
       "amount": 11475,
       "cashPaid": 0,
       "remainingDue": 11475,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5332,7 +5524,8 @@
       "amount": 42000,
       "cashPaid": 42000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5344,7 +5537,8 @@
       "amount": 10260,
       "cashPaid": 0,
       "remainingDue": 10260,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5356,7 +5550,8 @@
       "amount": 11346,
       "cashPaid": 0,
       "remainingDue": 11346,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5368,7 +5563,8 @@
       "amount": 10400,
       "cashPaid": 0,
       "remainingDue": 10400,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5380,7 +5576,8 @@
       "amount": 24000,
       "cashPaid": 0,
       "remainingDue": 24000,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5392,7 +5589,8 @@
       "amount": 10730,
       "cashPaid": 0,
       "remainingDue": 10730,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5404,7 +5602,8 @@
       "amount": 11732,
       "cashPaid": 0,
       "remainingDue": 11732,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5416,7 +5615,8 @@
       "amount": 3645,
       "cashPaid": 0,
       "remainingDue": 3645,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5428,7 +5628,8 @@
       "amount": 570,
       "cashPaid": 0,
       "remainingDue": 570,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5440,7 +5641,8 @@
       "amount": 11400,
       "cashPaid": 9100,
       "remainingDue": 2300,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5452,7 +5654,8 @@
       "amount": 11295,
       "cashPaid": 0,
       "remainingDue": 11295,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5464,7 +5667,8 @@
       "amount": 24195,
       "cashPaid": 0,
       "remainingDue": 24195,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5476,7 +5680,8 @@
       "amount": 11500,
       "cashPaid": 11500,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5488,7 +5693,8 @@
       "amount": 12136,
       "cashPaid": 0,
       "remainingDue": 12136,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5500,7 +5706,8 @@
       "amount": 570,
       "cashPaid": 0,
       "remainingDue": 570,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5512,7 +5719,8 @@
       "amount": 11300,
       "cashPaid": 11300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5524,7 +5732,8 @@
       "amount": 2630,
       "cashPaid": 0,
       "remainingDue": 2630,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5536,7 +5745,8 @@
       "amount": 10260,
       "cashPaid": 0,
       "remainingDue": 10260,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5548,7 +5758,8 @@
       "amount": 13320,
       "cashPaid": 0,
       "remainingDue": 13320,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5560,7 +5771,8 @@
       "amount": 11600,
       "cashPaid": 11600,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5572,7 +5784,8 @@
       "amount": 9800,
       "cashPaid": 7000,
       "remainingDue": 2800,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5584,7 +5797,8 @@
       "amount": 51200,
       "cashPaid": 51200,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5596,7 +5810,8 @@
       "amount": 522,
       "cashPaid": 0,
       "remainingDue": 522,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5608,7 +5823,8 @@
       "amount": 32800,
       "cashPaid": 32800,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5620,7 +5836,8 @@
       "amount": 14476,
       "cashPaid": 0,
       "remainingDue": 14476,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5632,7 +5849,8 @@
       "amount": 11875,
       "cashPaid": 0,
       "remainingDue": 11875,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5644,7 +5862,8 @@
       "amount": 9025,
       "cashPaid": 0,
       "remainingDue": 9025,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5656,7 +5875,8 @@
       "amount": 10972,
       "cashPaid": 0,
       "remainingDue": 10972,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5668,7 +5888,8 @@
       "amount": 10035,
       "cashPaid": 0,
       "remainingDue": 10035,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5680,7 +5901,8 @@
       "amount": 10500,
       "cashPaid": 10500,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5692,7 +5914,8 @@
       "amount": 21000,
       "cashPaid": 21000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5704,7 +5927,8 @@
       "amount": 11447,
       "cashPaid": 0,
       "remainingDue": 11447,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5716,7 +5940,8 @@
       "amount": 27360,
       "cashPaid": 0,
       "remainingDue": 27360,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5728,7 +5953,8 @@
       "amount": 14155,
       "cashPaid": 0,
       "remainingDue": 14155,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5740,7 +5966,8 @@
       "amount": 11400,
       "cashPaid": 0,
       "remainingDue": 11400,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5752,7 +5979,8 @@
       "amount": 12400,
       "cashPaid": 0,
       "remainingDue": 12400,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5764,7 +5992,8 @@
       "amount": 13500,
       "cashPaid": 0,
       "remainingDue": 13500,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5776,7 +6005,8 @@
       "amount": 570,
       "cashPaid": 0,
       "remainingDue": 570,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5788,7 +6018,8 @@
       "amount": 1800,
       "cashPaid": 1700,
       "remainingDue": 100,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5800,7 +6031,8 @@
       "amount": 10300,
       "cashPaid": 10300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5812,7 +6044,8 @@
       "amount": 11352,
       "cashPaid": 3100,
       "remainingDue": 8252,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5824,7 +6057,8 @@
       "amount": 10355,
       "cashPaid": 0,
       "remainingDue": 10355,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5836,7 +6070,8 @@
       "amount": 0,
       "cashPaid": 0,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5848,7 +6083,8 @@
       "amount": 52850,
       "cashPaid": 30000,
       "remainingDue": 22850,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5860,7 +6096,8 @@
       "amount": 56500,
       "cashPaid": 56500,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5872,7 +6109,8 @@
       "amount": 2100,
       "cashPaid": 0,
       "remainingDue": 2100,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5884,7 +6122,8 @@
       "amount": 37600,
       "cashPaid": 37600,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5896,7 +6135,8 @@
       "amount": 35200,
       "cashPaid": 35200,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5908,7 +6148,8 @@
       "amount": 16500,
       "cashPaid": 16500,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5920,7 +6161,8 @@
       "amount": 41000,
       "cashPaid": 20000,
       "remainingDue": 21000,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5932,7 +6174,8 @@
       "amount": 54600,
       "cashPaid": 0,
       "remainingDue": 54600,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5944,7 +6187,8 @@
       "amount": 14000,
       "cashPaid": 14000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5956,7 +6200,8 @@
       "amount": 12160,
       "cashPaid": 0,
       "remainingDue": 12160,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5968,7 +6213,8 @@
       "amount": 3942,
       "cashPaid": 0,
       "remainingDue": 3942,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5980,7 +6226,8 @@
       "amount": 7080,
       "cashPaid": 0,
       "remainingDue": 7080,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -5992,7 +6239,8 @@
       "amount": 46000,
       "cashPaid": 46000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6004,7 +6252,8 @@
       "amount": 20000,
       "cashPaid": 20000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6016,7 +6265,8 @@
       "amount": 18000,
       "cashPaid": 18000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6028,7 +6278,8 @@
       "amount": 49200,
       "cashPaid": 49200,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6040,7 +6291,8 @@
       "amount": 780,
       "cashPaid": 0,
       "remainingDue": 780,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6052,7 +6304,8 @@
       "amount": 21400,
       "cashPaid": 21400,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6064,7 +6317,8 @@
       "amount": 20900,
       "cashPaid": 0,
       "remainingDue": 20900,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6076,7 +6330,8 @@
       "amount": 11800,
       "cashPaid": 11800,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6088,7 +6343,8 @@
       "amount": 24437,
       "cashPaid": 0,
       "remainingDue": 24437,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6100,7 +6356,8 @@
       "amount": 11200,
       "cashPaid": 0,
       "remainingDue": 11200,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6112,7 +6369,8 @@
       "amount": 13000,
       "cashPaid": 13000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6124,7 +6382,8 @@
       "amount": 20330,
       "cashPaid": 15000,
       "remainingDue": 5330,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6136,7 +6395,8 @@
       "amount": 9700,
       "cashPaid": 9700,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6148,7 +6408,8 @@
       "amount": 12900,
       "cashPaid": 12900,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6160,7 +6421,8 @@
       "amount": 1980,
       "cashPaid": 0,
       "remainingDue": 1980,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6172,7 +6434,8 @@
       "amount": 13300,
       "cashPaid": 0,
       "remainingDue": 13300,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6184,7 +6447,8 @@
       "amount": 13110,
       "cashPaid": 0,
       "remainingDue": 13110,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6196,7 +6460,8 @@
       "amount": 11790,
       "cashPaid": 0,
       "remainingDue": 11790,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6208,7 +6473,8 @@
       "amount": 5370,
       "cashPaid": 3000,
       "remainingDue": 2370,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6220,7 +6486,8 @@
       "amount": 11115,
       "cashPaid": 0,
       "remainingDue": 11115,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6232,7 +6499,8 @@
       "amount": 1160,
       "cashPaid": 1160,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6244,7 +6512,8 @@
       "amount": 12970,
       "cashPaid": 0,
       "remainingDue": 12970,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6256,7 +6525,8 @@
       "amount": 13160,
       "cashPaid": 0,
       "remainingDue": 13160,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6268,7 +6538,8 @@
       "amount": 12700,
       "cashPaid": 0,
       "remainingDue": 12700,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6280,7 +6551,8 @@
       "amount": 12300,
       "cashPaid": 0,
       "remainingDue": 12300,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6292,7 +6564,8 @@
       "amount": 3450,
       "cashPaid": 2500,
       "remainingDue": 950,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6304,7 +6577,8 @@
       "amount": 0,
       "cashPaid": 0,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6316,7 +6590,8 @@
       "amount": 11732,
       "cashPaid": 4500,
       "remainingDue": 7232,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6328,7 +6603,8 @@
       "amount": 13300,
       "cashPaid": 0,
       "remainingDue": 13300,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6340,7 +6616,8 @@
       "amount": 23750,
       "cashPaid": 0,
       "remainingDue": 23750,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6352,7 +6629,8 @@
       "amount": 11200,
       "cashPaid": 0,
       "remainingDue": 11200,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6364,7 +6642,8 @@
       "amount": 7980,
       "cashPaid": 0,
       "remainingDue": 7980,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6376,7 +6655,8 @@
       "amount": 46500,
       "cashPaid": 46500,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6388,7 +6668,8 @@
       "amount": 12300,
       "cashPaid": 12300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6400,7 +6681,8 @@
       "amount": 36000,
       "cashPaid": 25000,
       "remainingDue": 11000,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6412,7 +6694,8 @@
       "amount": 13250,
       "cashPaid": 10000,
       "remainingDue": 3250,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6424,7 +6707,8 @@
       "amount": 11100,
       "cashPaid": 11100,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6436,7 +6720,8 @@
       "amount": 13335,
       "cashPaid": 10000,
       "remainingDue": 3335,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6448,7 +6733,8 @@
       "amount": 25350,
       "cashPaid": 20000,
       "remainingDue": 5350,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6460,7 +6746,8 @@
       "amount": 24800,
       "cashPaid": 0,
       "remainingDue": 24800,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6472,7 +6759,8 @@
       "amount": 38100,
       "cashPaid": 38100,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6484,7 +6772,8 @@
       "amount": 27335,
       "cashPaid": 10000,
       "remainingDue": 17335,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6496,7 +6785,8 @@
       "amount": 11200,
       "cashPaid": 11200,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6508,7 +6798,8 @@
       "amount": 13035,
       "cashPaid": 10000,
       "remainingDue": 3035,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6520,7 +6811,8 @@
       "amount": 12500,
       "cashPaid": 0,
       "remainingDue": 12500,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6532,7 +6824,8 @@
       "amount": 13230,
       "cashPaid": 5000,
       "remainingDue": 8230,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6544,7 +6837,8 @@
       "amount": 12300,
       "cashPaid": 12300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6556,7 +6850,8 @@
       "amount": 13440,
       "cashPaid": 0,
       "remainingDue": 13440,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6568,7 +6863,8 @@
       "amount": 12430,
       "cashPaid": 0,
       "remainingDue": 12430,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6580,7 +6876,8 @@
       "amount": 12815,
       "cashPaid": 0,
       "remainingDue": 12815,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6592,7 +6889,8 @@
       "amount": 37100,
       "cashPaid": 37100,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6604,7 +6902,8 @@
       "amount": 25800,
       "cashPaid": 0,
       "remainingDue": 25800,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6616,7 +6915,8 @@
       "amount": 24800,
       "cashPaid": 9800,
       "remainingDue": 15000,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6628,7 +6928,8 @@
       "amount": 1910,
       "cashPaid": 0,
       "remainingDue": 1910,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6640,7 +6941,8 @@
       "amount": 11990,
       "cashPaid": 0,
       "remainingDue": 11990,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6652,7 +6954,8 @@
       "amount": 14200,
       "cashPaid": 0,
       "remainingDue": 14200,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6664,7 +6967,8 @@
       "amount": 14135,
       "cashPaid": 0,
       "remainingDue": 14135,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6676,7 +6980,8 @@
       "amount": 12100,
       "cashPaid": 12100,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6688,7 +6993,8 @@
       "amount": 24145,
       "cashPaid": 0,
       "remainingDue": 24145,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6700,7 +7006,8 @@
       "amount": 12900,
       "cashPaid": 12900,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6712,7 +7019,8 @@
       "amount": 12705,
       "cashPaid": 0,
       "remainingDue": 12705,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6724,7 +7032,8 @@
       "amount": 12810,
       "cashPaid": 0,
       "remainingDue": 12810,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6736,7 +7045,8 @@
       "amount": 13300,
       "cashPaid": 0,
       "remainingDue": 13300,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6748,7 +7058,8 @@
       "amount": 12232,
       "cashPaid": 0,
       "remainingDue": 12232,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6760,7 +7071,8 @@
       "amount": 12980,
       "cashPaid": 12000,
       "remainingDue": 980,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6772,7 +7084,8 @@
       "amount": 12300,
       "cashPaid": 12300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6784,7 +7097,8 @@
       "amount": 13800,
       "cashPaid": 13800,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6796,7 +7110,8 @@
       "amount": 12810,
       "cashPaid": 10000,
       "remainingDue": 2810,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6808,7 +7123,8 @@
       "amount": 14437,
       "cashPaid": 0,
       "remainingDue": 14437,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6820,7 +7136,8 @@
       "amount": 5410,
       "cashPaid": 5000,
       "remainingDue": 410,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6832,7 +7149,8 @@
       "amount": 13000,
       "cashPaid": 13000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6844,7 +7162,8 @@
       "amount": 26730,
       "cashPaid": 0,
       "remainingDue": 26730,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6856,7 +7175,8 @@
       "amount": 28600,
       "cashPaid": 28600,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6868,7 +7188,8 @@
       "amount": 13900,
       "cashPaid": 13900,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6880,7 +7201,8 @@
       "amount": 12705,
       "cashPaid": 0,
       "remainingDue": 12705,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6892,7 +7214,8 @@
       "amount": 26250,
       "cashPaid": 0,
       "remainingDue": 26250,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6904,7 +7227,8 @@
       "amount": 9500,
       "cashPaid": 0,
       "remainingDue": 9500,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6916,7 +7240,8 @@
       "amount": 8400,
       "cashPaid": 8400,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6928,7 +7253,8 @@
       "amount": 11900,
       "cashPaid": 0,
       "remainingDue": 11900,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6940,7 +7266,8 @@
       "amount": 12810,
       "cashPaid": 5000,
       "remainingDue": 7810,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6952,7 +7279,8 @@
       "amount": 21780,
       "cashPaid": 0,
       "remainingDue": 21780,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6964,7 +7292,8 @@
       "amount": 3080,
       "cashPaid": 3000,
       "remainingDue": 80,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6976,7 +7305,8 @@
       "amount": 13335,
       "cashPaid": 0,
       "remainingDue": 13335,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -6988,7 +7318,8 @@
       "amount": 51200,
       "cashPaid": 36000,
       "remainingDue": 15200,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7000,7 +7331,8 @@
       "amount": 22040,
       "cashPaid": 0,
       "remainingDue": 22040,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7012,7 +7344,8 @@
       "amount": 13400,
       "cashPaid": 0,
       "remainingDue": 13400,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7024,7 +7357,8 @@
       "amount": 12400,
       "cashPaid": 12400,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7036,7 +7370,8 @@
       "amount": 12155,
       "cashPaid": 0,
       "remainingDue": 12155,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7048,7 +7383,8 @@
       "amount": 175,
       "cashPaid": 0,
       "remainingDue": 175,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7060,7 +7396,8 @@
       "amount": 35300,
       "cashPaid": 35300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7072,7 +7409,8 @@
       "amount": 5040,
       "cashPaid": 0,
       "remainingDue": 5040,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7084,7 +7422,8 @@
       "amount": 11800,
       "cashPaid": 11800,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7096,7 +7435,8 @@
       "amount": 12200,
       "cashPaid": 12200,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7108,7 +7448,8 @@
       "amount": 12200,
       "cashPaid": 12200,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7120,7 +7461,8 @@
       "amount": 4070,
       "cashPaid": 0,
       "remainingDue": 4070,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7132,7 +7474,8 @@
       "amount": 13177,
       "cashPaid": 0,
       "remainingDue": 13177,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7144,7 +7487,8 @@
       "amount": 13285,
       "cashPaid": 10000,
       "remainingDue": 3285,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7156,7 +7500,8 @@
       "amount": 23200,
       "cashPaid": 23200,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7168,7 +7513,8 @@
       "amount": 13300,
       "cashPaid": 13300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7180,7 +7526,8 @@
       "amount": 27000,
       "cashPaid": 0,
       "remainingDue": 27000,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7192,7 +7539,8 @@
       "amount": 13500,
       "cashPaid": 13500,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7204,7 +7552,8 @@
       "amount": 12362,
       "cashPaid": 0,
       "remainingDue": 12362,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7216,7 +7565,8 @@
       "amount": 0,
       "cashPaid": 0,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7228,7 +7578,8 @@
       "amount": 15067,
       "cashPaid": 0,
       "remainingDue": 15067,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7240,7 +7591,8 @@
       "amount": 14700,
       "cashPaid": 0,
       "remainingDue": 14700,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7252,7 +7604,8 @@
       "amount": 14900,
       "cashPaid": 6000,
       "remainingDue": 8900,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7264,7 +7617,8 @@
       "amount": 14600,
       "cashPaid": 0,
       "remainingDue": 14600,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7276,7 +7630,8 @@
       "amount": 4042,
       "cashPaid": 2500,
       "remainingDue": 1542,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7288,7 +7643,8 @@
       "amount": 12320,
       "cashPaid": 0,
       "remainingDue": 12320,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7300,7 +7656,8 @@
       "amount": 12265,
       "cashPaid": 0,
       "remainingDue": 12265,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7312,7 +7669,8 @@
       "amount": 11550,
       "cashPaid": 0,
       "remainingDue": 11550,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7324,7 +7682,8 @@
       "amount": 11200,
       "cashPaid": 11200,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7336,7 +7695,8 @@
       "amount": 13912,
       "cashPaid": 0,
       "remainingDue": 13912,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7348,7 +7708,8 @@
       "amount": 14542,
       "cashPaid": 0,
       "remainingDue": 14542,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7360,7 +7721,8 @@
       "amount": 12320,
       "cashPaid": 6000,
       "remainingDue": 6320,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7372,7 +7734,8 @@
       "amount": 14175,
       "cashPaid": 0,
       "remainingDue": 14175,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7384,7 +7747,8 @@
       "amount": 12330,
       "cashPaid": 0,
       "remainingDue": 12330,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7396,7 +7760,8 @@
       "amount": 27195,
       "cashPaid": 0,
       "remainingDue": 27195,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7408,7 +7773,8 @@
       "amount": 14070,
       "cashPaid": 0,
       "remainingDue": 14070,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7420,7 +7786,8 @@
       "amount": 14017,
       "cashPaid": 4100,
       "remainingDue": 9917,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7432,7 +7799,8 @@
       "amount": 12915,
       "cashPaid": 0,
       "remainingDue": 12915,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7444,7 +7812,8 @@
       "amount": 13545,
       "cashPaid": 0,
       "remainingDue": 13545,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7456,7 +7825,8 @@
       "amount": 13755,
       "cashPaid": 0,
       "remainingDue": 13755,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7468,7 +7838,8 @@
       "amount": 13500,
       "cashPaid": 13500,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7480,7 +7851,8 @@
       "amount": 4000,
       "cashPaid": 0,
       "remainingDue": 4000,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7492,7 +7864,8 @@
       "amount": 16100,
       "cashPaid": 16100,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7504,7 +7877,8 @@
       "amount": 12822,
       "cashPaid": 0,
       "remainingDue": 12822,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7516,7 +7890,8 @@
       "amount": 17020,
       "cashPaid": 0,
       "remainingDue": 17020,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7528,7 +7903,8 @@
       "amount": 17192,
       "cashPaid": 0,
       "remainingDue": 17192,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7540,7 +7916,8 @@
       "amount": 16617,
       "cashPaid": 0,
       "remainingDue": 16617,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7552,7 +7929,8 @@
       "amount": 15975,
       "cashPaid": 0,
       "remainingDue": 15975,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7564,7 +7942,8 @@
       "amount": 13177,
       "cashPaid": 0,
       "remainingDue": 13177,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7576,7 +7955,8 @@
       "amount": 0,
       "cashPaid": 0,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7588,7 +7968,8 @@
       "amount": 24465,
       "cashPaid": 0,
       "remainingDue": 24465,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7600,7 +7981,8 @@
       "amount": 5580,
       "cashPaid": 5580,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7612,7 +7994,8 @@
       "amount": 30762,
       "cashPaid": 0,
       "remainingDue": 30762,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7624,7 +8007,8 @@
       "amount": 14950,
       "cashPaid": 0,
       "remainingDue": 14950,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7636,7 +8020,8 @@
       "amount": 15410,
       "cashPaid": 0,
       "remainingDue": 15410,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7648,7 +8033,8 @@
       "amount": 17192,
       "cashPaid": 0,
       "remainingDue": 17192,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7660,7 +8046,8 @@
       "amount": 17365,
       "cashPaid": 0,
       "remainingDue": 17365,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7672,7 +8059,8 @@
       "amount": 12937,
       "cashPaid": 0,
       "remainingDue": 12937,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7684,7 +8072,8 @@
       "amount": 16000,
       "cashPaid": 16000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7696,7 +8085,8 @@
       "amount": 16100,
       "cashPaid": 0,
       "remainingDue": 16100,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7708,7 +8098,8 @@
       "amount": 16847,
       "cashPaid": 0,
       "remainingDue": 16847,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7720,7 +8111,8 @@
       "amount": 31500,
       "cashPaid": 31500,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7732,7 +8124,8 @@
       "amount": 16215,
       "cashPaid": 0,
       "remainingDue": 16215,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7744,7 +8137,8 @@
       "amount": 11615,
       "cashPaid": 0,
       "remainingDue": 11615,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7756,7 +8150,8 @@
       "amount": 16000,
       "cashPaid": 16000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7768,7 +8163,8 @@
       "amount": 15065,
       "cashPaid": 0,
       "remainingDue": 15065,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7780,7 +8176,8 @@
       "amount": 14605,
       "cashPaid": 9100,
       "remainingDue": 5505,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7792,7 +8189,8 @@
       "amount": 4000,
       "cashPaid": 4000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7804,7 +8202,8 @@
       "amount": 5980,
       "cashPaid": 0,
       "remainingDue": 5980,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7816,7 +8215,8 @@
       "amount": 30647,
       "cashPaid": 0,
       "remainingDue": 30647,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7828,7 +8228,8 @@
       "amount": 15065,
       "cashPaid": 0,
       "remainingDue": 15065,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7840,7 +8241,8 @@
       "amount": 15582,
       "cashPaid": 0,
       "remainingDue": 15582,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7852,7 +8254,8 @@
       "amount": 15600,
       "cashPaid": 15600,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7864,7 +8267,8 @@
       "amount": 8050,
       "cashPaid": 0,
       "remainingDue": 8050,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7876,7 +8280,8 @@
       "amount": 5290,
       "cashPaid": 4000,
       "remainingDue": 1290,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7888,7 +8293,8 @@
       "amount": 15467,
       "cashPaid": 0,
       "remainingDue": 15467,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7900,7 +8306,8 @@
       "amount": 16600,
       "cashPaid": 16600,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7912,7 +8319,8 @@
       "amount": 30072,
       "cashPaid": 0,
       "remainingDue": 30072,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7924,7 +8332,8 @@
       "amount": 14547,
       "cashPaid": 0,
       "remainingDue": 14547,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7936,7 +8345,8 @@
       "amount": 5750,
       "cashPaid": 0,
       "remainingDue": 5750,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7948,7 +8358,8 @@
       "amount": 15295,
       "cashPaid": 0,
       "remainingDue": 15295,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7960,7 +8371,8 @@
       "amount": 14835,
       "cashPaid": 10000,
       "remainingDue": 4835,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7972,7 +8384,8 @@
       "amount": 30245,
       "cashPaid": 0,
       "remainingDue": 30245,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7984,7 +8397,8 @@
       "amount": 30700,
       "cashPaid": 20000,
       "remainingDue": 10700,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -7996,7 +8410,8 @@
       "amount": 15000,
       "cashPaid": 15000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8008,7 +8423,8 @@
       "amount": 15237,
       "cashPaid": 0,
       "remainingDue": 15237,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8020,7 +8436,8 @@
       "amount": 15000,
       "cashPaid": 100,
       "remainingDue": 14900,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8032,7 +8449,8 @@
       "amount": 16080,
       "cashPaid": 0,
       "remainingDue": 16080,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8044,7 +8462,8 @@
       "amount": 15420,
       "cashPaid": 0,
       "remainingDue": 15420,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8056,7 +8475,8 @@
       "amount": 15840,
       "cashPaid": 0,
       "remainingDue": 15840,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8068,7 +8488,8 @@
       "amount": 15600,
       "cashPaid": 0,
       "remainingDue": 15600,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8080,7 +8501,8 @@
       "amount": 14500,
       "cashPaid": 14500,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8092,7 +8514,8 @@
       "amount": 16700,
       "cashPaid": 16700,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8104,7 +8527,8 @@
       "amount": 16620,
       "cashPaid": 5200,
       "remainingDue": 11420,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8116,7 +8540,8 @@
       "amount": 15120,
       "cashPaid": 0,
       "remainingDue": 15120,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8128,7 +8553,8 @@
       "amount": 16320,
       "cashPaid": 0,
       "remainingDue": 16320,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8140,7 +8566,8 @@
       "amount": 39500,
       "cashPaid": 39500,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8152,7 +8579,8 @@
       "amount": 16812,
       "cashPaid": 0,
       "remainingDue": 16812,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8164,7 +8592,8 @@
       "amount": 15750,
       "cashPaid": 0,
       "remainingDue": 15750,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8176,7 +8605,8 @@
       "amount": 16000,
       "cashPaid": 0,
       "remainingDue": 16000,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8188,7 +8618,8 @@
       "amount": 15480,
       "cashPaid": 0,
       "remainingDue": 15480,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8200,7 +8631,8 @@
       "amount": 16062,
       "cashPaid": 0,
       "remainingDue": 16062,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8212,7 +8644,8 @@
       "amount": 5500,
       "cashPaid": 0,
       "remainingDue": 5500,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8224,7 +8657,8 @@
       "amount": 16750,
       "cashPaid": 0,
       "remainingDue": 16750,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8236,7 +8670,8 @@
       "amount": 33125,
       "cashPaid": 0,
       "remainingDue": 33125,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8248,7 +8683,8 @@
       "amount": 15375,
       "cashPaid": 0,
       "remainingDue": 15375,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8260,7 +8696,8 @@
       "amount": 0,
       "cashPaid": 0,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8272,7 +8709,8 @@
       "amount": 15300,
       "cashPaid": 15300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8284,7 +8722,8 @@
       "amount": 30502,
       "cashPaid": 13500,
       "remainingDue": 17002,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8296,7 +8735,8 @@
       "amount": 17562,
       "cashPaid": 0,
       "remainingDue": 17562,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8308,7 +8748,8 @@
       "amount": 67300,
       "cashPaid": 4000,
       "remainingDue": 63300,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8320,7 +8761,8 @@
       "amount": 17000,
       "cashPaid": 0,
       "remainingDue": 17000,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8332,7 +8774,8 @@
       "amount": 18500,
       "cashPaid": 9100,
       "remainingDue": 9400,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8344,7 +8787,8 @@
       "amount": 16200,
       "cashPaid": 0,
       "remainingDue": 16200,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8356,7 +8800,8 @@
       "amount": 17125,
       "cashPaid": 15100,
       "remainingDue": 2025,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8368,7 +8813,8 @@
       "amount": 16937,
       "cashPaid": 0,
       "remainingDue": 16937,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8380,7 +8826,8 @@
       "amount": 43700,
       "cashPaid": 30000,
       "remainingDue": 13700,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8392,7 +8839,8 @@
       "amount": 16000,
       "cashPaid": 16000,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8404,7 +8852,8 @@
       "amount": 16875,
       "cashPaid": 0,
       "remainingDue": 16875,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8416,7 +8865,8 @@
       "amount": 16437,
       "cashPaid": 0,
       "remainingDue": 16437,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8428,7 +8878,8 @@
       "amount": 15900,
       "cashPaid": 15900,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8440,7 +8891,8 @@
       "amount": 16680,
       "cashPaid": 0,
       "remainingDue": 16680,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8452,7 +8904,8 @@
       "amount": 16300,
       "cashPaid": 16300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8464,7 +8917,8 @@
       "amount": 6125,
       "cashPaid": 0,
       "remainingDue": 6125,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8476,7 +8930,8 @@
       "amount": 6000,
       "cashPaid": 0,
       "remainingDue": 6000,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8488,7 +8943,8 @@
       "amount": 16500,
       "cashPaid": 16500,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8500,7 +8956,8 @@
       "amount": 6000,
       "cashPaid": 0,
       "remainingDue": 6000,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8512,7 +8969,8 @@
       "amount": 32562,
       "cashPaid": 20000,
       "remainingDue": 12562,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8524,7 +8982,8 @@
       "amount": 33250,
       "cashPaid": 0,
       "remainingDue": 33250,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8536,7 +8995,8 @@
       "amount": 16562,
       "cashPaid": 0,
       "remainingDue": 16562,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8548,7 +9008,8 @@
       "amount": 15660,
       "cashPaid": 0,
       "remainingDue": 15660,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8560,7 +9021,8 @@
       "amount": 17027,
       "cashPaid": 15000,
       "remainingDue": 2027,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8572,7 +9034,8 @@
       "amount": 14400,
       "cashPaid": 0,
       "remainingDue": 14400,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8584,7 +9047,8 @@
       "amount": 14300,
       "cashPaid": 14300,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8596,7 +9060,8 @@
       "amount": 14800,
       "cashPaid": 14800,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8608,7 +9073,8 @@
       "amount": 15562,
       "cashPaid": 0,
       "remainingDue": 15562,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8620,7 +9086,8 @@
       "amount": 15750,
       "cashPaid": 0,
       "remainingDue": 15750,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8632,7 +9099,8 @@
       "amount": 16000,
       "cashPaid": 0,
       "remainingDue": 16000,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8644,7 +9112,8 @@
       "amount": 15750,
       "cashPaid": 5000,
       "remainingDue": 10750,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8656,7 +9125,8 @@
       "amount": 16375,
       "cashPaid": 0,
       "remainingDue": 16375,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8668,7 +9138,8 @@
       "amount": 16900,
       "cashPaid": 16900,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8680,7 +9151,8 @@
       "amount": 17395,
       "cashPaid": 0,
       "remainingDue": 17395,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8692,7 +9164,8 @@
       "amount": 17500,
       "cashPaid": 17500,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8704,7 +9177,8 @@
       "amount": 16312,
       "cashPaid": 0,
       "remainingDue": 16312,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8716,7 +9190,8 @@
       "amount": 19062,
       "cashPaid": 0,
       "remainingDue": 19062,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8728,7 +9203,8 @@
       "amount": 18500,
       "cashPaid": 0,
       "remainingDue": 18500,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8740,7 +9216,8 @@
       "amount": 18062,
       "cashPaid": 0,
       "remainingDue": 18062,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8752,7 +9229,8 @@
       "amount": 15800,
       "cashPaid": 15800,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8764,7 +9242,8 @@
       "amount": 17187,
       "cashPaid": 0,
       "remainingDue": 17187,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8776,7 +9255,8 @@
       "amount": 17687,
       "cashPaid": 0,
       "remainingDue": 17687,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8788,7 +9268,8 @@
       "amount": 17625,
       "cashPaid": 0,
       "remainingDue": 17625,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8800,7 +9281,8 @@
       "amount": 18375,
       "cashPaid": 0,
       "remainingDue": 18375,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8812,7 +9294,8 @@
       "amount": 16812,
       "cashPaid": 0,
       "remainingDue": 16812,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "type": "SALE",
@@ -8824,7 +9307,8 @@
       "amount": 0,
       "cashPaid": 0,
       "remainingDue": 0,
-      "note": ""
+      "note": "",
+      "category": "Others"
     },
     {
       "id": "pay_10_2026_01",
@@ -8834,7 +9318,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 18900,
       "amount": 18900,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_24_2026_01",
@@ -8844,7 +9329,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 20000,
       "amount": 20000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_33_2026_01",
@@ -8854,7 +9340,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 35600,
       "amount": 35600,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_34_2026_01",
@@ -8864,7 +9351,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_36_2026_01",
@@ -8874,7 +9362,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_76_2026_01",
@@ -8884,7 +9373,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 4000,
       "amount": 4000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_87_2026_01",
@@ -8894,7 +9384,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 20000,
       "amount": 20000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_92_2026_01",
@@ -8904,7 +9395,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 25000,
       "amount": 25000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_118_2026_01",
@@ -8914,7 +9406,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 8000,
       "amount": 8000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_121_2026_01",
@@ -8924,7 +9417,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_125_2026_01",
@@ -8934,7 +9428,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_148_2026_01",
@@ -8944,7 +9439,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_158_2026_01",
@@ -8954,7 +9450,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_160_2026_01",
@@ -8964,7 +9461,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_161_2026_01",
@@ -8974,7 +9472,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_180_2026_01",
@@ -8984,7 +9483,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_227_2026_01",
@@ -8994,7 +9494,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_234_2026_01",
@@ -9004,7 +9505,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_248_2026_01",
@@ -9014,7 +9516,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_250_2026_01",
@@ -9024,7 +9527,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_283_2026_01",
@@ -9034,7 +9538,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_305_2026_01",
@@ -9044,7 +9549,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_331_2026_01",
@@ -9054,7 +9560,8 @@
       "date": "2026-01-15T12:00:00.000Z",
       "paymentAmount": 12500,
       "amount": 12500,
-      "note": "Payment received in Jan 2026"
+      "note": "Payment received in Jan 2026",
+      "category": "Others"
     },
     {
       "id": "pay_19_2026_02",
@@ -9064,7 +9571,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_26_2026_02",
@@ -9074,7 +9582,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 12000,
       "amount": 12000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_30_2026_02",
@@ -9084,7 +9593,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_31_2026_02",
@@ -9094,7 +9604,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_55_2026_02",
@@ -9104,7 +9615,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 14100,
       "amount": 14100,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_59_2026_02",
@@ -9114,7 +9626,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_76_2026_02",
@@ -9124,7 +9637,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 4500,
       "amount": 4500,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_79_2026_02",
@@ -9134,7 +9648,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 6000,
       "amount": 6000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_92_2026_02",
@@ -9144,7 +9659,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 25000,
       "amount": 25000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_118_2026_02",
@@ -9154,7 +9670,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_145_2026_02",
@@ -9164,7 +9681,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_170_2026_02",
@@ -9174,7 +9692,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_176_2026_02",
@@ -9184,7 +9703,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 8800,
       "amount": 8800,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_190_2026_02",
@@ -9194,7 +9714,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_191_2026_02",
@@ -9204,7 +9725,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_197_2026_02",
@@ -9214,7 +9736,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 50000,
       "amount": 50000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_202_2026_02",
@@ -9224,7 +9747,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_205_2026_02",
@@ -9234,7 +9758,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_231_2026_02",
@@ -9244,7 +9769,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 34000,
       "amount": 34000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_283_2026_02",
@@ -9254,7 +9780,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 8000,
       "amount": 8000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_287_2026_02",
@@ -9264,7 +9791,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_294_2026_02",
@@ -9274,7 +9802,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_316_2026_02",
@@ -9284,7 +9813,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 7100,
       "amount": 7100,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_342_2026_02",
@@ -9294,7 +9824,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 11000,
       "amount": 11000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_371_2026_02",
@@ -9304,7 +9835,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 16000,
       "amount": 16000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_370_2026_02",
@@ -9314,7 +9846,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 13000,
       "amount": 13000,
-      "note": "Payment received in Feb 2026"
+      "note": "Payment received in Feb 2026",
+      "category": "Others"
     },
     {
       "id": "pay_49_2026_02",
@@ -9324,7 +9857,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 13125,
       "amount": 13125,
-      "note": "Customer cleared previous balance of ₹13,125 (Total Col B = 0, new buy Col C = ₹20,820)"
+      "note": "Customer cleared previous balance of ₹13,125 (Total Col B = 0, new buy Col C = ₹20,820)",
+      "category": "Others"
     },
     {
       "id": "pay_158_2026_02",
@@ -9334,7 +9868,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 7850,
       "amount": 7850,
-      "note": "Customer cleared previous balance of ₹7,850 (Total Col B = 0, new buy Col C = ₹14,200)"
+      "note": "Customer cleared previous balance of ₹7,850 (Total Col B = 0, new buy Col C = ₹14,200)",
+      "category": "Others"
     },
     {
       "id": "pay_225_2026_02",
@@ -9344,7 +9879,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 5290,
       "amount": 5290,
-      "note": "Customer cleared previous balance of ₹5,290 (Total Col B = 0, new buy Col C = ₹5,810)"
+      "note": "Customer cleared previous balance of ₹5,290 (Total Col B = 0, new buy Col C = ₹5,810)",
+      "category": "Others"
     },
     {
       "id": "pay_345_2026_02",
@@ -9354,7 +9890,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 8090,
       "amount": 8090,
-      "note": "Customer cleared previous balance of ₹8,090 (Total Col B = 0, new buy Col C = ₹3,780)"
+      "note": "Customer cleared previous balance of ₹8,090 (Total Col B = 0, new buy Col C = ₹3,780)",
+      "category": "Others"
     },
     {
       "id": "pay_4_2026_02",
@@ -9364,7 +9901,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 2560,
       "amount": 2560,
-      "note": "Customer settled previous balance of ₹2,560 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹2,560 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_23_2026_02",
@@ -9374,7 +9912,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 29546,
       "amount": 29546,
-      "note": "Customer settled previous balance of ₹29,546 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹29,546 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_51_2026_02",
@@ -9384,7 +9923,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 5900,
       "amount": 5900,
-      "note": "Customer settled previous balance of ₹5,900 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹5,900 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_110_2026_02",
@@ -9394,7 +9934,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 5808,
       "amount": 5808,
-      "note": "Customer settled previous balance of ₹5,808 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹5,808 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_127_2026_02",
@@ -9404,7 +9945,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 14980,
       "amount": 14980,
-      "note": "Customer settled previous balance of ₹14,980 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹14,980 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_150_2026_02",
@@ -9414,7 +9956,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 17750,
       "amount": 17750,
-      "note": "Customer settled previous balance of ₹17,750 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹17,750 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_152_2026_02",
@@ -9424,7 +9967,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 18060,
       "amount": 18060,
-      "note": "Customer settled previous balance of ₹18,060 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹18,060 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_160_2026_02",
@@ -9434,7 +9978,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 8060,
       "amount": 8060,
-      "note": "Customer settled previous balance of ₹8,060 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹8,060 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_203_2026_02",
@@ -9444,7 +9989,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 8165,
       "amount": 8165,
-      "note": "Customer settled previous balance of ₹8,165 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹8,165 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_215_2026_02",
@@ -9454,7 +10000,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 17167,
       "amount": 17167,
-      "note": "Customer settled previous balance of ₹17,167 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹17,167 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_217_2026_02",
@@ -9464,7 +10011,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 15510,
       "amount": 15510,
-      "note": "Customer settled previous balance of ₹15,510 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹15,510 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_218_2026_02",
@@ -9474,7 +10022,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 8033,
       "amount": 8033,
-      "note": "Customer settled previous balance of ₹8,033 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹8,033 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_226_2026_02",
@@ -9484,7 +10033,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 26295,
       "amount": 26295,
-      "note": "Customer settled previous balance of ₹26,295 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹26,295 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_311_2026_02",
@@ -9494,7 +10044,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 385,
       "amount": 385,
-      "note": "Customer settled previous balance of ₹385 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹385 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_328_2026_02",
@@ -9504,7 +10055,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 2445,
       "amount": 2445,
-      "note": "Customer settled previous balance of ₹2,445 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹2,445 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_349_2026_02",
@@ -9514,7 +10066,8 @@
       "date": "2026-02-15T12:00:00.000Z",
       "paymentAmount": 3875,
       "amount": 3875,
-      "note": "Customer settled previous balance of ₹3,875 and was removed in Customer Credit List-20260228"
+      "note": "Customer settled previous balance of ₹3,875 and was removed in Customer Credit List-20260228",
+      "category": "Others"
     },
     {
       "id": "pay_25_2026_03",
@@ -9524,7 +10077,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 6300,
       "amount": 6300,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_34_2026_03",
@@ -9534,7 +10088,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 25000,
       "amount": 25000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_36_2026_03",
@@ -9544,7 +10099,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 3000,
       "amount": 3000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_118_2026_03",
@@ -9554,7 +10110,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_145_2026_03",
@@ -9564,7 +10121,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_156_2026_03",
@@ -9574,7 +10132,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 10800,
       "amount": 10800,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_158_2026_03",
@@ -9584,7 +10143,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_176_2026_03",
@@ -9594,7 +10154,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 7000,
       "amount": 7000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_190_2026_03",
@@ -9604,7 +10165,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 10700,
       "amount": 10700,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_220_2026_03",
@@ -9614,7 +10176,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 23000,
       "amount": 23000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_225_2026_03",
@@ -9624,7 +10187,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 2500,
       "amount": 2500,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_228_2026_03",
@@ -9634,7 +10198,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_237_2026_03",
@@ -9644,7 +10209,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 20000,
       "amount": 20000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_283_2026_03",
@@ -9654,7 +10220,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_284_2026_03",
@@ -9664,7 +10231,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_296_2026_03",
@@ -9674,7 +10242,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 2580,
       "amount": 2580,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_298_2026_03",
@@ -9684,7 +10253,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_305_2026_03",
@@ -9694,7 +10264,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_316_2026_03",
@@ -9704,7 +10275,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 8000,
       "amount": 8000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_351_2026_03",
@@ -9714,7 +10286,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_353_2026_03",
@@ -9724,7 +10297,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_360_2026_03",
@@ -9734,7 +10308,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 14000,
       "amount": 14000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_361_2026_03",
@@ -9744,7 +10319,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_368_2026_03",
@@ -9754,7 +10330,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_377_2026_03",
@@ -9764,7 +10341,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Mar 2026"
+      "note": "Payment received in Mar 2026",
+      "category": "Others"
     },
     {
       "id": "pay_24_2026_03",
@@ -9774,7 +10352,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 38369,
       "amount": 38369,
-      "note": "Customer cleared previous balance of ₹38,369 (Total Col B = 0, new buy Col C = ₹11,400)"
+      "note": "Customer cleared previous balance of ₹38,369 (Total Col B = 0, new buy Col C = ₹11,400)",
+      "category": "Others"
     },
     {
       "id": "pay_49_2026_03",
@@ -9784,7 +10363,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 20820,
       "amount": 20820,
-      "note": "Customer cleared previous balance of ₹20,820 (Total Col B = 0, new buy Col C = ₹14,476)"
+      "note": "Customer cleared previous balance of ₹20,820 (Total Col B = 0, new buy Col C = ₹14,476)",
+      "category": "Others"
     },
     {
       "id": "pay_77_2026_03",
@@ -9794,7 +10374,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 1170,
       "amount": 1170,
-      "note": "Customer settled previous balance of ₹1,170 and was removed in Customer Credit List-20260331"
+      "note": "Customer settled previous balance of ₹1,170 and was removed in Customer Credit List-20260331",
+      "category": "Others"
     },
     {
       "id": "pay_98_2026_03",
@@ -9804,7 +10385,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 11500,
       "amount": 11500,
-      "note": "Customer settled previous balance of ₹11,500 and was removed in Customer Credit List-20260331"
+      "note": "Customer settled previous balance of ₹11,500 and was removed in Customer Credit List-20260331",
+      "category": "Others"
     },
     {
       "id": "pay_113_2026_03",
@@ -9814,7 +10396,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 12400,
       "amount": 12400,
-      "note": "Customer settled previous balance of ₹12,400 and was removed in Customer Credit List-20260331"
+      "note": "Customer settled previous balance of ₹12,400 and was removed in Customer Credit List-20260331",
+      "category": "Others"
     },
     {
       "id": "pay_182_2026_03",
@@ -9824,7 +10407,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 18360,
       "amount": 18360,
-      "note": "Customer settled previous balance of ₹18,360 and was removed in Customer Credit List-20260331"
+      "note": "Customer settled previous balance of ₹18,360 and was removed in Customer Credit List-20260331",
+      "category": "Others"
     },
     {
       "id": "pay_185_2026_03",
@@ -9834,7 +10418,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 9942,
       "amount": 9942,
-      "note": "Customer settled previous balance of ₹9,942 and was removed in Customer Credit List-20260331"
+      "note": "Customer settled previous balance of ₹9,942 and was removed in Customer Credit List-20260331",
+      "category": "Others"
     },
     {
       "id": "pay_197_2026_03",
@@ -9844,7 +10429,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 17150,
       "amount": 17150,
-      "note": "Customer settled previous balance of ₹17,150 and was removed in Customer Credit List-20260331"
+      "note": "Customer settled previous balance of ₹17,150 and was removed in Customer Credit List-20260331",
+      "category": "Others"
     },
     {
       "id": "pay_214_2026_03",
@@ -9854,7 +10440,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 12777,
       "amount": 12777,
-      "note": "Customer settled previous balance of ₹12,777 and was removed in Customer Credit List-20260331"
+      "note": "Customer settled previous balance of ₹12,777 and was removed in Customer Credit List-20260331",
+      "category": "Others"
     },
     {
       "id": "pay_216_2026_03",
@@ -9864,7 +10451,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 13700,
       "amount": 13700,
-      "note": "Customer settled previous balance of ₹13,700 and was removed in Customer Credit List-20260331"
+      "note": "Customer settled previous balance of ₹13,700 and was removed in Customer Credit List-20260331",
+      "category": "Others"
     },
     {
       "id": "pay_303_2026_03",
@@ -9874,7 +10462,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 3300,
       "amount": 3300,
-      "note": "Customer settled previous balance of ₹3,300 and was removed in Customer Credit List-20260331"
+      "note": "Customer settled previous balance of ₹3,300 and was removed in Customer Credit List-20260331",
+      "category": "Others"
     },
     {
       "id": "pay_322_2026_03",
@@ -9884,7 +10473,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 21500,
       "amount": 21500,
-      "note": "Customer settled previous balance of ₹21,500 and was removed in Customer Credit List-20260331"
+      "note": "Customer settled previous balance of ₹21,500 and was removed in Customer Credit List-20260331",
+      "category": "Others"
     },
     {
       "id": "pay_342_2026_03",
@@ -9894,7 +10484,8 @@
       "date": "2026-03-15T12:00:00.000Z",
       "paymentAmount": 3080,
       "amount": 3080,
-      "note": "Customer settled previous balance of ₹3,080 and was removed in Customer Credit List-20260331"
+      "note": "Customer settled previous balance of ₹3,080 and was removed in Customer Credit List-20260331",
+      "category": "Others"
     },
     {
       "id": "pay_36_2026_04",
@@ -9904,7 +10495,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_37_2026_04",
@@ -9914,7 +10506,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_79_2026_04",
@@ -9924,7 +10517,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_82_2026_04",
@@ -9934,7 +10528,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 9500,
       "amount": 9500,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_96_2026_04",
@@ -9944,7 +10539,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_110_2026_04",
@@ -9954,7 +10550,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 3000,
       "amount": 3000,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_121_2026_04",
@@ -9964,7 +10561,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_141_2026_04",
@@ -9974,7 +10572,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_158_2026_04",
@@ -9984,7 +10583,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_180_2026_04",
@@ -9994,7 +10594,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_202_2026_04",
@@ -10004,7 +10605,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 2500,
       "amount": 2500,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_220_2026_04",
@@ -10014,7 +10616,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 5300,
       "amount": 5300,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_250_2026_04",
@@ -10024,7 +10627,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_273_2026_04",
@@ -10034,7 +10638,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_290_2026_04",
@@ -10044,7 +10649,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 1000,
       "amount": 1000,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_320_2026_04",
@@ -10054,7 +10660,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_331_2026_04",
@@ -10064,7 +10671,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 5050,
       "amount": 5050,
-      "note": "Payment received in Apr 2026"
+      "note": "Payment received in Apr 2026",
+      "category": "Others"
     },
     {
       "id": "pay_144_2026_04",
@@ -10074,7 +10682,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 14155,
       "amount": 14155,
-      "note": "Customer cleared previous balance of ₹14,155 (Total Col B = 0, new buy Col C = ₹13,160)"
+      "note": "Customer cleared previous balance of ₹14,155 (Total Col B = 0, new buy Col C = ₹13,160)",
+      "category": "Others"
     },
     {
       "id": "pay_156_2026_04",
@@ -10084,7 +10693,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 12385,
       "amount": 12385,
-      "note": "Customer cleared previous balance of ₹12,385 (Total Col B = 0, new buy Col C = ₹20,900)"
+      "note": "Customer cleared previous balance of ₹12,385 (Total Col B = 0, new buy Col C = ₹20,900)",
+      "category": "Others"
     },
     {
       "id": "pay_334_2026_04",
@@ -10094,7 +10704,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 5650,
       "amount": 5650,
-      "note": "Customer cleared previous balance of ₹5,650 (Total Col B = 0, new buy Col C = ₹2,370)"
+      "note": "Customer cleared previous balance of ₹5,650 (Total Col B = 0, new buy Col C = ₹2,370)",
+      "category": "Others"
     },
     {
       "id": "pay_345_2026_04",
@@ -10104,7 +10715,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 3780,
       "amount": 3780,
-      "note": "Customer cleared previous balance of ₹3,780 (Total Col B = 0, new buy Col C = ₹11,115)"
+      "note": "Customer cleared previous balance of ₹3,780 (Total Col B = 0, new buy Col C = ₹11,115)",
+      "category": "Others"
     },
     {
       "id": "pay_355_2026_04",
@@ -10114,7 +10726,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 760,
       "amount": 760,
-      "note": "Customer cleared previous balance of ₹760 (Total Col B = 0, new buy Col C = ₹780)"
+      "note": "Customer cleared previous balance of ₹760 (Total Col B = 0, new buy Col C = ₹780)",
+      "category": "Others"
     },
     {
       "id": "pay_1_2026_04",
@@ -10124,7 +10737,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 13350,
       "amount": 13350,
-      "note": "Customer settled previous balance of ₹13,350 and was removed in Customer Credit List-20260430"
+      "note": "Customer settled previous balance of ₹13,350 and was removed in Customer Credit List-20260430",
+      "category": "Others"
     },
     {
       "id": "pay_3_2026_04",
@@ -10134,7 +10748,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 4950,
       "amount": 4950,
-      "note": "Customer settled previous balance of ₹4,950 and was removed in Customer Credit List-20260430"
+      "note": "Customer settled previous balance of ₹4,950 and was removed in Customer Credit List-20260430",
+      "category": "Others"
     },
     {
       "id": "pay_25_2026_04",
@@ -10144,7 +10759,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 6575,
       "amount": 6575,
-      "note": "Customer settled previous balance of ₹6,575 and was removed in Customer Credit List-20260430"
+      "note": "Customer settled previous balance of ₹6,575 and was removed in Customer Credit List-20260430",
+      "category": "Others"
     },
     {
       "id": "pay_44_2026_04",
@@ -10154,7 +10770,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 13300,
       "amount": 13300,
-      "note": "Customer settled previous balance of ₹13,300 and was removed in Customer Credit List-20260430"
+      "note": "Customer settled previous balance of ₹13,300 and was removed in Customer Credit List-20260430",
+      "category": "Others"
     },
     {
       "id": "pay_49_2026_04",
@@ -10164,7 +10781,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 14476,
       "amount": 14476,
-      "note": "Customer settled previous balance of ₹14,476 and was removed in Customer Credit List-20260430"
+      "note": "Customer settled previous balance of ₹14,476 and was removed in Customer Credit List-20260430",
+      "category": "Others"
     },
     {
       "id": "pay_78_2026_04",
@@ -10174,7 +10792,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 4580,
       "amount": 4580,
-      "note": "Customer settled previous balance of ₹4,580 and was removed in Customer Credit List-20260430"
+      "note": "Customer settled previous balance of ₹4,580 and was removed in Customer Credit List-20260430",
+      "category": "Others"
     },
     {
       "id": "pay_81_2026_04",
@@ -10184,7 +10803,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 6450,
       "amount": 6450,
-      "note": "Customer settled previous balance of ₹6,450 and was removed in Customer Credit List-20260430"
+      "note": "Customer settled previous balance of ₹6,450 and was removed in Customer Credit List-20260430",
+      "category": "Others"
     },
     {
       "id": "pay_162_2026_04",
@@ -10194,7 +10814,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 12800,
       "amount": 12800,
-      "note": "Customer settled previous balance of ₹12,800 and was removed in Customer Credit List-20260430"
+      "note": "Customer settled previous balance of ₹12,800 and was removed in Customer Credit List-20260430",
+      "category": "Others"
     },
     {
       "id": "pay_205_2026_04",
@@ -10204,7 +10825,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 3860,
       "amount": 3860,
-      "note": "Customer settled previous balance of ₹3,860 and was removed in Customer Credit List-20260430"
+      "note": "Customer settled previous balance of ₹3,860 and was removed in Customer Credit List-20260430",
+      "category": "Others"
     },
     {
       "id": "pay_225_2026_04",
@@ -10214,7 +10836,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 3310,
       "amount": 3310,
-      "note": "Customer settled previous balance of ₹3,310 and was removed in Customer Credit List-20260430"
+      "note": "Customer settled previous balance of ₹3,310 and was removed in Customer Credit List-20260430",
+      "category": "Others"
     },
     {
       "id": "pay_235_2026_04",
@@ -10224,7 +10847,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 5830,
       "amount": 5830,
-      "note": "Customer settled previous balance of ₹5,830 and was removed in Customer Credit List-20260430"
+      "note": "Customer settled previous balance of ₹5,830 and was removed in Customer Credit List-20260430",
+      "category": "Others"
     },
     {
       "id": "pay_267_2026_04",
@@ -10234,7 +10858,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 7100,
       "amount": 7100,
-      "note": "Customer settled previous balance of ₹7,100 and was removed in Customer Credit List-20260430"
+      "note": "Customer settled previous balance of ₹7,100 and was removed in Customer Credit List-20260430",
+      "category": "Others"
     },
     {
       "id": "pay_329_2026_04",
@@ -10244,7 +10869,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 15070,
       "amount": 15070,
-      "note": "Customer settled previous balance of ₹15,070 and was removed in Customer Credit List-20260430"
+      "note": "Customer settled previous balance of ₹15,070 and was removed in Customer Credit List-20260430",
+      "category": "Others"
     },
     {
       "id": "pay_363_2026_04",
@@ -10254,7 +10880,8 @@
       "date": "2026-04-15T12:00:00.000Z",
       "paymentAmount": 2800,
       "amount": 2800,
-      "note": "Customer settled previous balance of ₹2,800 and was removed in Customer Credit List-20260430"
+      "note": "Customer settled previous balance of ₹2,800 and was removed in Customer Credit List-20260430",
+      "category": "Others"
     },
     {
       "id": "pay_19_2026_05",
@@ -10264,7 +10891,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_30_2026_05",
@@ -10274,7 +10902,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 20000,
       "amount": 20000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_46_2026_05",
@@ -10284,7 +10913,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_48_2026_05",
@@ -10294,7 +10924,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_50_2026_05",
@@ -10304,7 +10935,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_55_2026_05",
@@ -10314,7 +10946,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 11800,
       "amount": 11800,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_79_2026_05",
@@ -10324,7 +10957,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_85_2026_05",
@@ -10334,7 +10968,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_111_2026_05",
@@ -10344,7 +10979,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 9000,
       "amount": 9000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_115_2026_05",
@@ -10354,7 +10990,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_118_2026_05",
@@ -10364,7 +11001,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_145_2026_05",
@@ -10374,7 +11012,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 29000,
       "amount": 29000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_158_2026_05",
@@ -10384,7 +11023,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 16300,
       "amount": 16300,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_161_2026_05",
@@ -10394,7 +11034,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 20000,
       "amount": 20000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_180_2026_05",
@@ -10404,7 +11045,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_190_2026_05",
@@ -10414,7 +11056,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 11000,
       "amount": 11000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_191_2026_05",
@@ -10424,7 +11067,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 20000,
       "amount": 20000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_202_2026_05",
@@ -10434,7 +11078,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 18000,
       "amount": 18000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_203_2026_05",
@@ -10444,7 +11089,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 12000,
       "amount": 12000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_226_2026_05",
@@ -10454,7 +11100,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_227_2026_05",
@@ -10464,7 +11111,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_230_2026_05",
@@ -10474,7 +11122,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_231_2026_05",
@@ -10484,7 +11133,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 20000,
       "amount": 20000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_237_2026_05",
@@ -10494,7 +11144,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_248_2026_05",
@@ -10504,7 +11155,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_260_2026_05",
@@ -10514,7 +11166,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 5200,
       "amount": 5200,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_305_2026_05",
@@ -10524,7 +11177,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_306_2026_05",
@@ -10534,7 +11188,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_316_2026_05",
@@ -10544,7 +11199,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in May 2026"
+      "note": "Payment received in May 2026",
+      "category": "Others"
     },
     {
       "id": "pay_24_2026_05",
@@ -10554,7 +11210,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 11400,
       "amount": 11400,
-      "note": "Customer cleared previous balance of ₹11,400 (Total Col B = 0, new buy Col C = ₹50,000)"
+      "note": "Customer cleared previous balance of ₹11,400 (Total Col B = 0, new buy Col C = ₹50,000)",
+      "category": "Others"
     },
     {
       "id": "pay_51_2026_05",
@@ -10564,7 +11221,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 14000,
       "amount": 14000,
-      "note": "Customer cleared previous balance of ₹14,000 (Total Col B = 0, new buy Col C = ₹15,200)"
+      "note": "Customer cleared previous balance of ₹14,000 (Total Col B = 0, new buy Col C = ₹15,200)",
+      "category": "Others"
     },
     {
       "id": "pay_270_2026_05",
@@ -10574,7 +11232,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 13500,
       "amount": 13500,
-      "note": "Customer cleared previous balance of ₹13,500 (Total Col B = 0, new buy Col C = ₹24,145)"
+      "note": "Customer cleared previous balance of ₹13,500 (Total Col B = 0, new buy Col C = ₹24,145)",
+      "category": "Others"
     },
     {
       "id": "pay_36_2026_05",
@@ -10584,7 +11243,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 3140,
       "amount": 3140,
-      "note": "Customer settled previous balance of ₹3,140 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹3,140 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_84_2026_05",
@@ -10594,7 +11254,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 12160,
       "amount": 12160,
-      "note": "Customer settled previous balance of ₹12,160 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹12,160 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_88_2026_05",
@@ -10604,7 +11265,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 18467,
       "amount": 18467,
-      "note": "Customer settled previous balance of ₹18,467 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹18,467 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_110_2026_05",
@@ -10614,7 +11276,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 1500,
       "amount": 1500,
-      "note": "Customer settled previous balance of ₹1,500 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹1,500 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_195_2026_05",
@@ -10624,7 +11287,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 11790,
       "amount": 11790,
-      "note": "Customer settled previous balance of ₹11,790 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹11,790 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_217_2026_05",
@@ -10634,7 +11298,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 13110,
       "amount": 13110,
-      "note": "Customer settled previous balance of ₹13,110 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹13,110 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_223_2026_05",
@@ -10644,7 +11309,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 11875,
       "amount": 11875,
-      "note": "Customer settled previous balance of ₹11,875 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹11,875 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_228_2026_05",
@@ -10654,7 +11320,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 17041,
       "amount": 17041,
-      "note": "Customer settled previous balance of ₹17,041 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹17,041 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_319_2026_05",
@@ -10664,7 +11331,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 2630,
       "amount": 2630,
-      "note": "Customer settled previous balance of ₹2,630 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹2,630 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_247_2026_05",
@@ -10674,7 +11342,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 25345,
       "amount": 25345,
-      "note": "Customer settled previous balance of ₹25,345 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹25,345 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_273_2026_05",
@@ -10684,7 +11353,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 6065,
       "amount": 6065,
-      "note": "Customer settled previous balance of ₹6,065 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹6,065 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_283_2026_05",
@@ -10694,7 +11364,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 8156,
       "amount": 8156,
-      "note": "Customer settled previous balance of ₹8,156 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹8,156 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_302_2026_05",
@@ -10704,7 +11375,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 4410,
       "amount": 4410,
-      "note": "Customer settled previous balance of ₹4,410 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹4,410 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_317_2026_05",
@@ -10714,7 +11386,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 950,
       "amount": 950,
-      "note": "Customer settled previous balance of ₹950 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹950 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_345_2026_05",
@@ -10724,7 +11397,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 11115,
       "amount": 11115,
-      "note": "Customer settled previous balance of ₹11,115 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹11,115 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_367_2026_05",
@@ -10734,7 +11408,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 13822,
       "amount": 13822,
-      "note": "Customer settled previous balance of ₹13,822 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹13,822 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_370_2026_05",
@@ -10744,7 +11419,8 @@
       "date": "2026-05-15T12:00:00.000Z",
       "paymentAmount": 1280,
       "amount": 1280,
-      "note": "Customer settled previous balance of ₹1,280 and was removed in Customer Credit List-20260531"
+      "note": "Customer settled previous balance of ₹1,280 and was removed in Customer Credit List-20260531",
+      "category": "Others"
     },
     {
       "id": "pay_1_2026_06",
@@ -10754,7 +11430,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 13500,
       "amount": 13500,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_24_2026_06",
@@ -10764,7 +11441,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 17400,
       "amount": 17400,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_30_2026_06",
@@ -10774,7 +11452,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_46_2026_06",
@@ -10784,7 +11463,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_51_2026_06",
@@ -10794,7 +11474,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_52_2026_06",
@@ -10804,7 +11485,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_55_2026_06",
@@ -10814,7 +11496,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 14300,
       "amount": 14300,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_76_2026_06",
@@ -10824,7 +11507,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_79_2026_06",
@@ -10834,7 +11518,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_135_2026_06",
@@ -10844,7 +11529,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_139_2026_06",
@@ -10854,7 +11540,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_169_2026_06",
@@ -10864,7 +11551,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_180_2026_06",
@@ -10874,7 +11562,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_220_2026_06",
@@ -10884,7 +11573,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_227_2026_06",
@@ -10894,7 +11584,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_248_2026_06",
@@ -10904,7 +11595,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 12000,
       "amount": 12000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_254_2026_06",
@@ -10914,7 +11606,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 52500,
       "amount": 52500,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_260_2026_06",
@@ -10924,7 +11617,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_280_2026_06",
@@ -10934,7 +11628,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_305_2026_06",
@@ -10944,7 +11639,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_357_2026_06",
@@ -10954,7 +11650,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jun 2026"
+      "note": "Payment received in Jun 2026",
+      "category": "Others"
     },
     {
       "id": "pay_50_2026_06",
@@ -10964,7 +11661,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 3320,
       "amount": 3320,
-      "note": "Customer cleared previous balance of ₹3,320 (Total Col B = 0, new buy Col C = ₹12,265)"
+      "note": "Customer cleared previous balance of ₹3,320 (Total Col B = 0, new buy Col C = ₹12,265)",
+      "category": "Others"
     },
     {
       "id": "pay_145_2026_06",
@@ -10974,7 +11672,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 5529,
       "amount": 5529,
-      "note": "Customer cleared previous balance of ₹5,529 (Total Col B = 0, new buy Col C = ₹13,912)"
+      "note": "Customer cleared previous balance of ₹5,529 (Total Col B = 0, new buy Col C = ₹13,912)",
+      "category": "Others"
     },
     {
       "id": "pay_152_2026_06",
@@ -10984,7 +11683,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 11000,
       "amount": 11000,
-      "note": "Customer cleared previous balance of ₹11,000 (Total Col B = 0, new buy Col C = ₹11,550)"
+      "note": "Customer cleared previous balance of ₹11,000 (Total Col B = 0, new buy Col C = ₹11,550)",
+      "category": "Others"
     },
     {
       "id": "pay_240_2026_06",
@@ -10994,7 +11694,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 8100,
       "amount": 8100,
-      "note": "Customer cleared previous balance of ₹8,100 (Total Col B = 0, new buy Col C = ₹14,175)"
+      "note": "Customer cleared previous balance of ₹8,100 (Total Col B = 0, new buy Col C = ₹14,175)",
+      "category": "Others"
     },
     {
       "id": "pay_11_2026_06",
@@ -11004,7 +11705,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 39087,
       "amount": 39087,
-      "note": "Customer settled previous balance of ₹39,087 and was removed in Customer Credit List-20260630"
+      "note": "Customer settled previous balance of ₹39,087 and was removed in Customer Credit List-20260630",
+      "category": "Others"
     },
     {
       "id": "pay_40_2026_06",
@@ -11014,7 +11716,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 4070,
       "amount": 4070,
-      "note": "Customer settled previous balance of ₹4,070 and was removed in Customer Credit List-20260630"
+      "note": "Customer settled previous balance of ₹4,070 and was removed in Customer Credit List-20260630",
+      "category": "Others"
     },
     {
       "id": "pay_75_2026_06",
@@ -11024,7 +11727,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 8230,
       "amount": 8230,
-      "note": "Customer settled previous balance of ₹8,230 and was removed in Customer Credit List-20260630"
+      "note": "Customer settled previous balance of ₹8,230 and was removed in Customer Credit List-20260630",
+      "category": "Others"
     },
     {
       "id": "pay_92_2026_06",
@@ -11034,7 +11738,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 47153,
       "amount": 47153,
-      "note": "Customer settled previous balance of ₹47,153 and was removed in Customer Credit List-20260630"
+      "note": "Customer settled previous balance of ₹47,153 and was removed in Customer Credit List-20260630",
+      "category": "Others"
     },
     {
       "id": "pay_158_2026_06",
@@ -11044,7 +11749,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 3290,
       "amount": 3290,
-      "note": "Customer settled previous balance of ₹3,290 and was removed in Customer Credit List-20260630"
+      "note": "Customer settled previous balance of ₹3,290 and was removed in Customer Credit List-20260630",
+      "category": "Others"
     },
     {
       "id": "pay_186_2026_06",
@@ -11054,7 +11760,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 12232,
       "amount": 12232,
-      "note": "Customer settled previous balance of ₹12,232 and was removed in Customer Credit List-20260630"
+      "note": "Customer settled previous balance of ₹12,232 and was removed in Customer Credit List-20260630",
+      "category": "Others"
     },
     {
       "id": "pay_204_2026_06",
@@ -11064,7 +11771,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 7810,
       "amount": 7810,
-      "note": "Customer settled previous balance of ₹7,810 and was removed in Customer Credit List-20260630"
+      "note": "Customer settled previous balance of ₹7,810 and was removed in Customer Credit List-20260630",
+      "category": "Others"
     },
     {
       "id": "pay_270_2026_06",
@@ -11074,7 +11782,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 24145,
       "amount": 24145,
-      "note": "Customer settled previous balance of ₹24,145 and was removed in Customer Credit List-20260630"
+      "note": "Customer settled previous balance of ₹24,145 and was removed in Customer Credit List-20260630",
+      "category": "Others"
     },
     {
       "id": "pay_282_2026_06",
@@ -11084,7 +11793,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 25775,
       "amount": 25775,
-      "note": "Customer settled previous balance of ₹25,775 and was removed in Customer Credit List-20260630"
+      "note": "Customer settled previous balance of ₹25,775 and was removed in Customer Credit List-20260630",
+      "category": "Others"
     },
     {
       "id": "pay_343_2026_06",
@@ -11094,7 +11804,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 1300,
       "amount": 1300,
-      "note": "Customer settled previous balance of ₹1,300 and was removed in Customer Credit List-20260630"
+      "note": "Customer settled previous balance of ₹1,300 and was removed in Customer Credit List-20260630",
+      "category": "Others"
     },
     {
       "id": "pay_348_2026_06",
@@ -11104,7 +11815,8 @@
       "date": "2026-06-15T12:00:00.000Z",
       "paymentAmount": 7060,
       "amount": 7060,
-      "note": "Customer settled previous balance of ₹7,060 and was removed in Customer Credit List-20260630"
+      "note": "Customer settled previous balance of ₹7,060 and was removed in Customer Credit List-20260630",
+      "category": "Others"
     },
     {
       "id": "pay_24_2026_07",
@@ -11114,7 +11826,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 22000,
       "amount": 22000,
-      "note": "Payment received in Jul 2026"
+      "note": "Payment received in Jul 2026",
+      "category": "Others"
     },
     {
       "id": "pay_34_2026_07",
@@ -11124,7 +11837,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jul 2026"
+      "note": "Payment received in Jul 2026",
+      "category": "Others"
     },
     {
       "id": "pay_111_2026_07",
@@ -11134,7 +11848,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 20500,
       "amount": 20500,
-      "note": "Payment received in Jul 2026"
+      "note": "Payment received in Jul 2026",
+      "category": "Others"
     },
     {
       "id": "pay_118_2026_07",
@@ -11144,7 +11859,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jul 2026"
+      "note": "Payment received in Jul 2026",
+      "category": "Others"
     },
     {
       "id": "pay_123_2026_07",
@@ -11154,7 +11870,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 8000,
       "amount": 8000,
-      "note": "Payment received in Jul 2026"
+      "note": "Payment received in Jul 2026",
+      "category": "Others"
     },
     {
       "id": "pay_144_2026_07",
@@ -11164,7 +11881,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jul 2026"
+      "note": "Payment received in Jul 2026",
+      "category": "Others"
     },
     {
       "id": "pay_190_2026_07",
@@ -11174,7 +11892,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 20000,
       "amount": 20000,
-      "note": "Payment received in Jul 2026"
+      "note": "Payment received in Jul 2026",
+      "category": "Others"
     },
     {
       "id": "pay_192_2026_07",
@@ -11184,7 +11903,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jul 2026"
+      "note": "Payment received in Jul 2026",
+      "category": "Others"
     },
     {
       "id": "pay_202_2026_07",
@@ -11194,7 +11914,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jul 2026"
+      "note": "Payment received in Jul 2026",
+      "category": "Others"
     },
     {
       "id": "pay_217_2026_07",
@@ -11204,7 +11925,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jul 2026"
+      "note": "Payment received in Jul 2026",
+      "category": "Others"
     },
     {
       "id": "pay_284_2026_07",
@@ -11214,7 +11936,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jul 2026"
+      "note": "Payment received in Jul 2026",
+      "category": "Others"
     },
     {
       "id": "pay_285_2026_07",
@@ -11224,7 +11947,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Jul 2026"
+      "note": "Payment received in Jul 2026",
+      "category": "Others"
     },
     {
       "id": "pay_316_2026_07",
@@ -11234,7 +11958,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Jul 2026"
+      "note": "Payment received in Jul 2026",
+      "category": "Others"
     },
     {
       "id": "pay_376_2026_07",
@@ -11244,7 +11969,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 7000,
       "amount": 7000,
-      "note": "Payment received in Jul 2026"
+      "note": "Payment received in Jul 2026",
+      "category": "Others"
     },
     {
       "id": "pay_162_2026_07",
@@ -11254,7 +11980,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 8900,
       "amount": 8900,
-      "note": "Customer cleared previous balance of ₹8,900 (Total Col B = 0, new buy Col C = ₹11,420)"
+      "note": "Customer cleared previous balance of ₹8,900 (Total Col B = 0, new buy Col C = ₹11,420)",
+      "category": "Others"
     },
     {
       "id": "pay_203_2026_07",
@@ -11264,7 +11991,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Customer cleared previous balance of ₹15,000 (Total Col B = 0, new buy Col C = ₹15,410)"
+      "note": "Customer cleared previous balance of ₹15,000 (Total Col B = 0, new buy Col C = ₹15,410)",
+      "category": "Others"
     },
     {
       "id": "pay_334_2026_07",
@@ -11274,7 +12002,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 2780,
       "amount": 2780,
-      "note": "Customer cleared previous balance of ₹2,780 (Total Col B = 0, new buy Col C = ₹8,050)"
+      "note": "Customer cleared previous balance of ₹2,780 (Total Col B = 0, new buy Col C = ₹8,050)",
+      "category": "Others"
     },
     {
       "id": "pay_1_2026_07",
@@ -11284,7 +12013,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 13230,
       "amount": 13230,
-      "note": "Customer settled previous balance of ₹13,230 and was removed in Customer Credit List-20260731"
+      "note": "Customer settled previous balance of ₹13,230 and was removed in Customer Credit List-20260731",
+      "category": "Others"
     },
     {
       "id": "pay_14_2026_07",
@@ -11294,7 +12024,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 33690,
       "amount": 33690,
-      "note": "Customer settled previous balance of ₹33,690 and was removed in Customer Credit List-20260731"
+      "note": "Customer settled previous balance of ₹33,690 and was removed in Customer Credit List-20260731",
+      "category": "Others"
     },
     {
       "id": "pay_38_2026_07",
@@ -11304,7 +12035,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 11160,
       "amount": 11160,
-      "note": "Customer settled previous balance of ₹11,160 and was removed in Customer Credit List-20260731"
+      "note": "Customer settled previous balance of ₹11,160 and was removed in Customer Credit List-20260731",
+      "category": "Others"
     },
     {
       "id": "pay_110_2026_07",
@@ -11314,7 +12046,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 4000,
       "amount": 4000,
-      "note": "Customer settled previous balance of ₹4,000 and was removed in Customer Credit List-20260731"
+      "note": "Customer settled previous balance of ₹4,000 and was removed in Customer Credit List-20260731",
+      "category": "Others"
     },
     {
       "id": "pay_114_2026_07",
@@ -11324,7 +12057,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 13300,
       "amount": 13300,
-      "note": "Customer settled previous balance of ₹13,300 and was removed in Customer Credit List-20260731"
+      "note": "Customer settled previous balance of ₹13,300 and was removed in Customer Credit List-20260731",
+      "category": "Others"
     },
     {
       "id": "pay_116_2026_07",
@@ -11334,7 +12068,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 2092,
       "amount": 2092,
-      "note": "Customer settled previous balance of ₹2,092 and was removed in Customer Credit List-20260731"
+      "note": "Customer settled previous balance of ₹2,092 and was removed in Customer Credit List-20260731",
+      "category": "Others"
     },
     {
       "id": "pay_126_2026_07",
@@ -11344,7 +12079,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 12705,
       "amount": 12705,
-      "note": "Customer settled previous balance of ₹12,705 and was removed in Customer Credit List-20260731"
+      "note": "Customer settled previous balance of ₹12,705 and was removed in Customer Credit List-20260731",
+      "category": "Others"
     },
     {
       "id": "pay_139_2026_07",
@@ -11354,7 +12090,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 7335,
       "amount": 7335,
-      "note": "Customer settled previous balance of ₹7,335 and was removed in Customer Credit List-20260731"
+      "note": "Customer settled previous balance of ₹7,335 and was removed in Customer Credit List-20260731",
+      "category": "Others"
     },
     {
       "id": "pay_263_2026_07",
@@ -11364,7 +12101,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 13070,
       "amount": 13070,
-      "note": "Customer settled previous balance of ₹13,070 and was removed in Customer Credit List-20260731"
+      "note": "Customer settled previous balance of ₹13,070 and was removed in Customer Credit List-20260731",
+      "category": "Others"
     },
     {
       "id": "pay_326_2026_07",
@@ -11374,7 +12112,8 @@
       "date": "2026-07-15T12:00:00.000Z",
       "paymentAmount": 5040,
       "amount": 5040,
-      "note": "Customer settled previous balance of ₹5,040 and was removed in Customer Credit List-20260731"
+      "note": "Customer settled previous balance of ₹5,040 and was removed in Customer Credit List-20260731",
+      "category": "Others"
     },
     {
       "id": "pay_46_2026_08",
@@ -11384,7 +12123,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_51_2026_08",
@@ -11394,7 +12134,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 20000,
       "amount": 20000,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_55_2026_08",
@@ -11404,7 +12145,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 8500,
       "amount": 8500,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_145_2026_08",
@@ -11414,7 +12156,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 8000,
       "amount": 8000,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_158_2026_08",
@@ -11424,7 +12167,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_174_2026_08",
@@ -11434,7 +12178,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 63000,
       "amount": 63000,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_180_2026_08",
@@ -11444,7 +12189,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_192_2026_08",
@@ -11454,7 +12200,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 3900,
       "amount": 3900,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_202_2026_08",
@@ -11464,7 +12211,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 3900,
       "amount": 3900,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_217_2026_08",
@@ -11474,7 +12222,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_220_2026_08",
@@ -11484,7 +12233,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 14500,
       "amount": 14500,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_249_2026_08",
@@ -11494,7 +12244,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 20000,
       "amount": 20000,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_260_2026_08",
@@ -11504,7 +12255,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_271_2026_08",
@@ -11514,7 +12266,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 5000,
       "amount": 5000,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_280_2026_08",
@@ -11524,7 +12277,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 15000,
       "amount": 15000,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_283_2026_08",
@@ -11534,7 +12288,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 10000,
       "amount": 10000,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_306_2026_08",
@@ -11544,7 +12299,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 14000,
       "amount": 14000,
-      "note": "Payment received in Aug 2026"
+      "note": "Payment received in Aug 2026",
+      "category": "Others"
     },
     {
       "id": "pay_47_2026_08",
@@ -11554,7 +12310,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 15840,
       "amount": 15840,
-      "note": "Customer cleared previous balance of ₹15,840 (Total Col B = 0, new buy Col C = ₹14,400)"
+      "note": "Customer cleared previous balance of ₹15,840 (Total Col B = 0, new buy Col C = ₹14,400)",
+      "category": "Others"
     },
     {
       "id": "pay_49_2026_08",
@@ -11564,7 +12321,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 15120,
       "amount": 15120,
-      "note": "Customer cleared previous balance of ₹15,120 (Total Col B = 0, new buy Col C = ₹17,687)"
+      "note": "Customer cleared previous balance of ₹15,120 (Total Col B = 0, new buy Col C = ₹17,687)",
+      "category": "Others"
     },
     {
       "id": "pay_92_2026_08",
@@ -11574,7 +12332,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 46362,
       "amount": 46362,
-      "note": "Customer cleared previous balance of ₹46,362 (Total Col B = 0, new buy Col C = ₹63,300)"
+      "note": "Customer cleared previous balance of ₹46,362 (Total Col B = 0, new buy Col C = ₹63,300)",
+      "category": "Others"
     },
     {
       "id": "pay_226_2026_08",
@@ -11584,7 +12343,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 14437,
       "amount": 14437,
-      "note": "Customer cleared previous balance of ₹14,437 (Total Col B = 0, new buy Col C = ₹10,750)"
+      "note": "Customer cleared previous balance of ₹14,437 (Total Col B = 0, new buy Col C = ₹10,750)",
+      "category": "Others"
     },
     {
       "id": "pay_36_2026_08",
@@ -11594,7 +12354,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 16617,
       "amount": 16617,
-      "note": "Customer settled previous balance of ₹16,617 and was removed in Customer Credit List-20260831"
+      "note": "Customer settled previous balance of ₹16,617 and was removed in Customer Credit List-20260831",
+      "category": "Others"
     },
     {
       "id": "pay_69_2026_08",
@@ -11604,7 +12365,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 15065,
       "amount": 15065,
-      "note": "Customer settled previous balance of ₹15,065 and was removed in Customer Credit List-20260831"
+      "note": "Customer settled previous balance of ₹15,065 and was removed in Customer Credit List-20260831",
+      "category": "Others"
     },
     {
       "id": "pay_117_2026_08",
@@ -11614,7 +12376,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 10700,
       "amount": 10700,
-      "note": "Customer settled previous balance of ₹10,700 and was removed in Customer Credit List-20260831"
+      "note": "Customer settled previous balance of ₹10,700 and was removed in Customer Credit List-20260831",
+      "category": "Others"
     },
     {
       "id": "pay_159_2026_08",
@@ -11624,7 +12387,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 12815,
       "amount": 12815,
-      "note": "Customer settled previous balance of ₹12,815 and was removed in Customer Credit List-20260831"
+      "note": "Customer settled previous balance of ₹12,815 and was removed in Customer Credit List-20260831",
+      "category": "Others"
     },
     {
       "id": "pay_254_2026_08",
@@ -11634,7 +12398,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 42869,
       "amount": 42869,
-      "note": "Customer settled previous balance of ₹42,869 and was removed in Customer Credit List-20260831"
+      "note": "Customer settled previous balance of ₹42,869 and was removed in Customer Credit List-20260831",
+      "category": "Others"
     },
     {
       "id": "pay_266_2026_08",
@@ -11644,7 +12409,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 15582,
       "amount": 15582,
-      "note": "Customer settled previous balance of ₹15,582 and was removed in Customer Credit List-20260831"
+      "note": "Customer settled previous balance of ₹15,582 and was removed in Customer Credit List-20260831",
+      "category": "Others"
     },
     {
       "id": "pay_356_2026_08",
@@ -11654,7 +12420,8 @@
       "date": "2026-08-15T12:00:00.000Z",
       "paymentAmount": 6662,
       "amount": 6662,
-      "note": "Customer settled previous balance of ₹6,662 and was removed in Customer Credit List-20260831"
+      "note": "Customer settled previous balance of ₹6,662 and was removed in Customer Credit List-20260831",
+      "category": "Others"
     },
     {
       "id": "service_2026_05_s198",
@@ -11666,7 +12433,8 @@
       "amount": 80000,
       "cashPaid": 80000,
       "remainingDue": 0,
-      "note": "Pickup Service Income from May Grass 2026"
+      "note": "Pickup Service Income from May Grass 2026",
+      "category": "Pickup"
     }
   ],
   "purchases": [
@@ -12993,8 +13761,7 @@
     {
       "id": "expense_2026_01_s199",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Interest",
+      "category": "Interest",
       "item": "Others",
       "amount": 7000,
       "date": "2026-01-15T12:00:00.000Z",
@@ -13003,8 +13770,7 @@
     {
       "id": "expense_discount_2026_01",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Discount",
+      "category": "Discount",
       "item": "Others",
       "amount": 2286,
       "date": "2026-01-15T12:00:00.000Z",
@@ -13013,8 +13779,7 @@
     {
       "id": "expense_2026_02_s199",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Interest",
+      "category": "Interest",
       "item": "Others",
       "amount": 7000,
       "date": "2026-02-15T12:00:00.000Z",
@@ -13023,8 +13788,7 @@
     {
       "id": "expense_discount_2026_02",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Discount",
+      "category": "Discount",
       "item": "Others",
       "amount": 1229,
       "date": "2026-02-15T12:00:00.000Z",
@@ -13033,8 +13797,7 @@
     {
       "id": "expense_2026_03_s199",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Interest",
+      "category": "Interest",
       "item": "Others",
       "amount": 7000,
       "date": "2026-03-15T12:00:00.000Z",
@@ -13043,8 +13806,7 @@
     {
       "id": "expense_discount_2026_03",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Discount",
+      "category": "Discount",
       "item": "Others",
       "amount": 1680,
       "date": "2026-03-15T12:00:00.000Z",
@@ -13053,8 +13815,7 @@
     {
       "id": "expense_2026_04_s199",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Interest",
+      "category": "Interest",
       "item": "Others",
       "amount": 7000,
       "date": "2026-04-15T12:00:00.000Z",
@@ -13063,8 +13824,7 @@
     {
       "id": "expense_discount_2026_04",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Discount",
+      "category": "Discount",
       "item": "Others",
       "amount": 2201,
       "date": "2026-04-15T12:00:00.000Z",
@@ -13073,8 +13833,7 @@
     {
       "id": "expense_2026_05_s198",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Fuel",
+      "category": "Fuel",
       "item": "Others",
       "amount": 51100,
       "date": "2026-05-15T12:00:00.000Z",
@@ -13083,8 +13842,7 @@
     {
       "id": "expense_2026_05_s199",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Interest",
+      "category": "Interest",
       "item": "Others",
       "amount": 7000,
       "date": "2026-05-15T12:00:00.000Z",
@@ -13093,8 +13851,7 @@
     {
       "id": "expense_discount_2026_05",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Discount",
+      "category": "Discount",
       "item": "Others",
       "amount": 2400,
       "date": "2026-05-15T12:00:00.000Z",
@@ -13103,8 +13860,7 @@
     {
       "id": "expense_2026_06_s199",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Interest",
+      "category": "Interest",
       "item": "Others",
       "amount": 7000,
       "date": "2026-06-15T12:00:00.000Z",
@@ -13113,8 +13869,7 @@
     {
       "id": "expense_discount_2026_06",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Discount",
+      "category": "Discount",
       "item": "Others",
       "amount": 1651,
       "date": "2026-06-15T12:00:00.000Z",
@@ -13123,8 +13878,7 @@
     {
       "id": "expense_2026_07_s199",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Interest",
+      "category": "Interest",
       "item": "Others",
       "amount": 7000,
       "date": "2026-07-15T12:00:00.000Z",
@@ -13133,8 +13887,7 @@
     {
       "id": "expense_discount_2026_07",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Discount",
+      "category": "Discount",
       "item": "Others",
       "amount": 1462,
       "date": "2026-07-15T12:00:00.000Z",
@@ -13143,8 +13896,7 @@
     {
       "id": "expense_2026_08_s198",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Interest",
+      "category": "Interest",
       "item": "Others",
       "amount": 7000,
       "date": "2026-08-15T12:00:00.000Z",
@@ -13153,8 +13905,7 @@
     {
       "id": "expense_discount_2026_08",
       "type": "EXPENSE",
-      "category": "Expense",
-      "expenseCategory": "Discount",
+      "category": "Discount",
       "item": "Others",
       "amount": 1269,
       "date": "2026-08-15T12:00:00.000Z",

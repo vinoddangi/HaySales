@@ -47,7 +47,7 @@ export const EditActivityModal: React.FC<EditActivityModalProps> = ({
   onDelete,
 }) => {
   const [dateStr, setDateStr] = useState('');
-  const [item, setItem] = useState('');
+  const [category, setCategory] = useState('');
   const [expenseCategory, setExpenseCategory] =
     useState<ExpenseCategoryType>('Fuel');
   const [weightKg, setWeightKg] = useState(0);
@@ -66,9 +66,9 @@ export const EditActivityModal: React.FC<EditActivityModalProps> = ({
       } else {
         setDateStr(new Date().toISOString().split('T')[0]);
       }
-      setItem(transaction.item || 'Chana');
+      setCategory((transaction as any).category || 'Chana');
       setExpenseCategory(
-        (transaction.expenseCategory as ExpenseCategoryType) || 'Fuel',
+        ((transaction as any).category as ExpenseCategoryType) || 'Fuel',
       );
       setWeightKg(Number(transaction.weightKg) || 0);
       setAmount(Number(transaction.amount) || 0);
@@ -97,24 +97,24 @@ export const EditActivityModal: React.FC<EditActivityModalProps> = ({
     };
 
     if (isSale) {
-      updated.item = item;
+      updated.category = category;
       updated.weightKg = weightKg;
       updated.amount = amount;
       updated.cashPaid = cashPaid;
     } else if (isService) {
-      updated.item = item;
+      updated.category = category;
       updated.amount = amount;
       updated.cashPaid = cashPaid;
     } else if (isPayment) {
       updated.paymentAmount = paymentAmount;
     } else if (isPurchase) {
-      updated.item = item;
+      updated.category = category;
       updated.weightKg = weightKg;
       updated.amount = amount;
       updated.cashPaid = cashPaid;
       updated.vendorName = vendorName.trim() || undefined;
     } else if (isExpense) {
-      updated.expenseCategory = expenseCategory;
+      updated.category = expenseCategory;
       updated.amount = amount;
       updated.cashPaid = cashPaid;
       updated.vendorName = vendorName.trim() || undefined;
@@ -181,9 +181,9 @@ export const EditActivityModal: React.FC<EditActivityModalProps> = ({
             <SelectField
               label="Item / Crop Type"
               required
-              value={item}
+              value={category}
               options={ITEM_OPTIONS}
-              onChange={(e) => setItem(e.target.value)}
+              onChange={(e) => setCategory(e.target.value)}
             />
           )}
 
@@ -191,15 +191,15 @@ export const EditActivityModal: React.FC<EditActivityModalProps> = ({
             <SelectField
               label="Service Type"
               required
-              value={item}
+              value={category}
               options={SERVICE_OPTIONS}
-              onChange={(e) => setItem(e.target.value)}
+              onChange={(e) => setCategory(e.target.value)}
             />
           )}
 
           {isExpense && (
             <SelectField
-              label="Expense Category"
+              label="Category"
               required
               value={expenseCategory}
               options={EXPENSE_OPTIONS}

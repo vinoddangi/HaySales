@@ -8,7 +8,7 @@ describe('ActivityListItem component', () => {
     const tx: Transaction = {
       id: 'tx1',
       type: 'SALE',
-      item: 'Chana',
+      category: 'Chana',
       amount: 4000,
       weightKg: 100,
       cashPaid: 4000,
@@ -32,7 +32,7 @@ describe('ActivityListItem component', () => {
     const tx: Transaction = {
       id: 'tx2',
       type: 'SERVICE',
-      item: 'Pickup',
+      category: 'Pickup',
       amount: 1200,
       cashPaid: 0,
       remainingDue: 1200,

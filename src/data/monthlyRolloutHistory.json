@@ -39,28 +39,24 @@
           "cm": 108120.23,
           "total": 2317218.23
         },
-        "daalu": {
+        "pickup": {
           "prev": 269360,
           "cm": 0,
           "total": 269360
         },
         "expenses": {
-          "prev": 7000,
-          "cm": 402350,
-          "total": 101120.23
+          "prev": 395350,
+          "cm": 7000,
+          "total": 402350
         },
         "netProfit": {
-          "cm": 2184228.23,
-          "total": 173266.96
+          "cm": 101120.23,
+          "total": 2184228.23
         },
         "lendingToCustomers": 3134624,
-        "cashBalance": -200360,
-        "totalCapital": 2423266.96,
-        "commission": {
-          "prev": 2209098,
-          "cm": 108120.23,
-          "total": 2317218.23
-        }
+        "cashBalance": 173266.96,
+        "cashAdj": -200360,
+        "totalCapital": 4434228.23
       }
     },
     {
@@ -100,28 +96,24 @@
           "cm": 123669.94,
           "total": 2439658.94
         },
-        "daalu": {
+        "pickup": {
           "prev": 269360,
           "cm": 0,
           "total": 269360
         },
         "expenses": {
-          "prev": 7000,
-          "cm": 409350,
-          "total": 116669.94
+          "prev": 402350,
+          "cm": 7000,
+          "total": 409350
         },
         "netProfit": {
-          "cm": 2299668.94,
-          "total": 271573.6
+          "cm": 116669.94,
+          "total": 2299668.94
         },
         "lendingToCustomers": 3112026,
-        "cashBalance": 98318,
-        "totalCapital": 2521573.6,
-        "commission": {
-          "prev": 2315989,
-          "cm": 123669.94,
-          "total": 2439658.94
-        }
+        "cashBalance": 271573.6,
+        "cashAdj": 98318,
+        "totalCapital": 4549668.94
       }
     },
     {
@@ -161,28 +153,24 @@
           "cm": 122948.75,
           "total": 2560926.75
         },
-        "daalu": {
+        "pickup": {
           "prev": 269360,
           "cm": 0,
           "total": 269360
         },
         "expenses": {
-          "prev": 7000,
-          "cm": 416350,
-          "total": 115948.75
+          "prev": 409350,
+          "cm": 7000,
+          "total": 416350
         },
         "netProfit": {
-          "cm": 2413936.75,
-          "total": 325321.18
+          "cm": 115948.75,
+          "total": 2413936.75
         },
         "lendingToCustomers": 3174188,
-        "cashBalance": 53738,
-        "totalCapital": 2575321.18,
-        "commission": {
-          "prev": 2437978,
-          "cm": 122948.75,
-          "total": 2560926.75
-        }
+        "cashBalance": 325321.18,
+        "cashAdj": 53738,
+        "totalCapital": 4663936.75
       }
     },
     {
@@ -222,28 +210,24 @@
           "cm": 72179.33,
           "total": 2630904.33
         },
-        "daalu": {
+        "pickup": {
           "prev": 269360,
           "cm": 0,
           "total": 269360
         },
         "expenses": {
-          "prev": 7000,
-          "cm": 423350,
-          "total": 65179.33
+          "prev": 416350,
+          "cm": 7000,
+          "total": 423350
         },
         "netProfit": {
-          "cm": 2476914.33,
-          "total": 340975.26
+          "cm": 65179.33,
+          "total": 2476914.33
         },
         "lendingToCustomers": 3174871,
-        "cashBalance": 1730,
-        "totalCapital": 2590975.26,
-        "commission": {
-          "prev": 2558725,
-          "cm": 72179.33,
-          "total": 2630904.33
-        }
+        "cashBalance": 340975.26,
+        "cashAdj": 1730,
+        "totalCapital": 4726914.33
       }
     },
     {
@@ -283,28 +267,24 @@
           "cm": 160872.18,
           "total": 2789376.18
         },
-        "daalu": {
+        "pickup": {
           "prev": 269360,
           "cm": 28900,
           "total": 298260
         },
         "expenses": {
-          "prev": 7000,
-          "cm": 430350,
-          "total": 182772.18
+          "prev": 423350,
+          "cm": 7000,
+          "total": 430350
         },
         "netProfit": {
-          "cm": 2657286.18,
-          "total": 549194.68
+          "cm": 182772.18,
+          "total": 2657286.18
         },
         "lendingToCustomers": 3221480,
-        "cashBalance": 99988,
-        "totalCapital": 2799194.68,
-        "commission": {
-          "prev": 2628504,
-          "cm": 160872.18,
-          "total": 2789376.18
-        }
+        "cashBalance": 549194.68,
+        "cashAdj": 99988,
+        "totalCapital": 4907286.18
       }
     },
     {
@@ -344,28 +324,24 @@
           "cm": 60675.38,
           "total": 2848400.38
         },
-        "daalu": {
+        "pickup": {
           "prev": 298260,
           "cm": 0,
           "total": 298260
         },
         "expenses": {
-          "prev": 7000,
-          "cm": 437350,
-          "total": 53675.38
+          "prev": 430350,
+          "cm": 7000,
+          "total": 437350
         },
         "netProfit": {
-          "cm": 2709310.38,
-          "total": 768650.39
+          "cm": 53675.38,
+          "total": 2709310.38
         },
         "lendingToCustomers": 3099102,
-        "cashBalance": 219450,
-        "totalCapital": 3018650.39,
-        "commission": {
-          "prev": 2787725,
-          "cm": 60675.38,
-          "total": 2848400.38
-        }
+        "cashBalance": 768650.39,
+        "cashAdj": 219450,
+        "totalCapital": 4959310.38
       }
     },
     {
@@ -405,28 +381,24 @@
           "cm": 115009.86,
           "total": 2961947.86
         },
-        "daalu": {
+        "pickup": {
           "prev": 298260,
           "cm": 0,
           "total": 298260
         },
         "expenses": {
-          "prev": 7000,
-          "cm": 444350,
-          "total": 108009.86
+          "prev": 437350,
+          "cm": 7000,
+          "total": 444350
         },
         "netProfit": {
-          "cm": 2815857.86,
-          "total": 469411.64
+          "cm": 108009.86,
+          "total": 2815857.86
         },
         "lendingToCustomers": 3511564,
-        "cashBalance": -299240,
-        "totalCapital": 2719411.64,
-        "commission": {
-          "prev": 2846938,
-          "cm": 115009.86,
-          "total": 2961947.86
-        }
+        "cashBalance": 469411.64,
+        "cashAdj": -299240,
+        "totalCapital": 5065857.86
       }
     },
     {
@@ -466,28 +438,24 @@
           "cm": 108355.72,
           "total": 3069033.72
         },
-        "daalu": {
+        "pickup": {
           "prev": 298260,
           "cm": 0,
           "total": 298260
         },
         "expenses": {
-          "prev": 7000,
-          "cm": 451350,
-          "total": 101355.72
+          "prev": 444350,
+          "cm": 7000,
+          "total": 451350
         },
         "netProfit": {
-          "cm": 2915943.72,
-          "total": 369818.76
+          "cm": 101355.72,
+          "total": 2915943.72
         },
         "lendingToCustomers": 3653295,
-        "cashBalance": -99592,
-        "totalCapital": 2619818.76,
-        "commission": {
-          "prev": 2960678,
-          "cm": 108355.72,
-          "total": 3069033.72
-        }
+        "cashBalance": 369818.76,
+        "cashAdj": -99592,
+        "totalCapital": 5165943.72
       }
     }
   ]

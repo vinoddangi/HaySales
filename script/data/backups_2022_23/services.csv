@@ -1,0 +1,190 @@
+ServiceID,CustomerID,CustomerName,Date,Item,Amount,Notes
+service_2022_11_daalu_1,248,Loh Dineshbhai Ramshugbhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Loh Dineshbhai Ramshugbhai
+service_2022_11_daalu_3,729,Loh Ghemarbhai Rupabhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Loh Ghemarbhai Rupabhai
+service_2022_11_daalu_7,79,Darbar Bhayuji Gadh,2022-11-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Darbar Bhayuji Gadh
+service_2022_11_daalu_12,431,Judal Praveenbhai Virshangbhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Praveenbhai Virshangbhai
+service_2022_11_daalu_14,378,Bera Rajabhai Rupabhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Rajabhai Rupabhai
+service_2022_11_daalu_15,30,Bera Mafatbhai Parthibhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Mafatbhai Parthibhai
+service_2022_11_daalu_16,20,Bera Ashokbhai Laxmanbhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Ashokbhai Laxmanbhai
+service_2022_11_daalu_17,761,Loh Rameshbhai Santubhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Loh Rameshbhai Santubhai
+service_2022_11_daalu_18,190,Judal Sadabhai Kalubhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Sadabhai Kalubhai
+service_2022_11_daalu_19,762,Upalana Sureshbhai Chandisar,2022-11-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Upalana Sureshbhai Chandisar
+service_2022_11_daalu_21,112,Gudol Amaratbhai Parthibhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Gudol Amaratbhai Parthibhai
+service_2022_11_daalu_22,418,Fof Laxmanbhai Ujabhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Fof Laxmanbhai Ujabhai
+service_2022_11_daalu_23,763,Loh Kantibhai Nanjibhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Loh Kantibhai Nanjibhai
+service_2022_11_daalu_24,764,Kag kirtibhai Pujabhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Kag kirtibhai Pujabhai
+service_2022_11_daalu_25,765,Judal Vedancha fera1,2022-11-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Judal Vedancha fera1
+service_2022_11_daalu_28,45,Bhutadiya Dineshbhai Veerabhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bhutadiya Dineshbhai Veerabhai
+service_2022_11_daalu_30,227,Kharsan Rameshbhai Laxmanbhai,2022-11-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Kharsan Rameshbhai Laxmanbhai
+service_2022_11_daalu_31,767,Gudol Babubhai Veerabahi,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Gudol Babubhai Veerabahi
+service_2022_11_daalu_33,171,Judal Kirtibhai Nathabhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Kirtibhai Nathabhai
+service_2022_11_daalu_37,390,Judal Shileshbhai Daljibhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Shileshbhai Daljibhai
+service_2022_11_daalu_38,12,Akoliya Galbabhai Devabhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Akoliya Galbabhai Devabhai
+service_2022_11_daalu_40,769,Judal Kantibhai Fatabhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Kantibhai Fatabhai
+service_2022_11_daalu_42,47,Bhutadiya Ganeshbhai Jethabhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bhutadiya Ganeshbhai Jethabhai
+service_2022_11_daalu_46,658,Fof Rameshbhai Ujabhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Fof Rameshbhai Ujabhai
+service_2022_11_daalu_47,164,Judal Kantibhai Nanjibhai,2022-11-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Kantibhai Nanjibhai
+service_2022_11_extra_52,658,Fof Rameshbhai Ujabhai,2022-11-28T12:00:00.000Z,Pickup,400,Daalu Extra pickup fee from Fof Rameshbhai Ujabhai
+service_2022_11_extra_53,525,Fof Meghrajbhai Ujabhai,2022-11-28T12:00:00.000Z,Pickup,700,Daalu Extra pickup fee from Fof Meghrajbhai Ujabhai
+service_2022_11_extra_54,114,Gudol Babubhai Veerabhai,2022-11-28T12:00:00.000Z,Pickup,800,Daalu Extra pickup fee from Gudol Babubhai Veerabhai
+service_2022_12_daalu_1,260,Loh Nikhilbhai Manjibhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Loh Nikhilbhai Manjibhai
+service_2022_12_daalu_2,214,Kakavadiya Bhagvanbhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Kakavadiya Bhagvanbhai
+service_2022_12_daalu_3,214,Kakavadiya Bhagvanbhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Kakavadiya Bhagvanbhai
+service_2022_12_daalu_10,658,Fof Rameshbhai Ujabhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Fof Rameshbhai Ujabhai
+service_2022_12_daalu_11,171,Judal Kirtibhai Nathabhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Kirtibhai Nathabhai
+service_2022_12_daalu_12,770,Loh Mukeshbhai Nanjibhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Loh Mukeshbhai Nanjibhai
+service_2022_12_daalu_14,23,Bera Dineshbhai Savabhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Dineshbhai Savabhai
+service_2022_12_daalu_15,306,Retail,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Retail
+service_2022_12_daalu_20,248,Loh Dineshbhai Ramshugbhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Loh Dineshbhai Ramshugbhai
+service_2022_12_daalu_21,248,Loh Dineshbhai Ramshugbhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Loh Dineshbhai Ramshugbhai
+service_2022_12_daalu_23,172,Judal Laljibhai Shomabhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Laljibhai Shomabhai
+service_2022_12_daalu_27,773,Laljibhai Khubhasan,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Laljibhai Khubhasan
+service_2022_12_daalu_30,29,Bera Laxmanbhai Meghabhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Laxmanbhai Meghabhai
+service_2022_12_daalu_31,776,Thakor Savjibhai Ramchandji,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Thakor Savjibhai Ramchandji
+service_2022_12_daalu_35,502,Bhutadiya Bhikhabhai Ganeshbhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bhutadiya Bhikhabhai Ganeshbhai
+service_2022_12_daalu_36,47,Bhutadiya Ganeshbhai Jethabhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bhutadiya Ganeshbhai Jethabhai
+service_2022_12_daalu_37,658,Fof Rameshbhai Ujabhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Fof Rameshbhai Ujabhai
+service_2022_12_daalu_38,43,Bhutadiya Babubhai Kanjibhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bhutadiya Babubhai Kanjibhai
+service_2022_12_daalu_41,117,Gudol Kesarbhai Valjibhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Gudol Kesarbhai Valjibhai
+service_2022_12_daalu_42,33,Bera Rajsangbhai Dohjibhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Rajsangbhai Dohjibhai
+service_2022_12_daalu_48,82,Desai Bhurabhai Samdhi,2022-12-15T12:00:00.000Z,Pickup,600,Pickup delivery service for Desai Bhurabhai Samdhi
+service_2022_12_daalu_55,269,Menat Prakashbhai Madana,2022-12-15T12:00:00.000Z,Pickup,430,Pickup delivery service for Menat Prakashbhai Madana
+service_2022_12_daalu_58,94,Foshi Prabhubhai Maganbhai (Vedancha),2022-12-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Foshi Prabhubhai Maganbhai (Vedancha)
+service_2022_12_daalu_59,378,Bera Rajabhai Rupabhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Rajabhai Rupabhai
+service_2022_12_daalu_61,778,Judal Kesarbhai Rajshangbhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Kesarbhai Rajshangbhai
+service_2022_12_daalu_62,15,Akoliya Nareshbhai Becharbhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Akoliya Nareshbhai Becharbhai
+service_2022_12_daalu_66,175,Judal Maheshbhai Sadabhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Maheshbhai Sadabhai
+service_2022_12_daalu_68,780,Valagot Santubhai Virshangbhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Valagot Santubhai Virshangbhai
+service_2022_12_daalu_70,781,Bera Ramshugbhai Parathibhai,2022-12-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Ramshugbhai Parathibhai
+service_2023_01_daalu_1,140,Judal Dayabhai Parthibhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Dayabhai Parthibhai
+service_2023_01_daalu_2,705,Bhutadiya Ganeshbhai Rupabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bhutadiya Ganeshbhai Rupabhai
+service_2023_01_daalu_5,379,Bhutadiya Dilipbhai Muljibhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bhutadiya Dilipbhai Muljibhai
+service_2023_01_daalu_6,328,Thakor Bhupatbhai Veerchandbhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Thakor Bhupatbhai Veerchandbhai
+service_2023_01_daalu_10,783,Boka Galbabhai Kalubhai,2023-01-15T12:00:00.000Z,Pickup,200,Pickup delivery service for Boka Galbabhai Kalubhai
+service_2023_01_daalu_11,784,Kuva Rajubhai Ramsughbhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Kuva Rajubhai Ramsughbhai
+service_2023_01_daalu_14,114,Gudol Babubhai Veerabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Gudol Babubhai Veerabhai
+service_2023_01_daalu_17,786,Patel Pannabhai Vedanccha,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Patel Pannabhai Vedanccha
+service_2023_01_daalu_18,787,Bhutadiya Lalajibhai Veerabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bhutadiya Lalajibhai Veerabhai
+service_2023_01_daalu_19,157,Judal Jyantibhai Nathabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Jyantibhai Nathabhai
+service_2023_01_daalu_20,788,Kharasan Rameshbhai Laxmanbhai,2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Kharasan Rameshbhai Laxmanbhai
+service_2023_01_daalu_23,144,Judal Dineshbhai Muljibhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Dineshbhai Muljibhai
+service_2023_01_daalu_26,790,Judal Shileshbhai Becharbhai,2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Judal Shileshbhai Becharbhai
+service_2023_01_daalu_27,791,Kharasan Jeetabhai Laxmanbhai (Chadotar),2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Kharasan Jeetabhai Laxmanbhai (Chadotar)
+service_2023_01_daalu_28,658,Fof Rameshbhai Ujabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Fof Rameshbhai Ujabhai
+service_2023_01_daalu_29,792,Maraj Rameshbhai Rupabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Maraj Rameshbhai Rupabhai
+service_2023_01_daalu_32,371,Valagot Ghemarbhai Manjibhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Valagot Ghemarbhai Manjibhai
+service_2023_01_daalu_33,12,Akoliya Galbabhai Devabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Akoliya Galbabhai Devabhai
+service_2023_01_daalu_35,720,Judal Bhemjibhai Gadh,2023-01-15T12:00:00.000Z,Pickup,600,Pickup delivery service for Judal Bhemjibhai Gadh
+service_2023_01_daalu_37,752,Vajirkhan Badarpura,2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Vajirkhan Badarpura
+service_2023_01_daalu_38,190,Judal Sadabhai Kalubhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Sadabhai Kalubhai
+service_2023_01_daalu_39,793,Loh Ramjibhai Virshangbhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Loh Ramjibhai Virshangbhai
+service_2023_01_daalu_40,794,Bera Dineshbhai Nanjibhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Dineshbhai Nanjibhai
+service_2023_01_daalu_42,21,Bera Bharatbhai Dhanrajbhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Bharatbhai Dhanrajbhai
+service_2023_01_daalu_46,33,Bera Rajsangbhai Dohjibhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Rajsangbhai Dohjibhai
+service_2023_01_daalu_48,797,Ramjibhai Booterna bhai,2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Ramjibhai Booterna bhai
+service_2023_01_daalu_49,798,Thakor Ashokji Bijalji,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Thakor Ashokji Bijalji
+service_2023_01_daalu_52,232,Kumatiya Rafikbhai Ismilbhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Kumatiya Rafikbhai Ismilbhai
+service_2023_01_daalu_53,800,Kuva Laljibhai Behmabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Kuva Laljibhai Behmabhai
+service_2023_01_daalu_54,801,Judal Pareshbhai Ghemarbhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Pareshbhai Ghemarbhai
+service_2023_01_daalu_55,802,Shipai Hayatkhan Pirijkhan,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Shipai Hayatkhan Pirijkhan
+service_2023_01_daalu_58,803,Mor Becharbhai Hemrajbhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Mor Becharbhai Hemrajbhai
+service_2023_01_daalu_59,804,Hoda fero 1,2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Hoda fero 1
+service_2023_01_daalu_63,45,Bhutadiya Dineshbhai Veerabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bhutadiya Dineshbhai Veerabhai
+service_2023_01_daalu_64,110,Gudol Alpeshbhai Laxmanbhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Gudol Alpeshbhai Laxmanbhai
+service_2023_01_daalu_66,807,Judal Bhagvanbhai Karsanbhai,2023-01-15T12:00:00.000Z,Pickup,200,Pickup delivery service for Judal Bhagvanbhai Karsanbhai
+service_2023_01_daalu_70,810,Valagot Babubhai Vedancha,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Valagot Babubhai Vedancha
+service_2023_01_daalu_76,812,Bera Deepakkumar Jampura,2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Bera Deepakkumar Jampura
+service_2023_01_daalu_79,534,Gudol Bhaveshbhai Parthibhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Gudol Bhaveshbhai Parthibhai
+service_2023_01_daalu_81,815,Akoliya Prakashbhai Bhagvanbhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Akoliya Prakashbhai Bhagvanbhai
+service_2023_01_daalu_83,267,Loh Shileshbhai Manjibhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Loh Shileshbhai Manjibhai
+service_2023_01_daalu_84,709,Chaudhary S.K Agola,2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Chaudhary S.K Agola
+service_2023_01_daalu_85,428,Thakor Bajuji Galbaji,2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Thakor Bajuji Galbaji
+service_2023_01_daalu_86,384,Gori Aayubkhan,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Gori Aayubkhan
+service_2023_01_daalu_87,816,Laljibhai Patel,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Laljibhai Patel
+service_2023_01_daalu_88,385,Gudol Dhanrajbhai Valajibhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Gudol Dhanrajbhai Valajibhai
+service_2023_01_daalu_89,107,Gori Ishrad,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Gori Ishrad
+service_2023_01_daalu_90,719,Judal Amrutbhai Daljibhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Amrutbhai Daljibhai
+service_2023_01_daalu_91,734,Loh Ramjibhai Meghabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Loh Ramjibhai Meghabhai
+service_2023_01_daalu_95,740,Shabbirbhai Condator,2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Shabbirbhai Condator
+service_2023_01_daalu_96,819,Khubhasan,2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Khubhasan
+service_2023_01_daalu_98,198,Judal Valjibhai Virshangbhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Valjibhai Virshangbhai
+service_2023_01_daalu_100,821,Bhutadiya Praveenbhai Naathabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bhutadiya Praveenbhai Naathabhai
+service_2023_01_daalu_102,193,Judal Shileshbhai Daljibhai Kubhasan,2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Judal Shileshbhai Daljibhai Kubhasan
+service_2023_01_daalu_104,822,Palani Bharatbhai Mevabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Palani Bharatbhai Mevabhai
+service_2023_01_daalu_108,824,Gol Karsanbhai Ghemarbhai,2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Gol Karsanbhai Ghemarbhai
+service_2023_01_daalu_110,825,Patel Maheshbhai Maganbhai Kubhasan,2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Patel Maheshbhai Maganbhai Kubhasan
+service_2023_01_daalu_112,658,Fof Rameshbhai Ujabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Fof Rameshbhai Ujabhai
+service_2023_01_daalu_115,743,Thakor Dharjibhai Ranpur,2023-01-15T12:00:00.000Z,Pickup,1000,Pickup delivery service for Thakor Dharjibhai Ranpur
+service_2023_01_daalu_128,126,Jarmol Sureshbhai Cheharabhai,2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Jarmol Sureshbhai Cheharabhai
+service_2023_01_daalu_131,151,Judal Ghemarbhai Rashangbhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Ghemarbhai Rashangbhai
+service_2023_01_daalu_132,703,Bera Ramasungbhai Parthibhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Ramasungbhai Parthibhai
+service_2023_01_daalu_134,757,Thakor Savajibhai Hamirbhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Thakor Savajibhai Hamirbhai
+service_2023_01_daalu_136,60,Boka Kantibhai Dalubhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Boka Kantibhai Dalubhai
+service_2023_01_daalu_137,834,Dangiya,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Dangiya
+service_2023_01_daalu_148,47,Bhutadiya Ganeshbhai Jethabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bhutadiya Ganeshbhai Jethabhai
+service_2023_01_daalu_152,418,Fof Laxmanbhai Ujabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Fof Laxmanbhai Ujabhai
+service_2023_01_daalu_157,78,Dangi Vipulbhai Laxmanbhai (Badarpura),2023-01-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Dangi Vipulbhai Laxmanbhai (Badarpura)
+service_2023_01_daalu_159,35,Bera Rameshbhai Meghabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Rameshbhai Meghabhai
+service_2023_01_daalu_160,114,Gudol Babubhai Veerabhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Gudol Babubhai Veerabhai
+service_2023_01_daalu_161,33,Bera Rajsangbhai Dohjibhai,2023-01-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Rajsangbhai Dohjibhai
+service_2023_01_extra_171,307,Retail,2023-01-15T18:30:00.000Z,Pickup,1050,Daalu Extra pickup fee on 16 Jan 2023
+service_2023_01_extra_172,307,Retail,2023-01-27T18:30:00.000Z,Pickup,800,Daalu Extra pickup fee on 28 Jan 2023
+service_2023_01_extra_173,307,Retail,2023-01-27T18:30:00.000Z,Pickup,500,Daalu Extra pickup fee on 28 Jan 2023
+service_2023_01_extra_174,307,Retail,2023-01-23T18:30:00.000Z,Pickup,500,Daalu Extra pickup fee on 24 Jan 2023
+service_2023_01_extra_175,307,Retail,2023-01-29T18:30:00.000Z,Pickup,1000,Daalu Extra pickup fee on 30 Jan 2023
+service_2023_01_extra_176,307,Retail,2023-01-29T18:30:00.000Z,Pickup,400,Daalu Extra pickup fee on 30 Jan 2023
+service_2023_02_daalu_2,536,Jarmol Neetaben K Gadh,2023-02-15T12:00:00.000Z,Pickup,600,Pickup delivery service for Jarmol Neetaben K Gadh
+service_2023_02_daalu_6,82,Desai Bhurabhai Samdhi,2023-02-15T12:00:00.000Z,Pickup,600,Pickup delivery service for Desai Bhurabhai Samdhi
+service_2023_02_daalu_8,15,Akoliya Nareshbhai Becharbhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Akoliya Nareshbhai Becharbhai
+service_2023_02_daalu_9,724,Judal Shilieshbhai Ghemarbhai,2023-02-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Judal Shilieshbhai Ghemarbhai
+service_2023_02_daalu_11,580,Bhutadiya Jeetabhai Ganeshbhai,2023-02-15T12:00:00.000Z,Pickup,800,Pickup delivery service for Bhutadiya Jeetabhai Ganeshbhai
+service_2023_02_daalu_12,43,Bhutadiya Babubhai Kanjibhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bhutadiya Babubhai Kanjibhai
+service_2023_02_daalu_16,111,Gudol Amaratbhai Cheharabhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Gudol Amaratbhai Cheharabhai
+service_2023_02_daalu_19,172,Judal Laljibhai Shomabhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Laljibhai Shomabhai
+service_2023_02_daalu_20,163,Judal Kantibhai Dalajibhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Kantibhai Dalajibhai
+service_2023_02_daalu_23,273,Mor Daljibhai Vedancha,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Mor Daljibhai Vedancha
+service_2023_02_daalu_26,204,Kag Babubhai Dalshangbhai,2023-02-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Kag Babubhai Dalshangbhai
+service_2023_02_daalu_27,111,Gudol Amaratbhai Cheharabhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Gudol Amaratbhai Cheharabhai
+service_2023_02_daalu_34,431,Judal Praveenbhai Virshangbhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Praveenbhai Virshangbhai
+service_2023_02_daalu_35,658,Fof Rameshbhai Ujabhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Fof Rameshbhai Ujabhai
+service_2023_02_daalu_36,38,Bhatol Ashwinbhai Sudha,2023-02-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Bhatol Ashwinbhai Sudha
+service_2023_02_daalu_41,449,Judal Valjibhai Shavabhai (Vepari),2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Valjibhai Shavabhai (Vepari)
+service_2023_02_daalu_42,729,Loh Ghemarbhai Rupabhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Loh Ghemarbhai Rupabhai
+service_2023_02_daalu_43,255,Loh Kantibhai Sadabhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Loh Kantibhai Sadabhai
+service_2023_02_daalu_44,14,Akoliya Meghrajbhai Parthibhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Akoliya Meghrajbhai Parthibhai
+service_2023_02_daalu_45,94,Foshi Prabhubhai Maganbhai (Vedancha),2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Foshi Prabhubhai Maganbhai (Vedancha)
+service_2023_02_daalu_48,849,Akoliya Jayntibhai Becharbhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Akoliya Jayntibhai Becharbhai
+service_2023_02_daalu_51,850,Mor Govindbhai Badarpura,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Mor Govindbhai Badarpura
+service_2023_02_daalu_52,851,Thakor Kubhasan,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Thakor Kubhasan
+service_2023_02_daalu_59,12,Akoliya Galbabhai Devabhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Akoliya Galbabhai Devabhai
+service_2023_02_daalu_60,15,Akoliya Nareshbhai Becharbhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Akoliya Nareshbhai Becharbhai
+service_2023_02_daalu_71,401,Maharaj Rameshbhai Rupabhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Maharaj Rameshbhai Rupabhai
+service_2023_02_daalu_77,305,Ratada Lavjibhai Laxmanbhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Ratada Lavjibhai Laxmanbhai
+service_2023_02_daalu_83,45,Bhutadiya Dineshbhai Veerabhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bhutadiya Dineshbhai Veerabhai
+service_2023_02_daalu_84,219,Kakvadiya Sureshbhai Chandisar,2023-02-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Kakvadiya Sureshbhai Chandisar
+service_2023_02_daalu_90,718,Hoda Jethabhai Judal,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Hoda Jethabhai Judal
+service_2023_02_daalu_95,85,Dhudiya Dineshbhai Mafabhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Dhudiya Dineshbhai Mafabhai
+service_2023_02_daalu_96,868,Dhudiya Laljibhai Ramshugbhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Dhudiya Laljibhai Ramshugbhai
+service_2023_02_daalu_97,104,Gori Abbaskhan Subelkhan,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Gori Abbaskhan Subelkhan
+service_2023_02_daalu_98,21,Bera Bharatbhai Dhanrajbhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Bharatbhai Dhanrajbhai
+service_2023_02_daalu_100,483,Mor Cheharbhai Abhubhai,2023-02-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Mor Cheharbhai Abhubhai
+service_2023_02_daalu_103,726,Kharasan Remeshbhai Laxmanbhai,2023-02-15T12:00:00.000Z,Pickup,500,Pickup delivery service for Kharasan Remeshbhai Laxmanbhai
+service_2023_02_daalu_104,339,Thakor Kubhaji Huraji,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Thakor Kubhaji Huraji
+service_2023_02_daalu_111,721,Judal Jayantibhai Nathabhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Jayantibhai Nathabhai
+service_2023_02_daalu_113,870,Valagot Jayantibhai Vedancha,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Valagot Jayantibhai Vedancha
+service_2023_02_daalu_115,576,Bera Dineshbhai Shavabhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Dineshbhai Shavabhai
+service_2023_02_daalu_116,29,Bera Laxmanbhai Meghabhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Bera Laxmanbhai Meghabhai
+service_2023_02_daalu_120,383,Dhudiya Bhikhabhai Mafabhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Dhudiya Bhikhabhai Mafabhai
+service_2023_02_daalu_121,306,Retail,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Retail
+service_2023_02_daalu_126,73,Dangi Galababhai Veershangbhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Dangi Galababhai Veershangbhai
+service_2023_02_daalu_127,873,Judal Amarutbhai Veershangbhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Judal Amarutbhai Veershangbhai
+service_2023_02_daalu_128,60,Boka Kantibhai Dalubhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Boka Kantibhai Dalubhai
+service_2023_02_daalu_129,6,Akoliya Bhagvanbhai Kalubhai,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Akoliya Bhagvanbhai Kalubhai
+service_2023_02_daalu_130,874,Gori Yashinkhan Muradkhan,2023-02-15T12:00:00.000Z,Pickup,400,Pickup delivery service for Gori Yashinkhan Muradkhan
+service_2023_02_daalu_131,875,Gaami Kunalbhai Madana,2023-02-15T12:00:00.000Z,Pickup,600,Pickup delivery service for Gaami Kunalbhai Madana
+service_2023_02_extra_194,307,Retail,2023-01-31T18:30:00.000Z,Pickup,600,Daalu Extra pickup fee on 1 Feb 2023
+service_2023_02_extra_195,307,Retail,2023-01-31T18:30:00.000Z,Pickup,400,Daalu Extra pickup fee on 1 Feb 2023
+service_2023_02_extra_196,307,Retail,2023-02-20T18:30:00.000Z,Pickup,1100,Daalu Extra pickup fee on 21 Feb 2023
+service_2023_02_extra_197,307,Retail,2023-02-17T18:30:00.000Z,Pickup,550,Daalu Extra pickup fee on 18 Feb 2023
+service_2023_02_extra_198,307,Retail,2023-02-27T18:30:00.000Z,Pickup,10450,Daalu Extra pickup fee on 28 Feb 2023
+service_2023_03_brok_176,307,Retail,2023-03-28T12:00:00.000Z,Brokerage,1500,Brokerage commission from Mar-2023

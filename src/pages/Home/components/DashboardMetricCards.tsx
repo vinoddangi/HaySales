@@ -3,6 +3,7 @@ import {
   Banknote,
   ChevronRight,
   CreditCard,
+  Landmark,
   TrendingUp,
   Users,
   Wallet,
@@ -10,6 +11,7 @@ import {
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
+  BalanceSheetMetricsData,
   CustomerOutstandingMetrics,
   ProfitMetricsData,
 } from '../../../business/dashboardBusiness';
@@ -45,6 +47,7 @@ export interface DashboardMetricCardsProps {
   metrics: DashboardMetricsData;
   profit?: ProfitMetricsData;
   customerOutstanding?: CustomerOutstandingMetrics;
+  balanceSheet?: BalanceSheetMetricsData;
   periodMode?: 'month' | 'ytd';
   periodLabel?: string;
   isLoading?: boolean;
@@ -54,6 +57,7 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
   metrics,
   profit,
   customerOutstanding,
+  balanceSheet,
   periodMode = 'month',
   periodLabel,
   isLoading,
@@ -614,7 +618,160 @@ export const DashboardMetricCards: React.FC<DashboardMetricCardsProps> = ({
         </Card>
       )}
 
-      {/* Row 4: Merged Net Cashflow & Payments Summary Card */}
+      {/* Row 4: Assets & Liabilities / Cash in Hand Card (styled like Net Cashflow) */}
+      {balanceSheet && (
+        <Card
+          variant="filled"
+          className="border border-m3-outline-variant/60 bg-m3-surface-container p-3.5"
+        >
+          <Flex direction="column" gap="xs" fullWidth>
+            {/* Main Header: Cash in Hand & Adjustment */}
+            <Flex align="center" justify="between" fullWidth>
+              <Flex align="center" gap="sm">
+                <div className="rounded-lg bg-indigo-500/10 p-2 text-indigo-600 dark:text-indigo-400">
+                  <Landmark className="h-5 w-5" />
+                </div>
+                <div>
+                  <Flex align="center" gap="xs">
+                    <Text
+                      styleAs="label"
+                      appearance="primary"
+                      uppercase
+                      className="block font-bold text-indigo-800 dark:text-indigo-300"
+                    >
+                      Cash in Hand
+                    </Text>
+                  </Flex>
+                  <Text
+                    styleAs="caption"
+                    appearance="secondary"
+                    className="block text-[11px]"
+                  >
+                    Current Net Liquid Balance
+                  </Text>
+                </div>
+              </Flex>
+
+              <div className="text-right">
+                <Text
+                  styleAs="h2"
+                  weight="black"
+                  className="block text-indigo-700 dark:text-indigo-300"
+                >
+                  {formatRupee(balanceSheet.cashInHand)}
+                </Text>
+                {/* Previous Period Adjustment */}
+                <span
+                  className={`mt-0.5 inline-block text-[10px] font-bold ${
+                    balanceSheet.cashAdjustment > 0
+                      ? 'text-emerald-700 dark:text-emerald-400'
+                      : balanceSheet.cashAdjustment < 0
+                        ? 'text-rose-700 dark:text-rose-400'
+                        : 'text-m3-on-surface-variant'
+                  }`}
+                >
+                  {balanceSheet.cashAdjustment > 0
+                    ? `+${formatRupee(balanceSheet.cashAdjustment)} vs last period`
+                    : balanceSheet.cashAdjustment < 0
+                      ? `-${formatRupee(Math.abs(balanceSheet.cashAdjustment))} vs last period`
+                      : '₹0 vs last period'}
+                </span>
+              </div>
+            </Flex>
+
+            {/* 2 Sub-Cards: Assets & Liabilities (Matching Net Cashflow In & Out Style) */}
+            <div className="mt-1 grid grid-cols-2 gap-2.5">
+              {/* Sub-Card 1: Total Assets */}
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => navigate('/analytics?tab=balance-sheet')}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navigate('/analytics?tab=balance-sheet');
+                  }
+                }}
+                className="cursor-pointer rounded-xl border border-indigo-500/20 bg-indigo-500/[0.08] p-2.5 transition-all hover:bg-indigo-500/[0.15]"
+              >
+                <div className="flex items-center justify-between border-b border-indigo-500/20 pb-1">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-800 dark:text-indigo-300">
+                    Total Assets
+                  </span>
+                  <span className="text-xs font-black text-indigo-700 dark:text-indigo-400">
+                    {formatRupee(balanceSheet.totalAssets)}
+                  </span>
+                </div>
+                <div className="mt-1.5 space-y-0.5 text-[10px]">
+                  <div className="flex items-center justify-between text-m3-on-surface-variant">
+                    <span>Receivables:</span>
+                    <span className="font-semibold text-m3-on-surface">
+                      {formatRupee(balanceSheet.customerReceivables)}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-m3-on-surface-variant">
+                    <span>Stock:</span>
+                    <span className="font-semibold text-m3-on-surface">
+                      {formatRupee(balanceSheet.closingStockValue)}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-m3-on-surface-variant">
+                    <span>Fixed Assets:</span>
+                    <span className="font-semibold text-m3-on-surface">
+                      {formatRupee(balanceSheet.fixedAssetsValue)}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Sub-Card 2: Total Liabilities & Capital */}
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => navigate('/analytics?tab=balance-sheet')}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navigate('/analytics?tab=balance-sheet');
+                  }
+                }}
+                className="cursor-pointer rounded-xl border border-purple-500/20 bg-purple-500/[0.08] p-2.5 transition-all hover:bg-purple-500/[0.15]"
+              >
+                <div className="flex items-center justify-between border-b border-purple-500/20 pb-1">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-purple-800 dark:text-purple-300">
+                    Liabilities &amp; Capital
+                  </span>
+                  <span className="text-xs font-black text-purple-700 dark:text-purple-400">
+                    {formatRupee(balanceSheet.totalAssets)}
+                  </span>
+                </div>
+                <div className="mt-1.5 space-y-0.5 text-[10px]">
+                  <div className="flex items-center justify-between text-m3-on-surface-variant">
+                    <span>Payables:</span>
+                    <span className="font-semibold text-m3-on-surface">
+                      {formatRupee(balanceSheet.totalLiabilities)}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-m3-on-surface-variant">
+                    <span>Partner Capital:</span>
+                    <span className="font-semibold text-m3-on-surface">
+                      {formatRupee(balanceSheet.partnerCapital)}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-m3-on-surface-variant">
+                    <span>Retained Profit:</span>
+                    <span className="font-semibold text-m3-on-surface">
+                      {formatRupee(balanceSheet.retainedProfit)}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Flex>
+        </Card>
+      )}
+
+      {/* Row 5: Merged Net Cashflow & Payments Summary Card */}
       <Card
         variant="filled"
         className="border border-m3-outline-variant/60 bg-m3-surface-container p-3.5"

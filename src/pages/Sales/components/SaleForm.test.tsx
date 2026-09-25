@@ -49,7 +49,7 @@ describe('SaleForm component', () => {
 
     expect(handleSubmit).toHaveBeenCalledWith(
       expect.objectContaining({
-        item: 'Chana',
+        category: 'Chana',
         weightKg: 100,
         amount: 3000,
         cashPaid: 0,

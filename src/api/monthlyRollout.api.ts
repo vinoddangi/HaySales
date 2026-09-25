@@ -2,9 +2,12 @@ import { hasPendingMonthlyRollout } from '../business/monthlyRolloutBusiness';
 import baselineHistory from '../data/monthlyRolloutHistory.json';
 import { doc, getDoc, setDoc } from '../services/dbBridge';
 import { db } from '../store/firebaseConfig';
-import { MonthlyRolloutStatus, MonthlyTradingSummary } from '../types';
+import {
+  MonthlyRolloutStatus,
+  MonthlyTradingSummary,
+  parseMonthlyRolloutStatusFromRaw,
+} from '../types';
 import { parseTransactionDate } from '../utils/formatters';
-import { parseMonthlyRolloutStatus } from '../utils/parsers';
 
 export const DEFAULT_ROLLED_OUT_MONTH = '2026-08';
 
@@ -16,12 +19,18 @@ export async function fetchMonthlyRolloutStatusApi(): Promise<MonthlyRolloutStat
     const docRef = doc(db, 'metadata', 'monthly_rollout_status');
     const snap = await getDoc(docRef);
     if (snap.exists()) {
-      return parseMonthlyRolloutStatus(snap.data(), DEFAULT_ROLLED_OUT_MONTH);
+      return parseMonthlyRolloutStatusFromRaw(
+        snap.data(),
+        DEFAULT_ROLLED_OUT_MONTH,
+      );
     }
   } catch (err) {
     console.warn('Error fetching monthly rollout status metadata:', err);
   }
-  return parseMonthlyRolloutStatus(baselineHistory, DEFAULT_ROLLED_OUT_MONTH);
+  return parseMonthlyRolloutStatusFromRaw(
+    baselineHistory,
+    DEFAULT_ROLLED_OUT_MONTH,
+  );
 }
 
 /**

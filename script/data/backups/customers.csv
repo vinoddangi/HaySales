@@ -28,7 +28,7 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 122,Hoda Jagdish Bharthi,,,35000,1050
 123,Hoda Sanjaybhai 8980525816,,,35000,0
 124,Jarmol Babubhai Chelabhai,,,35000,12302
-125,Jarmol Bhikhabhai Jeevabhai,,,35000,76225
+125,Jarmol Bhikhabhai Jeevabhai,,,35000,66225
 126,Jarmol Shantubhai Jampura,,,35000,0
 127,Jarmol Sureshbhai Cheharabhai,,,35000,0
 128,Judal Amaratbhai Daljibhai,,,35000,4602
@@ -46,17 +46,17 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 139,Judal Chetanbhai Galbabhai,,,35000,0
 14,Akoliya Meghrajbhai Parthibhai,,,35000,0
 140,Judal Daljibhai Virshangbhai,,,35000,0
-141,Judal Dayabhai Parthibhai,,,35000,32877
+141,Judal Dayabhai Parthibhai,,,35000,12877
 142,Judal Dhanrajbhai Shantubhai,,,35000,0
 143,Judal Dineshbhai Bacchan,,,35000,15660
 144,Judal Dineshbhai Jeshungbhai,,,35000,3160
-145,Judal Dineshbhai Muljibhai,,,35000,44687
+145,Judal Dineshbhai Muljibhai,,,35000,29687
 146,Judal Dineshbhai Nanjibhai,,,35000,14950
 147,Judal Dineshbhai Ramubhai,,,35000,16937
 148,Judal Dineshbhai Ujabhai,,,35000,45194
 149,Judal Galbabhai Hirabhai,,,35000,0
 150,Judal Galbabhai Ramshungbhai,,,35000,0
-151,Judal Ghemarbhai Dhudabhai,,,35000,11539
+151,Judal Ghemarbhai Dhudabhai,,,35000,1539
 152,Judal Ghemarbhai Rashangbhai,,,35000,51082
 153,Judal Haribhai Mavabhai,,,35000,0
 154,Judal Hasmukhbhai Bhagvanbhai,,,35000,0
@@ -80,7 +80,7 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 170,Judal Kesarbhai Laxmanbhai,,,35000,345
 171,Judal Kesarbhai Narshinhbhai,,,35000,14175
 172,Judal Kirtibhai Nathabhai,,,35000,26479
-173,Judal Laljibhai Shomabhai,,,35000,22672
+173,Judal Laljibhai Shomabhai,,,35000,12500
 174,Judal Laxmanbhai Jashugbhai Bhajivala,,,35000,0
 175,Judal Laxmanbhai Ramubhai,,,35000,0
 176,Judal Maheshbhai Sadabhai,,,35000,0
@@ -102,7 +102,7 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 190,Judal Rasabhai Paragbhai,,,35000,27353
 191,Judal Sadabhai Kalubhai,,,35000,123372
 192,Judal Sanjaybhai Bhagvanbhai,,,35000,19637
-193,Judal Sardarbhai Nanjibhai,,,35000,9740
+193,Judal Sardarbhai Nanjibhai,,,35000,0
 194,Judal Shileshbhai Daljibhai Kubhasan,,,35000,3755
 195,Judal Shileshbhai Ghemarbhai,,,35000,0
 196,Judal Sureshbhai Bhikhabhai,,,35000,4772
@@ -114,7 +114,7 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 200,Judal Veerabhai Fatabhai,,,35000,0
 201,Judal Virshangbhai Shomabhai,,,35000,0
 202,Juva Chelabhai Jeevabhai Chadotar,,,35000,41497
-203,Juva Karshanbhai Lakhori,,,35000,38145
+203,Juva Karshanbhai Lakhori,,,35000,23145
 204,Juva Ratubhai Jeevabhai,,,35000,11615
 205,Kag Babubhai Dalshangbhai,,,35000,3822
 206,Kag Dhudabhai Vedancha,,,35000,0
@@ -133,7 +133,7 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 218,Kakvadiya Sanjaybhai Chandisar,,,35000,0
 219,Kakvadiya Sanjaybhai Kantibhai,,,35000,13440
 22,Bera Bharatbhai Dhanrajbhai,,,35000,11073
-220,Kakvadiya Sureshbhai Chandisar,,,35000,43931
+220,Kakvadiya Sureshbhai Chandisar,,,35000,28654
 221,Kanubhai Muljibhai Kushkal,,,35000,33595
 222,Khabhala Kantibhai Jeevabhai,,,35000,11875
 223,Khabhla Kantibhai Jeevabhai,,,35000,0
@@ -169,23 +169,23 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 250,Loh Dineshbhai Sadabhai,,,35000,26028
 251,Loh Dineshbhai Savabhai,,,35000,13450
 252,Loh Dineshbhai Shantubhai,,,35000,0
-253,Loh Hiteshbhai Shomabhai,,,35000,9740
-254,Loh Jyantibhai Moghabhai,,,35000,28100
+253,Loh Hiteshbhai Shomabhai,,,35000,0
+254,Loh Jyantibhai Moghabhai,,,35000,3100
 255,Loh Kantibhai Dalubhai,,,35000,0
 256,Loh Kantibhai Sadabhai,,,35000,0
 257,Loh Laxmanbhai Parthibhai,,,35000,0
 258,Loh Mafatbhai Nanjibhai,,,35000,0
 259,Loh Manjibhai Fatabhai,,,35000,0
 26,Bera Jankiben Rakeshbhai,,,35000,10217
-260,Loh Manjibhai Narshangbhai,,,35000,19027
+260,Loh Manjibhai Narshangbhai,,,35000,8890
 261,Loh Nikhilbhai Manjibhai,,,35000,8150
 262,Loh Prahaladbhai Poojabhai - Agola,,,35000,0
 263,Loh Preveenbhai Savabhai,,,35000,0
 264,Loh Ramjibhai Moghabhai,,,35000,0
 265,Loh Rashubhai Umedbhai,,,35000,0
 266,Loh Sardarbhai Bhikhabhai,,,35000,0
-267,Loh Shantubhai Veerabhai,,,35000,12000
-268,Loh Shileshbhai Manjibhai,,,35000,27776
+267,Loh Shantubhai Veerabhai,,,35000,0
+268,Loh Shileshbhai Manjibhai,,,35000,20000
 269,Loh Sureshbhai Shantubhai,,,35000,0
 27,Bera Jankiben Rakeshbhai - Vedancha,,,35000,0
 270,Menat Prakashbhai Madana,,,35000,33125
@@ -199,7 +199,7 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 278,Mor Kantibhai Vedancha,,,35000,0
 279,Mor Keshabhai Abhubhai,,,35000,0
 28,Bera Kantibhai Ujabhai,,,35000,15065
-280,Mor Lavjibhai Abhubhai,,,35000,149001
+280,Mor Lavjibhai Abhubhai,,,35000,136559
 281,Mor Lavjibhai Abhubhai (Badarpura),,,35000,0
 282,Mor Prakashbhai Parthibhai,,,35000,0
 283,Mor Rameshbhai Nathabhai,,,35000,41866
@@ -221,14 +221,14 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 298,Potrod Sureshbhai Karshanbhai,,,35000,20070
 299,Prajapati Jethabhai Kalubhai,,,35000,19047
 3,Akesan Bhikhabhai Varragbhai,,,35000,0
-30,Bera Laxmanbhai Meghabhai,,,35000,67019
+30,Bera Laxmanbhai Meghabhai,,,35000,43019
 300,Prajapati Jyantibhai Dugarbhai,,,35000,0
 301,Prajapti Maganbhai Kalubhai,,,35000,0
 302,Rajput Kesarbhai Vedancha,,,35000,0
 303,Ramatar Parkashbhai Tajpura,,,35000,0
 304,Rameshbhai Bhagat Jasu,,,35000,3430
 305,Ratada Haribhai Laxmanbhai Badharpura,,,35000,54408
-306,Ratada Lavjibhai Laxmanbhai,,,35000,72416
+306,Ratada Lavjibhai Laxmanbhai,,,35000,65456
 307,Retail,,,35000,0
 308,Savaya Jyantibhai Kanjibhai,,,35000,0
 309,Savaya Kantibhai Vedancha,,,35000,0
@@ -244,7 +244,7 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 318,Thakor Amratbhai Manabhai,,,35000,168
 319,Thakor Arvindbhai Khasa,,,35000,0
 32,Bera Nareshbhai Karshanbhai,,,35000,18375
-320,Thakor Ashokbhai Bijanbhai,,,35000,8804
+320,Thakor Ashokbhai Bijanbhai,,,35000,3804
 321,Thakor Balvantbhai Chaganbhai,,,35000,6000
 322,Thakor Balvatbhai Chaganbhai,,,35000,0
 323,Thakor Bhagvanbhai Shantubhai,,,35000,380
@@ -287,7 +287,7 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 357,Thakor Shankarbhai Ranpur,,,35000,125887
 358,Thakor Shavjibhai Ramchandbhai (Bhai),,,35000,0
 359,Thakor Vashrambhai Danshungbhai,,,35000,0
-36,Bera Rameshbhai Meghabhai,,,35000,13000
+36,Bera Rameshbhai Meghabhai,,,35000,8000
 360,Thakor Vinshubhai Dheerajbhai,,,35000,0
 361,Thakor Vipulbhai Chaganbhai,,,35000,44370
 362,Thakor. Ramesh bhai pujabhai,,,35000,0
@@ -298,7 +298,7 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 367,Valagot Ashokbhai Parthibhai,,,35000,0
 368,Valagot Babubhai Chelabhai,,,35000,0
 369,Valagot Babubhai Parthibhai,,,35000,15620
-37,Bera Ramshungbhai Parthibhai,,,35000,26343
+37,Bera Ramshungbhai Parthibhai,,,35000,16343
 370,Valagot Devabhai,,,35000,0
 371,Valagot Dipakbhai Mavjibhai,,,35000,30764
 372,Valagot Ghemarbhai Manjibhai,,,35000,6010
@@ -311,7 +311,7 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 39,Bhatol Ashwinbhai Sudha,,,35000,0
 4,Akeshna Palani Shravanbhai,,,35000,0
 40,Bhilocha Bhaveshbhai,,,35000,0
-41,Bhilocha Bhaveshbhai Kantibhai,,,35000,1800
+41,Bhilocha Bhaveshbhai Kantibhai,,,35000,0
 42,Bhutadiy Galbabhai Dalubhai,,,35000,19062
 43,Bhutadiya Babubhai Bhemabhai,,,35000,22475
 44,Bhutadiya Babubhai Kanjibhai,,,35000,0
@@ -330,10 +330,10 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 56,Bhutadiya Poojabhai Fatabhai,,,35000,0
 57,Bhutadiya Ujabhai Fatabhai,,,35000,0
 58,Boka Dhanrajbhai Bhemjibhai,,,35000,18578
-59,Boka Dipakbhai Parthibhai,,,35000,94889
+59,Boka Dipakbhai Parthibhai,,,35000,79889
 6,Akoliya Bhagvanbhai Kalubhai,,,35000,13080
 60,Boka Jynatibhai Dalubhai,,,35000,38282
-61,Boka Kantibhai Dalubhai,,,35000,26455
+61,Boka Kantibhai Dalubhai,,,35000,5000
 62,Boka Katibhai Dalubhai,,,35000,0
 63,Boka Rameshbhai Narshibhai,,,35000,0
 64,Chaudhary Dipakbhai Ghemarbhai,,,35000,0
@@ -348,7 +348,7 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 73,Dangi Chelabhai Heerabhai,,,35000,0
 74,Dangi Galababhai Veershangbhai,,,35000,0
 75,Dangi Galbabhai Veerabhai,,,35000,0
-76,Dangi Megharajbhai Veerabhai,,,35000,6000
+76,Dangi Megharajbhai Veerabhai,,,35000,1000
 77,Dangi Valjibhai Parthibhai,,,35000,0
 78,Dangi Vinodbhai Premjibhai,,,35000,0
 79,Dangi Vipulbhai Laxmanbhai (Badarpura),,,35000,68521
@@ -366,7 +366,7 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 9,Akoliya Bhikhiben Babubhai,,,35000,16560
 90,Fof Babubhai Ujabhai,,,35000,29980
 91,Fof Rameshbhai Ujabhai,,,35000,14732
-92,Fof Sureshbhai Ujabhai,,,35000,166192
+92,Fof Sureshbhai Ujabhai,,,35000,141192
 93,Foshi Ashokbhai Vedancha,,,35000,0
 94,Foshi Maganbhai Kalubhai,,,35000,9520
 95,Foshi Prabhubhai Maganbhai (Vedancha),,,35000,169737
@@ -512,7 +512,7 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 513,Valagot Mavjibhai (Fuva),,,35000,0
 514,Gamar Rameshbhai Lalabhai (Chetan Galba Judal),,,35000,0
 515,Vajirkhan Kasa,,,35000,13761
-516,Thakor Rameshbhai Danshungbhai,,,35000,290
+516,Thakor Rameshbhai Danshungbhai,,,35000,0
 517,Thakor Hemchandbhai Khodla,,,35000,0
 518,Gudol Kalpeshbhai Kushkal,,,35000,0
 519,Judal Lajibhai Somabhai,,,35000,0
@@ -634,12 +634,12 @@ CustomerID,CustomerName,Mobile,Village,CreditLimit,OutstandingAmount
 635,Judal Jeshungbhai Bhikhabhai,,,35000,0
 636,Judal Jashungbhai Bhikhabhai,,,35000,0
 637,Darbar Gokalshing Samdhi,,,35000,0
-638,Menat Parkashbhai Madana,,,35000,28084
+638,Menat Parkashbhai Madana,,,35000,0
 639,Kasha Jafarkhan,,,35000,14560
 640,Karshan Bhikhabhai Godadbhai,,,35000,0
-641,Valagot Kantibhai Shomabhai,,,35000,3702
+641,Valagot Kantibhai Shomabhai,,,35000,0
 642,Hoda Sanjaybhai,8980525816,,35000,10815
-643,Umarbhai Kotavala Chadotar,,,35000,13020
+643,Umarbhai Kotavala Chadotar,,,35000,0
 644,Unava Satishbhai,,,35000,0
 645,Tractor Mhurut,,,35000,0
 646,Judal Hashmukhbhai Bhagvanbhai,,,35000,0

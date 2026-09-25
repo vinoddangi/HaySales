@@ -5,7 +5,7 @@
 
 export interface CsvColumn<T> {
   header: string;
-  accessor: (item: T) => string | number | boolean | null | undefined;
+  accessor: (_item: T) => string | number | boolean | null | undefined;
 }
 
 /**

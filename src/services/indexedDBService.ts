@@ -254,6 +254,41 @@ export async function hasLocalData(): Promise<boolean> {
 }
 
 /**
+ * Seed or reset Local IndexedDB using the clean initial database snapshot (2026 data).
+ */
+export async function seedLocalDatabaseFromSnapshot(
+  snapshotData?: any,
+): Promise<{
+  customersCount: number;
+  transactionsCount: number;
+  purchasesCount: number;
+  monthlyRolloutCount: number;
+  metadataCount: number;
+}> {
+  const snapshot =
+    snapshotData ||
+    (await import('../data/initialDatabaseSnapshot.json')).default;
+
+  // Clear existing local stores
+  await clearAllLocalData();
+
+  // Populate local stores directly from snapshot
+  await bulkSaveStoreItems('customers', snapshot.customers || []);
+  await bulkSaveStoreItems('transactions', snapshot.transactions || []);
+  await bulkSaveStoreItems('purchases', snapshot.purchases || []);
+  await bulkSaveStoreItems('monthly_rollout', snapshot.monthly_rollout || []);
+  await bulkSaveStoreItems('metadata', snapshot.metadata || []);
+
+  return {
+    customersCount: (snapshot.customers || []).length,
+    transactionsCount: (snapshot.transactions || []).length,
+    purchasesCount: (snapshot.purchases || []).length,
+    monthlyRolloutCount: (snapshot.monthly_rollout || []).length,
+    metadataCount: (snapshot.metadata || []).length,
+  };
+}
+
+/**
  * Sync Local IndexedDB with live data from Cloud Firestore
  */
 export async function syncLocalDatabaseFromCloud(): Promise<{

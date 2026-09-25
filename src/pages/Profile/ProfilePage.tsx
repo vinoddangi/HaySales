@@ -14,11 +14,8 @@ import {
 import { showSnackbar } from '../../store/slices/uiSlice';
 import { ColorScheme, FontSize } from '../../types';
 import { APP_VERSION } from '../../utils/version';
-import { DataBackupRestoreSettings } from './components/DataBackupRestoreSettings';
 import { FontSettings } from './components/FontSettings';
 import { LocalDatabaseSettings } from './components/LocalDatabaseSettings';
-import { MockEnvironmentSettings } from './components/MockEnvironmentSettings';
-import { MonthlyRolloutSettings } from './components/MonthlyRolloutSettings';
 import { ProfileHeader } from './components/ProfileHeader';
 import { ThemeSettings } from './components/ThemeSettings';
 
@@ -125,15 +122,6 @@ export const ProfilePage: React.FC = () => {
 
       {/* 3. Database & Offline Storage (IndexedDB / Cloud Firestore) */}
       <LocalDatabaseSettings />
-
-      {/* 4. Mock Environment & CSV Sandbox */}
-      <MockEnvironmentSettings />
-
-      {/* 5. Database Backup & Restore (.csv & Google Drive) */}
-      <DataBackupRestoreSettings />
-
-      {/* 6. Monthly Rollout & Trading Period Accounting */}
-      <MonthlyRolloutSettings />
 
       <div className="flex flex-col items-center gap-3 pt-2">
         <Button

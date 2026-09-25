@@ -5,7 +5,7 @@ import { Flex } from '../../../components/layout';
 import { formatRupee, formatWeight } from '../../../utils/formatters';
 
 export interface ItemBreakdownItem {
-  item: string;
+  category: string;
   amount: number;
   weightKg: number;
   count: number;
@@ -129,7 +129,7 @@ export const DashboardBreakdown: React.FC<DashboardBreakdownProps> = ({
 
                 return (
                   <div
-                    key={item.item}
+                    key={item.category}
                     className="rounded-lg border border-m3-outline-variant/50 bg-m3-surface p-2.5"
                   >
                     <Flex align="center" justify="between" fullWidth>
@@ -138,7 +138,7 @@ export const DashboardBreakdown: React.FC<DashboardBreakdownProps> = ({
                         appearance="primary"
                         weight="bold"
                       >
-                        {item.item}
+                        {item.category}
                       </Text>
                       <Text
                         styleAs="body-sm"

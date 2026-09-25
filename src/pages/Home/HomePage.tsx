@@ -2,6 +2,7 @@ import { Plus } from 'lucide-react';
 import React, { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
+  calculateBalanceSheetMetrics,
   calculateCustomerOutstandingMetrics,
   calculateDashboardMetrics,
   calculateItemBreakdowns,
@@ -53,8 +54,8 @@ export const HomePage: React.FC = () => {
     );
   }, [allTransactions, filterMode, selectedMonth, currentDate]);
 
-  // Aggregate metrics, customer outstanding, profit & item breakdown via Business Layer
-  const { metrics, itemBreakdown, customerOutstanding, profit } =
+  // Aggregate metrics, customer outstanding, profit, balance sheet & item breakdown via Business Layer
+  const { metrics, itemBreakdown, customerOutstanding, profit, balanceSheet } =
     useMemo(() => {
       const computedMetrics = calculateDashboardMetrics(filteredTransactions);
       const computedBreakdowns = calculateItemBreakdowns(
@@ -83,12 +84,23 @@ export const HomePage: React.FC = () => {
         totalSalesAmount: computedMetrics.totalSalesAmount,
         rolloutStatus,
       });
+      const computedBalanceSheet = calculateBalanceSheetMetrics(
+        allTransactions,
+        {
+          mode: filterMode,
+          selectedMonth,
+          year: currentYear,
+          customers,
+          rolloutStatus,
+        },
+      );
 
       return {
         metrics: computedMetrics,
         itemBreakdown: computedBreakdowns,
         customerOutstanding: computedOutstanding,
         profit: computedProfit,
+        balanceSheet: computedBalanceSheet,
       };
     }, [
       customers,
@@ -137,6 +149,7 @@ export const HomePage: React.FC = () => {
         metrics={metrics}
         profit={profit}
         customerOutstanding={customerOutstanding}
+        balanceSheet={balanceSheet}
         periodMode={filterMode}
         periodLabel={getPeriodLabel()}
         isLoading={isLoading}

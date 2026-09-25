@@ -44,7 +44,7 @@ describe('dataSanitizer utils', () => {
         expect(
           extractPartyDisplayName({
             type: 'EXPENSE',
-            expenseCategory: 'Labor',
+            category: 'Labor',
           }),
         ).toBe('Labor');
         expect(extractPartyDisplayName({ type: 'EXPENSE' })).toBe(
@@ -92,7 +92,7 @@ describe('dataSanitizer utils', () => {
         expect(
           buildTransactionSubtitle({
             type: 'SALE',
-            item: 'Chana',
+            category: 'Chana',
             weightKg: 100,
             amount: 4000,
           }),
@@ -100,7 +100,7 @@ describe('dataSanitizer utils', () => {
         expect(
           buildTransactionSubtitle({
             type: 'PURCHASE',
-            item: 'Tuvar',
+            category: 'Tuvar',
             weightKg: 200,
             amount: 8000,
           }),
@@ -111,7 +111,7 @@ describe('dataSanitizer utils', () => {
         expect(
           buildTransactionSubtitle({
             type: 'SERVICE',
-            item: 'Pickup',
+            category: 'Pickup',
             note: 'Drop off',
           }),
         ).toBe('Service: Pickup • Drop off');
@@ -121,7 +121,7 @@ describe('dataSanitizer utils', () => {
         expect(
           buildTransactionSubtitle({
             type: 'EXPENSE',
-            expenseCategory: 'Fuel',
+            category: 'Fuel',
             note: 'Diesel',
           }),
         ).toBe('Fuel • Diesel');
@@ -216,7 +216,7 @@ describe('dataSanitizer utils', () => {
           id: 'tx-1',
           type: 'SALE',
           customerName: '  Ramesh Patel  ',
-          item: 'Chana',
+          category: 'Chana',
           weightKg: 100,
           amount: 4000,
           cashPaid: 4000,
@@ -242,7 +242,7 @@ describe('dataSanitizer utils', () => {
           id: 'tx-2',
           type: 'SERVICE',
           customerName: 'Suresh Bhai',
-          item: 'Pickup',
+          category: 'Pickup',
           amount: 1500,
           cashPaid: 0,
           remainingDue: 1500,

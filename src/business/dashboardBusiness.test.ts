@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { Transaction } from '../types';
+import { MonthlyRolloutStatus, Transaction } from '../types';
 import {
+  calculateBalanceSheetMetrics,
   calculateCustomerOutstandingMetrics,
   calculateDashboardMetrics,
   calculateItemBreakdowns,
@@ -13,7 +14,7 @@ describe('dashboardBusiness', () => {
     {
       id: 'tx-1',
       type: 'SALE',
-      item: 'Chana',
+      category: 'Chana',
       weightKg: 100,
       amount: 5000,
       cashPaid: 3000,
@@ -23,7 +24,7 @@ describe('dashboardBusiness', () => {
     {
       id: 'tx-2',
       type: 'SALE',
-      item: 'Gavatri',
+      category: 'Gavatri',
       weightKg: 200,
       amount: 6000,
       cashPaid: 6000,
@@ -33,7 +34,7 @@ describe('dashboardBusiness', () => {
     {
       id: 'tx-3',
       type: 'PURCHASE',
-      item: 'Chana',
+      category: 'Chana',
       weightKg: 500,
       amount: 15000,
       cashPaid: 15000,
@@ -54,7 +55,7 @@ describe('dashboardBusiness', () => {
     {
       id: 'tx-6',
       type: 'SERVICE',
-      item: 'Pickup',
+      category: 'Pickup',
       amount: 2000,
       cashPaid: 2000,
       date: '2026-09-14T10:00:00Z',
@@ -62,7 +63,7 @@ describe('dashboardBusiness', () => {
     {
       id: 'tx-old',
       type: 'SALE',
-      item: 'Tuvar',
+      category: 'Tuvar',
       weightKg: 50,
       amount: 1500,
       cashPaid: 1500,
@@ -123,7 +124,7 @@ describe('dashboardBusiness', () => {
       {
         id: 'tx-exp-1',
         type: 'EXPENSE',
-        expenseCategory: 'Fuel',
+        category: 'Fuel',
         amount: 2000,
         cashPaid: 2000,
         date: '2026-09-05T10:00:00Z',
@@ -131,7 +132,7 @@ describe('dashboardBusiness', () => {
       {
         id: 'tx-exp-int',
         type: 'EXPENSE',
-        expenseCategory: 'Interest',
+        category: 'Interest',
         amount: 7000,
         cashPaid: 7000,
         date: '2026-09-05T10:00:00Z',
@@ -149,21 +150,21 @@ describe('dashboardBusiness', () => {
       {
         id: 'tx-ts-1',
         type: 'SERVICE',
-        item: 'Pickup',
+        category: 'Pickup',
         amount: 80000,
         date: { seconds: 1779970800 } as any, // May 2026
       },
       {
         id: 'tx-ts-2',
         type: 'EXPENSE',
-        expenseCategory: 'Fuel',
+        category: 'Fuel',
         amount: 51100,
         date: { _seconds: 1779970800 } as any, // May 2026
       },
       {
         id: 'tx-ts-3',
         type: 'EXPENSE',
-        expenseCategory: 'Fuel',
+        category: 'Fuel',
         amount: 15000,
         date: '15/05/2026, 10:00:00', // May 2026 string format
       },
@@ -192,7 +193,7 @@ describe('dashboardBusiness', () => {
       includeOpeningStock: false,
     });
 
-    const chana = breakdowns.find((b) => b.item === 'Chana');
+    const chana = breakdowns.find((b) => b.category === 'Chana');
     expect(chana).toBeDefined();
     expect(chana?.amount).toBe(5000);
     expect(chana?.weightKg).toBe(100);
@@ -200,7 +201,7 @@ describe('dashboardBusiness', () => {
     expect(chana?.avgBuyRate).toBe(30); // 15000 / 500
 
     // Ensure SERVICE (Pickup) is excluded from Crop / Item Breakdown
-    const serviceItem = breakdowns.find((b) => b.item === 'Pickup');
+    const serviceItem = breakdowns.find((b) => b.category === 'Pickup');
     expect(serviceItem).toBeUndefined();
   });
 
@@ -210,7 +211,7 @@ describe('dashboardBusiness', () => {
       {
         id: 'tx-jan-p',
         type: 'PURCHASE',
-        item: 'Others',
+        category: 'Others',
         weightKg: 10000,
         amount: 90000, // 9.0/kg
         date: '2026-01-10T10:00:00Z',
@@ -218,7 +219,7 @@ describe('dashboardBusiness', () => {
       {
         id: 'tx-jan-s',
         type: 'SALE',
-        item: 'Others',
+        category: 'Others',
         weightKg: 5000,
         amount: 60000, // 12.0/kg
         date: '2026-01-15T10:00:00Z',
@@ -231,7 +232,7 @@ describe('dashboardBusiness', () => {
       year: 2026,
     });
 
-    const others = breakdowns.find((b) => b.item === 'Others');
+    const others = breakdowns.find((b) => b.category === 'Others');
     expect(others).toBeDefined();
     expect(others?.amount).toBe(60000);
     expect(others?.weightKg).toBe(5000);
@@ -390,10 +391,17 @@ describe('dashboardBusiness', () => {
         discount: 1000, // ₹1,000 discount given during payment
         date: '2026-01-25',
       },
+      {
+        id: 'tx-disc-exp',
+        type: 'EXPENSE',
+        category: 'Discount',
+        amount: 1000, // Stored as explicit EXPENSE transaction in DB
+        date: '2026-01-25',
+      },
     ];
 
     const metrics = calculateDashboardMetrics(janTxWithDiscount);
-    // 5000 general expense + 1000 payment discount = 6000 total expenses
+    // 5000 general expense + 1000 payment discount expense = 6000 total expenses
     expect(metrics.totalExpenseAmount).toBe(6000);
     expect(metrics.expensesCount).toBe(2);
 
@@ -405,9 +413,107 @@ describe('dashboardBusiness', () => {
     });
 
     // Commission CM = ~10888.93
-    // Operating expenses = 5000 + 1000 (discount) = 6000
+    // Operating expenses = 5000 + 1000 (discount expense) = 6000
     // Net profit = 10888.93 - 6000 = ~4888.93
     expect(profit.operatingExpenses).toBe(6000);
     expect(profit.netProfit).toBeCloseTo(4888.93, 1);
+  });
+
+  it('calculates balance sheet metrics including cash in hand and previous period adjustment correctly', () => {
+    const janTx: Transaction[] = [
+      {
+        id: 'tx-s1',
+        type: 'SALE',
+        amount: 50000,
+        cashPaid: 50000,
+        date: '2026-01-15',
+      },
+      {
+        id: 'tx-e1',
+        type: 'EXPENSE',
+        amount: 5000,
+        cashPaid: 5000,
+        date: '2026-01-20',
+      },
+    ];
+
+    const bsMetrics = calculateBalanceSheetMetrics(janTx, {
+      mode: 'month',
+      selectedMonth: 0,
+      year: 2026,
+    });
+
+    expect(bsMetrics.cashInHand).toBeDefined();
+    expect(typeof bsMetrics.cashInHand).toBe('number');
+    expect(bsMetrics.totalAssets).toBeGreaterThan(0);
+    expect(bsMetrics.totalLiabilities).toBe(0);
+    expect(bsMetrics.partnerCapital).toBeGreaterThan(0);
+    expect(bsMetrics.netWorth).toBe(
+      Number((bsMetrics.partnerCapital + bsMetrics.retainedProfit).toFixed(2)),
+    );
+    expect(bsMetrics.cashAdjustment).toBeDefined();
+  });
+
+  it('uses live customer outstanding for receivables and calculates cash balance accordingly', () => {
+    const janTx: Transaction[] = [];
+    const mockCustomers = [
+      { id: 'c1', name: 'Farmer A', outstandingAmount: 150000 },
+      { id: 'c2', name: 'Farmer B', outstandingAmount: 50000 },
+    ];
+
+    const bsMetrics = calculateBalanceSheetMetrics(janTx, {
+      mode: 'month',
+      selectedMonth: 0,
+      year: 2026,
+      customers: mockCustomers as any,
+    });
+
+    // Should equal sum of outstandingAmount (150000 + 50000 = 200000), NOT 2735870
+    expect(bsMetrics.customerReceivables).toBe(200000);
+  });
+
+  it('aggregates retained profit from each month and includes previous year baseline profit', () => {
+    const mockRolloutStatus: MonthlyRolloutStatus = {
+      lastRolledOutMonth: '2026-02',
+      history: [
+        {
+          month: '2026-01',
+          rolledOutAt: '2026-02-01T00:00:00Z',
+          summary: {
+            period: '2026_01',
+            netProfit: { cm: 101120.23, total: 2186514.23 },
+            cashBalance: 173266.96,
+            lendingToCustomers: 3134624,
+            totalCapital: 4434228.23,
+          } as any,
+        },
+        {
+          month: '2026-02',
+          rolledOutAt: '2026-03-01T00:00:00Z',
+          summary: {
+            period: '2026_02',
+            netProfit: { cm: 116669.94, total: 2303184.17 },
+            cashBalance: 271573.6,
+            lendingToCustomers: 3112026,
+            totalCapital: 4549668.94,
+          } as any,
+        },
+      ],
+    };
+
+    // For February 2026:
+    // Previous year baseline profit = 2085394
+    // Jan 2026 CM net profit = 101120.23
+    // Feb 2026 CM net profit = 116669.94
+    // Total retained profit = 2085394 + 101120.23 + 116669.94 = 2303184.17
+    const bsMetricsFeb = calculateBalanceSheetMetrics([], {
+      mode: 'month',
+      selectedMonth: 1, // February
+      year: 2026,
+      rolloutStatus: mockRolloutStatus,
+    });
+
+    expect(bsMetricsFeb.retainedProfit).toBe(2303184.17);
+    expect(bsMetricsFeb.cashInHand).toBe(271573.6);
   });
 });

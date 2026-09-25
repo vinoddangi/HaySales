@@ -111,7 +111,7 @@ export interface GenericQuerySnapshot<T = any> {
   empty: boolean;
   size: number;
   docs: GenericDocumentSnapshot<T>[];
-  forEach(callback: (doc: GenericDocumentSnapshot<T>) => void): void;
+  forEach(_callback: (_doc: GenericDocumentSnapshot<T>) => void): void;
 }
 
 export function doc(
@@ -443,6 +443,8 @@ export async function setDoc(
       mockDataStore.addCustomer({ ...data, id: key });
     } else if (storeName === 'transactions') {
       mockDataStore.addTransaction({ ...data, id: key });
+    } else if (storeName === 'purchases') {
+      mockDataStore.addPurchase({ ...data, id: key });
     }
     return;
   }
@@ -576,12 +578,12 @@ export async function addDoc(
 
 export interface GenericWriteBatch {
   set(
-    ref: GenericDocRef,
-    data: any,
-    options?: { merge?: boolean },
+    _ref: GenericDocRef,
+    _data: any,
+    _options?: { merge?: boolean },
   ): GenericWriteBatch;
-  update(ref: GenericDocRef, updates: any): GenericWriteBatch;
-  delete(ref: GenericDocRef): GenericWriteBatch;
+  update(_ref: GenericDocRef, _updates: any): GenericWriteBatch;
+  delete(_ref: GenericDocRef): GenericWriteBatch;
   commit(): Promise<void>;
 }
 

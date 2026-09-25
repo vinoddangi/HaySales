@@ -15,7 +15,6 @@ import { cn } from '../../utils/cn';
 import { LoginModal } from '../auth/LoginModal'; // Added
 import { BottomSheet } from '../common/BottomSheet';
 import { LoadingOverlay } from '../common/LoadingOverlay';
-import { MockModeBanner } from '../common/MockModeBanner';
 import { Snackbar } from '../common/Snackbar';
 import { BottomNavBar } from './BottomNavBar';
 import { TopAppBar } from './TopAppBar';
@@ -172,7 +171,6 @@ export const MobileShell: React.FC = () => {
             </div>
           </div>
         )}
-        <MockModeBanner />
         <TopAppBar title={getPageTitle()} showBack={isDetailPage} />
         <main className="flex-1 overflow-y-auto overscroll-contain pb-20">
           <Outlet />

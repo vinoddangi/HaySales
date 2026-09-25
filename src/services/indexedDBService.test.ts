@@ -11,6 +11,7 @@ import {
   putStoreItem,
   recordPendingChange,
   recordPendingChangesBatch,
+  seedLocalDatabaseFromSnapshot,
 } from './indexedDBService';
 
 describe('indexedDBService - Pending Delta Tracking', () => {
@@ -212,5 +213,31 @@ describe('indexedDBService - Pending Delta Tracking', () => {
 
     const allPurchases = await getStoreData('purchases');
     expect(allPurchases).toHaveLength(1);
+  });
+
+  it('seeds local database from clean snapshot data', async () => {
+    const mockSnapshot = {
+      customers: [{ id: 'c1', name: 'Ramesh' }],
+      transactions: [
+        { id: 't1', type: 'SALE', category: 'Chana', amount: 5000 },
+      ],
+      purchases: [
+        { id: 'p1', type: 'PURCHASE', category: 'Tuvar', amount: 10000 },
+      ],
+      monthly_rollout: [{ month: '2026-08' }],
+      metadata: [{ key: 'status', val: 'ok' }],
+    };
+
+    const res = await seedLocalDatabaseFromSnapshot(mockSnapshot);
+    expect(res.customersCount).toBe(1);
+    expect(res.transactionsCount).toBe(1);
+    expect(res.purchasesCount).toBe(1);
+
+    const customers = await getStoreData('customers');
+    expect(customers).toHaveLength(1);
+    expect(customers[0].name).toBe('Ramesh');
+
+    const transactions = await getStoreData('transactions');
+    expect(transactions[0].category).toBe('Chana');
   });
 });

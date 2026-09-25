@@ -25,7 +25,7 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
       if (seenIds.has(tx.id)) return false;
       seenIds.add(tx.id);
     }
-    const sig = `${tx.type}_${tx.date || ''}_${tx.amount || 0}_${tx.paymentAmount || 0}_${tx.remainingDue || 0}_${tx.item || ''}_${tx.customerId || ''}`;
+    const sig = `${tx.type}_${tx.date || ''}_${tx.amount || 0}_${tx.paymentAmount || 0}_${tx.remainingDue || 0}_${(tx as any).category || ''}_${(tx as any).customerId || ''}`;
     if (seenSignatures.has(sig)) return false;
     seenSignatures.add(sig);
     return true;

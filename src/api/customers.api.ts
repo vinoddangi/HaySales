@@ -6,8 +6,7 @@ import {
   updateDoc,
 } from '../services/dbBridge';
 import { db } from '../store/firebaseConfig';
-import { Customer } from '../types';
-import { parseCustomer } from '../utils/parsers';
+import { Customer, CustomerModel } from '../types';
 
 /**
  * Fetch all customers from DB
@@ -17,7 +16,7 @@ export async function fetchCustomersApi(): Promise<Customer[]> {
   const customers: Customer[] = [];
 
   querySnapshot.forEach((docSnap) => {
-    customers.push(parseCustomer(docSnap.data(), docSnap.id));
+    customers.push(CustomerModel.fromRaw(docSnap.data(), docSnap.id));
   });
 
   customers.sort((a, b) =>
@@ -37,7 +36,7 @@ export async function fetchCustomerByIdApi(
   const docSnap = await getDoc(docRef);
   if (!docSnap.exists()) return null;
 
-  return parseCustomer(docSnap.data(), docSnap.id);
+  return CustomerModel.fromRaw(docSnap.data(), docSnap.id);
 }
 
 /**

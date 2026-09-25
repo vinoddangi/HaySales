@@ -6,7 +6,7 @@ import {
   getTransactionFinancials,
   parseTransactionDate,
 } from './formatters';
-import { parseNumber, parseOptionalString, parseString } from './parsers/utils';
+import { parseNumber, parseOptionalString, parseString } from './rawHelpers';
 
 export interface SanitizedDateInfo {
   date: Date;
@@ -34,11 +34,9 @@ export interface SanitizedTransactionData {
   vendorName?: string;
 
   // Item & Description
-  item: string;
+  category: string;
   displaySubtitle: string;
   note: string;
-  category?: string;
-  expenseCategory?: string;
 
   // Weights & Financials
   weightKg: number;
@@ -103,7 +101,7 @@ export function extractPartyDisplayName(raw: any): string {
   const type = raw.type || 'SALE';
   const customerName = parseOptionalString(raw.customerName);
   const vendorName = parseOptionalString(raw.vendorName);
-  const expenseCategory = parseOptionalString(raw.expenseCategory);
+  const category = parseOptionalString(raw.category);
 
   if (type === 'SALE' || type === 'SERVICE' || type === 'PAYMENT') {
     return customerName || 'Customer';
@@ -112,7 +110,7 @@ export function extractPartyDisplayName(raw: any): string {
     return vendorName || 'Stock Procurement';
   }
   if (type === 'EXPENSE') {
-    return vendorName || expenseCategory || 'Expense Payee';
+    return vendorName || category || 'Expense Payee';
   }
   return customerName || vendorName || 'Party';
 }
@@ -167,42 +165,30 @@ export function buildTransactionSubtitle(
   if (!raw || typeof raw !== 'object') return 'No details';
 
   const type = raw.type || 'SALE';
-  const item = parseString(
-    raw.item,
-    type === 'SERVICE'
-      ? 'General'
-      : type === 'EXPENSE'
-        ? 'General Expense'
-        : 'Crop',
-  );
+  const category = parseString(raw.category, '');
   const note = parseString(raw.note, '');
   const weightKg = parseNumber(raw.weightKg, 0);
   const rate =
     computedAvgRate !== undefined
       ? computedAvgRate
-      : calculateTransactionRate(
-          Number(raw.amount) || 0,
-          weightKg,
-          raw.rate || raw.purchaseRate,
-        );
+      : calculateTransactionRate(Number(raw.amount) || 0, weightKg, raw.rate);
 
   if (type === 'SALE') {
-    return `${item} • ${formatWeight(weightKg)} @ ${formatTransactionRate(rate)}`;
+    return `${category} • ${formatWeight(weightKg)} @ ${formatTransactionRate(rate)}`;
   }
   if (type === 'SERVICE') {
-    return `Service: ${item}${note ? ` • ${note}` : ''}`;
+    return `Service: ${category}${note ? ` • ${note}` : ''}`;
   }
   if (type === 'PAYMENT') {
     return 'Payment Received & Dues Settled';
   }
   if (type === 'PURCHASE') {
-    return `${item} • ${formatWeight(weightKg)} @ ${formatTransactionRate(rate)}`;
+    return `${category} • ${formatWeight(weightKg)} @ ${formatTransactionRate(rate)}`;
   }
   if (type === 'EXPENSE') {
-    const category = raw.expenseCategory || 'General Expense';
     return `${category}${note ? ` • ${note}` : ''}`;
   }
-  return `${item}${note ? ` • ${note}` : ''}`;
+  return `${category}${note ? ` • ${note}` : ''}`;
 }
 
 /**
@@ -236,8 +222,7 @@ export function getTransactionBadge(raw: any): SanitizedBadgeInfo {
   }
 
   const type = raw.type || 'SALE';
-  const item = parseString(raw.item, 'Stock');
-  const expenseCategory = parseString(raw.expenseCategory, 'Expense');
+  const category = parseString(raw.category, '');
   const { cash, credit } = getTransactionFinancials(raw);
 
   const isSaleOrService = type === 'SALE' || type === 'SERVICE';
@@ -261,10 +246,10 @@ export function getTransactionBadge(raw: any): SanitizedBadgeInfo {
     return { sentiment: 'service', label: 'Service' };
   }
   if (type === 'PURCHASE') {
-    return { sentiment: 'purchase', label: item };
+    return { sentiment: 'purchase', label: category };
   }
   if (type === 'EXPENSE') {
-    return { sentiment: 'expense', label: expenseCategory };
+    return { sentiment: 'expense', label: category };
   }
   return { sentiment: 'neutral', label: getTransactionTypeLabel(type) };
 }
@@ -322,7 +307,7 @@ export function sanitizeTransactionDisplay(
       type: 'SALE',
       typeLabel: 'Sale',
       displayName: 'Unknown',
-      item: 'Others',
+      category: '',
       displaySubtitle: 'No transaction data',
       note: '',
       weightKg: 0,
@@ -356,21 +341,15 @@ export function sanitizeTransactionDisplay(
   const customerId = parseOptionalString(raw.customerId);
   const customerName = parseOptionalString(raw.customerName);
   const vendorName = parseOptionalString(raw.vendorName);
-  const category = parseOptionalString(raw.category);
-  const expenseCategory = parseOptionalString(raw.expenseCategory);
+  const category = parseString(raw.category, '');
   const note = parseString(raw.note, '');
-  const item = parseString(
-    raw.item,
-    type === 'SERVICE' ? 'Pickup' : type === 'EXPENSE' ? 'General' : 'Others',
-  );
 
   const isSale = type === 'SALE';
   const isService = type === 'SERVICE';
   const isPayment = type === 'PAYMENT';
   const isPurchase = type === 'PURCHASE';
   const isExpense = type === 'EXPENSE';
-  const isOpening =
-    type === 'OPENING_BALANCE' || item === 'Previous Outstanding';
+  const isOpening = type === 'OPENING_BALANCE';
 
   // Date Sanitization
   const dateInfo = sanitizeTransactionDate(raw.date);
@@ -384,11 +363,7 @@ export function sanitizeTransactionDisplay(
   const isPartialCash = (isSale || isService) && cash > 0 && credit > 0;
   const isFullCredit = (isSale || isService) && cash === 0 && credit > 0;
 
-  const avgRate = calculateTransactionRate(
-    effectiveAmount,
-    weightKg,
-    raw.rate || raw.purchaseRate,
-  );
+  const avgRate = calculateTransactionRate(effectiveAmount, weightKg, raw.rate);
 
   // Display Name & Subtitle
   const displayName = extractPartyDisplayName(raw);
@@ -407,11 +382,9 @@ export function sanitizeTransactionDisplay(
     customerId,
     customerName,
     vendorName,
-    item,
+    category,
     displaySubtitle,
     note,
-    category,
-    expenseCategory,
     weightKg,
     formattedWeight: formatWeight(weightKg),
     amount,

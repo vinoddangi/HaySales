@@ -97,7 +97,7 @@ export const PurchasesPage: React.FC = () => {
   }, [filteredTransactions]);
 
   const handlePurchaseSubmit = async (data: {
-    item: string;
+    category: string;
     weightKg: number;
     amount: number;
     cashPaid: number;
@@ -108,8 +108,7 @@ export const PurchasesPage: React.FC = () => {
     try {
       await addPurchaseTransaction({
         type: 'PURCHASE',
-        category: 'Purchase',
-        item: data.item,
+        category: data.category as any,
         weightKg: data.weightKg,
         amount: data.amount,
         cashPaid: data.cashPaid,
@@ -129,26 +128,34 @@ export const PurchasesPage: React.FC = () => {
   };
 
   const handleExpenseSubmit = async (data: {
-    expenseCategory: ExpenseCategoryType;
+    category: ExpenseCategoryType;
     amount: number;
     cashPaid: number;
     vendorName?: string;
     note?: string;
     date: string;
+    targetAssetId?: string;
   }) => {
     try {
       await addPurchaseTransaction({
         type: 'EXPENSE',
-        category: 'Expense',
-        expenseCategory: data.expenseCategory,
+        category: data.category,
         amount: data.amount,
         cashPaid: data.cashPaid,
         vendorName: data.vendorName,
         note: data.note,
         date: data.date,
+        targetAssetId: data.targetAssetId,
       }).unwrap();
 
-      dispatch(showSnackbar({ message: 'Expense successfully recorded!' }));
+      const successMsg =
+        data.category === 'Depreciation'
+          ? 'Asset depreciation successfully recorded!'
+          : data.category === 'Profit Distribution'
+            ? 'Profit distribution successfully recorded!'
+            : 'Expense successfully recorded!';
+
+      dispatch(showSnackbar({ message: successMsg }));
       navigate('/');
     } catch (err) {
       console.error(err);

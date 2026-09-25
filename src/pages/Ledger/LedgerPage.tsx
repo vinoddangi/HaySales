@@ -84,6 +84,7 @@ export const LedgerPage: React.FC = () => {
     try {
       await addTransaction({
         customerId: selectedCustId,
+        customerName: customer?.name,
         type: 'PAYMENT',
         paymentAmount,
         discount: discount || 0,

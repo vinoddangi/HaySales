@@ -18,7 +18,7 @@ export interface PurchaseFormProps {
   isSaving: boolean;
   rolloutStatus?: MonthlyRolloutStatus | null;
   onSubmit: (_data: {
-    item: string;
+    category: string;
     weightKg: number;
     amount: number;
     cashPaid: number;
@@ -58,7 +58,7 @@ export const PurchaseForm: React.FC<PurchaseFormProps> = ({
   const handleSubmit = async () => {
     if (!selectedItem || amount <= 0 || isFormBlocked) return;
     await onSubmit({
-      item: selectedItem,
+      category: selectedItem,
       weightKg,
       amount,
       cashPaid: effectiveCashPaid,

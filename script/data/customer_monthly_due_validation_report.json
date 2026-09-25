@@ -165,72 +165,72 @@
       "startDue": 3310699,
       "monthSalesDebt": 482733,
       "monthServiceDebt": 0,
-      "monthPayments": 0,
-      "endDue": 3793432
+      "monthPayments": 383347,
+      "endDue": 3410085
     },
     {
       "period": "2026-01",
-      "startDue": 3793432,
+      "startDue": 3410085,
       "monthSalesDebt": 774740,
       "monthServiceDebt": 0,
       "monthPayments": 279000,
-      "endDue": 4289172
+      "endDue": 3905825
     },
     {
       "period": "2026-02",
-      "startDue": 4289172,
+      "startDue": 3905825,
       "monthSalesDebt": 535849,
       "monthServiceDebt": 0,
       "monthPayments": 558394,
-      "endDue": 4266627
+      "endDue": 3883280
     },
     {
       "period": "2026-03",
-      "startDue": 4266627,
+      "startDue": 3883280,
       "monthSalesDebt": 500190,
       "monthServiceDebt": 0,
       "monthPayments": 451948,
-      "endDue": 4314869
+      "endDue": 3931522
     },
     {
       "period": "2026-04",
-      "startDue": 4314869,
+      "startDue": 3931522,
       "monthSalesDebt": 292124,
       "monthServiceDebt": 0,
       "monthPayments": 277531,
-      "endDue": 4329462
+      "endDue": 3946115
     },
     {
       "period": "2026-05",
-      "startDue": 4329462,
+      "startDue": 3946115,
       "monthSalesDebt": 625840,
       "monthServiceDebt": 80000,
       "monthPayments": 579056,
-      "endDue": 4456246
+      "endDue": 4072899
     },
     {
       "period": "2026-06",
-      "startDue": 4456246,
+      "startDue": 4072899,
       "monthSalesDebt": 340423,
       "monthServiceDebt": 0,
       "monthPayments": 462801,
-      "endDue": 4333868
+      "endDue": 3950521
     },
     {
       "period": "2026-07",
-      "startDue": 4333868,
+      "startDue": 3950521,
       "monthSalesDebt": 704744,
       "monthServiceDebt": 0,
       "monthPayments": 289802,
-      "endDue": 4748810
+      "endDue": 4365463
     },
     {
       "period": "2026-08",
-      "startDue": 4748810,
+      "startDue": 4365463,
       "monthSalesDebt": 587158,
       "monthServiceDebt": 0,
       "monthPayments": 447869,
-      "endDue": 4888099
+      "endDue": 4504752
     }
   ]
 }
