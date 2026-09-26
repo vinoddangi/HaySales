@@ -85,10 +85,12 @@
     --md-sys-typescale-headline-medium-font-family-name,
     inherit
   );
-  font-size: var(--md-sys-typescale-headline-medium-font-size, 1.75rem);
+  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
   font-weight: 900;
   margin-top: var(--md-sys-spacing-sm, 8px);
   line-height: 1.2;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .hs-estimated-profit-card__headline--positive {

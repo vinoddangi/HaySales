@@ -11,6 +11,8 @@ export interface GridProps extends Omit<
 > {
   children?: React.ReactNode;
   columns?: GridColumns;
+  smColumns?: GridColumns;
+  mdColumns?: GridColumns;
   gap?: SpacingScale;
   rowGap?: SpacingScale;
   columnGap?: SpacingScale;
@@ -76,6 +78,8 @@ export const GridRoot = React.forwardRef<HTMLElement, GridProps>(
     {
       children,
       columns = 1,
+      smColumns,
+      mdColumns,
       gap,
       rowGap,
       columnGap,
@@ -96,6 +100,8 @@ export const GridRoot = React.forwardRef<HTMLElement, GridProps>(
         className={clsx(
           'hs-grid',
           `hs-grid--cols-${columns}`,
+          smColumns && `hs-grid--sm-cols-${smColumns}`,
+          mdColumns && `hs-grid--md-cols-${mdColumns}`,
           gap && `hs-grid--gap-${gap}`,
           rowGap && `hs-grid--row-gap-${rowGap}`,
           columnGap && `hs-grid--col-gap-${columnGap}`,
