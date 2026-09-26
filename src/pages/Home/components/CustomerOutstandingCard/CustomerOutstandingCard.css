@@ -53,6 +53,10 @@
   color: var(--md-sys-color-on-surface-variant, #43484e);
 }
 
+.hs-customer-outstanding-card__amount-container {
+  margin-top: var(--md-sys-spacing-sm, 8px);
+}
+
 .hs-customer-outstanding-card__amount {
   font-family: var(
     --md-sys-typescale-headline-medium-font-family-name,
@@ -61,10 +65,42 @@
   font-size: clamp(1.25rem, 3.5vw, 1.75rem);
   font-weight: 900;
   color: #be123c;
-  margin-top: var(--md-sys-spacing-sm, 8px);
   line-height: 1.2;
   word-break: break-word;
   overflow-wrap: break-word;
+}
+
+.hs-customer-outstanding-card__comparison {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--md-sys-spacing-xs, 4px);
+  margin-top: 4px;
+  font-size: var(--md-sys-typescale-body-small-font-size, 0.6875rem);
+}
+
+.hs-customer-outstanding-card__comparison-prev {
+  color: var(--md-sys-color-on-surface-variant, #43484e);
+}
+
+.hs-customer-outstanding-card__comparison-dot {
+  color: var(--md-sys-color-outline-variant, #c2c7ce);
+}
+
+.hs-customer-outstanding-card__comparison-diff {
+  font-weight: 700;
+}
+
+.hs-customer-outstanding-card__comparison-diff--up {
+  color: #b45309;
+}
+
+.hs-customer-outstanding-card__comparison-diff--down {
+  color: #047857;
+}
+
+.hs-customer-outstanding-card__comparison-diff--neutral {
+  color: var(--md-sys-color-on-surface-variant, #43484e);
 }
 
 .hs-customer-outstanding-card__pills {

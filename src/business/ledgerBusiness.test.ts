@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { Customer, CustomerTransactionData } from '../models';
+import { parseTransactionDate } from '../utils';
 import {
   calculateAllCustomersLedger,
   calculateCustomerLedgerDetail,
   calculateCustomerOutstanding,
+  calculateCustomerOutstandingMetrics,
   filterCustomerTransactionsUpToTimeline,
   getTimelineCutoffTimestamp,
 } from './ledgerBusiness';
@@ -246,6 +248,83 @@ describe('ledgerBusiness', () => {
       expect(result.customers[0]?.currentOutstanding).toBe(29000);
       expect(result.customers[1]?.customerId).toBe('cust_2');
       expect(result.customers[1]?.currentOutstanding).toBe(10000);
+    });
+  });
+
+  describe('calculateCustomerOutstandingMetrics', () => {
+    it('computes cumulative customer outstanding up to active month and compares with previous tenor', () => {
+      const customersWithOpening: Customer[] = [
+        {
+          id: 'cust_1',
+          name: 'Ramesh Patel',
+          openingDue: 50000,
+        },
+      ];
+
+      const timelineMay: TimelineFilter = {
+        selectedYear: 2026,
+        selectedMonth: 4, // May
+        filterMode: 'month',
+      };
+
+      const filteredMayTxs = mockTransactions.filter((t) => {
+        const d = parseTransactionDate(t.date);
+        return d ? d.getFullYear() === 2026 && d.getMonth() === 4 : false;
+      });
+
+      const result = calculateCustomerOutstandingMetrics(
+        customersWithOpening,
+        mockTransactions,
+        filteredMayTxs,
+        timelineMay,
+      );
+
+      // May: openingDue (50,000) + txs up to May 31 (29,000 net) = 79,000
+      expect(result.totalOutstanding).toBe(79000);
+      // Previous tenor (April): openingDue (50,000) + txs up to Apr 30 (Jan 10k due + Feb 5k due - Mar 16k = -1k net) = 49,000 + 10k - 1k...
+      // Let's verify: May added 30k credit - 10k payment = 20k net in May.
+      // 79,000 - 49,000 = 30,000 credit - 10,000 paid = 20,000 difference
+      expect(result.tenorDifference).toBe(20000);
+      expect(result.previousOutstanding).toBe(59000);
+      expect(result.periodCreditAdded).toBe(30000);
+      expect(result.periodCollections).toBe(10000);
+      expect(result.netChange).toBe(20000);
+      expect(result.previousTenorLabel).toBe('vs April');
+    });
+
+    it('computes YTD cumulative customer outstanding and compares with previous year closing', () => {
+      const customersWithOpening: Customer[] = [
+        {
+          id: 'cust_1',
+          name: 'Ramesh Patel',
+          openingDue: 50000,
+        },
+      ];
+
+      const timelineYtd: TimelineFilter = {
+        selectedYear: 2026,
+        selectedMonth: 4,
+        filterMode: 'ytd',
+      };
+
+      const result = calculateCustomerOutstandingMetrics(
+        customersWithOpening,
+        mockTransactions,
+        mockTransactions.filter((t) => {
+          const d = parseTransactionDate(t.date);
+          return d ? d.getFullYear() === 2026 : false;
+        }),
+        timelineYtd,
+      );
+
+      // All 2026 txs + 2025 tx (10k) + opening (50k)
+      // Total 2026: Jan 10k + Feb 5k - Mar 16k + May 30k - May 10k - June 20k = -1k.
+      // Total outstanding up to end of 2026 = 50k + 10k (2025) - 1k (2026) = 59,000
+      expect(result.totalOutstanding).toBe(59000);
+      // Previous tenor (end of 2025): openingDue 50k + 2025 sale 10k = 60,000
+      expect(result.previousOutstanding).toBe(60000);
+      expect(result.tenorDifference).toBe(-1000);
+      expect(result.previousTenorLabel).toBe('vs 2025 Closing');
     });
   });
 });

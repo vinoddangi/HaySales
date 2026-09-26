@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  calculateAllCustomersLedger,
   calculateBalanceSheet,
+  calculateCustomerOutstandingMetrics,
   calculateExpectedProfit,
   filterTransactionsByTimeline,
 } from '../../business';
@@ -183,36 +183,13 @@ export function useHomePage() {
 
   // 10. Customer Outstanding Metrics via Business Layer
   const customerOutstandingMetrics = useMemo(() => {
-    const overallLedger = calculateAllCustomersLedger(
+    return calculateCustomerOutstandingMetrics(
       customers,
-      customerTxs,
+      customerTxs as CustomerTransactionData[],
+      filteredTransactions,
       timeline,
     );
-
-    const periodPayments = filteredTransactions
-      .filter(isPaymentTransaction)
-      .reduce((sum, tx) => sum + Number(tx.amount || 0), 0);
-
-    const periodCreditAdded = salesMetrics.salesOnCredit;
-    const periodCollections = periodPayments;
-    const netChange = Number(
-      (periodCreditAdded - periodCollections).toFixed(2),
-    );
-
-    return {
-      totalOutstanding: overallLedger.totalOutstanding,
-      customersWithDuesCount: overallLedger.customersWithDuesCount,
-      periodCreditAdded,
-      periodCollections,
-      netChange,
-    };
-  }, [
-    customers,
-    customerTxs,
-    timeline,
-    filteredTransactions,
-    salesMetrics.salesOnCredit,
-  ]);
+  }, [customers, customerTxs, filteredTransactions, timeline]);
 
   // 11. Net Cashflow Metrics
   const cashflowMetrics = useMemo(() => {

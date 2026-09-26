@@ -6,6 +6,7 @@ export type Customer = {
   mobile?: string; // Contact mobile
   village?: string; // Village / City
   creditLimit?: number; // Advisory credit limit indicator
+  openingDue?: number; // Opening dues / initial outstanding balance
 };
 
 export type ICustomer = Customer;
@@ -19,6 +20,7 @@ export class CustomerModel {
   mobile?: string;
   village?: string;
   creditLimit?: number;
+  openingDue?: number;
 
   constructor(data: Customer) {
     this.id = data.id;
@@ -26,6 +28,7 @@ export class CustomerModel {
     this.mobile = data.mobile;
     this.village = data.village;
     this.creditLimit = data.creditLimit;
+    this.openingDue = data.openingDue;
   }
 
   static from(data: Customer): CustomerModel {
@@ -39,6 +42,9 @@ export class CustomerModel {
       mobile: parseString(raw?.mobile),
       village: parseString(raw?.village),
       creditLimit: parseNumber(raw?.creditLimit),
+      openingDue: parseNumber(
+        raw?.openingDue ?? raw?.openingBalance ?? raw?.initialOutstanding,
+      ),
     };
     return new CustomerModel(data);
   }
@@ -50,6 +56,7 @@ export class CustomerModel {
     if (this.mobile) raw.mobile = this.mobile;
     if (this.village) raw.village = this.village;
     if (this.creditLimit !== undefined) raw.creditLimit = this.creditLimit;
+    if (this.openingDue !== undefined) raw.openingDue = this.openingDue;
     return raw;
   }
 

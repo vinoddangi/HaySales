@@ -14,6 +14,9 @@ export interface CustomerOutstandingCardProps {
   periodCreditAdded: number;
   periodCollections: number;
   netChange: number;
+  previousOutstanding?: number;
+  tenorDifference?: number;
+  previousTenorLabel?: string;
   periodLabel?: string;
   onClick?: () => void;
   className?: string;
@@ -27,6 +30,9 @@ export const CustomerOutstandingCard: React.FC<
   periodCreditAdded,
   periodCollections,
   netChange,
+  previousOutstanding,
+  tenorDifference,
+  previousTenorLabel,
   periodLabel,
   onClick,
   className,
@@ -65,9 +71,38 @@ export const CustomerOutstandingCard: React.FC<
           </Badge>
         </Flex>
 
-        {/* Amount */}
-        <div className="hs-customer-outstanding-card__amount">
-          {formatRupee(totalOutstanding)}
+        {/* Amount Headline with Tenor Comparison */}
+        <div className="hs-customer-outstanding-card__amount-container">
+          <div className="hs-customer-outstanding-card__amount">
+            {formatRupee(totalOutstanding)}
+          </div>
+          {previousOutstanding !== undefined && (
+            <div className="hs-customer-outstanding-card__comparison">
+              <span className="hs-customer-outstanding-card__comparison-prev">
+                Prev: {formatRupee(previousOutstanding)}
+              </span>
+              <span className="hs-customer-outstanding-card__comparison-dot">
+                •
+              </span>
+              <span
+                className={clsx(
+                  'hs-customer-outstanding-card__comparison-diff',
+                  (tenorDifference ?? netChange) > 0
+                    ? 'hs-customer-outstanding-card__comparison-diff--up'
+                    : (tenorDifference ?? netChange) < 0
+                      ? 'hs-customer-outstanding-card__comparison-diff--down'
+                      : 'hs-customer-outstanding-card__comparison-diff--neutral',
+                )}
+              >
+                {(tenorDifference ?? netChange) > 0
+                  ? `+${formatRupee(tenorDifference ?? netChange)}`
+                  : (tenorDifference ?? netChange) < 0
+                    ? `-${formatRupee(Math.abs(tenorDifference ?? netChange))}`
+                    : '₹0.00'}
+                {previousTenorLabel ? ` (${previousTenorLabel})` : ''}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* 3-Column Breakdown Sub-Pills */}

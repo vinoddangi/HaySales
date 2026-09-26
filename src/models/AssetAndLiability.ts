@@ -86,3 +86,5 @@ export const INITIAL_CAPITAL: CapitalRecord = {
 };
 
 export const INITIAL_RETAINED_PROFIT = 2085394;
+export const INITIAL_CUSTOMER_RECEIVABLES = 2735870;
+export const INITIAL_CASH_BALANCE = 373626.96;

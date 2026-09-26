@@ -128,6 +128,9 @@ export const HomePage: React.FC = () => {
         periodCreditAdded={customerOutstandingMetrics.periodCreditAdded}
         periodCollections={customerOutstandingMetrics.periodCollections}
         netChange={customerOutstandingMetrics.netChange}
+        previousOutstanding={customerOutstandingMetrics.previousOutstanding}
+        tenorDifference={customerOutstandingMetrics.tenorDifference}
+        previousTenorLabel={customerOutstandingMetrics.previousTenorLabel}
         periodLabel={periodLabel}
         onClick={() => handleNavigate('/ledger')}
       />
