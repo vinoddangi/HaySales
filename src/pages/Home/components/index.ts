@@ -6,5 +6,6 @@ export * from './PeriodFilterBar';
 export * from './RecentActivityCard';
 export * from './SalesOnCashCard';
 export * from './SalesOnCreditCard';
+export * from './StockCard';
 export * from './TotalPurchasesCard';
 export * from './TotalSalesCard';

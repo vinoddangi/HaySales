@@ -4,6 +4,7 @@ import {
   calculateBalanceSheet,
   calculateCustomerOutstandingMetrics,
   calculateExpectedProfit,
+  CropCommissionProfitResult,
   filterTransactionsByTimeline,
   getOpeningStockForMonth,
 } from '../../business';
@@ -149,8 +150,8 @@ export function useHomePage() {
     };
   }, [filteredTransactions]);
 
-  // 9. Profit Metrics via Business Layer
-  const profitMetrics = useMemo(() => {
+  // 9. Profit & Stock Metrics via Business Layer
+  const { profitMetrics, stockMetrics } = useMemo(() => {
     const profitSummary = calculateExpectedProfit(
       filteredTransactions,
       openingStock,
@@ -166,14 +167,30 @@ export function useHomePage() {
         ? (netProfit / salesMetrics.totalAmount) * 100
         : 0;
 
+    const crops = Object.values(profitSummary.commission.byCrop).filter(
+      Boolean,
+    ) as CropCommissionProfitResult[];
+
     return {
-      netProfit,
-      profitMarginPct,
-      grossCommission: profitSummary.commission.totalGrossCommissionProfit,
-      pickupNet: profitSummary.service.netServiceProfit,
-      operatingExpenses: profitSummary.operatingExpenses,
-      cumulativeProfit: cumulativeProfitSummary.netOperatingProfit,
-      totalClosingStock: profitSummary.commission.totalClosingStock,
+      profitMetrics: {
+        netProfit,
+        profitMarginPct,
+        grossCommission: profitSummary.commission.totalGrossCommissionProfit,
+        pickupNet: profitSummary.service.netServiceProfit,
+        operatingExpenses: profitSummary.operatingExpenses,
+        cumulativeProfit: cumulativeProfitSummary.netOperatingProfit,
+        totalClosingStock: profitSummary.commission.totalClosingStock,
+      },
+      stockMetrics: {
+        totalClosingStock: profitSummary.commission.totalClosingStock,
+        totalOpeningStock: profitSummary.commission.totalOpeningStock,
+        totalPurchases: profitSummary.commission.totalPurchases,
+        totalSales: profitSummary.commission.totalSales,
+        totalCostOfGoodsSold: profitSummary.commission.totalCostOfGoodsSold,
+        totalGrossCommissionProfit:
+          profitSummary.commission.totalGrossCommissionProfit,
+        crops,
+      },
     };
   }, [
     filteredTransactions,
@@ -303,6 +320,7 @@ export function useHomePage() {
     salesMetrics,
     purchaseMetrics,
     profitMetrics,
+    stockMetrics,
     customerOutstandingMetrics,
     cashflowMetrics,
     balanceSheetMetrics,

@@ -9,6 +9,7 @@ import {
   RecentActivityCard,
   SalesOnCashCard,
   SalesOnCreditCard,
+  StockCard,
   TotalPurchasesCard,
   TotalSalesCard,
 } from './components';
@@ -197,5 +198,57 @@ describe('Modular Dashboard Cards', () => {
     expect(html).toContain('Monthly');
     expect(html).toContain('YTD 2026');
     expect(html).toContain('hs-period-filter-bar');
+  });
+
+  it('renders StockCard with mean buying rate, selling rates, and crop profit line items', () => {
+    const html = renderToStaticMarkup(
+      <StockCard
+        totalClosingStock={{ weight: 13528, amount: 141097.04 }}
+        totalOpeningStock={{ weight: 13528, amount: 141097.04 }}
+        totalPurchases={{ weight: 5000, rate: 10.5, amount: 52500 }}
+        totalSales={{ weight: 4000, avgRate: 12.0, amount: 48000 }}
+        totalGrossCommissionProfit={6280}
+        totalCostOfGoodsSold={41720}
+        periodLabel="January 2026"
+        cropItems={[
+          {
+            category: 'Tuvar',
+            openingStock: { weight: 3528, rate: 10.43, amount: 36797.04 },
+            purchases: { weight: 5000, rate: 10.5, amount: 52500 },
+            totalAvailableStock: {
+              weight: 8528,
+              weightedRate: 10.47,
+              amount: 89297.04,
+            },
+            sales: { weight: 4000, avgRate: 12.0, amount: 48000 },
+            closingStock: { weight: 4528, rate: 10.47, amount: 47408.16 },
+            costOfGoodsSold: 41880,
+            grossCommissionProfit: 6120,
+          },
+        ]}
+      />,
+    );
+
+    expect(html).toContain('Crop Stock &amp; Valuation');
+    expect(html).toContain('13,528 kg In Stock');
+    expect(html).toContain('Prev Closing');
+    expect(html).toContain('Purchases');
+    expect(html).toContain('Mean Buy Rate');
+    expect(html).toContain('Tuvar');
+    expect(html).toContain('10.47');
+    expect(html).toContain('12.00');
+    expect(html).toContain('+₹6,120.00');
+    expect(html).toContain('hs-stock-card');
+    expect(html).toContain('hs-stock-crop-row');
+  });
+
+  it('renders StockCard empty state when no crop items exist', () => {
+    const html = renderToStaticMarkup(
+      <StockCard totalClosingStock={{ weight: 0, amount: 0 }} cropItems={[]} />,
+    );
+
+    expect(html).toContain(
+      'No inventory movements or closing stock for this period.',
+    );
   });
 });

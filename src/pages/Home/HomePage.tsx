@@ -13,6 +13,7 @@ import {
   RecentActivityCard,
   SalesOnCashCard,
   SalesOnCreditCard,
+  StockCard,
   TotalPurchasesCard,
   TotalSalesCard,
 } from './components';
@@ -28,6 +29,7 @@ export const HomePage: React.FC = () => {
     salesMetrics,
     purchaseMetrics,
     profitMetrics,
+    stockMetrics,
     customerOutstandingMetrics,
     cashflowMetrics,
     balanceSheetMetrics,
@@ -165,7 +167,20 @@ export const HomePage: React.FC = () => {
         }
       />
 
-      {/* 9. Row 7: Recent Activity Card */}
+      {/* 9. Row 7: Crop Stock & Valuation Card */}
+      <StockCard
+        totalClosingStock={stockMetrics.totalClosingStock}
+        totalOpeningStock={stockMetrics.totalOpeningStock}
+        totalPurchases={stockMetrics.totalPurchases}
+        totalSales={stockMetrics.totalSales}
+        totalGrossCommissionProfit={stockMetrics.totalGrossCommissionProfit}
+        totalCostOfGoodsSold={stockMetrics.totalCostOfGoodsSold}
+        cropItems={stockMetrics.crops}
+        periodLabel={periodLabel}
+        onClick={() => handleNavigate('/activity?category=PURCHASES_EXPENSES')}
+      />
+
+      {/* 10. Row 8: Recent Activity Card */}
       <RecentActivityCard
         transactions={allTransactions}
         onViewAll={() => handleNavigate('/ledger')}
