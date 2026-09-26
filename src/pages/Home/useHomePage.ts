@@ -5,6 +5,7 @@ import {
   calculateCustomerOutstandingMetrics,
   calculateExpectedProfit,
   filterTransactionsByTimeline,
+  getOpeningStockForMonth,
 } from '../../business';
 import {
   CustomerTransactionData,
@@ -43,9 +44,9 @@ export function useHomePage() {
   const selectedMonth = useAppSelector((state) => state.ui.selectedMonth);
   const selectedYear = useAppSelector((state) => state.ui.selectedYear);
 
-  // 2. Redux Stock state (Opening Inventory)
-  const openingStock = useAppSelector(
-    (state) => state.stock['2026-01-01'] || {},
+  // 2. Redux Stock state: Opening inventory derived from previous month's closing stock
+  const openingStock = useAppSelector((state) =>
+    getOpeningStockForMonth(state.stock, selectedYear, selectedMonth + 1),
   );
 
   // 3. API queries

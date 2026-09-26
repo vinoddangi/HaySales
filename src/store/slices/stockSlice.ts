@@ -1,45 +1,68 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CropCategory, PurchaseTransactionData } from '../../models';
+import {
+  BASELINE_2025_CLOSING_STOCK,
+  calculateMonthlyStockFromTransactions,
+} from '../../business/stockBusiness';
+import {
+  CropCategory,
+  PurchaseTransactionData,
+  Transaction,
+} from '../../models';
 
 export type CropRecord = Partial<Record<CropCategory, PurchaseTransactionData>>;
 
+/**
+ * StockState maps 'YYYY-MM' period keys (e.g. '2025-12', '2026-01', '2026-02')
+ * directly to that month's closing stock CropRecord.
+ */
 export type StockState = Record<string, CropRecord>;
 
-export const INITIAL_STOCK: CropRecord = {
-  Others: {
-    id: 'opening-others-2026-01-01',
-    date: '2026-01-01',
-    type: 'PURCHASE',
-    category: 'Others',
-    weight: 13528,
-    amount: 141097.04,
-    cashPaid: 141097.04,
-    remainingDue: 0,
-    note: 'Opening Stock',
-    vendorName: 'Opening Inventory',
-  },
-};
+export { BASELINE_2025_CLOSING_STOCK };
 
 const initialState: StockState = {
-  '2026-01-01': INITIAL_STOCK,
+  '2025-12': BASELINE_2025_CLOSING_STOCK,
 };
 
 export const stockSlice = createSlice({
   name: 'stock',
   initialState,
   reducers: {
-    setOpeningStock: (
+    setClosingStock: (
       state,
       action: PayloadAction<{
-        date: string;
+        period: string; // 'YYYY-MM'
         crop: CropRecord;
       }>,
     ) => {
-      state[action.payload.date] = action.payload.crop;
+      state[action.payload.period] = action.payload.crop;
+    },
+    setStockState: (state, action: PayloadAction<StockState>) => {
+      return {
+        ...state,
+        ...action.payload,
+      };
+    },
+    updateStockFromTransactions: (
+      state,
+      action: PayloadAction<Transaction[]>,
+    ) => {
+      const calculated = calculateMonthlyStockFromTransactions(action.payload);
+      return {
+        ...state,
+        ...calculated,
+      };
+    },
+    resetStock: () => {
+      return initialState;
     },
   },
 });
 
-export const { setOpeningStock } = stockSlice.actions;
+export const {
+  setClosingStock,
+  setStockState,
+  updateStockFromTransactions,
+  resetStock,
+} = stockSlice.actions;
 
 export default stockSlice.reducer;
