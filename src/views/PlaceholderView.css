@@ -1,0 +1,31 @@
+.placeholder-view {
+  display: flex;
+  min-height: 50vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--md-sys-spacing-large);
+  text-align: center;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.placeholder-view__icon {
+  margin-bottom: var(--md-sys-spacing-medium);
+  color: var(--md-sys-color-primary);
+  height: 3rem;
+  width: 3rem;
+}
+
+.placeholder-view__title {
+  margin: 0 0 var(--md-sys-spacing-extra-small);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+}
+
+.placeholder-view__subtitle {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--md-sys-color-on-surface-variant);
+  max-width: 280px;
+}

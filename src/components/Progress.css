@@ -1,0 +1,9 @@
+/* Material Design 3 Progress styling */
+.hs-progress {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.hs-progress--linear {
+  width: 100%;
+}

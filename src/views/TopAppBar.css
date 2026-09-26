@@ -1,0 +1,108 @@
+.top-app-bar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  width: 100%;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  backdrop-filter: blur(12px);
+  transition: all 0.2s ease;
+}
+
+.top-app-bar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--md-sys-spacing-small);
+  padding: 0 var(--md-sys-spacing-medium);
+  height: 3.5rem;
+}
+
+/* ── Left / Leading ────────────────────────────────────────── */
+.top-app-bar__leading {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-small);
+}
+
+.top-app-bar__avatar {
+  display: flex;
+  height: 2rem;
+  width: 2rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--md-sys-shape-corner-small);
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.top-app-bar__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-app-bar__icon-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--md-sys-shape-corner-full);
+  padding: var(--md-sys-spacing-small);
+  color: var(--md-sys-color-on-surface-variant);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.top-app-bar__icon-btn:hover {
+  background-color: var(--md-sys-color-surface-container-highest);
+}
+
+/* ── Right / Trailing (Year Selector) ─────────────────────── */
+.top-app-bar__trailing {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-extra-small);
+}
+
+.top-app-bar__year-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-small);
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.top-app-bar__year-selector:hover {
+  background-color: var(--md-sys-color-surface-container);
+}
+
+.top-app-bar__year-select {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}

@@ -1,0 +1,17 @@
+{
+  "short_name": "HaySales",
+  "name": "HaySales - Premium Hay & Feed Manager",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#006C4C",
+  "background_color": "#FBFDF9",
+  "orientation": "portrait"
+}
