@@ -1,0 +1,23 @@
+.hs-ledger-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-4, 16px);
+}
+
+.hs-ledger-page__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-1, 4px);
+}
+
+.hs-ledger-page__title {
+  font-size: var(--md-sys-typescale-headline-small-size, 20px);
+  font-weight: 800;
+  color: var(--md-sys-color-on-surface);
+  letter-spacing: -0.02em;
+}
+
+.hs-ledger-page__subtitle {
+  font-size: var(--md-sys-typescale-body-small-size, 12px);
+  color: var(--md-sys-color-on-surface-variant);
+}

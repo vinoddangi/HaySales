@@ -1,0 +1,77 @@
+.hs-purchases-metrics-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-2, 8px);
+  padding: var(--md-sys-spacing-3, 12px);
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.hs-purchases-metrics-card--purchases {
+  border-color: rgba(245, 158, 11, 0.25);
+  background-color: rgba(245, 158, 11, 0.05);
+}
+
+.hs-purchases-metrics-card--expenses {
+  border-color: rgba(244, 63, 94, 0.25);
+  background-color: rgba(244, 63, 94, 0.05);
+}
+
+.hs-purchases-metrics-card--stock {
+  border-color: rgba(59, 130, 246, 0.25);
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+.hs-purchases-metrics-card--rate {
+  border-color: rgba(16, 185, 129, 0.25);
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+.hs-purchases-metrics-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hs-purchases-metrics-card__title {
+  font-size: var(--md-sys-typescale-label-small-size, 11px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hs-purchases-metrics-card__title--purchases {
+  color: #b45309;
+}
+
+.hs-purchases-metrics-card__title--expenses {
+  color: #be123c;
+}
+
+.hs-purchases-metrics-card__title--stock {
+  color: #1d4ed8;
+}
+
+.hs-purchases-metrics-card__title--rate {
+  color: #047857;
+}
+
+.hs-purchases-metrics-card__value {
+  font-size: var(--md-sys-typescale-title-medium-size, 18px);
+  font-weight: 800;
+  color: var(--md-sys-color-on-surface);
+  line-height: 1.2;
+}
+
+.hs-purchases-metrics-card__unit {
+  font-size: var(--md-sys-typescale-label-medium-size, 12px);
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-left: 2px;
+}
+
+.hs-purchases-metrics-card__caption {
+  font-size: var(--md-sys-typescale-body-small-size, 11px);
+  color: var(--md-sys-color-on-surface-variant);
+}

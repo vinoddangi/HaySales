@@ -8,6 +8,9 @@ import { MobileShell, PlaceholderView } from './views';
 
 const HomePage = React.lazy(() => import('./pages/Home'));
 const ProfilePage = React.lazy(() => import('./pages/profile'));
+const SalesPage = React.lazy(() => import('./pages/Sales'));
+const PurchasesPage = React.lazy(() => import('./pages/Purchases'));
+const LedgerPage = React.lazy(() => import('./pages/Ledger'));
 
 const RouteLoadingFallback: React.FC = () => (
   <Flex
@@ -32,33 +35,9 @@ export const App: React.FC = () => {
               <Route path="/" element={<MobileShell />}>
                 <Route index element={<HomePage />} />
                 <Route path="profile" element={<ProfilePage />} />
-                <Route
-                  path="sales"
-                  element={
-                    <PlaceholderView
-                      title="New Sales Register"
-                      subtitle="Register sales in Kilograms (Kg) and ₹ / Kg."
-                    />
-                  }
-                />
-                <Route
-                  path="purchases"
-                  element={
-                    <PlaceholderView
-                      title="Purchases & Expenses"
-                      subtitle="Record farmer procurement and operational expenses."
-                    />
-                  }
-                />
-                <Route
-                  path="ledger"
-                  element={
-                    <PlaceholderView
-                      title="Customer Dues Ledger"
-                      subtitle="Account balance statements and invoice payment tracking."
-                    />
-                  }
-                />
+                <Route path="sales" element={<SalesPage />} />
+                <Route path="purchases" element={<PurchasesPage />} />
+                <Route path="ledger" element={<LedgerPage />} />
                 <Route
                   path="activity"
                   element={

@@ -30,7 +30,7 @@ export interface SelectProps {
 
 /**
  * React component wrapping Google Material Design 3 Select Web Components
- * Supporting both outlined and filled M3 flavors.
+ * Supporting both outlined and filled M3 flavors with guaranteed 100% container width.
  */
 export const Select: React.FC<SelectProps> = ({
   label,
@@ -58,16 +58,17 @@ export const Select: React.FC<SelectProps> = ({
     </md-select-option>
   ));
 
-  const props = {
+  const props: any = {
     ref,
     label,
     value,
-    disabled,
-    required,
-    error,
-    errorText,
-    supportingText,
+    disabled: disabled ? true : undefined,
+    required: required ? true : undefined,
+    error: error ? true : undefined,
+    'error-text': errorText,
+    'supporting-text': supportingText,
     className: clsx('hs-select', className),
+    style: { width: '100%', minWidth: 0, display: 'flex' },
   };
 
   if (variant === 'filled') {

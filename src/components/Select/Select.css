@@ -1,5 +1,17 @@
 /* Material Design 3 Select styling */
-.hs-select {
+.hs-select,
+md-outlined-select,
+md-filled-select,
+md-outlined-select.hs-select,
+md-filled-select.hs-select {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  display: flex !important;
+  box-sizing: border-box !important;
+}
+
+md-select-option {
   width: 100%;
-  display: block;
+  box-sizing: border-box;
 }
