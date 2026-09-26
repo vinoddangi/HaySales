@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import type { CropCategory, CropTransactionData } from '../../models';
+import type { CropCategory, PurchaseTransactionData } from '../../models';
 import type { RootState } from '../index';
 import type { CropRecord, StockState } from '../slices/stockSlice';
 
@@ -20,5 +20,5 @@ export const selectOpeningStockByDate = (date: string) =>
 export const selectCropOpeningStock = (date: string, crop: CropCategory) =>
   createSelector(
     [selectStock],
-    (stock): CropTransactionData | undefined => stock[date]?.[crop],
+    (stock): PurchaseTransactionData | undefined => stock[date]?.[crop],
   );

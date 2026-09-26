@@ -64,8 +64,9 @@ erDiagram
 
 ### Key Schema & Calculation Rules:
 
-1. **Single Canonical Financial Field (`amount`)**:
+1. **Single Canonical Financial Field (`amount`) & Single Canonical Weight Field (`weight`)**:
    - `amount` is the single, universal monetary value attribute across ALL transaction types (including `PAYMENT`). There is **no separate `paymentAmount` field**.
+   - `weight` is the single, universal physical mass attribute in Kilograms (Kg) for all crop transactions, metrics, and stock valuations. There is **no `weightKg` property**; the property name is strictly `weight`.
    - `id`, `date`, `amount`, `cashPaid`, and `remainingDue` are mandatory on all transaction records (`CoreTransactionData`).
    - `weight` (in Kg) is mandatory on all physical crop transactions (`SALE` and `PURCHASE`).
 

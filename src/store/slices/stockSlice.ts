@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CropCategory, CropTransactionData } from '../../models';
+import { CropCategory, PurchaseTransactionData } from '../../models';
 
-export type CropRecord = Partial<Record<CropCategory, CropTransactionData>>;
+export type CropRecord = Partial<Record<CropCategory, PurchaseTransactionData>>;
 
 export type StockState = Record<string, CropRecord>;
 

@@ -13,15 +13,6 @@ export const MONTH_NAMES = [
   'December',
 ];
 
-export const SERVICE_ITEMS = [
-  'Pickup',
-  'Tractor',
-  'Commission',
-  'Labour',
-  'Transport',
-  'Others',
-];
-
 export const formatRupee = (num: number): string => {
   return new Intl.NumberFormat('en-IN', {
     style: 'currency',

@@ -13,10 +13,17 @@
 ## 2. Component Architecture & Modularity
 
 - **Material Design 3 (M3) is Highest Priority**: Use Google Material Design 3 Web Components (`@material/web`) and tokens (`var(--md-sys-...)`) as first-class citizens.
-- **Pure Small Building Blocks Only Directly in `src/components/`**: All reusable components live directly in `src/components/` without subfolders (NO `common/`, `layout/`, `material/`, `navigation/`, `feedback/`, `cards/`).
-- **No Domain Card Subfolders**: Do NOT create domain-specific card subfolders or one-off card files (e.g., NO `src/components/dashboard/cards/` or `src/pages/profile/cards/`).
-- **Card Component Handles Card Use Cases**: The composable `<Card>` component (with its prespecified structure `Card.Header`, `Card.Content`, `Card.Actions`, `Card.Divider`) must handle card layouts directly inside the page or feature component. Avoid creating separate file wrappers for individual cards.
-- **Zero Monolithic Files**: Keep files clean and single-purpose without mixing unrelated concerns.
+- **Dedicated Subfolders for Components (`src/components/<ComponentName>/`)**: Every reusable building block component has its own subfolder containing:
+  - `<ComponentName>.tsx` (pure presentational JSX)
+  - `<ComponentName>.css` (companion styles with M3 tokens)
+  - `use<ComponentName>.ts` (custom hook for component logic / state)
+  - `index.ts` (re-export barrel)
+- **Layout Primitives Grouped in `src/components/layouts/`**: Layout primitives (`Flex`, `Flex.Item` / `FlexItem`, `Grid`, `Grid.Item` / `GridItem`) reside under `src/components/layouts/`.
+- **Modular Page & Section Views (`src/pages/<PageName>/components/`)**:
+  - Pages (e.g., `Home`, `Profile`, `Sales`, `Purchases`, `Ledger`, `Activity`) must decompose each distinct card or section into its own individual view/component file inside that page's `components/` subfolder (e.g., `HeroBannerCard.tsx`, `MetricsGrid.tsx`, `QuickActionsCard.tsx`, `CustomerDuesCard.tsx`, `AvailableLotsCard.tsx`).
+  - The main page component acts as a clean, high-level orchestrator.
+- **Logic in Custom Hooks (`use<Component>.ts`)**: `.tsx` files must remain strictly presentational. Move all business logic, state management, Redux hooks, and event handlers into custom hooks (`useHomePage.ts`, `useProfilePage.ts`, `use<Component>.ts`).
+- **Zero Monolithic Files**: Never keep large monolithic page files containing multiple nested card definitions. Decompose them into individual section views.
 
 ---
 
@@ -35,7 +42,8 @@
 
 ## 4. Business & Accounting Constraints
 
-- **Strict Single Weight Unit**: Kilograms (**Kg**) ONLY.
+- **Strict Single Weight Property & Unit**: Kilograms (**Kg**) ONLY.
+  - The property name across all schemas, metrics, models, and UI calculations is strictly **`weight`** (never `weightKg`).
   - Absolutely NO conversions to or mentions of Quintals, Tons, Maunds, etc. All weights in inputs, calculations, database records, and UI displays must be in **Kg**.
 - **Currency**: **₹ / Kg** (Rupees per Kilogram).
 - **Single Financial Field (`amount`)**: `amount` is the only monetary value property for all transactions (including `PAYMENT`). There is NO `paymentAmount` field.
