@@ -1,0 +1,159 @@
+.hs-cash-in-hand-card {
+  border: 1px solid var(--md-sys-color-outline-variant, #c2c7ce);
+  background-color: var(--md-sys-color-surface-container, #eceef0);
+}
+
+.hs-cash-in-hand-card__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  background-color: rgba(99, 102, 241, 0.12);
+  color: #4f46e5;
+}
+
+.hs-cash-in-hand-card__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.hs-cash-in-hand-card__tag {
+  display: block;
+  font-family: var(--md-sys-typescale-label-small-font-family-name, inherit);
+  font-size: var(--md-sys-typescale-label-small-font-size, 0.6875rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #3730a3;
+}
+
+.hs-cash-in-hand-card__subtitle {
+  display: block;
+  font-size: var(--md-sys-typescale-body-small-font-size, 0.6875rem);
+  color: var(--md-sys-color-on-surface-variant, #43484e);
+}
+
+.hs-cash-in-hand-card__header-right {
+  text-align: right;
+}
+
+.hs-cash-in-hand-card__amount {
+  font-family: var(--md-sys-typescale-headline-small-font-family-name, inherit);
+  font-size: var(--md-sys-typescale-headline-small-font-size, 1.5rem);
+  font-weight: 900;
+  color: #3730a3;
+  line-height: 1.2;
+}
+
+.hs-cash-in-hand-card__adj {
+  font-size: 0.625rem;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.hs-cash-in-hand-card__adj--up {
+  color: #047857;
+}
+
+.hs-cash-in-hand-card__adj--down {
+  color: #be123c;
+}
+
+.hs-cash-in-hand-card__adj--neutral {
+  color: var(--md-sys-color-on-surface-variant, #43484e);
+}
+
+.hs-cash-in-hand-card__sub-cards {
+  margin-top: var(--md-sys-spacing-sm, 8px);
+}
+
+.hs-balance-subcard {
+  padding: 10px;
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  border-width: 1px;
+  border-style: solid;
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    transform 150ms ease;
+}
+
+.hs-balance-subcard:hover {
+  transform: translateY(-1px);
+}
+
+.hs-balance-subcard--assets {
+  border-color: rgba(16, 185, 129, 0.2);
+  background-color: rgba(16, 185, 129, 0.08);
+}
+
+.hs-balance-subcard--assets:hover {
+  background-color: rgba(16, 185, 129, 0.12);
+}
+
+.hs-balance-subcard--liabilities {
+  border-color: rgba(168, 85, 247, 0.2);
+  background-color: rgba(168, 85, 247, 0.08);
+}
+
+.hs-balance-subcard--liabilities:hover {
+  background-color: rgba(168, 85, 247, 0.12);
+}
+
+.hs-balance-subcard__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: 4px;
+}
+
+.hs-balance-subcard__title {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hs-balance-subcard__title--emerald {
+  color: #065f46;
+}
+
+.hs-balance-subcard__title--purple {
+  color: #6b21a8;
+}
+
+.hs-balance-subcard__val {
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.hs-balance-subcard__val--emerald {
+  color: #047857;
+}
+
+.hs-balance-subcard__val--purple {
+  color: #7e22ce;
+}
+
+.hs-balance-subcard__rows {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hs-balance-subcard__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.625rem;
+  color: var(--md-sys-color-on-surface-variant, #43484e);
+}
+
+.hs-balance-subcard__row-val {
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface, #191c1e);
+}

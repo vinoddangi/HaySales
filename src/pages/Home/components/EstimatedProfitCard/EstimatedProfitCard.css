@@ -1,0 +1,177 @@
+.hs-estimated-profit-card {
+  border-width: 1px;
+  border-style: solid;
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    border-color 150ms ease;
+}
+
+.hs-estimated-profit-card--positive {
+  border-color: rgba(16, 185, 129, 0.3);
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.08) 0%,
+    var(--md-sys-color-surface-container, #eceef0) 100%
+  );
+}
+
+.hs-estimated-profit-card--positive:hover {
+  border-color: rgba(16, 185, 129, 0.6);
+  transform: translateY(-1px);
+}
+
+.hs-estimated-profit-card--negative {
+  border-color: rgba(244, 63, 94, 0.3);
+  background: linear-gradient(
+    135deg,
+    rgba(244, 63, 94, 0.08) 0%,
+    var(--md-sys-color-surface-container, #eceef0) 100%
+  );
+}
+
+.hs-estimated-profit-card--negative:hover {
+  border-color: rgba(244, 63, 94, 0.6);
+  transform: translateY(-1px);
+}
+
+.hs-estimated-profit-card__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+}
+
+.hs-estimated-profit-card__icon-wrapper--positive {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #059669;
+}
+
+.hs-estimated-profit-card__icon-wrapper--negative {
+  background-color: rgba(244, 63, 94, 0.15);
+  color: #e11d48;
+}
+
+.hs-estimated-profit-card__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.hs-estimated-profit-card__tag {
+  font-family: var(--md-sys-typescale-label-small-font-family-name, inherit);
+  font-size: var(--md-sys-typescale-label-small-font-size, 0.6875rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--md-sys-color-on-surface, #191c1e);
+}
+
+.hs-estimated-profit-card__chevron {
+  width: 14px;
+  height: 14px;
+  color: var(--md-sys-color-on-surface-variant, #43484e);
+}
+
+.hs-estimated-profit-card__subtitle {
+  display: block;
+  font-size: var(--md-sys-typescale-body-small-font-size, 0.6875rem);
+  color: var(--md-sys-color-on-surface-variant, #43484e);
+}
+
+.hs-estimated-profit-card__headline {
+  font-family: var(
+    --md-sys-typescale-headline-medium-font-family-name,
+    inherit
+  );
+  font-size: var(--md-sys-typescale-headline-medium-font-size, 1.75rem);
+  font-weight: 900;
+  margin-top: var(--md-sys-spacing-sm, 8px);
+  line-height: 1.2;
+}
+
+.hs-estimated-profit-card__headline--positive {
+  color: #047857;
+}
+
+.hs-estimated-profit-card__headline--negative {
+  color: #be123c;
+}
+
+.hs-estimated-profit-card__cumulative {
+  font-size: 0.625rem;
+  color: var(--md-sys-color-on-surface-variant, #43484e);
+  margin-top: 2px;
+}
+
+.hs-estimated-profit-card__pills {
+  margin-top: var(--md-sys-spacing-sm, 8px);
+}
+
+.hs-profit-pill {
+  padding: 6px 8px;
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  border-width: 1px;
+  border-style: solid;
+}
+
+.hs-profit-pill--margin {
+  border-color: rgba(16, 185, 129, 0.2);
+  background-color: rgba(16, 185, 129, 0.08);
+}
+
+.hs-profit-pill--service {
+  border-color: rgba(168, 85, 247, 0.2);
+  background-color: rgba(168, 85, 247, 0.08);
+}
+
+.hs-profit-pill--expense {
+  border-color: rgba(244, 63, 94, 0.2);
+  background-color: rgba(244, 63, 94, 0.08);
+}
+
+.hs-profit-pill__label {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hs-profit-pill--margin .hs-profit-pill__label {
+  color: #065f46;
+}
+
+.hs-profit-pill--service .hs-profit-pill__label {
+  color: #6b21a8;
+}
+
+.hs-profit-pill--expense .hs-profit-pill__label {
+  color: #9f1239;
+}
+
+.hs-profit-pill__val {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin-top: 2px;
+}
+
+.hs-profit-pill--margin .hs-profit-pill__val {
+  color: #047857;
+}
+
+.hs-profit-pill--service .hs-profit-pill__val {
+  color: #7e22ce;
+}
+
+.hs-profit-pill--expense .hs-profit-pill__val {
+  color: #be123c;
+}
+
+.hs-profit-pill__caption {
+  display: block;
+  font-size: 0.5625rem;
+  color: var(--md-sys-color-on-surface-variant, #43484e);
+}

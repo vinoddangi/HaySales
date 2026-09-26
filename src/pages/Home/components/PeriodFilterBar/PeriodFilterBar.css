@@ -1,0 +1,72 @@
+.hs-period-filter-bar {
+  width: 100%;
+  padding: var(--md-sys-spacing-xs, 4px) 0;
+}
+
+.hs-period-filter-bar__segment {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  background-color: var(--md-sys-color-surface-container-high, #e6e8ea);
+  border-radius: var(--md-sys-shape-corner-full, 9999px);
+}
+
+.hs-period-filter-bar__segment-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  font-family: var(--md-sys-typescale-label-medium-font-family-name, inherit);
+  font-size: var(--md-sys-typescale-label-medium-font-size, 0.75rem);
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant, #43484e);
+  border-radius: var(--md-sys-shape-corner-full, 9999px);
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
+  white-space: nowrap;
+}
+
+.hs-period-filter-bar__segment-btn:hover {
+  color: var(--md-sys-color-on-surface, #191c1e);
+}
+
+.hs-period-filter-bar__segment-btn--active {
+  background-color: var(--md-sys-color-surface, #ffffff);
+  color: var(--md-sys-color-primary, #006a6a);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.hs-period-filter-bar__select-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.hs-period-filter-bar__select-icon {
+  position: absolute;
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  color: var(--md-sys-color-primary, #006a6a);
+  pointer-events: none;
+}
+
+.hs-period-filter-bar__select {
+  appearance: none;
+  background-color: var(--md-sys-color-surface-container-low, #f2f4f6);
+  border: 1px solid var(--md-sys-color-outline-variant, #c2c7ce);
+  border-radius: var(--md-sys-shape-corner-full, 9999px);
+  padding: 6px 14px 6px 28px;
+  font-size: var(--md-sys-typescale-label-medium-font-size, 0.75rem);
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface, #191c1e);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 150ms ease;
+}
+
+.hs-period-filter-bar__select:focus {
+  border-color: var(--md-sys-color-primary, #006a6a);
+}

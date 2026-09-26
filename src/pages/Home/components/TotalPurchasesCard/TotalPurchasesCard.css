@@ -1,0 +1,84 @@
+.hs-total-purchases-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.08) 0%,
+    var(--md-sys-color-surface-container-low, #f2f4f6) 100%
+  );
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    border-color 150ms ease;
+}
+
+.hs-total-purchases-card:hover {
+  border-color: rgba(245, 158, 11, 0.6);
+  transform: translateY(-1px);
+}
+
+.hs-total-purchases-card__tag {
+  font-family: var(--md-sys-typescale-label-small-font-family-name, inherit);
+  font-size: var(--md-sys-typescale-label-small-font-size, 0.6875rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #d97706;
+}
+
+.hs-total-purchases-card__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--md-sys-shape-corner-full, 9999px);
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+}
+
+.hs-total-purchases-card__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.hs-total-purchases-card__amount {
+  font-family: var(
+    --md-sys-typescale-headline-medium-font-family-name,
+    inherit
+  );
+  font-size: var(--md-sys-typescale-headline-medium-font-size, 1.75rem);
+  font-weight: 900;
+  color: var(--md-sys-color-on-surface, #191c1e);
+  margin-top: var(--md-sys-spacing-xs, 4px);
+  line-height: 1.2;
+}
+
+.hs-total-purchases-card__meta {
+  margin-top: var(--md-sys-spacing-xs, 4px);
+  font-size: var(--md-sys-typescale-body-small-font-size, 0.75rem);
+  color: var(--md-sys-color-on-surface-variant, #43484e);
+}
+
+.hs-total-purchases-card__rate-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--md-sys-spacing-sm, 8px);
+  padding: 4px 8px;
+  border-radius: var(--md-sys-shape-corner-small, 8px);
+  background-color: rgba(245, 158, 11, 0.12);
+}
+
+.hs-total-purchases-card__rate-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #92400e;
+}
+
+.hs-total-purchases-card__rate-val {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #b45309;
+}

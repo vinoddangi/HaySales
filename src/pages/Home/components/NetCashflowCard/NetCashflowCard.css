@@ -1,0 +1,144 @@
+.hs-net-cashflow-card {
+  border: 1px solid var(--md-sys-color-outline-variant, #c2c7ce);
+  background-color: var(--md-sys-color-surface-container, #eceef0);
+}
+
+.hs-net-cashflow-card__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  background-color: rgba(0, 106, 106, 0.12);
+  color: var(--md-sys-color-primary, #006a6a);
+}
+
+.hs-net-cashflow-card__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.hs-net-cashflow-card__tag {
+  display: block;
+  font-family: var(--md-sys-typescale-label-small-font-family-name, inherit);
+  font-size: var(--md-sys-typescale-label-small-font-size, 0.6875rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--md-sys-color-primary, #006a6a);
+}
+
+.hs-net-cashflow-card__subtitle {
+  display: block;
+  font-size: var(--md-sys-typescale-body-small-font-size, 0.6875rem);
+  color: var(--md-sys-color-on-surface-variant, #43484e);
+}
+
+.hs-net-cashflow-card__amount {
+  font-family: var(--md-sys-typescale-headline-small-font-family-name, inherit);
+  font-size: var(--md-sys-typescale-headline-small-font-size, 1.5rem);
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.hs-net-cashflow-card__amount--positive {
+  color: #047857;
+}
+
+.hs-net-cashflow-card__amount--negative {
+  color: #be123c;
+}
+
+.hs-net-cashflow-card__sub-cards {
+  margin-top: var(--md-sys-spacing-sm, 8px);
+}
+
+.hs-cashflow-subcard {
+  padding: 10px;
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  border-width: 1px;
+  border-style: solid;
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    transform 150ms ease;
+}
+
+.hs-cashflow-subcard:hover {
+  transform: translateY(-1px);
+}
+
+.hs-cashflow-subcard--in {
+  border-color: rgba(16, 185, 129, 0.2);
+  background-color: rgba(16, 185, 129, 0.08);
+}
+
+.hs-cashflow-subcard--in:hover {
+  background-color: rgba(16, 185, 129, 0.12);
+}
+
+.hs-cashflow-subcard--out {
+  border-color: rgba(245, 158, 11, 0.2);
+  background-color: rgba(245, 158, 11, 0.08);
+}
+
+.hs-cashflow-subcard--out:hover {
+  background-color: rgba(245, 158, 11, 0.12);
+}
+
+.hs-cashflow-subcard__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: 4px;
+}
+
+.hs-cashflow-subcard__title {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hs-cashflow-subcard__title--emerald {
+  color: #065f46;
+}
+
+.hs-cashflow-subcard__title--amber {
+  color: #92400e;
+}
+
+.hs-cashflow-subcard__val {
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.hs-cashflow-subcard__val--emerald {
+  color: #047857;
+}
+
+.hs-cashflow-subcard__val--amber {
+  color: #b45309;
+}
+
+.hs-cashflow-subcard__rows {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hs-cashflow-subcard__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.625rem;
+  color: var(--md-sys-color-on-surface-variant, #43484e);
+}
+
+.hs-cashflow-subcard__row-val {
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface, #191c1e);
+}

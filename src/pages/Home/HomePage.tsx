@@ -1,218 +1,177 @@
-import {
-  ArrowRight,
-  ArrowUpRight,
-  BookOpen,
-  Layers,
-  Package,
-  Plus,
-  ShieldCheck,
-  ShoppingBag,
-  ShoppingCart,
-  Sparkles,
-  Truck,
-  Users,
-} from 'lucide-react';
+import { Plus } from 'lucide-react';
 import React from 'react';
-import { Button, Card, Fab, Flex, Grid } from '../../components';
-import { PageContainer } from '../../views';
+import { Fab } from '../../components/Fab';
+import { Flex } from '../../components/layouts/Flex';
+import { Grid } from '../../components/layouts/Grid';
+import { PageContainer } from '../../views/PageContainer';
+import {
+  CashInHandCard,
+  CustomerOutstandingCard,
+  EstimatedProfitCard,
+  NetCashflowCard,
+  PeriodFilterBar,
+  RecentActivityCard,
+  SalesOnCashCard,
+  SalesOnCreditCard,
+  TotalPurchasesCard,
+  TotalSalesCard,
+} from './components';
 import './HomePage.css';
 import { useHomePage } from './useHomePage';
 
 export const HomePage: React.FC = () => {
   const {
-    featuredProducts,
+    filterMode,
+    selectedMonth,
+    selectedYear,
+    periodLabel,
+    salesMetrics,
+    purchaseMetrics,
+    profitMetrics,
+    customerOutstandingMetrics,
+    cashflowMetrics,
+    balanceSheetMetrics,
+    allTransactions,
+    handleFilterModeChange,
+    handleMonthChange,
     handleNavigate,
     handleNewSale,
-    handleLedger,
-    handlePurchases,
-    handleActivity,
   } = useHomePage();
 
   return (
-    <PageContainer spacing="md" bottomPadding="lg">
-      {/* 1. Harvest Hero Banner Card */}
-      <Card variant="filled">
-        <Card.Content>
-          <Flex align="center" gap="xs" className="home-page__badge">
-            <Sparkles className="h-3 w-3" />
-            <span>2026 Harvest Active</span>
-          </Flex>
+    <PageContainer spacing="md" bottomPadding="lg" className="hs-home-page">
+      {/* 1. Header Overview & Period Indicator */}
+      <Flex direction="column" gap="none" fullWidth className="hs-home-header">
+        <Flex align="center" gap="xs">
+          <h2 className="hs-home-header__title">Business Overview</h2>
+          <span className="hs-home-header__live-dot" />
+        </Flex>
+        <p className="hs-home-header__subtitle">
+          Performance for{' '}
+          <strong className="hs-home-header__highlight">{periodLabel}</strong>
+        </p>
+      </Flex>
 
-          <h2 className="home-page__hero-title">HaySales Management</h2>
-          <p className="home-page__hero-subtitle">
-            Real-time inventory in Kg, customer dues ledger, and sales tracking.
-          </p>
+      {/* 2. Period Filter Bar */}
+      <PeriodFilterBar
+        filterMode={filterMode}
+        selectedMonth={selectedMonth}
+        selectedYear={selectedYear}
+        onFilterModeChange={handleFilterModeChange}
+        onMonthChange={handleMonthChange}
+      />
 
-          <Flex align="center" gap="sm" className="home-page__hero-actions">
-            <Button
-              variant="filled"
-              onClick={handleNewSale}
-              trailingIcon={<ArrowRight className="h-3.5 w-3.5" />}
-            >
-              New Sale
-            </Button>
-            <Button variant="outlined" onClick={handleLedger}>
-              Ledger
-            </Button>
-          </Flex>
-        </Card.Content>
-      </Card>
-
-      {/* 2. 3-Column Metrics Grid */}
-      <Grid columns={3} gap="sm">
+      {/* 3. Row 1: Top Main Cards (Total Sales & Total Purchases) */}
+      <Grid columns={2} gap="sm" fullWidth>
         <Grid.Item>
-          <Card variant="outlined">
-            <Card.Metric
-              icon={<Package className="h-4 w-4" />}
-              value="48,500 Kg"
-              label="Available Stock"
-            />
-          </Card>
+          <TotalSalesCard
+            amount={salesMetrics.totalAmount}
+            weight={salesMetrics.totalWeight}
+            invoicesCount={salesMetrics.count}
+            avgRate={salesMetrics.avgRate}
+            onClick={() => handleNavigate('/activity?category=SALES')}
+          />
         </Grid.Item>
-
         <Grid.Item>
-          <Card variant="outlined">
-            <Card.Metric
-              icon={<Truck className="h-4 w-4" />}
-              value="3 Loads"
-              label="En Route"
-            />
-          </Card>
-        </Grid.Item>
-
-        <Grid.Item>
-          <Card variant="outlined">
-            <Card.Metric
-              icon={<ShieldCheck className="h-4 w-4" />}
-              value="99.4%"
-              label="Dry Purity"
-            />
-          </Card>
+          <TotalPurchasesCard
+            amount={purchaseMetrics.totalAmount}
+            weight={purchaseMetrics.totalWeight}
+            ordersCount={purchaseMetrics.count}
+            avgRate={purchaseMetrics.avgRate}
+            onClick={() =>
+              handleNavigate('/activity?category=PURCHASES_EXPENSES')
+            }
+          />
         </Grid.Item>
       </Grid>
 
-      {/* 3. Quick Actions Card */}
-      <Card variant="filled">
-        <Card.Header title="Quick Actions" />
-        <Card.Content>
-          <Grid columns={2} gap="sm" className="home-quick-actions__list">
-            <Grid.Item>
-              <Card.ActionItem
-                icon={<Plus className="h-4 w-4 text-primary" />}
-                label="New Sale (Kg)"
-                onClick={handleNewSale}
-              />
-            </Grid.Item>
-            <Grid.Item>
-              <Card.ActionItem
-                icon={<ShoppingCart className="h-4 w-4 text-primary" />}
-                label="Buy Feed"
-                onClick={handlePurchases}
-              />
-            </Grid.Item>
-            <Grid.Item>
-              <Card.ActionItem
-                icon={<BookOpen className="h-4 w-4 text-primary" />}
-                label="Customer Ledger"
-                onClick={handleLedger}
-              />
-            </Grid.Item>
-            <Grid.Item>
-              <Card.ActionItem
-                icon={<ShoppingBag className="h-4 w-4 text-primary" />}
-                label="Recent Activity"
-                onClick={handleActivity}
-              />
-            </Grid.Item>
-          </Grid>
-        </Card.Content>
-      </Card>
+      {/* 4. Row 2: Sales Breakdown (Sales on Cash & Sales on Credit) */}
+      <Grid columns={2} gap="sm" fullWidth>
+        <Grid.Item>
+          <SalesOnCashCard
+            amount={salesMetrics.salesOnCash}
+            percentage={salesMetrics.cashPercentage}
+            onClick={() =>
+              handleNavigate('/activity?category=SALES&nature=CASH')
+            }
+          />
+        </Grid.Item>
+        <Grid.Item>
+          <SalesOnCreditCard
+            amount={salesMetrics.salesOnCredit}
+            percentage={salesMetrics.creditPercentage}
+            onClick={() =>
+              handleNavigate('/activity?category=SALES&nature=CREDIT')
+            }
+          />
+        </Grid.Item>
+      </Grid>
 
-      {/* 4. Customer Outstanding Summary Card */}
-      <Card variant="outlined">
-        <Card.Header
-          title="Total Customer Dues"
-          action={<Users className="h-4 w-4 text-outline" />}
-        />
-        <Card.Content>
-          <div className="home-dues-amount">₹ 1,84,500</div>
-        </Card.Content>
-        <Card.Actions align="between">
-          <Flex
-            align="center"
-            justify="between"
-            fullWidth
-            className="home-dues-footer"
-          >
-            <Flex.Item>
-              <span>Across 28 active accounts</span>
-            </Flex.Item>
-            <Flex.Item>
-              <button
-                onClick={handleLedger}
-                className="home-dues-link"
-                type="button"
-              >
-                <span>Ledger</span>
-                <ArrowUpRight className="h-3.5 w-3.5" />
-              </button>
-            </Flex.Item>
-          </Flex>
-        </Card.Actions>
-      </Card>
+      {/* 5. Row 3: Estimated Net Profit Card */}
+      <EstimatedProfitCard
+        netProfit={profitMetrics.netProfit}
+        profitMarginPct={profitMetrics.profitMarginPct}
+        grossCommission={profitMetrics.grossCommission}
+        pickupNet={profitMetrics.pickupNet}
+        operatingExpenses={profitMetrics.operatingExpenses}
+        periodLabel={periodLabel}
+        cumulativeProfit={profitMetrics.cumulativeProfit}
+        onClick={() => handleNavigate('/profile')}
+      />
 
-      {/* 5. Available Hay Lots Card */}
-      <Card variant="filled">
-        <Card.Header
-          title="Available Hay Lots"
-          action={
-            <Button variant="text" onClick={handleNewSale}>
-              View All Lots
-            </Button>
-          }
-        />
-        <Card.Content>
-          <Flex direction="column" gap="sm" className="home-lots__list">
-            {featuredProducts.map((item) => (
-              <Flex
-                key={item.id}
-                align="center"
-                gap="md"
-                onClick={() => handleNavigate('/sales')}
-                className="home-lot-item"
-                role="button"
-                tabIndex={0}
-              >
-                <Flex.Item shrink={false} className="home-lot-item__icon">
-                  <Layers className="h-5 w-5" />
-                </Flex.Item>
-                <Flex.Item grow className="home-lot-item__info">
-                  <h4 className="home-lot-item__title">{item.title}</h4>
-                  <p className="home-lot-item__subtitle">{item.subtitle}</p>
-                  <Flex
-                    align="center"
-                    justify="between"
-                    fullWidth
-                    className="home-lot-item__meta"
-                  >
-                    <span className="home-lot-item__price">
-                      ₹ {item.pricePerKg.toFixed(2)} / Kg
-                    </span>
-                    <span className="home-lot-item__stock">
-                      {item.stockKg.toLocaleString()} Kg stock
-                    </span>
-                  </Flex>
-                </Flex.Item>
-              </Flex>
-            ))}
-          </Flex>
-        </Card.Content>
-      </Card>
+      {/* 6. Row 4: Customer Outstanding Card */}
+      <CustomerOutstandingCard
+        totalOutstanding={customerOutstandingMetrics.totalOutstanding}
+        customersWithDuesCount={
+          customerOutstandingMetrics.customersWithDuesCount
+        }
+        periodCreditAdded={customerOutstandingMetrics.periodCreditAdded}
+        periodCollections={customerOutstandingMetrics.periodCollections}
+        netChange={customerOutstandingMetrics.netChange}
+        periodLabel={periodLabel}
+        onClick={() => handleNavigate('/ledger')}
+      />
 
-      {/* 6. Floating Action Button */}
-      <div className="home-page__fab">
+      {/* 7. Row 5: Balance Sheet & Cash in Hand Card */}
+      <CashInHandCard
+        cashInHand={balanceSheetMetrics.cashInHand}
+        cashAdjustment={balanceSheetMetrics.cashAdjustment}
+        customerReceivables={balanceSheetMetrics.customerReceivables}
+        closingStockValue={balanceSheetMetrics.closingStockValue}
+        fixedAssetsValue={balanceSheetMetrics.fixedAssetsValue}
+        totalAssets={balanceSheetMetrics.totalAssets}
+        totalLiabilities={balanceSheetMetrics.totalLiabilities}
+        partnerCapital={balanceSheetMetrics.partnerCapital}
+        retainedProfit={balanceSheetMetrics.retainedProfit}
+        onNavigateBalanceSheet={() => handleNavigate('/profile')}
+      />
+
+      {/* 8. Row 6: Net Cashflow Card */}
+      <NetCashflowCard
+        netCashflow={cashflowMetrics.netCashflow}
+        totalCashIn={cashflowMetrics.totalCashIn}
+        paymentsReceived={cashflowMetrics.paymentsReceived}
+        salesOnCash={cashflowMetrics.salesOnCash}
+        servicesReceived={cashflowMetrics.servicesReceived}
+        totalCashOut={cashflowMetrics.totalCashOut}
+        purchaseOnCash={cashflowMetrics.purchaseOnCash}
+        expensesOnCash={cashflowMetrics.expensesOnCash}
+        onCashInClick={() => handleNavigate('/activity?category=PAYMENTS')}
+        onCashOutClick={() =>
+          handleNavigate('/activity?category=PURCHASES_EXPENSES')
+        }
+      />
+
+      {/* 9. Row 7: Recent Activity Card */}
+      <RecentActivityCard
+        transactions={allTransactions}
+        onViewAll={() => handleNavigate('/ledger')}
+      />
+
+      {/* 10. Floating Action Button for New Sale */}
+      <div className="hs-home-fab">
         <Fab
-          icon={<Plus className="h-6 w-6" />}
+          icon={<Plus className="hs-home-fab__icon" />}
           label="New Sale"
           variant="primary"
           size="md"

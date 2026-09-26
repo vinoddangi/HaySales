@@ -1,0 +1,42 @@
+.hs-sales-credit-card {
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  background-color: rgba(168, 85, 247, 0.05);
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    border-color 150ms ease;
+}
+
+.hs-sales-credit-card:hover {
+  border-color: rgba(168, 85, 247, 0.6);
+  transform: translateY(-1px);
+}
+
+.hs-sales-credit-card__icon {
+  width: 16px;
+  height: 16px;
+  color: #9333ea;
+}
+
+.hs-sales-credit-card__title {
+  font-family: var(--md-sys-typescale-label-small-font-family-name, inherit);
+  font-size: var(--md-sys-typescale-label-small-font-size, 0.6875rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #7e22ce;
+}
+
+.hs-sales-credit-card__amount {
+  font-family: var(--md-sys-typescale-title-large-font-family-name, inherit);
+  font-size: var(--md-sys-typescale-title-large-font-size, 1.375rem);
+  font-weight: 800;
+  color: var(--md-sys-color-on-surface, #191c1e);
+  margin-top: var(--md-sys-spacing-sm, 8px);
+}
+
+.hs-sales-credit-card__subtitle {
+  font-size: var(--md-sys-typescale-body-small-font-size, 0.6875rem);
+  color: var(--md-sys-color-on-surface-variant, #43484e);
+  margin-top: 2px;
+}
