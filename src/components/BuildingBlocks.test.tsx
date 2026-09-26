@@ -35,6 +35,18 @@ describe('Reusable Building Block Components (M3 Token-Bound & M3 UX Guide)', ()
       expect(htmlElevated).toContain('md-elevation');
     });
 
+    it('renders card with corner shape tokens and sentiment styles', () => {
+      const html = renderToStaticMarkup(
+        <Card variant="filled" corner="md" sentiment="primary" padding="sm">
+          <span>Custom Styled Card</span>
+        </Card>,
+      );
+      expect(html).toContain('hs-card--corner-md');
+      expect(html).toContain('hs-card--sentiment-primary');
+      expect(html).toContain('hs-card--p-sm');
+      expect(html).toContain('Custom Styled Card');
+    });
+
     it('renders prespecified Card.Header and Card.Content', () => {
       const html = renderToStaticMarkup(
         <Card variant="filled">
@@ -213,18 +225,48 @@ describe('Reusable Building Block Components (M3 Token-Bound & M3 UX Guide)', ()
   });
 
   describe('Flex & Grid', () => {
-    it('renders flex and grid layout helpers', () => {
+    it('renders flex and grid layout helpers with full prop control and Flex.Item / Grid.Item', () => {
       const html = renderToStaticMarkup(
-        <Flex direction="column" gap="md">
-          <Grid columns={3} gap="sm">
-            <div>Item 1</div>
+        <Flex
+          direction="column"
+          gap="md"
+          align="center"
+          justify="between"
+          grow
+          scrollable="y"
+          className="custom-flex-class"
+        >
+          <Flex.Item grow shrink={false} alignSelf="stretch" className="custom-item-class">
+            <span>Flex Item Content</span>
+          </Flex.Item>
+          <Grid columns={3} gap="sm" padding="md" align="center" className="custom-grid-class">
+            <Grid.Item colSpan={2} alignSelf="center" className="custom-grid-item-class">
+              <div>Item 1</div>
+            </Grid.Item>
+            <Grid.Item colSpan={1}>
+              <div>Item 2</div>
+            </Grid.Item>
           </Grid>
         </Flex>,
       );
       expect(html).toContain('hs-flex--dir-column');
       expect(html).toContain('hs-flex--gap-md');
+      expect(html).toContain('hs-flex--align-center');
+      expect(html).toContain('hs-flex--justify-between');
+      expect(html).toContain('hs-flex--grow');
+      expect(html).toContain('hs-flex--scroll-y');
+      expect(html).toContain('custom-flex-class');
+      expect(html).toContain('hs-flex__item--grow');
+      expect(html).toContain('hs-flex__item--shrink-0');
+      expect(html).toContain('hs-flex__item--self-stretch');
+      expect(html).toContain('custom-item-class');
       expect(html).toContain('hs-grid--cols-3');
       expect(html).toContain('hs-grid--gap-sm');
+      expect(html).toContain('hs-grid--p-md');
+      expect(html).toContain('custom-grid-class');
+      expect(html).toContain('hs-grid__item--col-span-2');
+      expect(html).toContain('hs-grid__item--self-align-center');
+      expect(html).toContain('custom-grid-item-class');
     });
   });
 

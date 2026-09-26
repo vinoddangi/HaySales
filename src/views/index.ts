@@ -5,4 +5,5 @@ export * from './MobileShell';
 export * from './navigationTypes';
 export * from './PageContainer';
 export * from './PlaceholderView';
+export * from './Timeline';
 export * from './TopAppBar';

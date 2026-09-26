@@ -12,7 +12,7 @@ import {
   Trash2,
   Type,
 } from 'lucide-react';
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Avatar,
   Badge,
@@ -23,136 +23,37 @@ import {
   Switch,
   Text,
 } from '../../components';
-import { auth } from '../../store/firebaseConfig';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { useAuth } from '../../store/hooks/useAuth';
-import {
-  ColorScheme,
-  FontSize,
-  setColorScheme,
-  setFontSize,
-  setThemeMode,
-} from '../../store/slices/themeSlice';
-import { showSnackbar } from '../../store/slices/uiSlice';
 import { PageContainer } from '../../views';
 import './ProfilePage.css';
-
-const colorPalettes: { key: ColorScheme; name: string; hex: string }[] = [
-  { key: 'green', name: 'Agriculture Green', hex: '#006c4c' },
-  { key: 'purple', name: 'Material Baseline', hex: '#6750a4' },
-  { key: 'blue', name: 'Ocean Blue', hex: '#0061a4' },
-  { key: 'orange', name: 'Harvest Amber', hex: '#8b5000' },
-  { key: 'rose', name: 'Crimson Rose', hex: '#9c4146' },
-];
-
-const fontSizeOptions: {
-  key: FontSize;
-  label: string;
-  level: string;
-  symbolClass: string;
-}[] = [
-  {
-    key: 'small',
-    label: 'Small',
-    level: '-1 Level',
-    symbolClass: 'font-settings__symbol--small',
-  },
-  {
-    key: 'medium',
-    label: 'Default',
-    level: 'Standard',
-    symbolClass: 'font-settings__symbol--medium',
-  },
-  {
-    key: 'large',
-    label: 'Large',
-    level: '+1 Level',
-    symbolClass: 'font-settings__symbol--large',
-  },
-];
+import { useProfilePage } from './useProfilePage';
 
 export const ProfilePage: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const { mode, scheme, fontSize } = useAppSelector((state) => state.theme);
-  const { currentUser, logout } = useAuth();
-
-  // Profile Header State
-  const [name, setName] = useState(() => {
-    try {
-      const stored = localStorage.getItem('haysales_profile_name');
-      if (stored) return stored;
-    } catch {
-      // Ignore storage error
-    }
-    return auth.currentUser?.displayName || 'Vinod Dangi';
-  });
-
-  const phoneNumber = currentUser?.phoneNumber || '+91 98765 43210';
-  const role = 'Enterprise Manager';
-  const [isEditing, setIsEditing] = useState(false);
-  const [editValue, setEditValue] = useState(name);
-  const [isSaving, setIsSaving] = useState(false);
-
-  const isDark = mode === 'dark';
-
-  const handleToggleDarkMode = (checked: boolean) => {
-    const next = checked ? 'dark' : 'light';
-    dispatch(setThemeMode(next));
-    dispatch(showSnackbar(`Switched to ${checked ? 'Dark' : 'Light'} Mode`));
-  };
-
-  const handleSelectScheme = (palKey: ColorScheme, palName: string) => {
-    dispatch(setColorScheme(palKey));
-    dispatch(showSnackbar(`Applied ${palName} Theme`));
-  };
-
-  const handleSelectFontSize = (newSize: FontSize) => {
-    dispatch(setFontSize(newSize));
-    const labels: Record<FontSize, string> = {
-      small: 'Small (Compact)',
-      medium: 'Default (Standard)',
-      large: 'Large (+1 Level)',
-    };
-    dispatch(showSnackbar(`Font size updated to ${labels[newSize]}`));
-  };
-
-  const handleSaveName = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const cleanName = editValue.trim();
-    if (!cleanName) return;
-
-    setIsSaving(true);
-    setName(cleanName);
-    try {
-      localStorage.setItem('haysales_profile_name', cleanName);
-    } catch {
-      // Ignore storage error
-    }
-
-    if (auth.currentUser) {
-      try {
-        const { updateProfile } = await import('firebase/auth');
-        await updateProfile(auth.currentUser, { displayName: cleanName });
-      } catch (err) {
-        console.error('Update profile name error:', err);
-      }
-    }
-
-    setIsEditing(false);
-    setIsSaving(false);
-    dispatch(showSnackbar('Name updated successfully!'));
-  };
-
-  const handleSignOut = async () => {
-    await logout();
-    dispatch(showSnackbar('Signed out successfully.'));
-  };
-
-  const getFontBadgeLabel = () => {
-    if (fontSize === 'small') return 'Small (87.5%)';
-    if (fontSize === 'large') return 'Large (+1 Level / 112.5%)';
-    return 'Default (100%)';
-  };
+  const {
+    name,
+    phoneNumber,
+    role,
+    isEditing,
+    editValue,
+    setEditValue,
+    isSaving,
+    isDark,
+    scheme,
+    fontSize,
+    colorPalettes,
+    fontSizeOptions,
+    getFontBadgeLabel,
+    handleToggleDarkMode,
+    handleSelectScheme,
+    handleSelectFontSize,
+    handleStartEditing,
+    handleCancelEditing,
+    handleSaveName,
+    handleSignOut,
+    handleSyncCloud,
+    handleLoadSnapshot,
+    handlePublishFirestore,
+    handleClearLocalDB,
+  } = useProfilePage();
 
   return (
     <PageContainer spacing="md" bottomPadding="lg">
@@ -161,15 +62,12 @@ export const ProfilePage: React.FC = () => {
         <Card.Header
           avatar={<Avatar name={name} size="md" />}
           title={
-            <div className="profile-header__name-row">
+            <Flex align="center" gap="xs" className="profile-header__name-row">
               <h2 className="profile-header__name">{name}</h2>
               {!isEditing && (
                 <button
                   type="button"
-                  onClick={() => {
-                    setEditValue(name);
-                    setIsEditing(true);
-                  }}
+                  onClick={handleStartEditing}
                   className="profile-header__edit-btn"
                   title="Edit Name"
                   aria-label="Edit Name"
@@ -177,22 +75,33 @@ export const ProfilePage: React.FC = () => {
                   <Edit3 className="h-3.5 w-3.5" />
                 </button>
               )}
-            </div>
+            </Flex>
           }
           subtitle={
-            <div className="profile-header__subtitle-col">
+            <Flex
+              direction="column"
+              gap="xs"
+              className="profile-header__subtitle-col"
+            >
               <p className="profile-header__phone">{phoneNumber}</p>
-              <div className="profile-header__badge">
+              <Flex align="center" gap="xs" className="profile-header__badge">
                 <Sparkles className="h-3 w-3" />
                 <span>{role}</span>
-              </div>
-            </div>
+              </Flex>
+            </Flex>
           }
         />
 
         {isEditing && (
           <Card.Content>
-            <form onSubmit={handleSaveName} className="profile-header__form">
+            <Flex
+              align="center"
+              gap="xs"
+              wrap
+              as="form"
+              onSubmit={handleSaveName}
+              className="profile-header__form"
+            >
               <input
                 type="text"
                 value={editValue}
@@ -211,27 +120,36 @@ export const ProfilePage: React.FC = () => {
               <Button
                 type="button"
                 variant="outlined"
-                onClick={() => setIsEditing(false)}
+                onClick={handleCancelEditing}
               >
                 Cancel
               </Button>
-            </form>
+            </Flex>
           </Card.Content>
         )}
       </Card>
 
       {/* 2. Theme & Colors */}
       <Flex direction="column" gap="xs">
-        <div className="profile-page__section-label">
+        <Flex align="center" gap="xs" className="profile-page__section-label">
           <Palette className="profile-page__section-icon" />
           <span>Theme &amp; Colors</span>
-        </div>
+        </Flex>
 
         <Card variant="outlined">
           <Card.Content>
             {/* Dark Mode Switch Row */}
-            <div className="theme-settings__mode-row">
-              <div className="theme-settings__mode-left">
+            <Flex
+              align="center"
+              justify="between"
+              fullWidth
+              className="theme-settings__mode-row"
+            >
+              <Flex
+                align="center"
+                gap="md"
+                className="theme-settings__mode-left"
+              >
                 <div
                   className={clsx(
                     'theme-settings__icon-box',
@@ -247,8 +165,12 @@ export const ProfilePage: React.FC = () => {
                   )}
                 </div>
 
-                <div>
-                  <div className="theme-settings__title-row">
+                <Flex.Item grow>
+                  <Flex
+                    align="center"
+                    gap="xs"
+                    className="theme-settings__title-row"
+                  >
                     <span className="theme-settings__title">Dark Mode</span>
                     <span
                       className={clsx(
@@ -260,45 +182,50 @@ export const ProfilePage: React.FC = () => {
                     >
                       {isDark ? 'ON' : 'OFF'}
                     </span>
-                  </div>
+                  </Flex>
                   <div className="theme-settings__subtitle">
                     {isDark
                       ? 'Dark theme active across all screens'
                       : 'Light theme active across all screens'}
                   </div>
-                </div>
-              </div>
+                </Flex.Item>
+              </Flex>
 
               <Switch selected={isDark} onChange={handleToggleDarkMode} />
-            </div>
+            </Flex>
 
             {/* Dynamic Color Palette Grid */}
             <div className="theme-settings__palette-section">
               <span className="theme-settings__palette-title">
                 Dynamic M3 Color Palette
               </span>
-              <div className="theme-settings__palette-grid">
+              <Grid
+                columns={4}
+                gap="sm"
+                className="theme-settings__palette-grid"
+              >
                 {colorPalettes.map((pal) => (
-                  <button
-                    key={pal.key}
-                    type="button"
-                    onClick={() => handleSelectScheme(pal.key, pal.name)}
-                    className={clsx(
-                      'theme-settings__palette-btn',
-                      scheme === pal.key &&
-                        'theme-settings__palette-btn--active',
-                    )}
-                  >
-                    <div
-                      className="theme-settings__palette-circle"
-                      style={{ backgroundColor: pal.hex }}
-                    />
-                    <span className="theme-settings__palette-label">
-                      {pal.name.split(' ')[0]}
-                    </span>
-                  </button>
+                  <Grid.Item key={pal.key}>
+                    <button
+                      type="button"
+                      onClick={() => handleSelectScheme(pal.key, pal.name)}
+                      className={clsx(
+                        'theme-settings__palette-btn',
+                        scheme === pal.key &&
+                          'theme-settings__palette-btn--active',
+                      )}
+                    >
+                      <div
+                        className="theme-settings__palette-circle"
+                        style={{ backgroundColor: pal.hex }}
+                      />
+                      <span className="theme-settings__palette-label">
+                        {pal.name.split(' ')[0]}
+                      </span>
+                    </button>
+                  </Grid.Item>
                 ))}
-              </div>
+              </Grid>
             </div>
           </Card.Content>
         </Card>
@@ -306,49 +233,58 @@ export const ProfilePage: React.FC = () => {
 
       {/* 3. Font & Text Scaling */}
       <Flex direction="column" gap="xs">
-        <div className="profile-page__section-label">
+        <Flex align="center" gap="xs" className="profile-page__section-label">
           <Type className="profile-page__section-icon" />
           <span>Font &amp; Text Scaling</span>
-        </div>
+        </Flex>
 
         <Card variant="outlined">
           <Card.Content>
-            <div className="font-settings__top-row">
-              <div>
+            <Flex
+              align="center"
+              justify="between"
+              fullWidth
+              className="font-settings__top-row"
+            >
+              <Flex.Item grow>
                 <div className="font-settings__title">Text Size Scaling</div>
                 <div className="font-settings__subtitle">
                   Adjust readable text size across the entire application
                 </div>
-              </div>
+              </Flex.Item>
               <span className="font-settings__badge">
                 {getFontBadgeLabel()}
               </span>
-            </div>
+            </Flex>
 
-            <div className="font-settings__grid">
+            <Grid columns={4} gap="sm" className="font-settings__grid">
               {fontSizeOptions.map((opt) => {
                 const isSelected = fontSize === opt.key;
                 return (
-                  <button
-                    key={opt.key}
-                    type="button"
-                    onClick={() => handleSelectFontSize(opt.key)}
-                    className={clsx(
-                      'font-settings__option-btn',
-                      isSelected && 'font-settings__option-btn--active',
-                    )}
-                  >
-                    <span
-                      className={clsx('font-settings__symbol', opt.symbolClass)}
+                  <Grid.Item key={opt.key}>
+                    <button
+                      type="button"
+                      onClick={() => handleSelectFontSize(opt.key)}
+                      className={clsx(
+                        'font-settings__option-btn',
+                        isSelected && 'font-settings__option-btn--active',
+                      )}
                     >
-                      A
-                    </span>
-                    <span className="font-settings__label">{opt.label}</span>
-                    <span className="font-settings__level">{opt.level}</span>
-                  </button>
+                      <span
+                        className={clsx(
+                          'font-settings__symbol',
+                          opt.symbolClass,
+                        )}
+                      >
+                        A
+                      </span>
+                      <span className="font-settings__label">{opt.label}</span>
+                      <span className="font-settings__level">{opt.level}</span>
+                    </button>
+                  </Grid.Item>
                 );
               })}
-            </div>
+            </Grid>
 
             <div className="font-settings__preview">
               <span>Preview: Fast Hay Invoicing, Purchases &amp; Ledger</span>
@@ -359,10 +295,10 @@ export const ProfilePage: React.FC = () => {
 
       {/* 4. Local Database & Offline Storage (Reference: create-modal) */}
       <Flex direction="column" gap="xs">
-        <div className="profile-page__section-label">
+        <Flex align="center" gap="xs" className="profile-page__section-label">
           <Database className="profile-page__section-icon" />
           <span>Database &amp; Storage</span>
-        </div>
+        </Flex>
 
         <Card variant="outlined">
           <Card.Header
@@ -377,69 +313,92 @@ export const ProfilePage: React.FC = () => {
           />
           <Card.Content>
             <Grid columns={3} gap="sm">
-              <div className="db-settings__stat-item">
-                <span className="db-settings__stat-value">124</span>
-                <span className="db-settings__stat-label">Sales</span>
-              </div>
-              <div className="db-settings__stat-item">
-                <span className="db-settings__stat-value">48</span>
-                <span className="db-settings__stat-label">Purchases</span>
-              </div>
-              <div className="db-settings__stat-item">
-                <span className="db-settings__stat-value">28</span>
-                <span className="db-settings__stat-label">Customers</span>
-              </div>
+              <Grid.Item>
+                <Flex
+                  direction="column"
+                  align="center"
+                  justify="center"
+                  className="db-settings__stat-item"
+                >
+                  <span className="db-settings__stat-value">124</span>
+                  <span className="db-settings__stat-label">Sales</span>
+                </Flex>
+              </Grid.Item>
+              <Grid.Item>
+                <Flex
+                  direction="column"
+                  align="center"
+                  justify="center"
+                  className="db-settings__stat-item"
+                >
+                  <span className="db-settings__stat-value">48</span>
+                  <span className="db-settings__stat-label">Purchases</span>
+                </Flex>
+              </Grid.Item>
+              <Grid.Item>
+                <Flex
+                  direction="column"
+                  align="center"
+                  justify="center"
+                  className="db-settings__stat-item"
+                >
+                  <span className="db-settings__stat-value">28</span>
+                  <span className="db-settings__stat-label">Customers</span>
+                </Flex>
+              </Grid.Item>
             </Grid>
 
-            <div className="db-settings__actions-grid">
+            <Grid columns={2} gap="sm" className="db-settings__actions-grid">
               <Button
                 variant="tonal"
-                onClick={() =>
-                  dispatch(showSnackbar('Syncing from live cloud...'))
-                }
+                onClick={handleSyncCloud}
                 icon={<ArrowDownToLine className="h-4 w-4" />}
               >
                 Sync
               </Button>
               <Button
                 variant="tonal"
-                onClick={() =>
-                  dispatch(showSnackbar('Loaded 2026 dataset snapshot.'))
-                }
+                onClick={handleLoadSnapshot}
                 icon={<RefreshCw className="h-4 w-4" />}
               >
                 Load 2026
               </Button>
               <Button
                 variant="filled"
-                onClick={() =>
-                  dispatch(showSnackbar('All changes published to Firestore.'))
-                }
+                onClick={handlePublishFirestore}
                 icon={<ArrowUpRight className="h-4 w-4" />}
               >
                 Publish
               </Button>
               <Button
                 variant="outlined"
-                onClick={() =>
-                  dispatch(showSnackbar('Local database cleared.'))
-                }
+                onClick={handleClearLocalDB}
                 icon={<Trash2 className="h-4 w-4" />}
               >
                 Clear
               </Button>
-            </div>
+            </Grid>
           </Card.Content>
         </Card>
       </Flex>
 
       {/* 5. Sign Out & Version Footer */}
-      <div className="profile-footer">
+      <Flex
+        direction="column"
+        align="center"
+        gap="md"
+        className="profile-footer"
+      >
         <Button variant="outlined" onClick={handleSignOut}>
           Sign Out
         </Button>
 
-        <div className="profile-footer__meta">
+        <Flex
+          direction="column"
+          align="center"
+          gap="xs"
+          className="profile-footer__meta"
+        >
           <Text
             styleAs="caption"
             appearance="secondary"
@@ -454,8 +413,8 @@ export const ProfilePage: React.FC = () => {
           >
             Automated Versioning via Changesets
           </Text>
-        </div>
-      </div>
+        </Flex>
+      </Flex>
     </PageContainer>
   );
 };
