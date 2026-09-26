@@ -62,7 +62,7 @@ export const HomePage: React.FC = () => {
       />
 
       {/* 3. Row 1: Top Main Cards (Total Sales & Total Purchases) */}
-      <Grid columns={1} smColumns={2} gap="sm" fullWidth>
+      <Grid columns={1} gap="sm" fullWidth>
         <Grid.Item>
           <TotalSalesCard
             amount={salesMetrics.totalAmount}
