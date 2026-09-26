@@ -1,5 +1,28 @@
 .hs-grid {
   display: grid;
+  align-items: stretch;
+  justify-items: stretch;
+}
+
+.hs-grid__item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  min-width: 0;
+}
+
+.hs-grid__item > .hs-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hs-grid__item > .hs-card > .hs-card__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hs-grid--cols-1 {
