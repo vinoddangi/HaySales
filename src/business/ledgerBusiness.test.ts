@@ -15,11 +15,10 @@ describe('ledgerBusiness', () => {
     name: 'Ramesh Patel',
     mobile: '9876543210',
     village: 'Viramgam',
-    openingBalance: 50000,
   };
 
   const mockTransactions: CustomerTransactionData[] = [
-    // Historical 2024 / 2025 Sale: 15,000
+    // Historical 2025 Sale: 15,000
     {
       id: 'tx_2025_sale',
       customerId: 'cust_1',
@@ -154,7 +153,7 @@ describe('ledgerBusiness', () => {
   });
 
   describe('calculateCustomerLedgerDetail', () => {
-    it('aggregates running balance from the very beginning up to May 31st correctly', () => {
+    it('aggregates running balance from transactions up to May 31st correctly', () => {
       const timelineMay: TimelineFilter = {
         selectedYear: 2026,
         selectedMonth: 4, // May (0-indexed)
@@ -166,19 +165,18 @@ describe('ledgerBusiness', () => {
         timelineMay,
       );
 
-      expect(result.openingBalance).toBe(50000);
       // Sales: 15,000 (2025) + 20,000 (Jan) + 30,000 (May) = 65,000
       expect(result.totalSales).toBe(65000);
       // Services: 5,000 (Feb)
       expect(result.totalServices).toBe(5000);
-      // Total Billed: 50,000 opening + 65,000 sales + 5,000 services = 120,000
-      expect(result.totalBilled).toBe(120000);
+      // Total Billed: 65,000 sales + 5,000 services = 70,000
+      expect(result.totalBilled).toBe(70000);
       // Total Paid: 5,000 (2025 cash) + 10,000 (Jan cash) + 15,000 (Mar payment) + 10,000 (May payment) = 40,000
       expect(result.totalPaid).toBe(40000);
       // Total Discounts: 1,000 (Mar discount)
       expect(result.totalDiscounts).toBe(1000);
-      // Outstanding = 120,000 - 40,000 - 1,000 = 79,000
-      expect(result.currentOutstanding).toBe(79000);
+      // Outstanding = 70,000 - 40,000 - 1,000 = 29,000
+      expect(result.currentOutstanding).toBe(29000);
       expect(result.transactionCount).toBe(6);
     });
   });
@@ -193,11 +191,10 @@ describe('ledgerBusiness', () => {
       const outstanding = calculateCustomerOutstanding(
         'cust_1',
         mockTransactions,
-        50000,
         timelineMay,
       );
 
-      expect(outstanding).toBe(79000);
+      expect(outstanding).toBe(29000);
     });
   });
 
@@ -208,7 +205,6 @@ describe('ledgerBusiness', () => {
         {
           id: 'cust_2',
           name: 'Suresh Kumar',
-          openingBalance: 10000,
         },
       ];
 
@@ -233,20 +229,23 @@ describe('ledgerBusiness', () => {
         selectedMonth: 4, // May
       };
 
-      const result = calculateAllCustomersLedger(customers, allTxs, timelineMay);
+      const result = calculateAllCustomersLedger(
+        customers,
+        allTxs,
+        timelineMay,
+      );
 
       expect(result.customerCount).toBe(2);
       expect(result.customersWithDuesCount).toBe(2);
-      // Cust 1: 79,000
-      // Cust 2: 10,000 opening + 12,000 sale - 2,000 paid = 20,000
-      expect(result.totalOpeningBalance).toBe(60000);
-      expect(result.totalOutstanding).toBe(79000 + 20000);
+      // Cust 1: 29,000
+      // Cust 2: 12,000 sale - 2,000 paid = 10,000
+      expect(result.totalOutstanding).toBe(29000 + 10000);
 
       // Sorted by highest outstanding descending
       expect(result.customers[0]?.customerId).toBe('cust_1');
-      expect(result.customers[0]?.currentOutstanding).toBe(79000);
+      expect(result.customers[0]?.currentOutstanding).toBe(29000);
       expect(result.customers[1]?.customerId).toBe('cust_2');
-      expect(result.customers[1]?.currentOutstanding).toBe(20000);
+      expect(result.customers[1]?.currentOutstanding).toBe(10000);
     });
   });
 });

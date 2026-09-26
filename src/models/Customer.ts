@@ -6,8 +6,6 @@ export type Customer = {
   mobile?: string; // Contact mobile
   village?: string; // Village / City
   creditLimit?: number; // Advisory credit limit indicator
-  openingBalance?: number; // Baseline opening debt / credit brought forward
-  outstandingAmount?: number; // Running live outstanding balance
 };
 
 export type ICustomer = Customer;
@@ -21,8 +19,6 @@ export class CustomerModel {
   mobile?: string;
   village?: string;
   creditLimit?: number;
-  openingBalance?: number;
-  outstandingAmount?: number;
 
   constructor(data: Customer) {
     this.id = data.id;
@@ -30,8 +26,6 @@ export class CustomerModel {
     this.mobile = data.mobile;
     this.village = data.village;
     this.creditLimit = data.creditLimit;
-    this.openingBalance = data.openingBalance;
-    this.outstandingAmount = data.outstandingAmount;
   }
 
   static from(data: Customer): CustomerModel {
@@ -45,8 +39,6 @@ export class CustomerModel {
       mobile: parseString(raw?.mobile),
       village: parseString(raw?.village),
       creditLimit: parseNumber(raw?.creditLimit),
-      openingBalance: parseNumber(raw?.openingBalance),
-      outstandingAmount: parseNumber(raw?.outstandingAmount),
     };
     return new CustomerModel(data);
   }
@@ -58,22 +50,14 @@ export class CustomerModel {
     if (this.mobile) raw.mobile = this.mobile;
     if (this.village) raw.village = this.village;
     if (this.creditLimit !== undefined) raw.creditLimit = this.creditLimit;
-    if (this.openingBalance !== undefined)
-      raw.openingBalance = this.openingBalance;
-    if (this.outstandingAmount !== undefined)
-      raw.outstandingAmount = this.outstandingAmount;
     return raw;
   }
 
-  hasOutstandingDues(): boolean {
-    return (this.outstandingAmount || 0) > 0;
+  isOverCreditLimit(outstandingAmount = 0): boolean {
+    return (outstandingAmount || 0) > (this.creditLimit || 0);
   }
 
-  isOverCreditLimit(): boolean {
-    return (this.outstandingAmount || 0) > (this.creditLimit || 0);
-  }
-
-  getAvailableCredit(): number {
-    return Math.max(0, (this.creditLimit || 0) - (this.outstandingAmount || 0));
+  getAvailableCredit(outstandingAmount = 0): number {
+    return Math.max(0, (this.creditLimit || 0) - (outstandingAmount || 0));
   }
 }

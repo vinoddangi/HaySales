@@ -3,12 +3,14 @@ import { useEffect, useRef } from 'react';
 export interface UseSwitchOptions {
   selected?: boolean;
   checked?: boolean;
+  disabled?: boolean;
   onChange?: (_selected: boolean) => void;
 }
 
 export const useSwitch = ({
   selected,
   checked,
+  disabled,
   onChange,
 }: UseSwitchOptions) => {
   const isSelected = selected !== undefined ? selected : Boolean(checked);
@@ -16,24 +18,34 @@ export const useSwitch = ({
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || !onChange) return;
+    if (!el) return;
+
+    el.disabled = Boolean(disabled);
+    el.selected = isSelected;
+
+    if (!onChange) return;
 
     const handleChange = (e: Event) => {
       const target = e.target as any;
-      onChange(Boolean(target.selected));
+      const nextVal =
+        target.selected !== undefined ? Boolean(target.selected) : !isSelected;
+      onChange(nextVal);
     };
 
     el.addEventListener('change', handleChange);
+    el.addEventListener('input', handleChange);
     return () => {
       el.removeEventListener('change', handleChange);
+      el.removeEventListener('input', handleChange);
     };
-  }, [onChange]);
+  }, [onChange, isSelected, disabled]);
 
   useEffect(() => {
-    if (ref.current && ref.current.selected !== isSelected) {
+    if (ref.current) {
       ref.current.selected = isSelected;
+      ref.current.disabled = Boolean(disabled);
     }
-  }, [isSelected]);
+  }, [isSelected, disabled]);
 
   return { ref, isSelected };
 };

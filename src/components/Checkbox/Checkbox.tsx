@@ -29,9 +29,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   const checkboxEl = (
     <md-checkbox
       ref={ref}
-      checked={checked}
-      indeterminate={indeterminate}
-      disabled={disabled}
+      checked={checked ? true : undefined}
+      indeterminate={indeterminate ? true : undefined}
+      disabled={disabled ? true : undefined}
       className={clsx(!label && className)}
     />
   );

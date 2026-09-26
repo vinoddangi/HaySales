@@ -28,15 +28,20 @@ export const Switch: React.FC<SwitchProps> = ({
   className = '',
   onChange,
 }) => {
-  const { ref, isSelected } = useSwitch({ selected, checked, onChange });
+  const { ref, isSelected } = useSwitch({
+    selected,
+    checked,
+    disabled,
+    onChange,
+  });
 
   const switchEl = (
     <md-switch
       ref={ref}
-      selected={isSelected}
-      disabled={disabled}
-      icons={icons}
-      showOnlySelectedIcon={showOnlySelectedIcon}
+      selected={isSelected ? true : undefined}
+      disabled={disabled ? true : undefined}
+      icons={icons ? true : undefined}
+      showOnlySelectedIcon={showOnlySelectedIcon ? true : undefined}
       className={clsx(!label && className)}
     />
   );

@@ -1,4 +1,15 @@
-import React, { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { Customer, Transaction } from '../../models';
+import { DatabaseMode, dbConfig } from '../../services/dbBridge';
+import {
+  clearAllLocalData,
+  getPendingChanges,
+  getPendingChangesCount,
+  getStoreData,
+  PendingChange,
+  publishPendingChangesToCloud,
+  syncLocalDatabaseFromCloud,
+} from '../../services/indexedDBService';
 import { auth } from '../../store/firebaseConfig';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { useAuth } from '../../store/hooks/useAuth';
@@ -10,6 +21,15 @@ import {
   setThemeMode,
 } from '../../store/slices/themeSlice';
 import { showSnackbar } from '../../store/slices/uiSlice';
+
+export interface LocalStats {
+  customers: number;
+  sales: number;
+  payments: number;
+  services: number;
+  purchases: number;
+  expenses: number;
+}
 
 export const colorPalettes: { key: ColorScheme; name: string; hex: string }[] =
   [
@@ -64,11 +84,109 @@ export const useProfilePage = () => {
 
   const phoneNumber = currentUser?.phoneNumber || '+91 98765 43210';
   const role = 'Enterprise Manager';
-  const [isEditing, setIsEditing] = useState(false);
-  const [editValue, setEditValue] = useState(name);
-  const [isSaving, setIsSaving] = useState(false);
 
   const isDark = mode === 'dark';
+
+  // Database Management State
+  const [dbMode, setDbMode] = useState<DatabaseMode>(dbConfig.getMode());
+  const [stats, setStats] = useState<LocalStats>({
+    customers: 0,
+    sales: 0,
+    payments: 0,
+    services: 0,
+    purchases: 0,
+    expenses: 0,
+  });
+  const [pendingCount, setPendingCount] = useState<number>(0);
+  const [pendingItems, setPendingItems] = useState<PendingChange[]>([]);
+  const [showPendingDetails, setShowPendingDetails] = useState<boolean>(false);
+  const [loadingDb, setLoadingDb] = useState(false);
+  const [syncingCloud, setSyncingCloud] = useState(false);
+  const [syncingPull, setSyncingPull] = useState(false);
+
+  const loadDbStats = useCallback(async () => {
+    try {
+      const [custs, cTxs, opTxs, pending] = await Promise.all([
+        getStoreData<Customer>('customers'),
+        getStoreData<Transaction>('customer_transactions'),
+        getStoreData<Transaction>('operation_transactions'),
+        getPendingChanges(),
+      ]);
+
+      const sales = cTxs.filter((t) => t.type === 'SALE').length;
+      const payments = cTxs.filter((t) => t.type === 'PAYMENT').length;
+      const services = cTxs.filter((t) => t.type === 'SERVICE').length;
+      const purchases = opTxs.filter((t) => t.type === 'PURCHASE').length;
+      const expenses = opTxs.filter((t) => t.type === 'EXPENSE').length;
+
+      setStats({
+        customers: custs.length,
+        sales,
+        payments,
+        services,
+        purchases,
+        expenses,
+      });
+      setPendingCount(pending.length);
+      setPendingItems(pending);
+    } catch (err) {
+      console.error('Failed to load local DB stats:', err);
+    } finally {
+      setLoadingDb(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchInitialStats = async () => {
+      try {
+        const [custs, cTxs, opTxs, pending] = await Promise.all([
+          getStoreData<Customer>('customers'),
+          getStoreData<Transaction>('customer_transactions'),
+          getStoreData<Transaction>('operation_transactions'),
+          getPendingChanges(),
+        ]);
+        if (!isMounted) return;
+
+        const sales = cTxs.filter((t) => t.type === 'SALE').length;
+        const payments = cTxs.filter((t) => t.type === 'PAYMENT').length;
+        const services = cTxs.filter((t) => t.type === 'SERVICE').length;
+        const purchases = opTxs.filter((t) => t.type === 'PURCHASE').length;
+        const expenses = opTxs.filter((t) => t.type === 'EXPENSE').length;
+
+        setStats({
+          customers: custs.length,
+          sales,
+          payments,
+          services,
+          purchases,
+          expenses,
+        });
+        setPendingCount(pending.length);
+        setPendingItems(pending);
+      } catch (err) {
+        console.error('Failed to load local DB stats:', err);
+      }
+    };
+
+    fetchInitialStats();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const handleToggleDbMode = (isLocal: boolean) => {
+    const nextMode: DatabaseMode = isLocal ? 'local' : 'server';
+    dbConfig.setMode(nextMode);
+    setDbMode(nextMode);
+    dispatch(
+      showSnackbar(
+        nextMode === 'local'
+          ? 'Local Offline DB Enabled (IndexedDB)!'
+          : 'Connected to Live Cloud Firestore!',
+      ),
+    );
+  };
 
   const handleToggleDarkMode = (checked: boolean) => {
     const next = checked ? 'dark' : 'light';
@@ -91,21 +209,10 @@ export const useProfilePage = () => {
     dispatch(showSnackbar(`Font size updated to ${labels[newSize]}`));
   };
 
-  const handleStartEditing = () => {
-    setEditValue(name);
-    setIsEditing(true);
-  };
-
-  const handleCancelEditing = () => {
-    setIsEditing(false);
-  };
-
-  const handleSaveName = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const cleanName = editValue.trim();
+  const handleUpdateDisplayName = async (newName: string) => {
+    const cleanName = newName.trim();
     if (!cleanName) return;
 
-    setIsSaving(true);
     setName(cleanName);
     try {
       localStorage.setItem('haysales_profile_name', cleanName);
@@ -122,8 +229,6 @@ export const useProfilePage = () => {
       }
     }
 
-    setIsEditing(false);
-    setIsSaving(false);
     dispatch(showSnackbar('Name updated successfully!'));
   };
 
@@ -132,20 +237,70 @@ export const useProfilePage = () => {
     dispatch(showSnackbar('Signed out successfully.'));
   };
 
-  const handleSyncCloud = () => {
-    dispatch(showSnackbar('Syncing from live cloud...'));
+  // 1. Sync from Cloud Firestore
+  const handleSyncFromCloud = async () => {
+    try {
+      setSyncingPull(true);
+      dispatch(showSnackbar('Syncing from Cloud Firestore...'));
+      const res = await syncLocalDatabaseFromCloud();
+      await loadDbStats();
+      dispatch(
+        showSnackbar(
+          `Synced: ${res.customersCount} customers, ${res.customerTransactionsCount} customer txs, ${res.operationTransactionsCount} ops.`,
+        ),
+      );
+    } catch (err) {
+      console.error('Failed to sync from Firestore:', err);
+      dispatch(showSnackbar('Failed to sync from Firestore.'));
+    } finally {
+      setSyncingPull(false);
+    }
   };
 
-  const handleLoadSnapshot = () => {
-    dispatch(showSnackbar('Loaded 2026 dataset snapshot.'));
+  // 2. Publish Modified / Delta Records to Cloud Firestore
+  const handlePublishToCloud = async () => {
+    try {
+      setSyncingCloud(true);
+      const count = await getPendingChangesCount();
+      if (count === 0) {
+        dispatch(
+          showSnackbar(
+            'Database is already in sync with Cloud Firestore. No pending changes to publish.',
+          ),
+        );
+        return;
+      }
+
+      const res = await publishPendingChangesToCloud();
+      await loadDbStats();
+      dispatch(
+        showSnackbar(
+          `Successfully published ${res.publishedCount} modified record(s) to Cloud Firestore!`,
+        ),
+      );
+    } catch (err) {
+      console.error('Failed to publish data to Firestore:', err);
+      dispatch(showSnackbar('Failed to publish to Firestore.'));
+    } finally {
+      setSyncingCloud(false);
+    }
   };
 
-  const handlePublishFirestore = () => {
-    dispatch(showSnackbar('All changes published to Firestore.'));
-  };
-
-  const handleClearLocalDB = () => {
-    dispatch(showSnackbar('Local database cleared.'));
+  // 3. Clear Local DB
+  const handleClearLocalDb = async () => {
+    try {
+      setLoadingDb(true);
+      await clearAllLocalData();
+      await loadDbStats();
+      dispatch(
+        showSnackbar('Local DB cleared. Click "Sync" to fetch from Firestore.'),
+      );
+    } catch (err) {
+      console.error('Failed to clear local DB:', err);
+      dispatch(showSnackbar('Error clearing local DB.'));
+    } finally {
+      setLoadingDb(false);
+    }
   };
 
   const getFontBadgeLabel = () => {
@@ -158,26 +313,30 @@ export const useProfilePage = () => {
     name,
     phoneNumber,
     role,
-    isEditing,
-    editValue,
-    setEditValue,
-    isSaving,
     isDark,
     scheme,
     fontSize,
+    dbMode,
+    stats,
+    pendingCount,
+    pendingItems,
+    showPendingDetails,
+    setShowPendingDetails,
+    loadingDb,
+    syncingCloud,
+    syncingPull,
     colorPalettes,
     fontSizeOptions,
     getFontBadgeLabel,
     handleToggleDarkMode,
     handleSelectScheme,
     handleSelectFontSize,
-    handleStartEditing,
-    handleCancelEditing,
-    handleSaveName,
+    handleUpdateDisplayName,
     handleSignOut,
-    handleSyncCloud,
-    handleLoadSnapshot,
-    handlePublishFirestore,
-    handleClearLocalDB,
+    handleToggleDbMode,
+    handleSyncFromCloud,
+    handlePublishToCloud,
+    handleClearLocalDb,
+    loadDbStats,
   };
 };

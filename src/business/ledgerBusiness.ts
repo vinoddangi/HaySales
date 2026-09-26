@@ -13,7 +13,6 @@ import { TimelineFilter } from './profitBusiness';
 export interface CustomerLedgerSummary {
   customerId: string;
   customerName: string;
-  openingBalance: number;
   totalSales: number;
   totalServices: number;
   totalBilled: number;
@@ -30,7 +29,6 @@ export interface CustomerLedgerDetail extends CustomerLedgerSummary {
 }
 
 export interface OverallLedgerSummary {
-  totalOpeningBalance: number;
   totalSales: number;
   totalServices: number;
   totalBilled: number;
@@ -121,7 +119,7 @@ export function filterCustomerTransactionsUpToTimeline(
  * aggregated cumulatively from the beginning of time up to the selected day/period.
  *
  * Formula:
- * Outstanding = Opening Balance + Total Sales + Total Services - Total Payments - Total Discounts
+ * Outstanding = Total Sales + Total Services - Total Payments - Total Discounts
  */
 export function calculateCustomerLedgerDetail(
   customer: Customer,
@@ -143,8 +141,6 @@ export function calculateCustomerLedgerDetail(
     const dateB = parseTransactionDate(b.date)?.getTime() || 0;
     return dateA - dateB;
   });
-
-  const openingBalance = Number(customer.openingBalance || 0);
 
   let totalSales = 0;
   let totalServices = 0;
@@ -174,9 +170,7 @@ export function calculateCustomerLedgerDetail(
     }
   }
 
-  const totalBilled = Number(
-    (openingBalance + totalSales + totalServices).toFixed(2),
-  );
+  const totalBilled = Number((totalSales + totalServices).toFixed(2));
   const currentOutstanding = Number(
     (totalBilled - totalPaid - totalDiscounts).toFixed(2),
   );
@@ -192,7 +186,6 @@ export function calculateCustomerLedgerDetail(
     customer,
     customerId: customer.id,
     customerName: customer.name,
-    openingBalance,
     totalSales: Number(totalSales.toFixed(2)),
     totalServices: Number(totalServices.toFixed(2)),
     totalBilled,
@@ -207,18 +200,16 @@ export function calculateCustomerLedgerDetail(
 
 /**
  * Calculates single running outstanding balance for a customer from beginning up to timeline.
- * Outstanding = Opening Balance + Sales + Services - Payments - Discounts
+ * Outstanding = Sales + Services - Payments - Discounts
  */
 export function calculateCustomerOutstanding(
   customerId: string,
   transactions: CustomerTransactionData[],
-  openingBalance = 0,
   timeline?: TimelineFilter | string | number | Date,
 ): number {
   const dummyCustomer: Customer = {
     id: customerId,
     name: '',
-    openingBalance,
   };
 
   const detail = calculateCustomerLedgerDetail(
@@ -242,7 +233,6 @@ export function calculateAllCustomersLedger(
 ): OverallLedgerSummary {
   const customerSummaries: CustomerLedgerSummary[] = [];
 
-  let totalOpeningBalance = 0;
   let totalSales = 0;
   let totalServices = 0;
   let totalBilled = 0;
@@ -261,7 +251,6 @@ export function calculateAllCustomersLedger(
     customerSummaries.push({
       customerId: detail.customerId,
       customerName: detail.customerName,
-      openingBalance: detail.openingBalance,
       totalSales: detail.totalSales,
       totalServices: detail.totalServices,
       totalBilled: detail.totalBilled,
@@ -272,7 +261,6 @@ export function calculateAllCustomersLedger(
       lastTransactionDate: detail.lastTransactionDate,
     });
 
-    totalOpeningBalance += detail.openingBalance;
     totalSales += detail.totalSales;
     totalServices += detail.totalServices;
     totalBilled += detail.totalBilled;
@@ -289,7 +277,6 @@ export function calculateAllCustomersLedger(
   customerSummaries.sort((a, b) => b.currentOutstanding - a.currentOutstanding);
 
   return {
-    totalOpeningBalance: Number(totalOpeningBalance.toFixed(2)),
     totalSales: Number(totalSales.toFixed(2)),
     totalServices: Number(totalServices.toFixed(2)),
     totalBilled: Number(totalBilled.toFixed(2)),

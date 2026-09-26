@@ -14,7 +14,7 @@
   display: flex;
   min-height: 100vh;
   width: 100%;
-  max-width: 27.5rem; /* 440px standard mobile width */
+  max-width: 440px; /* Standard mobile width */
   flex-direction: column;
   background-color: var(--md-sys-color-surface);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -23,6 +23,7 @@
 
 .mobile-shell-container--framed {
   margin: var(--md-sys-spacing-large) 0;
+  max-width: 430px;
   min-height: 860px;
   max-height: 890px;
   overflow: hidden;

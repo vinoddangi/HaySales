@@ -6,6 +6,56 @@ import {
   recordPendingChange,
 } from './indexedDBService';
 
+export type DatabaseMode = 'local' | 'server';
+
+const DB_MODE_KEY = 'haysales_db_mode';
+
+class DatabaseConfig {
+  private mode: DatabaseMode = 'local';
+
+  constructor() {
+    try {
+      if (
+        typeof window !== 'undefined' &&
+        typeof localStorage !== 'undefined' &&
+        typeof localStorage.getItem === 'function'
+      ) {
+        const saved = localStorage.getItem(DB_MODE_KEY);
+        if (saved === 'server' || saved === 'local') {
+          this.mode = saved;
+        }
+      }
+    } catch {
+      // Ignore storage error
+    }
+  }
+
+  getMode(): DatabaseMode {
+    return this.mode;
+  }
+
+  setMode(mode: DatabaseMode): void {
+    this.mode = mode;
+    try {
+      if (
+        typeof window !== 'undefined' &&
+        typeof localStorage !== 'undefined' &&
+        typeof localStorage.setItem === 'function'
+      ) {
+        localStorage.setItem(DB_MODE_KEY, mode);
+      }
+    } catch {
+      // Ignore storage error
+    }
+  }
+
+  isLocal(): boolean {
+    return this.getMode() === 'local';
+  }
+}
+
+export const dbConfig = new DatabaseConfig();
+
 export interface GenericDocRef {
   id: string;
   path: string;

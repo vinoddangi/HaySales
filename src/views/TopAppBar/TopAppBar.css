@@ -12,6 +12,7 @@
 
 .top-app-bar__container {
   height: 3.5rem;
+  padding: 0 var(--md-sys-spacing-medium);
 }
 
 /* ── Left / Leading ────────────────────────────────────────── */

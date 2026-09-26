@@ -53,11 +53,6 @@ export function openLocalDatabase(): Promise<IDBDatabase> {
       if (!db.objectStoreNames.contains('pending_changes')) {
         db.createObjectStore('pending_changes', { keyPath: 'id' });
       }
-
-      // 5. App metadata & system cache
-      if (!db.objectStoreNames.contains('metadata')) {
-        db.createObjectStore('metadata', { keyPath: 'key' });
-      }
     };
 
     request.onsuccess = () => resolve(request.result);
@@ -185,7 +180,6 @@ export async function clearAllLocalData(): Promise<void> {
     'customer_transactions',
     'operation_transactions',
     'pending_changes',
-    'metadata',
   ];
   for (const s of stores) {
     await clearStore(s);
@@ -372,4 +366,55 @@ export async function syncAndPublishCloudDatabase(): Promise<{
     publishedCount,
     ...pullResult,
   };
+}
+
+/**
+ * Check if the local IndexedDB contains data
+ */
+export async function isDatabaseSeeded(): Promise<boolean> {
+  try {
+    const customers = await getStoreData('customers');
+    return customers.length > 0;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Seed or reset Local IndexedDB using the clean initial database snapshot (Jan 2026 data).
+ */
+export async function seedLocalDatabaseFromSnapshot(
+  snapshotData?: any,
+): Promise<{
+  customersCount: number;
+  customerTransactionsCount: number;
+  operationTransactionsCount: number;
+}> {
+  const snapshot =
+    snapshotData ||
+    (await import('../data/initialDatabaseSnapshot.json')).default;
+
+  // Clear existing local stores
+  await clearAllLocalData();
+
+  // Populate local stores directly from snapshot
+  await bulkSaveStoreItems('customers', snapshot.customers || []);
+  await bulkSaveStoreItems(
+    'customer_transactions',
+    snapshot.customer_transactions || [],
+  );
+  await bulkSaveStoreItems(
+    'operation_transactions',
+    snapshot.operation_transactions || [],
+  );
+
+  return {
+    customersCount: (snapshot.customers || []).length,
+    customerTransactionsCount: (snapshot.customer_transactions || []).length,
+    operationTransactionsCount: (snapshot.operation_transactions || []).length,
+  };
+}
+
+if (typeof window !== 'undefined') {
+  (window as any).seedLocalDatabase = seedLocalDatabaseFromSnapshot;
 }
