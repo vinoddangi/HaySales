@@ -4,6 +4,7 @@ import { Badge } from '../../../../components/Badge';
 import {
   CustomerTransactionData,
   getRate,
+  isOpeningDueTransaction,
   isPaymentTransaction,
   isSaleTransaction,
   isServiceTransaction,
@@ -28,6 +29,7 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
   const isPayment = isPaymentTransaction(tx);
   const isService = isServiceTransaction(tx);
   const isSale = isSaleTransaction(tx);
+  const isOpeningDue = isOpeningDueTransaction(tx);
 
   const isFullCashSale = isSale && tx.remainingDue === 0 && tx.cashPaid > 0;
   const isPartialCash = isSale && tx.cashPaid > 0 && tx.remainingDue > 0;
@@ -36,9 +38,13 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
     ? 'Payment Received'
     : isService
       ? `Service: ${tx.category}`
-      : isFullCashSale
-        ? `Cash Sale: ${tx.category}`
-        : `Sale: ${tx.category}`;
+      : isOpeningDue
+        ? 'Opening Due'
+        : isFullCashSale
+          ? `Cash Sale: ${tx.category}`
+          : isSale
+            ? `Sale: ${tx.category}`
+            : 'Transaction';
 
   const formattedDate = formatDate(tx.date);
   const derivedRate = getRate(tx);

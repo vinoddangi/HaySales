@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
-  BASELINE_2025_CLOSING_STOCK,
+  BASELINE_CLOSING_STOCK,
   calculateMonthlyStockFromTransactions,
 } from '../../business/stockBusiness';
 import {
@@ -12,15 +12,15 @@ import {
 export type CropRecord = Partial<Record<CropCategory, PurchaseTransactionData>>;
 
 /**
- * StockState maps 'YYYY-MM' period keys (e.g. '2025-12', '2026-01', '2026-02')
+ * StockState maps 'YYYY-MM' period keys (e.g. '2025-01', '2025-02', '2026-01')
  * directly to that month's closing stock CropRecord.
  */
 export type StockState = Record<string, CropRecord>;
 
-export { BASELINE_2025_CLOSING_STOCK };
+export { BASELINE_CLOSING_STOCK };
 
 const initialState: StockState = {
-  '2025-12': BASELINE_2025_CLOSING_STOCK,
+  '2025-01': BASELINE_CLOSING_STOCK,
 };
 
 export const stockSlice = createSlice({

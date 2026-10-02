@@ -15,7 +15,7 @@ export type {
 };
 
 const initialState: CustomerOutstandingState = {
-  '2025-12': createBaselineCustomerOutstanding([]),
+  '2025-01': createBaselineCustomerOutstanding([]),
 };
 
 export const customerOutstandingSlice = createSlice({

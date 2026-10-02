@@ -13,10 +13,10 @@ describe('customerOutstandingBusiness - Monthly Customer Outstandings by YYYY-MM
     { id: 'c3', name: 'Dinesh Shah', openingDue: 0 },
   ];
 
-  it('creates baseline December 2025 (2025-12) customer outstanding state', () => {
+  it('creates baseline January 2025 (2025-01) customer outstanding state', () => {
     const baseline = createBaselineCustomerOutstanding(sampleCustomers);
 
-    expect(baseline.period).toBe('2025-12');
+    expect(baseline.period).toBe('2025-01');
     expect(baseline.totalOutstanding).toBe(15000);
     expect(baseline.customersWithDuesCount).toBe(2);
     expect(baseline.byCustomer['c1'].outstanding).toBe(10000);
@@ -74,8 +74,8 @@ describe('customerOutstandingBusiness - Monthly Customer Outstandings by YYYY-MM
       sampleTxs,
     );
 
-    // Baseline: 2025-12
-    expect(monthlyState['2025-12'].totalOutstanding).toBe(15000);
+    // Baseline: 2025-01
+    expect(monthlyState['2025-01'].totalOutstanding).toBe(15000);
 
     // January 2026 ('2026-01'):
     // c1: 10000 opening + 15000 credit = 25000

@@ -66,7 +66,7 @@ export const CashInHandCard: React.FC<CashInHandCardProps> = ({
               )}
             >
               {cashAdjustment > 0
-                ? `+${formatRupee(cashAdjustment)} vs last period`
+                ? `${formatRupee(cashAdjustment)} vs last period`
                 : cashAdjustment < 0
                   ? `-${formatRupee(Math.abs(cashAdjustment))} vs last period`
                   : '₹0.00 vs last period'}

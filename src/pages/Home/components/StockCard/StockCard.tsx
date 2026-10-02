@@ -107,7 +107,7 @@ export const StockCard: React.FC<StockCardProps> = ({
         </div>
 
         <div className="hs-stock-card__meta">
-          Available: {formatWeight(totalAvailableWeight)} • Margin: +
+          Available: {formatWeight(totalAvailableWeight)} • Margin:{' '}
           {formatRupee(totalGrossCommissionProfit)}
         </div>
 
@@ -218,7 +218,6 @@ export const StockCard: React.FC<StockCardProps> = ({
                               : 'hs-stock-crop-row__profit-val--neg',
                           )}
                         >
-                          {isProfitPos ? '+' : ''}
                           {formatRupee(crop.grossCommissionProfit)}
                         </span>
                       </div>
@@ -305,7 +304,7 @@ export const StockCard: React.FC<StockCardProps> = ({
                           </span>
                           <span className="hs-stock-crop-row__val">
                             {crop.sales.avgRate > 0
-                              ? `${unitSpread >= 0 ? '+' : ''}₹${unitSpread.toFixed(2)}/kg`
+                              ? `₹${unitSpread.toFixed(2)}/kg`
                               : '—'}
                           </span>
                           <div className="hs-stock-crop-row__sub-list">
@@ -313,8 +312,7 @@ export const StockCard: React.FC<StockCardProps> = ({
                               COGS: {formatRupee(crop.costOfGoodsSold)}
                             </span>
                             <span className="hs-stock-crop-row__sub">
-                              Profit: {isProfitPos ? '+' : ''}
-                              {formatRupee(crop.grossCommissionProfit)}
+                              Profit: {formatRupee(crop.grossCommissionProfit)}
                             </span>
                           </div>
                         </div>

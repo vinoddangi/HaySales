@@ -9,11 +9,16 @@ import {
 // ── Transaction Type & Category Definitions ─────────────────────────────────
 
 export type TransactionType =
-  'SALE' | 'SERVICE' | 'PAYMENT' | 'PURCHASE' | 'EXPENSE';
+  | 'SALE'
+  | 'SERVICE'
+  | 'PAYMENT'
+  | 'PURCHASE'
+  | 'EXPENSE'
+  | 'OPENING_DUE';
 
 export type CustomerTransactionType = Extract<
   TransactionType,
-  'SALE' | 'SERVICE' | 'PAYMENT'
+  'SALE' | 'SERVICE' | 'PAYMENT' | 'OPENING_DUE'
 >;
 
 export type OperationsTransactionType = Extract<
@@ -153,6 +158,13 @@ export type PaymentTransactionData = CoreTransactionData & {
   discount?: number;
 };
 
+/** Customer Opening Due Transaction — baseline opening balance */
+export type OpeningDueTransactionData = CoreTransactionData & {
+  type: 'OPENING_DUE';
+  customerId: string;
+  customerName?: string;
+};
+
 /** Operating Expense Transaction */
 export type ExpenseTransactionData = CoreTransactionData & {
   type: 'EXPENSE';
@@ -162,9 +174,12 @@ export type ExpenseTransactionData = CoreTransactionData & {
   partnerName?: string;
 };
 
-/** Union of all customer transaction variants (SALE, SERVICE, PAYMENT) */
+/** Union of all customer transaction variants (SALE, SERVICE, PAYMENT, OPENING_DUE) */
 export type CustomerTransactionData =
-  SaleTransactionData | ServiceTransactionData | PaymentTransactionData;
+  | SaleTransactionData
+  | ServiceTransactionData
+  | PaymentTransactionData
+  | OpeningDueTransactionData;
 
 /** Union of all operations transaction variants (PURCHASE, EXPENSE) */
 export type OperationsTransactionData =
@@ -215,6 +230,16 @@ export function isPaymentTransaction(
   );
 }
 
+export function isOpeningDueTransaction(
+  tx: unknown,
+): tx is OpeningDueTransactionData {
+  return (
+    isObject(tx) &&
+    tx.type === 'OPENING_DUE' &&
+    typeof tx.customerId === 'string'
+  );
+}
+
 export function isExpenseTransaction(
   tx: unknown,
 ): tx is ExpenseTransactionData {
@@ -245,7 +270,8 @@ export function isCustomerTransaction(
   return (
     isSaleTransaction(tx) ||
     isServiceTransaction(tx) ||
-    isPaymentTransaction(tx)
+    isPaymentTransaction(tx) ||
+    isOpeningDueTransaction(tx)
   );
 }
 
@@ -322,6 +348,15 @@ export function parseCustomerTransactionFromRaw(
       customerId: custId,
       ...(custName ? { customerName: custName } : {}),
       ...(discount !== undefined ? { discount } : {}),
+    };
+  }
+
+  if (rawType === 'OPENING_DUE') {
+    return {
+      ...core,
+      type: 'OPENING_DUE',
+      customerId: custId,
+      ...(custName ? { customerName: custName } : {}),
     };
   }
 

@@ -41,9 +41,9 @@ export const useTopAppBar = ({ onBack }: UseTopAppBarOptions = {}) => {
     return currentUser?.phoneNumber || 'Vinod Dangi';
   }, [currentUser]);
 
-  // Available years from 2026 to current calendar year
+  // Available years from 2025 to current calendar year
   const availableYears = useMemo(() => {
-    const startYear = 2026;
+    const startYear = 2025;
     const currentYear = new Date().getFullYear();
     const endYear = Math.max(startYear, currentYear);
     const years: number[] = [];

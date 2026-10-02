@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export type FilterPeriodMode = 'month' | 'ytd';
+export type FilterPeriodMode = 'month' | 'ytd' | 'all';
 
 export interface SnackbarState {
   open: boolean;
@@ -26,7 +26,7 @@ export interface UiState {
 }
 
 const currentYear = new Date().getFullYear();
-const defaultYear = currentYear >= 2026 ? currentYear : 2026;
+const defaultYear = currentYear >= 2025 ? currentYear : 2025;
 
 const initialState: UiState = {
   selectedYear: defaultYear,

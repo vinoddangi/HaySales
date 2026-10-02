@@ -11,19 +11,19 @@ import { parseTransactionDate } from '../utils';
 import { calculateCropCommissionProfit } from './profitBusiness';
 
 /**
- * Baseline closing stock as of December 2025 ('2025-12').
+ * Baseline closing stock as of January 2025 ('2025-01').
  */
-export const BASELINE_2025_CLOSING_STOCK: CropRecord = {
+export const BASELINE_CLOSING_STOCK: CropRecord = {
   Others: {
-    id: 'closing-others-2025-12',
-    date: '2025-12-31',
+    id: 'closing-others-2025-01',
+    date: '2025-01-01',
     type: 'PURCHASE',
     category: 'Others',
-    weight: 13528,
-    amount: 141097.04,
-    cashPaid: 141097.04,
+    weight: 0,
+    amount: 0,
+    cashPaid: 0,
     remainingDue: 0,
-    note: '2025 Dec Closing Stock',
+    note: '2025 Jan Opening Stock',
     vendorName: 'Opening Inventory',
   },
 };
@@ -44,8 +44,8 @@ export function formatYearMonth(year: number, month: number): string {
 
 /**
  * Calculates the previous calendar month key in 'YYYY-MM' format.
- * e.g., for (2026, 1) -> '2025-12'
- *       for (2026, 2) -> '2026-01'
+ * e.g., for (2025, 1) -> '2024-12'
+ *       for (2025, 2) -> '2025-01'
  */
 export function getPreviousYearMonth(year: number, month: number): string {
   const prevMonth = month === 1 ? 12 : month - 1;
@@ -67,11 +67,11 @@ export function getOpeningStockForMonth(
 
 /**
  * Extracts and sorts all unique year-months ('YYYY-MM') present across transactions.
- * Always ensures baseline period (e.g. 2026-01) is included in chronological order.
+ * Always ensures baseline period (e.g. 2025-01) is included in chronological order.
  */
 export function extractChronologicalMonths(
   transactions: Transaction[],
-  baselineYear = 2026,
+  baselineYear = 2025,
   baselineMonth = 1,
 ): string[] {
   const monthSet = new Set<string>();
@@ -92,24 +92,27 @@ export function extractChronologicalMonths(
  * maintaining state keyed strictly by 'YYYY-MM'.
  *
  * For each month:
- * 1. Opening Stock is taken directly from the previous month's Closing Stock (or '2025-12' baseline).
+ * 1. Opening Stock is taken directly from the previous month's Closing Stock (or '2025-01' baseline).
  * 2. Purchases and Sales in the month are matched by crop category.
  * 3. Weighted average cost, sales, COGS, and closing stock are computed.
  * 4. Closing stock of the month is recorded directly under 'YYYY-MM' key.
  *
  * @param transactions All recorded transactions (Customer sales & Operations purchases)
- * @param initialBaseline Optional starting baseline closing stock (defaults to '2025-12' closing stock)
- * @returns Complete StockState mapping 'YYYY-MM' strings (e.g. '2025-12', '2026-01', '2026-02') to CropRecords.
+ * @param initialBaseline Optional starting baseline closing stock (defaults to '2025-01' closing stock)
+ * @returns Complete StockState mapping 'YYYY-MM' strings (e.g. '2025-01', '2025-02') to CropRecords.
  */
 export function calculateMonthlyStockFromTransactions(
   transactions: Transaction[],
-  initialBaseline: CropRecord = BASELINE_2025_CLOSING_STOCK,
+  initialBaseline: CropRecord = BASELINE_CLOSING_STOCK,
+  baselineYear = 2025,
+  baselineMonth = 1,
 ): StockState {
+  const baselineKey = getPreviousYearMonth(baselineYear, baselineMonth);
   const stockState: StockState = {
-    '2025-12': { ...initialBaseline },
+    [baselineKey]: { ...initialBaseline },
   };
 
-  const months = extractChronologicalMonths(transactions, 2026, 1);
+  const months = extractChronologicalMonths(transactions, baselineYear, baselineMonth);
 
   for (const yearMonth of months) {
     const [yearStr, monthStr] = yearMonth.split('-');

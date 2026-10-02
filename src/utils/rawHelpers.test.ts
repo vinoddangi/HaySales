@@ -78,7 +78,7 @@ describe('rawHelpers utility functions', () => {
     });
 
     it('parses iso dates properly', () => {
-      expect(parseIsoDate('2026-09-26')).toBe('2026-09-26T00:00:00.000Z');
+      expect(parseIsoDate('2026-09-26')).toBe('2026-09-26');
       expect(parseIsoDate(null)).toBeUndefined();
     });
   });

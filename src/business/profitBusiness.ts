@@ -19,7 +19,7 @@ export interface TimelineFilter {
   selectedYear: number;
   selectedMonth: number; // 0-indexed: 0 = January, 11 = December
   selectedDay?: number; // Optional 1-indexed day of month (1..31)
-  filterMode?: 'month' | 'ytd';
+  filterMode?: 'month' | 'ytd' | 'all';
 }
 
 // ── Result Type Interfaces ──────────────────────────────────────────────────
@@ -85,7 +85,7 @@ export interface ExpectedProfitSummary {
 // ── Timeline Filtering Helpers ──────────────────────────────────────────────
 
 /**
- * Filters transactions according to active timeline selection (Month vs YTD vs specific Day).
+ * Filters transactions according to active timeline selection (Month vs YTD vs Year vs All vs specific Day).
  */
 export function filterTransactionsByTimeline(
   transactions: Transaction[],
@@ -98,19 +98,32 @@ export function filterTransactionsByTimeline(
     const txMonth = d.getMonth();
     const txDay = d.getDate();
 
+    // 1. All-time mode: include all transactions from 2025 onwards
+    if (timeline.filterMode === 'all') {
+      return true;
+    }
+
+    // 2. Year-level check
     if (txYear !== timeline.selectedYear) return false;
 
+    // 3. Specific Day
     if (timeline.selectedDay !== undefined && timeline.selectedDay > 0) {
       return (
         txMonth === timeline.selectedMonth && txDay === timeline.selectedDay
       );
     }
 
+    // 3. Monthly mode (Default)
     if (timeline.filterMode === 'month' || !timeline.filterMode) {
       return txMonth === timeline.selectedMonth;
     }
-    // YTD (Year-To-Date): from Jan 1st up to active selectedMonth of selectedYear
-    return txMonth <= timeline.selectedMonth;
+
+    // 4. YTD (Year-To-Date): from Jan 1st up to active selectedMonth of selectedYear
+    if (timeline.filterMode === 'ytd') {
+      return txMonth <= timeline.selectedMonth;
+    }
+
+    return txMonth === timeline.selectedMonth;
   });
 }
 

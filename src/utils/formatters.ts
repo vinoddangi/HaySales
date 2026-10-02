@@ -13,12 +13,25 @@ export const MONTH_NAMES = [
   'December',
 ];
 
+/**
+ * Returns the local calendar date formatted strictly as 'YYYY-MM-DD' (e.g. '2026-01-16').
+ * Unlike Date.prototype.toISOString() which uses UTC and rolls back by 1 day between midnight
+ * and 5:30 AM in India (IST), this uses the local device / Indian timezone date components.
+ */
+export const getTodayDateString = (d: Date = new Date()): string => {
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
 export const formatRupee = (num: number): string => {
   return new Intl.NumberFormat('en-IN', {
     style: 'currency',
     currency: 'INR',
-    maximumFractionDigits: 2,
-  }).format(num);
+    maximumFractionDigits: 0,
+    minimumFractionDigits: 0,
+  }).format(Math.round(num || 0));
 };
 
 export const formatDate = (
@@ -31,7 +44,10 @@ export const formatDate = (
 ): string => {
   const d = parseTransactionDate(dateVal);
   if (!d) return '';
-  return d.toLocaleDateString('en-IN');
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year = d.getFullYear();
+  return `${day}/${month}/${year}`;
 };
 
 export const parseTransactionDate = (
@@ -98,9 +114,24 @@ export const parseTransactionDate = (
     const s = dateVal.trim();
     if (!s) return null;
 
-    // Check for DD/MM/YYYY or DD-MM-YYYY or DD.MM.YYYY with optional time
+    // A. ISO strings with time or UTC indicator (e.g. 2026-01-15T14:30:00.000Z) -> parse with full timezone conversion
+    if (s.includes('T') || s.endsWith('Z')) {
+      const d = new Date(s);
+      if (!isNaN(d.getTime())) return d;
+    }
+
+    // B. Pure Date String: YYYY-MM-DD (e.g. 2025-01-15) -> lock to local midday
+    const ymdMatch = s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
+    if (ymdMatch) {
+      const year = parseInt(ymdMatch[1], 10);
+      const month = parseInt(ymdMatch[2], 10) - 1;
+      const day = parseInt(ymdMatch[3], 10);
+      return new Date(year, month, day, 12, 0, 0);
+    }
+
+    // C. Pattern: DD/MM/YYYY or DD-MM-YYYY or DD.MM.YYYY -> lock to local midday
     const ddmmyyyyMatch = s.match(
-      /^(\d{1,2})[/\-.](\d{1,2})[/\-.](\d{2,4})(?:[,\s]+(\d{1,2}):(\d{1,2})(?::(\d{1,2}))?(?:\s*([ap]m))?)?$/i,
+      /^(\d{1,2})[/\-.](\d{1,2})[/\-.](\d{2,4})/i,
     );
     if (ddmmyyyyMatch) {
       const day = parseInt(ddmmyyyyMatch[1], 10);
@@ -109,19 +140,10 @@ export const parseTransactionDate = (
       if (year < 100) {
         year += year < 50 ? 2000 : 1900;
       }
-      let hours = ddmmyyyyMatch[4] ? parseInt(ddmmyyyyMatch[4], 10) : 0;
-      const minutes = ddmmyyyyMatch[5] ? parseInt(ddmmyyyyMatch[5], 10) : 0;
-      const seconds = ddmmyyyyMatch[6] ? parseInt(ddmmyyyyMatch[6], 10) : 0;
-      const ampm = ddmmyyyyMatch[7] ? ddmmyyyyMatch[7].toLowerCase() : null;
-
-      if (ampm === 'pm' && hours < 12) hours += 12;
-      if (ampm === 'am' && hours === 12) hours = 0;
-
-      const d = new Date(year, month, day, hours, minutes, seconds);
-      if (!isNaN(d.getTime())) return d;
+      return new Date(year, month, day, 12, 0, 0);
     }
 
-    // Standard JavaScript Date parsing (ISO 8601, YYYY-MM-DD, etc.)
+    // D. Generic Date parse fallback
     const d = new Date(s);
     return isNaN(d.getTime()) ? null : d;
   }
@@ -131,7 +153,7 @@ export const parseTransactionDate = (
 
 export const formatWeight = (kg: number): string => {
   if (!kg || kg <= 0) return '0 kg';
-  return `${kg.toLocaleString('en-IN', { maximumFractionDigits: 2 })} kg`;
+  return `${Math.round(kg).toLocaleString('en-IN', { maximumFractionDigits: 0 })} kg`;
 };
 
 export const formatWeightWithRate = (

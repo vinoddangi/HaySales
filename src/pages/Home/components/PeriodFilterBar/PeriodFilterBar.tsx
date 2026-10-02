@@ -2,14 +2,15 @@ import clsx from 'clsx';
 import { Calendar } from 'lucide-react';
 import React from 'react';
 import { Flex } from '../../../../components/layouts/Flex';
+import { FilterPeriodMode } from '../../../../store/slices/uiSlice';
 import { MONTH_NAMES } from '../../../../utils/formatters';
 import './PeriodFilterBar.css';
 
 export interface PeriodFilterBarProps {
-  filterMode: 'month' | 'ytd';
+  filterMode: FilterPeriodMode;
   selectedMonth: number;
   selectedYear: number;
-  onFilterModeChange: (_mode: 'month' | 'ytd') => void;
+  onFilterModeChange: (_mode: FilterPeriodMode) => void;
   onMonthChange: (_month: number) => void;
   className?: string;
 }
@@ -27,7 +28,7 @@ export const PeriodFilterBar: React.FC<PeriodFilterBarProps> = ({
   return (
     <div className={clsx('hs-period-filter-bar', className)}>
       <Flex align="center" justify="between" fullWidth gap="xs">
-        {/* Mode Toggle Buttons: Current Month / YTD */}
+        {/* Mode Toggle Buttons: Monthly / YTD / All */}
         <div className="hs-period-filter-bar__segment">
           <button
             type="button"
@@ -50,6 +51,17 @@ export const PeriodFilterBar: React.FC<PeriodFilterBarProps> = ({
             onClick={() => onFilterModeChange('ytd')}
           >
             YTD {selectedYear}
+          </button>
+          <button
+            type="button"
+            className={clsx(
+              'hs-period-filter-bar__segment-btn',
+              filterMode === 'all' &&
+                'hs-period-filter-bar__segment-btn--active',
+            )}
+            onClick={() => onFilterModeChange('all')}
+          >
+            All
           </button>
         </div>
 

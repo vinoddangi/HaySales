@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { filterTransactionsByTimeline } from '../../business';
 import {
   CropCategory,
   ExpenseCategory,
@@ -16,11 +17,12 @@ import {
   useGetOperationTransactionsQuery,
 } from '../../store/slices/customersApi';
 import {
+  FilterPeriodMode,
   setFilterMode,
   setSelectedMonth,
   showSnackbar,
 } from '../../store/slices/uiSlice';
-import { MONTH_NAMES, parseTransactionDate } from '../../utils';
+import { MONTH_NAMES } from '../../utils';
 import { ExpenseFormData } from './components/ExpenseFormCard';
 import { PurchaseFormData } from './components/PurchaseFormCard';
 
@@ -34,7 +36,7 @@ export function usePurchasesPage() {
 
   const filterMode = useAppSelector((state) => state.ui.filterMode);
   const selectedMonth = useAppSelector((state) => state.ui.selectedMonth);
-  const selectedYear = 2026;
+  const selectedYear = useAppSelector((state) => state.ui.selectedYear);
 
   const { data: opTransactions = [] } = useGetOperationTransactionsQuery();
   const { data: custTransactions = [] } =
@@ -48,13 +50,10 @@ export function usePurchasesPage() {
 
   // Filter transactions according to selected period
   const filteredTransactions = useMemo(() => {
-    return allTransactions.filter((tx) => {
-      const d = parseTransactionDate(tx.date);
-      if (!d) return false;
-      if (d.getFullYear() !== selectedYear) return false;
-      if (filterMode === 'month' && d.getMonth() !== selectedMonth)
-        return false;
-      return true;
+    return filterTransactionsByTimeline(allTransactions, {
+      selectedYear,
+      selectedMonth,
+      filterMode,
     });
   }, [allTransactions, filterMode, selectedMonth, selectedYear]);
 
@@ -87,22 +86,26 @@ export function usePurchasesPage() {
     const avgRate = pWt > 0 ? Number((pAmt / pWt).toFixed(2)) : 0;
 
     return {
-      totalPurchaseAmount: Number(pAmt.toFixed(2)),
-      totalPurchaseWeight: Number(pWt.toFixed(2)),
-      totalExpenseAmount: Number(eAmt.toFixed(2)),
-      totalSoldWeight: Number(sWt.toFixed(2)),
-      currentStock: Number(stock.toFixed(2)),
+      totalPurchaseAmount: Math.round(pAmt),
+      totalPurchaseWeight: Math.round(pWt),
+      totalExpenseAmount: Math.round(eAmt),
+      totalSoldWeight: Math.round(sWt),
+      currentStock: Math.round(stock),
       avgBuyRate: avgRate,
     };
   }, [filteredTransactions]);
 
   const periodLabel = useMemo(() => {
-    return filterMode === 'month'
-      ? `${MONTH_NAMES[selectedMonth]} ${selectedYear}`
-      : `YTD ${selectedYear}`;
+    if (filterMode === 'all') {
+      return 'All Time';
+    }
+    if (filterMode === 'ytd') {
+      return `YTD ${selectedYear}`;
+    }
+    return `${MONTH_NAMES[selectedMonth]} ${selectedYear}`;
   }, [filterMode, selectedMonth, selectedYear]);
 
-  const handleFilterModeChange = (mode: 'month' | 'ytd') => {
+  const handleFilterModeChange = (mode: FilterPeriodMode) => {
     dispatch(setFilterMode(mode));
   };
 

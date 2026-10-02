@@ -317,13 +317,13 @@ describe('ledgerBusiness', () => {
         timelineYtd,
       );
 
-      // All 2026 txs + 2025 tx (10k) + opening (50k)
-      // Total 2026: Jan 10k + Feb 5k - Mar 16k + May 30k - May 10k - June 20k = -1k.
-      // Total outstanding up to end of 2026 = 50k + 10k (2025) - 1k (2026) = 59,000
-      expect(result.totalOutstanding).toBe(59000);
+      // All txs up to May 2026 + 2025 tx (10k) + opening (50k)
+      // Jan 10k + Feb 5k - Mar 16k + May 30k - May 10k = 19k (2026 YTD up to May)
+      // Total outstanding up to May 2026 = 50k + 10k (2025) + 19k (2026) = 79,000
+      expect(result.totalOutstanding).toBe(79000);
       // Previous tenor (end of 2025): openingDue 50k + 2025 sale 10k = 60,000
       expect(result.previousOutstanding).toBe(60000);
-      expect(result.tenorDifference).toBe(-1000);
+      expect(result.tenorDifference).toBe(19000);
       expect(result.previousTenorLabel).toBe('vs 2025 Closing');
     });
   });

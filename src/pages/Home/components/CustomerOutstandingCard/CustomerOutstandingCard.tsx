@@ -95,7 +95,7 @@ export const CustomerOutstandingCard: React.FC<
                 )}
               >
                 {(tenorDifference ?? netChange) > 0
-                  ? `+${formatRupee(tenorDifference ?? netChange)}`
+                  ? `${formatRupee(tenorDifference ?? netChange)}`
                   : (tenorDifference ?? netChange) < 0
                     ? `-${formatRupee(Math.abs(tenorDifference ?? netChange))}`
                     : '₹0.00'}
@@ -116,7 +116,7 @@ export const CustomerOutstandingCard: React.FC<
             <div className="hs-outstanding-pill hs-outstanding-pill--credit">
               <span className="hs-outstanding-pill__label">Credit Added</span>
               <span className="hs-outstanding-pill__val">
-                +{formatRupee(periodCreditAdded)}
+                {formatRupee(periodCreditAdded)}
               </span>
               <span className="hs-outstanding-pill__caption">Sales & dues</span>
             </div>
@@ -148,7 +148,7 @@ export const CustomerOutstandingCard: React.FC<
               <span className="hs-outstanding-pill__label">Net Change</span>
               <span className="hs-outstanding-pill__val">
                 {netChange > 0
-                  ? `+${formatRupee(netChange)}`
+                  ? `${formatRupee(netChange)}`
                   : netChange < 0
                     ? `-${formatRupee(Math.abs(netChange))}`
                     : '₹0.00'}

@@ -7,7 +7,7 @@ import {
   isServiceTransaction,
   Transaction,
 } from '../models';
-import { MONTH_NAMES, parseTransactionDate } from '../utils';
+import { MONTH_NAMES, parseIsoDate, parseTransactionDate } from '../utils';
 import { TimelineFilter } from './profitBusiness';
 
 // ── Result Type Interfaces ──────────────────────────────────────────────────
@@ -101,8 +101,12 @@ export function getTimelineCutoffTimestamp(
   const day = timeline.selectedDay;
   const mode = timeline.filterMode;
 
+  if (mode === 'all') {
+    return Infinity;
+  }
+
   if (mode === 'ytd') {
-    return new Date(year, 11, 31, 23, 59, 59, 999).getTime();
+    return new Date(year, month + 1, 0, 23, 59, 59, 999).getTime();
   }
 
   // If a specific day is selected (e.g. May 15th): cutoff is end of that day
@@ -124,6 +128,10 @@ export function getPreviousTimelineCutoffTimestamp(
   const year = timeline.selectedYear;
   const month = timeline.selectedMonth;
   const mode = timeline.filterMode;
+
+  if (mode === 'all') {
+    return 0;
+  }
 
   if (mode === 'ytd') {
     // End of prior year (Dec 31 23:59:59.999)
@@ -218,18 +226,12 @@ export function calculateCustomerLedgerDetail(
     }
   }
 
-  const totalBilled = Number(
-    (openingDue + totalSales + totalServices).toFixed(2),
-  );
-  const currentOutstanding = Number(
-    (totalBilled - totalPaid - totalDiscounts).toFixed(2),
-  );
+  const totalBilled = Math.round(openingDue + totalSales + totalServices);
+  const currentOutstanding = Math.round(totalBilled - totalPaid - totalDiscounts);
 
   const lastTx = filteredTxs[filteredTxs.length - 1];
   const lastTransactionDate = lastTx
-    ? typeof lastTx.date === 'string'
-      ? lastTx.date
-      : parseTransactionDate(lastTx.date)?.toISOString()
+    ? parseIsoDate(lastTx.date)
     : undefined;
 
   return {
@@ -237,11 +239,11 @@ export function calculateCustomerLedgerDetail(
     customerId: customer.id,
     customerName: customer.name,
     openingDue,
-    totalSales: Number(totalSales.toFixed(2)),
-    totalServices: Number(totalServices.toFixed(2)),
+    totalSales: Math.round(totalSales),
+    totalServices: Math.round(totalServices),
     totalBilled,
-    totalPaid: Number(totalPaid.toFixed(2)),
-    totalDiscounts: Number(totalDiscounts.toFixed(2)),
+    totalPaid: Math.round(totalPaid),
+    totalDiscounts: Math.round(totalDiscounts),
     currentOutstanding,
     transactions: filteredTxs,
     transactionCount: filteredTxs.length,
@@ -333,13 +335,13 @@ export function calculateAllCustomersLedger(
   customerSummaries.sort((a, b) => b.currentOutstanding - a.currentOutstanding);
 
   return {
-    totalOpeningDue: Number(totalOpeningDue.toFixed(2)),
-    totalSales: Number(totalSales.toFixed(2)),
-    totalServices: Number(totalServices.toFixed(2)),
-    totalBilled: Number(totalBilled.toFixed(2)),
-    totalPaid: Number(totalPaid.toFixed(2)),
-    totalDiscounts: Number(totalDiscounts.toFixed(2)),
-    totalOutstanding: Number(totalOutstanding.toFixed(2)),
+    totalOpeningDue: Math.round(totalOpeningDue),
+    totalSales: Math.round(totalSales),
+    totalServices: Math.round(totalServices),
+    totalBilled: Math.round(totalBilled),
+    totalPaid: Math.round(totalPaid),
+    totalDiscounts: Math.round(totalDiscounts),
+    totalOutstanding: Math.round(totalOutstanding),
     customerCount: customers.length,
     customersWithDuesCount,
     customers: customerSummaries,
@@ -368,8 +370,8 @@ export function calculateCustomerOutstandingMetrics(
   const hasCustomerOpeningDues = currentLedger.totalOpeningDue > 0;
   const baseReceivables = hasCustomerOpeningDues ? 0 : initialBaseReceivables;
 
-  const totalOutstanding = Number(
-    (baseReceivables + currentLedger.totalOutstanding).toFixed(2),
+  const totalOutstanding = Math.round(
+    baseReceivables + currentLedger.totalOutstanding,
   );
 
   // 2. Previous tenor cumulative ledger
@@ -383,14 +385,12 @@ export function calculateCustomerOutstandingMetrics(
     customers,
     prevCustomerTransactions,
   );
-  const previousOutstanding = Number(
-    (baseReceivables + prevLedger.totalOutstanding).toFixed(2),
+  const previousOutstanding = Math.round(
+    baseReceivables + prevLedger.totalOutstanding,
   );
 
   // 3. Difference between current and previous tenor
-  const tenorDifference = Number(
-    (totalOutstanding - previousOutstanding).toFixed(2),
-  );
+  const tenorDifference = Math.round(totalOutstanding - previousOutstanding);
 
   // 4. Period Credit Added & Period Collections strictly within active period
   let periodCreditAdded = 0;
@@ -420,9 +420,9 @@ export function calculateCustomerOutstandingMetrics(
     }
   }
 
-  periodCreditAdded = Number(periodCreditAdded.toFixed(2));
-  periodCollections = Number(periodCollections.toFixed(2));
-  const netChange = Number((periodCreditAdded - periodCollections).toFixed(2));
+  periodCreditAdded = Math.round(periodCreditAdded);
+  periodCollections = Math.round(periodCollections);
+  const netChange = Math.round(periodCreditAdded - periodCollections);
 
   // 5. Build Previous Tenor Label
   const year = timeline.selectedYear;
@@ -430,9 +430,11 @@ export function calculateCustomerOutstandingMetrics(
   const mode = timeline.filterMode;
 
   const previousTenorLabel =
-    mode === 'ytd' || month === 0
-      ? `vs ${year - 1} Closing`
-      : `vs ${MONTH_NAMES[month - 1] || 'Last Month'}`;
+    mode === 'all'
+      ? ''
+      : mode === 'ytd' || month === 0
+        ? `vs ${year - 1} Closing`
+        : `vs ${MONTH_NAMES[month - 1] || 'Last Month'}`;
 
   return {
     totalOutstanding,

@@ -10,7 +10,7 @@ import {
   INITIAL_ASSETS,
   VALID_EXPENSE_CATEGORIES,
 } from '../../../../models';
-import { formatRupee } from '../../../../utils/formatters';
+import { formatRupee, getTodayDateString } from '../../../../utils/formatters';
 import './ExpenseFormCard.css';
 
 export interface ExpenseFormData {
@@ -42,9 +42,7 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
   isSaving,
   onSubmit,
 }) => {
-  const [date, setDate] = useState(
-    () => new Date().toISOString().split('T')[0],
-  );
+  const [date, setDate] = useState(() => getTodayDateString());
   const [category, setCategory] = useState<string>('Fuel');
   const [targetAssetId, setTargetAssetId] = useState<string>('asset_pickup');
   const [amount, setAmount] = useState<number>(0);

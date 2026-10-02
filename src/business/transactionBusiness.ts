@@ -10,7 +10,7 @@ import {
   ExpenseTransactionData,
   isPaymentTransaction,
 } from '../models';
-import { getNumberProp, getStringProp } from '../utils';
+import { getNumberProp, getStringProp, getTodayDateString } from '../utils';
 
 /**
  * Extracts a linked operating expense transaction (e.g. discount expense for double-entry)
@@ -36,7 +36,7 @@ export function extractLinkedExpenseEntry(
       id: `otx_disc_${transactionId}`,
       type: 'EXPENSE',
       category: 'Discount',
-      date: tx.date || new Date().toISOString(),
+      date: tx.date || getTodayDateString(),
       amount: discountVal,
       cashPaid: discountVal,
       remainingDue: 0,

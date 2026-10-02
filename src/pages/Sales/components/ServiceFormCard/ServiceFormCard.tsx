@@ -7,7 +7,7 @@ import { Grid } from '../../../../components/layouts/Grid';
 import { Select } from '../../../../components/Select';
 import { TextField } from '../../../../components/TextField';
 import { ServiceCategory, VALID_SERVICE_CATEGORIES } from '../../../../models';
-import { formatRupee } from '../../../../utils/formatters';
+import { formatRupee, getTodayDateString } from '../../../../utils/formatters';
 import './ServiceFormCard.css';
 
 export interface ServiceFormData {
@@ -37,9 +37,7 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
   isSaving,
   onSubmit,
 }) => {
-  const [date, setDate] = useState(
-    () => new Date().toISOString().split('T')[0],
-  );
+  const [date, setDate] = useState(() => getTodayDateString());
   const [category, setCategory] = useState<string>('Pickup');
   const [amount, setAmount] = useState<number>(0);
   const [discount, setDiscount] = useState<number>(0);

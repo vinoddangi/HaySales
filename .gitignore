@@ -33,3 +33,8 @@ dist-ssr
 # Build artifacts
 tsconfig.app.tsbuildinfo
 tsconfig.node.tsbuildinfo
+
+# Secrets & Credentials
+*service-account*.json
+*.key
+*.pem

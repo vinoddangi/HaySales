@@ -108,7 +108,7 @@ export const EstimatedProfitCard: React.FC<EstimatedProfitCardProps> = ({
             <div className="hs-profit-pill hs-profit-pill--margin">
               <span className="hs-profit-pill__label">Trading Margin</span>
               <span className="hs-profit-pill__val">
-                +{formatRupee(grossCommission)}
+                {formatRupee(grossCommission)}
               </span>
               <span className="hs-profit-pill__caption">Crop margin</span>
             </div>
@@ -119,7 +119,7 @@ export const EstimatedProfitCard: React.FC<EstimatedProfitCardProps> = ({
             <div className="hs-profit-pill hs-profit-pill--service">
               <span className="hs-profit-pill__label">Pickup Net</span>
               <span className="hs-profit-pill__val">
-                +{formatRupee(pickupNet)}
+                {formatRupee(pickupNet)}
               </span>
               <span className="hs-profit-pill__caption">Pickup service</span>
             </div>

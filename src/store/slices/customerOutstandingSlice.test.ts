@@ -16,11 +16,11 @@ import customerOutstandingReducer, {
 } from './customerOutstandingSlice';
 
 describe('customerOutstandingSlice & Selectors', () => {
-  it('initializes with baseline 2025-12 period', () => {
+  it('initializes with baseline 2025-01 period', () => {
     const state = customerOutstandingReducer(undefined, { type: '@@INIT' });
 
-    expect(state['2025-12']).toBeDefined();
-    expect(state['2025-12'].period).toBe('2025-12');
+    expect(state['2025-01']).toBeDefined();
+    expect(state['2025-01'].period).toBe('2025-01');
   });
 
   it('updates monthly outstanding using setMonthlyCustomerOutstanding', () => {
@@ -78,7 +78,7 @@ describe('customerOutstandingSlice & Selectors', () => {
       updated,
       resetCustomerOutstanding(),
     );
-    expect(reset['2025-12']).toBeDefined();
+    expect(reset['2025-01']).toBeDefined();
     expect(reset['2026-02']).toBeUndefined();
   });
 

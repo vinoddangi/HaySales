@@ -35,7 +35,7 @@ export type CustomerOutstandingState = Record<
 >;
 
 /**
- * Creates baseline December 2025 ('2025-12') customer outstanding state.
+ * Creates baseline January 2025 ('2025-01') customer outstanding state.
  */
 export function createBaselineCustomerOutstanding(
   customers: Customer[],
@@ -62,7 +62,7 @@ export function createBaselineCustomerOutstanding(
     totalOpeningDue > 0 ? totalOpeningDue : initialBaseReceivables;
 
   return {
-    period: '2025-12',
+    period: '2025-01',
     totalOutstanding: Number(baseReceivables.toFixed(2)),
     customersWithDuesCount,
     periodCreditAdded: 0,
@@ -87,13 +87,13 @@ export function calculateMonthlyCustomerOutstandings(
   initialBaseReceivables: number = INITIAL_CUSTOMER_RECEIVABLES,
 ): CustomerOutstandingState {
   const state: CustomerOutstandingState = {
-    '2025-12': createBaselineCustomerOutstanding(
+    '2025-01': createBaselineCustomerOutstanding(
       customers,
       initialBaseReceivables,
     ),
   };
 
-  const months = extractChronologicalMonths(transactions, 2026, 1);
+  const months = extractChronologicalMonths(transactions, 2025, 1);
 
   // Check if customers have explicit opening dues configured
   let totalExplicitOpening = 0;

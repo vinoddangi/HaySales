@@ -10,23 +10,23 @@ import {
   selectStock,
 } from '../selectors/inputselectors';
 import stockReducer, {
-  BASELINE_2025_CLOSING_STOCK,
+  BASELINE_CLOSING_STOCK,
   setClosingStock,
   setStockState,
   updateStockFromTransactions,
 } from './stockSlice';
 
 describe('stockSlice & Selectors (YYYY-MM Format)', () => {
-  it('initializes with baseline 2025-12 closing stock', () => {
+  it('initializes with baseline 2025-01 closing stock', () => {
     const state = stockReducer(undefined, { type: '@@INIT' });
 
-    expect(state['2025-12']).toEqual(BASELINE_2025_CLOSING_STOCK);
+    expect(state['2025-01']).toEqual(BASELINE_CLOSING_STOCK);
 
-    const othersClosing = state['2025-12']?.Others;
+    const othersClosing = state['2025-01']?.Others;
     expect(othersClosing?.type).toBe('PURCHASE');
     expect(othersClosing?.category).toBe('Others');
-    expect(othersClosing?.weight).toBe(13528);
-    expect(othersClosing?.amount).toBe(141097.04);
+    expect(othersClosing?.weight).toBe(0);
+    expect(othersClosing?.amount).toBe(0);
   });
 
   it('updates closing stock for a period using setClosingStock', () => {
@@ -51,7 +51,7 @@ describe('stockSlice & Selectors (YYYY-MM Format)', () => {
 
     expect(updated['2026-01']?.Tuvar?.weight).toBe(5000);
     expect(updated['2026-01']?.Tuvar?.amount).toBe(60000);
-    expect(updated['2025-12']?.Others?.weight).toBe(13528);
+    expect(updated['2025-01']?.Others?.weight).toBe(0);
   });
 
   it('merges stock state using setStockState', () => {
@@ -74,7 +74,7 @@ describe('stockSlice & Selectors (YYYY-MM Format)', () => {
     );
 
     expect(updated['2026-02']?.Chana?.weight).toBe(2000);
-    expect(updated['2025-12']?.Others?.weight).toBe(13528);
+    expect(updated['2025-01']?.Others?.weight).toBe(0);
   });
 
   it('recalculates monthly closing stock from transactions using updateStockFromTransactions', () => {
@@ -116,11 +116,11 @@ describe('stockSlice & Selectors (YYYY-MM Format)', () => {
   it('provides working selectors for querying closing stock and deriving opening stock by YYYY-MM', () => {
     const rootState = {
       stock: {
-        '2025-12': BASELINE_2025_CLOSING_STOCK,
-        '2026-01': {
+        '2025-01': BASELINE_CLOSING_STOCK,
+        '2025-02': {
           Tuvar: {
             id: 'tuvar-1',
-            date: '2026-01-31',
+            date: '2025-02-28',
             type: 'PURCHASE' as const,
             category: 'Tuvar' as const,
             weight: 4000,
@@ -134,35 +134,35 @@ describe('stockSlice & Selectors (YYYY-MM Format)', () => {
 
     expect(selectStock(rootState)).toBe(rootState.stock);
     expect(selectAvailableStockPeriods(rootState)).toEqual([
-      '2025-12',
-      '2026-01',
+      '2025-01',
+      '2025-02',
     ]);
-    expect(selectClosingStockByPeriod('2025-12')(rootState)).toEqual(
-      BASELINE_2025_CLOSING_STOCK,
+    expect(selectClosingStockByPeriod('2025-01')(rootState)).toEqual(
+      BASELINE_CLOSING_STOCK,
     );
 
-    // Jan 2026 opening is derived from 2025-12 closing
-    expect(selectOpeningStockForMonth(2026, 1)(rootState)).toEqual(
-      BASELINE_2025_CLOSING_STOCK,
+    // Feb 2025 opening is derived from 2025-01 closing
+    expect(selectOpeningStockForMonth(2025, 2)(rootState)).toEqual(
+      BASELINE_CLOSING_STOCK,
     );
 
-    // Feb 2026 opening is derived from 2026-01 closing
-    expect(selectOpeningStockForMonth(2026, 2)(rootState)).toEqual(
-      rootState.stock['2026-01'],
+    // Mar 2025 opening is derived from 2025-02 closing
+    expect(selectOpeningStockForMonth(2025, 3)(rootState)).toEqual(
+      rootState.stock['2025-02'],
     );
 
     // Closing stock selectors
-    expect(selectClosingStockForMonth(2026, 1)(rootState)?.Tuvar?.weight).toBe(
+    expect(selectClosingStockForMonth(2025, 2)(rootState)?.Tuvar?.weight).toBe(
       4000,
     );
-    expect(selectCropClosingStock('2025-12', 'Others')(rootState)?.weight).toBe(
-      13528,
+    expect(selectCropClosingStock('2025-01', 'Others')(rootState)?.weight).toBe(
+      0,
     );
-    expect(selectCropClosingStock('2026-01', 'Tuvar')(rootState)?.weight).toBe(
+    expect(selectCropClosingStock('2025-02', 'Tuvar')(rootState)?.weight).toBe(
       4000,
     );
     expect(
-      selectCropClosingStock('2026-01', 'Chana')(rootState),
+      selectCropClosingStock('2025-02', 'Chana')(rootState),
     ).toBeUndefined();
   });
 });

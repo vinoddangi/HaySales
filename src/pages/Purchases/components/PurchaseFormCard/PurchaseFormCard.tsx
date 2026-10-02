@@ -5,7 +5,11 @@ import { Grid } from '../../../../components/layouts/Grid';
 import { Select } from '../../../../components/Select';
 import { TextField } from '../../../../components/TextField';
 import { CropCategory, VALID_CROP_CATEGORIES } from '../../../../models';
-import { formatRupee, formatWeight } from '../../../../utils/formatters';
+import {
+  formatRupee,
+  formatWeight,
+  getTodayDateString,
+} from '../../../../utils/formatters';
 import './PurchaseFormCard.css';
 
 export interface PurchaseFormData {
@@ -32,9 +36,7 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
   isSaving,
   onSubmit,
 }) => {
-  const [date, setDate] = useState(
-    () => new Date().toISOString().split('T')[0],
-  );
+  const [date, setDate] = useState(() => getTodayDateString());
   const [category, setCategory] = useState<CropCategory>('Tuvar');
   const [weight, setWeight] = useState<number>(0);
   const [amount, setAmount] = useState<number>(0);

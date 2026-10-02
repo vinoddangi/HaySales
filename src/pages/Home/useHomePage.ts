@@ -231,17 +231,17 @@ export function useHomePage() {
       .reduce((sum, tx) => sum + Number(tx.cashPaid || tx.amount || 0), 0);
 
     const totalCashOut = purchaseOnCash + expensesOnCash;
-    const netCashflow = Number((totalCashIn - totalCashOut).toFixed(2));
+    const netCashflow = Math.round(totalCashIn - totalCashOut);
 
     return {
       netCashflow,
-      totalCashIn: Number(totalCashIn.toFixed(2)),
-      paymentsReceived: Number(paymentsReceived.toFixed(2)),
-      salesOnCash: Number(salesOnCash.toFixed(2)),
-      servicesReceived: Number(servicesReceived.toFixed(2)),
-      totalCashOut: Number(totalCashOut.toFixed(2)),
-      purchaseOnCash: Number(purchaseOnCash.toFixed(2)),
-      expensesOnCash: Number(expensesOnCash.toFixed(2)),
+      totalCashIn: Math.round(totalCashIn),
+      paymentsReceived: Math.round(paymentsReceived),
+      salesOnCash: Math.round(salesOnCash),
+      servicesReceived: Math.round(servicesReceived),
+      totalCashOut: Math.round(totalCashOut),
+      purchaseOnCash: Math.round(purchaseOnCash),
+      expensesOnCash: Math.round(expensesOnCash),
     };
   }, [filteredTransactions, salesMetrics.salesOnCash]);
 
@@ -284,6 +284,9 @@ export function useHomePage() {
 
   // 13. Period Label
   const periodLabel = useMemo(() => {
+    if (filterMode === 'all') {
+      return 'All Time';
+    }
     if (filterMode === 'ytd') {
       return `YTD ${selectedYear}`;
     }

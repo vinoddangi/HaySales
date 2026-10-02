@@ -4,7 +4,7 @@ import { Checkbox } from '../../../../components/Checkbox';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
 import { TextField } from '../../../../components/TextField';
-import { formatRupee } from '../../../../utils/formatters';
+import { formatRupee, getTodayDateString } from '../../../../utils/formatters';
 import './LedgerPaymentForm.css';
 
 export interface LedgerPaymentFormProps {
@@ -22,9 +22,7 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
   isPaying,
   onPay,
 }) => {
-  const [date, setDate] = useState(
-    () => new Date().toISOString().split('T')[0],
-  );
+  const [date, setDate] = useState(() => getTodayDateString());
   const [paymentAmount, setPaymentAmount] = useState<number>(0);
   const [allDueClear, setAllDueClear] = useState<boolean>(false);
 

@@ -236,8 +236,7 @@ describe('Modular Dashboard Cards', () => {
     expect(html).toContain('Mean Buy Rate');
     expect(html).toContain('Tuvar');
     expect(html).toContain('10.47');
-    expect(html).toContain('12.00');
-    expect(html).toContain('+₹6,120.00');
+    expect(html).toContain('₹6,120');
     expect(html).toContain('hs-stock-card');
     expect(html).toContain('hs-stock-crop-row');
   });

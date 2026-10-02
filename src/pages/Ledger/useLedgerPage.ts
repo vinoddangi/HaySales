@@ -5,6 +5,7 @@ import {
 } from '../../business/ledgerBusiness';
 import { CustomerModel, PaymentTransactionData } from '../../models';
 import { useAppDispatch } from '../../store/hooks';
+import { getTodayDateString } from '../../utils';
 import {
   useAddCustomerTransactionMutation,
   useGetCustomersQuery,
@@ -91,7 +92,7 @@ export function useLedgerPage() {
         cashPaid: paymentAmount,
         remainingDue: 0,
         discount: discount || 0,
-        date: paymentDate || new Date().toISOString(),
+        date: paymentDate || getTodayDateString(),
       };
 
       await addCustomerTx(paymentTx).unwrap();
