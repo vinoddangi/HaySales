@@ -3,7 +3,6 @@
 ## 1. Operating Instructions & Workflow
 
 - **Strictly Follow Instructions**: Never create pages (`src/pages/*`), features, or routes proactively without explicit user instructions. Wait for explicit commands before adding anything new.
-- **Reference `create-modal` Branch ONLY**: Always inspect and check the `create-modal` branch (via `git show create-modal:<path>` or `git ls-tree create-modal`) as the single source of truth for reference. Never invent synthetic features, extra cards, or unsolicited options not present in `create-modal`. Always check what `create-modal` actually had before building.
 - **Zero Backward-Compatibility Aliases**: Never introduce synthetic alias exports, type aliases, or shim wrapper functions for backward compatibility (e.g., `export const parseOptionalNumber = parseNumber;`). Always fix or update the original syntax directly at call sites.
 - **No Unsolicited Assumptions**: Do not interpret or add extra boilerplate beyond what the user asked. Keep changes atomic, focused, and verified.
 - **Verification**: Always run `npm run build` or type checks to verify clean code after modifications.
