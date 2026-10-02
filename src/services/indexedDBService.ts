@@ -3,7 +3,7 @@ import { Customer, Transaction } from '../models';
 export const DB_NAME = 'HaySalesOfflineDB';
 export const DB_VERSION = 3;
 export const SEED_VERSION_KEY = 'haysales_db_seed_version';
-export const CURRENT_SEED_VERSION = '2025_01_v8';
+export const CURRENT_SEED_VERSION = '2025_01_v10';
 
 let seedPromise: Promise<void> | null = null;
 
