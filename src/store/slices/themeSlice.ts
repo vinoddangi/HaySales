@@ -1,28 +1,50 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ColorScheme, FontSize, ThemeMode } from '../../types';
 
-interface ThemeState {
+export type ThemeMode = 'light' | 'dark';
+export type ColorScheme = 'green' | 'purple' | 'blue' | 'orange' | 'rose';
+export type FontSize = 'small' | 'medium' | 'large';
+
+export interface ThemeState {
   mode: ThemeMode;
   scheme: ColorScheme;
   fontSize: FontSize;
   previewFrame: boolean;
 }
 
-// Initial state with local storage fallback
-const initialMode =
-  (localStorage.getItem('m3-theme-mode') as ThemeMode) || 'light';
-const initialScheme =
-  (localStorage.getItem('m3-color-scheme') as ColorScheme) || 'green';
-const initialFontSize =
-  (localStorage.getItem('m3-font-size') as FontSize) || 'medium';
-const initialPreviewFrame =
-  localStorage.getItem('m3-preview-frame') !== 'false';
+const getStored = (key: string, fallback: string): string => {
+  try {
+    if (
+      typeof window !== 'undefined' &&
+      window.localStorage &&
+      typeof window.localStorage.getItem === 'function'
+    ) {
+      return window.localStorage.getItem(key) || fallback;
+    }
+  } catch {
+    // ignore
+  }
+  return fallback;
+};
+
+const setStored = (key: string, value: string): void => {
+  try {
+    if (
+      typeof window !== 'undefined' &&
+      window.localStorage &&
+      typeof window.localStorage.setItem === 'function'
+    ) {
+      window.localStorage.setItem(key, value);
+    }
+  } catch {
+    // ignore
+  }
+};
 
 const initialState: ThemeState = {
-  mode: initialMode,
-  scheme: initialScheme,
-  fontSize: initialFontSize,
-  previewFrame: initialPreviewFrame,
+  mode: getStored('theme_mode', 'light') as ThemeMode,
+  scheme: getStored('theme_scheme', 'green') as ColorScheme,
+  fontSize: getStored('theme_font_size', 'medium') as FontSize,
+  previewFrame: getStored('theme_preview_frame', 'false') === 'true',
 };
 
 export const themeSlice = createSlice({
@@ -31,23 +53,47 @@ export const themeSlice = createSlice({
   reducers: {
     setThemeMode: (state, action: PayloadAction<ThemeMode>) => {
       state.mode = action.payload;
-      localStorage.setItem('m3-theme-mode', action.payload);
+      setStored('theme_mode', action.payload);
+      if (typeof document !== 'undefined') {
+        if (action.payload === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+    },
+    toggleThemeMode: (state) => {
+      const next = state.mode === 'dark' ? 'light' : 'dark';
+      state.mode = next;
+      setStored('theme_mode', next);
+      if (typeof document !== 'undefined') {
+        if (next === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
     },
     setColorScheme: (state, action: PayloadAction<ColorScheme>) => {
       state.scheme = action.payload;
-      localStorage.setItem('m3-color-scheme', action.payload);
+      setStored('theme_scheme', action.payload);
     },
     setFontSize: (state, action: PayloadAction<FontSize>) => {
       state.fontSize = action.payload;
-      localStorage.setItem('m3-font-size', action.payload);
+      setStored('theme_font_size', action.payload);
     },
     togglePreviewFrame: (state) => {
       state.previewFrame = !state.previewFrame;
-      localStorage.setItem('m3-preview-frame', String(state.previewFrame));
+      setStored('theme_preview_frame', String(state.previewFrame));
     },
   },
 });
 
-export const { setThemeMode, setColorScheme, setFontSize, togglePreviewFrame } =
-  themeSlice.actions;
+export const {
+  setThemeMode,
+  toggleThemeMode,
+  setColorScheme,
+  setFontSize,
+  togglePreviewFrame,
+} = themeSlice.actions;
 export default themeSlice.reducer;

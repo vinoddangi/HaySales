@@ -8,11 +8,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   const { mode, scheme, fontSize } = useAppSelector((state) => state.theme);
 
   useEffect(() => {
+    if (typeof document === 'undefined') return;
+
     const root = document.documentElement;
-    const isDark =
-      mode === 'dark' ||
-      (mode === 'system' &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const isDark = mode === 'dark';
 
     if (isDark) {
       root.classList.add('dark');
@@ -27,11 +26,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       root.style.setProperty(cssVar, value);
     });
 
-    // Font size scaling across rem units
-    const fontScaleMap: Record<string, string> = {
-      small: '87.5%', // ~14px base
-      medium: '100%', // 16px standard base
-      large: '112.5%', // 18px base (+1 Level)
+    const fontScaleMap = {
+      small: '87.5%',
+      medium: '100%',
+      large: '112.5%',
     };
     root.style.fontSize = fontScaleMap[fontSize] || '100%';
   }, [mode, scheme, fontSize]);

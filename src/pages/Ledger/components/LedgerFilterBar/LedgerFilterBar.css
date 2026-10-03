@@ -1,0 +1,83 @@
+.hs-ledger-filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-2, 8px);
+}
+
+.hs-ledger-filter-bar__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.hs-ledger-filter-bar__search-icon {
+  position: absolute;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  color: var(--md-sys-color-on-surface-variant);
+  pointer-events: none;
+}
+
+.hs-ledger-filter-bar__search-input {
+  width: 100%;
+  padding: 10px 36px 10px 36px;
+  background-color: var(--md-sys-color-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  color: var(--md-sys-color-on-surface);
+  font-size: var(--md-sys-typescale-body-medium-size, 13px);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.hs-ledger-filter-bar__search-input:focus {
+  border-color: var(--md-sys-color-primary);
+}
+
+.hs-ledger-filter-bar__clear-btn {
+  position: absolute;
+  right: 10px;
+  padding: 4px;
+  background: transparent;
+  border: none;
+  border-radius: var(--md-sys-shape-corner-full, 9999px);
+  color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+}
+
+.hs-ledger-filter-bar__tabs {
+  display: flex;
+  padding: 4px;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  gap: 4px;
+}
+
+.hs-ledger-filter-bar__tab-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--md-sys-spacing-1, 4px);
+  padding: var(--md-sys-spacing-2, 8px);
+  border-radius: var(--md-sys-shape-corner-small, 8px);
+  font-size: var(--md-sys-typescale-label-medium-size, 12px);
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hs-ledger-filter-bar__tab-btn:hover {
+  color: var(--md-sys-color-on-surface);
+}
+
+.hs-ledger-filter-bar__tab-btn--active {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  box-shadow: var(--md-sys-elevation-level1);
+}

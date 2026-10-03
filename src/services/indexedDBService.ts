@@ -1,128 +1,75 @@
-import { Customer, Transaction } from '../types';
+import { Customer, Transaction } from '../models';
 
 export const DB_NAME = 'HaySalesOfflineDB';
-export const DB_VERSION = 5; // Cleaned up annual archives store
-
-export type StoreName =
-  | 'customers'
-  | 'transactions'
-  | 'purchases'
-  | 'monthly_rollout'
-  | 'metadata'
-  | 'pending_changes';
+export const DB_VERSION = 4;
 
 export interface PendingChange {
-  id: string; // Document path, e.g. 'customers/123' or 'customers/123/transactions/456'
-  path: string;
-  action: 'SET' | 'DELETE';
-  data?: any;
-  timestamp: string;
+  id: string; // Doc path or unique id
+  path: string; // e.g. "customers/123" or "customer_transactions/abc"
+  action: 'SET' | 'UPDATE' | 'DELETE';
+  data?: Record<string, unknown>;
+  timestamp?: string;
 }
 
-let dbInstance: IDBDatabase | null = null;
-
 /**
- * Open or upgrade the IndexedDB database.
+ * Open local IndexedDB instance with 3 core tables + delta tracking
  */
-export async function openLocalDatabase(): Promise<IDBDatabase> {
-  if (dbInstance) return dbInstance;
-
+export function openLocalDatabase(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open(DB_NAME, DB_VERSION);
+    if (typeof window === 'undefined' || !window.indexedDB) {
+      reject(new Error('IndexedDB is not supported in this environment'));
+      return;
+    }
+
+    const request = window.indexedDB.open(DB_NAME, DB_VERSION);
 
     request.onupgradeneeded = (event) => {
       const db = (event.target as IDBOpenDBRequest).result;
 
-      // Clean delete deprecated sync_queue and archives stores if existing
-      if (db.objectStoreNames.contains('sync_queue')) {
-        db.deleteObjectStore('sync_queue');
-      }
-      if (db.objectStoreNames.contains('archives')) {
-        db.deleteObjectStore('archives');
-      }
-
-      // 1. Customers store
+      // 1. Customers master store
       if (!db.objectStoreNames.contains('customers')) {
-        const custStore = db.createObjectStore('customers', { keyPath: 'id' });
-        custStore.createIndex('name', 'name', { unique: false });
+        db.createObjectStore('customers', { keyPath: 'id' });
       }
 
-      // 2. Transactions store (Sales + Payments + Services)
-      if (!db.objectStoreNames.contains('transactions')) {
-        const txStore = db.createObjectStore('transactions', { keyPath: 'id' });
-        txStore.createIndex('customerId', 'customerId', { unique: false });
-        txStore.createIndex('date', 'date', { unique: false });
-        txStore.createIndex('type', 'type', { unique: false });
-      }
-
-      // 3. Purchases & Expenses store
-      if (!db.objectStoreNames.contains('purchases')) {
-        const pStore = db.createObjectStore('purchases', { keyPath: 'id' });
-        pStore.createIndex('date', 'date', { unique: false });
-        pStore.createIndex('type', 'type', { unique: false });
-        pStore.createIndex('category', 'category', { unique: false });
-      }
-
-      // 4. Monthly Rollout store
-      if (!db.objectStoreNames.contains('monthly_rollout')) {
-        const rStore = db.createObjectStore('monthly_rollout', {
-          keyPath: 'month',
-        });
-        rStore.createIndex('period', 'summary.period', { unique: false });
-      }
-
-      // 5. Metadata store
-      if (!db.objectStoreNames.contains('metadata')) {
-        db.createObjectStore('metadata', { keyPath: 'key' });
-      }
-
-      // 6. Pending Changes store (for tracking delta modifications)
-      if (!db.objectStoreNames.contains('pending_changes')) {
-        const pcStore = db.createObjectStore('pending_changes', {
+      // 2. Customer Transactions store (Sales, Services, Payments)
+      if (!db.objectStoreNames.contains('customer_transactions')) {
+        const ctStore = db.createObjectStore('customer_transactions', {
           keyPath: 'id',
         });
-        pcStore.createIndex('timestamp', 'timestamp', { unique: false });
+        ctStore.createIndex('customerId', 'customerId', { unique: false });
+        ctStore.createIndex('date', 'date', { unique: false });
+      }
+
+      // 3. Operations Transactions store (Purchases, Operating Expenses)
+      if (!db.objectStoreNames.contains('operation_transactions')) {
+        const opStore = db.createObjectStore('operation_transactions', {
+          keyPath: 'id',
+        });
+        opStore.createIndex('category', 'category', { unique: false });
+        opStore.createIndex('date', 'date', { unique: false });
+      }
+
+      // 4. Pending delta change tracking queue
+      if (!db.objectStoreNames.contains('pending_changes')) {
+        db.createObjectStore('pending_changes', { keyPath: 'id' });
       }
     };
 
-    request.onsuccess = (event) => {
-      dbInstance = (event.target as IDBOpenDBRequest).result;
-      resolve(dbInstance);
-    };
-
-    request.onerror = (event) => {
-      reject((event.target as IDBOpenDBRequest).error);
-    };
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
   });
 }
 
 /**
- * Delete the entire local database (clean slate)
+ * Fetch all documents from a specific object store
  */
-export async function deleteLocalDatabase(): Promise<void> {
-  if (dbInstance) {
-    dbInstance.close();
-    dbInstance = null;
-  }
-  return new Promise((resolve, reject) => {
-    const req = indexedDB.deleteDatabase(DB_NAME);
-    req.onsuccess = () => resolve();
-    req.onerror = () => reject(req.error);
-    req.onblocked = () => resolve();
-  });
-}
-
-/**
- * Get all records from a specific store
- */
-export async function getStoreData<T = any>(
-  storeName: StoreName,
-): Promise<T[]> {
+export async function getStoreData<T = any>(storeName: string): Promise<T[]> {
   const db = await openLocalDatabase();
-  if (!db.objectStoreNames.contains(storeName)) {
-    return [];
-  }
   return new Promise((resolve, reject) => {
+    if (!db.objectStoreNames.contains(storeName)) {
+      resolve([]);
+      return;
+    }
     const tx = db.transaction(storeName, 'readonly');
     const store = tx.objectStore(storeName);
     const req = store.getAll();
@@ -132,36 +79,34 @@ export async function getStoreData<T = any>(
 }
 
 /**
- * Get a single record by key
+ * Fetch a single document by key from an object store
  */
 export async function getStoreItem<T = any>(
-  storeName: StoreName,
+  storeName: string,
   key: string,
-): Promise<T | undefined> {
+): Promise<T | null> {
   const db = await openLocalDatabase();
-  if (!db.objectStoreNames.contains(storeName)) {
-    return undefined;
-  }
   return new Promise((resolve, reject) => {
+    if (!db.objectStoreNames.contains(storeName)) {
+      resolve(null);
+      return;
+    }
     const tx = db.transaction(storeName, 'readonly');
     const store = tx.objectStore(storeName);
     const req = store.get(key);
-    req.onsuccess = () => resolve(req.result);
+    req.onsuccess = () => resolve(req.result || null);
     req.onerror = () => reject(req.error);
   });
 }
 
 /**
- * Put a single record into a store
+ * Save or update an item in an object store
  */
-export async function putStoreItem<T = any>(
-  storeName: StoreName,
-  item: T,
+export async function putStoreItem(
+  storeName: string,
+  item: any,
 ): Promise<void> {
   const db = await openLocalDatabase();
-  if (!db.objectStoreNames.contains(storeName)) {
-    return;
-  }
   return new Promise((resolve, reject) => {
     const tx = db.transaction(storeName, 'readwrite');
     const store = tx.objectStore(storeName);
@@ -172,16 +117,13 @@ export async function putStoreItem<T = any>(
 }
 
 /**
- * Delete a single record by key
+ * Delete an item from an object store
  */
 export async function deleteStoreItem(
-  storeName: StoreName,
+  storeName: string,
   key: string,
 ): Promise<void> {
   const db = await openLocalDatabase();
-  if (!db.objectStoreNames.contains(storeName)) {
-    return;
-  }
   return new Promise((resolve, reject) => {
     const tx = db.transaction(storeName, 'readwrite');
     const store = tx.objectStore(storeName);
@@ -192,15 +134,32 @@ export async function deleteStoreItem(
 }
 
 /**
- * Bulk save array of items into a store
+ * Clear all records from a specific store
  */
-export async function bulkSaveStoreItems<T = any>(
-  storeName: StoreName,
-  items: T[],
+export async function clearStore(storeName: string): Promise<void> {
+  const db = await openLocalDatabase();
+  return new Promise((resolve, reject) => {
+    if (!db.objectStoreNames.contains(storeName)) {
+      resolve();
+      return;
+    }
+    const tx = db.transaction(storeName, 'readwrite');
+    const store = tx.objectStore(storeName);
+    const req = store.clear();
+    req.onsuccess = () => resolve();
+    req.onerror = () => reject(req.error);
+  });
+}
+
+/**
+ * Bulk save items into an object store
+ */
+export async function bulkSaveStoreItems(
+  storeName: string,
+  items: any[],
 ): Promise<void> {
   if (!items || items.length === 0) return;
   const db = await openLocalDatabase();
-  if (!db.objectStoreNames.contains(storeName)) return;
   return new Promise((resolve, reject) => {
     const tx = db.transaction(storeName, 'readwrite');
     const store = tx.objectStore(storeName);
@@ -213,176 +172,18 @@ export async function bulkSaveStoreItems<T = any>(
 }
 
 /**
- * Clear all data inside a store
- */
-export async function clearStore(storeName: StoreName): Promise<void> {
-  const db = await openLocalDatabase();
-  if (!db.objectStoreNames.contains(storeName)) {
-    return;
-  }
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction(storeName, 'readwrite');
-    const store = tx.objectStore(storeName);
-    const req = store.clear();
-    req.onsuccess = () => resolve();
-    req.onerror = () => reject(req.error);
-  });
-}
-
-/**
- * Clear all local IndexedDB stores
+ * Clean wipe of all local stores
  */
 export async function clearAllLocalData(): Promise<void> {
-  await clearStore('customers');
-  await clearStore('transactions');
-  await clearStore('purchases');
-  await clearStore('monthly_rollout');
-  await clearStore('metadata');
-  await clearStore('pending_changes');
-}
-
-/**
- * Check if the local database has any data
- */
-export async function hasLocalData(): Promise<boolean> {
-  try {
-    const customers = await getStoreData('customers');
-    return customers.length > 0;
-  } catch {
-    return false;
+  const stores = [
+    'customers',
+    'customer_transactions',
+    'operation_transactions',
+    'pending_changes',
+  ];
+  for (const s of stores) {
+    await clearStore(s);
   }
-}
-
-/**
- * Sync Local IndexedDB with live data from Cloud Firestore
- */
-export async function syncLocalDatabaseFromCloud(): Promise<{
-  customersCount: number;
-  transactionsCount: number;
-  purchasesCount: number;
-  monthlyRolloutCount: number;
-  metadataCount: number;
-}> {
-  const { collection, collectionGroup, getDocs } =
-    await import('firebase/firestore');
-  const { db: firestoreInstance } = await import('../store/firebaseConfig');
-
-  // 1. Fetch Customers
-  const custSnap = await getDocs(collection(firestoreInstance, 'customers'));
-  const customers: Customer[] = [];
-  for (const docSnap of custSnap.docs) {
-    const cData = docSnap.data();
-    customers.push({
-      id: docSnap.id,
-      name: cData.name || '',
-      mobile: cData.mobile || '',
-      village: cData.village || '',
-      creditLimit: cData.creditLimit,
-      outstandingAmount: cData.outstandingAmount || 0,
-    });
-  }
-
-  // 2. Fetch Transactions (using collectionGroup for instant parallel fetch)
-  let transactions: Transaction[] = [];
-  try {
-    const txSnap = await getDocs(
-      collectionGroup(firestoreInstance, 'transactions'),
-    );
-    txSnap.forEach((tDoc) => {
-      const data = tDoc.data();
-      const parentCustId = data.customerId || tDoc.ref.parent.parent?.id || '';
-      transactions.push({
-        id: tDoc.id,
-        customerId: parentCustId,
-        ...data,
-      } as Transaction);
-    });
-  } catch {
-    // Fallback: iterate customer subcollections if collectionGroup is restricted
-    for (const cust of customers) {
-      const txSnap = await getDocs(
-        collection(firestoreInstance, 'customers', cust.id, 'transactions'),
-      );
-      txSnap.forEach((tDoc) => {
-        transactions.push({
-          id: tDoc.id,
-          customerId: cust.id,
-          ...tDoc.data(),
-        } as Transaction);
-      });
-    }
-  }
-
-  // 3. Fetch Purchases & Expenses
-  const purchasesSnap = await getDocs(
-    collection(firestoreInstance, 'purchases'),
-  );
-  const purchases: Transaction[] = [];
-  purchasesSnap.forEach((pDoc) => {
-    purchases.push({
-      id: pDoc.id,
-      ...pDoc.data(),
-    } as Transaction);
-  });
-
-  // Check if separate expenses collection exists
-  try {
-    const expensesSnap = await getDocs(
-      collection(firestoreInstance, 'expenses'),
-    );
-    expensesSnap.forEach((eDoc) => {
-      if (!purchases.some((p) => p.id === eDoc.id)) {
-        purchases.push({
-          id: eDoc.id,
-          type: 'EXPENSE',
-          category: 'Expense',
-          ...eDoc.data(),
-        } as Transaction);
-      }
-    });
-  } catch {
-    // Ignore if not present
-  }
-
-  // 4. Fetch Monthly Rollout
-  const rolloutSnap = await getDocs(
-    collection(firestoreInstance, 'monthly_rollout'),
-  );
-  const rollouts: any[] = [];
-  rolloutSnap.forEach((rDoc) => {
-    rollouts.push({
-      id: rDoc.id,
-      ...rDoc.data(),
-    });
-  });
-
-  // 5. Fetch Metadata
-  const metaSnap = await getDocs(collection(firestoreInstance, 'metadata'));
-  const metadata: any[] = [];
-  metaSnap.forEach((mDoc) => {
-    metadata.push({
-      key: mDoc.id,
-      id: mDoc.id,
-      ...mDoc.data(),
-    });
-  });
-
-  // Clear existing local stores and populate with fresh cloud data
-  await clearAllLocalData();
-
-  await bulkSaveStoreItems('customers', customers);
-  await bulkSaveStoreItems('transactions', transactions);
-  await bulkSaveStoreItems('purchases', purchases);
-  await bulkSaveStoreItems('monthly_rollout', rollouts);
-  await bulkSaveStoreItems('metadata', metadata);
-
-  return {
-    customersCount: customers.length,
-    transactionsCount: transactions.length,
-    purchasesCount: purchases.length,
-    monthlyRolloutCount: rollouts.length,
-    metadataCount: metadata.length,
-  };
 }
 
 /**
@@ -397,7 +198,7 @@ export async function recordPendingChange(
     const store = tx.objectStore('pending_changes');
     const req = store.put({
       ...change,
-      id: change.path, // Use path as unique key to coalesce repeat updates to same doc
+      id: change.path,
       timestamp: change.timestamp || new Date().toISOString(),
     });
     req.onsuccess = () => resolve();
@@ -406,38 +207,14 @@ export async function recordPendingChange(
 }
 
 /**
- * Record a batch of pending changes
- */
-export async function recordPendingChangesBatch(
-  changes: PendingChange[],
-): Promise<void> {
-  if (!changes || changes.length === 0) return;
-  const db = await openLocalDatabase();
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction('pending_changes', 'readwrite');
-    const store = tx.objectStore('pending_changes');
-    const now = new Date().toISOString();
-    for (const ch of changes) {
-      store.put({
-        ...ch,
-        id: ch.path,
-        timestamp: ch.timestamp || now,
-      });
-    }
-    tx.oncomplete = () => resolve();
-    tx.onerror = () => reject(tx.error);
-  });
-}
-
-/**
- * Retrieve all pending changes currently in the queue
+ * Get all pending delta changes
  */
 export async function getPendingChanges(): Promise<PendingChange[]> {
   return getStoreData<PendingChange>('pending_changes');
 }
 
 /**
- * Get count of pending changes
+ * Get count of pending delta changes
  */
 export async function getPendingChangesCount(): Promise<number> {
   try {
@@ -449,14 +226,14 @@ export async function getPendingChangesCount(): Promise<number> {
 }
 
 /**
- * Clear all pending changes
+ * Clear pending changes queue
  */
 export async function clearPendingChanges(): Promise<void> {
   return clearStore('pending_changes');
 }
 
 /**
- * Publish ONLY modified / delta records from local queue to Cloud Firestore
+ * Publish ONLY pending delta changes to Cloud Firestore
  */
 export async function publishPendingChangesToCloud(): Promise<{
   publishedCount: number;
@@ -466,24 +243,22 @@ export async function publishPendingChangesToCloud(): Promise<{
     return { publishedCount: 0 };
   }
 
-  const { writeBatch: serverWriteBatch, doc: serverDoc } =
-    await import('firebase/firestore');
-  const { db: firestoreInstance } = await import('../store/firebaseConfig');
+  const { writeBatch, doc } = await import('firebase/firestore');
+  const { db: firestoreDb } = await import('../store/firebaseConfig');
 
-  // Chunk batches (max 450 operations per batch)
   const batchList: Array<() => Promise<void>> = [];
-  let currentBatch = serverWriteBatch(firestoreInstance);
+  let currentBatch = writeBatch(firestoreDb);
   let opCount = 0;
 
   const commitAndRenew = () => {
     const batchToCommit = currentBatch;
     batchList.push(() => batchToCommit.commit());
-    currentBatch = serverWriteBatch(firestoreInstance);
+    currentBatch = writeBatch(firestoreDb);
     opCount = 0;
   };
 
   for (const change of changes) {
-    const targetDocRef = serverDoc(firestoreInstance, change.path);
+    const targetDocRef = doc(firestoreDb, change.path);
     if (change.action === 'DELETE') {
       currentBatch.delete(targetDocRef);
     } else {
@@ -499,13 +274,96 @@ export async function publishPendingChangesToCloud(): Promise<{
     commitAndRenew();
   }
 
-  // Execute all batch commits
   for (const commitFn of batchList) {
     await commitFn();
   }
 
-  // Clear pending changes upon successful publish
   await clearPendingChanges();
-
   return { publishedCount: changes.length };
+}
+
+/**
+ * Sync Local Database from Cloud Firestore (3 core collections)
+ */
+export async function syncLocalDatabaseFromCloud(): Promise<{
+  customersCount: number;
+  customerTransactionsCount: number;
+  operationTransactionsCount: number;
+}> {
+  const { collection, getDocs } = await import('firebase/firestore');
+  const { db: firestoreDb } = await import('../store/firebaseConfig');
+
+  // 1. Fetch Customers
+  const custSnap = await getDocs(collection(firestoreDb, 'customers'));
+  const customers: Customer[] = [];
+  custSnap.forEach((d) => {
+    const data = d.data();
+    customers.push({
+      id: d.id,
+      name: data.name || '',
+      mobile: data.mobile || '',
+      village: data.village || '',
+      creditLimit: data.creditLimit,
+    });
+  });
+
+  // 2. Fetch Customer Transactions
+  const ctSnap = await getDocs(
+    collection(firestoreDb, 'customer_transactions'),
+  );
+  const customerTransactions: Transaction[] = [];
+  ctSnap.forEach((d) => {
+    customerTransactions.push({
+      id: d.id,
+      ...d.data(),
+    } as Transaction);
+  });
+
+  // 3. Fetch Operations Transactions
+  const opSnap = await getDocs(
+    collection(firestoreDb, 'operation_transactions'),
+  );
+  const operationTransactions: Transaction[] = [];
+  opSnap.forEach((d) => {
+    operationTransactions.push({
+      id: d.id,
+      ...d.data(),
+    } as Transaction);
+  });
+
+  // Clear existing local stores & bulk save fresh records
+  await clearStore('customers');
+  await clearStore('customer_transactions');
+  await clearStore('operation_transactions');
+
+  await bulkSaveStoreItems('customers', customers);
+  await bulkSaveStoreItems('customer_transactions', customerTransactions);
+  await bulkSaveStoreItems('operation_transactions', operationTransactions);
+
+  return {
+    customersCount: customers.length,
+    customerTransactionsCount: customerTransactions.length,
+    operationTransactionsCount: operationTransactions.length,
+  };
+}
+
+/**
+ * Merged 2-Way Sync: First pushes pending deltas to cloud, then pulls fresh data
+ */
+export async function syncAndPublishCloudDatabase(): Promise<{
+  publishedCount: number;
+  customersCount: number;
+  customerTransactionsCount: number;
+  operationTransactionsCount: number;
+}> {
+  // 1. Push local changes
+  const { publishedCount } = await publishPendingChangesToCloud();
+
+  // 2. Pull latest server data
+  const pullResult = await syncLocalDatabaseFromCloud();
+
+  return {
+    publishedCount,
+    ...pullResult,
+  };
 }

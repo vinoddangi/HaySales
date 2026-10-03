@@ -1,0 +1,41 @@
+/* Material Design 3 Button styling & size token bounds */
+.hs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.hs-btn--full-width {
+  width: 100%;
+  display: flex;
+}
+
+/* Sizing overrides using M3 tokens */
+.hs-btn--sm {
+  --md-filled-button-container-height: 2.25rem;
+  --md-outlined-button-container-height: 2.25rem;
+  --md-text-button-container-height: 2.25rem;
+  --md-elevated-button-container-height: 2.25rem;
+  --md-filled-tonal-button-container-height: 2.25rem;
+  font-size: 0.8125rem;
+}
+
+.hs-btn--md {
+  --md-filled-button-container-height: 2.5rem;
+  --md-outlined-button-container-height: 2.5rem;
+  --md-text-button-container-height: 2.5rem;
+  --md-elevated-button-container-height: 2.5rem;
+  --md-filled-tonal-button-container-height: 2.5rem;
+  font-size: 0.875rem;
+}
+
+.hs-btn--lg {
+  --md-filled-button-container-height: 3rem;
+  --md-outlined-button-container-height: 3rem;
+  --md-text-button-container-height: 3rem;
+  --md-elevated-button-container-height: 3rem;
+  --md-filled-tonal-button-container-height: 3rem;
+  font-size: 1rem;
+}

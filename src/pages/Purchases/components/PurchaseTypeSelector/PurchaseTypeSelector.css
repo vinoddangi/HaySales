@@ -1,0 +1,41 @@
+.hs-purchase-type-selector {
+  display: flex;
+  width: 100%;
+  padding: 4px;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  gap: 4px;
+}
+
+.hs-purchase-type-selector__button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--md-sys-spacing-2, 8px);
+  padding: var(--md-sys-spacing-2, 8px) var(--md-sys-spacing-3, 12px);
+  border-radius: var(--md-sys-shape-corner-small, 8px);
+  font-size: var(--md-sys-typescale-label-medium-size, 12px);
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hs-purchase-type-selector__button:hover {
+  color: var(--md-sys-color-on-surface);
+}
+
+.hs-purchase-type-selector__button--active-purchase {
+  background-color: var(--md-sys-color-surface);
+  color: #b45309;
+  box-shadow: var(--md-sys-elevation-level1);
+}
+
+.hs-purchase-type-selector__button--active-expense {
+  background-color: var(--md-sys-color-surface);
+  color: #be123c;
+  box-shadow: var(--md-sys-elevation-level1);
+}

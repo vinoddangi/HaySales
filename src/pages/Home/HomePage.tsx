@@ -1,167 +1,203 @@
 import { Plus } from 'lucide-react';
-import React, { useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Fab } from '../../components/Fab';
+import { Flex } from '../../components/layouts/Flex';
+import { Grid } from '../../components/layouts/Grid';
+import { PageContainer } from '../../views/PageContainer';
 import {
-  calculateCustomerOutstandingMetrics,
-  calculateDashboardMetrics,
-  calculateItemBreakdowns,
-  calculateProfitMetrics,
-  filterTransactionsByPeriod,
-} from '../../business/dashboardBusiness';
-import { Fab } from '../../components/common/Fab';
-import { PageContainer } from '../../components/common/PageContainer';
-import { PeriodFilterBar as DashboardFilterBar } from '../../components/common/PeriodFilterBar';
-import { Text } from '../../components/common/Text';
-import { Flex } from '../../components/layout/Flex';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import {
-  useGetAllTransactionsQuery,
-  useGetCustomersQuery,
-  useGetMonthlyRolloutStatusQuery,
-} from '../../store/slices/customersApi';
-import { setFilterMode, setSelectedMonth } from '../../store/slices/uiSlice';
-import { DashboardBreakdown } from './components/DashboardBreakdown';
-import { DashboardMetricCards } from './components/DashboardMetricCards';
+  CashInHandCard,
+  CustomerOutstandingCard,
+  EstimatedProfitCard,
+  NetCashflowCard,
+  PeriodFilterBar,
+  RecentActivityCard,
+  SalesOnCashCard,
+  SalesOnCreditCard,
+  StockCard,
+  TotalPurchasesCard,
+  TotalSalesCard,
+} from './components';
+import './HomePage.css';
+import { useHomePage } from './useHomePage';
 
 export const HomePage: React.FC = () => {
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  const currentDate = useMemo(() => new Date(), []);
-  const currentYear = currentDate.getFullYear();
-
-  // Period Filter States: 'month' (default current month) or 'ytd' persisted globally
-  const filterMode = useAppSelector((state) => state.ui.filterMode);
-  const selectedMonth = useAppSelector((state) => state.ui.selectedMonth);
-
-  // Fetch all transactions across customers & purchases
-  const { data: allTransactions = [], isLoading } =
-    useGetAllTransactionsQuery();
-
-  // Fetch customers list for running outstanding calculations
-  const { data: customers = [] } = useGetCustomersQuery();
-
-  // Fetch monthly rollout status for historical snapshot references
-  const { data: rolloutStatus } = useGetMonthlyRolloutStatusQuery();
-
-  // Filter transactions based on active period via Business Layer
-  const filteredTransactions = useMemo(() => {
-    return filterTransactionsByPeriod(
-      allTransactions,
-      filterMode,
-      selectedMonth,
-      currentDate,
-    );
-  }, [allTransactions, filterMode, selectedMonth, currentDate]);
-
-  // Aggregate metrics, customer outstanding, profit & item breakdown via Business Layer
-  const { metrics, itemBreakdown, customerOutstanding, profit } =
-    useMemo(() => {
-      const computedMetrics = calculateDashboardMetrics(filteredTransactions);
-      const computedBreakdowns = calculateItemBreakdowns(
-        allTransactions,
-        filteredTransactions,
-        {
-          mode: filterMode,
-          selectedMonth,
-          year: currentYear,
-        },
-      );
-      const computedOutstanding = calculateCustomerOutstandingMetrics(
-        customers,
-        filteredTransactions,
-        {
-          mode: filterMode,
-          selectedMonth,
-          year: currentYear,
-          rolloutStatus,
-        },
-      );
-      const computedProfit = calculateProfitMetrics(allTransactions, {
-        mode: filterMode,
-        selectedMonth,
-        year: currentYear,
-        totalSalesAmount: computedMetrics.totalSalesAmount,
-        rolloutStatus,
-      });
-
-      return {
-        metrics: computedMetrics,
-        itemBreakdown: computedBreakdowns,
-        customerOutstanding: computedOutstanding,
-        profit: computedProfit,
-      };
-    }, [
-      customers,
-      rolloutStatus,
-      allTransactions,
-      filteredTransactions,
-      filterMode,
-      selectedMonth,
-      currentYear,
-    ]);
-
-  const getPeriodLabel = () => {
-    if (filterMode === 'ytd') {
-      return `YTD ${currentYear}`;
-    }
-    const d = new Date(currentYear, selectedMonth, 1);
-    return d.toLocaleString('default', { month: 'long', year: 'numeric' });
-  };
+  const {
+    filterMode,
+    selectedMonth,
+    selectedYear,
+    periodLabel,
+    salesMetrics,
+    purchaseMetrics,
+    profitMetrics,
+    stockMetrics,
+    customerOutstandingMetrics,
+    cashflowMetrics,
+    balanceSheetMetrics,
+    allTransactions,
+    handleFilterModeChange,
+    handleMonthChange,
+    handleNavigate,
+    handleNewSale,
+  } = useHomePage();
 
   return (
-    <PageContainer spacing="md" bottomPadding="lg">
-      {/* Header */}
-      <Flex direction="column" gap="xs" fullWidth className="pt-1">
+    <PageContainer spacing="md" bottomPadding="lg" className="hs-home-page">
+      {/* 1. Header Overview & Period Indicator */}
+      <Flex direction="column" gap="none" fullWidth className="hs-home-header">
         <Flex align="center" gap="xs">
-          <Text styleAs="h2" weight="black">
-            Business Overview
-          </Text>
-          <span className="h-2 w-2 rounded-full bg-emerald-500" />
+          <h2 className="hs-home-header__title">Business Overview</h2>
+          <span className="hs-home-header__live-dot" />
         </Flex>
-        <Text styleAs="caption" appearance="secondary" weight="medium">
+        <p className="hs-home-header__subtitle">
           Performance for{' '}
-          <strong className="text-m3-primary">{getPeriodLabel()}</strong>
-        </Text>
+          <strong className="hs-home-header__highlight">{periodLabel}</strong>
+        </p>
       </Flex>
 
-      {/* Top Filter Bar: Current Month, YTD, Month Dropdown */}
-      <DashboardFilterBar
+      {/* 2. Period Filter Bar */}
+      <PeriodFilterBar
         filterMode={filterMode}
         selectedMonth={selectedMonth}
-        onFilterModeChange={(mode) => dispatch(setFilterMode(mode))}
-        onMonthChange={(month) => dispatch(setSelectedMonth(month))}
+        selectedYear={selectedYear}
+        onFilterModeChange={handleFilterModeChange}
+        onMonthChange={handleMonthChange}
       />
 
-      {/* Key Metric Cards */}
-      <DashboardMetricCards
-        metrics={metrics}
-        profit={profit}
-        customerOutstanding={customerOutstanding}
-        periodMode={filterMode}
-        periodLabel={getPeriodLabel()}
-        isLoading={isLoading}
+      {/* 3. Row 1: Top Main Cards (Total Sales & Total Purchases side-by-side) */}
+      <Grid columns={2} gap="sm" fullWidth>
+        <Grid.Item>
+          <TotalSalesCard
+            amount={salesMetrics.totalAmount}
+            weight={salesMetrics.totalWeight}
+            invoicesCount={salesMetrics.count}
+            avgRate={salesMetrics.avgRate}
+            onClick={() => handleNavigate('/activity?category=SALES')}
+          />
+        </Grid.Item>
+        <Grid.Item>
+          <TotalPurchasesCard
+            amount={purchaseMetrics.totalAmount}
+            weight={purchaseMetrics.totalWeight}
+            ordersCount={purchaseMetrics.count}
+            avgRate={purchaseMetrics.avgRate}
+            onClick={() =>
+              handleNavigate('/activity?category=PURCHASES_EXPENSES')
+            }
+          />
+        </Grid.Item>
+      </Grid>
+
+      {/* 4. Row 2: Sales Breakdown (Sales on Cash & Sales on Credit) */}
+      <Grid columns={2} gap="sm" fullWidth>
+        <Grid.Item>
+          <SalesOnCashCard
+            amount={salesMetrics.salesOnCash}
+            percentage={salesMetrics.cashPercentage}
+            onClick={() =>
+              handleNavigate('/activity?category=SALES&nature=CASH')
+            }
+          />
+        </Grid.Item>
+        <Grid.Item>
+          <SalesOnCreditCard
+            amount={salesMetrics.salesOnCredit}
+            percentage={salesMetrics.creditPercentage}
+            onClick={() =>
+              handleNavigate('/activity?category=SALES&nature=CREDIT')
+            }
+          />
+        </Grid.Item>
+      </Grid>
+
+      {/* 5. Row 3: Estimated Net Profit Card */}
+      <EstimatedProfitCard
+        netProfit={profitMetrics.netProfit}
+        profitMarginPct={profitMetrics.profitMarginPct}
+        grossCommission={profitMetrics.grossCommission}
+        pickupNet={profitMetrics.pickupNet}
+        operatingExpenses={profitMetrics.operatingExpenses}
+        periodLabel={periodLabel}
+        cumulativeProfit={profitMetrics.cumulativeProfit}
+        onClick={() => handleNavigate('/profile')}
       />
 
-      {/* Settlement Split & Item Breakdown */}
-      <DashboardBreakdown
-        itemBreakdown={itemBreakdown}
-        totalSales={metrics.totalSalesAmount}
-        salesOnCash={metrics.salesOnCash}
-        salesOnCredit={metrics.salesOnCredit}
-        servicesReceived={metrics.servicesReceived}
+      {/* 6. Row 4: Customer Outstanding Card */}
+      <CustomerOutstandingCard
+        totalOutstanding={customerOutstandingMetrics.totalOutstanding}
+        customersWithDuesCount={
+          customerOutstandingMetrics.customersWithDuesCount
+        }
+        periodCreditAdded={customerOutstandingMetrics.periodCreditAdded}
+        periodCollections={customerOutstandingMetrics.periodCollections}
+        netChange={customerOutstandingMetrics.netChange}
+        previousOutstanding={customerOutstandingMetrics.previousOutstanding}
+        tenorDifference={customerOutstandingMetrics.tenorDifference}
+        previousTenorLabel={customerOutstandingMetrics.previousTenorLabel}
+        periodLabel={periodLabel}
+        onClick={() => handleNavigate('/ledger')}
       />
 
-      {/* Quick New Sale Floating Action Button */}
-      <div className="fixed bottom-20 right-6 z-30">
+      {/* 7. Row 5: Balance Sheet & Cash in Hand Card */}
+      <CashInHandCard
+        cashInHand={balanceSheetMetrics.cashInHand}
+        cashAdjustment={balanceSheetMetrics.cashAdjustment}
+        customerReceivables={balanceSheetMetrics.customerReceivables}
+        closingStockValue={balanceSheetMetrics.closingStockValue}
+        fixedAssetsValue={balanceSheetMetrics.fixedAssetsValue}
+        totalAssets={balanceSheetMetrics.totalAssets}
+        totalLiabilities={balanceSheetMetrics.totalLiabilities}
+        partnerCapital={balanceSheetMetrics.partnerCapital}
+        retainedProfit={balanceSheetMetrics.retainedProfit}
+        onNavigateBalanceSheet={() => handleNavigate('/profile')}
+      />
+
+      {/* 8. Row 6: Net Cashflow Card */}
+      <NetCashflowCard
+        netCashflow={cashflowMetrics.netCashflow}
+        totalCashIn={cashflowMetrics.totalCashIn}
+        paymentsReceived={cashflowMetrics.paymentsReceived}
+        salesOnCash={cashflowMetrics.salesOnCash}
+        servicesReceived={cashflowMetrics.servicesReceived}
+        totalCashOut={cashflowMetrics.totalCashOut}
+        purchaseOnCash={cashflowMetrics.purchaseOnCash}
+        expensesOnCash={cashflowMetrics.expensesOnCash}
+        onCashInClick={() => handleNavigate('/activity?category=PAYMENTS')}
+        onCashOutClick={() =>
+          handleNavigate('/activity?category=PURCHASES_EXPENSES')
+        }
+      />
+
+      {/* 9. Row 7: Crop Stock & Valuation Card */}
+      <StockCard
+        totalClosingStock={stockMetrics.totalClosingStock}
+        totalOpeningStock={stockMetrics.totalOpeningStock}
+        totalPurchases={stockMetrics.totalPurchases}
+        totalSales={stockMetrics.totalSales}
+        totalGrossCommissionProfit={stockMetrics.totalGrossCommissionProfit}
+        totalCostOfGoodsSold={stockMetrics.totalCostOfGoodsSold}
+        cropItems={stockMetrics.crops}
+        periodLabel={periodLabel}
+        onClick={() => handleNavigate('/activity?category=PURCHASES_EXPENSES')}
+      />
+
+      {/* 10. Row 8: Recent Activity Card */}
+      <RecentActivityCard
+        transactions={allTransactions}
+        onViewAll={() => handleNavigate('/ledger')}
+      />
+
+      {/* 10. Floating Action Button for New Sale */}
+      <div className="hs-home-fab">
         <Fab
-          icon={<Plus className="h-6 w-6" />}
+          icon={<Plus className="hs-home-fab__icon" />}
           label="New Sale"
           variant="primary"
           size="md"
-          onClick={() => navigate('/sales')}
+          onClick={handleNewSale}
         />
       </div>
     </PageContainer>
   );
 };
+
 export default HomePage;

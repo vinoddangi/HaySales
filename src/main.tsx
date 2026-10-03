@@ -1,17 +1,10 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './App';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { App } from './App';
 import './index.css';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
-const rootElement = document.getElementById('root');
-if (rootElement) {
-  createRoot(rootElement).render(
-    <StrictMode>
-      <App />
-    </StrictMode>,
-  );
-}
-
-// Register service worker for offline caching and PWA support
-serviceWorkerRegistration.register();
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);

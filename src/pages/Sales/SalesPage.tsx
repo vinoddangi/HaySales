@@ -1,155 +1,90 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Card } from '../../components/common/Card';
-import { CustomerSearchSelector } from '../../components/common/CustomerSearchSelector';
-import { PageContainer } from '../../components/common/PageContainer';
-import { useAppDispatch } from '../../store/hooks';
+import { UserCheck } from 'lucide-react';
+import React from 'react';
+import { Flex } from '../../components/layouts/Flex';
+import { PageContainer } from '../../views/PageContainer';
 import {
-  useAddTransactionMutation,
-  useGetCustomersQuery,
-  useGetMonthlyRolloutStatusQuery,
-} from '../../store/slices/customersApi';
-import { showSnackbar } from '../../store/slices/uiSlice';
-import { SaleForm } from './components/SaleForm';
-import { ServiceForm } from './components/ServiceForm';
+  CustomerSelectorCard,
+  SaleFormCard,
+  SalesTypeSelector,
+  ServiceFormCard,
+} from './components';
+import './SalesPage.css';
+import { useSalesPage } from './useSalesPage';
 
 export const SalesPage: React.FC = () => {
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  const { data: customers = [] } = useGetCustomersQuery();
-  const { data: rolloutStatus } = useGetMonthlyRolloutStatusQuery();
-  const [addTransaction, { isLoading: isSaving }] = useAddTransactionMutation();
-
-  const [selectedCustId, setSelectedCustId] = useState<string | null>(null);
-  const [txType, setTxType] = useState<'SALE' | 'SERVICE'>('SALE');
-
-  const customer = customers.find((c) => c.id === selectedCustId);
-  const outstandingDue = customer?.outstandingAmount || 0;
-  const CREDIT_LIMIT = customer?.creditLimit || 35000;
-  const isCreditAllowed = outstandingDue < CREDIT_LIMIT;
-
-  const handleSaleSubmit = async (saleData: {
-    item: string;
-    weightKg: number;
-    amount: number;
-    cashPaid: number;
-    date: string;
-  }) => {
-    if (!selectedCustId) return;
-    try {
-      await addTransaction({
-        customerId: selectedCustId,
-        type: 'SALE',
-        item: saleData.item,
-        weightKg: saleData.weightKg,
-        amount: saleData.amount,
-        discount: 0,
-        cashPaid: saleData.cashPaid,
-        date: saleData.date,
-      }).unwrap();
-
-      dispatch(
-        showSnackbar({ message: 'Sale transaction successfully recorded!' }),
-      );
-      navigate('/');
-    } catch (err) {
-      console.error('Failed to save sale:', err);
-      dispatch(showSnackbar({ message: 'Error saving sale transaction.' }));
-    }
-  };
-
-  const handleServiceSubmit = async (serviceData: {
-    item: string;
-    amount: number;
-    cashPaid: number;
-    date: string;
-    note?: string;
-  }) => {
-    if (!selectedCustId) return;
-    try {
-      await addTransaction({
-        customerId: selectedCustId,
-        type: 'SERVICE',
-        item: serviceData.item,
-        amount: serviceData.amount,
-        discount: 0,
-        cashPaid: serviceData.cashPaid,
-        date: serviceData.date,
-        note: serviceData.note,
-      }).unwrap();
-
-      dispatch(
-        showSnackbar({ message: 'Service transaction successfully recorded!' }),
-      );
-      navigate('/');
-    } catch (err) {
-      console.error('Failed to save service:', err);
-      dispatch(showSnackbar({ message: 'Error saving service transaction.' }));
-    }
-  };
+  const {
+    customers,
+    selectedCustomerId,
+    selectedCustomer,
+    outstandingDue,
+    creditLimit,
+    activeType,
+    isSaving,
+    setSelectedCustomerId,
+    setActiveType,
+    handleSaleSubmit,
+    handleServiceSubmit,
+  } = useSalesPage();
 
   return (
-    <PageContainer spacing="md" bottomPadding="lg">
-      <h2 className="text-lg font-bold text-m3-on-surface">Sales & Services</h2>
+    <PageContainer spacing="md" bottomPadding="lg" className="hs-sales-page">
+      {/* 1. Page Header */}
+      <Flex
+        direction="column"
+        gap="none"
+        fullWidth
+        className="hs-sales-page__header"
+      >
+        <h2 className="hs-sales-page__title">Sales & Services</h2>
+        <p className="hs-sales-page__subtitle">
+          Register crop sales invoices and custom agricultural service charges
+        </p>
+      </Flex>
 
-      {/* 1. Customer Search & Selection */}
-      <Card variant="filled" className="bg-m3-surface-container p-4">
-        <CustomerSearchSelector
-          customers={customers}
-          selectedCustomerId={selectedCustId}
-          onSelectCustomer={setSelectedCustId}
-          outstandingDue={outstandingDue}
-          creditLimit={CREDIT_LIMIT}
-        />
-      </Card>
+      {/* 2. Customer Selector Card */}
+      <CustomerSelectorCard
+        customers={customers}
+        selectedCustomerId={selectedCustomerId}
+        onSelectCustomer={setSelectedCustomerId}
+        outstandingDue={outstandingDue}
+        creditLimit={creditLimit}
+      />
 
-      {/* 2. Transaction Type Switcher and Form */}
-      {customer && (
-        <Card variant="outlined" className="space-y-4 p-4">
-          <div className="flex rounded-lg bg-m3-surface-container-high p-1">
-            <button
-              type="button"
-              onClick={() => setTxType('SALE')}
-              className={`flex-1 rounded-md py-1.5 text-xs font-bold transition-all ${
-                txType === 'SALE'
-                  ? 'shadow-xs bg-m3-primary text-m3-on-primary'
-                  : 'text-m3-on-surface-variant hover:text-m3-on-surface'
-              }`}
-            >
-              Sales
-            </button>
-            <button
-              type="button"
-              onClick={() => setTxType('SERVICE')}
-              className={`flex-1 rounded-md py-1.5 text-xs font-bold transition-all ${
-                txType === 'SERVICE'
-                  ? 'shadow-xs bg-m3-primary text-m3-on-primary'
-                  : 'text-m3-on-surface-variant hover:text-m3-on-surface'
-              }`}
-            >
-              Service
-            </button>
-          </div>
+      {/* 3. Transaction Form (when customer is selected) */}
+      {selectedCustomer ? (
+        <>
+          <SalesTypeSelector
+            activeType={activeType}
+            onChange={(type) => setActiveType(type)}
+          />
 
-          {txType === 'SALE' ? (
-            <SaleForm
+          {activeType === 'SALE' ? (
+            <SaleFormCard
               outstandingDue={outstandingDue}
-              isCreditAllowed={isCreditAllowed}
+              creditLimit={creditLimit}
               isSaving={isSaving}
-              rolloutStatus={rolloutStatus}
               onSubmit={handleSaleSubmit}
             />
           ) : (
-            <ServiceForm
+            <ServiceFormCard
               outstandingDue={outstandingDue}
-              isCreditAllowed={isCreditAllowed}
+              creditLimit={creditLimit}
               isSaving={isSaving}
-              rolloutStatus={rolloutStatus}
               onSubmit={handleServiceSubmit}
             />
           )}
-        </Card>
+        </>
+      ) : (
+        <div className="hs-sales-page__empty-state">
+          <UserCheck className="text-m3-on-surface-variant h-8 w-8 opacity-50" />
+          <p className="hs-sales-page__empty-text">
+            Please select a customer account above to record a new sale or
+            service invoice.
+          </p>
+        </div>
       )}
     </PageContainer>
   );
 };
+
+export default SalesPage;

@@ -1,0 +1,19 @@
+/* Material Design 3 Checkbox styling */
+.hs-checkbox-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-small);
+  cursor: pointer;
+  user-select: none;
+}
+
+.hs-checkbox-wrapper--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.hs-checkbox-label {
+  font-size: 0.875rem;
+  color: var(--md-sys-color-on-surface);
+  font-weight: 500;
+}

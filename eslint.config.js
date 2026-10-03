@@ -10,6 +10,7 @@ export default [
     ignores: [
       'dist/**',
       'node_modules/**',
+      'public/**',
       '.vscode/**',
       '.github/**',
       'script/**',
@@ -33,7 +34,6 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.es2021,
-        __APP_VERSION__: 'readonly',
       },
     },
     plugins: {
@@ -50,6 +50,7 @@ export default [
         'warn',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
+      'no-redeclare': 'off',
     },
   },
 ];

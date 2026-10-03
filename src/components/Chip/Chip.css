@@ -1,0 +1,11 @@
+/* Material Design 3 Chip styling */
+.hs-chip {
+  display: inline-flex;
+  font-family: inherit;
+}
+
+.hs-chip-set {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--md-sys-spacing-extra-small);
+}

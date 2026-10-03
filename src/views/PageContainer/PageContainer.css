@@ -1,0 +1,49 @@
+.hs-page-container {
+  padding: var(--md-sys-spacing-medium);
+  display: flex;
+  flex-direction: column;
+  animation: hs-fade-in 200ms ease-out;
+}
+
+@keyframes hs-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hs-page-container--spacing-none {
+  gap: 0;
+}
+
+.hs-page-container--spacing-sm {
+  gap: var(--md-sys-spacing-small);
+}
+
+.hs-page-container--spacing-md {
+  gap: var(--md-sys-spacing-medium);
+}
+
+.hs-page-container--spacing-lg {
+  gap: 1.25rem;
+}
+
+.hs-page-container--pb-none {
+  padding-bottom: var(--md-sys-spacing-medium);
+}
+
+.hs-page-container--pb-sm {
+  padding-bottom: 2rem;
+}
+
+.hs-page-container--pb-md {
+  padding-bottom: 3rem;
+}
+
+.hs-page-container--pb-lg {
+  padding-bottom: 5rem;
+}

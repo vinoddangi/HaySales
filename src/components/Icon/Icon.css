@@ -1,0 +1,8 @@
+/* Material Design 3 Icon styling */
+.hs-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: 1.5rem;
+}

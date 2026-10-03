@@ -1,53 +1,335 @@
 import { describe, expect, it } from 'vitest';
-import { Transaction } from '../types';
-import { calculateCustomerLedgerSummary } from './ledgerBusiness';
+import { Customer, CustomerTransactionData } from '../models';
+import {
+  calculateAllCustomersLedger,
+  calculateCustomerLedgerDetail,
+  calculateCustomerOutstanding,
+  calculateCustomerOutstandingMetrics,
+  filterCustomerTransactionsUpToTimeline,
+  getTimelineCutoffDate,
+} from './ledgerBusiness';
+import { TimelineFilter } from './profitBusiness';
 
 describe('ledgerBusiness', () => {
-  it('calculates customer ledger summary correctly', () => {
-    const transactions: Transaction[] = [
-      {
-        type: 'SALE',
-        amount: 8000,
-        cashPaid: 3000,
-        remainingDue: 5000,
-      },
-      {
-        type: 'SERVICE',
-        amount: 2000,
-        cashPaid: 2000,
-        remainingDue: 0,
-      },
-      {
-        type: 'PAYMENT',
-        paymentAmount: 2000,
-      },
-    ];
+  const mockCustomer: Customer = {
+    id: 'cust_1',
+    name: 'Ramesh Patel',
+    mobile: '9876543210',
+    village: 'Viramgam',
+  };
 
-    const summary = calculateCustomerLedgerSummary(transactions);
-    expect(summary.totalBilled).toBe(10000);
-    expect(summary.totalPaid).toBe(7000); // 3000 cash + 2000 cash + 2000 payment
-    expect(summary.currentBalance).toBe(3000); // 5000 remaining - 2000 payment
-    expect(summary.transactionCount).toBe(3);
+  const mockTransactions: CustomerTransactionData[] = [
+    // 2025 Opening Due: 50,000
+    {
+      id: 'tx_2025_opening',
+      customerId: 'cust_1',
+      date: '2025-01-01',
+      type: 'OPENING_DUE',
+      amount: 50000,
+      cashPaid: 0,
+      remainingDue: 50000,
+    },
+    // Historical 2025 Sale: 15,000
+    {
+      id: 'tx_2025_sale',
+      customerId: 'cust_1',
+      date: '2025-11-10',
+      type: 'SALE',
+      category: 'Tuvar',
+      weight: 1500,
+      amount: 15000,
+      cashPaid: 5000,
+      remainingDue: 10000,
+    },
+    // Jan 2026 Sale: 20,000 (10,000 cash paid, 10,000 remaining due)
+    {
+      id: 'tx_jan_sale',
+      customerId: 'cust_1',
+      date: '2026-01-10',
+      type: 'SALE',
+      category: 'Tuvar',
+      weight: 2000,
+      amount: 20000,
+      cashPaid: 10000,
+      remainingDue: 10000,
+    },
+    // Feb 2026 Service: 5,000 (0 cash paid, 5,000 remaining due)
+    {
+      id: 'tx_feb_service',
+      customerId: 'cust_1',
+      date: '2026-02-15',
+      type: 'SERVICE',
+      category: 'Pickup',
+      amount: 5000,
+      cashPaid: 0,
+      remainingDue: 5000,
+    },
+    // March 2026 Payment: 15,000 + 1,000 discount
+    {
+      id: 'tx_mar_payment',
+      customerId: 'cust_1',
+      date: '2026-03-20',
+      type: 'PAYMENT',
+      amount: 15000,
+      cashPaid: 15000,
+      remainingDue: 0,
+      discount: 1000,
+    },
+    // May 12, 2026 Sale: 30,000 (0 cash paid, 30,000 remaining due)
+    {
+      id: 'tx_may_sale',
+      customerId: 'cust_1',
+      date: '2026-05-12',
+      type: 'SALE',
+      category: 'Chana',
+      weight: 3000,
+      amount: 30000,
+      cashPaid: 0,
+      remainingDue: 30000,
+    },
+    // May 25, 2026 Payment: 10,000
+    {
+      id: 'tx_may_late_payment',
+      customerId: 'cust_1',
+      date: '2026-05-25',
+      type: 'PAYMENT',
+      amount: 10000,
+      cashPaid: 10000,
+      remainingDue: 0,
+    },
+    // June 2026 Payment: 20,000 (after May)
+    {
+      id: 'tx_june_payment',
+      customerId: 'cust_1',
+      date: '2026-06-05',
+      type: 'PAYMENT',
+      amount: 20000,
+      cashPaid: 20000,
+      remainingDue: 0,
+    },
+  ];
+
+  describe('getTimelineCutoffDate & filterCustomerTransactionsUpToTimeline', () => {
+    it('computes exact end of month date string and includes all history up to May 31', () => {
+      const timelineMay: TimelineFilter = {
+        selectedYear: 2026,
+        selectedMonth: 4, // May
+      };
+
+      const cutoff = getTimelineCutoffDate(timelineMay);
+      expect(cutoff).toBe('2026-05-31');
+
+      const filtered = filterCustomerTransactionsUpToTimeline(
+        mockTransactions,
+        timelineMay,
+      );
+
+      // Should include opening, 2025 sale, Jan, Feb, Mar, May 12, May 25 (7 transactions), excluding June
+      expect(filtered).toHaveLength(7);
+      expect(filtered.map((t) => t.id)).toEqual([
+        'tx_2025_opening',
+        'tx_2025_sale',
+        'tx_jan_sale',
+        'tx_feb_service',
+        'tx_mar_payment',
+        'tx_may_sale',
+        'tx_may_late_payment',
+      ]);
+    });
+
+    it('filters strictly up to a specific day when selectedDay is provided', () => {
+      const timelineMay15: TimelineFilter = {
+        selectedYear: 2026,
+        selectedMonth: 4, // May
+        selectedDay: 15,
+      };
+
+      const filtered = filterCustomerTransactionsUpToTimeline(
+        mockTransactions,
+        timelineMay15,
+      );
+
+      // Should include opening, 2025 sale, Jan, Feb, Mar, May 12 (6 transactions), excluding May 25 and June
+      expect(filtered).toHaveLength(6);
+      expect(filtered.map((t) => t.id)).toEqual([
+        'tx_2025_opening',
+        'tx_2025_sale',
+        'tx_jan_sale',
+        'tx_feb_service',
+        'tx_mar_payment',
+        'tx_may_sale',
+      ]);
+    });
   });
 
-  it('handles payment with settlement discount', () => {
-    const transactions: Transaction[] = [
-      {
-        type: 'SALE',
-        amount: 10000,
-        cashPaid: 0,
-        remainingDue: 10000,
-      },
-      {
-        type: 'PAYMENT',
-        paymentAmount: 9500,
-        discount: 500,
-      },
-    ];
+  describe('calculateCustomerLedgerDetail', () => {
+    it('aggregates running balance from transactions up to May 31st correctly', () => {
+      const timelineMay: TimelineFilter = {
+        selectedYear: 2026,
+        selectedMonth: 4, // May (0-indexed)
+      };
 
-    const summary = calculateCustomerLedgerSummary(transactions);
-    expect(summary.totalBilled).toBe(10000);
-    expect(summary.totalPaid).toBe(9500);
-    expect(summary.currentBalance).toBe(0); // 10000 - 9500 paid - 500 discount = 0
+      const result = calculateCustomerLedgerDetail(
+        mockCustomer,
+        mockTransactions,
+        timelineMay,
+      );
+
+      // Opening: 50,000
+      expect(result.openingDue).toBe(50000);
+      // Sales: 15,000 (2025) + 20,000 (Jan) + 30,000 (May) = 65,000
+      expect(result.totalSales).toBe(65000);
+      // Services: 5,000 (Feb)
+      expect(result.totalServices).toBe(5000);
+      // Total Billed: 50,000 opening + 65,000 sales + 5,000 services = 120,000
+      expect(result.totalBilled).toBe(120000);
+      // Total Paid: 5,000 (2025 cash) + 10,000 (Jan cash) + 15,000 (Mar payment) + 10,000 (May payment) = 40,000
+      expect(result.totalPaid).toBe(40000);
+      // Total Discounts: 1,000 (Mar discount)
+      expect(result.totalDiscounts).toBe(1000);
+      // Outstanding = 120,000 - 40,000 - 1,000 = 79,000
+      expect(result.currentOutstanding).toBe(79000);
+      expect(result.transactionCount).toBe(7);
+    });
+  });
+
+  describe('calculateCustomerOutstanding', () => {
+    it('returns accurate single numeric outstanding balance up to timeline', () => {
+      const timelineMay: TimelineFilter = {
+        selectedYear: 2026,
+        selectedMonth: 4, // May
+      };
+
+      const outstanding = calculateCustomerOutstanding(
+        'cust_1',
+        mockTransactions,
+        timelineMay,
+      );
+
+      expect(outstanding).toBe(79000);
+    });
+  });
+
+  describe('calculateAllCustomersLedger', () => {
+    it('computes overall accounts receivable and ranks customers by outstanding up to timeline', () => {
+      const customers: Customer[] = [
+        mockCustomer,
+        {
+          id: 'cust_2',
+          name: 'Suresh Kumar',
+        },
+      ];
+
+      const allTxs: CustomerTransactionData[] = [
+        ...mockTransactions,
+        // Cust 2 sale in Feb
+        {
+          id: 'tx_c2_sale',
+          customerId: 'cust_2',
+          date: '2026-02-01',
+          type: 'SALE',
+          category: 'Tuvar',
+          weight: 1000,
+          amount: 12000,
+          cashPaid: 2000,
+          remainingDue: 10000,
+        },
+      ];
+
+      const timelineMay: TimelineFilter = {
+        selectedYear: 2026,
+        selectedMonth: 4, // May
+      };
+
+      const result = calculateAllCustomersLedger(
+        customers,
+        allTxs,
+        timelineMay,
+      );
+
+      expect(result.customerCount).toBe(2);
+      expect(result.customersWithDuesCount).toBe(2);
+      // Cust 1: 79,000
+      // Cust 2: 12,000 sale - 2,000 paid = 10,000
+      expect(result.totalOutstanding).toBe(79000 + 10000);
+
+      // Sorted by highest outstanding descending
+      expect(result.customers[0]?.customerId).toBe('cust_1');
+      expect(result.customers[0]?.currentOutstanding).toBe(79000);
+      expect(result.customers[1]?.customerId).toBe('cust_2');
+      expect(result.customers[1]?.currentOutstanding).toBe(10000);
+    });
+  });
+
+  describe('calculateCustomerOutstandingMetrics', () => {
+    it('computes cumulative customer outstanding up to active month and compares with previous tenor', () => {
+      const customersWithOpening: Customer[] = [
+        {
+          id: 'cust_1',
+          name: 'Ramesh Patel',
+        },
+      ];
+
+      const timelineMay: TimelineFilter = {
+        selectedYear: 2026,
+        selectedMonth: 4, // May
+        filterMode: 'month',
+      };
+
+      const filteredMayTxs = mockTransactions.filter((t) => {
+        return t.date ? t.date.startsWith('2026-05') : false;
+      });
+
+      const result = calculateCustomerOutstandingMetrics(
+        customersWithOpening,
+        mockTransactions,
+        filteredMayTxs,
+        timelineMay,
+      );
+
+      // May: openingDue (50,000) + txs up to May 31 (29,000 net) = 79,000
+      expect(result.totalOutstanding).toBe(79000);
+      expect(result.tenorDifference).toBe(20000);
+      expect(result.previousOutstanding).toBe(59000);
+      expect(result.periodCreditAdded).toBe(30000);
+      expect(result.periodCollections).toBe(10000);
+      expect(result.netChange).toBe(20000);
+      expect(result.previousTenorLabel).toBe('vs April');
+    });
+
+    it('computes YTD cumulative customer outstanding and compares with previous year closing', () => {
+      const customersWithOpening: Customer[] = [
+        {
+          id: 'cust_1',
+          name: 'Ramesh Patel',
+        },
+      ];
+
+      const timelineYtd: TimelineFilter = {
+        selectedYear: 2026,
+        selectedMonth: 4,
+        filterMode: 'ytd',
+      };
+
+      const filteredYtdTxs = mockTransactions.filter((t) => {
+        return t.date ? t.date.startsWith('2026') : false;
+      });
+
+      const result = calculateCustomerOutstandingMetrics(
+        customersWithOpening,
+        mockTransactions,
+        filteredYtdTxs,
+        timelineYtd,
+      );
+
+      // All txs up to May 2026 + 2025 tx (10k) + opening (50k)
+      // Jan 10k + Feb 5k - Mar 16k + May 30k - May 10k = 19k (2026 YTD up to May)
+      // Total outstanding up to May 2026 = 50k + 10k (2025) + 19k (2026) = 79,000
+      expect(result.totalOutstanding).toBe(79000);
+      // Previous tenor (end of 2025): openingDue 50k + 2025 sale 10k = 60,000
+      expect(result.previousOutstanding).toBe(60000);
+      expect(result.tenorDifference).toBe(19000);
+      expect(result.previousTenorLabel).toBe('vs 2025 Closing');
+    });
   });
 });

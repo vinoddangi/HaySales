@@ -1,0 +1,87 @@
+.hs-cash-in-hand-card {
+  border: 1px solid var(--md-sys-color-outline-variant, #c2c7ce);
+  background-color: var(--md-sys-color-surface-container, #eceef0);
+}
+
+.hs-cash-in-hand-card__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  background-color: rgba(99, 102, 241, 0.12);
+  color: #4f46e5;
+}
+
+.hs-cash-in-hand-card__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.hs-cash-in-hand-card__header-right {
+  text-align: right;
+}
+
+.hs-cash-in-hand-card__sub-cards {
+  margin-top: var(--md-sys-spacing-sm, 8px);
+}
+
+.hs-balance-subcard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  border-width: 1px;
+  border-style: solid;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition:
+    background-color 150ms ease,
+    transform 150ms ease;
+}
+
+.hs-balance-subcard:hover {
+  transform: translateY(-1px);
+}
+
+.hs-balance-subcard--assets {
+  border-color: rgba(16, 185, 129, 0.2);
+  background-color: rgba(16, 185, 129, 0.08);
+}
+
+.hs-balance-subcard--assets:hover {
+  background-color: rgba(16, 185, 129, 0.12);
+}
+
+.hs-balance-subcard--liabilities {
+  border-color: rgba(168, 85, 247, 0.2);
+  background-color: rgba(168, 85, 247, 0.08);
+}
+
+.hs-balance-subcard--liabilities:hover {
+  background-color: rgba(168, 85, 247, 0.12);
+}
+
+.hs-balance-subcard__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: 4px;
+}
+
+.hs-balance-subcard__rows {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hs-balance-subcard__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

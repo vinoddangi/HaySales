@@ -1,0 +1,46 @@
+.hs-total-sales-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.08) 0%,
+    var(--md-sys-color-surface-container-low, #f2f4f6) 100%
+  );
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    border-color 150ms ease;
+}
+
+.hs-total-sales-card:hover {
+  border-color: rgba(16, 185, 129, 0.6);
+  transform: translateY(-1px);
+}
+
+.hs-total-sales-card__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--md-sys-shape-corner-full, 9999px);
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #059669;
+  flex-shrink: 0;
+}
+
+.hs-total-sales-card__icon {
+  width: 14px;
+  height: 14px;
+}
+
+.hs-total-sales-card__rate-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--md-sys-spacing-xs, 6px);
+  padding: 3px 6px;
+  border-radius: var(--md-sys-shape-corner-small, 6px);
+  background-color: rgba(16, 185, 129, 0.12);
+}
