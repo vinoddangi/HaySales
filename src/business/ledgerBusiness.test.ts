@@ -267,7 +267,6 @@ describe('ledgerBusiness', () => {
         {
           id: 'cust_1',
           name: 'Ramesh Patel',
-          openingDue: 50000,
         },
       ];
 
@@ -290,9 +289,6 @@ describe('ledgerBusiness', () => {
 
       // May: openingDue (50,000) + txs up to May 31 (29,000 net) = 79,000
       expect(result.totalOutstanding).toBe(79000);
-      // Previous tenor (April): openingDue (50,000) + txs up to Apr 30 (Jan 10k due + Feb 5k due - Mar 16k = -1k net) = 49,000 + 10k - 1k...
-      // Let's verify: May added 30k credit - 10k payment = 20k net in May.
-      // 79,000 - 49,000 = 30,000 credit - 10,000 paid = 20,000 difference
       expect(result.tenorDifference).toBe(20000);
       expect(result.previousOutstanding).toBe(59000);
       expect(result.periodCreditAdded).toBe(30000);
@@ -306,7 +302,6 @@ describe('ledgerBusiness', () => {
         {
           id: 'cust_1',
           name: 'Ramesh Patel',
-          openingDue: 50000,
         },
       ];
 
@@ -316,12 +311,14 @@ describe('ledgerBusiness', () => {
         filterMode: 'ytd',
       };
 
+      const filteredYtdTxs = mockTransactions.filter((t) => {
+        return t.date ? t.date.startsWith('2026') : false;
+      });
+
       const result = calculateCustomerOutstandingMetrics(
         customersWithOpening,
         mockTransactions,
-        mockTransactions.filter((t) => {
-          return t.date ? t.date.startsWith('2026') : false;
-        }),
+        filteredYtdTxs,
         timelineYtd,
       );
 

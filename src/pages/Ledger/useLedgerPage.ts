@@ -3,7 +3,6 @@ import { CustomerLedgerDetail } from '../../business/ledgerBusiness';
 import {
   CustomerModel,
   CustomerTransactionData,
-  OpeningDueTransactionData,
   PaymentTransactionData,
 } from '../../models';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -78,27 +77,8 @@ export function useLedgerPage() {
       (t) => t.customerId === selectedCustomerId,
     );
 
-    // If customer has opening due, synthesize an OpeningDue transaction so it appears in the statement
-    const completeTxs: CustomerTransactionData[] = [...customerTxs];
-    const openingDue = Number(selectedCustomer.openingDue || 0);
-    const hasOpeningDueTx = customerTxs.some((t) => t.type === 'OPENING_DUE');
-
-    if (openingDue > 0 && !hasOpeningDueTx) {
-      const openingTx: OpeningDueTransactionData = {
-        id: `opening-${selectedCustomer.id}`,
-        type: 'OPENING_DUE',
-        customerId: selectedCustomer.id,
-        customerName: selectedCustomer.name,
-        amount: openingDue,
-        cashPaid: 0,
-        remainingDue: openingDue,
-        date: '2025-01-01',
-        note: 'Initial opening balance',
-      };
-      completeTxs.unshift(openingTx);
-    }
-
     // Sort chronologically descending for statement
+    const completeTxs: CustomerTransactionData[] = [...customerTxs];
     completeTxs.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
     const detail: CustomerLedgerDetail = summary
@@ -111,13 +91,13 @@ export function useLedgerPage() {
           customerId: selectedCustomer.id,
           customerName: selectedCustomer.name,
           customer: selectedCustomer,
-          openingDue,
+          openingDue: 0,
           totalSales: 0,
           totalServices: 0,
-          totalBilled: openingDue,
+          totalBilled: 0,
           totalPaid: 0,
           totalDiscounts: 0,
-          currentOutstanding: openingDue,
+          currentOutstanding: 0,
           transactionCount: completeTxs.length,
           transactions: completeTxs,
         };

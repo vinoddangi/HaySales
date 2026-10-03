@@ -226,12 +226,10 @@ export function calculateCustomerOutstanding(
   customerId: string,
   transactions: CustomerTransactionData[],
   timeline?: TimelineFilter | string,
-  openingDue: number = 0,
 ): number {
   const dummyCustomer: Customer = {
     id: customerId,
     name: '',
-    openingDue,
   };
 
   const detail = calculateCustomerLedgerDetail(

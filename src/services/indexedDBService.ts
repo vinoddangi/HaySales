@@ -304,7 +304,6 @@ export async function syncLocalDatabaseFromCloud(): Promise<{
       mobile: data.mobile || '',
       village: data.village || '',
       creditLimit: data.creditLimit,
-      openingDue: data.openingDue,
     });
   });
 

@@ -328,7 +328,7 @@ describe('customerOutstandingSelectors', () => {
 
     it('does not double count opening balance when explicit OPENING_DUE transaction exists', () => {
       const customers: Customer[] = [
-        { id: 'c1', name: 'Akoliya Bhagvanbhai', openingDue: 13080 },
+        { id: 'c1', name: 'Akoliya Bhagvanbhai' },
       ];
       const transactions: CustomerTransactionData[] = [
         {

@@ -46,8 +46,6 @@ export function useSalesPage() {
     return calculateCustomerOutstanding(
       selectedCustomer.id,
       customerTransactions,
-      undefined,
-      selectedCustomer.openingDue || 0,
     );
   }, [selectedCustomer, customerTransactions]);
 
