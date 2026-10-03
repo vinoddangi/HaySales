@@ -194,12 +194,12 @@ export function calculateCustomerLedgerDetail(
   }
 
   const totalBilled = Math.round(openingDue + totalSales + totalServices);
-  const currentOutstanding = Math.round(totalBilled - totalPaid - totalDiscounts);
+  const currentOutstanding = Math.round(
+    totalBilled - totalPaid - totalDiscounts,
+  );
 
   const lastTx = filteredTxs[filteredTxs.length - 1];
-  const lastTransactionDate = lastTx
-    ? parseIsoDate(lastTx.date)
-    : undefined;
+  const lastTransactionDate = lastTx ? parseIsoDate(lastTx.date) : undefined;
 
   return {
     customer,

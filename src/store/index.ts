@@ -45,10 +45,7 @@ export type {
 } from './slices/themeSlice';
 
 export * from './slices/timelineSlice';
-export type {
-  FilterPeriodMode,
-  TimelineState,
-} from './slices/timelineSlice';
+export type { FilterPeriodMode, TimelineState } from './slices/timelineSlice';
 
 export * from './slices/uiSlice';
 export type {

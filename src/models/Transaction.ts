@@ -10,12 +10,7 @@ import {
 // ── Transaction Type & Category Definitions ─────────────────────────────────
 
 export type TransactionType =
-  | 'SALE'
-  | 'SERVICE'
-  | 'PAYMENT'
-  | 'PURCHASE'
-  | 'EXPENSE'
-  | 'OPENING_DUE';
+  'SALE' | 'SERVICE' | 'PAYMENT' | 'PURCHASE' | 'EXPENSE' | 'OPENING_DUE';
 
 export type CustomerTransactionType = Extract<
   TransactionType,

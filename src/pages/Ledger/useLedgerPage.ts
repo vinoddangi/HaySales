@@ -67,51 +67,55 @@ export function useLedgerPage() {
   }, [customers, selectedCustomerId]);
 
   // Complete customer ledger detail & full transaction history (including synthesized opening due)
-  const { selectedCustomerDetail, selectedCustomerTransactions } = useMemo(() => {
-    if (!selectedCustomer || !selectedCustomerId) {
-      return { selectedCustomerDetail: null, selectedCustomerTransactions: [] };
-    }
-
-    const summary = customerDetailsMap[selectedCustomerId];
-    const customerTxs = allCustomerTransactions.filter(
-      (t) => t.customerId === selectedCustomerId,
-    );
-
-    // Sort chronologically descending for statement
-    const completeTxs: CustomerTransactionData[] = [...customerTxs];
-    completeTxs.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
-
-    const detail: CustomerLedgerDetail = summary
-      ? {
-          ...summary,
-          customer: selectedCustomer,
-          transactions: completeTxs,
-        }
-      : {
-          customerId: selectedCustomer.id,
-          customerName: selectedCustomer.name,
-          customer: selectedCustomer,
-          openingDue: 0,
-          totalSales: 0,
-          totalServices: 0,
-          totalBilled: 0,
-          totalPaid: 0,
-          totalDiscounts: 0,
-          currentOutstanding: 0,
-          transactionCount: completeTxs.length,
-          transactions: completeTxs,
+  const { selectedCustomerDetail, selectedCustomerTransactions } =
+    useMemo(() => {
+      if (!selectedCustomer || !selectedCustomerId) {
+        return {
+          selectedCustomerDetail: null,
+          selectedCustomerTransactions: [],
         };
+      }
 
-    return {
-      selectedCustomerDetail: detail,
-      selectedCustomerTransactions: completeTxs,
-    };
-  }, [
-    selectedCustomer,
-    selectedCustomerId,
-    customerDetailsMap,
-    allCustomerTransactions,
-  ]);
+      const summary = customerDetailsMap[selectedCustomerId];
+      const customerTxs = allCustomerTransactions.filter(
+        (t) => t.customerId === selectedCustomerId,
+      );
+
+      // Sort chronologically descending for statement
+      const completeTxs: CustomerTransactionData[] = [...customerTxs];
+      completeTxs.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+      const detail: CustomerLedgerDetail = summary
+        ? {
+            ...summary,
+            customer: selectedCustomer,
+            transactions: completeTxs,
+          }
+        : {
+            customerId: selectedCustomer.id,
+            customerName: selectedCustomer.name,
+            customer: selectedCustomer,
+            openingDue: 0,
+            totalSales: 0,
+            totalServices: 0,
+            totalBilled: 0,
+            totalPaid: 0,
+            totalDiscounts: 0,
+            currentOutstanding: 0,
+            transactionCount: completeTxs.length,
+            transactions: completeTxs,
+          };
+
+      return {
+        selectedCustomerDetail: detail,
+        selectedCustomerTransactions: completeTxs,
+      };
+    }, [
+      selectedCustomer,
+      selectedCustomerId,
+      customerDetailsMap,
+      allCustomerTransactions,
+    ]);
 
   const handleSelectCustomer = (customerId: string) => {
     setSelectedCustomerId(customerId);

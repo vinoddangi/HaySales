@@ -51,7 +51,7 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
       {/* 1. Filter Bar & Search */}
       <div className="hs-tx-history-list__filter-bar">
         <div className="hs-tx-history-list__search-row">
-          <Search className="h-4 w-4 text-m3-on-surface-variant shrink-0" />
+          <Search className="text-m3-on-surface-variant h-4 w-4 shrink-0" />
           <input
             type="text"
             className="hs-tx-history-list__search-input"

@@ -1,7 +1,14 @@
 import { useMemo, useState } from 'react';
-import { CustomerTransactionData, isPaymentTransaction, isSaleTransaction, isServiceTransaction, isOpeningDueTransaction } from '../../../../models';
+import {
+  CustomerTransactionData,
+  isPaymentTransaction,
+  isSaleTransaction,
+  isServiceTransaction,
+  isOpeningDueTransaction,
+} from '../../../../models';
 
-export type TxFilterType = 'ALL' | 'SALE' | 'SERVICE' | 'PAYMENT' | 'OPENING_DUE';
+export type TxFilterType =
+  'ALL' | 'SALE' | 'SERVICE' | 'PAYMENT' | 'OPENING_DUE';
 
 export interface UseTransactionHistoryListProps {
   transactions: CustomerTransactionData[];
@@ -65,7 +72,8 @@ export function useTransactionHistoryList({
       if (filterType === 'SALE' && !isSaleTransaction(tx)) return false;
       if (filterType === 'SERVICE' && !isServiceTransaction(tx)) return false;
       if (filterType === 'PAYMENT' && !isPaymentTransaction(tx)) return false;
-      if (filterType === 'OPENING_DUE' && !isOpeningDueTransaction(tx)) return false;
+      if (filterType === 'OPENING_DUE' && !isOpeningDueTransaction(tx))
+        return false;
 
       // Query matching
       if (q) {

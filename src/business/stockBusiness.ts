@@ -110,7 +110,11 @@ export function calculateMonthlyStockFromTransactions(
     [baselineKey]: { ...initialBaseline },
   };
 
-  const months = extractChronologicalMonths(transactions, baselineYear, baselineMonth);
+  const months = extractChronologicalMonths(
+    transactions,
+    baselineYear,
+    baselineMonth,
+  );
 
   for (const yearMonth of months) {
     const [yearStr, monthStr] = yearMonth.split('-');

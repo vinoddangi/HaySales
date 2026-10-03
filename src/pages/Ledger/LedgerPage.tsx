@@ -34,10 +34,16 @@ export const LedgerPage: React.FC = () => {
   return (
     <PageContainer spacing="md" bottomPadding="lg" className="hs-ledger-page">
       {/* 1. Page Header */}
-      <Flex direction="column" gap="none" fullWidth className="hs-ledger-page__header">
+      <Flex
+        direction="column"
+        gap="none"
+        fullWidth
+        className="hs-ledger-page__header"
+      >
         <h2 className="hs-ledger-page__title">Customer Dues Ledger</h2>
         <p className="hs-ledger-page__subtitle">
-          Track outstanding customer balances, account statements, and payment settlements
+          Track outstanding customer balances, account statements, and payment
+          settlements
         </p>
       </Flex>
 

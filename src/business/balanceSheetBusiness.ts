@@ -81,16 +81,11 @@ export function calculateBalanceSheet(
   const cashBalance = Number(
     (totalCapitalAndEquity - nonCashAssets).toFixed(2),
   );
-  const totalAssets = Number(
-    (nonCashAssets + cashBalance).toFixed(2),
-  );
+  const totalAssets = Number((nonCashAssets + cashBalance).toFixed(2));
 
-  const cashAdjustment = Number(
-    (cashBalance - openingCashBalance).toFixed(2),
-  );
+  const cashAdjustment = Number((cashBalance - openingCashBalance).toFixed(2));
 
-  const isEquilibrium =
-    Math.abs(totalAssets - totalCapitalAndEquity) < 0.01;
+  const isEquilibrium = Math.abs(totalAssets - totalCapitalAndEquity) < 0.01;
 
   const netWorth = Number((partnerCapital + retainedProfit).toFixed(2));
 

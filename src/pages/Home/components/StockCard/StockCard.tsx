@@ -99,11 +99,7 @@ export const StockCard: React.FC<StockCardProps> = ({
 
         {/* 2. Amount Headline (Closing Stock Valuation) */}
         <div className="hs-stock-card__amount-row">
-          <Text
-            variant="headline-md"
-            weight="bold"
-            sentiment="info"
-          >
+          <Text variant="headline-md" weight="bold" sentiment="info">
             {formatRupee(totalClosingStock.amount)}
           </Text>
           <Text variant="body-sm" weight="bold" appearance="secondary">
@@ -121,19 +117,10 @@ export const StockCard: React.FC<StockCardProps> = ({
           {/* Opening Stock (Previous Month Closing) */}
           <Grid.Item>
             <div className="hs-stock-pill hs-stock-pill--opening">
-              <Text
-                variant="caption"
-                weight="bold"
-                uppercase
-                sentiment="info"
-              >
+              <Text variant="caption" weight="bold" uppercase sentiment="info">
                 Prev Closing
               </Text>
-              <Text
-                variant="body-sm"
-                weight="bold"
-                sentiment="info"
-              >
+              <Text variant="body-sm" weight="bold" sentiment="info">
                 {formatWeight(totalOpeningStock.weight)}
               </Text>
               <Text variant="caption" appearance="secondary">
@@ -155,11 +142,7 @@ export const StockCard: React.FC<StockCardProps> = ({
               >
                 Purchases
               </Text>
-              <Text
-                variant="body-sm"
-                weight="bold"
-                sentiment="warning"
-              >
+              <Text variant="body-sm" weight="bold" sentiment="warning">
                 {formatWeight(totalPurchases.weight)}
               </Text>
               <Text variant="caption" appearance="secondary">
@@ -171,19 +154,10 @@ export const StockCard: React.FC<StockCardProps> = ({
           {/* Mean Buying Rate */}
           <Grid.Item>
             <div className="hs-stock-pill hs-stock-pill--mean">
-              <Text
-                variant="caption"
-                weight="bold"
-                uppercase
-                sentiment="info"
-              >
+              <Text variant="caption" weight="bold" uppercase sentiment="info">
                 Mean Buy Rate
               </Text>
-              <Text
-                variant="body-sm"
-                weight="bold"
-                sentiment="info"
-              >
+              <Text variant="body-sm" weight="bold" sentiment="info">
                 ₹{overallMeanBuyingRate.toFixed(2)}/kg
               </Text>
               <Text variant="caption" appearance="secondary">

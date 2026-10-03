@@ -186,7 +186,9 @@ export function calculateCropCommissionProfit(
   }
 
   const purchaseRate =
-    purchaseWeight > 0 ? Number((purchaseAmount / purchaseWeight).toFixed(2)) : 0;
+    purchaseWeight > 0
+      ? Number((purchaseAmount / purchaseWeight).toFixed(2))
+      : 0;
   const purchasesMetric: CropValuationMetric = {
     weight: purchaseWeight,
     rate: purchaseRate,
@@ -389,7 +391,10 @@ export function calculateExpectedProfit(
   periodTransactions: Transaction[],
   openingStock: CropRecord = {},
 ): ExpectedProfitSummary {
-  const commission = calculateCommissionProfit(periodTransactions, openingStock);
+  const commission = calculateCommissionProfit(
+    periodTransactions,
+    openingStock,
+  );
   const service = calculateServiceProfit(periodTransactions);
 
   let operatingExpenses = 0;

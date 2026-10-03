@@ -19,7 +19,9 @@ describe('timelineSlice', () => {
   };
 
   it('should return initial state when passed undefined action', () => {
-    expect(timelineReducer(undefined, { type: 'unknown' })).toEqual(initialState);
+    expect(timelineReducer(undefined, { type: 'unknown' })).toEqual(
+      initialState,
+    );
   });
 
   it('should update selectedYear when setSelectedYear is dispatched', () => {

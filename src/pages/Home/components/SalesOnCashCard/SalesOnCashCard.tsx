@@ -32,7 +32,12 @@ export const SalesOnCashCard: React.FC<SalesOnCashCardProps> = ({
         <Flex align="center" justify="between" fullWidth>
           <Flex align="center" gap="xs">
             <Banknote className="hs-sales-cash-card__icon" />
-            <Text variant="label-sm" uppercase weight="bold" sentiment="positive">
+            <Text
+              variant="label-sm"
+              uppercase
+              weight="bold"
+              sentiment="positive"
+            >
               Sales on Cash
             </Text>
           </Flex>

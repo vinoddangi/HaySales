@@ -105,7 +105,12 @@ export const EstimatedProfitCard: React.FC<EstimatedProfitCardProps> = ({
           {/* 1. Trading Margin */}
           <Grid.Item>
             <div className="hs-profit-pill hs-profit-pill--margin">
-              <Text variant="caption" uppercase weight="bold" sentiment="positive">
+              <Text
+                variant="caption"
+                uppercase
+                weight="bold"
+                sentiment="positive"
+              >
                 Trading Margin
               </Text>
               <Text variant="label-md" weight="bold" sentiment="positive">
@@ -135,7 +140,12 @@ export const EstimatedProfitCard: React.FC<EstimatedProfitCardProps> = ({
           {/* 3. Expenses */}
           <Grid.Item>
             <div className="hs-profit-pill hs-profit-pill--expense">
-              <Text variant="caption" uppercase weight="bold" sentiment="negative">
+              <Text
+                variant="caption"
+                uppercase
+                weight="bold"
+                sentiment="negative"
+              >
                 Expenses
               </Text>
               <Text variant="label-md" weight="bold" sentiment="negative">

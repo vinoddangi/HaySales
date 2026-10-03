@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { FixedAsset, INITIAL_ASSETS, INITIAL_CAPITAL, INITIAL_LIABILITIES, INITIAL_RETAINED_PROFIT } from '../models';
+import {
+  FixedAsset,
+  INITIAL_ASSETS,
+  INITIAL_CAPITAL,
+  INITIAL_LIABILITIES,
+  INITIAL_RETAINED_PROFIT,
+} from '../models';
 import { calculateBalanceSheet } from './balanceSheetBusiness';
 
 describe('balanceSheetBusiness', () => {

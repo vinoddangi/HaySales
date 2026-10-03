@@ -51,7 +51,12 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
   const hasDue = currentOutstanding > 0;
 
   return (
-    <div className="hs-ledger-drawer-backdrop" onClick={onClose} role="dialog" aria-modal="true">
+    <div
+      className="hs-ledger-drawer-backdrop"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+    >
       <div
         className="hs-ledger-drawer-container"
         onClick={(e) => e.stopPropagation()}
@@ -114,7 +119,11 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
               <Text variant="label-sm" appearance="secondary">
                 Total Billed
               </Text>
-              <Text variant="title-md" weight="bold" className="hs-ledger-drawer__metric-value--blue">
+              <Text
+                variant="title-md"
+                weight="bold"
+                className="hs-ledger-drawer__metric-value--blue"
+              >
                 {formatRupee(totalBilled)}
               </Text>
             </div>
@@ -123,7 +132,11 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
               <Text variant="label-sm" appearance="secondary">
                 Total Paid
               </Text>
-              <Text variant="title-md" weight="bold" className="hs-ledger-drawer__metric-value--green">
+              <Text
+                variant="title-md"
+                weight="bold"
+                className="hs-ledger-drawer__metric-value--green"
+              >
                 {formatRupee(totalPaid)}
               </Text>
             </div>
@@ -132,7 +145,11 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
               <Text variant="label-sm" appearance="secondary">
                 Weight / Rate
               </Text>
-              <Text variant="title-md" weight="bold" className="hs-ledger-drawer__metric-value--amber">
+              <Text
+                variant="title-md"
+                weight="bold"
+                className="hs-ledger-drawer__metric-value--amber"
+              >
                 {totalWeight > 0 ? `${formatWeight(totalWeight)}` : '—'}
               </Text>
               {avgRate > 0 && (

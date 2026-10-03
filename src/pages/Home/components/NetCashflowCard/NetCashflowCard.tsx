@@ -47,7 +47,13 @@ export const NetCashflowCard: React.FC<NetCashflowCardProps> = ({
               <Wallet className="hs-net-cashflow-card__icon" />
             </div>
             <div>
-              <Text as="div" variant="label-sm" uppercase weight="bold" sentiment="accent">
+              <Text
+                as="div"
+                variant="label-sm"
+                uppercase
+                weight="bold"
+                sentiment="accent"
+              >
                 Net Cashflow
               </Text>
               <Text variant="body-sm" appearance="secondary">
@@ -77,7 +83,12 @@ export const NetCashflowCard: React.FC<NetCashflowCardProps> = ({
               tabIndex={onCashInClick ? 0 : undefined}
             >
               <div className="hs-cashflow-subcard__header">
-                <Text variant="caption" uppercase weight="bold" sentiment="positive">
+                <Text
+                  variant="caption"
+                  uppercase
+                  weight="bold"
+                  sentiment="positive"
+                >
                   Cash In
                 </Text>
                 <Text variant="label-md" weight="bold" sentiment="positive">
@@ -86,16 +97,28 @@ export const NetCashflowCard: React.FC<NetCashflowCardProps> = ({
               </div>
               <div className="hs-cashflow-subcard__rows">
                 <div className="hs-cashflow-subcard__row">
-                  <Text variant="caption" appearance="secondary">Recvd:</Text>
-                  <Text variant="caption" weight="medium">{formatRupee(paymentsReceived)}</Text>
+                  <Text variant="caption" appearance="secondary">
+                    Recvd:
+                  </Text>
+                  <Text variant="caption" weight="medium">
+                    {formatRupee(paymentsReceived)}
+                  </Text>
                 </div>
                 <div className="hs-cashflow-subcard__row">
-                  <Text variant="caption" appearance="secondary">Cash Sales:</Text>
-                  <Text variant="caption" weight="medium">{formatRupee(salesOnCash)}</Text>
+                  <Text variant="caption" appearance="secondary">
+                    Cash Sales:
+                  </Text>
+                  <Text variant="caption" weight="medium">
+                    {formatRupee(salesOnCash)}
+                  </Text>
                 </div>
                 <div className="hs-cashflow-subcard__row">
-                  <Text variant="caption" appearance="secondary">Service:</Text>
-                  <Text variant="caption" weight="medium">{formatRupee(servicesReceived)}</Text>
+                  <Text variant="caption" appearance="secondary">
+                    Service:
+                  </Text>
+                  <Text variant="caption" weight="medium">
+                    {formatRupee(servicesReceived)}
+                  </Text>
                 </div>
               </div>
             </div>
@@ -110,7 +133,12 @@ export const NetCashflowCard: React.FC<NetCashflowCardProps> = ({
               tabIndex={onCashOutClick ? 0 : undefined}
             >
               <div className="hs-cashflow-subcard__header">
-                <Text variant="caption" uppercase weight="bold" sentiment="warning">
+                <Text
+                  variant="caption"
+                  uppercase
+                  weight="bold"
+                  sentiment="warning"
+                >
                   Cash Out
                 </Text>
                 <Text variant="label-md" weight="bold" sentiment="warning">
@@ -119,12 +147,20 @@ export const NetCashflowCard: React.FC<NetCashflowCardProps> = ({
               </div>
               <div className="hs-cashflow-subcard__rows">
                 <div className="hs-cashflow-subcard__row">
-                  <Text variant="caption" appearance="secondary">Purchase:</Text>
-                  <Text variant="caption" weight="medium">{formatRupee(purchaseOnCash)}</Text>
+                  <Text variant="caption" appearance="secondary">
+                    Purchase:
+                  </Text>
+                  <Text variant="caption" weight="medium">
+                    {formatRupee(purchaseOnCash)}
+                  </Text>
                 </div>
                 <div className="hs-cashflow-subcard__row">
-                  <Text variant="caption" appearance="secondary">Expense:</Text>
-                  <Text variant="caption" weight="medium">{formatRupee(expensesOnCash)}</Text>
+                  <Text variant="caption" appearance="secondary">
+                    Expense:
+                  </Text>
+                  <Text variant="caption" weight="medium">
+                    {formatRupee(expensesOnCash)}
+                  </Text>
                 </div>
               </div>
             </div>

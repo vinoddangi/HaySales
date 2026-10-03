@@ -160,7 +160,10 @@ const createMockRootState = (
 describe('customerOutstandingSelectors', () => {
   describe('pure helper: buildCustomerLedgerMap', () => {
     it('calculates running ledger from openingDue and till-date transactions', () => {
-      const map = buildCustomerLedgerMap(mockCustomers, mockCustomerTransactions);
+      const map = buildCustomerLedgerMap(
+        mockCustomers,
+        mockCustomerTransactions,
+      );
 
       // c1: 10,000 opening + 20,000 sale - 5,000 cash - 10,000 payment = 15,000
       expect(map['c1'].openingDue).toBe(10000);
@@ -245,9 +248,9 @@ describe('customerOutstandingSelectors', () => {
       ]);
 
       // Customers with credit (<0): c3
-      expect(selectCustomersWithCredit(state).map((s) => s.customerId)).toEqual([
-        'c3',
-      ]);
+      expect(selectCustomersWithCredit(state).map((s) => s.customerId)).toEqual(
+        ['c3'],
+      );
 
       // Settled (0): none
       expect(selectSettledCustomers(state)).toEqual([]);
@@ -327,9 +330,7 @@ describe('customerOutstandingSelectors', () => {
     });
 
     it('does not double count opening balance when explicit OPENING_DUE transaction exists', () => {
-      const customers: Customer[] = [
-        { id: 'c1', name: 'Akoliya Bhagvanbhai' },
-      ];
+      const customers: Customer[] = [{ id: 'c1', name: 'Akoliya Bhagvanbhai' }];
       const transactions: CustomerTransactionData[] = [
         {
           id: 'opening_2025_c1',

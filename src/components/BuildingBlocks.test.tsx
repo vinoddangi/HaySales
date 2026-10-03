@@ -236,11 +236,26 @@ describe('Reusable Building Block Components (M3 Token-Bound & M3 UX Guide)', ()
           scrollable="y"
           className="custom-flex-class"
         >
-          <Flex.Item grow shrink={false} alignSelf="stretch" className="custom-item-class">
+          <Flex.Item
+            grow
+            shrink={false}
+            alignSelf="stretch"
+            className="custom-item-class"
+          >
             <span>Flex Item Content</span>
           </Flex.Item>
-          <Grid columns={3} gap="sm" padding="md" align="center" className="custom-grid-class">
-            <Grid.Item colSpan={2} alignSelf="center" className="custom-grid-item-class">
+          <Grid
+            columns={3}
+            gap="sm"
+            padding="md"
+            align="center"
+            className="custom-grid-class"
+          >
+            <Grid.Item
+              colSpan={2}
+              alignSelf="center"
+              className="custom-grid-item-class"
+            >
               <div>Item 1</div>
             </Grid.Item>
             <Grid.Item colSpan={1}>

@@ -15,14 +15,22 @@ import { setStockState } from '../slices/stockSlice';
 export function setupStockListener(startListening: AppStartListening) {
   startListening({
     matcher: isAnyOf(
-      customerTransactionsApiSlice.endpoints.getCustomerTransactions.matchFulfilled,
-      operationTransactionsApiSlice.endpoints.getOperationTransactions.matchFulfilled,
-      customerTransactionsApiSlice.endpoints.addCustomerTransaction.matchFulfilled,
-      customerTransactionsApiSlice.endpoints.updateCustomerTransaction.matchFulfilled,
-      customerTransactionsApiSlice.endpoints.deleteCustomerTransaction.matchFulfilled,
-      operationTransactionsApiSlice.endpoints.addOperationTransaction.matchFulfilled,
-      operationTransactionsApiSlice.endpoints.updateOperationTransaction.matchFulfilled,
-      operationTransactionsApiSlice.endpoints.deleteOperationTransaction.matchFulfilled,
+      customerTransactionsApiSlice.endpoints.getCustomerTransactions
+        .matchFulfilled,
+      operationTransactionsApiSlice.endpoints.getOperationTransactions
+        .matchFulfilled,
+      customerTransactionsApiSlice.endpoints.addCustomerTransaction
+        .matchFulfilled,
+      customerTransactionsApiSlice.endpoints.updateCustomerTransaction
+        .matchFulfilled,
+      customerTransactionsApiSlice.endpoints.deleteCustomerTransaction
+        .matchFulfilled,
+      operationTransactionsApiSlice.endpoints.addOperationTransaction
+        .matchFulfilled,
+      operationTransactionsApiSlice.endpoints.updateOperationTransaction
+        .matchFulfilled,
+      operationTransactionsApiSlice.endpoints.deleteOperationTransaction
+        .matchFulfilled,
       syncApiSlice.endpoints.syncDatabase.matchFulfilled,
       syncApiSlice.endpoints.resetDatabase.matchFulfilled,
     ),
@@ -30,11 +38,13 @@ export function setupStockListener(startListening: AppStartListening) {
       const state = listenerApi.getState();
 
       const customerTxs =
-        customerTransactionsApiSlice.endpoints.getCustomerTransactions.select(undefined)(state)
-          .data || [];
+        customerTransactionsApiSlice.endpoints.getCustomerTransactions.select(
+          undefined,
+        )(state).data || [];
       const operationTxs =
-        operationTransactionsApiSlice.endpoints.getOperationTransactions.select()(state).data ||
-        [];
+        operationTransactionsApiSlice.endpoints.getOperationTransactions.select()(
+          state,
+        ).data || [];
 
       const allTransactions = [...customerTxs, ...operationTxs];
       if (allTransactions.length === 0) return;

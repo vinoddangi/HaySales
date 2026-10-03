@@ -54,7 +54,12 @@ export const CustomerOutstandingCard: React.FC<
             </div>
             <div>
               <Flex align="center" gap="xs">
-                <Text variant="label-sm" uppercase weight="bold" sentiment="negative">
+                <Text
+                  variant="label-sm"
+                  uppercase
+                  weight="bold"
+                  sentiment="negative"
+                >
                   Customer Outstanding
                 </Text>
                 {onClick && (
@@ -74,7 +79,12 @@ export const CustomerOutstandingCard: React.FC<
 
         {/* Amount Headline with Tenor Comparison */}
         <div className="hs-customer-outstanding-card__amount-container">
-          <Text as="div" variant="headline-md" weight="bold" sentiment="negative">
+          <Text
+            as="div"
+            variant="headline-md"
+            weight="bold"
+            sentiment="negative"
+          >
             {formatRupee(totalOutstanding)}
           </Text>
           {previousOutstanding !== undefined && (
@@ -116,7 +126,12 @@ export const CustomerOutstandingCard: React.FC<
           {/* 1. Credit Added */}
           <Grid.Item>
             <div className="hs-outstanding-pill hs-outstanding-pill--credit">
-              <Text variant="caption" uppercase weight="bold" sentiment="warning">
+              <Text
+                variant="caption"
+                uppercase
+                weight="bold"
+                sentiment="warning"
+              >
                 Credit Added
               </Text>
               <Text variant="label-md" weight="bold" sentiment="warning">
@@ -131,7 +146,12 @@ export const CustomerOutstandingCard: React.FC<
           {/* 2. Collected */}
           <Grid.Item>
             <div className="hs-outstanding-pill hs-outstanding-pill--collected">
-              <Text variant="caption" uppercase weight="bold" sentiment="positive">
+              <Text
+                variant="caption"
+                uppercase
+                weight="bold"
+                sentiment="positive"
+              >
                 Collected
               </Text>
               <Text variant="label-md" weight="bold" sentiment="positive">

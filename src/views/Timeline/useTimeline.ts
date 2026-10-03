@@ -1,6 +1,9 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { setFilterMode, setSelectedMonth } from '../../store/slices/timelineSlice';
+import {
+  setFilterMode,
+  setSelectedMonth,
+} from '../../store/slices/timelineSlice';
 
 export const SHORT_MONTH_NAMES = [
   'Jan',

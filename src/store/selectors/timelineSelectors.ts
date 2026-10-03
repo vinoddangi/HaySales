@@ -203,4 +203,3 @@ export const selectPreviousTillDateRange = createSelector(
     toDate: previousToDate,
   }),
 );
-

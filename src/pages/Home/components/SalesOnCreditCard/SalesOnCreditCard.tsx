@@ -32,7 +32,12 @@ export const SalesOnCreditCard: React.FC<SalesOnCreditCardProps> = ({
         <Flex align="center" justify="between" fullWidth>
           <Flex align="center" gap="xs">
             <CreditCard className="hs-sales-credit-card__icon" />
-            <Text variant="label-sm" uppercase weight="bold" sentiment="warning">
+            <Text
+              variant="label-sm"
+              uppercase
+              weight="bold"
+              sentiment="warning"
+            >
               Sales on Credit
             </Text>
           </Flex>

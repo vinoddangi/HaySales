@@ -222,7 +222,11 @@ describe('transactionSelectors', () => {
       ]);
 
       const periodCustTxs = selectPeriodCustomerTransactions(state);
-      expect(periodCustTxs.map((t) => t.id)).toEqual(['tx-c1', 'tx-c2', 'tx-c3']);
+      expect(periodCustTxs.map((t) => t.id)).toEqual([
+        'tx-c1',
+        'tx-c2',
+        'tx-c3',
+      ]);
 
       const periodOpTxs = selectPeriodOperationTransactions(state);
       expect(periodOpTxs.map((t) => t.id)).toEqual(['tx-o1', 'tx-o2']);
@@ -293,9 +297,9 @@ describe('transactionSelectors', () => {
       expect(selectPeriodSalesTransactions(state).map((t) => t.id)).toEqual([
         'tx-c1',
       ]);
-      expect(
-        selectPeriodPurchasesTransactions(state).map((t) => t.id),
-      ).toEqual(['tx-o2']);
+      expect(selectPeriodPurchasesTransactions(state).map((t) => t.id)).toEqual(
+        ['tx-o2'],
+      );
       expect(selectPeriodCropTransactions(state).map((t) => t.id)).toEqual([
         'tx-c1',
         'tx-o2',
@@ -324,16 +328,15 @@ describe('transactionSelectors', () => {
         'tx-c4',
         'tx-o2',
       ]);
-      expect(selectTillDatePaymentsTransactions(state).map((t) => t.id)).toEqual([
-        'tx-c3',
-      ]);
-      expect(selectTillDateExpenseTransactions(state).map((t) => t.id)).toEqual([
-        'tx-o1',
-        'tx-o3',
-      ]);
-      expect(selectTillDateServiceTransactions(state).map((t) => t.id)).toEqual([
-        'tx-c2',
-      ]);
+      expect(
+        selectTillDatePaymentsTransactions(state).map((t) => t.id),
+      ).toEqual(['tx-c3']);
+      expect(selectTillDateExpenseTransactions(state).map((t) => t.id)).toEqual(
+        ['tx-o1', 'tx-o3'],
+      );
+      expect(selectTillDateServiceTransactions(state).map((t) => t.id)).toEqual(
+        ['tx-c2'],
+      );
     });
   });
 
@@ -349,7 +352,8 @@ describe('transactionSelectors', () => {
     });
 
     it('selectPeriodTransactionsByCustomerId returns period-only transactions for the customer', () => {
-      const cust1PeriodTxs = selectPeriodTransactionsByCustomerId('cust-1')(state);
+      const cust1PeriodTxs =
+        selectPeriodTransactionsByCustomerId('cust-1')(state);
       expect(cust1PeriodTxs.map((t) => t.id)).toEqual(['tx-c1', 'tx-c3']);
     });
 

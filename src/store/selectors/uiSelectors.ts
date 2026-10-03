@@ -1,6 +1,10 @@
 import { createSelector } from '@reduxjs/toolkit';
 import type { RootState } from '../index';
-import type { BottomSheetState, SnackbarState, UiState } from '../slices/uiSlice';
+import type {
+  BottomSheetState,
+  SnackbarState,
+  UiState,
+} from '../slices/uiSlice';
 
 // ── Base UI Input Selector ───────────────────────────────────────────────────
 

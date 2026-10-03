@@ -45,7 +45,13 @@ export const CashInHandCard: React.FC<CashInHandCardProps> = ({
               <Landmark className="hs-cash-in-hand-card__icon" />
             </div>
             <div>
-              <Text as="div" variant="label-sm" uppercase weight="bold" sentiment="accent">
+              <Text
+                as="div"
+                variant="label-sm"
+                uppercase
+                weight="bold"
+                sentiment="accent"
+              >
                 Cash in Hand
               </Text>
               <Text variant="body-sm" appearance="secondary">
@@ -55,7 +61,12 @@ export const CashInHandCard: React.FC<CashInHandCardProps> = ({
           </Flex>
 
           <div className="hs-cash-in-hand-card__header-right">
-            <Text as="div" variant="headline-sm" weight="bold" sentiment="accent">
+            <Text
+              as="div"
+              variant="headline-sm"
+              weight="bold"
+              sentiment="accent"
+            >
               {formatRupee(cashInHand)}
             </Text>
             <Text
@@ -90,7 +101,12 @@ export const CashInHandCard: React.FC<CashInHandCardProps> = ({
               tabIndex={onNavigateBalanceSheet ? 0 : undefined}
             >
               <div className="hs-balance-subcard__header">
-                <Text variant="caption" uppercase weight="bold" sentiment="positive">
+                <Text
+                  variant="caption"
+                  uppercase
+                  weight="bold"
+                  sentiment="positive"
+                >
                   Total Assets
                 </Text>
                 <Text variant="label-md" weight="bold" sentiment="positive">
@@ -99,20 +115,36 @@ export const CashInHandCard: React.FC<CashInHandCardProps> = ({
               </div>
               <div className="hs-balance-subcard__rows">
                 <div className="hs-balance-subcard__row">
-                  <Text variant="caption" appearance="secondary">Cash:</Text>
-                  <Text variant="caption" weight="medium">{formatRupee(cashInHand)}</Text>
+                  <Text variant="caption" appearance="secondary">
+                    Cash:
+                  </Text>
+                  <Text variant="caption" weight="medium">
+                    {formatRupee(cashInHand)}
+                  </Text>
                 </div>
                 <div className="hs-balance-subcard__row">
-                  <Text variant="caption" appearance="secondary">Receivables:</Text>
-                  <Text variant="caption" weight="medium">{formatRupee(customerReceivables)}</Text>
+                  <Text variant="caption" appearance="secondary">
+                    Receivables:
+                  </Text>
+                  <Text variant="caption" weight="medium">
+                    {formatRupee(customerReceivables)}
+                  </Text>
                 </div>
                 <div className="hs-balance-subcard__row">
-                  <Text variant="caption" appearance="secondary">Crop Stock:</Text>
-                  <Text variant="caption" weight="medium">{formatRupee(closingStockValue)}</Text>
+                  <Text variant="caption" appearance="secondary">
+                    Crop Stock:
+                  </Text>
+                  <Text variant="caption" weight="medium">
+                    {formatRupee(closingStockValue)}
+                  </Text>
                 </div>
                 <div className="hs-balance-subcard__row">
-                  <Text variant="caption" appearance="secondary">Fixed Assets:</Text>
-                  <Text variant="caption" weight="medium">{formatRupee(fixedAssetsValue)}</Text>
+                  <Text variant="caption" appearance="secondary">
+                    Fixed Assets:
+                  </Text>
+                  <Text variant="caption" weight="medium">
+                    {formatRupee(fixedAssetsValue)}
+                  </Text>
                 </div>
               </div>
             </div>
@@ -127,7 +159,12 @@ export const CashInHandCard: React.FC<CashInHandCardProps> = ({
               tabIndex={onNavigateBalanceSheet ? 0 : undefined}
             >
               <div className="hs-balance-subcard__header">
-                <Text variant="caption" uppercase weight="bold" sentiment="info">
+                <Text
+                  variant="caption"
+                  uppercase
+                  weight="bold"
+                  sentiment="info"
+                >
                   Liabilities &amp; Capital
                 </Text>
                 <Text variant="label-md" weight="bold" sentiment="info">
@@ -136,16 +173,28 @@ export const CashInHandCard: React.FC<CashInHandCardProps> = ({
               </div>
               <div className="hs-balance-subcard__rows">
                 <div className="hs-balance-subcard__row">
-                  <Text variant="caption" appearance="secondary">Payables:</Text>
-                  <Text variant="caption" weight="medium">{formatRupee(totalLiabilities)}</Text>
+                  <Text variant="caption" appearance="secondary">
+                    Payables:
+                  </Text>
+                  <Text variant="caption" weight="medium">
+                    {formatRupee(totalLiabilities)}
+                  </Text>
                 </div>
                 <div className="hs-balance-subcard__row">
-                  <Text variant="caption" appearance="secondary">Partner Capital:</Text>
-                  <Text variant="caption" weight="medium">{formatRupee(partnerCapital)}</Text>
+                  <Text variant="caption" appearance="secondary">
+                    Partner Capital:
+                  </Text>
+                  <Text variant="caption" weight="medium">
+                    {formatRupee(partnerCapital)}
+                  </Text>
                 </div>
                 <div className="hs-balance-subcard__row">
-                  <Text variant="caption" appearance="secondary">Retained Profit:</Text>
-                  <Text variant="caption" weight="medium">{formatRupee(retainedProfit)}</Text>
+                  <Text variant="caption" appearance="secondary">
+                    Retained Profit:
+                  </Text>
+                  <Text variant="caption" weight="medium">
+                    {formatRupee(retainedProfit)}
+                  </Text>
                 </div>
               </div>
             </div>
