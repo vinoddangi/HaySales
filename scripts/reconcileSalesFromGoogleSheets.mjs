@@ -195,12 +195,12 @@ async function reconcile() {
   fs.writeFileSync('data/customer_transactions.csv', csvRows.join('\n') + '\n', 'utf8');
   console.log('💾 Updated data/customer_transactions.csv');
 
-  // Also update src/data/initialDatabaseSnapshot.json
-  const snapshotPath = 'src/data/initialDatabaseSnapshot.json';
+  // Also update scripts/data/initialDatabaseSnapshot.json
+  const snapshotPath = 'scripts/data/initialDatabaseSnapshot.json';
   const snapshot = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));
   snapshot.customer_transactions = transactions;
   fs.writeFileSync(snapshotPath, JSON.stringify(snapshot, null, 2), 'utf8');
-  console.log('💾 Updated src/data/initialDatabaseSnapshot.json');
+  console.log('💾 Updated scripts/data/initialDatabaseSnapshot.json');
 }
 
 reconcile().catch(err => console.error(err));

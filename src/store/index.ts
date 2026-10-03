@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { baseApi } from './api';
 import { listenerMiddleware, startAppListening } from './listenerMiddleware';
 import { setupListeners } from './listeners';
-import customerOutstandingReducer from './slices/customerOutstandingSlice';
 import stockReducer from './slices/stockSlice';
 import themeReducer from './slices/themeSlice';
 import timelineReducer from './slices/timelineSlice';
@@ -12,7 +11,6 @@ export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     stock: stockReducer,
-    customerOutstanding: customerOutstandingReducer,
     theme: themeReducer,
     timeline: timelineReducer,
     ui: uiReducer,
@@ -25,7 +23,7 @@ export const store = configureStore({
       .prepend(listenerMiddleware.middleware),
 });
 
-// Initialize RTK listeners (stock & customer outstandings calculation listeners)
+// Initialize RTK listeners (stock calculation listener)
 setupListeners(startAppListening);
 
 // ── Root Store Types ──────────────────────────────────────────────────────────
@@ -34,13 +32,6 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 // ── Slice State Types Re-exports ─────────────────────────────────────────────
-
-export * from './slices/customerOutstandingSlice';
-export type {
-  CustomerBalanceRecord,
-  CustomerOutstandingState,
-  MonthlyCustomerOutstandingState,
-} from './slices/customerOutstandingSlice';
 
 export * from './slices/stockSlice';
 export type { StockState } from './slices/stockSlice';

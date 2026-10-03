@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   calculateBalanceSheet,
-  calculateCustomerOutstandingMetrics,
   calculateExpectedProfit,
   CropCommissionProfitResult,
   filterTransactionsByTimeline,
@@ -34,6 +33,7 @@ import {
   setSelectedMonth,
   setSelectedYear,
 } from '../../store/slices/timelineSlice';
+import { selectCustomerOutstandingMetrics } from '../../store/selectors';
 import { MONTH_NAMES } from '../../utils/formatters';
 
 export function useHomePage() {
@@ -51,8 +51,7 @@ export function useHomePage() {
   );
 
   // 3. API queries
-  const { data: customers = [], isLoading: isLoadingCustomers } =
-    useGetCustomersQuery();
+  const { isLoading: isLoadingCustomers } = useGetCustomersQuery();
   const { data: customerTxs = [], isLoading: isLoadingCustomerTxs } =
     useGetCustomerTransactionsQuery(undefined);
   const { data: operationTxs = [], isLoading: isLoadingOperationTxs } =
@@ -199,15 +198,10 @@ export function useHomePage() {
     salesMetrics.totalAmount,
   ]);
 
-  // 10. Customer Outstanding Metrics via Business Layer
-  const customerOutstandingMetrics = useMemo(() => {
-    return calculateCustomerOutstandingMetrics(
-      customers,
-      customerTxs as CustomerTransactionData[],
-      filteredTransactions,
-      timeline,
-    );
-  }, [customers, customerTxs, filteredTransactions, timeline]);
+  // 10. Customer Outstanding Metrics via Selector (Till-Date Transaction derivation)
+  const customerOutstandingMetrics = useAppSelector(
+    selectCustomerOutstandingMetrics,
+  );
 
   // 11. Net Cashflow Metrics
   const cashflowMetrics = useMemo(() => {

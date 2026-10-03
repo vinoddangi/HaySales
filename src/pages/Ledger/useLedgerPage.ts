@@ -1,16 +1,19 @@
 import { useMemo, useState } from 'react';
-import {
-  calculateAllCustomersLedger,
-  calculateCustomerLedgerDetail,
-} from '../../business/ledgerBusiness';
+import { calculateCustomerLedgerDetail } from '../../business/ledgerBusiness';
 import { CustomerModel, PaymentTransactionData } from '../../models';
-import { useAppDispatch } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { getTodayDateString } from '../../utils';
 import {
   useAddCustomerTransactionMutation,
   useGetCustomersQuery,
   useGetCustomerTransactionsQuery,
 } from '../../store/api';
+import {
+  selectAllCustomers,
+  selectCustomerLedgerSummaries,
+  selectCustomersWithDuesCount,
+  selectTotalCustomerOutstanding,
+} from '../../store/selectors';
 import { showSnackbar } from '../../store/slices/uiSlice';
 
 export function useLedgerPage() {
@@ -23,33 +26,32 @@ export function useLedgerPage() {
   );
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const { data: rawCustomers = [], isLoading: isLoadingCustomers } =
-    useGetCustomersQuery();
+  const { isLoading: isLoadingCustomers } = useGetCustomersQuery();
   const { data: transactions = [], isLoading: isLoadingTransactions } =
     useGetCustomerTransactionsQuery(undefined);
   const [addCustomerTx, { isLoading: isPaying }] =
     useAddCustomerTransactionMutation();
 
+  const rawCustomers = useAppSelector(selectAllCustomers);
+  const customerSummaries = useAppSelector(selectCustomerLedgerSummaries);
+  const totalOutstanding = useAppSelector(selectTotalCustomerOutstanding);
+  const customersWithDuesCount = useAppSelector(selectCustomersWithDuesCount);
+
   const customers: CustomerModel[] = useMemo(() => {
     return rawCustomers.map((c) => CustomerModel.from(c));
   }, [rawCustomers]);
 
-  // Overall ledger summary across all customers
-  const overallLedger = useMemo(() => {
-    return calculateAllCustomersLedger(customers, transactions);
-  }, [customers, transactions]);
-
   // Filtered customer ledger summaries
   const filteredCustomerSummaries = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
-    return overallLedger.customers.filter((c) => {
+    return customerSummaries.filter((c) => {
       const matchesSearch =
         !term || c.customerName.toLowerCase().includes(term);
       const matchesDueFilter =
         filterMode === 'all' || c.currentOutstanding > 0 || term.length > 0;
       return matchesSearch && matchesDueFilter;
     });
-  }, [overallLedger, searchTerm, filterMode]);
+  }, [customerSummaries, searchTerm, filterMode]);
 
   // Selected customer details for drawer
   const selectedCustomer = useMemo(() => {
@@ -113,8 +115,8 @@ export function useLedgerPage() {
     selectedCustomerDetail,
     selectedCustomerTransactions,
     filteredCustomerSummaries,
-    totalOutstanding: overallLedger.totalOutstanding,
-    customersWithDuesCount: overallLedger.customersWithDuesCount,
+    totalOutstanding,
+    customersWithDuesCount,
     totalCustomersCount: customers.length,
     isLoading: isLoadingCustomers || isLoadingTransactions,
     isPaying,

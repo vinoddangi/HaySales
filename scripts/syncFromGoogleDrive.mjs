@@ -66,7 +66,7 @@ async function main() {
   console.log('🚀 Synchronizing Reconciled Database CSVs & Snapshot (Clean YYYY-MM-DD Dates & Integer amounts)...');
 
   const dataDir = path.resolve('data');
-  const snapshotPath = path.resolve('src/data/initialDatabaseSnapshot.json');
+  const snapshotPath = path.resolve('scripts/data/initialDatabaseSnapshot.json');
 
   // 1. Read customers.csv
   const custLines = fs
@@ -349,7 +349,7 @@ async function main() {
   console.log(`   1. customers.csv              -> ${customers.length} records`);
   console.log(`   2. customer_transactions.csv   -> ${customerTransactions.length} records`);
   console.log(`   3. operation_transactions.csv  -> ${operationTransactions.length} records`);
-  console.log(`📦 Compiled initial snapshot: src/data/initialDatabaseSnapshot.json`);
+  console.log(`📦 Compiled initial snapshot: scripts/data/initialDatabaseSnapshot.json`);
   console.log('═══════════════════════════════════════════════════════════════════\n');
 }
 

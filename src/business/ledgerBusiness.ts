@@ -1,7 +1,6 @@
 import {
   Customer,
   CustomerTransactionData,
-  INITIAL_CUSTOMER_RECEIVABLES,
   isPaymentTransaction,
   isSaleTransaction,
   isServiceTransaction,
@@ -323,7 +322,6 @@ export function calculateCustomerOutstandingMetrics(
   allCustomerTransactions: CustomerTransactionData[],
   filteredTransactions: Transaction[],
   timeline: TimelineFilter,
-  initialBaseReceivables: number = INITIAL_CUSTOMER_RECEIVABLES,
 ): CustomerOutstandingMetrics {
   // 1. Current tenor cumulative ledger
   const currentLedger = calculateAllCustomersLedger(
@@ -332,13 +330,7 @@ export function calculateCustomerOutstandingMetrics(
     timeline,
   );
 
-  // If opening dues are directly configured on customer items, use sum; otherwise use baseline
-  const hasCustomerOpeningDues = currentLedger.totalOpeningDue > 0;
-  const baseReceivables = hasCustomerOpeningDues ? 0 : initialBaseReceivables;
-
-  const totalOutstanding = Math.round(
-    baseReceivables + currentLedger.totalOutstanding,
-  );
+  const totalOutstanding = Math.round(currentLedger.totalOutstanding);
 
   // 2. Previous tenor cumulative ledger
   const previousCutoffDate = getPreviousTimelineCutoffDate(timeline);
@@ -350,9 +342,7 @@ export function calculateCustomerOutstandingMetrics(
     customers,
     prevCustomerTransactions,
   );
-  const previousOutstanding = Math.round(
-    baseReceivables + prevLedger.totalOutstanding,
-  );
+  const previousOutstanding = Math.round(prevLedger.totalOutstanding);
 
   // 3. Difference between current and previous tenor
   const tenorDifference = Math.round(totalOutstanding - previousOutstanding);

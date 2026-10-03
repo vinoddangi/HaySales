@@ -106,7 +106,7 @@ async function reconcileCustomerOutstanding() {
   console.log(`Master Sheet Total Outstanding: ₹${masterTotalDue.toLocaleString('en-IN')}`);
 
   // 2. Load current database snapshot
-  const snapshotPath = 'src/data/initialDatabaseSnapshot.json';
+  const snapshotPath = 'scripts/data/initialDatabaseSnapshot.json';
   const snapshot = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));
   const customers = snapshot.customers || [];
   const transactions = snapshot.customer_transactions || [];
@@ -231,7 +231,7 @@ async function reconcileCustomerOutstanding() {
   // 7. Update initialDatabaseSnapshot.json
   snapshot.customer_transactions = allReconciledTransactions;
   fs.writeFileSync(snapshotPath, JSON.stringify(snapshot, null, 2), 'utf8');
-  console.log('💾 Written reconciled src/data/initialDatabaseSnapshot.json');
+  console.log('💾 Written reconciled scripts/data/initialDatabaseSnapshot.json');
 
   // 8. Verify total customer outstanding across app matches master sheet
   let appTotalOutstanding = 0;

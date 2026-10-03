@@ -2,10 +2,6 @@ import { Customer, Transaction } from '../models';
 
 export const DB_NAME = 'HaySalesOfflineDB';
 export const DB_VERSION = 3;
-export const SEED_VERSION_KEY = 'haysales_db_seed_version';
-export const CURRENT_SEED_VERSION = '2025_01_v10';
-
-let seedPromise: Promise<void> | null = null;
 
 export interface PendingChange {
   id: string; // Doc path or unique id
@@ -64,69 +60,10 @@ export function openLocalDatabase(): Promise<IDBDatabase> {
   });
 }
 
-let isSeedingInternal = false;
-
-/**
- * Check if the local IndexedDB contains data
- */
-export async function isDatabaseSeeded(): Promise<boolean> {
-  try {
-    const db = await openLocalDatabase();
-    return new Promise((resolve) => {
-      if (!db.objectStoreNames.contains('customers')) {
-        resolve(false);
-        return;
-      }
-      const tx = db.transaction('customers', 'readonly');
-      const store = tx.objectStore('customers');
-      const countReq = store.count();
-      countReq.onsuccess = () => resolve(countReq.result > 0);
-      countReq.onerror = () => resolve(false);
-    });
-  } catch {
-    return false;
-  }
-}
-
-/**
- * Ensure database is seeded exactly once from initial snapshot
- */
-export async function ensureDatabaseSeeded(): Promise<void> {
-  if (typeof window === 'undefined' || isSeedingInternal) return;
-
-  if (seedPromise) {
-    return seedPromise;
-  }
-
-  seedPromise = (async () => {
-    try {
-      let currentVersion: string | null = null;
-      try {
-        currentVersion = localStorage.getItem(SEED_VERSION_KEY);
-      } catch {
-        // Ignore localStorage error
-      }
-
-      const hasData = await isDatabaseSeeded();
-
-      if (currentVersion !== CURRENT_SEED_VERSION || !hasData) {
-        await seedLocalDatabaseFromSnapshot();
-      }
-    } catch (err) {
-      console.error('Failed to ensure database seeding:', err);
-    }
-  })();
-
-  return seedPromise;
-}
-
 /**
  * Fetch all documents from a specific object store
  */
 export async function getStoreData<T = any>(storeName: string): Promise<T[]> {
-  if (!isSeedingInternal) {
-    await ensureDatabaseSeeded();
-  }
   const db = await openLocalDatabase();
   return new Promise((resolve, reject) => {
     if (!db.objectStoreNames.contains(storeName)) {
@@ -148,9 +85,6 @@ export async function getStoreItem<T = any>(
   storeName: string,
   key: string,
 ): Promise<T | null> {
-  if (!isSeedingInternal) {
-    await ensureDatabaseSeeded();
-  }
   const db = await openLocalDatabase();
   return new Promise((resolve, reject) => {
     if (!db.objectStoreNames.contains(storeName)) {
@@ -172,9 +106,6 @@ export async function putStoreItem(
   storeName: string,
   item: any,
 ): Promise<void> {
-  if (!isSeedingInternal) {
-    await ensureDatabaseSeeded();
-  }
   const db = await openLocalDatabase();
   return new Promise((resolve, reject) => {
     const tx = db.transaction(storeName, 'readwrite');
@@ -192,9 +123,6 @@ export async function deleteStoreItem(
   storeName: string,
   key: string,
 ): Promise<void> {
-  if (!isSeedingInternal) {
-    await ensureDatabaseSeeded();
-  }
   const db = await openLocalDatabase();
   return new Promise((resolve, reject) => {
     const tx = db.transaction(storeName, 'readwrite');
@@ -376,6 +304,7 @@ export async function syncLocalDatabaseFromCloud(): Promise<{
       mobile: data.mobile || '',
       village: data.village || '',
       creditLimit: data.creditLimit,
+      openingDue: data.openingDue,
     });
   });
 
@@ -438,56 +367,4 @@ export async function syncAndPublishCloudDatabase(): Promise<{
     publishedCount,
     ...pullResult,
   };
-}
-
-/**
- * Seed or reset Local IndexedDB using the clean initial database snapshot (Jan 2025 onwards dataset).
- */
-export async function seedLocalDatabaseFromSnapshot(
-  snapshotData?: any,
-): Promise<{
-  customersCount: number;
-  customerTransactionsCount: number;
-  operationTransactionsCount: number;
-}> {
-  isSeedingInternal = true;
-  try {
-    const snapshot =
-      snapshotData ||
-      (await import('../data/initialDatabaseSnapshot.json')).default;
-
-    // Clear existing local stores
-    await clearAllLocalData();
-
-    // Populate local stores directly from snapshot
-    await bulkSaveStoreItems('customers', snapshot.customers || []);
-    await bulkSaveStoreItems(
-      'customer_transactions',
-      snapshot.customer_transactions || [],
-    );
-    await bulkSaveStoreItems(
-      'operation_transactions',
-      snapshot.operation_transactions || [],
-    );
-
-    try {
-      if (typeof localStorage !== 'undefined') {
-        localStorage.setItem(SEED_VERSION_KEY, CURRENT_SEED_VERSION);
-      }
-    } catch {
-      // Ignore localStorage error
-    }
-
-    return {
-      customersCount: (snapshot.customers || []).length,
-      customerTransactionsCount: (snapshot.customer_transactions || []).length,
-      operationTransactionsCount: (snapshot.operation_transactions || []).length,
-    };
-  } finally {
-    isSeedingInternal = false;
-  }
-}
-
-if (typeof window !== 'undefined') {
-  (window as any).seedLocalDatabase = seedLocalDatabaseFromSnapshot;
 }
