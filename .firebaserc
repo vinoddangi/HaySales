@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "shreyansh-group"
+  },
+  "targets": {
+    "shreyansh-group": {
+      "hosting": {
+        "haysales": [
+          "haysales"
+        ]
+      }
+    }
   }
 }

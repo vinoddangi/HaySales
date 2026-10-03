@@ -33,22 +33,11 @@ jobs:
       - name: Build production bundle
         run: npm run build
 
-      - name: Deploy to Firebase Hosting
-        env:
-          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SHREYANSH_GROUP }}
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: |
-          if [ -n "$FIREBASE_SERVICE_ACCOUNT" ]; then
-            echo "🔑 Deploying using FIREBASE_SERVICE_ACCOUNT secret..."
-            echo "$FIREBASE_SERVICE_ACCOUNT" > /tmp/service-account.json
-            export GOOGLE_APPLICATION_CREDENTIALS=/tmp/service-account.json
-            npx --yes firebase-tools deploy --only hosting --project shreyansh-group --non-interactive
-            rm -f /tmp/service-account.json
-          elif [ -n "$FIREBASE_TOKEN" ]; then
-            echo "🔑 Deploying using FIREBASE_TOKEN secret..."
-            npx --yes firebase-tools deploy --only hosting --project shreyansh-group --token "$FIREBASE_TOKEN" --non-interactive
-          else
-            echo "❌ ERROR: Neither FIREBASE_SERVICE_ACCOUNT_SHREYANSH_GROUP nor FIREBASE_TOKEN secret is configured in GitHub Repository Settings."
-            echo "👉 Please add the secret in GitHub: Settings -> Secrets and variables -> Actions -> New repository secret"
-            exit 1
-          fi
+      - name: Deploy to Firebase Hosting Live
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SHREYANSH_GROUP }}
+          channelId: live
+          projectId: shreyansh-group
+          target: haysales
