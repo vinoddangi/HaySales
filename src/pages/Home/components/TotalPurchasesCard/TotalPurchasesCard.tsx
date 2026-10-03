@@ -3,6 +3,7 @@ import { ArrowDownLeft } from 'lucide-react';
 import React from 'react';
 import { Card } from '../../../../components/Card';
 import { Flex } from '../../../../components/layouts/Flex';
+import { Text } from '../../../../components/Text';
 import { formatRupee, formatWeight } from '../../../../utils/formatters';
 import './TotalPurchasesCard.css';
 
@@ -32,32 +33,29 @@ export const TotalPurchasesCard: React.FC<TotalPurchasesCardProps> = ({
     >
       <Card.Content>
         <Flex align="center" justify="between" fullWidth>
-          <span className="hs-total-purchases-card__tag">Total Purchases</span>
+          <Text variant="label-sm" uppercase weight="bold" sentiment="warning">
+            Total Purchases
+          </Text>
           <div className="hs-total-purchases-card__icon-wrapper">
             <ArrowDownLeft className="hs-total-purchases-card__icon" />
           </div>
         </Flex>
 
-        <div className="hs-total-purchases-card__amount">
+        <Text as="div" variant="headline-sm" weight="bold" truncate>
           {formatRupee(amount)}
-        </div>
+        </Text>
 
-        <Flex
-          wrap
-          align="center"
-          gap="xs"
-          className="hs-total-purchases-card__meta"
-        >
-          <span>{formatWeight(weight)}</span>
-          <span>•</span>
-          <span>{ordersCount} Orders</span>
-        </Flex>
+        <Text variant="body-sm" appearance="secondary" truncate>
+          {formatWeight(weight)} • {ordersCount} Orders
+        </Text>
 
         <div className="hs-total-purchases-card__rate-badge">
-          <span className="hs-total-purchases-card__rate-label">Avg Rate:</span>
-          <span className="hs-total-purchases-card__rate-val">
+          <Text variant="caption" weight="medium" sentiment="warning">
+            Avg Rate:
+          </Text>
+          <Text variant="label-sm" weight="bold" sentiment="warning">
             {avgRate > 0 ? `₹${avgRate.toFixed(2)} /kg` : '₹0.00 /kg'}
-          </span>
+          </Text>
         </div>
       </Card.Content>
     </Card>

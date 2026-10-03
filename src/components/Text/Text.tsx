@@ -31,7 +31,12 @@ export type TextVariant =
   | 'amount';
 
 export type TextSentiment =
-  'positive' | 'negative' | 'warning' | 'accent' | 'neutral';
+  | 'positive'
+  | 'negative'
+  | 'warning'
+  | 'info'
+  | 'accent'
+  | 'neutral';
 
 export type TextAppearance = 'primary' | 'secondary' | 'disabled';
 

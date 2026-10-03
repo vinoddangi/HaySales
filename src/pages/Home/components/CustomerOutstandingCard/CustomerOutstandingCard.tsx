@@ -5,6 +5,7 @@ import { Badge } from '../../../../components/Badge';
 import { Card } from '../../../../components/Card';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
+import { Text } from '../../../../components/Text';
 import { formatRupee } from '../../../../utils/formatters';
 import './CustomerOutstandingCard.css';
 
@@ -53,16 +54,16 @@ export const CustomerOutstandingCard: React.FC<
             </div>
             <div>
               <Flex align="center" gap="xs">
-                <span className="hs-customer-outstanding-card__tag">
+                <Text variant="label-sm" uppercase weight="bold" sentiment="negative">
                   Customer Outstanding
-                </span>
+                </Text>
                 {onClick && (
                   <ChevronRight className="hs-customer-outstanding-card__chevron" />
                 )}
               </Flex>
-              <span className="hs-customer-outstanding-card__subtitle">
+              <Text variant="body-sm" appearance="secondary">
                 {periodLabel || 'Period'} Receivables
-              </span>
+              </Text>
             </div>
           </Flex>
 
@@ -73,26 +74,27 @@ export const CustomerOutstandingCard: React.FC<
 
         {/* Amount Headline with Tenor Comparison */}
         <div className="hs-customer-outstanding-card__amount-container">
-          <div className="hs-customer-outstanding-card__amount">
+          <Text as="div" variant="headline-md" weight="bold" sentiment="negative">
             {formatRupee(totalOutstanding)}
-          </div>
+          </Text>
           {previousOutstanding !== undefined && (
             <div className="hs-customer-outstanding-card__comparison">
-              <span className="hs-customer-outstanding-card__comparison-prev">
+              <Text variant="body-sm" appearance="secondary">
                 Prev: {formatRupee(previousOutstanding)}
-              </span>
+              </Text>
               <span className="hs-customer-outstanding-card__comparison-dot">
                 •
               </span>
-              <span
-                className={clsx(
-                  'hs-customer-outstanding-card__comparison-diff',
+              <Text
+                variant="body-sm"
+                weight="bold"
+                sentiment={
                   (tenorDifference ?? netChange) > 0
-                    ? 'hs-customer-outstanding-card__comparison-diff--up'
+                    ? 'warning'
                     : (tenorDifference ?? netChange) < 0
-                      ? 'hs-customer-outstanding-card__comparison-diff--down'
-                      : 'hs-customer-outstanding-card__comparison-diff--neutral',
-                )}
+                      ? 'positive'
+                      : 'neutral'
+                }
               >
                 {(tenorDifference ?? netChange) > 0
                   ? `${formatRupee(tenorDifference ?? netChange)}`
@@ -100,7 +102,7 @@ export const CustomerOutstandingCard: React.FC<
                     ? `-${formatRupee(Math.abs(tenorDifference ?? netChange))}`
                     : '₹0.00'}
                 {previousTenorLabel ? ` (${previousTenorLabel})` : ''}
-              </span>
+              </Text>
             </div>
           )}
         </div>
@@ -114,22 +116,30 @@ export const CustomerOutstandingCard: React.FC<
           {/* 1. Credit Added */}
           <Grid.Item>
             <div className="hs-outstanding-pill hs-outstanding-pill--credit">
-              <span className="hs-outstanding-pill__label">Credit Added</span>
-              <span className="hs-outstanding-pill__val">
+              <Text variant="caption" uppercase weight="bold" sentiment="warning">
+                Credit Added
+              </Text>
+              <Text variant="label-md" weight="bold" sentiment="warning">
                 {formatRupee(periodCreditAdded)}
-              </span>
-              <span className="hs-outstanding-pill__caption">Sales & dues</span>
+              </Text>
+              <Text variant="caption" appearance="secondary">
+                Sales & dues
+              </Text>
             </div>
           </Grid.Item>
 
           {/* 2. Collected */}
           <Grid.Item>
             <div className="hs-outstanding-pill hs-outstanding-pill--collected">
-              <span className="hs-outstanding-pill__label">Collected</span>
-              <span className="hs-outstanding-pill__val">
+              <Text variant="caption" uppercase weight="bold" sentiment="positive">
+                Collected
+              </Text>
+              <Text variant="label-md" weight="bold" sentiment="positive">
                 {formatRupee(periodCollections)}
-              </span>
-              <span className="hs-outstanding-pill__caption">Payments</span>
+              </Text>
+              <Text variant="caption" appearance="secondary">
+                Payments
+              </Text>
             </div>
           </Grid.Item>
 
@@ -145,15 +155,40 @@ export const CustomerOutstandingCard: React.FC<
                     : 'hs-outstanding-pill--change-neutral',
               )}
             >
-              <span className="hs-outstanding-pill__label">Net Change</span>
-              <span className="hs-outstanding-pill__val">
+              <Text
+                variant="caption"
+                uppercase
+                weight="bold"
+                sentiment={
+                  netChange > 0
+                    ? 'warning'
+                    : netChange < 0
+                      ? 'positive'
+                      : 'neutral'
+                }
+              >
+                Net Change
+              </Text>
+              <Text
+                variant="label-md"
+                weight="bold"
+                sentiment={
+                  netChange > 0
+                    ? 'warning'
+                    : netChange < 0
+                      ? 'positive'
+                      : 'neutral'
+                }
+              >
                 {netChange > 0
                   ? `${formatRupee(netChange)}`
                   : netChange < 0
                     ? `-${formatRupee(Math.abs(netChange))}`
                     : '₹0.00'}
-              </span>
-              <span className="hs-outstanding-pill__caption">Period net</span>
+              </Text>
+              <Text variant="caption" appearance="secondary">
+                Period net
+              </Text>
             </div>
           </Grid.Item>
         </Grid>

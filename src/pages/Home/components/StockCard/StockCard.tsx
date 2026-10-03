@@ -6,6 +6,7 @@ import { Badge } from '../../../../components/Badge';
 import { Card } from '../../../../components/Card';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
+import { Text } from '../../../../components/Text';
 import { formatRupee, formatWeight } from '../../../../utils/formatters';
 import './StockCard.css';
 
@@ -75,17 +76,17 @@ export const StockCard: React.FC<StockCardProps> = ({
             <div className="hs-stock-card__icon-wrapper">
               <Package className="hs-stock-card__icon" />
             </div>
-            <div>
+            <Flex direction="column">
               <Flex align="center" gap="xs">
-                <span className="hs-stock-card__tag">
+                <Text variant="label-sm" weight="bold" uppercase>
                   Crop Stock &amp; Valuation
-                </span>
+                </Text>
                 {onClick && <ChevronRight className="hs-stock-card__chevron" />}
               </Flex>
-              <span className="hs-stock-card__subtitle">
+              <Text variant="caption" appearance="secondary">
                 {periodLabel || 'Period'} Inventory &amp; Margins
-              </span>
-            </div>
+              </Text>
+            </Flex>
           </Flex>
 
           <Badge
@@ -98,57 +99,96 @@ export const StockCard: React.FC<StockCardProps> = ({
 
         {/* 2. Amount Headline (Closing Stock Valuation) */}
         <div className="hs-stock-card__amount-row">
-          <div className="hs-stock-card__headline">
+          <Text
+            variant="headline-md"
+            weight="bold"
+            sentiment="info"
+          >
             {formatRupee(totalClosingStock.amount)}
-          </div>
-          <div className="hs-stock-card__headline-sub">
+          </Text>
+          <Text variant="body-sm" weight="bold" appearance="secondary">
             {formatWeight(totalClosingStock.weight)} Total Stock
-          </div>
+          </Text>
         </div>
 
-        <div className="hs-stock-card__meta">
+        <Text variant="caption" appearance="secondary">
           Available: {formatWeight(totalAvailableWeight)} • Margin:{' '}
           {formatRupee(totalGrossCommissionProfit)}
-        </div>
+        </Text>
 
         {/* 3. Top 3 Summary Sub-Pills */}
         <Grid columns={3} gap="xs" className="hs-stock-card__pills">
           {/* Opening Stock (Previous Month Closing) */}
           <Grid.Item>
             <div className="hs-stock-pill hs-stock-pill--opening">
-              <span className="hs-stock-pill__label">Prev Closing</span>
-              <span className="hs-stock-pill__val">
+              <Text
+                variant="caption"
+                weight="bold"
+                uppercase
+                sentiment="info"
+              >
+                Prev Closing
+              </Text>
+              <Text
+                variant="body-sm"
+                weight="bold"
+                sentiment="info"
+              >
                 {formatWeight(totalOpeningStock.weight)}
-              </span>
-              <span className="hs-stock-pill__caption">
+              </Text>
+              <Text variant="caption" appearance="secondary">
                 {openingAvgRate > 0
                   ? `₹${openingAvgRate.toFixed(2)}/kg`
                   : formatRupee(totalOpeningStock.amount)}
-              </span>
+              </Text>
             </div>
           </Grid.Item>
 
           {/* Current Purchases */}
           <Grid.Item>
             <div className="hs-stock-pill hs-stock-pill--buying">
-              <span className="hs-stock-pill__label">Purchases</span>
-              <span className="hs-stock-pill__val">
+              <Text
+                variant="caption"
+                weight="bold"
+                uppercase
+                sentiment="warning"
+              >
+                Purchases
+              </Text>
+              <Text
+                variant="body-sm"
+                weight="bold"
+                sentiment="warning"
+              >
                 {formatWeight(totalPurchases.weight)}
-              </span>
-              <span className="hs-stock-pill__caption">
+              </Text>
+              <Text variant="caption" appearance="secondary">
                 Avg ₹{totalPurchases.rate.toFixed(2)}/kg
-              </span>
+              </Text>
             </div>
           </Grid.Item>
 
           {/* Mean Buying Rate */}
           <Grid.Item>
             <div className="hs-stock-pill hs-stock-pill--mean">
-              <span className="hs-stock-pill__label">Mean Buy Rate</span>
-              <span className="hs-stock-pill__val">
+              <Text
+                variant="caption"
+                weight="bold"
+                uppercase
+                sentiment="info"
+              >
+                Mean Buy Rate
+              </Text>
+              <Text
+                variant="body-sm"
+                weight="bold"
+                sentiment="info"
+              >
                 ₹{overallMeanBuyingRate.toFixed(2)}/kg
-              </span>
-              <span className="hs-stock-pill__caption">Blended mean cost</span>
+              </Text>
+              <Text variant="caption" appearance="secondary">
+                Blended mean cost
+              </Text>
             </div>
           </Grid.Item>
         </Grid>
@@ -157,13 +197,18 @@ export const StockCard: React.FC<StockCardProps> = ({
         {cropItems.length > 0 ? (
           <div className="hs-stock-card__crops-section">
             <div className="hs-stock-card__crops-header">
-              <span className="hs-stock-card__crops-title">
+              <Text
+                variant="label-sm"
+                weight="bold"
+                uppercase
+                appearance="secondary"
+              >
                 Crop Realization &amp; Margin Breakdown
-              </span>
-              <span className="hs-stock-card__meta">
+              </Text>
+              <Text variant="caption" appearance="secondary">
                 {cropItems.length} active crop
                 {cropItems.length === 1 ? '' : 's'}
-              </span>
+              </Text>
             </div>
 
             <div className="hs-stock-card__crop-list">
@@ -191,9 +236,9 @@ export const StockCard: React.FC<StockCardProps> = ({
                     {/* Top Row: Crop Name, In-Stock Badge & Valuation, Margin Badge */}
                     <div className="hs-stock-crop-row__top">
                       <Flex align="center" gap="xs">
-                        <span className="hs-stock-crop-row__title">
+                        <Text variant="body-sm" weight="bold">
                           {crop.category}
-                        </span>
+                        </Text>
                         <Badge
                           sentiment={stockWeight > 0 ? 'info' : 'neutral'}
                           size="sm"
@@ -203,23 +248,20 @@ export const StockCard: React.FC<StockCardProps> = ({
                             : 'Sold Out'}
                         </Badge>
                         {stockWeight > 0 && (
-                          <span className="hs-stock-crop-row__val-tag">
+                          <Text variant="caption" appearance="secondary">
                             ({formatRupee(crop.closingStock.amount)})
-                          </span>
+                          </Text>
                         )}
                       </Flex>
 
                       <div className="hs-stock-crop-row__profit-badge">
-                        <span
-                          className={clsx(
-                            'hs-stock-crop-row__profit-val',
-                            isProfitPos
-                              ? 'hs-stock-crop-row__profit-val--pos'
-                              : 'hs-stock-crop-row__profit-val--neg',
-                          )}
+                        <Text
+                          variant="body-sm"
+                          weight="bold"
+                          sentiment={isProfitPos ? 'positive' : 'negative'}
                         >
                           {formatRupee(crop.grossCommissionProfit)}
-                        </span>
+                        </Text>
                       </div>
                     </div>
 
@@ -232,32 +274,37 @@ export const StockCard: React.FC<StockCardProps> = ({
                       {/* 1. Mean Buying Rate Column */}
                       <Grid.Item>
                         <div className="hs-stock-crop-row__col hs-stock-crop-row__col--buy">
-                          <span className="hs-stock-crop-row__label">
+                          <Text
+                            variant="caption"
+                            weight="bold"
+                            uppercase
+                            appearance="secondary"
+                          >
                             Mean Buy Rate
-                          </span>
-                          <span className="hs-stock-crop-row__val">
+                          </Text>
+                          <Text variant="body-sm" weight="bold">
                             ₹{crop.totalAvailableStock.weightedRate.toFixed(2)}
                             /kg
-                          </span>
+                          </Text>
                           <div className="hs-stock-crop-row__sub-list">
                             {hasOpen && (
-                              <span className="hs-stock-crop-row__sub">
+                              <Text variant="caption" appearance="secondary">
                                 Prev: ₹{crop.openingStock.rate.toFixed(2)}/kg
-                              </span>
+                              </Text>
                             )}
                             {hasBuy && (
-                              <span className="hs-stock-crop-row__sub">
+                              <Text variant="caption" appearance="secondary">
                                 Buy: ₹{crop.purchases.rate.toFixed(2)}/kg
-                              </span>
+                              </Text>
                             )}
                             {!hasOpen && !hasBuy && (
-                              <span className="hs-stock-crop-row__sub">
+                              <Text variant="caption" appearance="secondary">
                                 Rate: ₹
                                 {crop.totalAvailableStock.weightedRate.toFixed(
                                   2,
                                 )}
                                 /kg
-                              </span>
+                              </Text>
                             )}
                           </div>
                         </div>
@@ -266,24 +313,29 @@ export const StockCard: React.FC<StockCardProps> = ({
                       {/* 2. Selling Rate Column */}
                       <Grid.Item>
                         <div className="hs-stock-crop-row__col hs-stock-crop-row__col--sell">
-                          <span className="hs-stock-crop-row__label">
+                          <Text
+                            variant="caption"
+                            weight="bold"
+                            uppercase
+                            appearance="secondary"
+                          >
                             Selling Rate
-                          </span>
-                          <span className="hs-stock-crop-row__val">
+                          </Text>
+                          <Text variant="body-sm" weight="bold">
                             {crop.sales.avgRate > 0
                               ? `₹${crop.sales.avgRate.toFixed(2)}/kg`
                               : '—'}
-                          </span>
+                          </Text>
                           <div className="hs-stock-crop-row__sub-list">
-                            <span className="hs-stock-crop-row__sub">
+                            <Text variant="caption" appearance="secondary">
                               {soldWeight > 0
                                 ? `Sold: ${formatWeight(soldWeight)}`
                                 : 'No sales'}
-                            </span>
+                            </Text>
                             {soldWeight > 0 && (
-                              <span className="hs-stock-crop-row__sub">
+                              <Text variant="caption" appearance="secondary">
                                 Rev: {formatRupee(crop.sales.amount)}
-                              </span>
+                              </Text>
                             )}
                           </div>
                         </div>
@@ -299,21 +351,26 @@ export const StockCard: React.FC<StockCardProps> = ({
                               : 'hs-stock-crop-row__col--margin-neg',
                           )}
                         >
-                          <span className="hs-stock-crop-row__label">
+                          <Text
+                            variant="caption"
+                            weight="bold"
+                            uppercase
+                            appearance="secondary"
+                          >
                             Spread &amp; COGS
-                          </span>
-                          <span className="hs-stock-crop-row__val">
+                          </Text>
+                          <Text variant="body-sm" weight="bold">
                             {crop.sales.avgRate > 0
                               ? `₹${unitSpread.toFixed(2)}/kg`
                               : '—'}
-                          </span>
+                          </Text>
                           <div className="hs-stock-crop-row__sub-list">
-                            <span className="hs-stock-crop-row__sub">
+                            <Text variant="caption" appearance="secondary">
                               COGS: {formatRupee(crop.costOfGoodsSold)}
-                            </span>
-                            <span className="hs-stock-crop-row__sub">
+                            </Text>
+                            <Text variant="caption" appearance="secondary">
                               Profit: {formatRupee(crop.grossCommissionProfit)}
-                            </span>
+                            </Text>
                           </div>
                         </div>
                       </Grid.Item>
@@ -334,10 +391,10 @@ export const StockCard: React.FC<StockCardProps> = ({
                             title={`In Stock: ${stockPct.toFixed(1)}%`}
                           />
                         </div>
-                        <span className="hs-stock-crop-row__legend">
+                        <Text variant="caption" appearance="secondary">
                           Sold {soldPct.toFixed(0)}% • Stock{' '}
                           {stockPct.toFixed(0)}%
-                        </span>
+                        </Text>
                       </div>
                     )}
                   </div>
@@ -347,7 +404,9 @@ export const StockCard: React.FC<StockCardProps> = ({
           </div>
         ) : (
           <div className="hs-stock-card__empty">
-            No inventory movements or closing stock for this period.
+            <Text variant="body-sm" appearance="secondary">
+              No inventory movements or closing stock for this period.
+            </Text>
           </div>
         )}
       </Card.Content>

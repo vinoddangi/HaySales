@@ -5,6 +5,7 @@ import { Badge } from '../../../../components/Badge';
 import { Card } from '../../../../components/Card';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
+import { Text } from '../../../../components/Text';
 import { formatRupee } from '../../../../utils/formatters';
 import './EstimatedProfitCard.css';
 
@@ -62,16 +63,16 @@ export const EstimatedProfitCard: React.FC<EstimatedProfitCardProps> = ({
             </div>
             <div>
               <Flex align="center" gap="xs">
-                <span className="hs-estimated-profit-card__tag">
+                <Text variant="label-sm" uppercase weight="bold">
                   Estimated Net Profit
-                </span>
+                </Text>
                 {onClick && (
                   <ChevronRight className="hs-estimated-profit-card__chevron" />
                 )}
               </Flex>
-              <span className="hs-estimated-profit-card__subtitle">
+              <Text variant="body-sm" appearance="secondary">
                 {periodLabel || 'Period'} Trading Profit
-              </span>
+              </Text>
             </div>
           </Flex>
 
@@ -84,21 +85,19 @@ export const EstimatedProfitCard: React.FC<EstimatedProfitCardProps> = ({
         </Flex>
 
         {/* Profit Headline */}
-        <div
-          className={clsx(
-            'hs-estimated-profit-card__headline',
-            isPositive
-              ? 'hs-estimated-profit-card__headline--positive'
-              : 'hs-estimated-profit-card__headline--negative',
-          )}
+        <Text
+          as="div"
+          variant="headline-md"
+          weight="bold"
+          sentiment={isPositive ? 'positive' : 'negative'}
         >
           {formatRupee(netProfit)}
-        </div>
+        </Text>
 
         {cumulativeProfit !== undefined && (
-          <div className="hs-estimated-profit-card__cumulative">
+          <Text variant="caption" appearance="secondary">
             Balance Sheet Cumulative: {formatRupee(cumulativeProfit)}
-          </div>
+          </Text>
         )}
 
         {/* 3-Column Breakdown Sub-Pills */}
@@ -106,33 +105,45 @@ export const EstimatedProfitCard: React.FC<EstimatedProfitCardProps> = ({
           {/* 1. Trading Margin */}
           <Grid.Item>
             <div className="hs-profit-pill hs-profit-pill--margin">
-              <span className="hs-profit-pill__label">Trading Margin</span>
-              <span className="hs-profit-pill__val">
+              <Text variant="caption" uppercase weight="bold" sentiment="positive">
+                Trading Margin
+              </Text>
+              <Text variant="label-md" weight="bold" sentiment="positive">
                 {formatRupee(grossCommission)}
-              </span>
-              <span className="hs-profit-pill__caption">Crop margin</span>
+              </Text>
+              <Text variant="caption" appearance="secondary">
+                Crop margin
+              </Text>
             </div>
           </Grid.Item>
 
           {/* 2. Pickup Net */}
           <Grid.Item>
             <div className="hs-profit-pill hs-profit-pill--service">
-              <span className="hs-profit-pill__label">Pickup Net</span>
-              <span className="hs-profit-pill__val">
+              <Text variant="caption" uppercase weight="bold" sentiment="info">
+                Pickup Net
+              </Text>
+              <Text variant="label-md" weight="bold" sentiment="info">
                 {formatRupee(pickupNet)}
-              </span>
-              <span className="hs-profit-pill__caption">Pickup service</span>
+              </Text>
+              <Text variant="caption" appearance="secondary">
+                Pickup service
+              </Text>
             </div>
           </Grid.Item>
 
           {/* 3. Expenses */}
           <Grid.Item>
             <div className="hs-profit-pill hs-profit-pill--expense">
-              <span className="hs-profit-pill__label">Expenses</span>
-              <span className="hs-profit-pill__val">
+              <Text variant="caption" uppercase weight="bold" sentiment="negative">
+                Expenses
+              </Text>
+              <Text variant="label-md" weight="bold" sentiment="negative">
                 -{formatRupee(operatingExpenses)}
-              </span>
-              <span className="hs-profit-pill__caption">Operating costs</span>
+              </Text>
+              <Text variant="caption" appearance="secondary">
+                Operating costs
+              </Text>
             </div>
           </Grid.Item>
         </Grid>

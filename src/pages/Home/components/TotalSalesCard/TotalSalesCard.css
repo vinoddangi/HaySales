@@ -18,16 +18,6 @@
   transform: translateY(-1px);
 }
 
-.hs-total-sales-card__tag {
-  font-family: var(--md-sys-typescale-label-small-font-family-name, inherit);
-  font-size: var(--md-sys-typescale-label-small-font-size, 0.625rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #059669;
-  white-space: nowrap;
-}
-
 .hs-total-sales-card__icon-wrapper {
   display: flex;
   align-items: center;
@@ -45,28 +35,6 @@
   height: 14px;
 }
 
-.hs-total-sales-card__amount {
-  font-family: var(--md-sys-typescale-title-medium-font-family-name, inherit);
-  font-size: clamp(1rem, 3vw, 1.1875rem);
-  font-weight: 800;
-  color: var(--md-sys-color-on-surface, #191c1e);
-  margin-top: var(--md-sys-spacing-xs, 4px);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.hs-total-sales-card__meta {
-  margin-top: var(--md-sys-spacing-xs, 4px);
-  font-size: 0.6875rem;
-  color: var(--md-sys-color-on-surface-variant, #43484e);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .hs-total-sales-card__rate-badge {
   display: flex;
   align-items: center;
@@ -75,17 +43,4 @@
   padding: 3px 6px;
   border-radius: var(--md-sys-shape-corner-small, 6px);
   background-color: rgba(16, 185, 129, 0.12);
-}
-
-.hs-total-sales-card__rate-label {
-  font-size: 0.625rem;
-  font-weight: 600;
-  color: #065f46;
-}
-
-.hs-total-sales-card__rate-val {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: #047857;
-  white-space: nowrap;
 }

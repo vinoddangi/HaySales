@@ -4,6 +4,7 @@ import React from 'react';
 import { Badge } from '../../../../components/Badge';
 import { Card } from '../../../../components/Card';
 import { Flex } from '../../../../components/layouts/Flex';
+import { Text } from '../../../../components/Text';
 import { formatRupee } from '../../../../utils/formatters';
 import './SalesOnCreditCard.css';
 
@@ -31,19 +32,21 @@ export const SalesOnCreditCard: React.FC<SalesOnCreditCardProps> = ({
         <Flex align="center" justify="between" fullWidth>
           <Flex align="center" gap="xs">
             <CreditCard className="hs-sales-credit-card__icon" />
-            <span className="hs-sales-credit-card__title">Sales on Credit</span>
+            <Text variant="label-sm" uppercase weight="bold" sentiment="warning">
+              Sales on Credit
+            </Text>
           </Flex>
           <Badge sentiment="credit" size="sm">
             {percentage.toFixed(0)}%
           </Badge>
         </Flex>
 
-        <div className="hs-sales-credit-card__amount">
+        <Text as="div" variant="title-lg" weight="bold">
           {formatRupee(amount)}
-        </div>
-        <div className="hs-sales-credit-card__subtitle">
+        </Text>
+        <Text variant="body-sm" appearance="secondary">
           Credit given to buyers
-        </div>
+        </Text>
       </Card.Content>
     </Card>
   );

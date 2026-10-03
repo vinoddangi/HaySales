@@ -19,50 +19,8 @@
   height: 18px;
 }
 
-.hs-cash-in-hand-card__tag {
-  display: block;
-  font-family: var(--md-sys-typescale-label-small-font-family-name, inherit);
-  font-size: var(--md-sys-typescale-label-small-font-size, 0.6875rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #3730a3;
-}
-
-.hs-cash-in-hand-card__subtitle {
-  display: block;
-  font-size: var(--md-sys-typescale-body-small-font-size, 0.6875rem);
-  color: var(--md-sys-color-on-surface-variant, #43484e);
-}
-
 .hs-cash-in-hand-card__header-right {
   text-align: right;
-}
-
-.hs-cash-in-hand-card__amount {
-  font-family: var(--md-sys-typescale-headline-small-font-family-name, inherit);
-  font-size: var(--md-sys-typescale-headline-small-font-size, 1.5rem);
-  font-weight: 900;
-  color: #3730a3;
-  line-height: 1.2;
-}
-
-.hs-cash-in-hand-card__adj {
-  font-size: 0.625rem;
-  font-weight: 700;
-  margin-top: 2px;
-}
-
-.hs-cash-in-hand-card__adj--up {
-  color: #047857;
-}
-
-.hs-cash-in-hand-card__adj--down {
-  color: #be123c;
-}
-
-.hs-cash-in-hand-card__adj--neutral {
-  color: var(--md-sys-color-on-surface-variant, #43484e);
 }
 
 .hs-cash-in-hand-card__sub-cards {
@@ -115,34 +73,6 @@
   padding-bottom: 4px;
 }
 
-.hs-balance-subcard__title {
-  font-size: 0.625rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.hs-balance-subcard__title--emerald {
-  color: #065f46;
-}
-
-.hs-balance-subcard__title--purple {
-  color: #6b21a8;
-}
-
-.hs-balance-subcard__val {
-  font-size: 0.75rem;
-  font-weight: 800;
-}
-
-.hs-balance-subcard__val--emerald {
-  color: #047857;
-}
-
-.hs-balance-subcard__val--purple {
-  color: #7e22ce;
-}
-
 .hs-balance-subcard__rows {
   margin-top: 6px;
   display: flex;
@@ -154,11 +84,4 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.625rem;
-  color: var(--md-sys-color-on-surface-variant, #43484e);
-}
-
-.hs-balance-subcard__row-val {
-  font-weight: 600;
-  color: var(--md-sys-color-on-surface, #191c1e);
 }

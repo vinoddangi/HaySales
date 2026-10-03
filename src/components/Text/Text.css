@@ -144,23 +144,27 @@
 
 /* Sentiment variants mapped to M3 tokens */
 .text--sentiment-positive {
-  color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-primary, #006c4c);
 }
 
 .text--sentiment-negative {
-  color: var(--md-sys-color-error);
+  color: var(--md-sys-color-error, #ba1a1a);
 }
 
 .text--sentiment-warning {
-  color: var(--md-sys-color-warning);
+  color: var(--md-sys-color-warning, #e28704);
+}
+
+.text--sentiment-info {
+  color: var(--md-sys-color-tertiary, #3d6473);
 }
 
 .text--sentiment-accent {
-  color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-primary, #006c4c);
 }
 
 .text--sentiment-neutral {
-  color: var(--md-sys-color-on-surface);
+  color: var(--md-sys-color-on-surface, #191c1a);
 }
 
 /* Weight modifiers mapped to M3 tokens */

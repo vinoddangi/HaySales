@@ -3,6 +3,7 @@ import { TrendingUp } from 'lucide-react';
 import React from 'react';
 import { Card } from '../../../../components/Card';
 import { Flex } from '../../../../components/layouts/Flex';
+import { Text } from '../../../../components/Text';
 import { formatRupee, formatWeight } from '../../../../utils/formatters';
 import './TotalSalesCard.css';
 
@@ -32,30 +33,29 @@ export const TotalSalesCard: React.FC<TotalSalesCardProps> = ({
     >
       <Card.Content>
         <Flex align="center" justify="between" fullWidth>
-          <span className="hs-total-sales-card__tag">Total Sales</span>
+          <Text variant="label-sm" uppercase weight="bold" sentiment="positive">
+            Total Sales
+          </Text>
           <div className="hs-total-sales-card__icon-wrapper">
             <TrendingUp className="hs-total-sales-card__icon" />
           </div>
         </Flex>
 
-        <div className="hs-total-sales-card__amount">{formatRupee(amount)}</div>
+        <Text as="div" variant="headline-sm" weight="bold" truncate>
+          {formatRupee(amount)}
+        </Text>
 
-        <Flex
-          wrap
-          align="center"
-          gap="xs"
-          className="hs-total-sales-card__meta"
-        >
-          <span>{formatWeight(weight)}</span>
-          <span>•</span>
-          <span>{invoicesCount} Invoices</span>
-        </Flex>
+        <Text variant="body-sm" appearance="secondary" truncate>
+          {formatWeight(weight)} • {invoicesCount} Invoices
+        </Text>
 
         <div className="hs-total-sales-card__rate-badge">
-          <span className="hs-total-sales-card__rate-label">Avg Rate:</span>
-          <span className="hs-total-sales-card__rate-val">
+          <Text variant="caption" weight="medium" sentiment="positive">
+            Avg Rate:
+          </Text>
+          <Text variant="label-sm" weight="bold" sentiment="positive">
             {avgRate > 0 ? `₹${avgRate.toFixed(2)} /kg` : '₹0.00 /kg'}
-          </span>
+          </Text>
         </div>
       </Card.Content>
     </Card>

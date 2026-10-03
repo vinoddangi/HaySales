@@ -35,6 +35,11 @@
   - **No Utility Chains in JSX**: NEVER write long inline Tailwind utility chains directly in JSX (e.g., NEVER write `className="flex-1 bg-transparent text-sm text-surface-foreground placeholder:text-outline focus:outline-none"`). Instead, create an explicit, semantic class in the companion `.css` file using tokens (e.g., `.top-app-bar__search-input`) and use that class name in JSX.
   - **Zero Arbitrary Values**: Absolutely NO arbitrary hardcoded pixel or hex values anywhere (NEVER use `p-[16px]`, `bg-[#006c4c]`, `rounded-[16px]`).
   - **Conditional Classes**: Use `clsx` (and `tailwind-merge` where merging Tailwind utilities) to conditionally compose classes on components.
+- **Standard Material Design 3 Typography (`<Text>`)**:
+  - **Always Use `<Text>`**: Use the semantic `<Text>` component (`src/components/Text/Text.tsx`) for all text rendering instead of raw `<span>`, `<p>`, `<div>`, or headings.
+  - **M3 Typescale Roles (`variant`)**: Set typescale roles explicitly (`headline-lg/md/sm`, `title-lg/md/sm`, `body-lg/md/sm`, `label-lg/md/sm`, `caption`, `amount`).
+  - **Standard Sentiments & Colors (`sentiment` & `appearance`)**: Strictly use the standard M3 sentiment palette (`positive`, `negative`, `warning`, `info`, `accent`, `neutral`) and appearance (`primary`, `secondary`, `disabled`). Do not invent bespoke/one-off sentiment names or add custom CSS classes to color text when `<Text>` sentiment props handle it.
+  - **Zero Custom Typography Classes in Companion CSS**: Do not write `.hs-*-title`, `.hs-*-amount`, `.hs-*-meta`, or `.hs-*-rate` text color/font rules in companion `.css` files when `<Text>` props (`variant`, `weight`, `sentiment`, `appearance`, `uppercase`, `truncate`) cover them.
 - **Reference Over Copying**: When rebuilding features or components from reference code, do NOT copy old legacy code directly. Use it only as a behavioral reference and implement from scratch according to these strict modularity and styling guidelines.
 
 ---

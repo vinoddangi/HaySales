@@ -4,6 +4,7 @@ import React from 'react';
 import { Badge } from '../../../../components/Badge';
 import { Card } from '../../../../components/Card';
 import { Flex } from '../../../../components/layouts/Flex';
+import { Text } from '../../../../components/Text';
 import {
   CropTransactionData,
   CustomerTransactionData,
@@ -49,16 +50,23 @@ export const RecentActivityCard: React.FC<RecentActivityCardProps> = ({
           fullWidth
           className="hs-recent-activity-card__header"
         >
-          <span className="hs-recent-activity-card__title">
+          <Text
+            variant="label-sm"
+            weight="bold"
+            uppercase
+            appearance="secondary"
+          >
             Recent Activity &amp; Payments
-          </span>
+          </Text>
           {onViewAll && (
             <button
               type="button"
               onClick={onViewAll}
               className="hs-recent-activity-card__link"
             >
-              <span>View All Ledger</span>
+              <Text variant="label-sm" weight="bold" sentiment="accent">
+                View All Ledger
+              </Text>
               <ChevronRight className="hs-recent-activity-card__link-icon" />
             </button>
           )}
@@ -66,7 +74,9 @@ export const RecentActivityCard: React.FC<RecentActivityCardProps> = ({
 
         {recent.length === 0 ? (
           <div className="hs-recent-activity-card__empty">
-            No activity or transactions recorded in this period.
+            <Text variant="body-sm" appearance="secondary">
+              No activity or transactions recorded in this period.
+            </Text>
           </div>
         ) : (
           <Flex
@@ -116,14 +126,14 @@ export const RecentActivityCard: React.FC<RecentActivityCardProps> = ({
                   className="hs-recent-activity-item"
                 >
                   <Flex align="center" justify="between" fullWidth>
-                    <div className="hs-recent-activity-item__info">
+                    <Flex direction="column" gap="xs">
                       <Flex align="center" gap="xs">
                         {isPayment && (
                           <Receipt className="hs-recent-activity-item__icon hs-recent-activity-item__icon--payment" />
                         )}
-                        <span className="hs-recent-activity-item__name">
+                        <Text variant="body-sm" weight="bold">
                           {typeLabel}
-                        </span>
+                        </Text>
                         {isPayment && (
                           <Badge sentiment="info" size="sm">
                             Payment
@@ -141,37 +151,40 @@ export const RecentActivityCard: React.FC<RecentActivityCardProps> = ({
                         )}
                       </Flex>
 
-                      <Flex
-                        align="center"
-                        gap="xs"
-                        className="hs-recent-activity-item__meta"
-                      >
+                      <Flex align="center" gap="xs">
                         {partyName && (
                           <>
-                            <span className="hs-recent-activity-item__party">
+                            <Text variant="caption" weight="medium">
                               {partyName}
-                            </span>
-                            <span>•</span>
+                            </Text>
+                            <Text variant="caption" appearance="secondary">
+                              •
+                            </Text>
                           </>
                         )}
-                        <span>{formatDate(tx.date)}</span>
+                        <Text variant="caption" appearance="secondary">
+                          {formatDate(tx.date)}
+                        </Text>
                         {typeof weightKg === 'number' && weightKg > 0 && (
                           <>
-                            <span>•</span>
-                            <span>{formatWeight(weightKg)}</span>
+                            <Text variant="caption" appearance="secondary">
+                              •
+                            </Text>
+                            <Text variant="caption" appearance="secondary">
+                              {formatWeight(weightKg)}
+                            </Text>
                           </>
                         )}
                       </Flex>
-                    </div>
+                    </Flex>
 
-                    <div
-                      className={clsx(
-                        'hs-recent-activity-item__amount',
-                        isPayment && 'hs-recent-activity-item__amount--payment',
-                      )}
+                    <Text
+                      variant="body-md"
+                      weight="bold"
+                      sentiment={isPayment ? 'info' : 'neutral'}
                     >
                       {formatRupee(amount)}
-                    </div>
+                    </Text>
                   </Flex>
                 </div>
               );

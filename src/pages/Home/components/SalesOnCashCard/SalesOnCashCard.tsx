@@ -4,6 +4,7 @@ import React from 'react';
 import { Badge } from '../../../../components/Badge';
 import { Card } from '../../../../components/Card';
 import { Flex } from '../../../../components/layouts/Flex';
+import { Text } from '../../../../components/Text';
 import { formatRupee } from '../../../../utils/formatters';
 import './SalesOnCashCard.css';
 
@@ -31,15 +32,21 @@ export const SalesOnCashCard: React.FC<SalesOnCashCardProps> = ({
         <Flex align="center" justify="between" fullWidth>
           <Flex align="center" gap="xs">
             <Banknote className="hs-sales-cash-card__icon" />
-            <span className="hs-sales-cash-card__title">Sales on Cash</span>
+            <Text variant="label-sm" uppercase weight="bold" sentiment="positive">
+              Sales on Cash
+            </Text>
           </Flex>
           <Badge sentiment="positive" size="sm">
             {percentage.toFixed(0)}%
           </Badge>
         </Flex>
 
-        <div className="hs-sales-cash-card__amount">{formatRupee(amount)}</div>
-        <div className="hs-sales-cash-card__subtitle">Direct cash received</div>
+        <Text as="div" variant="title-lg" weight="bold">
+          {formatRupee(amount)}
+        </Text>
+        <Text variant="body-sm" appearance="secondary">
+          Direct cash received
+        </Text>
       </Card.Content>
     </Card>
   );
