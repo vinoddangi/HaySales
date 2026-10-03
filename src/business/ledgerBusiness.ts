@@ -161,7 +161,7 @@ export function calculateCustomerLedgerDetail(
   // Sort chronologically ascending
   filteredTxs.sort((a, b) => a.date.localeCompare(b.date));
 
-  const openingDue = Number(customer.openingDue || 0);
+  let openingDue = 0;
 
   let totalSales = 0;
   let totalServices = 0;
@@ -188,6 +188,8 @@ export function calculateCustomerLedgerDetail(
       const disc = Number(tx.discount || 0);
       totalPaid += pAmt;
       totalDiscounts += disc;
+    } else if (tx.type === 'OPENING_DUE') {
+      openingDue += Number(tx.amount || 0);
     }
   }
 

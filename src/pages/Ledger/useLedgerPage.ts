@@ -1,6 +1,11 @@
 import { useMemo, useState } from 'react';
-import { calculateCustomerLedgerDetail } from '../../business/ledgerBusiness';
-import { CustomerModel, PaymentTransactionData } from '../../models';
+import { CustomerLedgerDetail } from '../../business/ledgerBusiness';
+import {
+  CustomerModel,
+  CustomerTransactionData,
+  OpeningDueTransactionData,
+  PaymentTransactionData,
+} from '../../models';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { getTodayDateString } from '../../utils';
 import {
@@ -10,6 +15,8 @@ import {
 } from '../../store/api';
 import {
   selectAllCustomers,
+  selectAllCustomerTransactions,
+  selectCustomerLedgerDetailsMap,
   selectCustomerLedgerSummaries,
   selectCustomersWithDuesCount,
   selectTotalCustomerOutstanding,
@@ -27,13 +34,15 @@ export function useLedgerPage() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const { isLoading: isLoadingCustomers } = useGetCustomersQuery();
-  const { data: transactions = [], isLoading: isLoadingTransactions } =
+  const { isLoading: isLoadingTransactions } =
     useGetCustomerTransactionsQuery(undefined);
   const [addCustomerTx, { isLoading: isPaying }] =
     useAddCustomerTransactionMutation();
 
   const rawCustomers = useAppSelector(selectAllCustomers);
+  const allCustomerTransactions = useAppSelector(selectAllCustomerTransactions);
   const customerSummaries = useAppSelector(selectCustomerLedgerSummaries);
+  const customerDetailsMap = useAppSelector(selectCustomerLedgerDetailsMap);
   const totalOutstanding = useAppSelector(selectTotalCustomerOutstanding);
   const customersWithDuesCount = useAppSelector(selectCustomersWithDuesCount);
 
@@ -41,7 +50,7 @@ export function useLedgerPage() {
     return rawCustomers.map((c) => CustomerModel.from(c));
   }, [rawCustomers]);
 
-  // Filtered customer ledger summaries
+  // Filtered customer ledger summaries for the list
   const filteredCustomerSummaries = useMemo(() => {
     const term = searchTerm.toLowerCase().trim();
     return customerSummaries.filter((c) => {
@@ -53,20 +62,76 @@ export function useLedgerPage() {
     });
   }, [customerSummaries, searchTerm, filterMode]);
 
-  // Selected customer details for drawer
+  // Selected customer model
   const selectedCustomer = useMemo(() => {
     return customers.find((c) => c.id === selectedCustomerId) || null;
   }, [customers, selectedCustomerId]);
 
-  const selectedCustomerDetail = useMemo(() => {
-    if (!selectedCustomer) return null;
-    return calculateCustomerLedgerDetail(selectedCustomer, transactions);
-  }, [selectedCustomer, transactions]);
+  // Complete customer ledger detail & full transaction history (including synthesized opening due)
+  const { selectedCustomerDetail, selectedCustomerTransactions } = useMemo(() => {
+    if (!selectedCustomer || !selectedCustomerId) {
+      return { selectedCustomerDetail: null, selectedCustomerTransactions: [] };
+    }
 
-  const selectedCustomerTransactions = useMemo(() => {
-    if (!selectedCustomerId) return [];
-    return transactions.filter((t) => t.customerId === selectedCustomerId);
-  }, [transactions, selectedCustomerId]);
+    const summary = customerDetailsMap[selectedCustomerId];
+    const customerTxs = allCustomerTransactions.filter(
+      (t) => t.customerId === selectedCustomerId,
+    );
+
+    // If customer has opening due, synthesize an OpeningDue transaction so it appears in the statement
+    const completeTxs: CustomerTransactionData[] = [...customerTxs];
+    const openingDue = Number(selectedCustomer.openingDue || 0);
+    const hasOpeningDueTx = customerTxs.some((t) => t.type === 'OPENING_DUE');
+
+    if (openingDue > 0 && !hasOpeningDueTx) {
+      const openingTx: OpeningDueTransactionData = {
+        id: `opening-${selectedCustomer.id}`,
+        type: 'OPENING_DUE',
+        customerId: selectedCustomer.id,
+        customerName: selectedCustomer.name,
+        amount: openingDue,
+        cashPaid: 0,
+        remainingDue: openingDue,
+        date: '2025-01-01',
+        note: 'Initial opening balance',
+      };
+      completeTxs.unshift(openingTx);
+    }
+
+    // Sort chronologically descending for statement
+    completeTxs.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+    const detail: CustomerLedgerDetail = summary
+      ? {
+          ...summary,
+          customer: selectedCustomer,
+          transactions: completeTxs,
+        }
+      : {
+          customerId: selectedCustomer.id,
+          customerName: selectedCustomer.name,
+          customer: selectedCustomer,
+          openingDue,
+          totalSales: 0,
+          totalServices: 0,
+          totalBilled: openingDue,
+          totalPaid: 0,
+          totalDiscounts: 0,
+          currentOutstanding: openingDue,
+          transactionCount: completeTxs.length,
+          transactions: completeTxs,
+        };
+
+    return {
+      selectedCustomerDetail: detail,
+      selectedCustomerTransactions: completeTxs,
+    };
+  }, [
+    selectedCustomer,
+    selectedCustomerId,
+    customerDetailsMap,
+    allCustomerTransactions,
+  ]);
 
   const handleSelectCustomer = (customerId: string) => {
     setSelectedCustomerId(customerId);
@@ -111,6 +176,7 @@ export function useLedgerPage() {
   return {
     searchTerm,
     filterMode,
+    selectedCustomerId,
     isDrawerOpen,
     selectedCustomerDetail,
     selectedCustomerTransactions,

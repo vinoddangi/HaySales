@@ -63,19 +63,18 @@ export function buildCustomerLedgerMap(
 ): Record<string, CustomerLedgerRecord> {
   const map: Record<string, CustomerLedgerRecord> = {};
 
-  // 1. Initialize with all registered customers
+  // 1. Initialize with all registered customers (ledger derived strictly from transaction events)
   for (const cust of customers) {
-    const openingDue = Number(cust.openingDue || 0);
     map[cust.id] = {
       customerId: cust.id,
       customerName: cust.name || 'Unnamed Customer',
-      openingDue,
+      openingDue: 0,
       totalSales: 0,
       totalServices: 0,
-      totalBilled: openingDue,
+      totalBilled: 0,
       totalPaid: 0,
       totalDiscounts: 0,
-      currentOutstanding: openingDue,
+      currentOutstanding: 0,
       transactionCount: 0,
       lastTransactionDate: undefined,
     };

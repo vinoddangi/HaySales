@@ -14,6 +14,7 @@ export const LedgerPage: React.FC = () => {
   const {
     searchTerm,
     filterMode,
+    selectedCustomerId,
     isDrawerOpen,
     selectedCustomerDetail,
     selectedCustomerTransactions,
@@ -57,19 +58,23 @@ export const LedgerPage: React.FC = () => {
         totalCustomersCount={totalCustomersCount}
       />
 
-      {/* 4. Customer Accounts List */}
-      <CustomerLedgerList
-        customers={filteredCustomerSummaries}
-        onSelectCustomer={handleSelectCustomer}
-        isLoading={isLoading}
-      />
+      {/* 4. Customer List */}
+      <div className="hs-ledger-page__body">
+        <CustomerLedgerList
+          customers={filteredCustomerSummaries}
+          selectedCustomerId={selectedCustomerId}
+          onSelectCustomer={handleSelectCustomer}
+          isLoading={isLoading}
+        />
+      </div>
 
-      {/* 5. Customer Ledger Account Drawer */}
+      {/* 5. Full-Page Customer Statement Drawer */}
       <CustomerLedgerDrawer
         isOpen={isDrawerOpen}
         onClose={handleCloseDrawer}
         detail={selectedCustomerDetail}
         transactions={selectedCustomerTransactions}
+        isLoadingTransactions={isLoading}
         isPaying={isPaying}
         onPay={handlePay}
       />

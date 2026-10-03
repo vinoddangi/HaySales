@@ -1,7 +1,7 @@
 import { Customer, Transaction } from '../models';
 
 export const DB_NAME = 'HaySalesOfflineDB';
-export const DB_VERSION = 3;
+export const DB_VERSION = 4;
 
 export interface PendingChange {
   id: string; // Doc path or unique id
@@ -368,3 +368,4 @@ export async function syncAndPublishCloudDatabase(): Promise<{
     ...pullResult,
   };
 }
+

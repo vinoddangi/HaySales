@@ -7,12 +7,14 @@ import './CustomerLedgerList.css';
 
 export interface CustomerLedgerListProps {
   customers: CustomerLedgerSummary[];
+  selectedCustomerId?: string | null;
   onSelectCustomer: (_customerId: string) => void;
   isLoading?: boolean;
 }
 
 export const CustomerLedgerList: React.FC<CustomerLedgerListProps> = ({
   customers,
+  selectedCustomerId,
   onSelectCustomer,
   isLoading,
 }) => {
@@ -39,11 +41,14 @@ export const CustomerLedgerList: React.FC<CustomerLedgerListProps> = ({
         <div className="hs-customer-ledger-list__items">
           {customers.map((c) => {
             const hasDue = c.currentOutstanding > 0;
+            const isSelected = selectedCustomerId === c.customerId;
             return (
               <div
                 key={c.customerId}
                 onClick={() => onSelectCustomer(c.customerId)}
-                className="hs-customer-ledger-list__item"
+                className={`hs-customer-ledger-list__item ${
+                  isSelected ? 'hs-customer-ledger-list__item--active' : ''
+                }`}
                 role="button"
                 tabIndex={0}
               >

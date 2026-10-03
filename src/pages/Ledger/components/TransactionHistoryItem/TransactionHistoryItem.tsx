@@ -61,6 +61,7 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
         isCleared && 'hs-tx-history-item--cleared',
         !isCleared && isPayment && 'hs-tx-history-item--payment',
         !isCleared && isService && 'hs-tx-history-item--service',
+        !isCleared && isOpeningDue && 'hs-tx-history-item--opening-due',
       )}
     >
       {/* 1. Left Details */}
@@ -68,6 +69,11 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
         <div className="hs-tx-history-item__title-row">
           <span className="hs-tx-history-item__title">{title}</span>
 
+          {isOpeningDue && (
+            <Badge sentiment="warning" appearance="subtle">
+              Opening Due
+            </Badge>
+          )}
           {isPayment && (
             <Badge sentiment="positive" appearance="subtle">
               Cash In
@@ -106,7 +112,14 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
 
       {/* 2. Right Amounts */}
       <div className="hs-tx-history-item__right">
-        {isPayment ? (
+        {isOpeningDue ? (
+          <>
+            <span className="hs-tx-history-item__amount hs-tx-history-item__amount--red">
+              {formatRupee(tx.amount)}
+            </span>
+            <span className="hs-tx-history-item__meta">Opening Balance</span>
+          </>
+        ) : isPayment ? (
           <>
             <span className="hs-tx-history-item__amount hs-tx-history-item__amount--green">
               -{formatRupee(tx.amount)}

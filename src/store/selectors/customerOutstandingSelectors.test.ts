@@ -28,12 +28,33 @@ import {
 } from './customerOutstandingSelectors';
 
 const mockCustomers: Customer[] = [
-  { id: 'c1', name: 'Ramesh Patel', openingDue: 10000 },
-  { id: 'c2', name: 'Suresh Kumar', openingDue: 5000 },
-  { id: 'c3', name: 'Dinesh Shah', openingDue: 0 },
+  { id: 'c1', name: 'Ramesh Patel' },
+  { id: 'c2', name: 'Suresh Kumar' },
+  { id: 'c3', name: 'Dinesh Shah' },
 ];
 
 const mockCustomerTransactions: CustomerTransactionData[] = [
+  // Starting opening dues via transaction events
+  {
+    id: 'tx-0a',
+    date: '2025-01-01T00:00:00.000Z',
+    type: 'OPENING_DUE',
+    customerId: 'c1',
+    customerName: 'Ramesh Patel',
+    amount: 10000,
+    cashPaid: 0,
+    remainingDue: 10000,
+  },
+  {
+    id: 'tx-0b',
+    date: '2025-01-01T00:00:00.000Z',
+    type: 'OPENING_DUE',
+    customerId: 'c2',
+    customerName: 'Suresh Kumar',
+    amount: 5000,
+    cashPaid: 0,
+    remainingDue: 5000,
+  },
   // Jan 2026 transactions
   {
     id: 'tx-1',
@@ -146,13 +167,14 @@ describe('customerOutstandingSelectors', () => {
       expect(map['c1'].totalSales).toBe(20000);
       expect(map['c1'].totalPaid).toBe(15000);
       expect(map['c1'].currentOutstanding).toBe(15000);
-      expect(map['c1'].transactionCount).toBe(2);
+      expect(map['c1'].transactionCount).toBe(3);
 
       // c2: 5,000 opening - 3,000 payment + 12,000 sale - 2,000 cash = 12,000
       expect(map['c2'].openingDue).toBe(5000);
       expect(map['c2'].totalSales).toBe(12000);
       expect(map['c2'].totalPaid).toBe(5000);
       expect(map['c2'].currentOutstanding).toBe(12000);
+      expect(map['c2'].transactionCount).toBe(3);
 
       // c3: 0 opening + 4,000 service - 5,000 payment = -1000
       expect(map['c3'].openingDue).toBe(0);
@@ -302,6 +324,29 @@ describe('customerOutstandingSelectors', () => {
         customersWithDuesCount: 2,
         previousTenorLabel: 'vs February 2026',
       });
+    });
+
+    it('does not double count opening balance when explicit OPENING_DUE transaction exists', () => {
+      const customers: Customer[] = [
+        { id: 'c1', name: 'Akoliya Bhagvanbhai', openingDue: 13080 },
+      ];
+      const transactions: CustomerTransactionData[] = [
+        {
+          id: 'opening_2025_c1',
+          date: '2025-01-01',
+          type: 'OPENING_DUE',
+          customerId: 'c1',
+          customerName: 'Akoliya Bhagvanbhai',
+          amount: 13080,
+          cashPaid: 0,
+          remainingDue: 13080,
+        },
+      ];
+
+      const ledgerMap = buildCustomerLedgerMap(customers, transactions);
+      expect(ledgerMap['c1'].openingDue).toBe(13080);
+      expect(ledgerMap['c1'].totalBilled).toBe(13080);
+      expect(ledgerMap['c1'].currentOutstanding).toBe(13080);
     });
   });
 });

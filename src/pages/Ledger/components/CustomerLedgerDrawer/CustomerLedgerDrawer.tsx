@@ -1,16 +1,14 @@
 import { History, Receipt, X } from 'lucide-react';
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import { CustomerLedgerDetail } from '../../../../business/ledgerBusiness';
-import {
-  CustomerTransactionData,
-  isSaleTransaction,
-  isServiceTransaction,
-} from '../../../../models';
+import { Text } from '../../../../components/Text';
+import { CustomerTransactionData } from '../../../../models';
 import { cn } from '../../../../utils/cn';
 import { formatRupee, formatWeight } from '../../../../utils/formatters';
 import { LedgerPaymentForm } from '../LedgerPaymentForm';
 import { TransactionHistoryList } from '../TransactionHistoryList';
 import './CustomerLedgerDrawer.css';
+import { useCustomerLedgerDrawer } from './useCustomerLedgerDrawer';
 
 export interface CustomerLedgerDrawerProps {
   isOpen: boolean;
@@ -35,44 +33,25 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
   isPaying,
   onPay,
 }) => {
-  const [activeTab, setActiveTab] = useState<'statement' | 'payment'>(
-    'statement',
-  );
-
-  const { totalSales, totalPaid, totalWeight, avgRate } = useMemo(() => {
-    let sales = 0;
-    let services = 0;
-    let payments = 0;
-    let weight = 0;
-
-    transactions.forEach((t) => {
-      if (isSaleTransaction(t)) {
-        sales += Number(t.amount) || 0;
-        weight += Number(t.weight) || 0;
-        payments += Number(t.cashPaid) || 0;
-      } else if (isServiceTransaction(t)) {
-        services += Number(t.amount) || 0;
-        payments += Number(t.cashPaid) || 0;
-      } else if (t.type === 'PAYMENT') {
-        payments += Number(t.amount) || 0;
-      }
-    });
-
-    const totalBilled = sales + services;
-    const avg = weight > 0 ? sales / weight : 0;
-
-    return {
-      totalSales: totalBilled,
-      totalPaid: payments,
-      totalWeight: weight,
-      avgRate: avg,
-    };
-  }, [transactions]);
+  const {
+    activeTab,
+    setActiveTab,
+    totalBilled,
+    totalPaid,
+    totalWeight,
+    avgRate,
+    currentOutstanding,
+  } = useCustomerLedgerDrawer({
+    detail,
+    transactions,
+  });
 
   if (!isOpen || !detail) return null;
 
+  const hasDue = currentOutstanding > 0;
+
   return (
-    <div className="hs-ledger-drawer-backdrop" onClick={onClose}>
+    <div className="hs-ledger-drawer-backdrop" onClick={onClose} role="dialog" aria-modal="true">
       <div
         className="hs-ledger-drawer-container"
         onClick={(e) => e.stopPropagation()}
@@ -81,15 +60,17 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
 
         <div className="hs-ledger-drawer-topbar">
           <div>
-            <h3 className="hs-ledger-drawer__name">{detail.customerName}</h3>
-            <span className="hs-ledger-drawer__meta">
+            <Text variant="title-lg" weight="bold">
+              {detail.customerName}
+            </Text>
+            <Text variant="body-sm" appearance="secondary">
               {detail.customer.village
                 ? `Village: ${detail.customer.village}`
                 : ''}
               {detail.customer.mobile
                 ? ` • Mobile: ${detail.customer.mobile}`
                 : ''}
-            </span>
+            </Text>
           </div>
 
           <button
@@ -105,34 +86,60 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
         <div className="hs-ledger-drawer">
           {/* 1. Customer Summary Metrics */}
           <div className="hs-ledger-drawer__metrics">
+            <div
+              className={cn(
+                'hs-ledger-drawer__metric-card',
+                hasDue
+                  ? 'hs-ledger-drawer__metric-card--due'
+                  : 'hs-ledger-drawer__metric-card--clear',
+              )}
+            >
+              <Text variant="label-sm" appearance="secondary">
+                Outstanding Due
+              </Text>
+              <Text
+                variant="title-md"
+                weight="bold"
+                className={
+                  hasDue
+                    ? 'hs-ledger-drawer__metric-value--red'
+                    : 'hs-ledger-drawer__metric-value--green'
+                }
+              >
+                {hasDue ? formatRupee(currentOutstanding) : '₹0 (Clear)'}
+              </Text>
+            </div>
+
             <div className="hs-ledger-drawer__metric-card">
-              <span className="hs-ledger-drawer__metric-label">
+              <Text variant="label-sm" appearance="secondary">
                 Total Billed
-              </span>
-              <span className="hs-ledger-drawer__metric-value hs-ledger-drawer__metric-value--blue">
-                {formatRupee(totalSales)}
-              </span>
+              </Text>
+              <Text variant="title-md" weight="bold" className="hs-ledger-drawer__metric-value--blue">
+                {formatRupee(totalBilled)}
+              </Text>
             </div>
 
             <div className="hs-ledger-drawer__metric-card">
-              <span className="hs-ledger-drawer__metric-label">Total Paid</span>
-              <span className="hs-ledger-drawer__metric-value hs-ledger-drawer__metric-value--green">
+              <Text variant="label-sm" appearance="secondary">
+                Total Paid
+              </Text>
+              <Text variant="title-md" weight="bold" className="hs-ledger-drawer__metric-value--green">
                 {formatRupee(totalPaid)}
-              </span>
+              </Text>
             </div>
 
             <div className="hs-ledger-drawer__metric-card">
-              <span className="hs-ledger-drawer__metric-label">Weight</span>
-              <span className="hs-ledger-drawer__metric-value hs-ledger-drawer__metric-value--amber">
-                {formatWeight(totalWeight)}
-              </span>
-            </div>
-
-            <div className="hs-ledger-drawer__metric-card">
-              <span className="hs-ledger-drawer__metric-label">Avg Rate</span>
-              <span className="hs-ledger-drawer__metric-value hs-ledger-drawer__metric-value--purple">
-                {avgRate > 0 ? `${formatRupee(avgRate)}/kg` : '—'}
-              </span>
+              <Text variant="label-sm" appearance="secondary">
+                Weight / Rate
+              </Text>
+              <Text variant="title-md" weight="bold" className="hs-ledger-drawer__metric-value--amber">
+                {totalWeight > 0 ? `${formatWeight(totalWeight)}` : '—'}
+              </Text>
+              {avgRate > 0 && (
+                <Text variant="label-sm" appearance="secondary">
+                  @ {formatRupee(avgRate)}/kg
+                </Text>
+              )}
             </div>
           </div>
 
@@ -185,3 +192,5 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
     </div>
   );
 };
+
+export default CustomerLedgerDrawer;

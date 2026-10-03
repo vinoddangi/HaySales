@@ -1,9 +1,14 @@
+import { Search } from 'lucide-react';
 import React from 'react';
 import { Badge } from '../../../../components/Badge';
 import { Progress } from '../../../../components/Progress';
 import { CustomerTransactionData } from '../../../../models';
 import { TransactionHistoryItem } from '../TransactionHistoryItem';
 import './TransactionHistoryList.css';
+import {
+  TxFilterType,
+  useTransactionHistoryList,
+} from './useTransactionHistoryList';
 
 export interface TransactionHistoryListProps {
   transactions: CustomerTransactionData[];
@@ -14,42 +19,23 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
   transactions,
   isLoading,
 }) => {
-  // 1. Deduplicate by unique id
-  const seenIds = new Set<string>();
-  const uniqueTxs = transactions.filter((tx) => {
-    if (tx.id) {
-      if (seenIds.has(tx.id)) return false;
-      seenIds.add(tx.id);
-    }
-    return true;
-  });
+  const {
+    filterType,
+    setFilterType,
+    searchQuery,
+    setSearchQuery,
+    sortedTransactions,
+    filteredTransactions,
+    clearedTxIds,
+  } = useTransactionHistoryList({ transactions });
 
-  // 2. Sort descending by date (newest first)
-  const sortedTransactions = [...uniqueTxs].sort((a, b) =>
-    b.date.localeCompare(a.date),
-  );
-
-  // 3. Compute running balance chronologically (oldest to newest) to detect zero balance milestones
-  const chronological = [...sortedTransactions].reverse();
-  const clearedTxIds = new Set<string>();
-  let runningDue = 0;
-
-  chronological.forEach((tx) => {
-    if (tx.type === 'PAYMENT') {
-      runningDue -= (Number(tx.amount) || 0) + (Number(tx.discount) || 0);
-    } else {
-      const amt = Number(tx.amount) || 0;
-      const cash = Number(tx.cashPaid) || 0;
-      const rem =
-        tx.remainingDue !== undefined ? Number(tx.remainingDue) : amt - cash;
-      runningDue += rem;
-    }
-
-    if (runningDue <= 0 && tx.id) {
-      clearedTxIds.add(tx.id);
-      runningDue = 0;
-    }
-  });
+  const filterOptions: Array<{ key: TxFilterType; label: string }> = [
+    { key: 'ALL', label: `All (${sortedTransactions.length})` },
+    { key: 'SALE', label: 'Sales' },
+    { key: 'SERVICE', label: 'Services' },
+    { key: 'PAYMENT', label: 'Payments' },
+    { key: 'OPENING_DUE', label: 'Opening Due' },
+  ];
 
   return (
     <div className="hs-tx-history-list">
@@ -62,17 +48,49 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
         </Badge>
       </div>
 
+      {/* 1. Filter Bar & Search */}
+      <div className="hs-tx-history-list__filter-bar">
+        <div className="hs-tx-history-list__search-row">
+          <Search className="h-4 w-4 text-m3-on-surface-variant shrink-0" />
+          <input
+            type="text"
+            className="hs-tx-history-list__search-input"
+            placeholder="Search crop, service, amount, notes, date..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+
+        <div className="hs-tx-history-list__chips">
+          {filterOptions.map((opt) => (
+            <button
+              key={opt.key}
+              type="button"
+              onClick={() => setFilterType(opt.key)}
+              className={`hs-tx-history-list__chip ${
+                filterType === opt.key ? 'hs-tx-history-list__chip--active' : ''
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* 2. Transaction List */}
       {isLoading ? (
         <div className="hs-tx-history-list__empty">
           <Progress type="circular" indeterminate fourColor />
         </div>
-      ) : sortedTransactions.length === 0 ? (
+      ) : filteredTransactions.length === 0 ? (
         <div className="hs-tx-history-list__empty">
-          No transactions recorded for this customer.
+          {sortedTransactions.length === 0
+            ? 'No transactions recorded for this customer.'
+            : 'No transactions match the selected filter.'}
         </div>
       ) : (
         <div className="hs-tx-history-list__items">
-          {sortedTransactions.map((tx, index) => (
+          {filteredTransactions.map((tx, index) => (
             <TransactionHistoryItem
               key={tx.id || `${tx.customerId || 'tx'}-${tx.date}-${index}`}
               transaction={tx}
@@ -84,3 +102,5 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
     </div>
   );
 };
+
+export default TransactionHistoryList;

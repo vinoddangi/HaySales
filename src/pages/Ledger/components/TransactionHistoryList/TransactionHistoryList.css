@@ -1,7 +1,7 @@
 .hs-tx-history-list {
   display: flex;
   flex-direction: column;
-  gap: var(--md-sys-spacing-2, 8px);
+  gap: var(--md-sys-spacing-3, 12px);
   width: 100%;
 }
 
@@ -20,10 +20,79 @@
   letter-spacing: 0.05em;
 }
 
+.hs-tx-history-list__filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-2, 8px);
+  padding: var(--md-sys-spacing-2, 8px);
+  background-color: var(--md-sys-color-surface);
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.hs-tx-history-list__search-row {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-2, 8px);
+  padding: var(--md-sys-spacing-1, 4px) var(--md-sys-spacing-2, 8px);
+  background-color: var(--md-sys-color-surface-container-low);
+  border-radius: var(--md-sys-shape-corner-small, 8px);
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.hs-tx-history-list__search-input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-size: var(--md-sys-typescale-body-small-size, 12px);
+  color: var(--md-sys-color-on-surface);
+  outline: none;
+}
+
+.hs-tx-history-list__search-input::placeholder {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.hs-tx-history-list__chips {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-1, 4px);
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.hs-tx-history-list__chip {
+  padding: 4px 10px;
+  border-radius: var(--md-sys-shape-corner-full, 9999px);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  background-color: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-label-small-size, 11px);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.hs-tx-history-list__chip:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+}
+
+.hs-tx-history-list__chip--active {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  border-color: var(--md-sys-color-primary);
+  font-weight: 700;
+}
+
 .hs-tx-history-list__items {
   display: flex;
   flex-direction: column;
   gap: var(--md-sys-spacing-2, 8px);
+  max-height: 55vh;
+  overflow-y: auto;
+  padding-right: 2px;
 }
 
 .hs-tx-history-list__empty {
