@@ -381,7 +381,7 @@ def main():
 
     # 9. Build and Write initialDatabaseSnapshot.json
     db_snapshot = {
-        'version': 4,
+        'version': 6,
         'generatedAt': '2026-10-03T17:25:00.000Z',
         'summary': {
             'customersCount': len(master_custs),

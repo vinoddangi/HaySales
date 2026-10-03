@@ -1,5 +1,5 @@
-const CACHE_NAME = 'haysales-cache-v1';
-const RUNTIME_CACHE = 'haysales-runtime-v1';
+const CACHE_NAME = 'haysales-cache-v2';
+const RUNTIME_CACHE = 'haysales-runtime-v2';
 
 const PRECACHE_URLS = ['/', '/index.html', '/manifest.json', '/favicon.svg'];
 
@@ -20,14 +20,10 @@ self.addEventListener('activate', (event) => {
     caches
       .keys()
       .then((cacheNames) => {
-        return cacheNames.filter(
-          (cacheName) => !currentCaches.includes(cacheName),
-        );
+        return cacheNames.filter((cacheName) => !currentCaches.includes(cacheName));
       })
       .then((cachesToDelete) => {
-        return Promise.all(
-          cachesToDelete.map((cacheToDelete) => caches.delete(cacheToDelete)),
-        );
+        return Promise.all(cachesToDelete.map((cacheToDelete) => caches.delete(cacheToDelete)));
       })
       .then(() => self.clients.claim()),
   );
@@ -36,12 +32,13 @@ self.addEventListener('activate', (event) => {
 // Fetch event: Routing & Caching Strategies
 self.addEventListener('fetch', (event) => {
   const { request } = event;
-  const url = new URL(request.url);
 
-  // Skip non-GET requests
-  if (request.method !== 'GET') {
+  // Skip non-GET requests or non-HTTP schemes (e.g. chrome-extension:)
+  if (request.method !== 'GET' || !request.url.startsWith('http')) {
     return;
   }
+
+  const url = new URL(request.url);
 
   // Skip Firebase API / Firestore live endpoints (handled by Firebase SDK)
   if (
@@ -91,21 +88,25 @@ self.addEventListener('fetch', (event) => {
         if (cachedResponse) {
           return cachedResponse;
         }
-        return fetch(request).then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
-            const responseClone = networkResponse.clone();
-            caches.open(RUNTIME_CACHE).then((cache) => {
-              cache.put(request, responseClone);
-            });
-          }
-          return networkResponse;
-        });
+        return fetch(request)
+          .then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200) {
+              const responseClone = networkResponse.clone();
+              caches.open(RUNTIME_CACHE).then((cache) => {
+                cache.put(request, responseClone);
+              });
+            }
+            return networkResponse;
+          })
+          .catch(() => {
+            return new Response('', { status: 408, headers: { 'Content-Type': 'text/plain' } });
+          });
       }),
     );
     return;
   }
 
-  // 3. Static local assets (JS, CSS, images): Stale-While-Revalidate
+  // 3. Static local assets (JS, CSS, images): Stale-While-Revalidate with guaranteed Response fallback
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
       const fetchPromise = fetch(request)
@@ -118,7 +119,15 @@ self.addEventListener('fetch', (event) => {
           }
           return networkResponse;
         })
-        .catch(() => cachedResponse);
+        .catch(() => {
+          return (
+            cachedResponse ||
+            new Response('Asset not available offline', {
+              status: 408,
+              headers: { 'Content-Type': 'text/plain' },
+            })
+          );
+        });
 
       return cachedResponse || fetchPromise;
     }),

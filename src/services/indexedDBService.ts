@@ -1,7 +1,7 @@
 import { Customer, Transaction } from '../models';
 
 export const DB_NAME = 'HaySalesOfflineDB';
-export const DB_VERSION = 4;
+export const DB_VERSION = 6;
 
 export interface PendingChange {
   id: string; // Doc path or unique id
