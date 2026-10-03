@@ -1,7 +1,11 @@
 import { isAnyOf } from '@reduxjs/toolkit';
 import { calculateMonthlyStockFromTransactions } from '../../business/stockBusiness';
+import {
+  customerTransactionsApiSlice,
+  operationTransactionsApiSlice,
+  syncApiSlice,
+} from '../api';
 import { AppStartListening } from '../listenerMiddleware';
-import { customersApi } from '../slices/customersApi';
 import { setStockState } from '../slices/stockSlice';
 
 /**
@@ -11,25 +15,25 @@ import { setStockState } from '../slices/stockSlice';
 export function setupStockListener(startListening: AppStartListening) {
   startListening({
     matcher: isAnyOf(
-      customersApi.endpoints.getCustomerTransactions.matchFulfilled,
-      customersApi.endpoints.getOperationTransactions.matchFulfilled,
-      customersApi.endpoints.addCustomerTransaction.matchFulfilled,
-      customersApi.endpoints.updateCustomerTransaction.matchFulfilled,
-      customersApi.endpoints.deleteCustomerTransaction.matchFulfilled,
-      customersApi.endpoints.addOperationTransaction.matchFulfilled,
-      customersApi.endpoints.updateOperationTransaction.matchFulfilled,
-      customersApi.endpoints.deleteOperationTransaction.matchFulfilled,
-      customersApi.endpoints.syncDatabase.matchFulfilled,
-      customersApi.endpoints.resetDatabase.matchFulfilled,
+      customerTransactionsApiSlice.endpoints.getCustomerTransactions.matchFulfilled,
+      operationTransactionsApiSlice.endpoints.getOperationTransactions.matchFulfilled,
+      customerTransactionsApiSlice.endpoints.addCustomerTransaction.matchFulfilled,
+      customerTransactionsApiSlice.endpoints.updateCustomerTransaction.matchFulfilled,
+      customerTransactionsApiSlice.endpoints.deleteCustomerTransaction.matchFulfilled,
+      operationTransactionsApiSlice.endpoints.addOperationTransaction.matchFulfilled,
+      operationTransactionsApiSlice.endpoints.updateOperationTransaction.matchFulfilled,
+      operationTransactionsApiSlice.endpoints.deleteOperationTransaction.matchFulfilled,
+      syncApiSlice.endpoints.syncDatabase.matchFulfilled,
+      syncApiSlice.endpoints.resetDatabase.matchFulfilled,
     ),
     effect: async (_action, listenerApi) => {
       const state = listenerApi.getState();
 
       const customerTxs =
-        customersApi.endpoints.getCustomerTransactions.select(undefined)(state)
+        customerTransactionsApiSlice.endpoints.getCustomerTransactions.select(undefined)(state)
           .data || [];
       const operationTxs =
-        customersApi.endpoints.getOperationTransactions.select()(state).data ||
+        operationTransactionsApiSlice.endpoints.getOperationTransactions.select()(state).data ||
         [];
 
       const allTransactions = [...customerTxs, ...operationTxs];

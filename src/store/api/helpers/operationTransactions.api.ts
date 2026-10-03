@@ -4,7 +4,7 @@ import {
   parseOperationsTransactionFromRaw,
   PurchaseTransactionData,
   serializeTransactionToRaw,
-} from '../models';
+} from '../../../models';
 import {
   collection,
   deleteDoc,
@@ -13,8 +13,8 @@ import {
   getDocs,
   setDoc,
   updateDoc,
-} from '../services/dbBridge';
-import { RawRecord } from '../utils';
+} from '../../../services/dbBridge';
+import { RawRecord } from '../../../utils';
 
 export async function fetchOperationTransactions(): Promise<
   OperationsTransactionData[]

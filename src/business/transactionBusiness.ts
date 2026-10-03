@@ -4,7 +4,7 @@ import {
   deleteCustomerTransaction,
   deleteOperationTransaction,
   updateCustomerTransaction,
-} from '../api';
+} from '../store/api/helpers';
 import {
   CustomerTransactionData,
   ExpenseTransactionData,

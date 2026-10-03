@@ -1,8 +1,12 @@
 import { isAnyOf } from '@reduxjs/toolkit';
 import { calculateMonthlyCustomerOutstandings } from '../../business/customerOutstandingBusiness';
+import {
+  customersApiSlice,
+  customerTransactionsApiSlice,
+  syncApiSlice,
+} from '../api';
 import { AppStartListening } from '../listenerMiddleware';
 import { setCustomerOutstandingState } from '../slices/customerOutstandingSlice';
-import { customersApi } from '../slices/customersApi';
 
 /**
  * Separate RTK Listener for maintaining continuous monthly customer outstandings
@@ -13,24 +17,24 @@ export function setupCustomerOutstandingListener(
 ) {
   startListening({
     matcher: isAnyOf(
-      customersApi.endpoints.getCustomers.matchFulfilled,
-      customersApi.endpoints.getCustomerTransactions.matchFulfilled,
-      customersApi.endpoints.addCustomer.matchFulfilled,
-      customersApi.endpoints.updateCustomer.matchFulfilled,
-      customersApi.endpoints.deleteCustomer.matchFulfilled,
-      customersApi.endpoints.addCustomerTransaction.matchFulfilled,
-      customersApi.endpoints.updateCustomerTransaction.matchFulfilled,
-      customersApi.endpoints.deleteCustomerTransaction.matchFulfilled,
-      customersApi.endpoints.syncDatabase.matchFulfilled,
-      customersApi.endpoints.resetDatabase.matchFulfilled,
+      customersApiSlice.endpoints.getCustomers.matchFulfilled,
+      customerTransactionsApiSlice.endpoints.getCustomerTransactions.matchFulfilled,
+      customersApiSlice.endpoints.addCustomer.matchFulfilled,
+      customersApiSlice.endpoints.updateCustomer.matchFulfilled,
+      customersApiSlice.endpoints.deleteCustomer.matchFulfilled,
+      customerTransactionsApiSlice.endpoints.addCustomerTransaction.matchFulfilled,
+      customerTransactionsApiSlice.endpoints.updateCustomerTransaction.matchFulfilled,
+      customerTransactionsApiSlice.endpoints.deleteCustomerTransaction.matchFulfilled,
+      syncApiSlice.endpoints.syncDatabase.matchFulfilled,
+      syncApiSlice.endpoints.resetDatabase.matchFulfilled,
     ),
     effect: async (_action, listenerApi) => {
       const state = listenerApi.getState();
 
       const customers =
-        customersApi.endpoints.getCustomers.select()(state).data || [];
+        customersApiSlice.endpoints.getCustomers.select()(state).data || [];
       const customerTxs =
-        customersApi.endpoints.getCustomerTransactions.select(undefined)(state)
+        customerTransactionsApiSlice.endpoints.getCustomerTransactions.select(undefined)(state)
           .data || [];
 
       if (customers.length === 0 && customerTxs.length === 0) return;

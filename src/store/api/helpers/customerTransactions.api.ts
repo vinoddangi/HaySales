@@ -5,7 +5,7 @@ import {
   SaleTransactionData,
   serializeTransactionToRaw,
   ServiceTransactionData,
-} from '../models';
+} from '../../../models';
 import {
   collection,
   deleteDoc,
@@ -14,8 +14,8 @@ import {
   getDocs,
   setDoc,
   updateDoc,
-} from '../services/dbBridge';
-import { RawRecord } from '../utils';
+} from '../../../services/dbBridge';
+import { RawRecord } from '../../../utils';
 
 export async function fetchCustomerTransactions(
   customerId?: string,

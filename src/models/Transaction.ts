@@ -128,6 +128,7 @@ export type SaleTransactionData = CoreTransactionData & {
   customerId: string;
   customerName?: string;
   discount?: number;
+  readonly rate?: number;
 };
 
 /** Operations Crop Purchase Transaction — weight in Kg is mandatory */
@@ -137,6 +138,7 @@ export type PurchaseTransactionData = CoreTransactionData & {
   weight: number;
   vendorName?: string;
   discount?: number;
+  readonly rate?: number;
 };
 
 /** Crop Transaction (SALE or PURCHASE) */
@@ -363,7 +365,7 @@ export function parseCustomerTransactionFromRaw(
 
   // Default: SALE
   const weight = parseNumber(raw?.weight) || parseNumber(raw?.weightKg) || 0;
-  return {
+  const saleTx: SaleTransactionData = {
     ...core,
     type: 'SALE',
     category: (parseString(raw?.category) as CropCategory) || 'Wheat',
@@ -372,6 +374,18 @@ export function parseCustomerTransactionFromRaw(
     ...(custName ? { customerName: custName } : {}),
     ...(discount !== undefined ? { discount } : {}),
   };
+
+  Object.defineProperty(saleTx, 'rate', {
+    get() {
+      return this.weight > 0 && this.amount > 0
+        ? Number((this.amount / this.weight).toFixed(2))
+        : undefined;
+    },
+    enumerable: false,
+    configurable: true,
+  });
+
+  return saleTx;
 }
 
 export function parseOperationsTransactionFromRaw(
@@ -417,7 +431,7 @@ export function parseOperationsTransactionFromRaw(
   // Default: PURCHASE
   const weight = parseNumber(raw?.weight) || parseNumber(raw?.weightKg) || 0;
   const discount = parseNumber(raw?.discount);
-  return {
+  const purchaseTx: PurchaseTransactionData = {
     ...core,
     type: 'PURCHASE',
     category: (parseString(raw?.category) as CropCategory) || 'Wheat',
@@ -425,6 +439,18 @@ export function parseOperationsTransactionFromRaw(
     ...(vendorName ? { vendorName } : {}),
     ...(discount !== undefined ? { discount } : {}),
   };
+
+  Object.defineProperty(purchaseTx, 'rate', {
+    get() {
+      return this.weight > 0 && this.amount > 0
+        ? Number((this.amount / this.weight).toFixed(2))
+        : undefined;
+    },
+    enumerable: false,
+    configurable: true,
+  });
+
+  return purchaseTx;
 }
 
 export function parseTransactionFromRaw(
@@ -447,5 +473,7 @@ export function parseTransactionFromRaw(
 export function serializeTransactionToRaw(
   tx: Transaction,
 ): Record<string, unknown> {
-  return Object.assign({}, tx);
+  const { ...rest } = tx as any;
+  delete rest.rate; // Guarantee rate is never stored
+  return rest;
 }

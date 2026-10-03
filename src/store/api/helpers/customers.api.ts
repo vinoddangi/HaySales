@@ -1,4 +1,4 @@
-import { CustomerModel } from '../models';
+import { CustomerModel } from '../../../models';
 import {
   collection,
   deleteDoc,
@@ -7,7 +7,7 @@ import {
   getDocs,
   setDoc,
   updateDoc,
-} from '../services/dbBridge';
+} from '../../../services/dbBridge';
 
 export async function fetchCustomers(): Promise<CustomerModel[]> {
   const snapshot = await getDocs<Record<string, unknown>>(

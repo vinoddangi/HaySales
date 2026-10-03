@@ -3,7 +3,7 @@ import {
   getPendingChangesCount,
   syncAndPublishCloudDatabase,
   syncLocalDatabaseFromCloud,
-} from '../services/indexedDBService';
+} from '../../../services/indexedDBService';
 
 export async function syncDatabaseWithCloud() {
   return syncAndPublishCloudDatabase();

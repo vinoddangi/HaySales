@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { CustomerTransactionData, PaymentTransactionData } from '../models';
+import {
+  CustomerTransactionData,
+  getRate,
+  parseCustomerTransactionFromRaw,
+  PaymentTransactionData,
+  serializeTransactionToRaw,
+} from '../models';
 import {
   extractLinkedExpenseEntry,
   requiresDoubleEntry,
@@ -107,5 +113,38 @@ describe('extractLinkedExpenseEntry & requiresDoubleEntry', () => {
     expect(linkedExpense).toBeDefined();
     expect(linkedExpense?.amount).toBe(250);
     expect(linkedExpense?.id).toBe('otx_disc_ctx_pay_3');
+  });
+
+  it('computes derived rate dynamically on crop transactions via getter and getRate', () => {
+    const rawSale = {
+      id: 'tx_crop_1',
+      type: 'SALE',
+      category: 'Tuvar',
+      weight: 2000,
+      amount: 24000,
+      date: '2026-09-26',
+    };
+
+    const parsed = parseCustomerTransactionFromRaw(rawSale);
+    // Dynamic getter
+    expect((parsed as any).rate).toBe(12);
+    // getRate helper
+    expect(getRate(parsed)).toBe(12);
+
+    // Non-crop transaction should not have rate
+    const rawService = {
+      id: 'tx_srv_1',
+      type: 'SERVICE',
+      category: 'Pickup',
+      amount: 5000,
+      date: '2026-09-26',
+    };
+    const parsedService = parseCustomerTransactionFromRaw(rawService);
+    expect((parsedService as any).rate).toBeUndefined();
+    expect(getRate(parsedService)).toBeUndefined();
+
+    // Serializer guarantees rate is not included in serialized DB record
+    const serialized = serializeTransactionToRaw(parsed);
+    expect(serialized.rate).toBeUndefined();
   });
 });

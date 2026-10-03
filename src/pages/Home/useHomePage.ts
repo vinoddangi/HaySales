@@ -27,7 +27,7 @@ import {
   useGetCustomersQuery,
   useGetCustomerTransactionsQuery,
   useGetOperationTransactionsQuery,
-} from '../../store/slices/customersApi';
+} from '../../store/api';
 import {
   FilterPeriodMode,
   setFilterMode,

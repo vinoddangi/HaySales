@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { baseApi } from './api';
 import { listenerMiddleware, startAppListening } from './listenerMiddleware';
 import { setupListeners } from './listeners';
 import customerOutstandingReducer from './slices/customerOutstandingSlice';
-import { customersApi } from './slices/customersApi';
 import stockReducer from './slices/stockSlice';
 import themeReducer from './slices/themeSlice';
 import timelineReducer from './slices/timelineSlice';
@@ -10,7 +10,7 @@ import uiReducer from './slices/uiSlice';
 
 export const store = configureStore({
   reducer: {
-    [customersApi.reducerPath]: customersApi.reducer,
+    [baseApi.reducerPath]: baseApi.reducer,
     stock: stockReducer,
     customerOutstanding: customerOutstandingReducer,
     theme: themeReducer,
@@ -21,7 +21,7 @@ export const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: false,
     })
-      .concat(customersApi.middleware)
+      .concat(baseApi.middleware)
       .prepend(listenerMiddleware.middleware),
 });
 
@@ -66,8 +66,8 @@ export type {
   UiState,
 } from './slices/uiSlice';
 
+export * from './api';
 export * from './hooks';
 export * from './listenerMiddleware';
 export * from './listeners';
 export * from './selectors';
-export * from './slices/customersApi';

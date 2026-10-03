@@ -13,7 +13,7 @@ import {
   useAddCustomerTransactionMutation,
   useGetCustomersQuery,
   useGetCustomerTransactionsQuery,
-} from '../../store/slices/customersApi';
+} from '../../store/api';
 import { showSnackbar } from '../../store/slices/uiSlice';
 import { SaleFormData } from './components/SaleFormCard';
 import { ServiceFormData } from './components/ServiceFormCard';

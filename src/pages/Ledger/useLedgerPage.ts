@@ -10,7 +10,7 @@ import {
   useAddCustomerTransactionMutation,
   useGetCustomersQuery,
   useGetCustomerTransactionsQuery,
-} from '../../store/slices/customersApi';
+} from '../../store/api';
 import { showSnackbar } from '../../store/slices/uiSlice';
 
 export function useLedgerPage() {
