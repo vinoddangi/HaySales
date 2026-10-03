@@ -20,7 +20,7 @@ describe('profitBusiness', () => {
     const transactions: Transaction[] = [
       {
         id: 'tx_jan',
-        date: '2026-01-15T10:00:00.000Z',
+        date: '2026-01-15',
         type: 'SALE',
         category: 'Tuvar',
         weight: 1000,
@@ -31,7 +31,7 @@ describe('profitBusiness', () => {
       },
       {
         id: 'tx_feb',
-        date: '2026-02-20T10:00:00.000Z',
+        date: '2026-02-20',
         type: 'SALE',
         category: 'Tuvar',
         weight: 2000,
@@ -42,7 +42,7 @@ describe('profitBusiness', () => {
       },
       {
         id: 'tx_mar',
-        date: '2026-03-10T10:00:00.000Z',
+        date: '2026-03-10',
         type: 'SALE',
         category: 'Tuvar',
         weight: 3000,
@@ -331,7 +331,7 @@ describe('profitBusiness', () => {
       const transactions: Transaction[] = [
         {
           id: 's_tuvar',
-          date: '2026-01-10T00:00:00.000Z',
+          date: '2026-01-10',
           type: 'SALE',
           category: 'Tuvar',
           weight: 10000,
@@ -342,7 +342,7 @@ describe('profitBusiness', () => {
         },
         {
           id: 'srv',
-          date: '2026-01-12T00:00:00.000Z',
+          date: '2026-01-12',
           type: 'SERVICE',
           category: 'Pickup',
           customerId: 'c_1',
@@ -378,7 +378,7 @@ describe('profitBusiness', () => {
         // Jan Sale: 10000 Tuvar @ 12 = 120000 (Gross profit = 20000)
         {
           id: 's_jan',
-          date: '2026-01-10T00:00:00.000Z',
+          date: '2026-01-10',
           type: 'SALE',
           category: 'Tuvar',
           weight: 10000,
@@ -390,7 +390,7 @@ describe('profitBusiness', () => {
         // Jan Service: 15000
         {
           id: 'srv_jan',
-          date: '2026-01-12T00:00:00.000Z',
+          date: '2026-01-12',
           type: 'SERVICE',
           category: 'Pickup',
           customerId: 'c_1',
@@ -401,7 +401,7 @@ describe('profitBusiness', () => {
         // Jan Fuel: 4000
         {
           id: 'fuel_jan',
-          date: '2026-01-15T00:00:00.000Z',
+          date: '2026-01-15',
           type: 'EXPENSE',
           category: 'Fuel',
           amount: 4000,
@@ -411,7 +411,7 @@ describe('profitBusiness', () => {
         // Feb Service (should be excluded when timeline is Jan)
         {
           id: 'srv_feb',
-          date: '2026-02-10T00:00:00.000Z',
+          date: '2026-02-10',
           type: 'SERVICE',
           category: 'Pickup',
           customerId: 'c_1',

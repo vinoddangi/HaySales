@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { useAuth } from '../../store/hooks/useAuth';
-import { setSelectedYear } from '../../store/slices/uiSlice';
+import { setSelectedYear } from '../../store/slices/timelineSlice';
 
 export interface UseTopAppBarOptions {
   onBack?: () => void;
@@ -12,7 +12,7 @@ export const useTopAppBar = ({ onBack }: UseTopAppBarOptions = {}) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { currentUser } = useAuth();
-  const { selectedYear } = useAppSelector((state) => state.ui);
+  const { selectedYear } = useAppSelector((state) => state.timeline);
 
   const handleBack = () => {
     if (onBack) {

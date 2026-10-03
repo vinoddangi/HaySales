@@ -11,7 +11,6 @@ import {
   VALID_CROP_CATEGORIES,
 } from '../models';
 import { CropRecord } from '../store/slices/stockSlice';
-import { parseTransactionDate } from '../utils';
 
 // ── Timeline Types ──────────────────────────────────────────────────────────
 
@@ -92,11 +91,14 @@ export function filterTransactionsByTimeline(
   timeline: TimelineFilter,
 ): Transaction[] {
   return transactions.filter((tx) => {
-    const d = parseTransactionDate(tx.date);
-    if (!d) return false;
-    const txYear = d.getFullYear();
-    const txMonth = d.getMonth();
-    const txDay = d.getDate();
+    if (!tx.date || tx.date.length < 10) return false;
+    const yearStr = tx.date.slice(0, 4);
+    const monthStr = tx.date.slice(5, 7);
+    const dayStr = tx.date.slice(8, 10);
+
+    const txYear = Number(yearStr);
+    const txMonth = Number(monthStr) - 1; // 0-indexed month
+    const txDay = Number(dayStr);
 
     // 1. All-time mode: include all transactions from 2025 onwards
     if (timeline.filterMode === 'all') {
@@ -113,12 +115,12 @@ export function filterTransactionsByTimeline(
       );
     }
 
-    // 3. Monthly mode (Default)
+    // 4. Monthly mode (Default)
     if (timeline.filterMode === 'month' || !timeline.filterMode) {
       return txMonth === timeline.selectedMonth;
     }
 
-    // 4. YTD (Year-To-Date): from Jan 1st up to active selectedMonth of selectedYear
+    // 5. YTD (Year-To-Date): from Jan 1st up to active selectedMonth of selectedYear
     if (timeline.filterMode === 'ytd') {
       return txMonth <= timeline.selectedMonth;
     }
@@ -128,21 +130,20 @@ export function filterTransactionsByTimeline(
 }
 
 /**
- * Filters transactions within an explicit date range window.
+ * Filters transactions within an explicit date range window (YYYY-MM-DD string comparisons).
  */
 export function filterTransactionsByDateRange(
   transactions: Transaction[],
-  startDate: string | Date,
-  endDate: string | Date,
+  startDate: string,
+  endDate: string,
 ): Transaction[] {
-  const start = parseTransactionDate(startDate)?.getTime() ?? -Infinity;
-  const end = parseTransactionDate(endDate)?.getTime() ?? Infinity;
+  const start = startDate ? startDate.slice(0, 10) : '';
+  const end = endDate ? endDate.slice(0, 10) : '9999-99-99';
 
   return transactions.filter((tx) => {
-    const d = parseTransactionDate(tx.date);
-    if (!d) return false;
-    const time = d.getTime();
-    return time >= start && time <= end;
+    if (!tx.date) return false;
+    const d = tx.date.slice(0, 10);
+    return (!start || d >= start) && (!end || d <= end);
   });
 }
 

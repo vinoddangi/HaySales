@@ -30,9 +30,9 @@ describe('stockBusiness - Monthly Stock Calculations & YYYY-MM Rollovers', () =>
 
   it('extracts chronological unique months from transactions', () => {
     const txs = [
-      { date: '2026-03-15T00:00:00.000Z' },
-      { date: '2026-01-20T00:00:00.000Z' },
-      { date: '2026-02-10T00:00:00.000Z' },
+      { date: '2026-03-15' },
+      { date: '2026-01-20' },
+      { date: '2026-02-10' },
     ] as any;
 
     const months = extractChronologicalMonths(txs, 2026, 1);

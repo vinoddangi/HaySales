@@ -1,13 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { Customer, CustomerTransactionData } from '../models';
-import { parseTransactionDate } from '../utils';
 import {
   calculateAllCustomersLedger,
   calculateCustomerLedgerDetail,
   calculateCustomerOutstanding,
   calculateCustomerOutstandingMetrics,
   filterCustomerTransactionsUpToTimeline,
-  getTimelineCutoffTimestamp,
+  getTimelineCutoffDate,
 } from './ledgerBusiness';
 import { TimelineFilter } from './profitBusiness';
 
@@ -24,7 +23,7 @@ describe('ledgerBusiness', () => {
     {
       id: 'tx_2025_sale',
       customerId: 'cust_1',
-      date: '2025-11-10T10:00:00.000Z',
+      date: '2025-11-10',
       type: 'SALE',
       category: 'Tuvar',
       weight: 1500,
@@ -36,7 +35,7 @@ describe('ledgerBusiness', () => {
     {
       id: 'tx_jan_sale',
       customerId: 'cust_1',
-      date: '2026-01-10T10:00:00.000Z',
+      date: '2026-01-10',
       type: 'SALE',
       category: 'Tuvar',
       weight: 2000,
@@ -48,7 +47,7 @@ describe('ledgerBusiness', () => {
     {
       id: 'tx_feb_service',
       customerId: 'cust_1',
-      date: '2026-02-15T10:00:00.000Z',
+      date: '2026-02-15',
       type: 'SERVICE',
       category: 'Pickup',
       amount: 5000,
@@ -59,7 +58,7 @@ describe('ledgerBusiness', () => {
     {
       id: 'tx_mar_payment',
       customerId: 'cust_1',
-      date: '2026-03-20T10:00:00.000Z',
+      date: '2026-03-20',
       type: 'PAYMENT',
       amount: 15000,
       cashPaid: 15000,
@@ -70,7 +69,7 @@ describe('ledgerBusiness', () => {
     {
       id: 'tx_may_sale',
       customerId: 'cust_1',
-      date: '2026-05-12T10:00:00.000Z',
+      date: '2026-05-12',
       type: 'SALE',
       category: 'Chana',
       weight: 3000,
@@ -82,7 +81,7 @@ describe('ledgerBusiness', () => {
     {
       id: 'tx_may_late_payment',
       customerId: 'cust_1',
-      date: '2026-05-25T10:00:00.000Z',
+      date: '2026-05-25',
       type: 'PAYMENT',
       amount: 10000,
       cashPaid: 10000,
@@ -92,7 +91,7 @@ describe('ledgerBusiness', () => {
     {
       id: 'tx_june_payment',
       customerId: 'cust_1',
-      date: '2026-06-05T10:00:00.000Z',
+      date: '2026-06-05',
       type: 'PAYMENT',
       amount: 20000,
       cashPaid: 20000,
@@ -100,18 +99,15 @@ describe('ledgerBusiness', () => {
     },
   ];
 
-  describe('getTimelineCutoffTimestamp & filterCustomerTransactionsUpToTimeline', () => {
-    it('computes exact end of month timestamp and includes all history up to May 31', () => {
+  describe('getTimelineCutoffDate & filterCustomerTransactionsUpToTimeline', () => {
+    it('computes exact end of month date string and includes all history up to May 31', () => {
       const timelineMay: TimelineFilter = {
         selectedYear: 2026,
         selectedMonth: 4, // May
       };
 
-      const cutoff = getTimelineCutoffTimestamp(timelineMay);
-      const cutoffDate = new Date(cutoff);
-      expect(cutoffDate.getFullYear()).toBe(2026);
-      expect(cutoffDate.getMonth()).toBe(4); // May
-      expect(cutoffDate.getDate()).toBe(31); // 31 days in May
+      const cutoff = getTimelineCutoffDate(timelineMay);
+      expect(cutoff).toBe('2026-05-31');
 
       const filtered = filterCustomerTransactionsUpToTimeline(
         mockTransactions,
@@ -216,7 +212,7 @@ describe('ledgerBusiness', () => {
         {
           id: 'tx_c2_sale',
           customerId: 'cust_2',
-          date: '2026-02-01T00:00:00.000Z',
+          date: '2026-02-01',
           type: 'SALE',
           category: 'Tuvar',
           weight: 1000,
@@ -268,8 +264,7 @@ describe('ledgerBusiness', () => {
       };
 
       const filteredMayTxs = mockTransactions.filter((t) => {
-        const d = parseTransactionDate(t.date);
-        return d ? d.getFullYear() === 2026 && d.getMonth() === 4 : false;
+        return t.date ? t.date.startsWith('2026-05') : false;
       });
 
       const result = calculateCustomerOutstandingMetrics(
@@ -311,8 +306,7 @@ describe('ledgerBusiness', () => {
         customersWithOpening,
         mockTransactions,
         mockTransactions.filter((t) => {
-          const d = parseTransactionDate(t.date);
-          return d ? d.getFullYear() === 2026 : false;
+          return t.date ? t.date.startsWith('2026') : false;
         }),
         timelineYtd,
       );

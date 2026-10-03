@@ -7,7 +7,6 @@ import {
   VALID_CROP_CATEGORIES,
 } from '../models';
 import type { CropRecord, StockState } from '../store/slices/stockSlice';
-import { parseTransactionDate } from '../utils';
 import { calculateCropCommissionProfit } from './profitBusiness';
 
 /**
@@ -78,9 +77,8 @@ export function extractChronologicalMonths(
   monthSet.add(formatYearMonth(baselineYear, baselineMonth));
 
   for (const tx of transactions) {
-    const d = parseTransactionDate(tx.date);
-    if (d) {
-      monthSet.add(formatYearMonth(d.getFullYear(), d.getMonth() + 1));
+    if (tx.date && tx.date.length >= 7) {
+      monthSet.add(tx.date.slice(0, 7));
     }
   }
 
@@ -124,9 +122,7 @@ export function calculateMonthlyStockFromTransactions(
 
     // Filter transactions for this specific month
     const monthTransactions = transactions.filter((tx) => {
-      const d = parseTransactionDate(tx.date);
-      if (!d) return false;
-      return d.getFullYear() === year && d.getMonth() + 1 === month;
+      return tx.date ? tx.date.startsWith(yearMonth) : false;
     });
 
     const monthPurchases = monthTransactions.filter(isPurchaseTransaction);

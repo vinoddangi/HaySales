@@ -2,7 +2,6 @@ import React from 'react';
 import { Badge } from '../../../../components/Badge';
 import { Progress } from '../../../../components/Progress';
 import { CustomerTransactionData } from '../../../../models';
-import { parseTransactionDate } from '../../../../utils';
 import { TransactionHistoryItem } from '../TransactionHistoryItem';
 import './TransactionHistoryList.css';
 
@@ -26,11 +25,9 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
   });
 
   // 2. Sort descending by date (newest first)
-  const sortedTransactions = [...uniqueTxs].sort((a, b) => {
-    const timeA = parseTransactionDate(a.date)?.getTime() || 0;
-    const timeB = parseTransactionDate(b.date)?.getTime() || 0;
-    return timeB - timeA;
-  });
+  const sortedTransactions = [...uniqueTxs].sort((a, b) =>
+    b.date.localeCompare(a.date),
+  );
 
   // 3. Compute running balance chronologically (oldest to newest) to detect zero balance milestones
   const chronological = [...sortedTransactions].reverse();

@@ -1,3 +1,4 @@
+import { getTodayDateString } from '../utils/formatters';
 import {
   isObject,
   parseIsoDate,
@@ -112,7 +113,7 @@ export type TransactionCategory =
  */
 export type CoreTransactionData = {
   id?: string;
-  date: { seconds?: number } | string | number | Date;
+  date: string;
   amount: number;
   cashPaid: number;
   remainingDue: number;
@@ -312,7 +313,7 @@ export function parseCustomerTransactionFromRaw(
 ): CustomerTransactionData {
   const finalId = parseString(id) || parseString(raw?.id);
   const rawType = parseString(raw?.type) as TransactionType | undefined;
-  const date = parseIsoDate(raw?.date) || new Date().toISOString();
+  const date = parseIsoDate(raw?.date, getTodayDateString());
   const amount = parseNumber(raw?.amount) || parseNumber(raw?.paymentAmount, 0);
   const cashPaid = parseNumber(raw?.cashPaid, 0);
   const remainingDue = parseNumber(raw?.remainingDue, 0);
@@ -379,7 +380,7 @@ export function parseOperationsTransactionFromRaw(
 ): OperationsTransactionData {
   const finalId = parseString(id) || parseString(raw?.id);
   const rawType = parseString(raw?.type) as TransactionType | undefined;
-  const date = parseIsoDate(raw?.date) || new Date().toISOString();
+  const date = parseIsoDate(raw?.date, getTodayDateString());
   const amount = parseNumber(raw?.amount, 0);
   const cashPaid = parseNumber(raw?.cashPaid, 0);
   const remainingDue = parseNumber(raw?.remainingDue, 0);

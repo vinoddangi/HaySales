@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { Calendar } from 'lucide-react';
 import React from 'react';
 import { Flex } from '../../../../components/layouts/Flex';
-import { FilterPeriodMode } from '../../../../store/slices/uiSlice';
+import { FilterPeriodMode } from '../../../../store/slices/timelineSlice';
 import { MONTH_NAMES } from '../../../../utils/formatters';
 import './PeriodFilterBar.css';
 

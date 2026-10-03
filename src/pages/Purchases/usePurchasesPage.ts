@@ -20,8 +20,8 @@ import {
   FilterPeriodMode,
   setFilterMode,
   setSelectedMonth,
-  showSnackbar,
-} from '../../store/slices/uiSlice';
+} from '../../store/slices/timelineSlice';
+import { showSnackbar } from '../../store/slices/uiSlice';
 import { MONTH_NAMES } from '../../utils';
 import { ExpenseFormData } from './components/ExpenseFormCard';
 import { PurchaseFormData } from './components/PurchaseFormCard';
@@ -34,9 +34,9 @@ export function usePurchasesPage() {
     'PURCHASE',
   );
 
-  const filterMode = useAppSelector((state) => state.ui.filterMode);
-  const selectedMonth = useAppSelector((state) => state.ui.selectedMonth);
-  const selectedYear = useAppSelector((state) => state.ui.selectedYear);
+  const filterMode = useAppSelector((state) => state.timeline.filterMode);
+  const selectedMonth = useAppSelector((state) => state.timeline.selectedMonth);
+  const selectedYear = useAppSelector((state) => state.timeline.selectedYear);
 
   const { data: opTransactions = [] } = useGetOperationTransactionsQuery();
   const { data: custTransactions = [] } =

@@ -7,7 +7,7 @@ import {
   selectCustomerOutstandingForMonth,
   selectCustomerOutstandingForPeriod,
   selectCustomerOutstandingState,
-} from '../selectors/inputselectors';
+} from '../selectors/customerOutstandingSelectors';
 import customerOutstandingReducer, {
   resetCustomerOutstanding,
   setCustomerOutstandingState,

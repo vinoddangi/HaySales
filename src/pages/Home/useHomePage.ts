@@ -33,17 +33,17 @@ import {
   setFilterMode,
   setSelectedMonth,
   setSelectedYear,
-} from '../../store/slices/uiSlice';
+} from '../../store/slices/timelineSlice';
 import { MONTH_NAMES } from '../../utils/formatters';
 
 export function useHomePage() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  // 1. Redux UI state
-  const filterMode = useAppSelector((state) => state.ui.filterMode);
-  const selectedMonth = useAppSelector((state) => state.ui.selectedMonth);
-  const selectedYear = useAppSelector((state) => state.ui.selectedYear);
+  // 1. Redux Timeline state
+  const filterMode = useAppSelector((state) => state.timeline.filterMode);
+  const selectedMonth = useAppSelector((state) => state.timeline.selectedMonth);
+  const selectedYear = useAppSelector((state) => state.timeline.selectedYear);
 
   // 2. Redux Stock state: Opening inventory derived from previous month's closing stock
   const openingStock = useAppSelector((state) =>

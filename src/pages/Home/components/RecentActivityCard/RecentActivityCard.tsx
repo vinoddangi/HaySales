@@ -18,7 +18,6 @@ import {
   formatDate,
   formatRupee,
   formatWeight,
-  parseTransactionDate,
 } from '../../../../utils/formatters';
 import './RecentActivityCard.css';
 
@@ -34,11 +33,7 @@ export const RecentActivityCard: React.FC<RecentActivityCardProps> = ({
   className,
 }) => {
   // Sort descending by date and take latest 6 transactions
-  const sorted = [...transactions].sort((a, b) => {
-    const timeA = parseTransactionDate(a.date)?.getTime() || 0;
-    const timeB = parseTransactionDate(b.date)?.getTime() || 0;
-    return timeB - timeA;
-  });
+  const sorted = [...transactions].sort((a, b) => b.date.localeCompare(a.date));
   const recent = sorted.slice(0, 6);
 
   return (

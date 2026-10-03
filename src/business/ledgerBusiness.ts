@@ -7,7 +7,7 @@ import {
   isServiceTransaction,
   Transaction,
 } from '../models';
-import { MONTH_NAMES, parseIsoDate, parseTransactionDate } from '../utils';
+import { MONTH_NAMES, parseIsoDate } from '../utils';
 import { TimelineFilter } from './profitBusiness';
 
 // ── Result Type Interfaces ──────────────────────────────────────────────────
@@ -58,94 +58,65 @@ export interface OverallLedgerSummary {
 // ── Timeline Cutoff Helper ──────────────────────────────────────────────────
 
 /**
- * Computes the timestamp cutoff (end of day 23:59:59.999) for a timeline selection, date string, or Date.
+ * Computes the 'YYYY-MM-DD' cutoff date string for a timeline selection.
  */
-export function getTimelineCutoffTimestamp(
-  timeline?: TimelineFilter | string | number | Date,
-): number {
-  if (!timeline) return Infinity;
-
-  if (timeline instanceof Date) {
-    return new Date(
-      timeline.getFullYear(),
-      timeline.getMonth(),
-      timeline.getDate(),
-      23,
-      59,
-      59,
-      999,
-    ).getTime();
-  }
-
-  if (typeof timeline === 'number') {
-    return timeline;
-  }
+export function getTimelineCutoffDate(
+  timeline?: TimelineFilter | string,
+): string {
+  if (!timeline) return '9999-99-99';
 
   if (typeof timeline === 'string') {
-    const d = parseTransactionDate(timeline);
-    if (!d) return Infinity;
-    return new Date(
-      d.getFullYear(),
-      d.getMonth(),
-      d.getDate(),
-      23,
-      59,
-      59,
-      999,
-    ).getTime();
+    return timeline.slice(0, 10);
   }
 
-  // TimelineFilter object
-  const year = timeline.selectedYear;
-  const month = timeline.selectedMonth;
-  const day = timeline.selectedDay;
   const mode = timeline.filterMode;
-
   if (mode === 'all') {
-    return Infinity;
+    return '9999-99-99';
   }
 
-  if (mode === 'ytd') {
-    return new Date(year, month + 1, 0, 23, 59, 59, 999).getTime();
-  }
+  const year = timeline.selectedYear;
+  const month = timeline.selectedMonth; // 0-indexed (0 = Jan, 11 = Dec)
+  const day = timeline.selectedDay;
 
-  // If a specific day is selected (e.g. May 15th): cutoff is end of that day
+  // If a specific day is selected (e.g. May 15th)
   if (day !== undefined && day > 0) {
-    return new Date(year, month, day, 23, 59, 59, 999).getTime();
+    const mm = String(month + 1).padStart(2, '0');
+    const dd = String(day).padStart(2, '0');
+    return `${year}-${mm}-${dd}`;
   }
 
-  // If month is selected (e.g. May): cutoff is the last millisecond of the selected month
-  return new Date(year, month + 1, 0, 23, 59, 59, 999).getTime();
+  // If month or YTD is selected: cutoff is the last day of the selected month
+  const lastDay = new Date(year, month + 1, 0).getDate();
+  const mm = String(month + 1).padStart(2, '0');
+  const dd = String(lastDay).padStart(2, '0');
+  return `${year}-${mm}-${dd}`;
 }
 
 /**
- * Computes the timestamp cutoff for the previous tenor period (e.g. previous month or previous year).
+ * Computes the 'YYYY-MM-DD' cutoff date string for the previous tenor period.
  */
-export function getPreviousTimelineCutoffTimestamp(
+export function getPreviousTimelineCutoffDate(
   timeline?: TimelineFilter,
-): number {
-  if (!timeline) return 0;
+): string {
+  if (!timeline) return '0000-00-00';
+  const mode = timeline.filterMode;
+  if (mode === 'all') {
+    return '0000-00-00';
+  }
+
   const year = timeline.selectedYear;
   const month = timeline.selectedMonth;
-  const mode = timeline.filterMode;
 
-  if (mode === 'all') {
-    return 0;
-  }
-
-  if (mode === 'ytd') {
-    // End of prior year (Dec 31 23:59:59.999)
-    return new Date(year - 1, 11, 31, 23, 59, 59, 999).getTime();
-  }
-
-  // Month mode
-  if (month === 0) {
-    // Previous tenor is end of previous year (Dec 31 of year - 1)
-    return new Date(year - 1, 11, 31, 23, 59, 59, 999).getTime();
+  if (mode === 'ytd' || month === 0) {
+    // End of prior year (Dec 31 of year - 1)
+    return `${year - 1}-12-31`;
   }
 
   // Previous month cutoff (e.g., for May (month 4), end of April (month 3))
-  return new Date(year, month, 0, 23, 59, 59, 999).getTime();
+  const lastDayOfPrevMonth = new Date(year, month, 0).getDate();
+  const mm = String(month).padStart(2, '0');
+  const dd = String(lastDayOfPrevMonth).padStart(2, '0');
+  return `${year}-${mm}-${dd}`;
 }
 
 /**
@@ -154,15 +125,14 @@ export function getPreviousTimelineCutoffTimestamp(
  */
 export function filterCustomerTransactionsUpToTimeline(
   transactions: CustomerTransactionData[],
-  timeline?: TimelineFilter | string | number | Date,
+  timeline?: TimelineFilter | string,
 ): CustomerTransactionData[] {
   if (!timeline) return transactions;
-  const cutoffTime = getTimelineCutoffTimestamp(timeline);
+  const cutoffDate = getTimelineCutoffDate(timeline);
 
   return transactions.filter((tx) => {
-    const d = parseTransactionDate(tx.date);
-    if (!d) return false;
-    return d.getTime() <= cutoffTime;
+    if (!tx.date) return false;
+    return tx.date.slice(0, 10) <= cutoffDate;
   });
 }
 
@@ -178,7 +148,7 @@ export function filterCustomerTransactionsUpToTimeline(
 export function calculateCustomerLedgerDetail(
   customer: Customer,
   allCustomerTransactions: CustomerTransactionData[],
-  timeline?: TimelineFilter | string | number | Date,
+  timeline?: TimelineFilter | string,
 ): CustomerLedgerDetail {
   const customerTxs = allCustomerTransactions.filter(
     (tx) => tx.customerId === customer.id,
@@ -190,11 +160,7 @@ export function calculateCustomerLedgerDetail(
   );
 
   // Sort chronologically ascending
-  filteredTxs.sort((a, b) => {
-    const dateA = parseTransactionDate(a.date)?.getTime() || 0;
-    const dateB = parseTransactionDate(b.date)?.getTime() || 0;
-    return dateA - dateB;
-  });
+  filteredTxs.sort((a, b) => a.date.localeCompare(b.date));
 
   const openingDue = Number(customer.openingDue || 0);
 
@@ -258,7 +224,7 @@ export function calculateCustomerLedgerDetail(
 export function calculateCustomerOutstanding(
   customerId: string,
   transactions: CustomerTransactionData[],
-  timeline?: TimelineFilter | string | number | Date,
+  timeline?: TimelineFilter | string,
   openingDue: number = 0,
 ): number {
   const dummyCustomer: Customer = {
@@ -284,7 +250,7 @@ export function calculateCustomerOutstanding(
 export function calculateAllCustomersLedger(
   customers: Customer[],
   allCustomerTransactions: CustomerTransactionData[],
-  timeline?: TimelineFilter | string | number | Date,
+  timeline?: TimelineFilter | string,
 ): OverallLedgerSummary {
   const customerSummaries: CustomerLedgerSummary[] = [];
 
@@ -375,10 +341,9 @@ export function calculateCustomerOutstandingMetrics(
   );
 
   // 2. Previous tenor cumulative ledger
-  const previousCutoff = getPreviousTimelineCutoffTimestamp(timeline);
+  const previousCutoffDate = getPreviousTimelineCutoffDate(timeline);
   const prevCustomerTransactions = allCustomerTransactions.filter((tx) => {
-    const d = parseTransactionDate(tx.date);
-    return d ? d.getTime() <= previousCutoff : false;
+    return tx.date ? tx.date.slice(0, 10) <= previousCutoffDate : false;
   });
 
   const prevLedger = calculateAllCustomersLedger(

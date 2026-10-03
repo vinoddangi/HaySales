@@ -6,10 +6,9 @@ import {
   isSaleTransaction,
   isServiceTransaction,
 } from '../models';
-import { parseTransactionDate } from '../utils';
 import {
   calculateCustomerLedgerDetail,
-  getTimelineCutoffTimestamp,
+  getTimelineCutoffDate,
 } from './ledgerBusiness';
 import { extractChronologicalMonths, formatYearMonth } from './stockBusiness';
 
@@ -113,10 +112,9 @@ export function calculateMonthlyCustomerOutstandings(
       filterMode: 'month' as const,
     };
 
-    const monthEndCutoff = getTimelineCutoffTimestamp(monthTimeline);
+    const monthEndCutoff = getTimelineCutoffDate(monthTimeline);
     const txsUpToMonth = transactions.filter((tx) => {
-      const d = parseTransactionDate(tx.date);
-      return d ? d.getTime() <= monthEndCutoff : false;
+      return tx.date ? tx.date.slice(0, 10) <= monthEndCutoff : false;
     });
 
     const byCustomer: Record<string, CustomerBalanceRecord> = {};
@@ -143,10 +141,9 @@ export function calculateMonthlyCustomerOutstandings(
     }
 
     // Calculate period movements strictly inside this calendar month
+    const targetPeriodPrefix = `${year}-${String(month).padStart(2, '0')}`;
     const monthTransactions = transactions.filter((tx) => {
-      const d = parseTransactionDate(tx.date);
-      if (!d) return false;
-      return d.getFullYear() === year && d.getMonth() + 1 === month;
+      return tx.date ? tx.date.startsWith(targetPeriodPrefix) : false;
     });
 
     let periodCreditAdded = 0;

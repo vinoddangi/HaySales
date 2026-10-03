@@ -5,7 +5,7 @@ import {
   setThemeMode,
   toggleThemeMode,
 } from './store/slices/themeSlice';
-import { setFilterMode } from './store/slices/uiSlice';
+import { setFilterMode } from './store/slices/timelineSlice';
 import { m3ColorSchemes } from './theme/m3Tokens';
 
 describe('Redux Toolkit Store & Slices', () => {
@@ -31,9 +31,9 @@ describe('Redux Toolkit Store & Slices', () => {
 
   it('manages filter period correctly', () => {
     store.dispatch(setFilterMode('ytd'));
-    expect(store.getState().ui.filterMode).toBe('ytd');
+    expect(store.getState().timeline.filterMode).toBe('ytd');
 
     store.dispatch(setFilterMode('month'));
-    expect(store.getState().ui.filterMode).toBe('month');
+    expect(store.getState().timeline.filterMode).toBe('month');
   });
 });

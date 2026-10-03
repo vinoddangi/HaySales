@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export type FilterPeriodMode = 'month' | 'ytd' | 'all';
-
 export interface SnackbarState {
   open: boolean;
   message: string;
@@ -15,9 +13,6 @@ export interface BottomSheetState {
 }
 
 export interface UiState {
-  selectedYear: number;
-  selectedMonth: number;
-  filterMode: FilterPeriodMode;
   snackbar: SnackbarState;
   bottomSheet: BottomSheetState;
   searchQuery: string;
@@ -25,13 +20,7 @@ export interface UiState {
   isSyncing: boolean;
 }
 
-const currentYear = new Date().getFullYear();
-const defaultYear = currentYear >= 2025 ? currentYear : 2025;
-
 const initialState: UiState = {
-  selectedYear: defaultYear,
-  selectedMonth: new Date().getMonth(),
-  filterMode: 'month',
   snackbar: {
     open: false,
     message: '',
@@ -50,15 +39,6 @@ export const uiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
-    setSelectedYear: (state, action: PayloadAction<number>) => {
-      state.selectedYear = action.payload;
-    },
-    setSelectedMonth: (state, action: PayloadAction<number>) => {
-      state.selectedMonth = action.payload;
-    },
-    setFilterMode: (state, action: PayloadAction<FilterPeriodMode>) => {
-      state.filterMode = action.payload;
-    },
     setIsSyncing: (state, action: PayloadAction<boolean>) => {
       state.isSyncing = action.payload;
     },
@@ -114,9 +94,6 @@ export const uiSlice = createSlice({
 });
 
 export const {
-  setSelectedYear,
-  setSelectedMonth,
-  setFilterMode,
   setIsSyncing,
   showSnackbar,
   hideSnackbar,

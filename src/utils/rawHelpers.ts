@@ -1,5 +1,3 @@
-import { parseTransactionDate } from './formatters';
-
 export type RawRecord = Record<string, unknown>;
 
 /**
@@ -68,7 +66,7 @@ export function parseString(
 }
 
 /**
- * Parses a date value into an ISO string.
+ * Parses a date value into a strict 'YYYY-MM-DD' calendar date string.
  * - parseIsoDate(val, '') -> returns string
  * - parseIsoDate(val) -> returns string | undefined
  */
@@ -81,12 +79,17 @@ export function parseIsoDate(
   if (val === null || val === undefined || val === '') {
     return fallback;
   }
-  const d = parseTransactionDate(val as any);
-  if (!d) return fallback;
-  const yyyy = d.getFullYear();
-  const mm = String(d.getMonth() + 1).padStart(2, '0');
-  const dd = String(d.getDate()).padStart(2, '0');
-  return `${yyyy}-${mm}-${dd}`;
+  if (typeof val === 'string') {
+    const s = val.trim();
+    const match = s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
+    if (match) {
+      const yyyy = match[1];
+      const mm = match[2].padStart(2, '0');
+      const dd = match[3].padStart(2, '0');
+      return `${yyyy}-${mm}-${dd}`;
+    }
+  }
+  return fallback;
 }
 
 export function parseBoolean(_val: unknown, _fallback: boolean): boolean;

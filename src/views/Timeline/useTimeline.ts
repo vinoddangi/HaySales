@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { setFilterMode, setSelectedMonth } from '../../store/slices/uiSlice';
+import { setFilterMode, setSelectedMonth } from '../../store/slices/timelineSlice';
 
 export const SHORT_MONTH_NAMES = [
   'Jan',
@@ -20,7 +20,7 @@ export const SHORT_MONTH_NAMES = [
 export const useTimeline = () => {
   const dispatch = useAppDispatch();
   const { filterMode, selectedMonth, selectedYear } = useAppSelector(
-    (state) => state.ui,
+    (state) => state.timeline,
   );
 
   const isYtd = filterMode === 'ytd';

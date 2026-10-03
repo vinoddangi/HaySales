@@ -5,6 +5,7 @@ import customerOutstandingReducer from './slices/customerOutstandingSlice';
 import { customersApi } from './slices/customersApi';
 import stockReducer from './slices/stockSlice';
 import themeReducer from './slices/themeSlice';
+import timelineReducer from './slices/timelineSlice';
 import uiReducer from './slices/uiSlice';
 
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
     stock: stockReducer,
     customerOutstanding: customerOutstandingReducer,
     theme: themeReducer,
+    timeline: timelineReducer,
     ui: uiReducer,
   },
   middleware: (getDefaultMiddleware) =>
@@ -51,10 +53,15 @@ export type {
   ThemeState,
 } from './slices/themeSlice';
 
+export * from './slices/timelineSlice';
+export type {
+  FilterPeriodMode,
+  TimelineState,
+} from './slices/timelineSlice';
+
 export * from './slices/uiSlice';
 export type {
   BottomSheetState,
-  FilterPeriodMode,
   SnackbarState,
   UiState,
 } from './slices/uiSlice';
@@ -62,5 +69,5 @@ export type {
 export * from './hooks';
 export * from './listenerMiddleware';
 export * from './listeners';
-export * from './selectors/inputselectors';
+export * from './selectors';
 export * from './slices/customersApi';

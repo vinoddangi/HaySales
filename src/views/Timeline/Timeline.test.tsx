@@ -2,14 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { describe, expect, it } from 'vitest';
-import uiReducer from '../../store/slices/uiSlice';
+import timelineReducer from '../../store/slices/timelineSlice';
 import { Timeline } from './Timeline';
 
 describe('Timeline Component', () => {
   it('renders correctly with default store values', () => {
     const store = configureStore({
       reducer: {
-        ui: uiReducer,
+        timeline: timelineReducer,
       },
     });
 

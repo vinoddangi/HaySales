@@ -8,7 +8,7 @@ import {
   selectCropClosingStock,
   selectOpeningStockForMonth,
   selectStock,
-} from '../selectors/inputselectors';
+} from '../selectors/stockSelectors';
 import stockReducer, {
   BASELINE_CLOSING_STOCK,
   setClosingStock,
