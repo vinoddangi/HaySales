@@ -33,12 +33,10 @@ jobs:
         run: npm run build
 
       - name: Deploy to Firebase Hosting Live
-        if: env.HAS_FIREBASE_SECRET == 'true'
+        if: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SHREYANSH_GROUP != '' }}
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SHREYANSH_GROUP }}
           channelId: live
           projectId: shreyansh-group
-        env:
-          HAS_FIREBASE_SECRET: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SHREYANSH_GROUP != '' }}
