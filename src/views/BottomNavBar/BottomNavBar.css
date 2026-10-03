@@ -6,6 +6,7 @@
   border-top: 1px solid var(--md-sys-color-outline-variant);
   background-color: var(--md-sys-color-surface-container);
   backdrop-filter: blur(16px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
   transition: all 0.2s ease;
 }
 
