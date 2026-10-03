@@ -80,10 +80,10 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
       </h3>
 
       {/* 1. Date & Crop Type in 2-column Grid */}
-      <Grid columns={1} smColumns={2} gap="sm" fullWidth>
+      <Grid columns={2} gap="sm" fullWidth>
         <Grid.Item>
           <TextField
-            label="Procurement Date"
+            label="Date"
             type="date"
             required
             value={date}
@@ -92,7 +92,7 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
         </Grid.Item>
         <Grid.Item>
           <Select
-            label="Crop Item"
+            label="Crop"
             required
             value={category}
             options={CROP_OPTIONS}
@@ -102,7 +102,7 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
       </Grid>
 
       {/* 2. Weight (Kg) and Purchase Amount (₹) in 2-column Grid */}
-      <Grid columns={1} smColumns={2} gap="sm" fullWidth>
+      <Grid columns={2} gap="sm" fullWidth>
         <Grid.Item>
           <TextField
             label="Weight (Kg)"
@@ -115,7 +115,7 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
         </Grid.Item>
         <Grid.Item>
           <TextField
-            label="Purchase Amount (₹)"
+            label="Amount (₹)"
             type="number"
             required
             placeholder="0"
@@ -127,7 +127,7 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
 
       {/* 3. Supplier / Farmer Name */}
       <TextField
-        label="Supplier / Farmer Name (Optional)"
+        label="Supplier Name (Optional)"
         type="text"
         placeholder="e.g. Ramesh Patel, Mandi Trader"
         value={vendorName}
@@ -137,14 +137,14 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
       {/* 4. Payment Settlement */}
       <div className="hs-purchase-form-card__payment-group">
         <Checkbox
-          label="Paid in Full (100% Cash Paid)"
+          label="Paid in Full (All Cash)"
           checked={paidInFull}
           onChange={(checked) => setPaidInFull(checked)}
         />
 
         {!paidInFull && (
           <TextField
-            label="Cash Paid Now (₹)"
+            label="Cash Paid (₹)"
             type="number"
             placeholder="0"
             value={cashPaid ? String(cashPaid) : ''}
@@ -155,7 +155,7 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
 
       {/* 5. Remarks / Note */}
       <TextField
-        label="Remarks / Note (Optional)"
+        label="Note / Remarks (Optional)"
         type="text"
         placeholder="e.g. Lot #12, 14% moisture, direct from farm"
         value={note}

@@ -91,10 +91,10 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
       </h3>
 
       {/* 1. Date and Expense Category */}
-      <Grid columns={1} smColumns={2} gap="sm" fullWidth>
+      <Grid columns={2} gap="sm" fullWidth>
         <Grid.Item>
           <TextField
-            label="Expense Date"
+            label="Date"
             type="date"
             required
             value={date}
@@ -103,7 +103,7 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
         </Grid.Item>
         <Grid.Item>
           <Select
-            label="Expense Category"
+            label="Category"
             required
             value={category}
             options={CATEGORY_OPTIONS}

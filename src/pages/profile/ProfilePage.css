@@ -487,14 +487,8 @@
 
 .db-settings__stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--md-sys-spacing-extra-small);
-}
-
-@media (min-width: 480px) {
-  .db-settings__stats-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 .db-settings__stat-item {

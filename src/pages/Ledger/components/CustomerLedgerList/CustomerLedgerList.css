@@ -34,6 +34,8 @@
   gap: var(--md-sys-spacing-1, 4px);
   max-height: 60vh;
   overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .hs-customer-ledger-list__item {
@@ -45,6 +47,8 @@
   border-radius: var(--md-sys-shape-corner-medium, 12px);
   border: 1px solid var(--md-sys-color-outline-variant);
   cursor: pointer;
+  box-sizing: border-box;
+  min-width: 0;
   transition: all 0.15s ease;
 }
 

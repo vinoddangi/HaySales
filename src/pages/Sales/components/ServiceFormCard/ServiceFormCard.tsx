@@ -81,10 +81,10 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
       </h3>
 
       {/* 1. Date and Service Item */}
-      <Grid columns={1} smColumns={2} gap="sm" fullWidth>
+      <Grid columns={2} gap="sm" fullWidth>
         <Grid.Item>
           <TextField
-            label="Service Date"
+            label="Date"
             type="date"
             required
             value={date}
@@ -93,7 +93,7 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
         </Grid.Item>
         <Grid.Item>
           <Select
-            label="Service Item"
+            label="Service"
             required
             value={category}
             options={SERVICE_OPTIONS}
@@ -103,10 +103,10 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
       </Grid>
 
       {/* 2. Amount and Discount */}
-      <Grid columns={1} smColumns={2} gap="sm" fullWidth>
+      <Grid columns={2} gap="sm" fullWidth>
         <Grid.Item>
           <TextField
-            label="Service Fee (₹)"
+            label="Amount (₹)"
             type="number"
             required
             placeholder="0"
@@ -116,7 +116,7 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
         </Grid.Item>
         <Grid.Item>
           <TextField
-            label="Discount (₹) (Optional)"
+            label="Discount (₹)"
             type="number"
             placeholder="0"
             value={discount ? String(discount) : ''}

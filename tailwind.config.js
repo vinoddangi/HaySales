@@ -67,6 +67,10 @@ export default {
         'm3-xl': 'var(--md-sys-spacing-extra-large)',
         'm3-huge': 'var(--md-sys-spacing-huge)',
       },
+      fontFamily: {
+        sans: ['Roboto', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        roboto: ['Roboto', 'system-ui', '-apple-system', 'sans-serif'],
+      },
     },
   },
   plugins: [],

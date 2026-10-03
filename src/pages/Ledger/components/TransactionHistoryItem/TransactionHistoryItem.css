@@ -7,6 +7,9 @@
   border-radius: var(--md-sys-shape-corner-medium, 12px);
   border: 1px solid var(--md-sys-color-outline-variant);
   gap: var(--md-sys-spacing-3, 12px);
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .hs-tx-history-item--cleared {

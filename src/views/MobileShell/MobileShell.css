@@ -3,11 +3,10 @@
   min-height: 100vh;
   min-height: 100dvh;
   height: 100dvh;
-  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: var(--md-sys-color-surface);
+  background-color: #171717;
   color: var(--md-sys-color-on-background);
   overflow: hidden;
 }
@@ -18,60 +17,39 @@
   height: 100%;
   max-height: 100dvh;
   width: 100%;
+  max-width: 440px;
   flex-direction: column;
   background-color: var(--md-sys-color-surface);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   overflow: hidden;
+  container-type: inline-size;
+  container-name: mobile-shell;
 }
 
-/* ── Mobile Screens (<768px): 100% Native Edge-to-Edge Experience ── */
-@media (max-width: 767px) {
-  .mobile-shell-wrapper {
-    background-color: var(--md-sys-color-surface);
-  }
-
-  .mobile-shell-container {
-    width: 100%;
-    max-width: 100%;
-    height: 100dvh;
-    box-shadow: none;
-    border: none;
-    border-radius: 0;
-  }
-}
-
-/* ── Desktop & Laptop Screens (>=768px): Centered Mobile Mockup ── */
-@media (min-width: 768px) {
-  .mobile-shell-wrapper {
-    background-color: #0f1210;
-  }
-
-  .mobile-shell-container {
-    max-width: 440px;
-    border-left: 1px solid var(--md-sys-color-outline-variant);
-    border-right: 1px solid var(--md-sys-color-outline-variant);
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
-  }
-
-  .mobile-shell-container--framed {
-    margin: auto 0;
-    max-width: 420px;
-    height: min(840px, calc(100dvh - 3.5rem));
-    border-radius: 40px;
-    border: 8px solid #222624;
-    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
-  }
+.mobile-shell-container--framed {
+  margin: var(--md-sys-spacing-medium) auto;
+  width: 100%;
+  max-width: 430px;
+  height: min(890px, calc(100dvh - 3rem));
+  max-height: min(890px, calc(100dvh - 3rem));
+  overflow: hidden;
+  border-radius: 36px;
+  border: 8px solid #222624;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
 }
 
 .mobile-shell-notch {
   display: none;
   width: 100%;
-  flex-shrink: 0;
   align-items: center;
   justify-content: center;
   background-color: var(--md-sys-color-surface);
-  padding-top: var(--md-sys-spacing-small);
-  padding-bottom: var(--md-sys-spacing-extra-small);
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
+  flex-shrink: 0;
 }
 
 @media (min-width: 768px) {
@@ -87,30 +65,29 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--md-sys-shape-corner-full);
-  background-color: #1a1d1b;
-  gap: var(--md-sys-spacing-extra-small);
+  background-color: #171717;
+  gap: 0.5rem;
 }
 
 .mobile-shell-notch__camera {
-  height: 0.5rem;
-  width: 0.5rem;
+  height: 0.75rem;
+  width: 0.75rem;
   border-radius: var(--md-sys-shape-corner-full);
-  background-color: #272c29;
+  background-color: #262626;
+  box-shadow: inset 0 0 2px #000;
 }
 
 .mobile-shell-notch__speaker {
   height: 0.25rem;
-  width: 1.5rem;
+  width: 2rem;
   border-radius: var(--md-sys-shape-corner-full);
-  background-color: #272c29;
+  background-color: #262626;
 }
 
 .mobile-shell-content {
   flex: 1;
   min-height: 0;
-  width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+  overscroll-behavior: contain;
 }

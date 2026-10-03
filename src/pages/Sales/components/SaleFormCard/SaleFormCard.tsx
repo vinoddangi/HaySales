@@ -88,10 +88,10 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
       </h3>
 
       {/* 1. Date & Crop Type in 2-column Grid */}
-      <Grid columns={1} smColumns={2} gap="sm" fullWidth>
+      <Grid columns={2} gap="sm" fullWidth>
         <Grid.Item>
           <TextField
-            label="Invoice Date"
+            label="Date"
             type="date"
             required
             value={date}
@@ -100,7 +100,7 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
         </Grid.Item>
         <Grid.Item>
           <Select
-            label="Crop Item"
+            label="Crop"
             required
             value={category}
             options={CROP_OPTIONS}
@@ -110,7 +110,7 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
       </Grid>
 
       {/* 2. Weight (Kg) and Sale Amount (₹) in 2-column Grid */}
-      <Grid columns={1} smColumns={2} gap="sm" fullWidth>
+      <Grid columns={2} gap="sm" fullWidth>
         <Grid.Item>
           <TextField
             label="Weight (Kg)"
@@ -123,7 +123,7 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
         </Grid.Item>
         <Grid.Item>
           <TextField
-            label="Sale Amount (₹)"
+            label="Amount (₹)"
             type="number"
             required
             placeholder="0"
@@ -134,10 +134,10 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
       </Grid>
 
       {/* 3. Discount & Payment Settlement Side-by-Side */}
-      <Grid columns={1} smColumns={2} gap="sm" fullWidth>
+      <Grid columns={2} gap="sm" fullWidth>
         <Grid.Item>
           <TextField
-            label="Discount (₹) (Optional)"
+            label="Discount (₹)"
             type="number"
             placeholder="0"
             value={discount ? String(discount) : ''}
@@ -147,14 +147,14 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
         <Grid.Item>
           <div className="flex h-full flex-col justify-center gap-1.5">
             <Checkbox
-              label="All Cash (Wipes out dues)"
+              label="All Cash"
               checked={allCash}
               onChange={(checked) => setAllCash(checked)}
             />
 
             {!allCash && (
               <TextField
-                label="Cash Paid Now (₹)"
+                label="Cash Paid (₹)"
                 type="number"
                 placeholder="0"
                 value={cashPaid ? String(cashPaid) : ''}
@@ -167,7 +167,7 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
 
       {/* 4. Remarks / Note */}
       <TextField
-        label="Remarks / Note (Optional)"
+        label="Note / Remarks (Optional)"
         type="text"
         placeholder="e.g. Bag count, vehicle number"
         value={note}
@@ -177,40 +177,32 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
       {/* 5. Summary Box */}
       <div className="hs-sale-form-card__summary">
         <div className="hs-sale-form-card__summary-row">
-          <span className="hs-sale-form-card__summary-label">
-            Derived Rate:
-          </span>
+          <span className="hs-sale-form-card__summary-label">Rate:</span>
           <span className="hs-sale-form-card__summary-value">
             {avgRate > 0 ? `${formatRupee(avgRate)} / Kg` : '—'}
           </span>
         </div>
         <div className="hs-sale-form-card__summary-row">
-          <span className="hs-sale-form-card__summary-label">
-            Total Billed:
-          </span>
+          <span className="hs-sale-form-card__summary-label">Total:</span>
           <span className="hs-sale-form-card__summary-value">
             {formatRupee(amount)} ({formatWeight(weight)})
           </span>
         </div>
         <div className="hs-sale-form-card__summary-row">
-          <span className="hs-sale-form-card__summary-label">
-            Cash Received:
-          </span>
+          <span className="hs-sale-form-card__summary-label">Cash Paid:</span>
           <span className="hs-sale-form-card__summary-value text-emerald-600">
             {formatRupee(effectiveCashPaid)}
           </span>
         </div>
         <div className="hs-sale-form-card__summary-row">
-          <span className="hs-sale-form-card__summary-label">
-            Added to Dues:
-          </span>
+          <span className="hs-sale-form-card__summary-label">Added Due:</span>
           <span className="hs-sale-form-card__summary-value">
             {formatRupee(remainingDue)}
           </span>
         </div>
         <div className="hs-sale-form-card__summary-row">
           <span className="hs-sale-form-card__summary-label">
-            New Customer Total Due:
+            New Total Due:
           </span>
           <span className="hs-sale-form-card__summary-value hs-sale-form-card__summary-value--highlight">
             {formatRupee(newOutstandingDue)}
