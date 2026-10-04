@@ -3483,13 +3483,13 @@
     {
       "id": "due_2025_0047",
       "date": "2025-01-01",
-      "customerId": "127",
-      "customerName": "Foshi Prabhubhai Maganbhai",
+      "customerId": "126",
+      "customerName": "Foshi Maganbhai Kalubhai",
       "type": "OPENING_DUE",
       "amount": 9520,
       "cashPaid": 0,
       "remainingDue": 9520,
-      "notes": "2024 Year-End Opening Balance for Foshi Prabhubhai Maganbhai"
+      "notes": "2024 Year-End Opening Balance for Foshi Maganbhai Kalubhai"
     },
     {
       "id": "due_2025_0048",
