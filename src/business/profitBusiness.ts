@@ -147,6 +147,20 @@ export function filterTransactionsByDateRange(
   });
 }
 
+/**
+ * Checks if two crop categories match, unifying general trading labels ('Grass', 'Others', 'Other').
+ */
+export function isCropCategoryMatch(cat1?: string, cat2?: string): boolean {
+  if (!cat1 || !cat2) return false;
+  const c1 = cat1.trim().toLowerCase();
+  const c2 = cat2.trim().toLowerCase();
+  if (c1 === c2) return true;
+  const isGeneric1 = c1 === 'grass' || c1 === 'others' || c1 === 'other';
+  const isGeneric2 = c2 === 'grass' || c2 === 'others' || c2 === 'other';
+  if (isGeneric1 && isGeneric2) return true;
+  return false;
+}
+
 // ── Single Crop Commission Profit Calculation ───────────────────────────────
 
 /**
@@ -179,7 +193,7 @@ export function calculateCropCommissionProfit(
   let purchaseWeight = 0;
   let purchaseAmount = 0;
   for (const tx of purchases) {
-    if (tx.category.toLowerCase() === category.toLowerCase()) {
+    if (isCropCategoryMatch(tx.category, category)) {
       purchaseWeight += tx.weight || 0;
       purchaseAmount += tx.amount || 0;
     }
@@ -210,7 +224,7 @@ export function calculateCropCommissionProfit(
   let salesWeight = 0;
   let salesAmount = 0;
   for (const tx of sales) {
-    if (tx.category.toLowerCase() === category.toLowerCase()) {
+    if (isCropCategoryMatch(tx.category, category)) {
       salesWeight += tx.weight || 0;
       salesAmount += tx.amount || 0;
     }
@@ -279,14 +293,20 @@ export function calculateCommissionProfit(
   let totalCostOfGoodsSold = 0;
   let totalGrossCommissionProfit = 0;
 
-  // Process all valid crop categories
-  for (const crop of VALID_CROP_CATEGORIES) {
-    const cropOpening = openingStock[crop];
-    const cropPurchases = purchases.filter(
-      (tx) => tx.category.toLowerCase() === crop.toLowerCase(),
+  // Process distinct primary categories (excluding alias 'Grass' when 'Others' handles it)
+  const categoriesToProcess = VALID_CROP_CATEGORIES.filter(
+    (c) => c !== 'Grass',
+  );
+
+  for (const crop of categoriesToProcess) {
+    const cropOpening =
+      openingStock[crop] ||
+      (crop === 'Others' ? openingStock['Grass'] : undefined);
+    const cropPurchases = purchases.filter((tx) =>
+      isCropCategoryMatch(tx.category, crop),
     );
-    const cropSales = sales.filter(
-      (tx) => tx.category.toLowerCase() === crop.toLowerCase(),
+    const cropSales = sales.filter((tx) =>
+      isCropCategoryMatch(tx.category, crop),
     );
 
     // Only compute for crops with opening stock, purchases, or sales

@@ -25,8 +25,8 @@ describe('stockSlice & Selectors (YYYY-MM Format)', () => {
     const othersClosing = state['2025-01']?.Others;
     expect(othersClosing?.type).toBe('PURCHASE');
     expect(othersClosing?.category).toBe('Others');
-    expect(othersClosing?.weight).toBe(0);
-    expect(othersClosing?.amount).toBe(0);
+    expect(othersClosing?.weight).toBe(24203);
+    expect(othersClosing?.amount).toBe(216616);
   });
 
   it('updates closing stock for a period using setClosingStock', () => {
@@ -51,7 +51,7 @@ describe('stockSlice & Selectors (YYYY-MM Format)', () => {
 
     expect(updated['2026-01']?.Tuvar?.weight).toBe(5000);
     expect(updated['2026-01']?.Tuvar?.amount).toBe(60000);
-    expect(updated['2025-01']?.Others?.weight).toBe(0);
+    expect(updated['2025-01']?.Others?.weight).toBe(24203);
   });
 
   it('merges stock state using setStockState', () => {
@@ -74,7 +74,7 @@ describe('stockSlice & Selectors (YYYY-MM Format)', () => {
     );
 
     expect(updated['2026-02']?.Chana?.weight).toBe(2000);
-    expect(updated['2025-01']?.Others?.weight).toBe(0);
+    expect(updated['2025-01']?.Others?.weight).toBe(24203);
   });
 
   it('recalculates monthly closing stock from transactions using updateStockFromTransactions', () => {
@@ -156,7 +156,7 @@ describe('stockSlice & Selectors (YYYY-MM Format)', () => {
       4000,
     );
     expect(selectCropClosingStock('2025-01', 'Others')(rootState)?.weight).toBe(
-      0,
+      24203,
     );
     expect(selectCropClosingStock('2025-02', 'Tuvar')(rootState)?.weight).toBe(
       4000,

@@ -2,10 +2,8 @@ import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   calculateBalanceSheet,
-  calculateExpectedProfit,
   CropCommissionProfitResult,
   filterTransactionsByTimeline,
-  getOpeningStockForMonth,
 } from '../../business';
 import {
   CustomerTransactionData,
@@ -33,7 +31,11 @@ import {
   setSelectedMonth,
   setSelectedYear,
 } from '../../store/slices/timelineSlice';
-import { selectCustomerOutstandingMetrics } from '../../store/selectors';
+import {
+  selectCustomerOutstandingMetrics,
+  selectEstimatedProfitMetrics,
+  selectPeriodExpectedProfitSummary,
+} from '../../store/selectors';
 import { MONTH_NAMES } from '../../utils/formatters';
 
 export function useHomePage() {
@@ -45,10 +47,9 @@ export function useHomePage() {
   const selectedMonth = useAppSelector((state) => state.timeline.selectedMonth);
   const selectedYear = useAppSelector((state) => state.timeline.selectedYear);
 
-  // 2. Redux Stock state: Opening inventory derived from previous month's closing stock
-  const openingStock = useAppSelector((state) =>
-    getOpeningStockForMonth(state.stock, selectedYear, selectedMonth + 1),
-  );
+  // 2. Profit & Stock Selectors (Continuous Monthly Stock Rolling & Commission calculation)
+  const profitMetrics = useAppSelector(selectEstimatedProfitMetrics);
+  const periodProfitSummary = useAppSelector(selectPeriodExpectedProfitSummary);
 
   // 3. API queries
   const { isLoading: isLoadingCustomers } = useGetCustomersQuery();
@@ -149,54 +150,23 @@ export function useHomePage() {
     };
   }, [filteredTransactions]);
 
-  // 9. Profit & Stock Metrics via Business Layer
-  const { profitMetrics, stockMetrics } = useMemo(() => {
-    const profitSummary = calculateExpectedProfit(
-      filteredTransactions,
-      openingStock,
-    );
-    const cumulativeProfitSummary = calculateExpectedProfit(
-      allTransactions,
-      openingStock,
-    );
-
-    const netProfit = profitSummary.netOperatingProfit;
-    const profitMarginPct =
-      salesMetrics.totalAmount > 0
-        ? (netProfit / salesMetrics.totalAmount) * 100
-        : 0;
-
-    const crops = Object.values(profitSummary.commission.byCrop).filter(
+  // 9. Stock Metrics derived from continuous monthly rolling profit summary
+  const stockMetrics = useMemo(() => {
+    const crops = Object.values(periodProfitSummary.commission.byCrop).filter(
       Boolean,
     ) as CropCommissionProfitResult[];
 
     return {
-      profitMetrics: {
-        netProfit,
-        profitMarginPct,
-        grossCommission: profitSummary.commission.totalGrossCommissionProfit,
-        pickupNet: profitSummary.service.netServiceProfit,
-        operatingExpenses: profitSummary.operatingExpenses,
-        cumulativeProfit: cumulativeProfitSummary.netOperatingProfit,
-        totalClosingStock: profitSummary.commission.totalClosingStock,
-      },
-      stockMetrics: {
-        totalClosingStock: profitSummary.commission.totalClosingStock,
-        totalOpeningStock: profitSummary.commission.totalOpeningStock,
-        totalPurchases: profitSummary.commission.totalPurchases,
-        totalSales: profitSummary.commission.totalSales,
-        totalCostOfGoodsSold: profitSummary.commission.totalCostOfGoodsSold,
-        totalGrossCommissionProfit:
-          profitSummary.commission.totalGrossCommissionProfit,
-        crops,
-      },
+      totalClosingStock: periodProfitSummary.commission.totalClosingStock,
+      totalOpeningStock: periodProfitSummary.commission.totalOpeningStock,
+      totalPurchases: periodProfitSummary.commission.totalPurchases,
+      totalSales: periodProfitSummary.commission.totalSales,
+      totalCostOfGoodsSold: periodProfitSummary.commission.totalCostOfGoodsSold,
+      totalGrossCommissionProfit:
+        periodProfitSummary.commission.totalGrossCommissionProfit,
+      crops,
     };
-  }, [
-    filteredTransactions,
-    allTransactions,
-    openingStock,
-    salesMetrics.totalAmount,
-  ]);
+  }, [periodProfitSummary]);
 
   // 10. Customer Outstanding Metrics via Selector (Till-Date Transaction derivation)
   const customerOutstandingMetrics = useAppSelector(

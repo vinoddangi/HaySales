@@ -7,7 +7,10 @@ import {
   VALID_CROP_CATEGORIES,
 } from '../models';
 import type { CropRecord, StockState } from '../store/slices/stockSlice';
-import { calculateCropCommissionProfit } from './profitBusiness';
+import {
+  calculateCropCommissionProfit,
+  isCropCategoryMatch,
+} from './profitBusiness';
 
 /**
  * Baseline closing stock as of January 2025 ('2025-01').
@@ -18,8 +21,8 @@ export const BASELINE_CLOSING_STOCK: CropRecord = {
     date: '2025-01-01',
     type: 'PURCHASE',
     category: 'Others',
-    weight: 0,
-    amount: 0,
+    weight: 24203,
+    amount: 216616,
     cashPaid: 0,
     remainingDue: 0,
     note: '2025 Jan Opening Stock',
@@ -73,16 +76,43 @@ export function extractChronologicalMonths(
   baselineYear = 2025,
   baselineMonth = 1,
 ): string[] {
-  const monthSet = new Set<string>();
-  monthSet.add(formatYearMonth(baselineYear, baselineMonth));
+  let minYear = baselineYear;
+  let minMonth = baselineMonth;
+  let maxYear = baselineYear;
+  let maxMonth = baselineMonth;
 
   for (const tx of transactions) {
     if (tx.date && tx.date.length >= 7) {
-      monthSet.add(tx.date.slice(0, 7));
+      const year = parseInt(tx.date.slice(0, 4), 10);
+      const month = parseInt(tx.date.slice(5, 7), 10);
+      if (!isNaN(year) && !isNaN(month)) {
+        if (year < minYear || (year === minYear && month < minMonth)) {
+          minYear = year;
+          minMonth = month;
+        }
+        if (year > maxYear || (year === maxYear && month > maxMonth)) {
+          maxYear = year;
+          maxMonth = month;
+        }
+      }
     }
   }
 
-  return Array.from(monthSet).sort();
+  const result: string[] = [];
+  let curYear = minYear;
+  let curMonth = minMonth;
+
+  while (curYear < maxYear || (curYear === maxYear && curMonth <= maxMonth)) {
+    result.push(formatYearMonth(curYear, curMonth));
+    if (curMonth === 12) {
+      curYear += 1;
+      curMonth = 1;
+    } else {
+      curMonth += 1;
+    }
+  }
+
+  return result;
 }
 
 /**
@@ -136,13 +166,19 @@ export function calculateMonthlyStockFromTransactions(
     const lastDay = getLastDayOfMonth(year, month);
     const monthEndDate = `${yearMonth}-${String(lastDay).padStart(2, '0')}`;
 
-    for (const crop of VALID_CROP_CATEGORIES) {
-      const cropOpening = openingStock[crop];
-      const cropPurchases = monthPurchases.filter(
-        (tx) => tx.category.toLowerCase() === crop.toLowerCase(),
+    const categoriesToProcess = VALID_CROP_CATEGORIES.filter(
+      (c) => c !== 'Grass',
+    );
+
+    for (const crop of categoriesToProcess) {
+      const cropOpening =
+        openingStock[crop] ||
+        (crop === 'Others' ? openingStock['Grass'] : undefined);
+      const cropPurchases = monthPurchases.filter((tx) =>
+        isCropCategoryMatch(tx.category, crop),
       );
-      const cropSales = monthSales.filter(
-        (tx) => tx.category.toLowerCase() === crop.toLowerCase(),
+      const cropSales = monthSales.filter((tx) =>
+        isCropCategoryMatch(tx.category, crop),
       );
 
       // If there was opening stock, purchases, or sales for this crop

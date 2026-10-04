@@ -43,8 +43,8 @@ describe('stockBusiness - Monthly Stock Calculations & YYYY-MM Rollovers', () =>
     const stockState = calculateMonthlyStockFromTransactions([]);
 
     expect(stockState['2024-12']).toEqual(BASELINE_CLOSING_STOCK);
-    expect(stockState['2024-12']?.Others?.weight).toBe(0);
-    expect(stockState['2024-12']?.Others?.amount).toBe(0);
+    expect(stockState['2024-12']?.Others?.weight).toBe(24203);
+    expect(stockState['2024-12']?.Others?.amount).toBe(216616);
 
     // Opening stock for Jan 2025 is derived from baseline closing stock
     const janOpening = getOpeningStockForMonth(stockState, 2025, 1);

@@ -25,9 +25,10 @@ export type OperationsTransactionType = Extract<
 // ── Category Definitions ───────────────────────────────────────────────────
 
 export type CropCategory =
-  'Tuvar' | 'Chana' | 'B. Kutty' | 'M. Kutty' | 'Isabgol' | 'Others';
+  'Grass' | 'Tuvar' | 'Chana' | 'B. Kutty' | 'M. Kutty' | 'Isabgol' | 'Others';
 
 export const VALID_CROP_CATEGORIES: CropCategory[] = [
+  'Grass',
   'Tuvar',
   'Chana',
   'B. Kutty',
