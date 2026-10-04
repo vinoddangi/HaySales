@@ -3,7 +3,6 @@ export * from './CustomerOutstandingCard';
 export * from './EstimatedProfitCard';
 export * from './NetCashflowCard';
 export * from './PeriodFilterBar';
-export * from './RecentActivityCard';
 export * from './SalesOnCashCard';
 export * from './SalesOnCreditCard';
 export * from './StockCard';

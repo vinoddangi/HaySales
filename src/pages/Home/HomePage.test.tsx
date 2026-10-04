@@ -6,7 +6,6 @@ import {
   EstimatedProfitCard,
   NetCashflowCard,
   PeriodFilterBar,
-  RecentActivityCard,
   SalesOnCashCard,
   SalesOnCreditCard,
   StockCard,
@@ -146,42 +145,6 @@ describe('Modular Dashboard Cards', () => {
     expect(html).toContain('Cash In');
     expect(html).toContain('Cash Out');
     expect(html).toContain('hs-net-cashflow-card');
-  });
-
-  it('renders RecentActivityCard with transactions', () => {
-    const html = renderToStaticMarkup(
-      <RecentActivityCard
-        transactions={[
-          {
-            id: 'tx1',
-            type: 'SALE',
-            category: 'Tuvar',
-            weight: 500,
-            amount: 5000,
-            cashPaid: 5000,
-            remainingDue: 0,
-            customerId: 'c1',
-            customerName: 'Ramesh Patel',
-            date: '2026-01-15',
-          },
-          {
-            id: 'tx2',
-            type: 'PAYMENT',
-            amount: 2500,
-            cashPaid: 2500,
-            remainingDue: 0,
-            customerId: 'c1',
-            customerName: 'Ramesh Patel',
-            date: '2026-01-16',
-          },
-        ]}
-      />,
-    );
-
-    expect(html).toContain('Recent Activity &amp; Payments');
-    expect(html).toContain('Ramesh Patel');
-    expect(html).toContain('500 kg');
-    expect(html).toContain('hs-recent-activity-card');
   });
 
   it('renders PeriodFilterBar properly', () => {

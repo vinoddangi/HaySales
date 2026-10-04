@@ -3,12 +3,9 @@ import {
   CustomerTransactionData,
   isPaymentTransaction,
   isSaleTransaction,
-  isServiceTransaction,
-  isOpeningDueTransaction,
 } from '../../../../models';
 
-export type TxFilterType =
-  'ALL' | 'SALE' | 'SERVICE' | 'PAYMENT' | 'OPENING_DUE';
+export type TxFilterType = 'ALL' | 'SALE' | 'PAYMENT' | 'OTHERS';
 
 export interface UseTransactionHistoryListProps {
   transactions: CustomerTransactionData[];
@@ -37,7 +34,26 @@ export function useTransactionHistoryList({
     );
   }, [uniqueTxs]);
 
-  // 3. Compute running balance chronologically to detect zero-due cleared milestones
+  // 3. Counts for Sales, Payments, Others
+  const { salesCount, paymentsCount, othersCount } = useMemo(() => {
+    let sales = 0;
+    let payments = 0;
+    let others = 0;
+
+    for (const tx of sortedTransactions) {
+      if (isSaleTransaction(tx)) sales++;
+      else if (isPaymentTransaction(tx)) payments++;
+      else others++;
+    }
+
+    return {
+      salesCount: sales,
+      paymentsCount: payments,
+      othersCount: others,
+    };
+  }, [sortedTransactions]);
+
+  // 4. Compute running balance chronologically to detect zero-due cleared milestones
   const clearedTxIds = useMemo(() => {
     const chronological = [...sortedTransactions].reverse();
     const cleared = new Set<string>();
@@ -63,16 +79,18 @@ export function useTransactionHistoryList({
     return cleared;
   }, [sortedTransactions]);
 
-  // 4. Apply type filter and query filter
+  // 5. Apply type filter (Sales, Payments, Others) and query filter
   const filteredTransactions = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
 
     return sortedTransactions.filter((tx) => {
       // Type matching
       if (filterType === 'SALE' && !isSaleTransaction(tx)) return false;
-      if (filterType === 'SERVICE' && !isServiceTransaction(tx)) return false;
       if (filterType === 'PAYMENT' && !isPaymentTransaction(tx)) return false;
-      if (filterType === 'OPENING_DUE' && !isOpeningDueTransaction(tx))
+      if (
+        filterType === 'OTHERS' &&
+        (isSaleTransaction(tx) || isPaymentTransaction(tx))
+      )
         return false;
 
       // Query matching
@@ -101,6 +119,9 @@ export function useTransactionHistoryList({
     setFilterType,
     searchQuery,
     setSearchQuery,
+    salesCount,
+    paymentsCount,
+    othersCount,
     sortedTransactions,
     filteredTransactions,
     clearedTxIds,

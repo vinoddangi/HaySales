@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex } from '../../components/layouts/Flex';
+import { Text } from '../../components/Text';
 import { PageContainer } from '../../views/PageContainer';
 import {
   CustomerLedgerDrawer,
@@ -40,11 +41,13 @@ export const LedgerPage: React.FC = () => {
         fullWidth
         className="hs-ledger-page__header"
       >
-        <h2 className="hs-ledger-page__title">Customer Dues Ledger</h2>
-        <p className="hs-ledger-page__subtitle">
+        <Text as="h2" variant="headline-sm" weight="bold">
+          Customer Dues Ledger
+        </Text>
+        <Text variant="body-md" appearance="secondary">
           Track outstanding customer balances, account statements, and payment
           settlements
-        </p>
+        </Text>
       </Flex>
 
       {/* 2. Overview Summary Cards */}

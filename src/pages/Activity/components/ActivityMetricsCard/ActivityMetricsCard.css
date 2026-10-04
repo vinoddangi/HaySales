@@ -1,0 +1,29 @@
+.hs-activity-metrics-card {
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-large);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  box-shadow: var(--md-sys-elevation-level1);
+}
+
+.hs-activity-metrics-card__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--md-sys-spacing-sm, 12px);
+}
+
+.hs-activity-metrics-item {
+  background-color: var(--md-sys-color-surface-container-high);
+  border-radius: var(--md-sys-shape-corner-medium);
+  padding: var(--md-sys-spacing-sm, 12px);
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.hs-activity-metrics-item--accent {
+  background-color: var(--md-sys-color-primary-container);
+  border-color: var(--md-sys-color-primary);
+}
+
+.hs-activity-metrics-card__footer {
+  border-top: 1px dashed var(--md-sys-color-outline-variant);
+  padding-top: var(--md-sys-spacing-xs, 8px);
+}

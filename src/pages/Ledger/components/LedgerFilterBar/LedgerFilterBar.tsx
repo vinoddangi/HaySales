@@ -1,5 +1,6 @@
-import { Filter, Search, X } from 'lucide-react';
+import { Filter, Search, Users, X } from 'lucide-react';
 import React from 'react';
+import { Text } from '../../../../components/Text';
 import { cn } from '../../../../utils/cn';
 import './LedgerFilterBar.css';
 
@@ -55,7 +56,12 @@ export const LedgerFilterBar: React.FC<LedgerFilterBarProps> = ({
           )}
         >
           <Filter className="h-3.5 w-3.5" />
-          <span>Pending Dues ({customersWithDuesCount})</span>
+          <Text
+            variant="label-sm"
+            weight={filterMode === 'dueOnly' ? 'bold' : 'medium'}
+          >
+            Pending Dues ({customersWithDuesCount})
+          </Text>
         </button>
 
         <button
@@ -66,9 +72,17 @@ export const LedgerFilterBar: React.FC<LedgerFilterBarProps> = ({
             filterMode === 'all' && 'hs-ledger-filter-bar__tab-btn--active',
           )}
         >
-          <span>All Accounts ({totalCustomersCount})</span>
+          <Users className="h-3.5 w-3.5" />
+          <Text
+            variant="label-sm"
+            weight={filterMode === 'all' ? 'bold' : 'medium'}
+          >
+            All Accounts ({totalCustomersCount})
+          </Text>
         </button>
       </div>
     </div>
   );
 };
+
+export default LedgerFilterBar;

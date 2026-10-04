@@ -1,0 +1,53 @@
+.hs-activity-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.hs-activity-drawer {
+  background-color: var(--md-sys-color-surface-container);
+  border-top-left-radius: var(--md-sys-shape-corner-extra-large, 28px);
+  border-top-right-radius: var(--md-sys-shape-corner-extra-large, 28px);
+  width: 100%;
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: var(--md-sys-elevation-level3);
+  padding: var(--md-sys-spacing-lg, 24px);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  animation: hsSlideUp 0.25s ease-out;
+}
+
+@keyframes hsSlideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.hs-activity-drawer__handle {
+  width: 36px;
+  height: 4px;
+  background-color: var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-full, 9999px);
+  margin: 0 auto var(--md-sys-spacing-md, 16px) auto;
+}
+
+.hs-activity-drawer__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--md-sys-spacing-xs, 8px) 0;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.hs-activity-drawer__row:last-child {
+  border-bottom: none;
+}

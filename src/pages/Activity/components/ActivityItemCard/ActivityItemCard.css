@@ -1,0 +1,57 @@
+.hs-activity-item-card {
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-medium);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.hs-activity-item-card:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+  border-color: var(--md-sys-color-outline);
+}
+
+.hs-activity-item-card__icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--md-sys-shape-corner-full, 9999px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hs-activity-item-card__icon-wrap--sale {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+}
+
+.hs-activity-item-card__icon-wrap--purchase {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.hs-activity-item-card__icon-wrap--payment {
+  background-color: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+}
+
+.hs-activity-item-card__icon-wrap--expense {
+  background-color: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+}
+
+.hs-activity-item-card__icon-wrap--service {
+  background-color: var(--md-sys-color-surface-container-highest);
+  color: var(--md-sys-color-on-surface);
+}
+
+.hs-activity-item-card__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.hs-activity-item-card__details {
+  border-top: 1px dashed var(--md-sys-color-outline-variant);
+  padding-top: var(--md-sys-spacing-xs, 6px);
+}

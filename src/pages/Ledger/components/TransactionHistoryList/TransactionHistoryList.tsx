@@ -2,6 +2,7 @@ import { Search } from 'lucide-react';
 import React from 'react';
 import { Badge } from '../../../../components/Badge';
 import { Progress } from '../../../../components/Progress';
+import { Text } from '../../../../components/Text';
 import { CustomerTransactionData } from '../../../../models';
 import { TransactionHistoryItem } from '../TransactionHistoryItem';
 import './TransactionHistoryList.css';
@@ -24,6 +25,9 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
     setFilterType,
     searchQuery,
     setSearchQuery,
+    salesCount,
+    paymentsCount,
+    othersCount,
     sortedTransactions,
     filteredTransactions,
     clearedTxIds,
@@ -31,18 +35,17 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
 
   const filterOptions: Array<{ key: TxFilterType; label: string }> = [
     { key: 'ALL', label: `All (${sortedTransactions.length})` },
-    { key: 'SALE', label: 'Sales' },
-    { key: 'SERVICE', label: 'Services' },
-    { key: 'PAYMENT', label: 'Payments' },
-    { key: 'OPENING_DUE', label: 'Opening Due' },
+    { key: 'SALE', label: `Sales (${salesCount})` },
+    { key: 'PAYMENT', label: `Payments (${paymentsCount})` },
+    { key: 'OTHERS', label: `Others (${othersCount})` },
   ];
 
   return (
     <div className="hs-tx-history-list">
       <div className="hs-tx-history-list__header">
-        <span className="hs-tx-history-list__title">
+        <Text variant="title-sm" weight="bold">
           Transaction Statement ({sortedTransactions.length})
-        </span>
+        </Text>
         <Badge sentiment="positive" appearance="subtle">
           Settled Highlighted
         </Badge>

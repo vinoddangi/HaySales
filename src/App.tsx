@@ -11,6 +11,7 @@ const ProfilePage = React.lazy(() => import('./pages/profile'));
 const SalesPage = React.lazy(() => import('./pages/Sales'));
 const PurchasesPage = React.lazy(() => import('./pages/Purchases'));
 const LedgerPage = React.lazy(() => import('./pages/Ledger'));
+const ActivityPage = React.lazy(() => import('./pages/Activity'));
 
 const RouteLoadingFallback: React.FC = () => (
   <Flex
@@ -38,15 +39,7 @@ export const App: React.FC = () => {
                 <Route path="sales" element={<SalesPage />} />
                 <Route path="purchases" element={<PurchasesPage />} />
                 <Route path="ledger" element={<LedgerPage />} />
-                <Route
-                  path="activity"
-                  element={
-                    <PlaceholderView
-                      title="Activity & History"
-                      subtitle="Audit log of all registered transactions and orders."
-                    />
-                  }
-                />
+                <Route path="activity" element={<ActivityPage />} />
                 <Route
                   path="*"
                   element={

@@ -10,7 +10,6 @@ import {
   EstimatedProfitCard,
   NetCashflowCard,
   PeriodFilterBar,
-  RecentActivityCard,
   SalesOnCashCard,
   SalesOnCreditCard,
   StockCard,
@@ -33,7 +32,6 @@ export const HomePage: React.FC = () => {
     customerOutstandingMetrics,
     cashflowMetrics,
     balanceSheetMetrics,
-    allTransactions,
     handleFilterModeChange,
     handleMonthChange,
     handleNavigate,
@@ -167,7 +165,7 @@ export const HomePage: React.FC = () => {
         }
       />
 
-      {/* 9. Row 7: Crop Stock & Valuation Card */}
+      {/* 9. Crop Stock & Valuation Card */}
       <StockCard
         totalClosingStock={stockMetrics.totalClosingStock}
         totalOpeningStock={stockMetrics.totalOpeningStock}
@@ -178,12 +176,6 @@ export const HomePage: React.FC = () => {
         cropItems={stockMetrics.crops}
         periodLabel={periodLabel}
         onClick={() => handleNavigate('/activity?category=PURCHASES_EXPENSES')}
-      />
-
-      {/* 10. Row 8: Recent Activity Card */}
-      <RecentActivityCard
-        transactions={allTransactions}
-        onViewAll={() => handleNavigate('/ledger')}
       />
 
       {/* 10. Floating Action Button for New Sale */}

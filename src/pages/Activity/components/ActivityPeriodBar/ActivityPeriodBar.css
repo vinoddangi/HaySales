@@ -1,0 +1,6 @@
+.hs-activity-period-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-xs, 8px);
+  width: 100%;
+}

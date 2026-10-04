@@ -321,7 +321,6 @@ export function useHomePage() {
     customerOutstandingMetrics,
     cashflowMetrics,
     balanceSheetMetrics,
-    allTransactions,
     handleFilterModeChange,
     handleMonthChange,
     handleYearChange,

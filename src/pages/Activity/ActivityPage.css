@@ -1,0 +1,10 @@
+.hs-activity-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-md, 16px);
+  width: 100%;
+}
+
+.hs-activity-page__header {
+  margin-bottom: var(--md-sys-spacing-xs, 4px);
+}
