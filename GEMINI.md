@@ -5,6 +5,7 @@
 - **Strictly Follow Instructions**: Never create pages (`src/pages/*`), features, or routes proactively without explicit user instructions. Wait for explicit commands before adding anything new.
 - **Zero Backward-Compatibility Aliases**: Never introduce synthetic alias exports, type aliases, or shim wrapper functions for backward compatibility (e.g., `export const parseOptionalNumber = parseNumber;`). Always fix or update the original syntax directly at call sites.
 - **No Unsolicited Assumptions**: Do not interpret or add extra boilerplate beyond what the user asked. Keep changes atomic, focused, and verified.
+- **Never Git Commit or Push Proactively**: NEVER run `git commit` or `git push` without explicit user commands. Always wait for the user to explicitly ask before committing or pushing changes.
 - **Verification**: Always run `npm run build` or type checks to verify clean code after modifications.
 
 ---

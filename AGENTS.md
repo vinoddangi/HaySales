@@ -21,3 +21,5 @@ Please refer to [GEMINI.md](./GEMINI.md) for the full guidelines.
 12. **Single Financial Field (`amount`)**: `amount` is the only monetary value property for all transactions (including `PAYMENT`). There is NO `paymentAmount` field.
 13. **Derived Rate (`getRate`)**: `rate` is never stored in the database. Rate is dynamically derived on the fly via `getRate(tx)` as $\text{amount} / \text{weight}$ in ₹/Kg strictly for crop transactions, returning `number | undefined`.
 14. **Standard M3 `<Text>` Component & Sentiments**: Always render typography via `<Text>` (`src/components/Text/Text.tsx`) using M3 `variant` roles (`headline-*`, `title-*`, `body-*`, `label-*`, `caption`, `amount`), standard `sentiment` options (`positive`, `negative`, `warning`, `info`, `accent`, `neutral`), and `appearance` (`primary`, `secondary`, `disabled`). Do not create custom text classes or synthetic sentiment types.
+15. **No Automatic Git Commit / Push**: NEVER run `git commit` or `git push` autonomously. Only commit or push when explicitly instructed by the user.
+

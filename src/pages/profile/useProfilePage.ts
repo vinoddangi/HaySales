@@ -11,6 +11,7 @@ import {
   syncLocalDatabaseFromCloud,
 } from '../../services/indexedDBService';
 import { auth } from '../../store/firebaseConfig';
+import { baseApi } from '../../store/api/baseApi';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { useAuth } from '../../store/hooks/useAuth';
 import {
@@ -245,6 +246,14 @@ export const useProfilePage = () => {
       const res = await syncLocalDatabaseFromCloud();
       await loadDbStats();
       dispatch(
+        baseApi.util.invalidateTags([
+          'CustomerTransactions',
+          'Customers',
+          'OperationTransactions',
+          'SyncStatus',
+        ]),
+      );
+      dispatch(
         showSnackbar(
           `Synced: ${res.customersCount} customers, ${res.customerTransactionsCount} customer txs, ${res.operationTransactionsCount} ops.`,
         ),
@@ -292,6 +301,14 @@ export const useProfilePage = () => {
       setLoadingDb(true);
       await clearAllLocalData();
       await loadDbStats();
+      dispatch(
+        baseApi.util.invalidateTags([
+          'CustomerTransactions',
+          'Customers',
+          'OperationTransactions',
+          'SyncStatus',
+        ]),
+      );
       dispatch(
         showSnackbar('Local DB cleared. Click "Sync" to fetch from Firestore.'),
       );
