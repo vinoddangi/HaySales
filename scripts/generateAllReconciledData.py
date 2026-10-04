@@ -251,8 +251,8 @@ def main():
                 'type': 'SALE',
                 'category': 'Grass',
                 'weight': 12050,
-                'amount': 0,
-                'cashPaid': 0,
+                'amount': 500,
+                'cashPaid': 500,
                 'remainingDue': 0,
                 'notes': 'Physical stock deficit / inventory clearance for May 2026'
             }
