@@ -242,6 +242,22 @@ def main():
             m_sales.append(sale_obj)
             current_customer_balance[cid] += debt
 
+        if m_label == '2026-05':
+            clearance_obj = {
+                'id': f'sale_{prefix}_clearance_001',
+                'date': '2026-05-01',
+                'customerId': '620',
+                'customerName': 'Inventory Clearance',
+                'type': 'SALE',
+                'category': 'Grass',
+                'weight': 12050,
+                'amount': 0,
+                'cashPaid': 0,
+                'remainingDue': 0,
+                'notes': 'Physical stock deficit / inventory clearance for May 2026'
+            }
+            m_sales.append(clearance_obj)
+
         all_customer_txs.extend(m_sales)
         
         if m_label in SERVICE_ENTRIES:

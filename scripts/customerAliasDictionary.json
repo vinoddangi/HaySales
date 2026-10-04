@@ -1,4 +1,8 @@
 {
+  "inventory clearance": {
+    "id": "620",
+    "canonicalName": "Inventory Clearance"
+  },
   "abbasbhai chadotar": {
     "id": "1",
     "canonicalName": "Abbasbhai"

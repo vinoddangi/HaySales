@@ -2,8 +2,8 @@
   "version": 7,
   "generatedAt": "2026-10-04T18:00:00.000Z",
   "summary": {
-    "customersCount": 570,
-    "customerTransactionsCount": 4728,
+    "customersCount": 571,
+    "customerTransactionsCount": 4729,
     "operationTransactionsCount": 296,
     "totalOpeningDues": 2721599,
     "totalSalesAmount": 16202151,
@@ -2971,6 +2971,11 @@
       "id": "619",
       "name": "Thaleghadh",
       "creditLimit": 35000
+    },
+    {
+      "id": "620",
+      "name": "Inventory Clearance",
+      "creditLimit": 0
     }
   ],
   "customer_transactions": [
@@ -17527,8 +17532,8 @@
       "customerId": "31",
       "customerName": "Bera Mafatbhai Parthibhai",
       "type": "PAYMENT",
-      "amount": 8766,
-      "cashPaid": 8766,
+      "amount": 8765,
+      "cashPaid": 8765,
       "remainingDue": 0,
       "notes": "Payment reconciled for 2025-06"
     },
@@ -18429,8 +18434,8 @@
       "customerId": "63",
       "customerName": "Bhutadiya Laljibhai Veerabhai",
       "type": "PAYMENT",
-      "amount": 8765,
-      "cashPaid": 8765,
+      "amount": 8766,
+      "cashPaid": 8766,
       "remainingDue": 0,
       "notes": "Payment reconciled for 2025-06"
     },
@@ -20231,17 +20236,6 @@
     {
       "id": "pay_2025_07_0088",
       "date": "2025-07-31",
-      "customerId": "395",
-      "customerName": "Bhagvanbhai na",
-      "type": "PAYMENT",
-      "amount": 1,
-      "cashPaid": 1,
-      "remainingDue": 0,
-      "notes": "Payment reconciled for 2025-07"
-    },
-    {
-      "id": "pay_2025_07_0089",
-      "date": "2025-07-31",
       "customerId": "40",
       "customerName": "Bharkavada Bhikhabhai",
       "type": "PAYMENT",
@@ -20251,18 +20245,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0090",
-      "date": "2025-07-31",
-      "customerId": "401",
-      "customerName": "Magabhai Khodabhai",
-      "type": "PAYMENT",
-      "amount": 1,
-      "cashPaid": 1,
-      "remainingDue": 0,
-      "notes": "Payment reconciled for 2025-07"
-    },
-    {
-      "id": "pay_2025_07_0091",
+      "id": "pay_2025_07_0089",
       "date": "2025-07-31",
       "customerId": "403",
       "customerName": "Mahendrabhai Parthibhai",
@@ -20273,7 +20256,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0092",
+      "id": "pay_2025_07_0090",
       "date": "2025-07-31",
       "customerId": "408",
       "customerName": "Patel Ambaram Devpura",
@@ -20284,7 +20267,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0093",
+      "id": "pay_2025_07_0091",
       "date": "2025-07-31",
       "customerId": "414",
       "customerName": "Prajapati Jethabhai Kalubhai",
@@ -20295,7 +20278,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0094",
+      "id": "pay_2025_07_0092",
       "date": "2025-07-31",
       "customerId": "416",
       "customerName": "Prajapti Maganbhai Kalubhai",
@@ -20306,7 +20289,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0095",
+      "id": "pay_2025_07_0093",
       "date": "2025-07-31",
       "customerId": "417",
       "customerName": "Prakashpuri Khodla",
@@ -20317,7 +20300,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0096",
+      "id": "pay_2025_07_0094",
       "date": "2025-07-31",
       "customerId": "421",
       "customerName": "Ratada Haribhai Laxmanbhai",
@@ -20328,7 +20311,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0097",
+      "id": "pay_2025_07_0095",
       "date": "2025-07-31",
       "customerId": "433",
       "customerName": "Thakor Amratbhai Manabhai",
@@ -20339,7 +20322,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0098",
+      "id": "pay_2025_07_0096",
       "date": "2025-07-31",
       "customerId": "443",
       "customerName": "Thakor Bharatji Samdhi",
@@ -20350,7 +20333,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0099",
+      "id": "pay_2025_07_0097",
       "date": "2025-07-31",
       "customerId": "446",
       "customerName": "Thakor Bhoobhaji Dhooraji",
@@ -20361,7 +20344,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0100",
+      "id": "pay_2025_07_0098",
       "date": "2025-07-31",
       "customerId": "457",
       "customerName": "Thakor Hemchandbhai Khodla",
@@ -20372,7 +20355,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0101",
+      "id": "pay_2025_07_0099",
       "date": "2025-07-31",
       "customerId": "474",
       "customerName": "Thakor Nagjibhai Hamirbhai",
@@ -20383,7 +20366,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0102",
+      "id": "pay_2025_07_0100",
       "date": "2025-07-31",
       "customerId": "483",
       "customerName": "Thakor Rangnathji Khodla",
@@ -20394,7 +20377,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0103",
+      "id": "pay_2025_07_0101",
       "date": "2025-07-31",
       "customerId": "485",
       "customerName": "Thakor Savjibhai Hamirbhai",
@@ -20405,7 +20388,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0104",
+      "id": "pay_2025_07_0102",
       "date": "2025-07-31",
       "customerId": "486",
       "customerName": "Thakor Savjibhai Ramchandbhai",
@@ -20416,7 +20399,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0105",
+      "id": "pay_2025_07_0103",
       "date": "2025-07-31",
       "customerId": "489",
       "customerName": "Thakor Shankarbhai",
@@ -20427,7 +20410,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0106",
+      "id": "pay_2025_07_0104",
       "date": "2025-07-31",
       "customerId": "491",
       "customerName": "Thakor Vinshubhai Dheerajbhai",
@@ -20438,7 +20421,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0107",
+      "id": "pay_2025_07_0105",
       "date": "2025-07-31",
       "customerId": "505",
       "customerName": "Valagot Babubhai Chelabhai",
@@ -20449,7 +20432,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0108",
+      "id": "pay_2025_07_0106",
       "date": "2025-07-31",
       "customerId": "506",
       "customerName": "Valagot Babubhai Parthibhai",
@@ -20460,7 +20443,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0109",
+      "id": "pay_2025_07_0107",
       "date": "2025-07-31",
       "customerId": "509",
       "customerName": "Valagot Ghemarbhai Manjibhai",
@@ -20471,7 +20454,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0110",
+      "id": "pay_2025_07_0108",
       "date": "2025-07-31",
       "customerId": "510",
       "customerName": "Valagot Jayntibhai Surati",
@@ -20482,7 +20465,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0111",
+      "id": "pay_2025_07_0109",
       "date": "2025-07-31",
       "customerId": "513",
       "customerName": "Valagot Kantibhai",
@@ -20493,7 +20476,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0112",
+      "id": "pay_2025_07_0110",
       "date": "2025-07-31",
       "customerId": "514",
       "customerName": "Valagot Manjibhai Fuva",
@@ -20504,7 +20487,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0113",
+      "id": "pay_2025_07_0111",
       "date": "2025-07-31",
       "customerId": "518",
       "customerName": "Ratada Lavjibhai Laxmanbhai",
@@ -20515,7 +20498,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0114",
+      "id": "pay_2025_07_0112",
       "date": "2025-07-31",
       "customerId": "531",
       "customerName": "Judal Ashokbhai Muljibhai",
@@ -20526,7 +20509,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0115",
+      "id": "pay_2025_07_0113",
       "date": "2025-07-31",
       "customerId": "533",
       "customerName": "Babji",
@@ -20537,7 +20520,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0116",
+      "id": "pay_2025_07_0114",
       "date": "2025-07-31",
       "customerId": "538",
       "customerName": "Babvji",
@@ -20548,7 +20531,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0117",
+      "id": "pay_2025_07_0115",
       "date": "2025-07-31",
       "customerId": "54",
       "customerName": "Bhutadiya Ghemarbhai Dalubhai",
@@ -20559,7 +20542,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0118",
+      "id": "pay_2025_07_0116",
       "date": "2025-07-31",
       "customerId": "540",
       "customerName": "Bavaji",
@@ -20570,7 +20553,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0119",
+      "id": "pay_2025_07_0117",
       "date": "2025-07-31",
       "customerId": "542",
       "customerName": "Bera Dinieshbhai Savabhai",
@@ -20581,7 +20564,18 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0120",
+      "id": "pay_2025_07_0118",
+      "date": "2025-07-31",
+      "customerId": "547",
+      "customerName": "Kakvadiya Bhagvanbhai",
+      "type": "PAYMENT",
+      "amount": 1,
+      "cashPaid": 1,
+      "remainingDue": 0,
+      "notes": "Payment reconciled for 2025-07"
+    },
+    {
+      "id": "pay_2025_07_0119",
       "date": "2025-07-31",
       "customerId": "548",
       "customerName": "Loh Manjibhai Bhagvanbhai",
@@ -20592,7 +20586,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0121",
+      "id": "pay_2025_07_0120",
       "date": "2025-07-31",
       "customerId": "550",
       "customerName": "Boka Dhanrajbhai Bhemabhai",
@@ -20603,7 +20597,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0122",
+      "id": "pay_2025_07_0121",
       "date": "2025-07-31",
       "customerId": "553",
       "customerName": "Bhutadiya Ganeshbhai Jedhabhai",
@@ -20614,7 +20608,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0123",
+      "id": "pay_2025_07_0122",
       "date": "2025-07-31",
       "customerId": "556",
       "customerName": "Boka Jyantibhai Dalubhai",
@@ -20625,7 +20619,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0124",
+      "id": "pay_2025_07_0123",
       "date": "2025-07-31",
       "customerId": "56",
       "customerName": "Bhutadiya Jagdishbhai Bhagvanbhai",
@@ -20636,7 +20630,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0125",
+      "id": "pay_2025_07_0124",
       "date": "2025-07-31",
       "customerId": "569",
       "customerName": "Loh Dineshbhai Ramshugbhai",
@@ -20647,7 +20641,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0126",
+      "id": "pay_2025_07_0125",
       "date": "2025-07-31",
       "customerId": "57",
       "customerName": "Bhutadiya Jashungbhai Ramshungbbhai",
@@ -20658,7 +20652,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0127",
+      "id": "pay_2025_07_0126",
       "date": "2025-07-31",
       "customerId": "570",
       "customerName": "Kakvadiya Sanjaybhai Dohjibhai",
@@ -20669,7 +20663,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0128",
+      "id": "pay_2025_07_0127",
       "date": "2025-07-31",
       "customerId": "576",
       "customerName": "Gujor Sonalbean",
@@ -20680,7 +20674,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0129",
+      "id": "pay_2025_07_0128",
       "date": "2025-07-31",
       "customerId": "577",
       "customerName": "Judal Jyantibhai Nathabhai Guru",
@@ -20691,7 +20685,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0130",
+      "id": "pay_2025_07_0129",
       "date": "2025-07-31",
       "customerId": "587",
       "customerName": "Judal Laxmanbhai Jeshungbhai",
@@ -20702,7 +20696,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0131",
+      "id": "pay_2025_07_0130",
       "date": "2025-07-31",
       "customerId": "588",
       "customerName": "Jeetuben Manjibhai",
@@ -20713,7 +20707,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0132",
+      "id": "pay_2025_07_0131",
       "date": "2025-07-31",
       "customerId": "591",
       "customerName": "Judal Rajanibhai Mafabhai",
@@ -20724,7 +20718,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0133",
+      "id": "pay_2025_07_0132",
       "date": "2025-07-31",
       "customerId": "593",
       "customerName": "Judal Preveenbhai Veershangbhai",
@@ -20735,7 +20729,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0134",
+      "id": "pay_2025_07_0133",
       "date": "2025-07-31",
       "customerId": "597",
       "customerName": "Kakavadiya Sanjaybhai",
@@ -20746,7 +20740,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0135",
+      "id": "pay_2025_07_0134",
       "date": "2025-07-31",
       "customerId": "6",
       "customerName": "Akoliya Bhagvanbhai Valjibhai",
@@ -20757,7 +20751,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0136",
+      "id": "pay_2025_07_0135",
       "date": "2025-07-31",
       "customerId": "603",
       "customerName": "Mangabhai Khodabhai",
@@ -20768,7 +20762,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0137",
+      "id": "pay_2025_07_0136",
       "date": "2025-07-31",
       "customerId": "605",
       "customerName": "Kuva Sureshbhai Laxmanbhai",
@@ -20779,7 +20773,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0138",
+      "id": "pay_2025_07_0137",
       "date": "2025-07-31",
       "customerId": "613",
       "customerName": "Thakor Surabhai Ragjibhai",
@@ -20790,7 +20784,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0139",
+      "id": "pay_2025_07_0138",
       "date": "2025-07-31",
       "customerId": "614",
       "customerName": "Thakor Ransanji Ragjiji",
@@ -20801,7 +20795,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0140",
+      "id": "pay_2025_07_0139",
       "date": "2025-07-31",
       "customerId": "615",
       "customerName": "Thakor Ragnathiji",
@@ -20812,7 +20806,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0141",
+      "id": "pay_2025_07_0140",
       "date": "2025-07-31",
       "customerId": "619",
       "customerName": "Thaleghadh",
@@ -20823,7 +20817,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0142",
+      "id": "pay_2025_07_0141",
       "date": "2025-07-31",
       "customerId": "63",
       "customerName": "Bhutadiya Laljibhai Veerabhai",
@@ -20834,7 +20828,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0143",
+      "id": "pay_2025_07_0142",
       "date": "2025-07-31",
       "customerId": "70",
       "customerName": "Boka Dhanrajbhai Bhemjibhai",
@@ -20845,7 +20839,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0144",
+      "id": "pay_2025_07_0143",
       "date": "2025-07-31",
       "customerId": "71",
       "customerName": "Boka Dipakbhai Parthibhai",
@@ -20856,7 +20850,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0145",
+      "id": "pay_2025_07_0144",
       "date": "2025-07-31",
       "customerId": "75",
       "customerName": "Boka Kantibhai Dalubhai",
@@ -20867,7 +20861,7 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0146",
+      "id": "pay_2025_07_0145",
       "date": "2025-07-31",
       "customerId": "79",
       "customerName": "Boka Ramjibhai Jethabhai",
@@ -20878,13 +20872,24 @@
       "notes": "Payment reconciled for 2025-07"
     },
     {
-      "id": "pay_2025_07_0147",
+      "id": "pay_2025_07_0146",
       "date": "2025-07-31",
       "customerId": "88",
       "customerName": "Daka Dineshbhai Devabhai",
       "type": "PAYMENT",
       "amount": 20,
       "cashPaid": 20,
+      "remainingDue": 0,
+      "notes": "Payment reconciled for 2025-07"
+    },
+    {
+      "id": "pay_2025_07_0147",
+      "date": "2025-07-31",
+      "customerId": "89",
+      "customerName": "Dangi Chelabhai Heerabhai",
+      "type": "PAYMENT",
+      "amount": 1,
+      "cashPaid": 1,
       "remainingDue": 0,
       "notes": "Payment reconciled for 2025-07"
     },
@@ -22284,8 +22289,8 @@
       "customerId": "31",
       "customerName": "Bera Mafatbhai Parthibhai",
       "type": "PAYMENT",
-      "amount": 348,
-      "cashPaid": 348,
+      "amount": 349,
+      "cashPaid": 349,
       "remainingDue": 0,
       "notes": "Payment reconciled for 2025-08"
     },
@@ -22611,6 +22616,17 @@
     {
       "id": "pay_2025_08_0105",
       "date": "2025-08-31",
+      "customerId": "395",
+      "customerName": "Bhagvanbhai na",
+      "type": "PAYMENT",
+      "amount": 1,
+      "cashPaid": 1,
+      "remainingDue": 0,
+      "notes": "Payment reconciled for 2025-08"
+    },
+    {
+      "id": "pay_2025_08_0106",
+      "date": "2025-08-31",
       "customerId": "40",
       "customerName": "Bharkavada Bhikhabhai",
       "type": "PAYMENT",
@@ -22620,7 +22636,18 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0106",
+      "id": "pay_2025_08_0107",
+      "date": "2025-08-31",
+      "customerId": "401",
+      "customerName": "Magabhai Khodabhai",
+      "type": "PAYMENT",
+      "amount": 1,
+      "cashPaid": 1,
+      "remainingDue": 0,
+      "notes": "Payment reconciled for 2025-08"
+    },
+    {
+      "id": "pay_2025_08_0108",
       "date": "2025-08-31",
       "customerId": "403",
       "customerName": "Mahendrabhai Parthibhai",
@@ -22631,7 +22658,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0107",
+      "id": "pay_2025_08_0109",
       "date": "2025-08-31",
       "customerId": "408",
       "customerName": "Patel Ambaram Devpura",
@@ -22642,7 +22669,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0108",
+      "id": "pay_2025_08_0110",
       "date": "2025-08-31",
       "customerId": "414",
       "customerName": "Prajapati Jethabhai Kalubhai",
@@ -22653,7 +22680,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0109",
+      "id": "pay_2025_08_0111",
       "date": "2025-08-31",
       "customerId": "416",
       "customerName": "Prajapti Maganbhai Kalubhai",
@@ -22664,7 +22691,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0110",
+      "id": "pay_2025_08_0112",
       "date": "2025-08-31",
       "customerId": "417",
       "customerName": "Prakashpuri Khodla",
@@ -22675,7 +22702,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0111",
+      "id": "pay_2025_08_0113",
       "date": "2025-08-31",
       "customerId": "421",
       "customerName": "Ratada Haribhai Laxmanbhai",
@@ -22686,7 +22713,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0112",
+      "id": "pay_2025_08_0114",
       "date": "2025-08-31",
       "customerId": "433",
       "customerName": "Thakor Amratbhai Manabhai",
@@ -22697,7 +22724,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0113",
+      "id": "pay_2025_08_0115",
       "date": "2025-08-31",
       "customerId": "443",
       "customerName": "Thakor Bharatji Samdhi",
@@ -22708,7 +22735,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0114",
+      "id": "pay_2025_08_0116",
       "date": "2025-08-31",
       "customerId": "446",
       "customerName": "Thakor Bhoobhaji Dhooraji",
@@ -22719,7 +22746,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0115",
+      "id": "pay_2025_08_0117",
       "date": "2025-08-31",
       "customerId": "453",
       "customerName": "Thakor Dhanrajbhai Dharpada",
@@ -22730,7 +22757,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0116",
+      "id": "pay_2025_08_0118",
       "date": "2025-08-31",
       "customerId": "457",
       "customerName": "Thakor Hemchandbhai Khodla",
@@ -22741,7 +22768,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0117",
+      "id": "pay_2025_08_0119",
       "date": "2025-08-31",
       "customerId": "465",
       "customerName": "Thakor Javanbhai Motibhai",
@@ -22752,7 +22779,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0118",
+      "id": "pay_2025_08_0120",
       "date": "2025-08-31",
       "customerId": "474",
       "customerName": "Thakor Nagjibhai Hamirbhai",
@@ -22763,7 +22790,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0119",
+      "id": "pay_2025_08_0121",
       "date": "2025-08-31",
       "customerId": "483",
       "customerName": "Thakor Rangnathji Khodla",
@@ -22774,7 +22801,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0120",
+      "id": "pay_2025_08_0122",
       "date": "2025-08-31",
       "customerId": "485",
       "customerName": "Thakor Savjibhai Hamirbhai",
@@ -22785,7 +22812,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0121",
+      "id": "pay_2025_08_0123",
       "date": "2025-08-31",
       "customerId": "486",
       "customerName": "Thakor Savjibhai Ramchandbhai",
@@ -22796,7 +22823,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0122",
+      "id": "pay_2025_08_0124",
       "date": "2025-08-31",
       "customerId": "489",
       "customerName": "Thakor Shankarbhai",
@@ -22807,7 +22834,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0123",
+      "id": "pay_2025_08_0125",
       "date": "2025-08-31",
       "customerId": "491",
       "customerName": "Thakor Vinshubhai Dheerajbhai",
@@ -22818,7 +22845,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0124",
+      "id": "pay_2025_08_0126",
       "date": "2025-08-31",
       "customerId": "505",
       "customerName": "Valagot Babubhai Chelabhai",
@@ -22829,7 +22856,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0125",
+      "id": "pay_2025_08_0127",
       "date": "2025-08-31",
       "customerId": "506",
       "customerName": "Valagot Babubhai Parthibhai",
@@ -22840,7 +22867,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0126",
+      "id": "pay_2025_08_0128",
       "date": "2025-08-31",
       "customerId": "509",
       "customerName": "Valagot Ghemarbhai Manjibhai",
@@ -22851,7 +22878,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0127",
+      "id": "pay_2025_08_0129",
       "date": "2025-08-31",
       "customerId": "510",
       "customerName": "Valagot Jayntibhai Surati",
@@ -22862,7 +22889,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0128",
+      "id": "pay_2025_08_0130",
       "date": "2025-08-31",
       "customerId": "513",
       "customerName": "Valagot Kantibhai",
@@ -22873,7 +22900,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0129",
+      "id": "pay_2025_08_0131",
       "date": "2025-08-31",
       "customerId": "514",
       "customerName": "Valagot Manjibhai Fuva",
@@ -22884,7 +22911,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0130",
+      "id": "pay_2025_08_0132",
       "date": "2025-08-31",
       "customerId": "518",
       "customerName": "Ratada Lavjibhai Laxmanbhai",
@@ -22895,7 +22922,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0131",
+      "id": "pay_2025_08_0133",
       "date": "2025-08-31",
       "customerId": "531",
       "customerName": "Judal Ashokbhai Muljibhai",
@@ -22906,7 +22933,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0132",
+      "id": "pay_2025_08_0134",
       "date": "2025-08-31",
       "customerId": "533",
       "customerName": "Babji",
@@ -22917,7 +22944,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0133",
+      "id": "pay_2025_08_0135",
       "date": "2025-08-31",
       "customerId": "538",
       "customerName": "Babvji",
@@ -22928,7 +22955,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0134",
+      "id": "pay_2025_08_0136",
       "date": "2025-08-31",
       "customerId": "54",
       "customerName": "Bhutadiya Ghemarbhai Dalubhai",
@@ -22939,7 +22966,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0135",
+      "id": "pay_2025_08_0137",
       "date": "2025-08-31",
       "customerId": "540",
       "customerName": "Bavaji",
@@ -22950,7 +22977,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0136",
+      "id": "pay_2025_08_0138",
       "date": "2025-08-31",
       "customerId": "541",
       "customerName": "Bera Rashangbhai Dhojibhai",
@@ -22961,7 +22988,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0137",
+      "id": "pay_2025_08_0139",
       "date": "2025-08-31",
       "customerId": "542",
       "customerName": "Bera Dinieshbhai Savabhai",
@@ -22972,7 +22999,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0138",
+      "id": "pay_2025_08_0140",
       "date": "2025-08-31",
       "customerId": "545",
       "customerName": "Bera Laxmanbhai Megabhai",
@@ -22983,18 +23010,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0139",
-      "date": "2025-08-31",
-      "customerId": "547",
-      "customerName": "Kakvadiya Bhagvanbhai",
-      "type": "PAYMENT",
-      "amount": 1,
-      "cashPaid": 1,
-      "remainingDue": 0,
-      "notes": "Payment reconciled for 2025-08"
-    },
-    {
-      "id": "pay_2025_08_0140",
+      "id": "pay_2025_08_0141",
       "date": "2025-08-31",
       "customerId": "548",
       "customerName": "Loh Manjibhai Bhagvanbhai",
@@ -23005,7 +23021,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0141",
+      "id": "pay_2025_08_0142",
       "date": "2025-08-31",
       "customerId": "549",
       "customerName": "Darbar Bhayuji Gadh",
@@ -23016,7 +23032,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0142",
+      "id": "pay_2025_08_0143",
       "date": "2025-08-31",
       "customerId": "550",
       "customerName": "Boka Dhanrajbhai Bhemabhai",
@@ -23027,7 +23043,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0143",
+      "id": "pay_2025_08_0144",
       "date": "2025-08-31",
       "customerId": "551",
       "customerName": "Jarmol Bhikhabhai Jeevabhia",
@@ -23038,7 +23054,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0144",
+      "id": "pay_2025_08_0145",
       "date": "2025-08-31",
       "customerId": "553",
       "customerName": "Bhutadiya Ganeshbhai Jedhabhai",
@@ -23049,7 +23065,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0145",
+      "id": "pay_2025_08_0146",
       "date": "2025-08-31",
       "customerId": "554",
       "customerName": "Bhutadiya Jashungbhai Ramjibhai",
@@ -23060,7 +23076,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0146",
+      "id": "pay_2025_08_0147",
       "date": "2025-08-31",
       "customerId": "556",
       "customerName": "Boka Jyantibhai Dalubhai",
@@ -23071,7 +23087,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0147",
+      "id": "pay_2025_08_0148",
       "date": "2025-08-31",
       "customerId": "56",
       "customerName": "Bhutadiya Jagdishbhai Bhagvanbhai",
@@ -23082,7 +23098,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0148",
+      "id": "pay_2025_08_0149",
       "date": "2025-08-31",
       "customerId": "561",
       "customerName": "Judal Kantibhai Daljibhai",
@@ -23093,7 +23109,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0149",
+      "id": "pay_2025_08_0150",
       "date": "2025-08-31",
       "customerId": "569",
       "customerName": "Loh Dineshbhai Ramshugbhai",
@@ -23104,7 +23120,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0150",
+      "id": "pay_2025_08_0151",
       "date": "2025-08-31",
       "customerId": "570",
       "customerName": "Kakvadiya Sanjaybhai Dohjibhai",
@@ -23115,7 +23131,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0151",
+      "id": "pay_2025_08_0152",
       "date": "2025-08-31",
       "customerId": "575",
       "customerName": "Gudol Keshabhai Valjibhai",
@@ -23126,7 +23142,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0152",
+      "id": "pay_2025_08_0153",
       "date": "2025-08-31",
       "customerId": "576",
       "customerName": "Gujor Sonalbean",
@@ -23137,7 +23153,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0153",
+      "id": "pay_2025_08_0154",
       "date": "2025-08-31",
       "customerId": "577",
       "customerName": "Judal Jyantibhai Nathabhai Guru",
@@ -23148,7 +23164,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0154",
+      "id": "pay_2025_08_0155",
       "date": "2025-08-31",
       "customerId": "587",
       "customerName": "Judal Laxmanbhai Jeshungbhai",
@@ -23159,7 +23175,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0155",
+      "id": "pay_2025_08_0156",
       "date": "2025-08-31",
       "customerId": "588",
       "customerName": "Jeetuben Manjibhai",
@@ -23170,7 +23186,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0156",
+      "id": "pay_2025_08_0157",
       "date": "2025-08-31",
       "customerId": "591",
       "customerName": "Judal Rajanibhai Mafabhai",
@@ -23181,7 +23197,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0157",
+      "id": "pay_2025_08_0158",
       "date": "2025-08-31",
       "customerId": "597",
       "customerName": "Kakavadiya Sanjaybhai",
@@ -23192,7 +23208,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0158",
+      "id": "pay_2025_08_0159",
       "date": "2025-08-31",
       "customerId": "6",
       "customerName": "Akoliya Bhagvanbhai Valjibhai",
@@ -23203,7 +23219,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0159",
+      "id": "pay_2025_08_0160",
       "date": "2025-08-31",
       "customerId": "603",
       "customerName": "Mangabhai Khodabhai",
@@ -23214,7 +23230,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0160",
+      "id": "pay_2025_08_0161",
       "date": "2025-08-31",
       "customerId": "605",
       "customerName": "Kuva Sureshbhai Laxmanbhai",
@@ -23225,7 +23241,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0161",
+      "id": "pay_2025_08_0162",
       "date": "2025-08-31",
       "customerId": "613",
       "customerName": "Thakor Surabhai Ragjibhai",
@@ -23236,7 +23252,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0162",
+      "id": "pay_2025_08_0163",
       "date": "2025-08-31",
       "customerId": "614",
       "customerName": "Thakor Ransanji Ragjiji",
@@ -23247,7 +23263,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0163",
+      "id": "pay_2025_08_0164",
       "date": "2025-08-31",
       "customerId": "615",
       "customerName": "Thakor Ragnathiji",
@@ -23258,7 +23274,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0164",
+      "id": "pay_2025_08_0165",
       "date": "2025-08-31",
       "customerId": "619",
       "customerName": "Thaleghadh",
@@ -23269,18 +23285,18 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0165",
+      "id": "pay_2025_08_0166",
       "date": "2025-08-31",
       "customerId": "63",
       "customerName": "Bhutadiya Laljibhai Veerabhai",
       "type": "PAYMENT",
-      "amount": 349,
-      "cashPaid": 349,
+      "amount": 348,
+      "cashPaid": 348,
       "remainingDue": 0,
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0166",
+      "id": "pay_2025_08_0167",
       "date": "2025-08-31",
       "customerId": "69",
       "customerName": "Bhutatiday Babubhai Kanjibhai",
@@ -23291,7 +23307,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0167",
+      "id": "pay_2025_08_0168",
       "date": "2025-08-31",
       "customerId": "70",
       "customerName": "Boka Dhanrajbhai Bhemjibhai",
@@ -23302,7 +23318,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0168",
+      "id": "pay_2025_08_0169",
       "date": "2025-08-31",
       "customerId": "71",
       "customerName": "Boka Dipakbhai Parthibhai",
@@ -23313,7 +23329,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0169",
+      "id": "pay_2025_08_0170",
       "date": "2025-08-31",
       "customerId": "72",
       "customerName": "Boka Jayeshbhai Bhikhabhai",
@@ -23324,7 +23340,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0170",
+      "id": "pay_2025_08_0171",
       "date": "2025-08-31",
       "customerId": "73",
       "customerName": "Boka Jivrambhai Parthibhai",
@@ -23335,7 +23351,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0171",
+      "id": "pay_2025_08_0172",
       "date": "2025-08-31",
       "customerId": "75",
       "customerName": "Boka Kantibhai Dalubhai",
@@ -23346,7 +23362,7 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0172",
+      "id": "pay_2025_08_0173",
       "date": "2025-08-31",
       "customerId": "79",
       "customerName": "Boka Ramjibhai Jethabhai",
@@ -23357,24 +23373,13 @@
       "notes": "Payment reconciled for 2025-08"
     },
     {
-      "id": "pay_2025_08_0173",
+      "id": "pay_2025_08_0174",
       "date": "2025-08-31",
       "customerId": "88",
       "customerName": "Daka Dineshbhai Devabhai",
       "type": "PAYMENT",
       "amount": 11,
       "cashPaid": 11,
-      "remainingDue": 0,
-      "notes": "Payment reconciled for 2025-08"
-    },
-    {
-      "id": "pay_2025_08_0174",
-      "date": "2025-08-31",
-      "customerId": "89",
-      "customerName": "Dangi Chelabhai Heerabhai",
-      "type": "PAYMENT",
-      "amount": 1,
-      "cashPaid": 1,
       "remainingDue": 0,
       "notes": "Payment reconciled for 2025-08"
     },
@@ -47659,6 +47664,19 @@
       "cashPaid": 0,
       "remainingDue": 12362,
       "notes": "Sale from May Grass 2026 (Row 78)"
+    },
+    {
+      "id": "sale_2026_05_clearance_001",
+      "date": "2026-05-01",
+      "customerId": "620",
+      "customerName": "Inventory Clearance",
+      "type": "SALE",
+      "category": "Grass",
+      "weight": 12050,
+      "amount": 0,
+      "cashPaid": 0,
+      "remainingDue": 0,
+      "notes": "Physical stock deficit / inventory clearance for May 2026"
     },
     {
       "id": "srv_2026_05_012",
