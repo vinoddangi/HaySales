@@ -11,7 +11,6 @@ import {
 } from '../../business';
 import {
   CustomerTransactionData,
-  INITIAL_RETAINED_PROFIT,
   isExpenseTransaction,
   isPaymentTransaction,
   isPurchaseTransaction,
@@ -223,10 +222,7 @@ export function useHomePage() {
     const partnerLoan = getPartnerLoanForPeriod(currentYearMonth);
     const profitDistribution = getProfitDistributionForPeriod(currentYearMonth);
 
-    const retainedProfit =
-      INITIAL_RETAINED_PROFIT +
-      profitMetrics.cumulativeProfit -
-      profitDistribution;
+    const retainedProfit = profitMetrics.cumulativeProfit - profitDistribution;
 
     const customerReceivables = customerOutstandingMetrics.totalOutstanding;
     const closingStockValue = profitMetrics.totalClosingStock.amount;

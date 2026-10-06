@@ -125,8 +125,7 @@ export const selectPeriodOperatingExpenses = createSelector(
         tx.category !== 'Fuel' &&
         tx.category !== 'Profit Distribution' &&
         tx.category !== 'Asset Purchase' &&
-        tx.category !== 'Loan Repayment' &&
-        tx.category !== 'Discount'
+        tx.category !== 'Loan Repayment'
       ) {
         expenses += Number(tx.amount || 0);
       }

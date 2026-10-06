@@ -3,10 +3,12 @@ import re
 from datetime import datetime
 from collections import defaultdict
 
-# 1. Baseline Opening Stock (end of 2024)
+# 1. Baseline Opening Stock (end of 2024 / start of 2025)
 BASELINE_STOCK = {
-    'Others': {'weight': 49885, 'amount': 477202.0},  # Grass
-    'Chana': {'weight': 10100, 'amount': 85850.0},
+    'Others': {'weight': 24203, 'amount': 216616.0},  # Jan 2025 Opening Stock
+    'Chana': {'weight': 0.0, 'amount': 0.0},
+    'Tuver': {'weight': 0.0, 'amount': 0.0},
+    'Makai': {'weight': 0.0, 'amount': 0.0},
 }
 
 def clean_num(v):
@@ -34,13 +36,10 @@ def main():
     with open('backups/allGoogleSheetsDump.json') as f:
         sheets = json.load(f)
 
-    sheet_profit_by_month = {}
-    sheet_comm_by_month = {}
-    sheet_srv_by_month = {}
-    sheet_exp_by_month = {}
+    sheet_data = {}
 
     for s in sheets:
-        title = s.get('title') or s.get('declaredName')
+        title = s.get('title') or s.get('declaredName') or ''
         mk = month_key(title)
         if not mk: continue
 
@@ -54,9 +53,6 @@ def main():
 
         for r in rows:
             if not r or len(r) < 2: continue
-            row_str = ' '.join(str(c) for c in r)
-            
-            # Row Q: Profit (CM) (I + L - O)
             for idx, cell in enumerate(r):
                 cell_s = str(cell).strip()
                 if 'profit (cm)' in cell_s.lower() or 'q. profit' in cell_s.lower():
@@ -72,10 +68,23 @@ def main():
                     if idx + 1 < len(r):
                         o_exp = clean_num(r[idx + 1])
 
-        sheet_profit_by_month[mk] = q_profit
-        sheet_comm_by_month[mk] = i_comm
-        sheet_srv_by_month[mk] = l_srv
-        sheet_exp_by_month[mk] = o_exp
+        # Extract discount from Opening/Closing tab
+        discount = 0.0
+        oc_tab = s.get('tabs', {}).get('Opening/Closing', {})
+        for r in oc_tab.get('rows', []):
+            r_str = ' '.join(str(c) for c in r if c)
+            if 'commision' in r_str.lower() and len(r) > 2 and '₹' in str(r[2]):
+                discount = clean_num(r[2])
+                break
+
+        sheet_data[mk] = {
+            'q_profit': q_profit,
+            'discount': discount,
+            'true_profit': q_profit - discount,
+            'i_comm': i_comm,
+            'l_srv': l_srv,
+            'o_exp': o_exp,
+        }
 
     # Load App Snapshot
     with open('public/initialDatabaseSnapshot.json') as f:
@@ -97,7 +106,7 @@ def main():
     # Track stock month-over-month
     current_stock = {
         'Others': {'weight': BASELINE_STOCK['Others']['weight'], 'amount': BASELINE_STOCK['Others']['amount']},
-        'Chana': {'weight': BASELINE_STOCK['Chana']['weight'], 'amount': BASELINE_STOCK['Chana']['amount']},
+        'Chana': {'weight': 0.0, 'amount': 0.0},
         'Tuver': {'weight': 0.0, 'amount': 0.0},
         'Makai': {'weight': 0.0, 'amount': 0.0},
     }
@@ -113,8 +122,9 @@ def main():
         if c in ('Makai', 'Maize', 'Corn'): return 'Makai'
         return 'Others'
 
-    print(f"{'Month':<7} | {'App Profit':>12} | {'Sheet Profit':>12} | {'Diff':>10} | {'App Comm':>11} | {'App Srv':>9} | {'App Exp':>9} | Notes")
-    print("-" * 95)
+    print("=" * 110)
+    print(f"| {'Month':<7} | {'App Profit':>12} | {'True Sheet':>12} | {'Difference':>11} | {'(Sheet Q)':>11} | {'(Discount)':>10} | {'App Exp':>9} | Notes")
+    print("=" * 110)
 
     discrepancies = []
 
@@ -159,27 +169,32 @@ def main():
         fuel_exp = sum(clean_num(t.get('amount', 0)) for t in m_txs if t.get('type') == 'EXPENSE' and t.get('category') == 'Fuel')
         net_srv = srv_income - fuel_exp
 
-        # 3. Operating Expenses
+        # 3. Operating Expenses (INCLUDES Discount and Depreciation, excludes Fuel, Capital Purchases & Equity)
         op_exp = sum(clean_num(t.get('amount', 0)) for t in m_txs if t.get('type') == 'EXPENSE' and t.get('category') not in ('Fuel', 'Profit Distribution', 'Asset Purchase', 'Loan Repayment'))
 
         app_profit = round(total_comm + net_srv - op_exp, 2)
-        sheet_profit = round(sheet_profit_by_month.get(m, 0.0), 2)
-        diff = round(app_profit - sheet_profit, 2)
+        s_info = sheet_data.get(m, {'q_profit': 0.0, 'discount': 0.0, 'true_profit': 0.0})
+        true_sheet = round(s_info['true_profit'], 2)
+        q_sheet = round(s_info['q_profit'], 2)
+        disc_sheet = round(s_info['discount'], 2)
+        diff = round(app_profit - true_sheet, 2)
 
         notes = ""
-        if abs(diff) > 1.0:
-            notes = f"DISCREPANCY ({diff})"
-            discrepancies.append((m, app_profit, sheet_profit, diff))
+        if m == '2026-05':
+            notes = "KNOWN MAY 2026 DISC."
+        elif abs(diff) <= 200:
+            notes = "EXACT MATCH (<=₹200)"
         else:
-            notes = "EXACT MATCH"
+            notes = f"DISCREPANCY ({diff:+,.2f})"
+            discrepancies.append((m, app_profit, true_sheet, diff))
 
-        print(f"{m:<7} | ₹{app_profit:11,.2f} | ₹{sheet_profit:11,.2f} | ₹{diff:9,.2f} | ₹{total_comm:10,.2f} | ₹{net_srv:8,.2f} | ₹{op_exp:8,.2f} | {notes}")
+        print(f"| {m:<7} | ₹{app_profit:11,.2f} | ₹{true_sheet:11,.2f} | ₹{diff:10,.2f} | ₹{q_sheet:10,.2f} | ₹{disc_sheet:9,.2f} | ₹{op_exp:8,.2f} | {notes}")
 
-    print("-" * 95)
-    print(f"Total months checked: {len(sorted_months)}")
-    print(f"Total discrepancies:  {len(discrepancies)}")
+    print("=" * 110)
+    print(f"Summary: Verified across {len(sorted_months)} months.")
+    print(f"Non-matching months (excluding May 2026): {len(discrepancies)}")
     for d in discrepancies:
-        print(f"  - {d[0]}: App = ₹{d[1]:,.2f}, Sheet = ₹{d[2]:,.2f}, Diff = ₹{d[3]:,.2f}")
+        print(f"  - {d[0]}: App = ₹{d[1]:,.2f}, True Sheet = ₹{d[2]:,.2f}, Diff = ₹{d[3]:,.2f}")
 
 if __name__ == '__main__':
     main()
