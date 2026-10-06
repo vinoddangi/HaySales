@@ -32,16 +32,16 @@ export type AssetRecord = Record<string, FixedAsset>;
 export type LiabilityRecord = Record<string, Liability>;
 export type CapitalRecord = Record<string, CapitalAccount>;
 
-// ── Baseline Initial Records (Jan 2026 / 2026-01-01) ────────────────────────
+// ── Baseline Initial Records (Jan 2025 / 2025-01-01) ────────────────────────
 
 export const INITIAL_ASSETS: AssetRecord = {
   asset_pickup: {
     id: 'asset_pickup',
-    name: 'Pickup Vehicle',
+    name: 'Pickup',
     category: 'Vehicle',
-    purchaseCost: 960000,
+    purchaseCost: 329000,
     accumulatedDepreciation: 0,
-    currentBookValue: 960000,
+    currentBookValue: 329000,
   },
   asset_fence: {
     id: 'asset_fence',
@@ -55,9 +55,9 @@ export const INITIAL_ASSETS: AssetRecord = {
     id: 'asset_talpatri',
     name: 'Talpatri (Waterproof Tarpaulins)',
     category: 'Equipment',
-    purchaseCost: 60000,
+    purchaseCost: 24000,
     accumulatedDepreciation: 0,
-    currentBookValue: 60000,
+    currentBookValue: 24000,
   },
 };
 
@@ -70,10 +70,10 @@ export const INITIAL_LIABILITIES: LiabilityRecord = {
   },
   loan_partner_vinod: {
     id: 'loan_partner_vinod',
-    name: 'Partner Loan (Vinod)',
+    name: 'Partner Loan (Vinod Cap. Interest)',
     category: 'Loan',
-    amount: 750000,
-    note: 'Loan from partner',
+    amount: 800000,
+    note: 'Loan / capital interest from partner',
   },
 };
 
@@ -81,10 +81,10 @@ export const INITIAL_CAPITAL: CapitalRecord = {
   capital_vinod: {
     id: 'capital_vinod',
     partnerName: 'Vinod',
-    principalCapital: 1500000,
+    principalCapital: 1200000,
   },
 };
 
-export const INITIAL_RETAINED_PROFIT = 2085394;
+export const INITIAL_RETAINED_PROFIT = 2165402;
 export const INITIAL_CUSTOMER_RECEIVABLES = 2721599;
-export const INITIAL_CASH_BALANCE = 373626.96;
+export const INITIAL_CASH_BALANCE = 809386.15;

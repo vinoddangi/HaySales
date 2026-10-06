@@ -4,12 +4,13 @@ import {
   calculateBalanceSheet,
   CropCommissionProfitResult,
   filterTransactionsByTimeline,
+  getFixedAssetsForPeriod,
+  getPartnerCapitalForPeriod,
+  getPartnerLoanForPeriod,
+  getProfitDistributionForPeriod,
 } from '../../business';
 import {
   CustomerTransactionData,
-  INITIAL_ASSETS,
-  INITIAL_CAPITAL,
-  INITIAL_LIABILITIES,
   INITIAL_RETAINED_PROFIT,
   isExpenseTransaction,
   isPaymentTransaction,
@@ -211,17 +212,26 @@ export function useHomePage() {
 
   // 12. Balance Sheet & Cash in Hand Metrics
   const balanceSheetMetrics = useMemo(() => {
-    const partnerCapital =
-      (INITIAL_CAPITAL.capital_vinod?.principalCapital || 1500000) +
-      (INITIAL_LIABILITIES.loan_partner_vinod?.amount || 750000); // Baseline ₹2,250,000
+    const currentYearMonth =
+      filterMode === 'all'
+        ? '2026-08'
+        : filterMode === 'ytd'
+          ? `${selectedYear}-12`
+          : `${selectedYear}-${String(selectedMonth + 1).padStart(2, '0')}`;
+
+    const partnerCapital = getPartnerCapitalForPeriod(currentYearMonth);
+    const partnerLoan = getPartnerLoanForPeriod(currentYearMonth);
+    const profitDistribution = getProfitDistributionForPeriod(currentYearMonth);
 
     const retainedProfit =
-      INITIAL_RETAINED_PROFIT + profitMetrics.cumulativeProfit;
+      INITIAL_RETAINED_PROFIT +
+      profitMetrics.cumulativeProfit -
+      profitDistribution;
 
     const customerReceivables = customerOutstandingMetrics.totalOutstanding;
     const closingStockValue = profitMetrics.totalClosingStock.amount;
 
-    const fixedAssetsList = Object.values(INITIAL_ASSETS);
+    const fixedAssetsList = getFixedAssetsForPeriod(currentYearMonth);
 
     const bsResult = calculateBalanceSheet({
       partnerCapital,
@@ -229,7 +239,7 @@ export function useHomePage() {
       customerReceivables,
       closingStockValue,
       fixedAssets: fixedAssetsList,
-      loansAndLiabilities: 0,
+      loansAndLiabilities: partnerLoan,
       openingCashBalance: 0,
     });
 
@@ -244,7 +254,13 @@ export function useHomePage() {
       partnerCapital: bsResult.liabilitiesAndEquity.partnerCapital,
       retainedProfit: bsResult.liabilitiesAndEquity.retainedProfit,
     };
-  }, [profitMetrics, customerOutstandingMetrics.totalOutstanding]);
+  }, [
+    filterMode,
+    selectedYear,
+    selectedMonth,
+    profitMetrics,
+    customerOutstandingMetrics.totalOutstanding,
+  ]);
 
   // 13. Period Label
   const periodLabel = useMemo(() => {

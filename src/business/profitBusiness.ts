@@ -422,7 +422,10 @@ export function calculateExpectedProfit(
     if (
       isExpenseTransaction(tx) &&
       tx.category !== 'Fuel' &&
-      tx.category !== 'Profit Distribution'
+      tx.category !== 'Profit Distribution' &&
+      tx.category !== 'Asset Purchase' &&
+      tx.category !== 'Loan Repayment' &&
+      tx.category !== 'Discount'
     ) {
       operatingExpenses += Number(tx.amount || 0);
     }

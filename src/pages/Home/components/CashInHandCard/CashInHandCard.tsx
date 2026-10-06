@@ -174,7 +174,7 @@ export const CashInHandCard: React.FC<CashInHandCardProps> = ({
               <div className="hs-balance-subcard__rows">
                 <div className="hs-balance-subcard__row">
                   <Text variant="caption" appearance="secondary">
-                    Payables:
+                    Partner Loan / Payables:
                   </Text>
                   <Text variant="caption" weight="medium">
                     {formatRupee(totalLiabilities)}

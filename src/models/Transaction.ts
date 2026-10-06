@@ -73,6 +73,8 @@ export type ExpenseCategory =
   | 'Tools'
   | 'Discount'
   | 'Profit Distribution'
+  | 'Asset Purchase'
+  | 'Loan Repayment'
   | 'Others';
 
 export const VALID_EXPENSE_CATEGORIES: ExpenseCategory[] = [
@@ -85,6 +87,8 @@ export const VALID_EXPENSE_CATEGORIES: ExpenseCategory[] = [
   'Tools',
   'Discount',
   'Profit Distribution',
+  'Asset Purchase',
+  'Loan Repayment',
   'Others',
 ];
 
@@ -261,6 +265,18 @@ export function isProfitDistributionExpense(
   tx: unknown,
 ): tx is ExpenseTransactionData & { category: 'Profit Distribution' } {
   return isExpenseTransaction(tx) && tx.category === 'Profit Distribution';
+}
+
+export function isAssetPurchaseExpense(
+  tx: unknown,
+): tx is ExpenseTransactionData & { category: 'Asset Purchase' } {
+  return isExpenseTransaction(tx) && tx.category === 'Asset Purchase';
+}
+
+export function isLoanRepaymentExpense(
+  tx: unknown,
+): tx is ExpenseTransactionData & { category: 'Loan Repayment' } {
+  return isExpenseTransaction(tx) && tx.category === 'Loan Repayment';
 }
 
 export function isCustomerTransaction(

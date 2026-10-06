@@ -6,7 +6,13 @@ import {
   INITIAL_LIABILITIES,
   INITIAL_RETAINED_PROFIT,
 } from '../models';
-import { calculateBalanceSheet } from './balanceSheetBusiness';
+import {
+  calculateBalanceSheet,
+  getFixedAssetsForPeriod,
+  getPartnerCapitalForPeriod,
+  getPartnerLoanForPeriod,
+  getProfitDistributionForPeriod,
+} from './balanceSheetBusiness';
 
 describe('balanceSheetBusiness', () => {
   it('balances Total Assets against Total Capital & Liabilities and derives exact Cash in Hand as difference', () => {
@@ -111,16 +117,64 @@ describe('balanceSheetBusiness', () => {
       loansAndLiabilities: totalLiabilities,
     });
 
-    // Total Fixed Assets: 960000 + 64800 + 60000 = 1084800
-    expect(result.assets.totalFixedAssetsValue).toBe(1084800);
+    // Total Fixed Assets: 329000 (Pickup / Daalu) + 64800 (Fence) + 24000 (Talpatri) = 417800
+    expect(result.assets.totalFixedAssetsValue).toBe(417800);
 
-    // Total Liabilities & Capital = 1500000 + 2085394 + 750000 = 4335394
-    expect(result.liabilitiesAndEquity.totalCapitalAndEquity).toBe(4335394);
+    // Total Liabilities & Capital = 1200000 + 2165402 + 800000 = 4165402
+    expect(result.liabilitiesAndEquity.totalCapitalAndEquity).toBe(4165402);
 
-    // Non-Cash Assets = 420000 + 85000 + 1084800 = 1589800
-    // Cash Balance = 4335394 - 1589800 = 2745594
-    expect(result.assets.cashBalance).toBe(2745594);
-    expect(result.assets.totalAssets).toBe(4335394);
+    // Non-Cash Assets = 420000 + 85000 + 417800 = 922800
+    // Cash Balance = 4165402 - 922800 = 3242602
+    expect(result.assets.cashBalance).toBe(3242602);
+    expect(result.assets.totalAssets).toBe(4165402);
     expect(result.isEquilibrium).toBe(true);
+  });
+
+  describe('period-aware helpers', () => {
+    it('returns correct partner capital across periods', () => {
+      expect(getPartnerCapitalForPeriod('2025-01')).toBe(1200000);
+      expect(getPartnerCapitalForPeriod('2025-10')).toBe(1200000);
+      expect(getPartnerCapitalForPeriod('2025-11')).toBe(1500000);
+      expect(getPartnerCapitalForPeriod('2026-05')).toBe(1500000);
+    });
+
+    it('returns correct partner loan liability across periods', () => {
+      expect(getPartnerLoanForPeriod('2025-01')).toBe(800000);
+      expect(getPartnerLoanForPeriod('2025-02')).toBe(750000);
+      expect(getPartnerLoanForPeriod('2026-08')).toBe(750000);
+    });
+
+    it('returns correct profit distributions across periods', () => {
+      expect(getProfitDistributionForPeriod('2025-11')).toBe(0);
+      expect(getProfitDistributionForPeriod('2025-12')).toBe(1000000);
+      expect(getProfitDistributionForPeriod('2026-08')).toBe(1000000);
+    });
+
+    it('returns period-specific fixed assets and valuations', () => {
+      // Jan 2025: Daalu (329k) + Fence (64.8k) + Talpatri #1 (24k) = 417,800
+      const jan2025 = getFixedAssetsForPeriod('2025-01');
+      const janTotal = jan2025.reduce((sum, a) => sum + a.currentBookValue, 0);
+      expect(janTotal).toBe(417800);
+
+      // Mar 2025: Daalu (329k) + Fence (64.8k) + Talpatri #2 (30k) = 423,800
+      const mar2025 = getFixedAssetsForPeriod('2025-03');
+      const marTotal = mar2025.reduce((sum, a) => sum + a.currentBookValue, 0);
+      expect(marTotal).toBe(423800);
+
+      // May 2025: Daalu (270k) + Fence (64.8k) + Talpatri (60k) = 394,800
+      const may2025 = getFixedAssetsForPeriod('2025-05');
+      const mayTotal = may2025.reduce((sum, a) => sum + a.currentBookValue, 0);
+      expect(mayTotal).toBe(394800);
+
+      // Nov 2025: Daalu (120k) + Tractor (846.7k) + Fence (64.8k) + Talpatri (60k) = 1,091,500
+      const nov2025 = getFixedAssetsForPeriod('2025-11');
+      const novTotal = nov2025.reduce((sum, a) => sum + a.currentBookValue, 0);
+      expect(novTotal).toBe(1091500);
+
+      // Dec 2025 onwards: Daalu (120k) + Tractor (840k) + Fence (64.8k) + Talpatri (60k) = 1,084,800
+      const dec2025 = getFixedAssetsForPeriod('2025-12');
+      const decTotal = dec2025.reduce((sum, a) => sum + a.currentBookValue, 0);
+      expect(decTotal).toBe(1084800);
+    });
   });
 });

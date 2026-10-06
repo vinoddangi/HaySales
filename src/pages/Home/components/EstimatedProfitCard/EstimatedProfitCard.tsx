@@ -122,17 +122,17 @@ export const EstimatedProfitCard: React.FC<EstimatedProfitCardProps> = ({
             </div>
           </Grid.Item>
 
-          {/* 2. Pickup Net */}
+          {/* 2. Service Net */}
           <Grid.Item>
             <div className="hs-profit-pill hs-profit-pill--service">
               <Text variant="caption" uppercase weight="bold" sentiment="info">
-                Pickup Net
+                Service Net
               </Text>
               <Text variant="label-md" weight="bold" sentiment="info">
                 {formatRupee(pickupNet)}
               </Text>
               <Text variant="caption" appearance="secondary">
-                Pickup service
+                Net service
               </Text>
             </div>
           </Grid.Item>

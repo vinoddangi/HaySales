@@ -79,7 +79,7 @@ describe('Modular Dashboard Cards', () => {
     expect(html).toContain('Estimated Net Profit');
     expect(html).toContain('36.0% Margin');
     expect(html).toContain('Trading Margin');
-    expect(html).toContain('Pickup Net');
+    expect(html).toContain('Service Net');
     expect(html).toContain('Expenses');
     expect(html).toContain('hs-estimated-profit-card');
   });

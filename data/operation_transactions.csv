@@ -33,6 +33,7 @@ purchase_2025_02_20,2025-02-27,PURCHASE,Others,,7200,57600,0,57600,Purchase reco
 expense_2025_02_fuel_pickup_s197,2025-02-28,EXPENSE,Fuel,Fuel Station,,7250,7250,0,Pickup Running Expense (Daalu Diesel) from Feb Grass 2025 Sales tab
 expense_2025_02_interest_s198,2025-02-28,EXPENSE,Interest,Capital Partner,,7000,7000,0,Capital Interest from Feb Grass 2025 Sales tab
 expense_discount_2025_02,2025-02-28,EXPENSE,Discount,,,1320,1320,0,Customer Payment Discount from Feb Grass 2025 Opening/Closing sheet (C2)
+expense_2025_02_loan_repayment_vinod,2025-02-28,EXPENSE,Loan Repayment,Vinod,,50000,50000,0,Repayment of Partner Loan (Vinod) from Feb Grass 2025 Opening/Closing sheet
 purchase_2025_03_1,2025-03-02,PURCHASE,Others,,5600,44800,0,44800,Purchase recorded from March Grass 2025 (Chana)
 purchase_2025_03_2,2025-03-02,PURCHASE,Others,,6200,43400,0,43400,Purchase recorded from March Grass 2025 (Tuver)
 purchase_2025_03_3,2025-03-03,PURCHASE,Others,,4035,28200,0,28200,Purchase recorded from March Grass 2025 (Tuver)
@@ -62,6 +63,7 @@ purchase_2025_03_26,2025-03-30,PURCHASE,Others,,7300,51100,0,51100,Purchase reco
 expense_2025_03_fuel_pickup_s197,2025-03-31,EXPENSE,Fuel,Fuel Station,,16650,16650,0,Pickup Running Expense (Daalu Diesel) from March Grass 2025 Sales tab
 expense_2025_03_interest_s198,2025-03-31,EXPENSE,Interest,Capital Partner,,7000,7000,0,Capital Interest from March Grass 2025 Sales tab
 expense_2025_03_taalpatri,2025-03-31,EXPENSE,Tools,,,24000,24000,0,TaalPatri / Tarpaulin from March Grass 2025 Sales tab
+expense_2025_03_asset_talpatri,2025-03-31,EXPENSE,Asset Purchase,Supplier,,30000,30000,0,Talpatri #2 Purchase from March Grass 2025 Opening/Closing tab
 expense_discount_2025_03,2025-03-31,EXPENSE,Discount,,,4807,4807,0,Customer Payment Discount from March Grass 2025 Opening/Closing sheet (C2)
 purchase_2025_04_1,2025-04-02,PURCHASE,Others,,3150,22000,0,22000,Purchase recorded from April Grass 2025 (Tuar)
 purchase_2025_04_2,2025-04-04,PURCHASE,Others,,1145,8000,0,8000,Purchase recorded from April Grass 2025 (Chana)
@@ -87,7 +89,8 @@ purchase_2025_04_21,2025-04-29,PURCHASE,Others,,7800,54600,0,54600,Purchase reco
 purchase_2025_04_22,2025-04-30,PURCHASE,Others,,10800,75600,0,75600,Purchase recorded from April Grass 2025 (Chana)
 purchase_2025_04_23,2025-04-30,PURCHASE,Others,,10600,74200,0,74200,Purchase recorded from April Grass 2025 (Chana)
 purchase_2025_04_24,2025-04-30,PURCHASE,Others,,10000,65000,0,65000,Purchase recorded from April Grass 2025 (Chana)
-expense_2025_04_fuel_pickup_s198,2025-04-30,EXPENSE,Fuel,Fuel Station,,37100,37100,0,Pickup Running Expense (Daalu Diesel + Depreciation) from April Grass 2025 Sales tab
+expense_2025_04_fuel_pickup_s198,2025-04-30,EXPENSE,Fuel,Fuel Station,,8100,8100,0,Pickup Running Expense (Diesel) from April Grass 2025 Sales tab
+expense_2025_04_deprec_pickup,2025-04-30,EXPENSE,Depreciation,Pickup,,29000,0,0,Pickup Vehicle Depreciation from April Grass 2025 Opening/Closing tab
 expense_2025_04_interest_s199,2025-04-30,EXPENSE,Interest,Capital Partner,,7000,7000,0,Capital Interest from April Grass 2025 Sales tab
 expense_discount_2025_04,2025-04-30,EXPENSE,Discount,,,3441,3441,0,Customer Payment Discount from April Grass 2025 Opening/Closing sheet (C2)
 purchase_2025_05_1,2025-05-02,PURCHASE,Others,,6100,42700,0,42700,Purchase recorded from May Grass 2025 (Tuar)
@@ -98,12 +101,15 @@ purchase_2025_05_5,2025-05-06,PURCHASE,Others,,5600,33600,0,33600,Purchase recor
 purchase_2025_05_6,2025-05-06,PURCHASE,Others,,5700,39900,0,39900,Purchase recorded from May Grass 2025 (Tuar)
 purchase_2025_05_7,2025-05-17,PURCHASE,Others,,10200,71400,0,71400,Purchase recorded from May Grass 2025 (Chana)
 purchase_2025_05_8,2025-05-27,PURCHASE,Others,,9200,64400,0,64400,Purchase recorded from May Grass 2025 (Chana)
-expense_2025_05_fuel_pickup_s198,2025-05-31,EXPENSE,Fuel,Fuel Station,,35500,35500,0,Pickup Running Expense (Daalu Diesel + Depreciation) from May Grass 2025 Sales tab
+expense_2025_05_fuel_pickup_s198,2025-05-31,EXPENSE,Fuel,Fuel Station,,5500,5500,0,Pickup Running Expense (Diesel) from May Grass 2025 Sales tab
+expense_2025_05_deprec_pickup,2025-05-31,EXPENSE,Depreciation,Pickup,,30000,0,0,Pickup Vehicle Depreciation from May Grass 2025 Opening/Closing tab
+expense_2025_05_asset_talpatri,2025-05-31,EXPENSE,Asset Purchase,Supplier,,30000,30000,0,Additional Talpatri Purchase from May Grass 2025 Opening/Closing tab
 expense_2025_05_interest_s199,2025-05-31,EXPENSE,Interest,Capital Partner,,7000,7000,0,Capital Interest from May Grass 2025 Sales tab
 expense_2025_05_kutti_supplies,2025-05-31,EXPENSE,Others,,,1560,1560,0,Supplies / Kuta / Kutti from May Grass 2025 Sales tab
 expense_discount_2025_05,2025-05-31,EXPENSE,Discount,,,1598,1598,0,Customer Payment Discount from May Grass 2025 Opening/Closing sheet (C2)
 purchase_2025_06_1,2025-06-01,PURCHASE,Others,,1,7,0,7,Purchase recorded from Jun Grass 2025 (Chana)
-expense_2025_06_fuel_pickup_s198,2025-06-30,EXPENSE,Fuel,Fuel Station,,33000,33000,0,Pickup Running Expense (Daalu Diesel + Depreciation) from Jun Grass 2025 Sales tab
+expense_2025_06_fuel_pickup_s198,2025-06-30,EXPENSE,Fuel,Fuel Station,,3000,3000,0,Pickup Running Expense (Diesel) from Jun Grass 2025 Sales tab
+expense_2025_06_deprec_pickup,2025-06-30,EXPENSE,Depreciation,Pickup,,30000,0,0,Pickup Vehicle Depreciation from Jun Grass 2025 Opening/Closing tab
 expense_2025_06_interest_s199,2025-06-30,EXPENSE,Interest,Capital Partner,,7000,7000,0,Capital Interest from Jun Grass 2025 Sales tab
 expense_discount_2025_06,2025-06-30,EXPENSE,Discount,,,1550,1550,0,Customer Payment Discount from Jun Grass 2025 Opening/Closing sheet (C2)
 purchase_2025_07_1,2025-07-13,PURCHASE,Others,,6950,54200,0,54200,Purchase recorded from July Grass 2025 (Chana)
@@ -111,7 +117,8 @@ purchase_2025_07_2,2025-07-16,PURCHASE,Others,,6750,52600,0,52600,Purchase recor
 purchase_2025_07_3,2025-07-21,PURCHASE,Others,,7350,61000,0,61000,Purchase recorded from July Grass 2025 (Chana)
 purchase_2025_07_4,2025-07-29,PURCHASE,Others,,8450,70100,0,70100,Purchase recorded from July Grass 2025 (Chana)
 purchase_2025_07_5,2025-07-29,PURCHASE,Others,,7600,63000,0,63000,Purchase recorded from July Grass 2025 (Chana)
-expense_2025_07_fuel_pickup_s198,2025-07-31,EXPENSE,Fuel,Fuel Station,,37650,37650,0,Pickup Running Expense (Daalu Diesel + Depreciation) from July Grass 2025 Sales tab
+expense_2025_07_fuel_pickup_s198,2025-07-31,EXPENSE,Fuel,Fuel Station,,7650,7650,0,Pickup Running Expense (Diesel) from July Grass 2025 Sales tab
+expense_2025_07_deprec_pickup,2025-07-31,EXPENSE,Depreciation,Pickup,,30000,0,0,Pickup Vehicle Depreciation from July Grass 2025 Opening/Closing tab
 expense_2025_07_interest_s199,2025-07-31,EXPENSE,Interest,Capital Partner,,7000,7000,0,Capital Interest from July Grass 2025 Sales tab
 expense_discount_2025_07,2025-07-31,EXPENSE,Discount,,,181,181,0,Customer Payment Discount from July Grass 2025 Opening/Closing sheet (C2)
 purchase_2025_08_1,2025-08-01,PURCHASE,Others,,7150,59300,0,59300,Purchase recorded from Aug Grass 2025 (Chana)
@@ -120,7 +127,8 @@ purchase_2025_08_3,2025-08-02,PURCHASE,Others,,7150,59300,0,59300,Purchase recor
 purchase_2025_08_4,2025-08-06,PURCHASE,Others,,7600,63000,0,63000,Purchase recorded from Aug Grass 2025 (Chana)
 purchase_2025_08_5,2025-08-27,PURCHASE,Others,,7200,59700,0,59700,Purchase recorded from Aug Grass 2025 (Chana)
 purchase_2025_08_6,2025-08-30,PURCHASE,Others,,7150,59300,0,59300,Purchase recorded from Aug Grass 2025 (Chana)
-expense_2025_08_fuel_pickup_s198,2025-08-31,EXPENSE,Fuel,Fuel Station,,35000,35000,0,Pickup Running Expense (Daalu Diesel + Depreciation) from Aug Grass 2025 Sales tab
+expense_2025_08_fuel_pickup_s198,2025-08-31,EXPENSE,Fuel,Fuel Station,,5000,5000,0,Pickup Running Expense (Diesel) from Aug Grass 2025 Sales tab
+expense_2025_08_deprec_pickup,2025-08-31,EXPENSE,Depreciation,Pickup,,30000,0,0,Pickup Vehicle Depreciation from Aug Grass 2025 Opening/Closing tab
 expense_2025_08_interest_s199,2025-08-31,EXPENSE,Interest,Capital Partner,,7000,7000,0,Capital Interest from Aug Grass 2025 Sales tab
 expense_discount_2025_08,2025-08-31,EXPENSE,Discount,,,2000,2000,0,Customer Payment Discount from Aug Grass 2025 Opening/Closing sheet (C2)
 purchase_2025_09_1,2025-09-03,PURCHASE,Others,,4580,41300,0,41300,Purchase recorded from Sep Grass 2025 (Tuar)
@@ -139,12 +147,14 @@ purchase_2025_09_13,2025-09-21,PURCHASE,Others,,8350,77200,0,77200,Purchase reco
 purchase_2025_09_14,2025-09-28,PURCHASE,Others,,7500,69300,0,69300,Purchase recorded from Sep Grass 2025 (Chana)
 purchase_2025_09_15,2025-09-29,PURCHASE,Others,,11400,109400,0,109400,Purchase recorded from Sep Grass 2025 (Chana)
 purchase_2025_09_16,2025-09-29,PURCHASE,Others,,8900,85400,0,85400,Purchase recorded from Sep Grass 2025 (Chana)
-expense_2025_09_fuel_pickup_s198,2025-09-30,EXPENSE,Fuel,Fuel Station,,30000,30000,0,Pickup Running Expense (Daalu Diesel + Depreciation) from Sep Grass 2025 Sales tab
+expense_2025_09_fuel_pickup_s198,2025-09-30,EXPENSE,Fuel,Fuel Station,,10000,10000,0,Pickup Running Expense (Diesel) from Sep Grass 2025 Sales tab
+expense_2025_09_deprec_pickup,2025-09-30,EXPENSE,Depreciation,Pickup,,20000,0,0,Pickup Vehicle Depreciation from Sep Grass 2025 Opening/Closing tab
 expense_2025_09_interest_s199,2025-09-30,EXPENSE,Interest,Capital Partner,,7000,7000,0,Capital Interest from Sep Grass 2025 Sales tab
 expense_2025_09_fera,2025-09-30,EXPENSE,Others,,,800,800,0,Fera trip expense from Sep Grass 2025 Sales tab
 expense_discount_2025_09,2025-09-30,EXPENSE,Discount,,,4141,4141,0,Customer Payment Discount from Sep Grass 2025 Opening/Closing sheet (C2)
 purchase_2025_10_1,2025-10-16,PURCHASE,Others,,11000,101700,0,101700,Purchase recorded from Oct Grass 2025 (Chana)
-expense_2025_10_fuel_pickup_s198,2025-10-31,EXPENSE,Fuel,Fuel Station,,26000,26000,0,Pickup Running Expense (Daalu Diesel + Depreciation) from Oct Grass 2025 Sales tab
+expense_2025_10_fuel_pickup_s198,2025-10-31,EXPENSE,Fuel,Fuel Station,,6000,6000,0,Pickup Running Expense (Diesel) from Oct Grass 2025 Sales tab
+expense_2025_10_deprec_pickup,2025-10-31,EXPENSE,Depreciation,Pickup,,20000,0,0,Pickup Vehicle Depreciation from Oct Grass 2025 Opening/Closing tab
 expense_2025_10_interest_s199,2025-10-31,EXPENSE,Interest,Capital Partner,,7000,7000,0,Capital Interest from Oct Grass 2025 Sales tab
 expense_2025_10_tractor_10,2025-10-31,EXPENSE,Maintenance,,,1300,1300,0,Tractor Mhurut from Oct Grass 2025 Sales tab
 expense_discount_2025_10,2025-10-31,EXPENSE,Discount,,,1874,1874,0,Customer Payment Discount from Oct Grass 2025 Opening/Closing sheet (C2)
@@ -153,7 +163,8 @@ purchase_2025_11_2,2025-11-09,PURCHASE,Others,,11500,113900,0,113900,Purchase re
 purchase_2025_11_3,2025-11-16,PURCHASE,Others,,8500,85000,0,85000,Purchase recorded from Nov Grass 2025 (Chana)
 purchase_2025_11_4,2025-11-18,PURCHASE,Others,,11100,111000,0,111000,Purchase recorded from Nov Grass 2025 (Chana)
 purchase_2025_11_5,2025-11-23,PURCHASE,Others,,17600,167300,0,167300,Purchase recorded from Nov Grass 2025 (Gavatri)
-expense_2025_11_fuel_pickup_s198,2025-11-30,EXPENSE,Fuel,Fuel Station,,20000,20000,0,Pickup Running Expense (Daalu Diesel + Depreciation) from Nov Grass 2025 Sales tab
+expense_2025_11_deprec_pickup,2025-11-30,EXPENSE,Depreciation,Pickup,,20000,0,0,Pickup Vehicle Depreciation from Nov Grass 2025 Opening/Closing tab
+expense_2025_11_asset_tractor,2025-11-30,EXPENSE,Asset Purchase,Tractor Dealer,,846700,846700,0,Tractor Asset Purchase from Nov Grass 2025 Opening/Closing tab
 expense_2025_11_interest_s199,2025-11-30,EXPENSE,Interest,Capital Partner,,7000,7000,0,Capital Interest from Nov Grass 2025 Sales tab
 expense_2025_11_tractor_10,2025-11-30,EXPENSE,Maintenance,,,11800,11800,0,Tractor expenses from Nov Grass 2025 Sales tab
 expense_discount_2025_11,2025-11-30,EXPENSE,Discount,,,430,430,0,Customer Payment Discount from Nov Grass 2025 Opening/Closing sheet (C2)
@@ -163,11 +174,13 @@ purchase_2025_12_3,2025-12-21,PURCHASE,Others,,9400,103400,0,103400,Purchase rec
 purchase_2025_12_4,2025-12-25,PURCHASE,Others,,9600,105800,0,105800,Purchase recorded from Dec Grass 2025 (B. Kutty)
 purchase_2025_12_5,2025-12-27,PURCHASE,Others,,9500,104500,0,104500,Purchase recorded from Dec Grass 2025 (B. Kutty)
 purchase_2025_12_6,2025-12-29,PURCHASE,Others,,9500,97300,0,97300,Purchase recorded from Dec Grass 2025 (Tuver)
-expense_2025_12_fuel_pickup_s198,2025-12-31,EXPENSE,Fuel,Fuel Station,,15200,15200,0,Pickup Running Expense (Daalu Diesel + Depreciation) from Dec Grass 2025 Sales tab
+expense_2025_12_fuel_pickup_s198,2025-12-31,EXPENSE,Fuel,Fuel Station,,15200,15200,0,Pickup Running Expense (Daalu Diesel) from Dec Grass 2025 Sales tab
 expense_2025_12_interest_s199,2025-12-31,EXPENSE,Interest,Capital Partner,,7000,7000,0,Capital Interest from Dec Grass 2025 Sales tab
 expense_2025_12_gulab_petrol_tea,2025-12-31,EXPENSE,Fuel,Gulab,,18000,18000,0,Gulab Petrol and Tea settlement from Dec Grass 2025 Sales tab
 expense_2025_12_stationery,2025-12-31,EXPENSE,Others,,,700,700,0,Stationery from Dec Grass 2025 Sales tab
 expense_discount_2025_12,2025-12-31,EXPENSE,Discount,,,2800,2800,0,Customer Payment Discount from Dec Grass 2025 Opening/Closing sheet (C2)
+expense_2025_12_profit_distribution,2025-12-31,EXPENSE,Profit Distribution,Partners,,1000000,1000000,0,Profit Distribution from Dec Grass 2025 Main tab (Row 11)
+expense_2025_12_deprec_tractor,2025-12-31,EXPENSE,Depreciation,Tractor,,6700,0,0,Tractor Depreciation from Dec Grass 2025 Opening/Closing tab
 purchase_2026_01_1,2026-01-01,PURCHASE,Others,,6635,73000,0,73000,Purchase recorded from Jan Grass 2026 (B. Kutty)
 purchase_2026_01_2,2026-01-08,PURCHASE,Others,,2520,25200,0,25200,Purchase recorded from Jan Grass 2026 (Tuvar)
 purchase_2026_01_3,2026-01-13,PURCHASE,Others,,2850,28500,0,28500,Purchase recorded from Jan Grass 2026 (Tuvar)
