@@ -89,8 +89,8 @@
 
 .hs-badge--solid-warning,
 .hs-badge--solid-purchase {
-  background-color: var(--md-sys-color-warning, #d97706);
-  color: #ffffff;
+  background-color: var(--md-sys-color-warning);
+  color: var(--md-sys-color-on-warning);
 }
 
 .hs-badge--solid-negative,

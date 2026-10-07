@@ -3,6 +3,7 @@ import React from 'react';
 import { Fab } from '../../components/Fab';
 import { Flex } from '../../components/layouts/Flex';
 import { Grid } from '../../components/layouts/Grid';
+import { Text } from '../../components/Text';
 import { PageContainer } from '../../views/PageContainer';
 import {
   CashInHandCard,
@@ -43,13 +44,17 @@ export const HomePage: React.FC = () => {
       {/* 1. Header Overview & Period Indicator */}
       <Flex direction="column" gap="none" fullWidth className="hs-home-header">
         <Flex align="center" gap="xs">
-          <h2 className="hs-home-header__title">Business Overview</h2>
+          <Text as="h2" variant="title-lg" weight="bold">
+            Business Overview
+          </Text>
           <span className="hs-home-header__live-dot" />
         </Flex>
-        <p className="hs-home-header__subtitle">
+        <Text variant="body-sm" appearance="secondary">
           Performance for{' '}
-          <strong className="hs-home-header__highlight">{periodLabel}</strong>
-        </p>
+          <Text variant="body-sm" weight="bold" sentiment="positive">
+            {periodLabel}
+          </Text>
+        </Text>
       </Flex>
 
       {/* 2. Period Filter Bar */}

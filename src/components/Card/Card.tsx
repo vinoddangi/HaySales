@@ -9,8 +9,9 @@ import './Card.css';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
-  variant?: 'elevated' | 'filled' | 'outlined';
-  sentiment?: 'neutral' | 'primary' | 'positive' | 'warning' | 'negative';
+  variant?: 'elevated' | 'filled' | 'outlined' | 'tonal';
+  sentiment?:
+    'neutral' | 'primary' | 'positive' | 'warning' | 'negative' | 'info';
   corner?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
   clickable?: boolean;
   padding?: 'none' | 'sm' | 'md' | 'lg';
@@ -239,7 +240,7 @@ export const CardMetric: React.FC<CardMetricProps> = ({
 export interface CardSubCardProps {
   title: React.ReactNode;
   value?: React.ReactNode;
-  sentiment?: 'neutral' | 'positive' | 'negative' | 'warning' | 'purple';
+  sentiment?: 'neutral' | 'positive' | 'negative' | 'warning' | 'info';
   onClick?: () => void;
   children?: React.ReactNode;
   className?: string;

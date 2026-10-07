@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { Calendar } from 'lucide-react';
 import React from 'react';
 import { Flex } from '../../../../components/layouts/Flex';
+import { SegmentedButton } from '../../../../components/SegmentedButton';
 import { FilterPeriodMode } from '../../../../store/slices/timelineSlice';
 import { MONTH_NAMES } from '../../../../utils/formatters';
 import './PeriodFilterBar.css';
@@ -28,42 +29,16 @@ export const PeriodFilterBar: React.FC<PeriodFilterBarProps> = ({
   return (
     <div className={clsx('hs-period-filter-bar', className)}>
       <Flex align="center" justify="between" fullWidth gap="xs">
-        {/* Mode Toggle Buttons: Monthly / YTD / All */}
-        <div className="hs-period-filter-bar__segment">
-          <button
-            type="button"
-            className={clsx(
-              'hs-period-filter-bar__segment-btn',
-              filterMode === 'month' &&
-                'hs-period-filter-bar__segment-btn--active',
-            )}
-            onClick={() => onFilterModeChange('month')}
-          >
-            Monthly
-          </button>
-          <button
-            type="button"
-            className={clsx(
-              'hs-period-filter-bar__segment-btn',
-              filterMode === 'ytd' &&
-                'hs-period-filter-bar__segment-btn--active',
-            )}
-            onClick={() => onFilterModeChange('ytd')}
-          >
-            YTD {selectedYear}
-          </button>
-          <button
-            type="button"
-            className={clsx(
-              'hs-period-filter-bar__segment-btn',
-              filterMode === 'all' &&
-                'hs-period-filter-bar__segment-btn--active',
-            )}
-            onClick={() => onFilterModeChange('all')}
-          >
-            All
-          </button>
-        </div>
+        {/* Mode Toggle Buttons: Monthly / YTD / All using SegmentedButton */}
+        <SegmentedButton
+          value={filterMode}
+          onChange={(val) => onFilterModeChange(val as FilterPeriodMode)}
+          segments={[
+            { value: 'month', label: 'Monthly' },
+            { value: 'ytd', label: `YTD ${selectedYear}` },
+            { value: 'all', label: 'All' },
+          ]}
+        />
 
         {/* Month Dropdown Selector (Active in Monthly Mode) */}
         {filterMode === 'month' && (

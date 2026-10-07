@@ -1,7 +1,6 @@
 import { Filter, Search, Users, X } from 'lucide-react';
 import React from 'react';
-import { Text } from '../../../../components/Text';
-import { cn } from '../../../../utils/cn';
+import { SegmentedButton } from '../../../../components/SegmentedButton';
 import './LedgerFilterBar.css';
 
 export interface LedgerFilterBarProps {
@@ -45,42 +44,23 @@ export const LedgerFilterBar: React.FC<LedgerFilterBarProps> = ({
         )}
       </div>
 
-      {/* 2. Filter Tabs (Pending Dues vs All Accounts) */}
-      <div className="hs-ledger-filter-bar__tabs">
-        <button
-          type="button"
-          onClick={() => onFilterModeChange('dueOnly')}
-          className={cn(
-            'hs-ledger-filter-bar__tab-btn',
-            filterMode === 'dueOnly' && 'hs-ledger-filter-bar__tab-btn--active',
-          )}
-        >
-          <Filter className="h-3.5 w-3.5" />
-          <Text
-            variant="label-sm"
-            weight={filterMode === 'dueOnly' ? 'bold' : 'medium'}
-          >
-            Pending Dues ({customersWithDuesCount})
-          </Text>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => onFilterModeChange('all')}
-          className={cn(
-            'hs-ledger-filter-bar__tab-btn',
-            filterMode === 'all' && 'hs-ledger-filter-bar__tab-btn--active',
-          )}
-        >
-          <Users className="h-3.5 w-3.5" />
-          <Text
-            variant="label-sm"
-            weight={filterMode === 'all' ? 'bold' : 'medium'}
-          >
-            All Accounts ({totalCustomersCount})
-          </Text>
-        </button>
-      </div>
+      {/* 2. Filter Tabs using SegmentedButton */}
+      <SegmentedButton
+        value={filterMode}
+        onChange={(val) => onFilterModeChange(val as 'dueOnly' | 'all')}
+        segments={[
+          {
+            value: 'dueOnly',
+            label: `Pending Dues (${customersWithDuesCount})`,
+            icon: <Filter className="h-3.5 w-3.5" />,
+          },
+          {
+            value: 'all',
+            label: `All Accounts (${totalCustomersCount})`,
+            icon: <Users className="h-3.5 w-3.5" />,
+          },
+        ]}
+      />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { UserCheck } from 'lucide-react';
 import React from 'react';
-import { Flex } from '../../components/layouts/Flex';
+import { EmptyState } from '../../components/EmptyState';
+import { SectionHeader } from '../../components/SectionHeader';
 import { PageContainer } from '../../views/PageContainer';
 import {
   CustomerSelectorCard,
@@ -29,17 +30,10 @@ export const SalesPage: React.FC = () => {
   return (
     <PageContainer spacing="md" bottomPadding="lg" className="hs-sales-page">
       {/* 1. Page Header */}
-      <Flex
-        direction="column"
-        gap="none"
-        fullWidth
-        className="hs-sales-page__header"
-      >
-        <h2 className="hs-sales-page__title">Sales & Services</h2>
-        <p className="hs-sales-page__subtitle">
-          Register crop sales invoices and custom agricultural service charges
-        </p>
-      </Flex>
+      <SectionHeader
+        title="Sales & Services"
+        subtitle="Register crop sales invoices and custom agricultural service charges"
+      />
 
       {/* 2. Customer Selector Card */}
       <CustomerSelectorCard
@@ -75,13 +69,11 @@ export const SalesPage: React.FC = () => {
           )}
         </>
       ) : (
-        <div className="hs-sales-page__empty-state">
-          <UserCheck className="text-m3-on-surface-variant h-8 w-8 opacity-50" />
-          <p className="hs-sales-page__empty-text">
-            Please select a customer account above to record a new sale or
-            service invoice.
-          </p>
-        </div>
+        <EmptyState
+          icon={<UserCheck className="h-8 w-8" />}
+          headline="Select Customer Account"
+          body="Please select a customer account above to record a new sale or service invoice."
+        />
       )}
     </PageContainer>
   );

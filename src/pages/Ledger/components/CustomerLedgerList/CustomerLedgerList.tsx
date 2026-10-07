@@ -1,7 +1,14 @@
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Users } from 'lucide-react';
 import React from 'react';
 import { CustomerLedgerSummary } from '../../../../business/ledgerBusiness';
+import { Badge } from '../../../../components/Badge';
+import { Card } from '../../../../components/Card';
+import { EmptyState } from '../../../../components/EmptyState';
+import { Flex } from '../../../../components/layouts/Flex';
+import { ListItem } from '../../../../components/ListItem';
 import { Progress } from '../../../../components/Progress';
+import { SectionHeader } from '../../../../components/SectionHeader';
+import { Text } from '../../../../components/Text';
 import { formatRupee } from '../../../../utils/formatters';
 import './CustomerLedgerList.css';
 
@@ -19,71 +26,74 @@ export const CustomerLedgerList: React.FC<CustomerLedgerListProps> = ({
   isLoading,
 }) => {
   return (
-    <div className="hs-customer-ledger-list">
-      <div className="hs-customer-ledger-list__header">
-        <span className="hs-customer-ledger-list__title">
-          Customer Accounts
-        </span>
-        <span className="hs-customer-ledger-list__count">
-          {customers.length} Accounts
-        </span>
-      </div>
+    <Card variant="filled" className="hs-customer-ledger-list">
+      <SectionHeader
+        title="Customer Accounts"
+        subtitle={`${customers.length} Accounts`}
+      />
 
       {isLoading ? (
-        <div className="hs-customer-ledger-list__empty">
-          <Progress type="circular" indeterminate fourColor />
-        </div>
+        <Card.Content>
+          <Flex align="center" justify="center" padding="lg">
+            <Progress type="circular" indeterminate fourColor />
+          </Flex>
+        </Card.Content>
       ) : customers.length === 0 ? (
-        <div className="hs-customer-ledger-list__empty">
-          No customer accounts found.
-        </div>
+        <Card.Content>
+          <EmptyState
+            icon={<Users className="h-6 w-6" />}
+            headline="No Accounts Found"
+            body="No customer ledger accounts match your filter criteria."
+          />
+        </Card.Content>
       ) : (
-        <div className="hs-customer-ledger-list__items">
-          {customers.map((c) => {
+        <Card.Content noPadding className="hs-customer-ledger-list__items">
+          {customers.map((c, idx) => {
             const hasDue = c.currentOutstanding > 0;
             const isSelected = selectedCustomerId === c.customerId;
             return (
-              <div
+              <ListItem
                 key={c.customerId}
+                headline={c.customerName}
+                supporting={`${c.transactionCount} entries • Total Billed: ${formatRupee(c.totalBilled)}`}
+                trailing={
+                  <Flex align="center" gap="xs">
+                    <Flex direction="column" align="end" gap="none">
+                      <Text
+                        variant="label-md"
+                        weight="bold"
+                        sentiment={hasDue ? 'negative' : 'positive'}
+                      >
+                        {hasDue
+                          ? formatRupee(c.currentOutstanding)
+                          : 'All Clear'}
+                      </Text>
+                      <Badge
+                        sentiment={hasDue ? 'negative' : 'positive'}
+                        appearance="subtle"
+                        size="sm"
+                      >
+                        {hasDue ? 'Due' : 'Zero Due'}
+                      </Badge>
+                    </Flex>
+                    <ChevronRight className="text-m3-on-surface-variant h-4 w-4 shrink-0" />
+                  </Flex>
+                }
+                divider={idx < customers.length - 1}
+                clickable
                 onClick={() => onSelectCustomer(c.customerId)}
-                className={`hs-customer-ledger-list__item ${
-                  isSelected ? 'hs-customer-ledger-list__item--active' : ''
-                }`}
-                role="button"
-                tabIndex={0}
-              >
-                <div className="hs-customer-ledger-list__item-info">
-                  <span className="hs-customer-ledger-list__item-name">
-                    {c.customerName}
-                  </span>
-                  <span className="hs-customer-ledger-list__item-meta">
-                    {c.transactionCount} entries • Total Billed:{' '}
-                    {formatRupee(c.totalBilled)}
-                  </span>
-                </div>
-
-                <div className="hs-customer-ledger-list__item-right">
-                  <div className="hs-customer-ledger-list__item-due">
-                    <span
-                      className={`hs-customer-ledger-list__item-amount ${
-                        hasDue
-                          ? 'hs-customer-ledger-list__item-amount--due'
-                          : 'hs-customer-ledger-list__item-amount--clear'
-                      }`}
-                    >
-                      {hasDue ? formatRupee(c.currentOutstanding) : 'All Clear'}
-                    </span>
-                    <span className="hs-customer-ledger-list__item-label">
-                      {hasDue ? 'Due Balance' : 'Zero Due'}
-                    </span>
-                  </div>
-                  <ChevronRight className="text-m3-on-surface-variant h-4 w-4 shrink-0" />
-                </div>
-              </div>
+                className={
+                  isSelected
+                    ? 'hs-customer-ledger-list__item--active'
+                    : undefined
+                }
+              />
             );
           })}
-        </div>
+        </Card.Content>
       )}
-    </div>
+    </Card>
   );
 };
+
+export default CustomerLedgerList;

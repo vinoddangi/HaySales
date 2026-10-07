@@ -1,0 +1,46 @@
+.hs-stat-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--md-sys-spacing-large);
+  gap: var(--md-sys-spacing-medium);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.hs-stat-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 2rem;
+}
+
+.hs-stat-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background-color: color-mix(in srgb, currentColor 12%, transparent);
+  color: currentColor;
+  flex-shrink: 0;
+}
+
+.hs-stat-card__badge {
+  flex-shrink: 0;
+}
+
+.hs-stat-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.hs-stat-card__value {
+  line-height: 1.15;
+}
+
+.hs-stat-card__trend {
+  margin-top: var(--md-sys-spacing-extra-small);
+}

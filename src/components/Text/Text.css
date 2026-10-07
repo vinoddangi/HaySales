@@ -25,9 +25,9 @@
 }
 
 .text--display-sm {
-  font-size: 2.25rem;
-  font-weight: 700;
-  line-height: 2.75rem;
+  font-size: var(--md-sys-typescale-display-small-size);
+  font-weight: var(--md-sys-typescale-display-small-weight);
+  line-height: var(--md-sys-typescale-display-small-line-height);
 }
 
 /* Headline */
@@ -160,7 +160,7 @@
 }
 
 .text--sentiment-accent {
-  color: var(--md-sys-color-primary, #006c4c);
+  color: var(--md-sys-color-secondary);
 }
 
 .text--sentiment-neutral {

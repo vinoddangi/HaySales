@@ -1,6 +1,6 @@
 .hs-cash-in-hand-card {
-  border: 1px solid var(--md-sys-color-outline-variant, #c2c7ce);
-  background-color: var(--md-sys-color-surface-container, #eceef0);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  background-color: var(--md-sys-color-surface-container);
 }
 
 .hs-cash-in-hand-card__icon-wrapper {
@@ -9,9 +9,9 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border-radius: var(--md-sys-shape-corner-medium, 12px);
-  background-color: rgba(99, 102, 241, 0.12);
-  color: #4f46e5;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background-color: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-tertiary);
 }
 
 .hs-cash-in-hand-card__icon {
@@ -24,7 +24,7 @@
 }
 
 .hs-cash-in-hand-card__sub-cards {
-  margin-top: var(--md-sys-spacing-sm, 8px);
+  margin-top: var(--md-sys-spacing-small);
 }
 
 .hs-balance-subcard {
@@ -33,7 +33,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 10px;
-  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  border-radius: var(--md-sys-shape-corner-medium);
   border-width: 1px;
   border-style: solid;
   cursor: pointer;
@@ -48,40 +48,26 @@
 }
 
 .hs-balance-subcard--assets {
-  border-color: rgba(16, 185, 129, 0.2);
-  background-color: rgba(16, 185, 129, 0.08);
-}
-
-.hs-balance-subcard--assets:hover {
-  background-color: rgba(16, 185, 129, 0.12);
+  border-color: var(--md-sys-color-primary);
+  background-color: var(--md-sys-color-primary-container);
 }
 
 .hs-balance-subcard--liabilities {
-  border-color: rgba(168, 85, 247, 0.2);
-  background-color: rgba(168, 85, 247, 0.08);
-}
-
-.hs-balance-subcard--liabilities:hover {
-  background-color: rgba(168, 85, 247, 0.12);
+  border-color: var(--md-sys-color-warning);
+  background-color: var(--md-sys-color-warning-container);
 }
 
 .hs-balance-subcard__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   padding-bottom: 4px;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
 }
 
-.hs-balance-subcard__rows {
-  margin-top: 6px;
+.hs-balance-subcard__breakdown {
+  margin-top: var(--md-sys-spacing-extra-small);
   display: flex;
   flex-direction: column;
   gap: 2px;
-}
-
-.hs-balance-subcard__row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
