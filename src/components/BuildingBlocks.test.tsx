@@ -7,6 +7,7 @@ import {
   Button,
   Card,
   Chip,
+  DatePicker,
   Flex,
   Grid,
   Progress,
@@ -316,6 +317,19 @@ describe('Reusable Building Block Components (M3 Token-Bound & M3 UX Guide)', ()
       expect(html).toContain('hs-page-container');
       expect(html).toContain('hs-page-container--spacing-md');
       expect(html).toContain('hs-page-container--pb-lg');
+    });
+  });
+
+  describe('DatePicker (M3 Date Picker Specifications)', () => {
+    it('renders M3 outlined text field trigger with floating label and calendar icon', () => {
+      const html = renderToStaticMarkup(
+        <DatePicker label="Sales Date" value="2026-10-07" required />,
+      );
+      expect(html).toContain('hs-date-picker');
+      expect(html).toContain('md-outlined-text-field');
+      expect(html).toContain('label="Sales Date"');
+      expect(html).toContain('07 Oct 2026');
+      expect(html).toContain('hs-date-picker__icon');
     });
   });
 });

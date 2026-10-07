@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '../../../../components/Button';
 import { Checkbox } from '../../../../components/Checkbox';
+import { DatePicker } from '../../../../components/DatePicker';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
 import { TextField } from '../../../../components/TextField';
@@ -54,9 +55,8 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
       </span>
 
       {/* 1. Date */}
-      <TextField
+      <DatePicker
         label="Payment Date"
-        type="date"
         required
         value={date}
         onChange={(val) => setDate(val)}
@@ -143,3 +143,5 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
     </form>
   );
 };
+
+export default LedgerPaymentForm;

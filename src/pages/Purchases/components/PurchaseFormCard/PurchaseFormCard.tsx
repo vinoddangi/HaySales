@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from '../../../../components/Button';
 import { Checkbox } from '../../../../components/Checkbox';
+import { DatePicker } from '../../../../components/DatePicker';
+import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
 import { Select } from '../../../../components/Select';
+import { Text } from '../../../../components/Text';
 import { TextField } from '../../../../components/TextField';
 import { CropCategory, VALID_CROP_CATEGORIES } from '../../../../models';
 import {
@@ -28,7 +31,7 @@ export interface PurchaseFormCardProps {
 }
 
 const CROP_OPTIONS = [
-  { value: '', label: 'Select Crop Type' },
+  { value: '', label: 'Select' },
   ...VALID_CROP_CATEGORIES.map((crop) => ({ value: crop, label: crop })),
 ];
 
@@ -37,7 +40,7 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
   onSubmit,
 }) => {
   const [date, setDate] = useState(() => getTodayDateString());
-  const [category, setCategory] = useState<CropCategory>('Tuvar');
+  const [category, setCategory] = useState<CropCategory | ''>('');
   const [weight, setWeight] = useState<number>(0);
   const [amount, setAmount] = useState<number>(0);
   const [cashPaid, setCashPaid] = useState<number>(0);
@@ -53,7 +56,7 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
     if (!category || amount <= 0 || weight <= 0) return;
 
     await onSubmit({
-      category,
+      category: category as CropCategory,
       weight,
       amount,
       cashPaid: effectiveCashPaid,
@@ -63,6 +66,7 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
     });
 
     // Reset form
+    setCategory('');
     setWeight(0);
     setAmount(0);
     setCashPaid(0);
@@ -75,16 +79,19 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
 
   return (
     <form onSubmit={handleSubmit} className="hs-purchase-form-card">
-      <h3 className="hs-purchase-form-card__section-title">
-        Record Raw Crop Procurement
-      </h3>
+      <Text
+        variant="title-sm"
+        weight="bold"
+        className="hs-purchase-form-card__section-title"
+      >
+        Record Stock Purchase
+      </Text>
 
-      {/* 1. Date & Crop Type in 2-column Grid */}
-      <Grid columns={2} gap="sm" fullWidth>
+      {/* 1. Date and Crop Type */}
+      <Grid columns={2} gap="md" fullWidth>
         <Grid.Item>
-          <TextField
-            label="Date"
-            type="date"
+          <DatePicker
+            label="Purchase Date"
             required
             value={date}
             onChange={(val) => setDate(val)}
@@ -92,7 +99,7 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
         </Grid.Item>
         <Grid.Item>
           <Select
-            label="Crop"
+            label="Crop Type"
             required
             value={category}
             options={CROP_OPTIONS}
@@ -101,8 +108,8 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
         </Grid.Item>
       </Grid>
 
-      {/* 2. Weight (Kg) and Purchase Amount (₹) in 2-column Grid */}
-      <Grid columns={2} gap="sm" fullWidth>
+      {/* 2. Weight (Kg) and Purchase Amount (₹) */}
+      <Grid columns={2} gap="md" fullWidth>
         <Grid.Item>
           <TextField
             label="Weight (Kg)"
@@ -115,7 +122,7 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
         </Grid.Item>
         <Grid.Item>
           <TextField
-            label="Amount (₹)"
+            label="Purchase Amount (₹)"
             type="number"
             required
             placeholder="0"
@@ -134,24 +141,24 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
         onChange={(val) => setVendorName(val)}
       />
 
-      {/* 4. Payment Settlement */}
-      <div className="hs-purchase-form-card__payment-group">
+      {/* 4. Payment Settlement Checkbox */}
+      <Flex align="center" justify="between" fullWidth>
         <Checkbox
           label="Paid in Full (All Cash)"
           checked={paidInFull}
           onChange={(checked) => setPaidInFull(checked)}
         />
+      </Flex>
 
-        {!paidInFull && (
-          <TextField
-            label="Cash Paid (₹)"
-            type="number"
-            placeholder="0"
-            value={cashPaid ? String(cashPaid) : ''}
-            onChange={(val) => setCashPaid(Number(val) || 0)}
-          />
-        )}
-      </div>
+      {!paidInFull && (
+        <TextField
+          label="Cash Paid (₹)"
+          type="number"
+          placeholder="0"
+          value={cashPaid ? String(cashPaid) : ''}
+          onChange={(val) => setCashPaid(Number(val) || 0)}
+        />
+      )}
 
       {/* 5. Remarks / Note */}
       <TextField
@@ -165,28 +172,28 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
       {/* 6. Summary Box */}
       <div className="hs-purchase-form-card__summary">
         <div className="hs-purchase-form-card__summary-row">
-          <span className="hs-purchase-form-card__summary-label">
+          <Text variant="body-sm" appearance="secondary">
             Calculated Buying Rate:
-          </span>
-          <span className="hs-purchase-form-card__summary-value">
+          </Text>
+          <Text variant="body-sm" weight="bold">
             {avgRate > 0 ? `${formatRupee(avgRate)} / Kg` : '—'}
-          </span>
+          </Text>
         </div>
         <div className="hs-purchase-form-card__summary-row">
-          <span className="hs-purchase-form-card__summary-label">
+          <Text variant="body-sm" appearance="secondary">
             Total Purchase Cost:
-          </span>
-          <span className="hs-purchase-form-card__summary-value">
+          </Text>
+          <Text variant="body-sm" weight="bold">
             {formatRupee(amount)} ({formatWeight(weight)})
-          </span>
+          </Text>
         </div>
         <div className="hs-purchase-form-card__summary-row">
-          <span className="hs-purchase-form-card__summary-label">
+          <Text variant="body-sm" appearance="secondary">
             Cash Outflow Now:
-          </span>
-          <span className="hs-purchase-form-card__summary-value hs-purchase-form-card__summary-value--highlight">
+          </Text>
+          <Text variant="body-sm" weight="bold" sentiment="negative">
             {formatRupee(effectiveCashPaid)}
-          </span>
+          </Text>
         </div>
       </div>
 
@@ -201,3 +208,5 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
     </form>
   );
 };
+
+export default PurchaseFormCard;

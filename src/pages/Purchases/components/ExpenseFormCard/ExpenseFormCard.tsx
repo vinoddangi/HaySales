@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from '../../../../components/Button';
 import { Checkbox } from '../../../../components/Checkbox';
+import { DatePicker } from '../../../../components/DatePicker';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
 import { Select } from '../../../../components/Select';
+import { Text } from '../../../../components/Text';
 import { TextField } from '../../../../components/TextField';
 import {
   ExpenseCategory,
@@ -29,22 +31,25 @@ export interface ExpenseFormCardProps {
 }
 
 const CATEGORY_OPTIONS = [
-  { value: '', label: 'Select Expense Category' },
+  { value: '', label: 'Select' },
   ...VALID_EXPENSE_CATEGORIES.map((c) => ({ value: c, label: c })),
 ];
 
-const ASSET_OPTIONS = Object.values(INITIAL_ASSETS).map((asset) => ({
-  value: asset.id,
-  label: `${asset.name} (Value: ${formatRupee(asset.currentBookValue)})`,
-}));
+const ASSET_OPTIONS = [
+  { value: '', label: 'Select' },
+  ...Object.values(INITIAL_ASSETS).map((asset) => ({
+    value: asset.id,
+    label: `${asset.name} (Value: ${formatRupee(asset.currentBookValue)})`,
+  })),
+];
 
 export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
   isSaving,
   onSubmit,
 }) => {
   const [date, setDate] = useState(() => getTodayDateString());
-  const [category, setCategory] = useState<string>('Fuel');
-  const [targetAssetId, setTargetAssetId] = useState<string>('asset_pickup');
+  const [category, setCategory] = useState<string>('');
+  const [targetAssetId, setTargetAssetId] = useState<string>('');
   const [amount, setAmount] = useState<number>(0);
   const [cashPaid, setCashPaid] = useState<number>(0);
   const [paidInFull, setPaidInFull] = useState<boolean>(true);
@@ -56,13 +61,13 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
 
   const effectiveCashPaid = isDepreciation ? 0 : paidInFull ? amount : cashPaid;
 
-  const selectedAsset = isDepreciation
-    ? INITIAL_ASSETS[targetAssetId] || Object.values(INITIAL_ASSETS)[0]
-    : null;
+  const selectedAsset =
+    isDepreciation && targetAssetId ? INITIAL_ASSETS[targetAssetId] : null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!category || amount <= 0) return;
+    if (isDepreciation && !targetAssetId) return;
 
     await onSubmit({
       category: category as ExpenseCategory,
@@ -75,6 +80,8 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
     });
 
     // Reset form
+    setCategory('');
+    setTargetAssetId('');
     setAmount(0);
     setCashPaid(0);
     setPaidInFull(true);
@@ -82,20 +89,25 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
     setNote('');
   };
 
-  const isFormValid = Boolean(category && amount > 0);
+  const isFormValid = Boolean(
+    category && amount > 0 && (!isDepreciation || targetAssetId),
+  );
 
   return (
     <form onSubmit={handleSubmit} className="hs-expense-form-card">
-      <h3 className="hs-expense-form-card__section-title">
+      <Text
+        variant="title-sm"
+        weight="bold"
+        className="hs-expense-form-card__section-title"
+      >
         Record Operating Farm Expense
-      </h3>
+      </Text>
 
       {/* 1. Date and Expense Category */}
-      <Grid columns={2} gap="sm" fullWidth>
+      <Grid columns={2} gap="md" fullWidth>
         <Grid.Item>
-          <TextField
-            label="Date"
-            type="date"
+          <DatePicker
+            label="Expense Date"
             required
             value={date}
             onChange={(val) => setDate(val)}
@@ -103,7 +115,7 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
         </Grid.Item>
         <Grid.Item>
           <Select
-            label="Category"
+            label="Expense Category"
             required
             value={category}
             options={CATEGORY_OPTIONS}
@@ -124,12 +136,12 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
           />
           {selectedAsset && (
             <Flex justify="between" fullWidth>
-              <span className="text-m3-on-surface-variant text-xs">
+              <Text variant="body-sm" appearance="secondary">
                 Original Cost: {formatRupee(selectedAsset.purchaseCost)}
-              </span>
-              <span className="text-xs font-bold text-amber-700">
+              </Text>
+              <Text variant="body-sm" weight="bold" sentiment="warning">
                 Book Value: {formatRupee(selectedAsset.currentBookValue)}
-              </span>
+              </Text>
             </Flex>
           )}
         </div>
@@ -138,13 +150,17 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
       {/* 3. Profit Distribution Notice */}
       {isProfitDistribution && (
         <div className="hs-expense-form-card__distribution-box">
-          <span className="hs-expense-form-card__distribution-title">
+          <Text
+            variant="title-sm"
+            weight="bold"
+            className="hs-expense-form-card__distribution-title"
+          >
             Partner Profit Distribution
-          </span>
-          <span className="hs-expense-form-card__distribution-text">
+          </Text>
+          <Text variant="body-sm" appearance="secondary">
             Deducted directly from business Retained Profit and paid out in
             cash.
-          </span>
+          </Text>
         </div>
       )}
 
@@ -165,23 +181,23 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
       {/* 5. Settlement (Operational expenses only) */}
       {!isDepreciation && !isProfitDistribution && (
         <>
-          <Flex direction="column" gap="sm" fullWidth>
+          <Flex align="center" justify="between" fullWidth>
             <Checkbox
               label="Paid in Full (100% Cash Outflow)"
               checked={paidInFull}
               onChange={(checked) => setPaidInFull(checked)}
             />
-
-            {!paidInFull && (
-              <TextField
-                label="Cash Paid Now (₹)"
-                type="number"
-                placeholder="0"
-                value={cashPaid ? String(cashPaid) : ''}
-                onChange={(val) => setCashPaid(Number(val) || 0)}
-              />
-            )}
           </Flex>
+
+          {!paidInFull && (
+            <TextField
+              label="Cash Paid Now (₹)"
+              type="number"
+              placeholder="0"
+              value={cashPaid ? String(cashPaid) : ''}
+              onChange={(val) => setCashPaid(Number(val) || 0)}
+            />
+          )}
 
           <TextField
             label="Paid To / Person / Station (Optional)"
@@ -211,34 +227,34 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
       {/* 7. Summary Box */}
       <div className="hs-expense-form-card__summary">
         <div className="hs-expense-form-card__summary-row">
-          <span className="hs-expense-form-card__summary-label">
+          <Text variant="body-sm" appearance="secondary">
             Expense Category:
-          </span>
-          <span className="hs-expense-form-card__summary-value">
-            {category}
-          </span>
+          </Text>
+          <Text variant="body-sm" weight="bold">
+            {category || '—'}
+          </Text>
         </div>
         <div className="hs-expense-form-card__summary-row">
-          <span className="hs-expense-form-card__summary-label">
+          <Text variant="body-sm" appearance="secondary">
             Total Outflow:
-          </span>
-          <span className="hs-expense-form-card__summary-value">
+          </Text>
+          <Text variant="body-sm" weight="bold">
             {formatRupee(amount)}
-          </span>
+          </Text>
         </div>
         <div className="hs-expense-form-card__summary-row">
-          <span className="hs-expense-form-card__summary-label">
+          <Text variant="body-sm" appearance="secondary">
             {isDepreciation
               ? 'Asset Value Reduction:'
               : isProfitDistribution
                 ? 'Deducted From Retained Profit:'
                 : 'Cash Paid:'}
-          </span>
-          <span className="hs-expense-form-card__summary-value hs-expense-form-card__summary-value--highlight">
+          </Text>
+          <Text variant="body-sm" weight="bold" sentiment="negative">
             {isDepreciation
               ? formatRupee(amount)
               : formatRupee(effectiveCashPaid)}
-          </span>
+          </Text>
         </div>
       </div>
 
@@ -259,3 +275,5 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
     </form>
   );
 };
+
+export default ExpenseFormCard;

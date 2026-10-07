@@ -2,9 +2,11 @@ import { AlertTriangle } from 'lucide-react';
 import React, { useState } from 'react';
 import { Button } from '../../../../components/Button';
 import { Checkbox } from '../../../../components/Checkbox';
+import { DatePicker } from '../../../../components/DatePicker';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
 import { Select } from '../../../../components/Select';
+import { Text } from '../../../../components/Text';
 import { TextField } from '../../../../components/TextField';
 import { ServiceCategory, VALID_SERVICE_CATEGORIES } from '../../../../models';
 import { formatRupee, getTodayDateString } from '../../../../utils/formatters';
@@ -27,7 +29,7 @@ export interface ServiceFormCardProps {
 }
 
 const SERVICE_OPTIONS = [
-  { value: '', label: 'Select Service Type' },
+  { value: '', label: 'Select' },
   ...VALID_SERVICE_CATEGORIES.map((s) => ({ value: s, label: s })),
 ];
 
@@ -38,7 +40,7 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
   onSubmit,
 }) => {
   const [date, setDate] = useState(() => getTodayDateString());
-  const [category, setCategory] = useState<string>('Pickup');
+  const [category, setCategory] = useState<string>('');
   const [amount, setAmount] = useState<number>(0);
   const [discount, setDiscount] = useState<number>(0);
   const [cashPaid, setCashPaid] = useState<number>(0);
@@ -64,7 +66,7 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
     });
 
     // Reset form
-    setCategory('Pickup');
+    setCategory('');
     setAmount(0);
     setDiscount(0);
     setCashPaid(0);
@@ -76,16 +78,19 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
 
   return (
     <form onSubmit={handleSubmit} className="hs-service-form-card">
-      <h3 className="hs-service-form-card__section-title">
+      <Text
+        variant="title-sm"
+        weight="bold"
+        className="hs-service-form-card__section-title"
+      >
         Record Service Income
-      </h3>
+      </Text>
 
       {/* 1. Date and Service Item */}
-      <Grid columns={2} gap="sm" fullWidth>
+      <Grid columns={2} gap="md" fullWidth>
         <Grid.Item>
-          <TextField
-            label="Date"
-            type="date"
+          <DatePicker
+            label="Service Date"
             required
             value={date}
             onChange={(val) => setDate(val)}
@@ -93,7 +98,7 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
         </Grid.Item>
         <Grid.Item>
           <Select
-            label="Service"
+            label="Service Type"
             required
             value={category}
             options={SERVICE_OPTIONS}
@@ -103,7 +108,7 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
       </Grid>
 
       {/* 2. Amount and Discount */}
-      <Grid columns={2} gap="sm" fullWidth>
+      <Grid columns={2} gap="md" fullWidth>
         <Grid.Item>
           <TextField
             label="Amount (₹)"
@@ -125,26 +130,27 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
         </Grid.Item>
       </Grid>
 
-      {/* 3. Payment Settlement */}
-      <Flex direction="column" gap="sm" fullWidth>
+      {/* 3. Full Cash Payment Checkbox (Row layout matching Payment Form) */}
+      <Flex align="center" justify="between" fullWidth>
         <Checkbox
-          label="All Cash (Paid immediately)"
+          label="Full Cash Payment (All Cash)"
           checked={allCash}
           onChange={(checked) => setAllCash(checked)}
         />
-
-        {!allCash && (
-          <TextField
-            label="Cash Paid Now (₹)"
-            type="number"
-            placeholder="0"
-            value={cashPaid ? String(cashPaid) : ''}
-            onChange={(val) => setCashPaid(Number(val) || 0)}
-          />
-        )}
       </Flex>
 
-      {/* 4. Remarks / Note */}
+      {/* 4. Cash Paid (when not all cash) */}
+      {!allCash && (
+        <TextField
+          label="Cash Paid (₹)"
+          type="number"
+          placeholder="0"
+          value={cashPaid ? String(cashPaid) : ''}
+          onChange={(val) => setCashPaid(Number(val) || 0)}
+        />
+      )}
+
+      {/* 5. Remarks / Note */}
       <TextField
         label="Remarks / Note (Optional)"
         type="text"
@@ -153,54 +159,68 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
         onChange={(val) => setNote(val)}
       />
 
-      {/* 5. Summary Box */}
+      {/* 6. Summary Box */}
       <div className="hs-service-form-card__summary">
         <div className="hs-service-form-card__summary-row">
-          <span className="hs-service-form-card__summary-label">
+          <Text variant="body-sm" appearance="secondary">
             Service Fee:
-          </span>
-          <span className="hs-service-form-card__summary-value">
+          </Text>
+          <Text variant="body-sm" weight="bold">
             {formatRupee(amount)}
-          </span>
+          </Text>
         </div>
         <div className="hs-service-form-card__summary-row">
-          <span className="hs-service-form-card__summary-label">
+          <Text variant="body-sm" appearance="secondary">
             Cash Received:
-          </span>
-          <span className="hs-service-form-card__summary-value text-emerald-600">
+          </Text>
+          <Text variant="body-sm" weight="bold" sentiment="positive">
             {formatRupee(effectiveCashPaid)}
-          </span>
+          </Text>
         </div>
+        {discount > 0 && (
+          <div className="hs-service-form-card__summary-row">
+            <Text variant="body-sm" appearance="secondary">
+              Discount:
+            </Text>
+            <Text variant="body-sm" weight="bold" sentiment="warning">
+              -{formatRupee(discount)}
+            </Text>
+          </div>
+        )}
         <div className="hs-service-form-card__summary-row">
-          <span className="hs-service-form-card__summary-label">
+          <Text variant="body-sm" appearance="secondary">
             Added to Dues:
-          </span>
-          <span className="hs-service-form-card__summary-value">
+          </Text>
+          <Text variant="body-sm" weight="bold">
             {formatRupee(remainingDue)}
-          </span>
+          </Text>
         </div>
         <div className="hs-service-form-card__summary-row">
-          <span className="hs-service-form-card__summary-label">
+          <Text variant="body-sm" appearance="secondary">
             New Customer Total Due:
-          </span>
-          <span className="hs-service-form-card__summary-value hs-service-form-card__summary-value--highlight">
+          </Text>
+          <Text
+            variant="body-sm"
+            weight="bold"
+            sentiment={newOutstandingDue > 0 ? 'negative' : 'neutral'}
+          >
             {formatRupee(newOutstandingDue)}
-          </span>
+          </Text>
         </div>
       </div>
 
-      {/* 6. Credit Warning */}
+      {/* 7. Credit Warning */}
       {remainingDue > 0 && isOverCreditLimit && (
         <div className="hs-service-form-card__warning-box">
           <AlertTriangle className="h-4 w-4 shrink-0" />
-          <span>
+          <Text variant="body-sm">
             Customer balance ({formatRupee(newOutstandingDue)}) exceeds credit
             limit ({formatRupee(creditLimit)}). Credit service permitted.
-          </span>
+          </Text>
         </div>
       )}
 
-      {/* 7. Submit Button */}
+      {/* 8. Submit Button */}
       <Button
         variant="filled"
         type="submit"
@@ -211,3 +231,5 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
     </form>
   );
 };
+
+export default ServiceFormCard;

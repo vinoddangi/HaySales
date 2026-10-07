@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import * as React from 'react';
 
 declare global {
@@ -72,6 +73,8 @@ declare global {
         supportingText?: string;
         prefixText?: string;
         suffixText?: string;
+        readOnly?: boolean;
+        'read-only'?: boolean;
         rows?: number;
       };
       'md-filled-text-field': React.DetailedHTMLProps<
@@ -89,6 +92,8 @@ declare global {
         supportingText?: string;
         prefixText?: string;
         suffixText?: string;
+        readOnly?: boolean;
+        'read-only'?: boolean;
         rows?: number;
       };
       'md-switch': React.DetailedHTMLProps<

@@ -7,15 +7,24 @@ export interface UseDialogOptions {
 
 export const useDialog = ({ open, onClose }: UseDialogOptions) => {
   const ref = useRef<any>(null);
+  const onCloseRef = useRef(onClose);
+
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
     if (open) {
-      el.show?.();
+      if (!el.open) {
+        el.show?.();
+      }
     } else {
-      el.close?.();
+      if (el.open) {
+        el.close?.();
+      }
     }
   }, [open]);
 
@@ -24,14 +33,14 @@ export const useDialog = ({ open, onClose }: UseDialogOptions) => {
     if (!el) return;
 
     const handleClosed = () => {
-      onClose();
+      onCloseRef.current?.();
     };
 
     el.addEventListener('closed', handleClosed);
     return () => {
       el.removeEventListener('closed', handleClosed);
     };
-  }, [onClose]);
+  }, []);
 
   return { ref };
 };

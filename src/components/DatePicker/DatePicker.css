@@ -1,0 +1,161 @@
+/* Material Design 3 DatePicker styling */
+.hs-date-picker {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hs-date-picker__trigger {
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  outline: none;
+}
+
+.hs-date-picker__trigger--disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.hs-date-picker__field {
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  --md-outlined-text-field-container-shape: var(
+    --md-sys-shape-corner-extra-small,
+    4px
+  );
+}
+
+.hs-date-picker__field input {
+  cursor: pointer;
+}
+
+.hs-date-picker__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hs-date-picker__icon {
+  width: 20px;
+  height: 20px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Modal Dialog per M3 DatePicker specs: https://m3.material.io/components/date-pickers/specs */
+.hs-date-picker__dialog {
+  --md-dialog-container-color: var(--md-sys-color-surface-container-high);
+  --md-dialog-container-shape: var(--md-sys-shape-corner-extra-large, 28px);
+  --md-dialog-container-max-width: 360px;
+}
+
+.hs-date-picker__header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: var(--md-sys-spacing-medium);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.hs-date-picker__subhead {
+  margin-bottom: var(--md-sys-spacing-extra-small);
+}
+
+.hs-date-picker__headline {
+  line-height: 1.2;
+}
+
+.hs-date-picker__calendar {
+  padding-top: var(--md-sys-spacing-small);
+}
+
+.hs-date-picker__controls {
+  padding: 0 0 var(--md-sys-spacing-small) 0;
+}
+
+.hs-date-picker__nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--md-sys-shape-corner-full);
+  border: none;
+  background-color: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.hs-date-picker__nav-btn:hover {
+  background-color: var(--md-sys-color-surface-container-highest);
+  color: var(--md-sys-color-on-surface);
+}
+
+.hs-date-picker__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: var(--md-sys-spacing-extra-small);
+}
+
+.hs-date-picker__weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+}
+
+.hs-date-picker__calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  min-width: 280px;
+}
+
+.hs-date-picker__day-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  width: 38px;
+  margin: 0 auto;
+  border-radius: var(--md-sys-shape-corner-full);
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-font-family);
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
+  user-select: none;
+}
+
+.hs-date-picker__day-btn:hover {
+  background-color: var(--md-sys-color-surface-container-highest);
+}
+
+.hs-date-picker__day-btn--other-month {
+  color: var(--md-sys-color-outline);
+  opacity: 0.6;
+}
+
+.hs-date-picker__day-btn--today {
+  border-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-primary);
+  font-weight: 600;
+}
+
+.hs-date-picker__day-btn--selected {
+  background-color: var(--md-sys-color-primary) !important;
+  color: var(--md-sys-color-on-primary) !important;
+  border-color: transparent !important;
+  font-weight: 600;
+}
