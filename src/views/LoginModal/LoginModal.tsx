@@ -1,6 +1,12 @@
-import { ShieldCheck, X } from 'lucide-react';
 import React from 'react';
-import { Button, Flex, TextField } from '../../components';
+import {
+  Button,
+  Flex,
+  IconShieldCheck,
+  IconX,
+  Text,
+  TextField,
+} from '../../components';
 import './LoginModal.css';
 import { useLoginModal } from './useLoginModal';
 
@@ -36,7 +42,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
           className="login-modal__close-btn"
           type="button"
         >
-          <X className="h-5 w-5" />
+          <IconX size="lg" />
         </button>
 
         {/* Header */}
@@ -51,14 +57,24 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             alt="HaySales Logo"
             className="login-modal__logo-img"
           />
-          <h2 className="login-modal__title">
+          <Text
+            variant="title-lg"
+            weight="bold"
+            as="h2"
+            className="login-modal__title"
+          >
             {phoneSubmitted ? 'Enter PIN' : 'Secure Sign In'}
-          </h2>
-          <p className="login-modal__subtitle">
+          </Text>
+          <Text
+            variant="body-md"
+            appearance="secondary"
+            as="p"
+            className="login-modal__subtitle"
+          >
             {phoneSubmitted
               ? `Enter your 6-digit PIN for +91 ${phoneNumber}`
               : 'Confirm access using your phone number.'}
-          </p>
+          </Text>
         </Flex>
 
         {/* Error Message */}
@@ -77,7 +93,14 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 required
                 supportingText="10-digit Indian phone number"
                 startAdornment={
-                  <span className="login-modal__country-code">+91</span>
+                  <Text
+                    as="span"
+                    variant="body-md"
+                    weight="medium"
+                    className="login-modal__country-code"
+                  >
+                    +91
+                  </Text>
                 }
               />
 
@@ -106,7 +129,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 onChange={handlePinChange}
                 required
                 supportingText="Enter your 6-digit login PIN"
-                startAdornment={<ShieldCheck className="h-4 w-4" />}
+                startAdornment={<IconShieldCheck size="md" />}
               />
 
               <Flex

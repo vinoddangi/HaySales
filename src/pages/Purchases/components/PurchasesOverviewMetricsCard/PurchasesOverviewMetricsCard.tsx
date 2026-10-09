@@ -1,6 +1,12 @@
-import { Coins, Layers, PackagePlus, Receipt } from 'lucide-react';
 import React from 'react';
+import {
+  IconCoins,
+  IconLayers,
+  IconPackagePlus,
+  IconReceipt,
+} from '../../../../components/Icon';
 import { Grid } from '../../../../components/layouts/Grid';
+import { Text } from '../../../../components/Text';
 import { formatRupee, formatWeight } from '../../../../utils/formatters';
 import './PurchasesOverviewMetricsCard.css';
 
@@ -29,17 +35,30 @@ export const PurchasesOverviewMetricsCard: React.FC<
       <Grid.Item>
         <div className="hs-purchases-metrics-card hs-purchases-metrics-card--purchases">
           <div className="hs-purchases-metrics-card__header">
-            <span className="hs-purchases-metrics-card__title hs-purchases-metrics-card__title--purchases">
+            <Text
+              variant="label-sm"
+              weight="bold"
+              uppercase
+              className="hs-purchases-metrics-card__title hs-purchases-metrics-card__title--purchases"
+            >
               Purchases
-            </span>
-            <PackagePlus className="h-4 w-4 text-amber-600" />
+            </Text>
+            <IconPackagePlus
+              size="md"
+              className="hs-purchases-metrics-card__icon hs-purchases-metrics-card__icon--purchases"
+            />
           </div>
-          <div className="hs-purchases-metrics-card__value">
+          <Text
+            variant="title-md"
+            weight="bold"
+            as="div"
+            className="hs-purchases-metrics-card__value"
+          >
             {formatRupee(totalPurchaseAmount)}
-          </div>
-          <div className="hs-purchases-metrics-card__caption">
+          </Text>
+          <Text variant="body-sm" appearance="secondary">
             {formatWeight(totalPurchaseWeight)}
-          </div>
+          </Text>
         </div>
       </Grid.Item>
 
@@ -47,17 +66,30 @@ export const PurchasesOverviewMetricsCard: React.FC<
       <Grid.Item>
         <div className="hs-purchases-metrics-card hs-purchases-metrics-card--expenses">
           <div className="hs-purchases-metrics-card__header">
-            <span className="hs-purchases-metrics-card__title hs-purchases-metrics-card__title--expenses">
+            <Text
+              variant="label-sm"
+              weight="bold"
+              uppercase
+              className="hs-purchases-metrics-card__title hs-purchases-metrics-card__title--expenses"
+            >
               Expenses
-            </span>
-            <Receipt className="h-4 w-4 text-rose-600" />
+            </Text>
+            <IconReceipt
+              size="md"
+              className="hs-purchases-metrics-card__icon hs-purchases-metrics-card__icon--expenses"
+            />
           </div>
-          <div className="hs-purchases-metrics-card__value">
+          <Text
+            variant="title-md"
+            weight="bold"
+            as="div"
+            className="hs-purchases-metrics-card__value"
+          >
             {formatRupee(totalExpenseAmount)}
-          </div>
-          <div className="hs-purchases-metrics-card__caption">
+          </Text>
+          <Text variant="body-sm" appearance="secondary">
             Operational Outflow
-          </div>
+          </Text>
         </div>
       </Grid.Item>
 
@@ -65,17 +97,30 @@ export const PurchasesOverviewMetricsCard: React.FC<
       <Grid.Item>
         <div className="hs-purchases-metrics-card hs-purchases-metrics-card--stock">
           <div className="hs-purchases-metrics-card__header">
-            <span className="hs-purchases-metrics-card__title hs-purchases-metrics-card__title--stock">
+            <Text
+              variant="label-sm"
+              weight="bold"
+              uppercase
+              className="hs-purchases-metrics-card__title hs-purchases-metrics-card__title--stock"
+            >
               Stock In Hand
-            </span>
-            <Layers className="h-4 w-4 text-blue-600" />
+            </Text>
+            <IconLayers
+              size="md"
+              className="hs-purchases-metrics-card__icon hs-purchases-metrics-card__icon--stock"
+            />
           </div>
-          <div className="hs-purchases-metrics-card__value">
+          <Text
+            variant="title-md"
+            weight="bold"
+            as="div"
+            className="hs-purchases-metrics-card__value"
+          >
             {formatWeight(currentStock)}
-          </div>
-          <div className="hs-purchases-metrics-card__caption">
+          </Text>
+          <Text variant="body-sm" appearance="secondary">
             Sold: {formatWeight(totalSoldWeight)}
-          </div>
+          </Text>
         </div>
       </Grid.Item>
 
@@ -83,18 +128,40 @@ export const PurchasesOverviewMetricsCard: React.FC<
       <Grid.Item>
         <div className="hs-purchases-metrics-card hs-purchases-metrics-card--rate">
           <div className="hs-purchases-metrics-card__header">
-            <span className="hs-purchases-metrics-card__title hs-purchases-metrics-card__title--rate">
+            <Text
+              variant="label-sm"
+              weight="bold"
+              uppercase
+              className="hs-purchases-metrics-card__title hs-purchases-metrics-card__title--rate"
+            >
               Avg Buying Rate
-            </span>
-            <Coins className="h-4 w-4 text-emerald-600" />
+            </Text>
+            <IconCoins
+              size="md"
+              className="hs-purchases-metrics-card__icon hs-purchases-metrics-card__icon--rate"
+            />
           </div>
-          <div className="hs-purchases-metrics-card__value">
-            {formatRupee(avgBuyRate)}
-            <span className="hs-purchases-metrics-card__unit">/kg</span>
+          <div className="hs-purchases-metrics-card__value-row">
+            <Text
+              variant="title-md"
+              weight="bold"
+              as="span"
+              className="hs-purchases-metrics-card__value"
+            >
+              {formatRupee(avgBuyRate)}
+            </Text>
+            <Text
+              variant="label-md"
+              appearance="secondary"
+              as="span"
+              className="hs-purchases-metrics-card__unit"
+            >
+              /kg
+            </Text>
           </div>
-          <div className="hs-purchases-metrics-card__caption">
+          <Text variant="body-sm" appearance="secondary">
             Weighted Average Cost
-          </div>
+          </Text>
         </div>
       </Grid.Item>
     </Grid>

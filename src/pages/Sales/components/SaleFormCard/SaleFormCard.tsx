@@ -1,8 +1,8 @@
-import { AlertTriangle } from 'lucide-react';
 import React, { useState } from 'react';
 import { Button } from '../../../../components/Button';
 import { Checkbox } from '../../../../components/Checkbox';
 import { DatePicker } from '../../../../components/DatePicker';
+import { IconAlertTriangle } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
 import { Select } from '../../../../components/Select';
@@ -250,7 +250,10 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
       {/* 7. Credit Warning */}
       {remainingDue > 0 && isOverCreditLimit && (
         <div className="hs-sale-form-card__warning-box">
-          <AlertTriangle className="h-4 w-4 shrink-0" />
+          <IconAlertTriangle
+            size="sm"
+            className="hs-sale-form-card__warning-icon"
+          />
           <Text variant="body-sm">
             Customer balance ({formatRupee(newOutstandingDue)}) exceeds credit
             limit ({formatRupee(creditLimit)}). Credit sale permitted.

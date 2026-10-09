@@ -46,17 +46,6 @@
   color: var(--md-sys-color-on-surface);
 }
 
-.timeline__icon {
-  height: 0.875rem;
-  width: 0.875rem;
-}
-
-.timeline__chevron {
-  height: 0.875rem;
-  width: 0.875rem;
-  opacity: 0.8;
-}
-
 .timeline__select-overlay {
   position: absolute;
   inset: 0;

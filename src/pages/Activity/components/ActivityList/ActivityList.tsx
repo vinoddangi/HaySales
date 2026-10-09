@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { FileSearch } from 'lucide-react';
 import React from 'react';
 import { EmptyState } from '../../../../components/EmptyState';
+import { IconFileSearch } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Progress } from '../../../../components/Progress';
 import { Text } from '../../../../components/Text';
@@ -42,7 +42,7 @@ export const ActivityList: React.FC<ActivityListProps> = ({
   if (transactions.length === 0) {
     return (
       <EmptyState
-        icon={<FileSearch className="h-7 w-7" />}
+        icon={<IconFileSearch size={28} />}
         headline="No Transactions Found"
         body="No registered activity matches your active search and filter criteria."
         className={className}

@@ -61,6 +61,18 @@
   background-color: var(--md-sys-color-surface-container-highest);
 }
 
+.desktop-toolbar__palette-icon {
+  color: var(--md-sys-color-outline);
+}
+
+.desktop-toolbar__sun-icon {
+  color: var(--md-sys-color-warning, #e28704);
+}
+
+.desktop-toolbar__moon-icon {
+  color: var(--md-sys-color-tertiary);
+}
+
 .desktop-toolbar__palette {
   border-radius: var(--md-sys-shape-corner-full);
   border: 1px solid var(--md-sys-color-outline-variant);

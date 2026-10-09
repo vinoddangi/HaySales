@@ -4,6 +4,7 @@ import { Checkbox } from '../../../../components/Checkbox';
 import { DatePicker } from '../../../../components/DatePicker';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
+import { Text } from '../../../../components/Text';
 import { TextField } from '../../../../components/TextField';
 import { formatRupee, getTodayDateString } from '../../../../utils/formatters';
 import './LedgerPaymentForm.css';
@@ -23,16 +24,15 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
   isPaying,
   onPay,
 }) => {
-  const [date, setDate] = useState(() => getTodayDateString());
+  const [date, setDate] = useState(getTodayDateString());
   const [paymentAmount, setPaymentAmount] = useState<number>(0);
-  const [allDueClear, setAllDueClear] = useState<boolean>(false);
+  const [allDueClear, setAllDueClear] = useState(false);
+  const [discount, setDiscount] = useState<number>(0);
 
-  const effectivePaymentAmount =
-    allDueClear && paymentAmount === 0 ? outstandingDue : paymentAmount;
-  const discountDuringPayment =
-    allDueClear && paymentAmount > 0
-      ? Math.max(0, outstandingDue - paymentAmount)
-      : 0;
+  const effectivePaymentAmount = allDueClear
+    ? outstandingDue - discount
+    : paymentAmount;
+  const discountDuringPayment = discount;
   const totalClearedAmount = effectivePaymentAmount + discountDuringPayment;
   const newOutstandingDue = Math.max(0, outstandingDue - totalClearedAmount);
 
@@ -50,9 +50,9 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit} className="hs-ledger-payment-form">
-      <span className="hs-ledger-payment-form__title">
+      <Text variant="title-sm" weight="bold" sentiment="accent">
         Record Account Payment
-      </span>
+      </Text>
 
       {/* 1. Date */}
       <DatePicker
@@ -62,31 +62,49 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
         onChange={(val) => setDate(val)}
       />
 
-      {/* 2. All Due Clear Checkbox */}
-      <Flex align="center" justify="between" fullWidth>
+      {/* 2. Full Clear Checkbox */}
+      <Flex align="center" gap="xs">
         <Checkbox
-          label="Settle Entire Balance (All Due Clear)"
           checked={allDueClear}
-          onChange={(checked) => setAllDueClear(checked)}
+          onChange={(checked) => {
+            setAllDueClear(checked);
+            if (checked) {
+              setPaymentAmount(outstandingDue);
+            }
+          }}
         />
+        <Text variant="body-md" weight="bold">
+          Pay Full Outstanding Due ({formatRupee(outstandingDue)})
+        </Text>
       </Flex>
 
-      {/* 3. Payment Amount and Discount */}
-      <Grid columns={2} gap="md" fullWidth>
+      {/* 3. Amounts Grid */}
+      <Grid columns={2} gap="sm">
         <Grid.Item>
           <TextField
-            label="Amount Paid (₹)"
+            label="Payment Received (₹)"
             type="number"
-            required={!allDueClear}
-            placeholder="0"
-            disabled={allDueClear && paymentAmount === 0}
-            value={paymentAmount ? String(paymentAmount) : ''}
-            onChange={(val) => setPaymentAmount(Number(val) || 0)}
+            required
+            disabled={allDueClear}
+            value={effectivePaymentAmount ? String(effectivePaymentAmount) : ''}
+            onChange={(val) => setPaymentAmount(Math.max(0, Number(val) || 0))}
+            supportingText="Cash paid today"
           />
         </Grid.Item>
+
         <Grid.Item>
           <TextField
-            label="Discount Given (₹)"
+            label="Discount Waived (₹)"
+            type="number"
+            value={discount ? String(discount) : ''}
+            onChange={(val) => setDiscount(Math.max(0, Number(val) || 0))}
+            supportingText="Write-off / settlement"
+          />
+        </Grid.Item>
+
+        <Grid.Item span={2}>
+          <TextField
+            label="Total Balance Cleared (₹)"
             type="text"
             disabled
             value={formatRupee(discountDuringPayment)}
@@ -97,38 +115,38 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
       {/* 4. Summary Box */}
       <div className="hs-ledger-payment-form__summary">
         <div className="hs-ledger-payment-form__summary-row">
-          <span className="hs-ledger-payment-form__summary-label">
+          <Text variant="body-sm" appearance="secondary">
             Current Outstanding Due:
-          </span>
-          <span className="hs-ledger-payment-form__summary-value">
+          </Text>
+          <Text variant="body-sm" weight="bold">
             {formatRupee(outstandingDue)}
-          </span>
+          </Text>
         </div>
         <div className="hs-ledger-payment-form__summary-row">
-          <span className="hs-ledger-payment-form__summary-label">
+          <Text variant="body-sm" appearance="secondary">
             Payment Applied:
-          </span>
-          <span className="hs-ledger-payment-form__summary-value hs-ledger-payment-form__summary-value--highlight">
+          </Text>
+          <Text variant="body-sm" weight="bold" sentiment="positive">
             -{formatRupee(effectivePaymentAmount)}
-          </span>
+          </Text>
         </div>
         {discountDuringPayment > 0 && (
           <div className="hs-ledger-payment-form__summary-row">
-            <span className="hs-ledger-payment-form__summary-label">
+            <Text variant="body-sm" appearance="secondary">
               Discount Waived:
-            </span>
-            <span className="hs-ledger-payment-form__summary-value">
+            </Text>
+            <Text variant="body-sm" weight="bold">
               -{formatRupee(discountDuringPayment)}
-            </span>
+            </Text>
           </div>
         )}
         <div className="hs-ledger-payment-form__summary-row">
-          <span className="hs-ledger-payment-form__summary-label">
+          <Text variant="body-sm" appearance="secondary">
             New Balance Due:
-          </span>
-          <span className="hs-ledger-payment-form__summary-value">
+          </Text>
+          <Text variant="body-sm" weight="bold">
             {formatRupee(newOutstandingDue)}
-          </span>
+          </Text>
         </div>
       </div>
 
@@ -136,9 +154,12 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
       <Button
         variant="filled"
         type="submit"
-        disabled={isPaying || !isFormValid}
+        disabled={!isFormValid || isPaying}
+        fullWidth
       >
-        {isPaying ? 'Processing Payment...' : 'Process Payment'}
+        {isPaying
+          ? 'Recording Payment...'
+          : `Record Payment of ${formatRupee(effectivePaymentAmount)}`}
       </Button>
     </form>
   );

@@ -1,5 +1,6 @@
-import { X } from 'lucide-react';
 import React from 'react';
+import { IconX } from '../Icon';
+import { Text } from '../Text';
 import './BottomSheet.css';
 import { useBottomSheet } from './useBottomSheet';
 
@@ -18,18 +19,32 @@ export const BottomSheet: React.FC = () => {
       <div className="bottom-sheet" onClick={(e) => e.stopPropagation()}>
         <div className="bottom-sheet__handle" />
         <div className="bottom-sheet__header">
-          <h2 className="bottom-sheet__title">{title}</h2>
+          <Text
+            variant="title-sm"
+            weight="bold"
+            as="h2"
+            className="bottom-sheet__title"
+          >
+            {title}
+          </Text>
           <button
             onClick={handleClose}
             className="bottom-sheet__close-btn"
             type="button"
             aria-label="Close"
           >
-            <X className="h-5 w-5" />
+            <IconX size="lg" />
           </button>
         </div>
         {description && (
-          <p className="bottom-sheet__description">{description}</p>
+          <Text
+            variant="body-md"
+            appearance="secondary"
+            as="p"
+            className="bottom-sheet__description"
+          >
+            {description}
+          </Text>
         )}
       </div>
     </div>

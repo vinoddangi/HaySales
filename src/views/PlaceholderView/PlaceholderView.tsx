@@ -1,5 +1,5 @@
-import { Construction } from 'lucide-react';
 import React from 'react';
+import { IconConstruction, Text } from '../../components';
 import './PlaceholderView.css';
 
 export interface PlaceholderViewProps {
@@ -13,9 +13,23 @@ export const PlaceholderView: React.FC<PlaceholderViewProps> = ({
 }) => {
   return (
     <div className="placeholder-view">
-      <Construction className="placeholder-view__icon" />
-      <h2 className="placeholder-view__title">{title}</h2>
-      <p className="placeholder-view__subtitle">{subtitle}</p>
+      <IconConstruction size="2xl" className="placeholder-view__icon" />
+      <Text
+        variant="title-md"
+        weight="bold"
+        as="h2"
+        className="placeholder-view__title"
+      >
+        {title}
+      </Text>
+      <Text
+        variant="body-md"
+        appearance="secondary"
+        as="p"
+        className="placeholder-view__subtitle"
+      >
+        {subtitle}
+      </Text>
     </div>
   );
 };

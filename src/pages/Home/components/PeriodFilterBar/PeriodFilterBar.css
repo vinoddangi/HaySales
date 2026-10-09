@@ -12,8 +12,6 @@
 .hs-period-filter-bar__select-icon {
   position: absolute;
   left: var(--md-sys-spacing-small);
-  width: 14px;
-  height: 14px;
   color: var(--md-sys-color-primary);
   pointer-events: none;
 }

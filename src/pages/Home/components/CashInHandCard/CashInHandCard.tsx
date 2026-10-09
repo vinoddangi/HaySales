@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Landmark } from 'lucide-react';
 import React from 'react';
 import { Card } from '../../../../components/Card';
+import { IconLandmark } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
 import { Text } from '../../../../components/Text';
@@ -42,7 +42,7 @@ export const CashInHandCard: React.FC<CashInHandCardProps> = ({
         <Flex align="center" justify="between" fullWidth>
           <Flex align="center" gap="sm">
             <div className="hs-cash-in-hand-card__icon-wrapper">
-              <Landmark className="hs-cash-in-hand-card__icon" />
+              <IconLandmark size={18} />
             </div>
             <div>
               <Text

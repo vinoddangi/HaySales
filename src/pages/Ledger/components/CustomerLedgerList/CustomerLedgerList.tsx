@@ -1,9 +1,9 @@
-import { ChevronRight, Users } from 'lucide-react';
 import React from 'react';
 import { CustomerLedgerSummary } from '../../../../business/ledgerBusiness';
 import { Badge } from '../../../../components/Badge';
 import { Card } from '../../../../components/Card';
 import { EmptyState } from '../../../../components/EmptyState';
+import { IconChevronRight, IconUsers } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { ListItem } from '../../../../components/ListItem';
 import { Progress } from '../../../../components/Progress';
@@ -41,7 +41,7 @@ export const CustomerLedgerList: React.FC<CustomerLedgerListProps> = ({
       ) : customers.length === 0 ? (
         <Card.Content>
           <EmptyState
-            icon={<Users className="h-6 w-6" />}
+            icon={<IconUsers size="xl" />}
             headline="No Accounts Found"
             body="No customer ledger accounts match your filter criteria."
           />
@@ -76,7 +76,10 @@ export const CustomerLedgerList: React.FC<CustomerLedgerListProps> = ({
                         {hasDue ? 'Due' : 'Zero Due'}
                       </Badge>
                     </Flex>
-                    <ChevronRight className="text-m3-on-surface-variant h-4 w-4 shrink-0" />
+                    <IconChevronRight
+                      size="md"
+                      className="hs-customer-ledger-list__chevron"
+                    />
                   </Flex>
                 }
                 divider={idx < customers.length - 1}

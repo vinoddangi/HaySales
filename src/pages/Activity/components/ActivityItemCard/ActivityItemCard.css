@@ -55,3 +55,19 @@
   border-top: 1px dashed var(--md-sys-color-outline-variant);
   padding-top: var(--md-sys-spacing-xs, 6px);
 }
+
+.hs-activity-item-card__header-left {
+  min-width: 0;
+}
+
+.hs-activity-item-card__header-info {
+  min-width: 0;
+}
+
+.hs-activity-item-card__header-amount {
+  flex-shrink: 0;
+}
+
+.hs-activity-item-card__note {
+  max-width: 12.5rem;
+}

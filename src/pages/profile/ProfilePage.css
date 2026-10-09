@@ -20,8 +20,6 @@
 }
 
 .profile-section__icon {
-  height: 0.875rem;
-  width: 0.875rem;
   color: var(--md-sys-color-primary);
 }
 
@@ -80,6 +78,11 @@
   background-color: var(--md-sys-color-surface-container-high);
 }
 
+.profile-header__edit-icon {
+  width: 14px;
+  height: 14px;
+}
+
 .profile-header__phone {
   margin: 0.125rem 0 0 0;
   font-size: 0.75rem;
@@ -93,7 +96,11 @@
   margin-top: 0.25rem;
   width: fit-content;
   border-radius: var(--md-sys-shape-corner-extra-small);
-  background-color: rgba(0, 108, 76, 0.1);
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-primary) 10%,
+    transparent
+  );
   color: var(--md-sys-color-primary);
   padding: 0.125rem 0.5rem;
   font-size: 0.625rem;
@@ -180,6 +187,11 @@
   background-color: var(--md-sys-color-surface-container-highest);
   color: var(--md-sys-color-on-surface-variant);
   transition: all 150ms ease;
+}
+
+.theme-settings__icon {
+  width: 20px;
+  height: 20px;
 }
 
 .theme-settings__icon-box--dark {
@@ -425,6 +437,11 @@
   transition: all 150ms ease;
 }
 
+.db-settings__mode-icon {
+  width: 20px;
+  height: 20px;
+}
+
 .db-settings__mode-icon-box--local {
   background-color: var(--md-sys-color-warning-container, #fef3c7);
   color: var(--md-sys-color-warning, #d97706);
@@ -514,19 +531,19 @@
 }
 
 .db-settings__stat-value--payments {
-  color: #0284c7;
+  color: var(--md-sys-color-tertiary);
 }
 
 .db-settings__stat-value--services {
-  color: #7c3aed;
+  color: var(--md-sys-color-secondary);
 }
 
 .db-settings__stat-value--purchases {
-  color: #d97706;
+  color: var(--md-sys-color-warning, #d97706);
 }
 
 .db-settings__stat-value--expenses {
-  color: #e11d48;
+  color: var(--md-sys-color-error);
 }
 
 .db-settings__stat-label {
@@ -573,8 +590,12 @@
   padding: 0.125rem 0.5rem;
   font-size: 0.625rem;
   font-weight: 700;
-  background-color: rgba(217, 119, 6, 0.2);
-  color: #92400e;
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-warning) 20%,
+    transparent
+  );
+  color: var(--md-sys-color-warning);
 }
 
 .db-settings__pending-drawer {
@@ -612,13 +633,21 @@
 }
 
 .db-settings__pending-tag--set {
-  background-color: rgba(2, 132, 199, 0.15);
-  color: #0284c7;
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-primary) 15%,
+    transparent
+  );
+  color: var(--md-sys-color-primary);
 }
 
 .db-settings__pending-tag--delete {
-  background-color: rgba(225, 29, 72, 0.15);
-  color: #e11d48;
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-error) 15%,
+    transparent
+  );
+  color: var(--md-sys-color-error);
 }
 
 .db-settings__pending-summary {

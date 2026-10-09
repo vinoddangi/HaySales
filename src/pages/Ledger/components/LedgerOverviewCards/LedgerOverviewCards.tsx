@@ -1,5 +1,5 @@
-import { IndianRupee, Users } from 'lucide-react';
 import React from 'react';
+import { IconIndianRupee, IconUsers } from '../../../../components/Icon';
 import { Grid } from '../../../../components/layouts/Grid';
 import { StatCard } from '../../../../components/StatCard';
 import { formatRupee } from '../../../../utils/formatters';
@@ -20,7 +20,7 @@ export const LedgerOverviewCards: React.FC<LedgerOverviewCardsProps> = ({
     <Grid columns={2} gap="sm" fullWidth>
       <Grid.Item>
         <StatCard
-          icon={<IndianRupee className="h-4 w-4" />}
+          icon={<IconIndianRupee size="md" />}
           value={formatRupee(totalOutstanding)}
           label="Total Outstanding"
           sentiment="negative"
@@ -30,7 +30,7 @@ export const LedgerOverviewCards: React.FC<LedgerOverviewCardsProps> = ({
 
       <Grid.Item>
         <StatCard
-          icon={<Users className="h-4 w-4" />}
+          icon={<IconUsers size="md" />}
           value={`${customersWithDuesCount} / ${totalCustomersCount}`}
           label="Accounts Due"
           sentiment="warning"

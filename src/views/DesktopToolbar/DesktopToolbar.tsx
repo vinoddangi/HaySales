@@ -1,7 +1,15 @@
 import clsx from 'clsx';
-import { Monitor, Moon, Palette, Smartphone, Sun } from 'lucide-react';
 import React from 'react';
-import { Flex } from '../../components';
+import {
+  Badge,
+  Flex,
+  IconMonitor,
+  IconMoon,
+  IconPalette,
+  IconSmartphone,
+  IconSun,
+  Text,
+} from '../../components';
 import './DesktopToolbar.css';
 import { useDesktopToolbar } from './useDesktopToolbar';
 
@@ -35,8 +43,17 @@ export const DesktopToolbar: React.FC = () => {
           alt="HaySales Logo"
           className="desktop-toolbar__brand-logo"
         />
-        <span className="desktop-toolbar__brand-title">HaySales</span>
-        <span className="desktop-toolbar__brand-badge">M3 Mobile Shell</span>
+        <Text
+          variant="title-sm"
+          weight="bold"
+          as="span"
+          className="desktop-toolbar__brand-title"
+        >
+          HaySales
+        </Text>
+        <Badge size="sm" sentiment="neutral">
+          M3 Mobile Shell
+        </Badge>
       </Flex>
 
       <Flex
@@ -52,7 +69,7 @@ export const DesktopToolbar: React.FC = () => {
           gap="xs"
           className="desktop-toolbar__palette"
         >
-          <Palette className="h-3.5 w-3.5 text-outline" />
+          <IconPalette size="sm" className="desktop-toolbar__palette-icon" />
           {schemes.map((s) => (
             <Flex.Item
               key={s.id}
@@ -77,11 +94,13 @@ export const DesktopToolbar: React.FC = () => {
           type="button"
         >
           {mode === 'dark' ? (
-            <Sun className="h-3.5 w-3.5 text-amber-400" />
+            <IconSun size="sm" className="desktop-toolbar__sun-icon" />
           ) : (
-            <Moon className="h-3.5 w-3.5 text-blue-400" />
+            <IconMoon size="sm" className="desktop-toolbar__moon-icon" />
           )}
-          <span>{mode === 'dark' ? 'Light' : 'Dark'}</span>
+          <Text variant="label-sm" weight="medium" as="span">
+            {mode === 'dark' ? 'Light' : 'Dark'}
+          </Text>
         </Flex.Item>
 
         {/* Frame Toggle */}
@@ -92,11 +111,13 @@ export const DesktopToolbar: React.FC = () => {
           type="button"
         >
           {previewFrame ? (
-            <Monitor className="h-3.5 w-3.5" />
+            <IconMonitor size="sm" />
           ) : (
-            <Smartphone className="h-3.5 w-3.5" />
+            <IconSmartphone size="sm" />
           )}
-          <span>{previewFrame ? 'Full View' : 'Device Frame'}</span>
+          <Text variant="label-sm" weight="medium" as="span">
+            {previewFrame ? 'Full View' : 'Device Frame'}
+          </Text>
         </Flex.Item>
       </Flex>
     </Flex>

@@ -13,23 +13,51 @@
 }
 
 .hs-tx-history-item--cleared {
-  border-color: rgba(16, 185, 129, 0.4);
-  background-color: rgba(16, 185, 129, 0.06);
+  border-color: color-mix(
+    in srgb,
+    var(--md-sys-color-tertiary) 40%,
+    transparent
+  );
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-tertiary) 6%,
+    transparent
+  );
 }
 
 .hs-tx-history-item--payment {
-  border-color: rgba(16, 185, 129, 0.25);
-  background-color: rgba(16, 185, 129, 0.03);
+  border-color: color-mix(
+    in srgb,
+    var(--md-sys-color-tertiary) 25%,
+    transparent
+  );
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-tertiary) 3%,
+    transparent
+  );
 }
 
 .hs-tx-history-item--service {
-  border-color: rgba(59, 130, 246, 0.25);
-  background-color: rgba(59, 130, 246, 0.03);
+  border-color: color-mix(
+    in srgb,
+    var(--md-sys-color-secondary) 25%,
+    transparent
+  );
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-secondary) 3%,
+    transparent
+  );
 }
 
 .hs-tx-history-item--opening-due {
-  border-color: rgba(234, 88, 12, 0.35);
-  background-color: rgba(234, 88, 12, 0.04);
+  border-color: color-mix(in srgb, var(--md-sys-color-error) 35%, transparent);
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-error) 4%,
+    transparent
+  );
 }
 
 .hs-tx-history-item__left {
@@ -44,47 +72,18 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
-}
-
-.hs-tx-history-item__title {
-  font-size: var(--md-sys-typescale-body-medium-size, 14px);
-  font-weight: 700;
-  color: var(--md-sys-color-on-surface);
-}
-
-.hs-tx-history-item__subtitle {
-  font-size: var(--md-sys-typescale-body-small-size, 12px);
-  color: var(--md-sys-color-on-surface-variant);
+  gap: var(--md-sys-spacing-2, 8px);
 }
 
 .hs-tx-history-item__right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 2px;
+  gap: var(--md-sys-spacing-1, 4px);
   flex-shrink: 0;
 }
 
-.hs-tx-history-item__amount {
-  font-size: var(--md-sys-typescale-label-large-size, 14px);
-  font-weight: 800;
-}
-
-.hs-tx-history-item__amount--green {
-  color: #047857;
-}
-
-.hs-tx-history-item__amount--red {
-  color: #be123c;
-}
-
-.hs-tx-history-item__amount--blue {
-  color: #1d4ed8;
-}
-
-.hs-tx-history-item__meta {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--md-sys-color-on-surface-variant);
+/* Badge icon inside 0 DUE badge */
+.hs-tx-history-item__badge-icon {
+  margin-right: 2px;
 }

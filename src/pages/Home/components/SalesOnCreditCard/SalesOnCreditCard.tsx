@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { CreditCard } from 'lucide-react';
 import React from 'react';
 import { Badge } from '../../../../components/Badge';
 import { Card } from '../../../../components/Card';
+import { IconCreditCard } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Text } from '../../../../components/Text';
 import { formatRupee } from '../../../../utils/formatters';
@@ -31,7 +31,7 @@ export const SalesOnCreditCard: React.FC<SalesOnCreditCardProps> = ({
       <Card.Content>
         <Flex align="center" justify="between" fullWidth>
           <Flex align="center" gap="xs">
-            <CreditCard className="hs-sales-credit-card__icon" />
+            <IconCreditCard size="sm" className="hs-sales-credit-card__icon" />
             <Text
               variant="label-sm"
               uppercase

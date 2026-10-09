@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { Calendar } from 'lucide-react';
 import React from 'react';
+import { IconCalendar } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { SegmentedButton } from '../../../../components/SegmentedButton';
 import { FilterPeriodMode } from '../../../../store/slices/timelineSlice';
@@ -43,7 +43,10 @@ export const PeriodFilterBar: React.FC<PeriodFilterBarProps> = ({
         {/* Month Dropdown Selector (Active in Monthly Mode) */}
         {filterMode === 'month' && (
           <div className="hs-period-filter-bar__select-wrapper">
-            <Calendar className="hs-period-filter-bar__select-icon" />
+            <IconCalendar
+              size="sm"
+              className="hs-period-filter-bar__select-icon"
+            />
             <select
               value={selectedMonth}
               onChange={(e) => onMonthChange(Number(e.target.value))}

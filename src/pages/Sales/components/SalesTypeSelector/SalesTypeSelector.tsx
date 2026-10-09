@@ -1,5 +1,6 @@
-import { DollarSign, Wrench } from 'lucide-react';
 import React from 'react';
+import { IconDollarSign, IconWrench } from '../../../../components/Icon';
+import { Text } from '../../../../components/Text';
 import { cn } from '../../../../utils/cn';
 import './SalesTypeSelector.css';
 
@@ -23,8 +24,10 @@ export const SalesTypeSelector: React.FC<SalesTypeSelectorProps> = ({
             'hs-sales-type-selector__button--active-sale',
         )}
       >
-        <DollarSign className="h-4 w-4" />
-        <span>Crop Sales</span>
+        <IconDollarSign size="md" />
+        <Text variant="label-md" weight="bold" as="span">
+          Crop Sales
+        </Text>
       </button>
 
       <button
@@ -36,9 +39,13 @@ export const SalesTypeSelector: React.FC<SalesTypeSelectorProps> = ({
             'hs-sales-type-selector__button--active-service',
         )}
       >
-        <Wrench className="h-4 w-4" />
-        <span>Service Income</span>
+        <IconWrench size="md" />
+        <Text variant="label-md" weight="bold" as="span">
+          Service Income
+        </Text>
       </button>
     </div>
   );
 };
+
+export default SalesTypeSelector;

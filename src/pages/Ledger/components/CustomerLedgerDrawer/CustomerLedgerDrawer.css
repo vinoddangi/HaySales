@@ -111,33 +111,25 @@
 }
 
 .hs-ledger-drawer__metric-card--due {
-  background-color: var(--md-sys-color-error-container, #fee2e2);
-  border-color: var(--md-sys-color-error, #ef4444);
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-error) 8%,
+    transparent
+  );
+  border-color: color-mix(in srgb, var(--md-sys-color-error) 40%, transparent);
 }
 
 .hs-ledger-drawer__metric-card--clear {
-  background-color: #ecfdf5;
-  border-color: #10b981;
-}
-
-.hs-ledger-drawer__metric-value--red {
-  color: var(--md-sys-color-error, #b91c1c);
-}
-
-.hs-ledger-drawer__metric-value--blue {
-  color: #1d4ed8;
-}
-
-.hs-ledger-drawer__metric-value--green {
-  color: #047857;
-}
-
-.hs-ledger-drawer__metric-value--amber {
-  color: #b45309;
-}
-
-.hs-ledger-drawer__metric-value--purple {
-  color: #7e22ce;
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-tertiary) 8%,
+    transparent
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--md-sys-color-tertiary) 40%,
+    transparent
+  );
 }
 
 .hs-ledger-drawer__tabs {
@@ -174,20 +166,24 @@
 
 .hs-ledger-drawer__tab-btn:hover {
   color: var(--md-sys-color-on-surface);
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-on-surface) 4%,
+    transparent
+  );
 }
 
 .hs-ledger-drawer__tab-btn--active {
   background-color: var(--md-sys-color-surface);
   color: var(--md-sys-color-primary);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--md-sys-elevation-level1);
   font-weight: 700;
 }
 
 .hs-ledger-drawer__tab-btn--active-pay {
   background-color: var(--md-sys-color-surface);
-  color: #047857;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: var(--md-sys-color-tertiary);
+  box-shadow: var(--md-sys-elevation-level1);
   font-weight: 700;
 }
 

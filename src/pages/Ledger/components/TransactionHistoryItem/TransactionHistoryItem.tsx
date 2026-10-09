@@ -1,6 +1,7 @@
-import { CheckCircle2 } from 'lucide-react';
 import React from 'react';
 import { Badge } from '../../../../components/Badge';
+import { IconCheckCircle2 } from '../../../../components/Icon';
+import { Text } from '../../../../components/Text';
 import {
   CustomerTransactionData,
   getRate,
@@ -67,7 +68,9 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
       {/* 1. Left Details */}
       <div className="hs-tx-history-item__left">
         <div className="hs-tx-history-item__title-row">
-          <span className="hs-tx-history-item__title">{title}</span>
+          <Text variant="body-md" weight="bold" as="span">
+            {title}
+          </Text>
 
           {isOpeningDue && (
             <Badge sentiment="warning" appearance="subtle">
@@ -80,7 +83,7 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
             </Badge>
           )}
           {isService && (
-            <Badge sentiment="service" appearance="subtle">
+            <Badge sentiment="neutral" appearance="subtle">
               Service
             </Badge>
           )}
@@ -102,55 +105,85 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
 
           {isCleared && (
             <Badge sentiment="positive" appearance="solid">
-              <CheckCircle2 className="mr-0.5 h-3 w-3" />0 DUE
+              <IconCheckCircle2
+                size="xs"
+                className="hs-tx-history-item__badge-icon"
+              />
+              0 DUE
             </Badge>
           )}
         </div>
 
-        <span className="hs-tx-history-item__subtitle">{subtitle}</span>
+        <Text variant="body-sm" appearance="secondary" as="span">
+          {subtitle}
+        </Text>
       </div>
 
       {/* 2. Right Amounts */}
       <div className="hs-tx-history-item__right">
         {isOpeningDue ? (
           <>
-            <span className="hs-tx-history-item__amount hs-tx-history-item__amount--red">
+            <Text
+              variant="label-lg"
+              weight="bold"
+              sentiment="negative"
+              as="span"
+            >
               {formatRupee(tx.amount)}
-            </span>
-            <span className="hs-tx-history-item__meta">Opening Balance</span>
+            </Text>
+            <Text variant="body-sm" appearance="secondary" as="span">
+              Opening Balance
+            </Text>
           </>
         ) : isPayment ? (
           <>
-            <span className="hs-tx-history-item__amount hs-tx-history-item__amount--green">
+            <Text
+              variant="label-lg"
+              weight="bold"
+              sentiment="positive"
+              as="span"
+            >
               -{formatRupee(tx.amount)}
-            </span>
+            </Text>
             {tx.discount && tx.discount > 0 && (
-              <span className="hs-tx-history-item__meta">
+              <Text variant="body-sm" appearance="secondary" as="span">
                 Disc: {formatRupee(tx.discount)}
-              </span>
+              </Text>
             )}
           </>
         ) : isFullCashSale ? (
           <>
-            <span className="hs-tx-history-item__amount hs-tx-history-item__amount--green">
+            <Text
+              variant="label-lg"
+              weight="bold"
+              sentiment="positive"
+              as="span"
+            >
               {formatRupee(tx.amount)}
-            </span>
-            <span className="hs-tx-history-item__meta">Paid in Full</span>
+            </Text>
+            <Text variant="body-sm" appearance="secondary" as="span">
+              Paid in Full
+            </Text>
           </>
         ) : (
           <>
-            <span className="hs-tx-history-item__amount hs-tx-history-item__amount--red">
+            <Text
+              variant="label-lg"
+              weight="bold"
+              sentiment="negative"
+              as="span"
+            >
               {formatRupee(tx.amount)}
-            </span>
+            </Text>
             {tx.cashPaid > 0 && (
-              <span className="hs-tx-history-item__meta">
+              <Text variant="body-sm" appearance="secondary" as="span">
                 Cash: {formatRupee(tx.cashPaid)}
-              </span>
+              </Text>
             )}
             {tx.remainingDue > 0 && (
-              <span className="hs-tx-history-item__meta">
+              <Text variant="body-sm" appearance="secondary" as="span">
                 Due: {formatRupee(tx.remainingDue)}
-              </span>
+              </Text>
             )}
           </>
         )}

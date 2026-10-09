@@ -1,6 +1,11 @@
-import { Calendar, ChevronDown, TrendingUp } from 'lucide-react';
 import React from 'react';
-import { Flex } from '../../components';
+import {
+  Flex,
+  IconCalendar,
+  IconChevronDown,
+  IconTrendingUp,
+  Text,
+} from '../../components';
 import { cn } from '../../utils/cn';
 import './Timeline.css';
 import { SHORT_MONTH_NAMES, useTimeline } from './useTimeline';
@@ -43,11 +48,11 @@ export const Timeline: React.FC<TimelineProps> = ({ className }) => {
               !isYtd ? 'timeline__btn--active' : 'timeline__btn--inactive',
             )}
           >
-            <Calendar className="timeline__icon" />
-            <span>
+            <IconCalendar size="sm" />
+            <Text variant="label-sm" weight="bold" as="span">
               {shortMonthNames[selectedMonth]} {selectedYear}
-            </span>
-            <ChevronDown className="timeline__chevron" />
+            </Text>
+            <IconChevronDown size="sm" />
           </button>
 
           {/* Native select overlay when in month mode */}
@@ -78,8 +83,10 @@ export const Timeline: React.FC<TimelineProps> = ({ className }) => {
             isYtd ? 'timeline__btn--active' : 'timeline__btn--inactive',
           )}
         >
-          <TrendingUp className="timeline__icon" />
-          <span>YTD {selectedYear}</span>
+          <IconTrendingUp size="sm" />
+          <Text variant="label-sm" weight="bold" as="span">
+            YTD {selectedYear}
+          </Text>
         </Flex.Item>
       </Flex>
     </div>

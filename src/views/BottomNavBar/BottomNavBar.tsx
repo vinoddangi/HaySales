@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Flex } from '../../components';
+import { Flex, Text } from '../../components';
 import './BottomNavBar.css';
 import { useBottomNavBar } from './useBottomNavBar';
 
@@ -39,6 +39,7 @@ export const BottomNavBar: React.FC = () => {
                 )}
               >
                 <IconComponent
+                  size="lg"
                   className={clsx(
                     'bottom-nav-bar__icon',
                     isActive && 'bottom-nav-bar__icon--active',
@@ -46,12 +47,22 @@ export const BottomNavBar: React.FC = () => {
                 />
 
                 {item.badge && item.badge > 0 && (
-                  <span className="bottom-nav-bar__badge">{item.badge}</span>
+                  <Text
+                    as="span"
+                    variant="caption"
+                    weight="bold"
+                    className="bottom-nav-bar__badge"
+                  >
+                    {item.badge}
+                  </Text>
                 )}
               </div>
 
               {/* Label */}
-              <span
+              <Text
+                variant="label-sm"
+                weight={isActive ? 'bold' : 'medium'}
+                as="span"
                 className={clsx(
                   'bottom-nav-bar__label',
                   isActive
@@ -60,7 +71,7 @@ export const BottomNavBar: React.FC = () => {
                 )}
               >
                 {item.label}
-              </span>
+              </Text>
             </Flex.Item>
           );
         })}

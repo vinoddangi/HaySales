@@ -1,7 +1,15 @@
 import clsx from 'clsx';
-import { Moon, Palette, Sun } from 'lucide-react';
 import React from 'react';
-import { Card, Flex, Switch, Text } from '../../../components';
+import {
+  Badge,
+  Card,
+  Flex,
+  IconMoon,
+  IconPalette,
+  IconSun,
+  Switch,
+  Text,
+} from '../../../components';
 import { ColorScheme } from '../../../store/slices/themeSlice';
 
 export interface ThemeSettingsCardProps {
@@ -22,8 +30,8 @@ export const ThemeSettingsCard: React.FC<ThemeSettingsCardProps> = ({
   return (
     <div className="profile-section">
       <Flex align="center" gap="xs" className="profile-section__header">
-        <Palette className="profile-section__icon" />
-        <Text styleAs="label" appearance="secondary" uppercase>
+        <IconPalette size="sm" className="profile-section__icon" />
+        <Text variant="label-sm" appearance="secondary" uppercase>
           Theme &amp; Colors
         </Text>
       </Flex>
@@ -47,11 +55,7 @@ export const ThemeSettingsCard: React.FC<ThemeSettingsCardProps> = ({
                     : 'theme-settings__icon-box--light',
                 )}
               >
-                {isDark ? (
-                  <Moon className="h-5 w-5" />
-                ) : (
-                  <Sun className="h-5 w-5" />
-                )}
+                {isDark ? <IconMoon size="lg" /> : <IconSun size="lg" />}
               </div>
 
               <Flex.Item grow>
@@ -60,23 +64,18 @@ export const ThemeSettingsCard: React.FC<ThemeSettingsCardProps> = ({
                   gap="xs"
                   className="theme-settings__title-row"
                 >
-                  <span className="theme-settings__title">Dark Mode</span>
-                  <span
-                    className={clsx(
-                      'theme-settings__status-badge',
-                      isDark
-                        ? 'theme-settings__status-badge--dark'
-                        : 'theme-settings__status-badge--light',
-                    )}
-                  >
+                  <Text variant="title-sm" weight="bold">
+                    Dark Mode
+                  </Text>
+                  <Badge sentiment={isDark ? 'accent' : 'neutral'} size="sm">
                     {isDark ? 'ON' : 'OFF'}
-                  </span>
+                  </Badge>
                 </Flex>
-                <div className="theme-settings__subtitle">
+                <Text variant="caption" appearance="secondary" as="div">
                   {isDark
                     ? 'Dark theme active across all screens'
                     : 'Light theme active across all screens'}
-                </div>
+                </Text>
               </Flex.Item>
             </Flex>
 
@@ -85,9 +84,9 @@ export const ThemeSettingsCard: React.FC<ThemeSettingsCardProps> = ({
 
           {/* Dynamic Color Palette Grid */}
           <div className="theme-settings__palette-section">
-            <span className="theme-settings__palette-title">
+            <Text variant="title-sm" weight="bold" as="span">
               Dynamic M3 Color Palette
-            </span>
+            </Text>
             <div className="theme-settings__palette-grid">
               {colorPalettes.map((pal) => (
                 <button
@@ -103,9 +102,9 @@ export const ThemeSettingsCard: React.FC<ThemeSettingsCardProps> = ({
                     className="theme-settings__palette-circle"
                     style={{ backgroundColor: pal.hex }}
                   />
-                  <span className="theme-settings__palette-label">
+                  <Text variant="caption" weight="medium" as="span">
                     {pal.name.split(' ')[0]}
-                  </span>
+                  </Text>
                 </button>
               ))}
             </div>

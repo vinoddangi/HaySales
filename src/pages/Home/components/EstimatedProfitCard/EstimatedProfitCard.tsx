@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { ChevronRight, TrendingUp } from 'lucide-react';
 import React from 'react';
 import { Badge } from '../../../../components/Badge';
 import { Card } from '../../../../components/Card';
+import { IconChevronRight, IconTrendingUp } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
 import { Text } from '../../../../components/Text';
@@ -59,7 +59,7 @@ export const EstimatedProfitCard: React.FC<EstimatedProfitCardProps> = ({
                   : 'hs-estimated-profit-card__icon-wrapper--negative',
               )}
             >
-              <TrendingUp className="hs-estimated-profit-card__icon" />
+              <IconTrendingUp size={18} />
             </div>
             <div>
               <Flex align="center" gap="xs">
@@ -67,7 +67,10 @@ export const EstimatedProfitCard: React.FC<EstimatedProfitCardProps> = ({
                   Estimated Net Profit
                 </Text>
                 {onClick && (
-                  <ChevronRight className="hs-estimated-profit-card__chevron" />
+                  <IconChevronRight
+                    size={14}
+                    className="hs-estimated-profit-card__chevron"
+                  />
                 )}
               </Flex>
               <Text variant="body-sm" appearance="secondary">

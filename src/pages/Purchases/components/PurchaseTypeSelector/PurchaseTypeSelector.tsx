@@ -1,5 +1,6 @@
-import { ArrowDownLeft, DollarSign } from 'lucide-react';
 import React from 'react';
+import { IconArrowDownLeft, IconDollarSign } from '../../../../components/Icon';
+import { Text } from '../../../../components/Text';
 import { cn } from '../../../../utils/cn';
 import './PurchaseTypeSelector.css';
 
@@ -23,8 +24,10 @@ export const PurchaseTypeSelector: React.FC<PurchaseTypeSelectorProps> = ({
             'hs-purchase-type-selector__button--active-purchase',
         )}
       >
-        <DollarSign className="h-4 w-4" />
-        <span>Stock Purchase</span>
+        <IconDollarSign size="md" />
+        <Text variant="label-md" weight="bold" as="span">
+          Stock Purchase
+        </Text>
       </button>
 
       <button
@@ -36,9 +39,13 @@ export const PurchaseTypeSelector: React.FC<PurchaseTypeSelectorProps> = ({
             'hs-purchase-type-selector__button--active-expense',
         )}
       >
-        <ArrowDownLeft className="h-4 w-4" />
-        <span>Farm Expense</span>
+        <IconArrowDownLeft size="md" />
+        <Text variant="label-md" weight="bold" as="span">
+          Farm Expense
+        </Text>
       </button>
     </div>
   );
 };
+
+export default PurchaseTypeSelector;

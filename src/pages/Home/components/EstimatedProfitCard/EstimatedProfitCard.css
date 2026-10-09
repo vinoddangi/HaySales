@@ -27,14 +27,7 @@
   color: var(--md-sys-color-on-error-container);
 }
 
-.hs-estimated-profit-card__icon {
-  width: 18px;
-  height: 18px;
-}
-
 .hs-estimated-profit-card__chevron {
-  width: 14px;
-  height: 14px;
   color: var(--md-sys-color-on-surface-variant);
 }
 

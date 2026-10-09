@@ -26,6 +26,10 @@
   color: #b45309;
 }
 
+.hs-service-form-card__warning-icon {
+  flex-shrink: 0;
+}
+
 .hs-service-form-card__summary {
   display: flex;
   flex-direction: column;

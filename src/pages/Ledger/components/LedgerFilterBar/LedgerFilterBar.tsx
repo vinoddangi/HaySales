@@ -1,5 +1,10 @@
-import { Filter, Search, Users, X } from 'lucide-react';
 import React from 'react';
+import {
+  IconFilter,
+  IconSearch,
+  IconUsers,
+  IconX,
+} from '../../../../components/Icon';
 import { SegmentedButton } from '../../../../components/SegmentedButton';
 import './LedgerFilterBar.css';
 
@@ -24,7 +29,7 @@ export const LedgerFilterBar: React.FC<LedgerFilterBarProps> = ({
     <div className="hs-ledger-filter-bar">
       {/* 1. Search Bar */}
       <div className="hs-ledger-filter-bar__search">
-        <Search className="hs-ledger-filter-bar__search-icon" />
+        <IconSearch size="md" className="hs-ledger-filter-bar__search-icon" />
         <input
           type="text"
           placeholder="Search accounts by name or village..."
@@ -39,7 +44,7 @@ export const LedgerFilterBar: React.FC<LedgerFilterBarProps> = ({
             className="hs-ledger-filter-bar__clear-btn"
             aria-label="Clear search"
           >
-            <X className="h-4 w-4" />
+            <IconX size="md" />
           </button>
         )}
       </div>
@@ -52,12 +57,12 @@ export const LedgerFilterBar: React.FC<LedgerFilterBarProps> = ({
           {
             value: 'dueOnly',
             label: `Pending Dues (${customersWithDuesCount})`,
-            icon: <Filter className="h-3.5 w-3.5" />,
+            icon: <IconFilter size="sm" />,
           },
           {
             value: 'all',
             label: `All Accounts (${totalCustomersCount})`,
-            icon: <Users className="h-3.5 w-3.5" />,
+            icon: <IconUsers size="sm" />,
           },
         ]}
       />

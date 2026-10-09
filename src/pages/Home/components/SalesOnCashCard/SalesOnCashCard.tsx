@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { Banknote } from 'lucide-react';
 import React from 'react';
 import { Badge } from '../../../../components/Badge';
 import { Card } from '../../../../components/Card';
+import { IconBanknote } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Text } from '../../../../components/Text';
 import { formatRupee } from '../../../../utils/formatters';
@@ -31,7 +31,7 @@ export const SalesOnCashCard: React.FC<SalesOnCashCardProps> = ({
       <Card.Content>
         <Flex align="center" justify="between" fullWidth>
           <Flex align="center" gap="xs">
-            <Banknote className="hs-sales-cash-card__icon" />
+            <IconBanknote size="sm" className="hs-sales-cash-card__icon" />
             <Text
               variant="label-sm"
               uppercase

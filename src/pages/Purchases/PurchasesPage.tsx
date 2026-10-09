@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex } from '../../components/layouts/Flex';
+import { Text } from '../../components/Text';
 import { PageContainer } from '../../views/PageContainer';
 import { PeriodFilterBar } from '../Home/components/PeriodFilterBar';
 import {
@@ -44,10 +45,12 @@ export const PurchasesPage: React.FC = () => {
         fullWidth
         className="hs-purchases-page__header"
       >
-        <h2 className="hs-purchases-page__title">Purchases & Expenses</h2>
-        <p className="hs-purchases-page__subtitle">
+        <Text as="h2" variant="headline-sm" weight="bold">
+          Purchases &amp; Expenses
+        </Text>
+        <Text variant="body-md" appearance="secondary">
           Record raw crop procurement and operational farm costs
-        </p>
+        </Text>
       </Flex>
 
       {/* 2. Period Filter Bar */}

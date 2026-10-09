@@ -1,7 +1,7 @@
-import { X } from 'lucide-react';
 import React from 'react';
 import { Badge } from '../../../../components/Badge';
 import { Button } from '../../../../components/Button';
+import { IconX } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Text } from '../../../../components/Text';
 import {
@@ -134,9 +134,9 @@ export const ActivityDetailDrawer: React.FC<ActivityDetailDrawerProps> = ({
               type="button"
               aria-label="Close details"
               onClick={onClose}
-              className="text-m3-on-surface-variant hover:text-m3-on-surface p-1"
+              className="hs-activity-drawer__close-btn"
             >
-              <X className="h-5 w-5" />
+              <IconX size="md" />
             </button>
           </Flex>
 

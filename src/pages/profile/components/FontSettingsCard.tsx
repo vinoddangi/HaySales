@@ -1,7 +1,6 @@
 import clsx from 'clsx';
-import { Type } from 'lucide-react';
 import React from 'react';
-import { Card, Flex, Text } from '../../../components';
+import { Badge, Card, Flex, IconType, Text } from '../../../components';
 import { FontSize } from '../../../store/slices/themeSlice';
 
 export interface FontSettingsCardProps {
@@ -25,8 +24,8 @@ export const FontSettingsCard: React.FC<FontSettingsCardProps> = ({
   return (
     <div className="profile-section">
       <Flex align="center" gap="xs" className="profile-section__header">
-        <Type className="profile-section__icon" />
-        <Text styleAs="label" appearance="secondary" uppercase>
+        <IconType size="sm" className="profile-section__icon" />
+        <Text variant="label-sm" appearance="secondary" uppercase>
           Font &amp; Text Scaling
         </Text>
       </Flex>
@@ -40,12 +39,16 @@ export const FontSettingsCard: React.FC<FontSettingsCardProps> = ({
             className="font-settings__top-row"
           >
             <div className="font-settings__title-group">
-              <span className="font-settings__title">Text Size Scaling</span>
-              <span className="font-settings__subtitle">
+              <Text variant="title-sm" weight="bold">
+                Text Size Scaling
+              </Text>
+              <Text variant="body-sm" appearance="secondary">
                 Adjust readable text size across the entire application
-              </span>
+              </Text>
             </div>
-            <span className="font-settings__badge">{getFontBadgeLabel()}</span>
+            <Badge sentiment="neutral" size="sm">
+              {getFontBadgeLabel()}
+            </Badge>
           </Flex>
 
           <div className="font-settings__grid">
@@ -61,20 +64,29 @@ export const FontSettingsCard: React.FC<FontSettingsCardProps> = ({
                     isSelected && 'font-settings__option-btn--active',
                   )}
                 >
-                  <span
+                  <Text
+                    as="span"
+                    variant="title-lg"
+                    weight="bold"
                     className={clsx('font-settings__symbol', opt.symbolClass)}
                   >
                     A
-                  </span>
-                  <span className="font-settings__label">{opt.label}</span>
-                  <span className="font-settings__level">{opt.level}</span>
+                  </Text>
+                  <Text variant="label-md" weight="bold" as="span">
+                    {opt.label}
+                  </Text>
+                  <Text variant="caption" appearance="secondary" as="span">
+                    {opt.level}
+                  </Text>
                 </button>
               );
             })}
           </div>
 
           <div className="font-settings__preview">
-            <span>Preview: Fast Hay Invoicing, Purchases &amp; Ledger</span>
+            <Text variant="body-sm" appearance="secondary" as="span">
+              Preview: Fast Hay Invoicing, Purchases &amp; Ledger
+            </Text>
           </div>
         </Card.Content>
       </Card>

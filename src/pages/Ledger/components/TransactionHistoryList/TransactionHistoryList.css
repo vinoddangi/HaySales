@@ -40,6 +40,11 @@
   border: 1px solid var(--md-sys-color-outline-variant);
 }
 
+.hs-tx-history-list__search-icon {
+  flex-shrink: 0;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
 .hs-tx-history-list__search-input {
   border: none;
   background: transparent;

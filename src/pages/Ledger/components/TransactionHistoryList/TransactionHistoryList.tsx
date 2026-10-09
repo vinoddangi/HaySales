@@ -1,6 +1,6 @@
-import { Search } from 'lucide-react';
 import React from 'react';
 import { Badge } from '../../../../components/Badge';
+import { IconSearch } from '../../../../components/Icon';
 import { Progress } from '../../../../components/Progress';
 import { Text } from '../../../../components/Text';
 import { CustomerTransactionData } from '../../../../models';
@@ -54,7 +54,7 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
       {/* 1. Filter Bar & Search */}
       <div className="hs-tx-history-list__filter-bar">
         <div className="hs-tx-history-list__search-row">
-          <Search className="text-m3-on-surface-variant h-4 w-4 shrink-0" />
+          <IconSearch size="md" className="hs-tx-history-list__search-icon" />
           <input
             type="text"
             className="hs-tx-history-list__search-input"

@@ -52,7 +52,6 @@ export interface TextProps extends React.HTMLAttributes<HTMLElement> {
     | 'strong'
     | 'small';
   variant?: TextVariant;
-  styleAs?: TextVariant; // alias
   sentiment?: TextSentiment;
   appearance?: TextAppearance;
   weight?: TextWeight;
@@ -71,7 +70,6 @@ export interface TextProps extends React.HTMLAttributes<HTMLElement> {
 export const Text: React.FC<TextProps> = ({
   as: Component = 'span',
   variant = 'body-md',
-  styleAs,
   sentiment,
   appearance = 'primary',
   weight,
@@ -82,13 +80,11 @@ export const Text: React.FC<TextProps> = ({
   children,
   ...props
 }) => {
-  const resolvedVariant = styleAs || variant;
-
   return (
     <Component
       className={clsx(
         'text',
-        `text--${resolvedVariant}`,
+        `text--${variant}`,
         sentiment
           ? `text--sentiment-${sentiment}`
           : `text--appearance-${appearance}`,

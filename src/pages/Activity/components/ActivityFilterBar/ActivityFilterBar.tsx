@@ -1,14 +1,14 @@
 import clsx from 'clsx';
-import {
-  LayoutGrid,
-  Layers,
-  Receipt,
-  RotateCcw,
-  Search,
-  ShoppingBag,
-  X,
-} from 'lucide-react';
 import React from 'react';
+import {
+  IconLayers,
+  IconLayoutGrid,
+  IconReceipt,
+  IconRotateCcw,
+  IconSearch,
+  IconShoppingBag,
+  IconX,
+} from '../../../../components/Icon';
 import { Text } from '../../../../components/Text';
 import './ActivityFilterBar.css';
 
@@ -46,7 +46,7 @@ export const ActivityFilterBar: React.FC<ActivityFilterBarProps> = ({
       {/* Search Input Bar + Optional Reset Button */}
       <div className="hs-activity-filter-bar__top">
         <div className="hs-activity-search">
-          <Search className="hs-activity-search__icon" />
+          <IconSearch size={18} className="hs-activity-search__icon" />
           <input
             type="text"
             placeholder="Search by customer, vendor, note, ID..."
@@ -61,7 +61,7 @@ export const ActivityFilterBar: React.FC<ActivityFilterBarProps> = ({
               onClick={() => onSearchChange('')}
               className="hs-activity-search__clear"
             >
-              <X className="hs-activity-search__clear-icon" />
+              <IconX size="sm" className="hs-activity-search__clear-icon" />
             </button>
           )}
         </div>
@@ -73,7 +73,7 @@ export const ActivityFilterBar: React.FC<ActivityFilterBarProps> = ({
             className="hs-activity-filter-bar__reset-btn"
             title="Reset all filters"
           >
-            <RotateCcw className="h-3.5 w-3.5" />
+            <IconRotateCcw size={14} />
             <Text variant="label-sm" weight="medium">
               Reset
             </Text>
@@ -93,22 +93,14 @@ export const ActivityFilterBar: React.FC<ActivityFilterBarProps> = ({
               : 'hs-activity-filter-tab-btn--inactive',
           )}
         >
-          <LayoutGrid
-            className={clsx(
-              'h-4 w-4 shrink-0',
-              filterType === 'all'
-                ? 'text-m3-on-primary'
-                : 'text-m3-on-surface-variant',
-            )}
+          <IconLayoutGrid
+            size="sm"
+            className="hs-activity-filter-tab-btn__icon"
           />
           <Text
             variant="label-md"
             weight={filterType === 'all' ? 'bold' : 'medium'}
-            className={
-              filterType === 'all'
-                ? 'text-m3-on-primary'
-                : 'text-m3-on-surface-variant'
-            }
+            className="hs-activity-filter-tab-btn__label"
           >
             All ({allCount})
           </Text>
@@ -124,22 +116,14 @@ export const ActivityFilterBar: React.FC<ActivityFilterBarProps> = ({
               : 'hs-activity-filter-tab-btn--inactive',
           )}
         >
-          <ShoppingBag
-            className={clsx(
-              'h-4 w-4 shrink-0',
-              filterType === 'sales'
-                ? 'text-m3-on-primary'
-                : 'text-m3-on-surface-variant',
-            )}
+          <IconShoppingBag
+            size="sm"
+            className="hs-activity-filter-tab-btn__icon"
           />
           <Text
             variant="label-md"
             weight={filterType === 'sales' ? 'bold' : 'medium'}
-            className={
-              filterType === 'sales'
-                ? 'text-m3-on-primary'
-                : 'text-m3-on-surface-variant'
-            }
+            className="hs-activity-filter-tab-btn__label"
           >
             Sales ({salesCount})
           </Text>
@@ -155,22 +139,11 @@ export const ActivityFilterBar: React.FC<ActivityFilterBarProps> = ({
               : 'hs-activity-filter-tab-btn--inactive',
           )}
         >
-          <Receipt
-            className={clsx(
-              'h-4 w-4 shrink-0',
-              filterType === 'payments'
-                ? 'text-m3-on-primary'
-                : 'text-m3-on-surface-variant',
-            )}
-          />
+          <IconReceipt size="sm" className="hs-activity-filter-tab-btn__icon" />
           <Text
             variant="label-md"
             weight={filterType === 'payments' ? 'bold' : 'medium'}
-            className={
-              filterType === 'payments'
-                ? 'text-m3-on-primary'
-                : 'text-m3-on-surface-variant'
-            }
+            className="hs-activity-filter-tab-btn__label"
           >
             Payments ({paymentsCount})
           </Text>
@@ -186,22 +159,11 @@ export const ActivityFilterBar: React.FC<ActivityFilterBarProps> = ({
               : 'hs-activity-filter-tab-btn--inactive',
           )}
         >
-          <Layers
-            className={clsx(
-              'h-4 w-4 shrink-0',
-              filterType === 'others'
-                ? 'text-m3-on-primary'
-                : 'text-m3-on-surface-variant',
-            )}
-          />
+          <IconLayers size="sm" className="hs-activity-filter-tab-btn__icon" />
           <Text
             variant="label-md"
             weight={filterType === 'others' ? 'bold' : 'medium'}
-            className={
-              filterType === 'others'
-                ? 'text-m3-on-primary'
-                : 'text-m3-on-surface-variant'
-            }
+            className="hs-activity-filter-tab-btn__label"
           >
             Others ({othersCount})
           </Text>

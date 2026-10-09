@@ -1,6 +1,6 @@
-import { UserCheck } from 'lucide-react';
 import React from 'react';
 import { EmptyState } from '../../components/EmptyState';
+import { IconUserCheck } from '../../components/Icon';
 import { SectionHeader } from '../../components/SectionHeader';
 import { PageContainer } from '../../views/PageContainer';
 import {
@@ -70,7 +70,7 @@ export const SalesPage: React.FC = () => {
         </>
       ) : (
         <EmptyState
-          icon={<UserCheck className="h-8 w-8" />}
+          icon={<IconUserCheck size="xl" />}
           headline="Select Customer Account"
           body="Please select a customer account above to record a new sale or service invoice."
         />

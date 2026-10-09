@@ -1,13 +1,9 @@
 import '@material/web/textfield/outlined-text-field.js';
 import clsx from 'clsx';
-import {
-  Calendar as CalendarIcon,
-  ChevronLeft,
-  ChevronRight,
-} from 'lucide-react';
 import React from 'react';
 import { Button } from '../Button';
 import { Dialog } from '../Dialog';
+import { IconCalendar, IconChevronLeft, IconChevronRight } from '../Icon';
 import { Flex } from '../layouts/Flex';
 import { Text } from '../Text';
 import './DatePicker.css';
@@ -117,7 +113,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           className="hs-date-picker__field"
         >
           <span slot="trailing-icon" className="hs-date-picker__icon-wrapper">
-            <CalendarIcon className="hs-date-picker__icon" />
+            <IconCalendar size="lg" className="hs-date-picker__icon" />
           </span>
         </md-outlined-text-field>
       </div>
@@ -175,7 +171,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                 onClick={handlePrevMonth}
                 aria-label="Previous Month"
               >
-                <ChevronLeft className="h-5 w-5" />
+                <IconChevronLeft size="lg" />
               </button>
 
               <button
@@ -184,7 +180,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                 onClick={handleNextMonth}
                 aria-label="Next Month"
               >
-                <ChevronRight className="h-5 w-5" />
+                <IconChevronRight size="lg" />
               </button>
             </Flex>
           </Flex>

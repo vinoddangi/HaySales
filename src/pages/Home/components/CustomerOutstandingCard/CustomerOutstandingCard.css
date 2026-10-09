@@ -20,14 +20,7 @@
   color: var(--md-sys-color-on-error-container);
 }
 
-.hs-customer-outstanding-card__icon {
-  width: 1.125rem;
-  height: 1.125rem;
-}
-
 .hs-customer-outstanding-card__chevron {
-  width: 0.875rem;
-  height: 0.875rem;
   color: var(--md-sys-color-error);
 }
 

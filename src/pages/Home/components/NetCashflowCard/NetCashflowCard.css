@@ -14,11 +14,6 @@
   color: var(--md-sys-color-primary);
 }
 
-.hs-net-cashflow-card__icon {
-  width: 18px;
-  height: 18px;
-}
-
 .hs-net-cashflow-card__sub-cards {
   margin-top: var(--md-sys-spacing-small);
 }

@@ -1,6 +1,5 @@
-import { Edit3, Sparkles } from 'lucide-react';
 import React, { useState } from 'react';
-import { Card, Flex, Text } from '../../../components';
+import { Card, Flex, IconEdit3, IconSparkles, Text } from '../../../components';
 
 export interface ProfileHeaderCardProps {
   name: string;
@@ -38,12 +37,14 @@ export const ProfileHeaderCard: React.FC<ProfileHeaderCardProps> = ({
       <Card.Content>
         <Flex align="center" gap="md" fullWidth>
           <div className="profile-header__avatar">
-            <span>{initial}</span>
+            <Text variant="title-lg" weight="bold" as="span">
+              {initial}
+            </Text>
           </div>
           <div className="profile-header__info">
             <Flex align="center" gap="xs">
               <Text
-                styleAs="h3"
+                variant="title-md"
                 appearance="primary"
                 weight="bold"
                 className="profile-header__name"
@@ -61,14 +62,14 @@ export const ProfileHeaderCard: React.FC<ProfileHeaderCardProps> = ({
                   title="Edit Name"
                   aria-label="Edit Name"
                 >
-                  <Edit3 className="h-3.5 w-3.5" />
+                  <IconEdit3 size="sm" />
                 </button>
               )}
             </Flex>
 
             {phoneNumber && name !== phoneNumber && (
               <Text
-                styleAs="caption"
+                variant="caption"
                 appearance="secondary"
                 className="profile-header__phone"
               >
@@ -77,8 +78,10 @@ export const ProfileHeaderCard: React.FC<ProfileHeaderCardProps> = ({
             )}
 
             <div className="profile-header__badge">
-              <Sparkles className="h-3 w-3" />
-              <span>{role}</span>
+              <IconSparkles size="xs" />
+              <Text variant="caption" weight="bold" as="span">
+                {role}
+              </Text>
             </div>
           </div>
         </Flex>

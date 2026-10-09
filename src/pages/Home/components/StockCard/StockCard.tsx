@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import { ChevronRight, Package } from 'lucide-react';
 import React from 'react';
 import { CropCommissionProfitResult } from '../../../../business';
 import { Badge } from '../../../../components/Badge';
 import { Card } from '../../../../components/Card';
+import { IconChevronRight, IconPackage } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
 import { Text } from '../../../../components/Text';
@@ -74,14 +74,19 @@ export const StockCard: React.FC<StockCardProps> = ({
         >
           <Flex align="center" gap="sm">
             <div className="hs-stock-card__icon-wrapper">
-              <Package className="hs-stock-card__icon" />
+              <IconPackage size="md" />
             </div>
             <Flex direction="column">
               <Flex align="center" gap="xs">
                 <Text variant="label-sm" weight="bold" uppercase>
                   Crop Stock &amp; Valuation
                 </Text>
-                {onClick && <ChevronRight className="hs-stock-card__chevron" />}
+                {onClick && (
+                  <IconChevronRight
+                    size="sm"
+                    className="hs-stock-card__chevron"
+                  />
+                )}
               </Flex>
               <Text variant="caption" appearance="secondary">
                 {periodLabel || 'Period'} Inventory &amp; Margins

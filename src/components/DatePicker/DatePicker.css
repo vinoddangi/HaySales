@@ -39,8 +39,6 @@
 }
 
 .hs-date-picker__icon {
-  width: 20px;
-  height: 20px;
   color: var(--md-sys-color-on-surface-variant);
 }
 

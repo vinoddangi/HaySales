@@ -1,14 +1,20 @@
 import clsx from 'clsx';
-import {
-  ArrowDownToLine,
-  ArrowUpRight,
-  Database,
-  HardDrive,
-  Trash2,
-  UploadCloud,
-} from 'lucide-react';
 import React from 'react';
-import { Button, Card, Flex, Grid, Switch, Text } from '../../../components';
+import {
+  Badge,
+  Button,
+  Card,
+  Flex,
+  Grid,
+  IconArrowDownToLine,
+  IconArrowUpRight,
+  IconDatabase,
+  IconHardDrive,
+  IconTrash2,
+  IconUploadCloud,
+  Switch,
+  Text,
+} from '../../../components';
 import { DatabaseMode } from '../../../services/dbBridge';
 import { PendingChange } from '../../../services/indexedDBService';
 import { LocalStats } from '../useProfilePage';
@@ -53,8 +59,8 @@ export const LocalDatabaseSettingsCard: React.FC<
   return (
     <div className="profile-section">
       <Flex align="center" gap="xs" className="profile-section__header">
-        <Database className="profile-section__icon" />
-        <Text styleAs="label" appearance="secondary" uppercase>
+        <IconDatabase size="sm" className="profile-section__icon" />
+        <Text variant="label-sm" appearance="secondary" uppercase>
           Local Database
         </Text>
       </Flex>
@@ -76,32 +82,28 @@ export const LocalDatabaseSettingsCard: React.FC<
                 )}
               >
                 {isLocalMode ? (
-                  <HardDrive className="h-5 w-5" />
+                  <IconHardDrive size="lg" />
                 ) : (
-                  <UploadCloud className="h-5 w-5" />
+                  <IconUploadCloud size="lg" />
                 )}
               </div>
               <div>
                 <Flex align="center" gap="xs">
-                  <span className="theme-settings__title">
+                  <Text variant="title-sm" weight="bold">
                     {isLocalMode ? 'Local Database' : 'Server Database'}
-                  </span>
-                  <span
-                    className={clsx(
-                      'db-settings__mode-badge',
-                      isLocalMode
-                        ? 'db-settings__mode-badge--local'
-                        : 'db-settings__mode-badge--server',
-                    )}
+                  </Text>
+                  <Badge
+                    sentiment={isLocalMode ? 'warning' : 'positive'}
+                    size="sm"
                   >
                     {isLocalMode ? 'OFFLINE' : 'ONLINE'}
-                  </span>
+                  </Badge>
                 </Flex>
-                <div className="theme-settings__subtitle">
+                <Text variant="caption" appearance="secondary" as="div">
                   {isLocalMode
                     ? 'Browser IndexedDB storage'
                     : 'Live Cloud Firestore connection'}
-                </div>
+                </Text>
               </div>
             </Flex>
             <Switch selected={isLocalMode} onChange={onToggleDbMode} />
@@ -109,52 +111,81 @@ export const LocalDatabaseSettingsCard: React.FC<
 
           {/* Live Stats Header with Refresh */}
           <div className="db-settings__header-row">
-            <span className="db-settings__header-title">Local Records</span>
+            <Text
+              variant="label-sm"
+              weight="bold"
+              uppercase
+              appearance="secondary"
+              as="span"
+            >
+              Local Records
+            </Text>
             <button
               type="button"
               onClick={onRefreshStats}
               disabled={loadingDb}
               className="db-settings__refresh-btn"
             >
-              <span>{loadingDb ? 'Refreshing...' : 'Refresh'}</span>
+              <Text
+                variant="label-sm"
+                weight="medium"
+                sentiment="accent"
+                as="span"
+              >
+                {loadingDb ? 'Refreshing...' : 'Refresh'}
+              </Text>
             </button>
           </div>
 
           {/* 6-Grid Breakdown Stats */}
           <div className="db-settings__stats-grid">
             <div className="db-settings__stat-item">
-              <span className="db-settings__stat-value">{stats.customers}</span>
-              <span className="db-settings__stat-label">Customers</span>
+              <Text variant="title-md" weight="bold">
+                {stats.customers}
+              </Text>
+              <Text variant="label-sm" appearance="secondary" as="span">
+                Customers
+              </Text>
             </div>
             <div className="db-settings__stat-item">
-              <span className="db-settings__stat-value db-settings__stat-value--sales">
+              <Text variant="title-md" weight="bold" sentiment="positive">
                 {stats.sales}
-              </span>
-              <span className="db-settings__stat-label">Sales</span>
+              </Text>
+              <Text variant="label-sm" appearance="secondary" as="span">
+                Sales
+              </Text>
             </div>
             <div className="db-settings__stat-item">
-              <span className="db-settings__stat-value db-settings__stat-value--payments">
+              <Text variant="title-md" weight="bold" sentiment="positive">
                 {stats.payments}
-              </span>
-              <span className="db-settings__stat-label">Payments</span>
+              </Text>
+              <Text variant="label-sm" appearance="secondary" as="span">
+                Payments
+              </Text>
             </div>
             <div className="db-settings__stat-item">
-              <span className="db-settings__stat-value db-settings__stat-value--services">
+              <Text variant="title-md" weight="bold" sentiment="info">
                 {stats.services}
-              </span>
-              <span className="db-settings__stat-label">Services</span>
+              </Text>
+              <Text variant="label-sm" appearance="secondary" as="span">
+                Services
+              </Text>
             </div>
             <div className="db-settings__stat-item">
-              <span className="db-settings__stat-value db-settings__stat-value--purchases">
+              <Text variant="title-md" weight="bold" sentiment="accent">
                 {stats.purchases}
-              </span>
-              <span className="db-settings__stat-label">Purchases</span>
+              </Text>
+              <Text variant="label-sm" appearance="secondary" as="span">
+                Purchases
+              </Text>
             </div>
             <div className="db-settings__stat-item">
-              <span className="db-settings__stat-value db-settings__stat-value--expenses">
+              <Text variant="title-md" weight="bold" sentiment="negative">
                 {stats.expenses}
-              </span>
-              <span className="db-settings__stat-label">Expenses</span>
+              </Text>
+              <Text variant="label-sm" appearance="secondary" as="span">
+                Expenses
+              </Text>
             </div>
           </div>
 
@@ -170,17 +201,17 @@ export const LocalDatabaseSettingsCard: React.FC<
                   : 'db-settings__pending-bar--clean',
               )}
             >
-              <span className="db-settings__pending-text">
+              <Text variant="body-sm" weight="medium" as="span">
                 {pendingCount > 0
                   ? `⚡ ${pendingCount} modified record${
                       pendingCount === 1 ? '' : 's'
                     } pending publish`
                   : '✅ All changes synced with Cloud Firestore'}
-              </span>
+              </Text>
               {pendingCount > 0 && (
-                <span className="db-settings__pending-badge">
+                <Badge sentiment="neutral" size="sm">
                   {showPendingDetails ? 'HIDE' : 'VIEW DETAILS'}
-                </span>
+                </Badge>
               )}
             </button>
           )}
@@ -210,29 +241,25 @@ export const LocalDatabaseSettingsCard: React.FC<
                     className="db-settings__pending-item"
                   >
                     <Flex align="center" gap="xs">
-                      <span
-                        className={clsx(
-                          'db-settings__pending-tag',
-                          isDelete
-                            ? 'db-settings__pending-tag--delete'
-                            : 'db-settings__pending-tag--set',
-                        )}
+                      <Badge
+                        sentiment={isDelete ? 'negative' : 'positive'}
+                        size="sm"
                       >
                         {item.action}
-                      </span>
-                      <span className="db-settings__pending-summary">
+                      </Badge>
+                      <Text variant="body-sm" weight="medium" as="span">
                         {summaryText}
                         {amountText}
-                      </span>
+                      </Text>
                     </Flex>
-                    <span className="db-settings__pending-time">
+                    <Text variant="caption" appearance="secondary" as="span">
                       {item.timestamp
                         ? new Date(item.timestamp).toLocaleTimeString([], {
                             hour: '2-digit',
                             minute: '2-digit',
                           })
                         : ''}
-                    </span>
+                    </Text>
                   </div>
                 );
               })}
@@ -245,7 +272,7 @@ export const LocalDatabaseSettingsCard: React.FC<
               variant="tonal"
               onClick={onSyncFromCloud}
               disabled={syncingPull || syncingCloud || loadingDb}
-              icon={<ArrowDownToLine className="h-4 w-4" />}
+              icon={<IconArrowDownToLine size="md" />}
             >
               {syncingPull ? 'Syncing...' : 'Sync'}
             </Button>
@@ -253,7 +280,7 @@ export const LocalDatabaseSettingsCard: React.FC<
               variant="filled"
               onClick={onPublishToCloud}
               disabled={syncingCloud || syncingPull || loadingDb}
-              icon={<ArrowUpRight className="h-4 w-4" />}
+              icon={<IconArrowUpRight size="md" />}
             >
               {syncingCloud
                 ? 'Publishing...'
@@ -265,7 +292,7 @@ export const LocalDatabaseSettingsCard: React.FC<
               variant="outlined"
               onClick={onClearLocalDb}
               disabled={loadingDb || syncingCloud || syncingPull}
-              icon={<Trash2 className="h-4 w-4" />}
+              icon={<IconTrash2 size="md" />}
             >
               {loadingDb ? 'Clearing...' : 'Clear'}
             </Button>

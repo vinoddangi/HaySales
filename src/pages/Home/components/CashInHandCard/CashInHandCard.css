@@ -14,11 +14,6 @@
   color: var(--md-sys-color-tertiary);
 }
 
-.hs-cash-in-hand-card__icon {
-  width: 18px;
-  height: 18px;
-}
-
 .hs-cash-in-hand-card__header-right {
   text-align: right;
 }

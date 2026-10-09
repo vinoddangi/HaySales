@@ -102,14 +102,14 @@ export const ProfilePage: React.FC = () => {
           className="profile-footer__meta"
         >
           <Text
-            styleAs="caption"
+            variant="caption"
             appearance="secondary"
             className="profile-footer__version"
           >
             HaySales App • v1.0.0
           </Text>
           <Text
-            styleAs="caption"
+            variant="caption"
             appearance="secondary"
             className="profile-footer__subtext"
           >

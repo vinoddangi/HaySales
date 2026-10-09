@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { TrendingUp } from 'lucide-react';
 import React from 'react';
 import { Card } from '../../../../components/Card';
+import { IconTrendingUp } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Text } from '../../../../components/Text';
 import { formatRupee, formatWeight } from '../../../../utils/formatters';
@@ -37,7 +37,7 @@ export const TotalSalesCard: React.FC<TotalSalesCardProps> = ({
             Total Sales
           </Text>
           <div className="hs-total-sales-card__icon-wrapper">
-            <TrendingUp className="hs-total-sales-card__icon" />
+            <IconTrendingUp size={14} className="hs-total-sales-card__icon" />
           </div>
         </Flex>
 

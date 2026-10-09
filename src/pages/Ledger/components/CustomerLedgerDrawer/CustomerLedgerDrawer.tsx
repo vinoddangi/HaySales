@@ -1,6 +1,6 @@
-import { History, Receipt, X } from 'lucide-react';
 import React from 'react';
 import { CustomerLedgerDetail } from '../../../../business/ledgerBusiness';
+import { IconHistory, IconReceipt, IconX } from '../../../../components/Icon';
 import { Text } from '../../../../components/Text';
 import { CustomerTransactionData } from '../../../../models';
 import { cn } from '../../../../utils/cn';
@@ -84,7 +84,7 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
             className="hs-ledger-drawer-close-btn"
             aria-label="Close drawer"
           >
-            <X className="h-5 w-5" />
+            <IconX size="lg" />
           </button>
         </div>
 
@@ -105,11 +105,7 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
               <Text
                 variant="title-md"
                 weight="bold"
-                className={
-                  hasDue
-                    ? 'hs-ledger-drawer__metric-value--red'
-                    : 'hs-ledger-drawer__metric-value--green'
-                }
+                sentiment={hasDue ? 'negative' : 'positive'}
               >
                 {hasDue ? formatRupee(currentOutstanding) : '₹0 (Clear)'}
               </Text>
@@ -119,11 +115,7 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
               <Text variant="label-sm" appearance="secondary">
                 Total Billed
               </Text>
-              <Text
-                variant="title-md"
-                weight="bold"
-                className="hs-ledger-drawer__metric-value--blue"
-              >
+              <Text variant="title-md" weight="bold" sentiment="accent">
                 {formatRupee(totalBilled)}
               </Text>
             </div>
@@ -132,11 +124,7 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
               <Text variant="label-sm" appearance="secondary">
                 Total Paid
               </Text>
-              <Text
-                variant="title-md"
-                weight="bold"
-                className="hs-ledger-drawer__metric-value--green"
-              >
+              <Text variant="title-md" weight="bold" sentiment="positive">
                 {formatRupee(totalPaid)}
               </Text>
             </div>
@@ -145,11 +133,7 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
               <Text variant="label-sm" appearance="secondary">
                 Weight / Rate
               </Text>
-              <Text
-                variant="title-md"
-                weight="bold"
-                className="hs-ledger-drawer__metric-value--amber"
-              >
+              <Text variant="title-md" weight="bold" sentiment="warning">
                 {totalWeight > 0 ? `${formatWeight(totalWeight)}` : '—'}
               </Text>
               {avgRate > 0 && (
@@ -171,8 +155,10 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
                   'hs-ledger-drawer__tab-btn--active',
               )}
             >
-              <History className="h-4 w-4" />
-              <span>Statement ({transactions.length})</span>
+              <IconHistory size="md" />
+              <Text variant="label-md" weight="bold" as="span">
+                Statement ({transactions.length})
+              </Text>
             </button>
 
             <button
@@ -184,8 +170,10 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
                   'hs-ledger-drawer__tab-btn--active-pay',
               )}
             >
-              <Receipt className="h-4 w-4" />
-              <span>Record Payment</span>
+              <IconReceipt size="md" />
+              <Text variant="label-md" weight="bold" as="span">
+                Record Payment
+              </Text>
             </button>
           </div>
 

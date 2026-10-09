@@ -1,16 +1,16 @@
 import clsx from 'clsx';
-import {
-  CreditCard,
-  FileText,
-  Receipt,
-  ShoppingBag,
-  ShoppingCart,
-  Truck,
-  Wrench,
-} from 'lucide-react';
 import React from 'react';
 import { Badge } from '../../../../components/Badge';
 import { Card } from '../../../../components/Card';
+import {
+  IconCreditCard,
+  IconFileText,
+  IconReceipt,
+  IconShoppingBag,
+  IconShoppingCart,
+  IconTruck,
+  IconWrench,
+} from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Text } from '../../../../components/Text';
 import {
@@ -72,7 +72,7 @@ export const ActivityItemCard: React.FC<ActivityItemCardProps> = ({
   // Determine Type labels, icons, and short badge sentiment
   let typeLabel = 'Transaction';
   let iconWrapClass = 'hs-activity-item-card__icon-wrap--sale';
-  let IconComp = FileText;
+  let IconComp = IconFileText;
   let badgeLabel = 'Transaction';
   let badgeSentiment:
     'positive' | 'negative' | 'warning' | 'info' | 'neutral' | 'accent' =
@@ -81,7 +81,7 @@ export const ActivityItemCard: React.FC<ActivityItemCardProps> = ({
   if (isSale) {
     typeLabel = `Sale: ${transaction.category || 'Crop'}`;
     iconWrapClass = 'hs-activity-item-card__icon-wrap--sale';
-    IconComp = ShoppingBag;
+    IconComp = IconShoppingBag;
     if (credit === 0 && (cash > 0 || amount === 0)) {
       badgeLabel = 'Cash';
       badgeSentiment = 'positive';
@@ -98,7 +98,7 @@ export const ActivityItemCard: React.FC<ActivityItemCardProps> = ({
   } else if (isPurchase) {
     typeLabel = `Purchase: ${transaction.category || 'Crop'}`;
     iconWrapClass = 'hs-activity-item-card__icon-wrap--purchase';
-    IconComp = ShoppingCart;
+    IconComp = IconShoppingCart;
     if (credit === 0 && (cash > 0 || amount === 0)) {
       badgeLabel = 'Cash';
       badgeSentiment = 'positive';
@@ -115,25 +115,25 @@ export const ActivityItemCard: React.FC<ActivityItemCardProps> = ({
   } else if (isPayment) {
     typeLabel = 'Payment Received';
     iconWrapClass = 'hs-activity-item-card__icon-wrap--payment';
-    IconComp = Receipt;
+    IconComp = IconReceipt;
     badgeLabel = 'Payment';
     badgeSentiment = 'positive';
   } else if (isService) {
     typeLabel = `Service: ${(transaction as any).category || 'Charge'}`;
     iconWrapClass = 'hs-activity-item-card__icon-wrap--service';
-    IconComp = Truck;
+    IconComp = IconTruck;
     badgeLabel = 'Service';
     badgeSentiment = 'neutral';
   } else if (isExpense) {
     typeLabel = `Expense: ${(transaction as any).category || 'General'}`;
     iconWrapClass = 'hs-activity-item-card__icon-wrap--expense';
-    IconComp = Wrench;
+    IconComp = IconWrench;
     badgeLabel = 'Expense';
     badgeSentiment = 'negative';
   } else if (isOpening) {
     typeLabel = 'Opening Due Balance';
     iconWrapClass = 'hs-activity-item-card__icon-wrap--payment';
-    IconComp = CreditCard;
+    IconComp = IconCreditCard;
     badgeLabel = 'Opening Due';
     badgeSentiment = 'warning';
   }
@@ -149,17 +149,25 @@ export const ActivityItemCard: React.FC<ActivityItemCardProps> = ({
           {/* Main Top Row */}
           <Flex align="center" justify="between" fullWidth gap="sm">
             {/* Icon + Basic Info */}
-            <Flex align="center" gap="sm" className="min-w-0">
+            <Flex
+              align="center"
+              gap="sm"
+              className="hs-activity-item-card__header-left"
+            >
               <div
                 className={clsx(
                   'hs-activity-item-card__icon-wrap',
                   iconWrapClass,
                 )}
               >
-                <IconComp className="hs-activity-item-card__icon" />
+                <IconComp size="md" className="hs-activity-item-card__icon" />
               </div>
 
-              <Flex direction="column" gap="none" className="min-w-0">
+              <Flex
+                direction="column"
+                gap="none"
+                className="hs-activity-item-card__header-info"
+              >
                 <Flex align="center" gap="xs" wrap>
                   <Text variant="body-md" weight="bold" truncate>
                     {typeLabel}
@@ -187,7 +195,7 @@ export const ActivityItemCard: React.FC<ActivityItemCardProps> = ({
               direction="column"
               align="end"
               gap="none"
-              className="shrink-0"
+              className="hs-activity-item-card__header-amount"
             >
               <Text
                 variant="title-md"
@@ -262,7 +270,7 @@ export const ActivityItemCard: React.FC<ActivityItemCardProps> = ({
                     variant="caption"
                     appearance="secondary"
                     truncate
-                    className="max-w-[200px]"
+                    className="hs-activity-item-card__note"
                   >
                     {transaction.note}
                   </Text>

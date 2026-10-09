@@ -29,14 +29,7 @@
   flex-shrink: 0;
 }
 
-.hs-stock-card__icon {
-  width: 18px;
-  height: 18px;
-}
-
 .hs-stock-card__chevron {
-  width: 14px;
-  height: 14px;
   color: var(--md-sys-color-on-surface-variant);
 }
 

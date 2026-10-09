@@ -12,8 +12,6 @@
 .placeholder-view__icon {
   margin-bottom: var(--md-sys-spacing-medium);
   color: var(--md-sys-color-primary);
-  height: 3rem;
-  width: 3rem;
 }
 
 .placeholder-view__title {

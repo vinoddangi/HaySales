@@ -13,7 +13,5 @@
 }
 
 .hs-sales-credit-card__icon {
-  width: 16px;
-  height: 16px;
   color: var(--md-sys-color-warning);
 }

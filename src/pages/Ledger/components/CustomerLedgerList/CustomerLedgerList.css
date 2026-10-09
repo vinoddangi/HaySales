@@ -12,3 +12,8 @@
 .hs-customer-ledger-list__item--active {
   background-color: var(--md-sys-color-primary-container) !important;
 }
+
+.hs-customer-ledger-list__chevron {
+  flex-shrink: 0;
+  color: var(--md-sys-color-on-surface-variant);
+}

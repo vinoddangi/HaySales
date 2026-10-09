@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { ChevronRight, Users } from 'lucide-react';
 import React from 'react';
 import { Badge } from '../../../../components/Badge';
 import { Card } from '../../../../components/Card';
+import { IconChevronRight, IconUsers } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
 import { Text } from '../../../../components/Text';
@@ -50,7 +50,7 @@ export const CustomerOutstandingCard: React.FC<
         <Flex align="center" justify="between" fullWidth>
           <Flex align="center" gap="sm">
             <div className="hs-customer-outstanding-card__icon-wrapper">
-              <Users className="hs-customer-outstanding-card__icon" />
+              <IconUsers size="md" />
             </div>
             <div>
               <Flex align="center" gap="xs">
@@ -63,7 +63,10 @@ export const CustomerOutstandingCard: React.FC<
                   Customer Outstanding
                 </Text>
                 {onClick && (
-                  <ChevronRight className="hs-customer-outstanding-card__chevron" />
+                  <IconChevronRight
+                    size="sm"
+                    className="hs-customer-outstanding-card__chevron"
+                  />
                 )}
               </Flex>
               <Text variant="body-sm" appearance="secondary">
@@ -92,9 +95,14 @@ export const CustomerOutstandingCard: React.FC<
               <Text variant="body-sm" appearance="secondary">
                 Prev: {formatRupee(previousOutstanding)}
               </Text>
-              <span className="hs-customer-outstanding-card__comparison-dot">
+              <Text
+                as="span"
+                variant="body-sm"
+                appearance="secondary"
+                className="hs-customer-outstanding-card__comparison-dot"
+              >
                 •
-              </span>
+              </Text>
               <Text
                 variant="body-sm"
                 weight="bold"

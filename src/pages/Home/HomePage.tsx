@@ -1,6 +1,6 @@
-import { Plus } from 'lucide-react';
 import React from 'react';
 import { Fab } from '../../components/Fab';
+import { IconPlus } from '../../components/Icon';
 import { Flex } from '../../components/layouts/Flex';
 import { Grid } from '../../components/layouts/Grid';
 import { Text } from '../../components/Text';
@@ -186,7 +186,7 @@ export const HomePage: React.FC = () => {
       {/* 10. Floating Action Button for New Sale */}
       <div className="hs-home-fab">
         <Fab
-          icon={<Plus className="hs-home-fab__icon" />}
+          icon={<IconPlus size="md" className="hs-home-fab__icon" />}
           label="New Sale"
           variant="primary"
           size="md"

@@ -1,6 +1,5 @@
-import { ArrowLeft } from 'lucide-react';
 import React from 'react';
-import { Avatar, Flex } from '../../components';
+import { Avatar, Flex, IconArrowLeft, Text } from '../../components';
 import { TopAppBarProps } from '../navigationTypes';
 import './TopAppBar.css';
 import { useTopAppBar } from './useTopAppBar';
@@ -36,7 +35,7 @@ export const TopAppBarLeading: React.FC<TopAppBarLeadingProps> = ({
           className="top-app-bar__icon-btn"
           type="button"
         >
-          <ArrowLeft className="h-5 w-5" />
+          <IconArrowLeft size="lg" />
         </button>
       ) : (
         <Avatar
@@ -47,7 +46,14 @@ export const TopAppBarLeading: React.FC<TopAppBarLeadingProps> = ({
           className="top-app-bar__avatar"
         />
       )}
-      <h1 className="top-app-bar__title">{title}</h1>
+      <Text
+        variant="title-md"
+        weight="bold"
+        as="h1"
+        className="top-app-bar__title"
+      >
+        {title}
+      </Text>
     </Flex>
   );
 };
@@ -84,7 +90,9 @@ export const TopAppBarTrailing: React.FC<TopAppBarTrailingProps> = ({
       className="top-app-bar__trailing"
     >
       <Flex.Item className="top-app-bar__year-selector" title="Accounting Year">
-        <span>{selectedYear}</span>
+        <Text variant="label-sm" weight="bold">
+          {selectedYear}
+        </Text>
         <select
           aria-label="Select Year"
           value={selectedYear}

@@ -1,6 +1,12 @@
-import { Search, UserCheck, Users, X } from 'lucide-react';
 import React, { useMemo, useRef, useState } from 'react';
 import { Badge } from '../../../../components/Badge';
+import {
+  IconSearch,
+  IconUserCheck,
+  IconUsers,
+  IconX,
+} from '../../../../components/Icon';
+import { Text } from '../../../../components/Text';
 import { CustomerModel } from '../../../../models';
 import { formatRupee } from '../../../../utils/formatters';
 import './CustomerSelectorCard.css';
@@ -57,38 +63,43 @@ export const CustomerSelectorCard: React.FC<CustomerSelectorCardProps> = ({
   return (
     <div className="hs-customer-selector-card" ref={containerRef}>
       <div className="hs-customer-selector-card__header">
-        <h3 className="hs-customer-selector-card__title">
+        <Text variant="title-sm" weight="bold">
           Customer Account Selection
-        </h3>
+        </Text>
         {selectedCustomer ? (
           <Badge sentiment="info" appearance="subtle">
-            <UserCheck className="mr-1 h-3 w-3" />
+            <IconUserCheck
+              size="xs"
+              className="hs-customer-selector-card__badge-icon"
+            />
             Selected
           </Badge>
         ) : (
           <Badge sentiment="neutral" appearance="subtle">
-            <Users className="mr-1 h-3 w-3" />
+            <IconUsers
+              size="xs"
+              className="hs-customer-selector-card__badge-icon"
+            />
             Required
           </Badge>
         )}
       </div>
 
-      {/* 1. Search Bar */}
+      {/* 1. Search & Select Input */}
       {!selectedCustomer ? (
         <div className="hs-customer-selector-card__search-box">
           <div className="hs-customer-selector-card__input-wrapper">
-            <Search className="hs-customer-selector-card__search-icon" />
+            <IconSearch
+              size="md"
+              className="hs-customer-selector-card__search-icon"
+            />
             <input
               type="text"
-              placeholder="Search customer by name, village, or mobile..."
-              value={searchTerm}
-              onChange={(e) => {
-                setSearchTerm(e.target.value);
-                setIsFocused(true);
-              }}
-              onFocus={() => setIsFocused(true)}
               className="hs-customer-selector-card__search-input"
-              autoFocus
+              placeholder="Search by customer name, village, or mobile..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onFocus={() => setIsFocused(true)}
             />
             {searchTerm && (
               <button
@@ -97,7 +108,10 @@ export const CustomerSelectorCard: React.FC<CustomerSelectorCardProps> = ({
                 className="hs-customer-selector-card__clear-btn"
                 aria-label="Clear search"
               >
-                <X className="h-4 w-4" />
+                <IconX
+                  size="md"
+                  className="hs-customer-selector-card__clear-icon"
+                />
               </button>
             )}
           </div>
@@ -107,7 +121,9 @@ export const CustomerSelectorCard: React.FC<CustomerSelectorCardProps> = ({
             <div className="hs-customer-selector-card__dropdown">
               {filteredCustomers.length === 0 ? (
                 <div className="hs-customer-selector-card__dropdown-empty">
-                  No matching customer accounts found.
+                  <Text variant="body-sm" appearance="secondary">
+                    No customers found matching &quot;{searchTerm}&quot;
+                  </Text>
                 </div>
               ) : (
                 filteredCustomers.map((c) => (
@@ -119,12 +135,12 @@ export const CustomerSelectorCard: React.FC<CustomerSelectorCardProps> = ({
                     tabIndex={0}
                   >
                     <div>
-                      <div className="hs-customer-selector-card__dropdown-name">
+                      <Text variant="body-md" weight="bold">
                         {c.name}
-                      </div>
-                      <div className="hs-customer-selector-card__dropdown-meta">
+                      </Text>
+                      <Text variant="body-sm" appearance="secondary">
                         {c.village || 'No village'} • {c.mobile || 'No mobile'}
-                      </div>
+                      </Text>
                     </div>
                     <Badge sentiment="neutral" appearance="subtle">
                       Select
@@ -140,20 +156,20 @@ export const CustomerSelectorCard: React.FC<CustomerSelectorCardProps> = ({
         <div className="hs-customer-selector-card__info">
           <div className="hs-customer-selector-card__info-header">
             <div>
-              <div className="hs-customer-selector-card__customer-name">
+              <Text variant="title-md" weight="bold">
                 {selectedCustomer.name}
-              </div>
-              <div className="hs-customer-selector-card__meta">
+              </Text>
+              <Text variant="body-sm" appearance="secondary">
                 {selectedCustomer.village
                   ? `Village: ${selectedCustomer.village}`
                   : 'No village specified'}
                 {selectedCustomer.mobile
                   ? ` • Mobile: ${selectedCustomer.mobile}`
                   : ''}
-              </div>
+              </Text>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="hs-customer-selector-card__actions">
               {isOverLimit && (
                 <Badge sentiment="negative" appearance="solid">
                   Over Credit Limit
@@ -171,29 +187,27 @@ export const CustomerSelectorCard: React.FC<CustomerSelectorCardProps> = ({
 
           <div className="hs-customer-selector-card__metrics">
             <div className="hs-customer-selector-card__metric-item">
-              <span className="hs-customer-selector-card__metric-label">
+              <Text variant="label-sm" appearance="secondary">
                 Current Due:
-              </span>
-              <span
-                className={`hs-customer-selector-card__metric-value ${
-                  outstandingDue > 0
-                    ? 'hs-customer-selector-card__metric-value--due'
-                    : 'hs-customer-selector-card__metric-value--clear'
-                }`}
+              </Text>
+              <Text
+                variant="title-sm"
+                weight="bold"
+                sentiment={outstandingDue > 0 ? 'negative' : 'positive'}
               >
                 {outstandingDue > 0
                   ? formatRupee(outstandingDue)
                   : '₹0 (Clear)'}
-              </span>
+              </Text>
             </div>
 
             <div className="hs-customer-selector-card__metric-item">
-              <span className="hs-customer-selector-card__metric-label">
+              <Text variant="label-sm" appearance="secondary">
                 Credit Limit:
-              </span>
-              <span className="hs-customer-selector-card__metric-value hs-customer-selector-card__metric-value--limit">
+              </Text>
+              <Text variant="title-sm" weight="bold">
                 {formatRupee(creditLimit)}
-              </span>
+              </Text>
             </div>
           </div>
         </div>
@@ -201,3 +215,5 @@ export const CustomerSelectorCard: React.FC<CustomerSelectorCardProps> = ({
     </div>
   );
 };
+
+export default CustomerSelectorCard;

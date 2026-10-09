@@ -30,12 +30,12 @@
 
 .hs-purchase-type-selector__button--active-purchase {
   background-color: var(--md-sys-color-surface);
-  color: #b45309;
+  color: var(--md-sys-color-tertiary);
   box-shadow: var(--md-sys-elevation-level1);
 }
 
 .hs-purchase-type-selector__button--active-expense {
   background-color: var(--md-sys-color-surface);
-  color: #be123c;
+  color: var(--md-sys-color-error);
   box-shadow: var(--md-sys-elevation-level1);
 }

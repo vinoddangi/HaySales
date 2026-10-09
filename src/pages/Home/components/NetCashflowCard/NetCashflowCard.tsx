@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Wallet } from 'lucide-react';
 import React from 'react';
 import { Card } from '../../../../components/Card';
+import { IconWallet } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
 import { Text } from '../../../../components/Text';
@@ -44,7 +44,7 @@ export const NetCashflowCard: React.FC<NetCashflowCardProps> = ({
         <Flex align="center" justify="between" fullWidth>
           <Flex align="center" gap="sm">
             <div className="hs-net-cashflow-card__icon-wrapper">
-              <Wallet className="hs-net-cashflow-card__icon" />
+              <IconWallet size={18} />
             </div>
             <div>
               <Text

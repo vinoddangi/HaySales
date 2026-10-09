@@ -9,23 +9,51 @@
 }
 
 .hs-purchases-metrics-card--purchases {
-  border-color: rgba(245, 158, 11, 0.25);
-  background-color: rgba(245, 158, 11, 0.05);
+  border-color: color-mix(
+    in srgb,
+    var(--md-sys-color-tertiary) 25%,
+    transparent
+  );
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-tertiary) 5%,
+    transparent
+  );
 }
 
 .hs-purchases-metrics-card--expenses {
-  border-color: rgba(244, 63, 94, 0.25);
-  background-color: rgba(244, 63, 94, 0.05);
+  border-color: color-mix(in srgb, var(--md-sys-color-error) 25%, transparent);
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-error) 5%,
+    transparent
+  );
 }
 
 .hs-purchases-metrics-card--stock {
-  border-color: rgba(59, 130, 246, 0.25);
-  background-color: rgba(59, 130, 246, 0.05);
+  border-color: color-mix(
+    in srgb,
+    var(--md-sys-color-secondary) 25%,
+    transparent
+  );
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-secondary) 5%,
+    transparent
+  );
 }
 
 .hs-purchases-metrics-card--rate {
-  border-color: rgba(16, 185, 129, 0.25);
-  background-color: rgba(16, 185, 129, 0.05);
+  border-color: color-mix(
+    in srgb,
+    var(--md-sys-color-primary) 25%,
+    transparent
+  );
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-primary) 5%,
+    transparent
+  );
 }
 
 .hs-purchases-metrics-card__header {
@@ -34,44 +62,55 @@
   justify-content: space-between;
 }
 
-.hs-purchases-metrics-card__title {
-  font-size: var(--md-sys-typescale-label-small-size, 11px);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
+/* Title colors via M3 semantic tokens */
 .hs-purchases-metrics-card__title--purchases {
-  color: #b45309;
+  color: var(--md-sys-color-tertiary);
 }
 
 .hs-purchases-metrics-card__title--expenses {
-  color: #be123c;
+  color: var(--md-sys-color-error);
 }
 
 .hs-purchases-metrics-card__title--stock {
-  color: #1d4ed8;
+  color: var(--md-sys-color-secondary);
 }
 
 .hs-purchases-metrics-card__title--rate {
-  color: #047857;
+  color: var(--md-sys-color-primary);
+}
+
+/* Icon colors via M3 semantic tokens */
+.hs-purchases-metrics-card__icon {
+  flex-shrink: 0;
+}
+
+.hs-purchases-metrics-card__icon--purchases {
+  color: var(--md-sys-color-tertiary);
+}
+
+.hs-purchases-metrics-card__icon--expenses {
+  color: var(--md-sys-color-error);
+}
+
+.hs-purchases-metrics-card__icon--stock {
+  color: var(--md-sys-color-secondary);
+}
+
+.hs-purchases-metrics-card__icon--rate {
+  color: var(--md-sys-color-primary);
 }
 
 .hs-purchases-metrics-card__value {
-  font-size: var(--md-sys-typescale-title-medium-size, 18px);
-  font-weight: 800;
   color: var(--md-sys-color-on-surface);
   line-height: 1.2;
 }
 
-.hs-purchases-metrics-card__unit {
-  font-size: var(--md-sys-typescale-label-medium-size, 12px);
-  font-weight: 500;
-  color: var(--md-sys-color-on-surface-variant);
-  margin-left: 2px;
+.hs-purchases-metrics-card__value-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--md-sys-spacing-1, 4px);
 }
 
-.hs-purchases-metrics-card__caption {
-  font-size: var(--md-sys-typescale-body-small-size, 11px);
-  color: var(--md-sys-color-on-surface-variant);
+.hs-purchases-metrics-card__unit {
+  margin-left: 2px;
 }
