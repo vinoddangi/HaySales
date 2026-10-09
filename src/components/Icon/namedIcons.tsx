@@ -1,4 +1,3 @@
-import type { LucideIcon } from 'lucide-react';
 import {
   AlertTriangle,
   ArrowDownLeft,
@@ -54,25 +53,55 @@ import {
   Wrench,
   X,
 } from 'lucide-react';
+import clsx from 'clsx';
+import type { LucideIcon } from 'lucide-react';
 import React from 'react';
-import { Icon, IconProps } from './Icon';
+import { IconProps } from './Icon';
+import { resolveIconPixelSize } from './useIcon';
 
-export interface NamedIconProps extends Omit<IconProps, 'children'> {
-  strokeWidth?: number;
-}
+export interface NamedIconProps extends Omit<IconProps, 'children'> {}
 
 /**
  * Higher-order component to generate dedicated named M3 Icon components.
+ * Directly renders Lucide SVG icons with full stroke preservation and zero Shadow DOM interference.
  */
 export function createLucideIcon(
   LucideComponent: LucideIcon,
   displayName?: string,
 ) {
-  const Component: React.FC<NamedIconProps> = ({ strokeWidth, ...props }) => (
-    <Icon {...props}>
-      <LucideComponent strokeWidth={strokeWidth} />
-    </Icon>
-  );
+  const Component: React.FC<NamedIconProps> = ({
+    size = 'md',
+    sentiment,
+    color,
+    strokeWidth = 2,
+    className,
+    style,
+    ...props
+  }) => {
+    const pixelSize = resolveIconPixelSize(size);
+    const sentimentClass = sentiment ? `hs-icon--${sentiment}` : undefined;
+    const resolvedClass = clsx(
+      'hs-icon',
+      typeof size === 'string' && `hs-icon--${size}`,
+      sentimentClass,
+      className,
+    );
+
+    return (
+      <LucideComponent
+        size={pixelSize}
+        strokeWidth={strokeWidth}
+        color={color}
+        className={resolvedClass}
+        style={{
+          ...(color ? { color } : {}),
+          ...style,
+        }}
+        {...props}
+      />
+    );
+  };
+
   if (displayName) {
     Component.displayName = displayName;
   }

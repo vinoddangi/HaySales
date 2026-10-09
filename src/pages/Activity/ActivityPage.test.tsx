@@ -1,7 +1,10 @@
+import { Provider } from 'react-redux';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
+import { store } from '../../store';
 import {
   ActivityDetailDrawer,
+  ActivityEditDrawer,
   ActivityFilterBar,
   ActivityItemCard,
   ActivityList,
@@ -199,5 +202,68 @@ describe('Activity Page Modular Components', () => {
     expect(html).toContain('Monthly');
     expect(html).toContain('YTD 2026');
     expect(html).toContain('hs-activity-period-bar');
+  });
+
+  it('renders ActivityDetailDrawer with Edit Transaction button when onEdit is provided', () => {
+    const tx = {
+      id: 'tx_detail_004',
+      date: '2026-03-01',
+      type: 'SALE' as const,
+      category: 'Grass' as const,
+      weight: 2000,
+      amount: 18000,
+      cashPaid: 18000,
+      remainingDue: 0,
+      customerId: 'cust_01',
+      customerName: 'Suresh Patel',
+    };
+
+    const html = renderToStaticMarkup(
+      <ActivityDetailDrawer
+        isOpen={true}
+        transaction={tx}
+        onClose={() => {}}
+        onEdit={() => {}}
+      />,
+    );
+
+    expect(html).toContain('Edit Transaction');
+    expect(html).toContain('Close');
+  });
+
+  it('renders ActivityEditDrawer form with fields and summary for editing a transaction', () => {
+    const tx = {
+      id: 'tx_edit_001',
+      date: '2026-03-02',
+      type: 'SALE' as const,
+      category: 'Tuvar' as const,
+      weight: 3000,
+      amount: 27000,
+      cashPaid: 15000,
+      remainingDue: 12000,
+      customerId: 'cust_02',
+      customerName: 'Ramesh Patel',
+      note: 'Advance payment received',
+    };
+
+    const html = renderToStaticMarkup(
+      <Provider store={store}>
+        <ActivityEditDrawer
+          isOpen={true}
+          transaction={tx}
+          onClose={() => {}}
+          onSave={async () => {}}
+        />
+      </Provider>,
+    );
+
+    expect(html).toContain('Edit Transaction');
+    expect(html).toContain('Sale');
+    expect(html).toContain('Save Changes');
+    expect(html).toContain('Cancel');
+    expect(html).toContain('₹27,000');
+    expect(html).toContain('₹15,000');
+    expect(html).toContain('₹12,000');
+    expect(html).toContain('₹9 / Kg');
   });
 });

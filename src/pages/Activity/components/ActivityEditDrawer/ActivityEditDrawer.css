@@ -1,0 +1,82 @@
+.hs-activity-edit-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.hs-activity-edit-drawer {
+  background-color: var(--md-sys-color-surface-container);
+  border-top-left-radius: var(--md-sys-shape-corner-extra-large, 28px);
+  border-top-right-radius: var(--md-sys-shape-corner-extra-large, 28px);
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--md-sys-elevation-level3);
+  padding: var(--md-sys-spacing-lg, 24px);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  animation: hsSlideUp 0.25s ease-out;
+}
+
+.hs-activity-edit-drawer__handle {
+  width: 36px;
+  height: 4px;
+  background-color: var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-full, 9999px);
+  margin: 0 auto var(--md-sys-spacing-md, 16px) auto;
+}
+
+.hs-activity-edit-drawer__close-btn {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--md-sys-color-on-surface-variant);
+  border-radius: var(--md-sys-shape-corner-full, 9999px);
+  transition: color 0.15s ease;
+}
+
+.hs-activity-edit-drawer__close-btn:hover {
+  color: var(--md-sys-color-on-surface);
+}
+
+.hs-activity-edit-drawer__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-sys-spacing-md, 16px);
+  width: 100%;
+}
+
+.hs-activity-edit-drawer__summary-card {
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  padding: var(--md-sys-spacing-md, 16px);
+}
+
+.hs-activity-edit-drawer__summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hs-activity-edit-drawer__error-banner {
+  background-color: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+  padding: var(--md-sys-spacing-sm, 12px) var(--md-sys-spacing-md, 16px);
+  border-radius: var(--md-sys-shape-corner-small, 8px);
+}
+
+.hs-activity-edit-drawer__actions {
+  display: flex;
+  gap: var(--md-sys-spacing-sm, 12px);
+  margin-top: var(--md-sys-spacing-sm, 8px);
+}

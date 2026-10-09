@@ -5,14 +5,19 @@ import {
   CropTransactionData,
   CustomerTransactionData,
   ExpenseTransactionData,
+  isOpeningDueTransaction,
   isPaymentTransaction,
+  isPurchaseTransaction,
   isSaleTransaction,
+  isServiceTransaction,
   OperationsTransactionData,
   Transaction,
 } from '../../models';
 import {
   useGetCustomerTransactionsQuery,
   useGetOperationTransactionsQuery,
+  useUpdateCustomerTransactionMutation,
+  useUpdateOperationTransactionMutation,
 } from '../../store/api';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
@@ -20,6 +25,7 @@ import {
   setFilterMode,
   setSelectedMonth,
 } from '../../store/slices/timelineSlice';
+import { showSnackbar } from '../../store/slices/uiSlice';
 import { MONTH_NAMES } from '../../utils/formatters';
 import { ActivityFilterType } from './components/ActivityFilterBar';
 
@@ -60,8 +66,13 @@ export function useActivityPage() {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTx, setSelectedTx] = useState<Transaction | null>(null);
+  const [editingTx, setEditingTx] = useState<Transaction | null>(null);
 
-  // 2. Redux Timeline state
+  // 2. Mutations
+  const [updateCustomerTx] = useUpdateCustomerTransactionMutation();
+  const [updateOperationTx] = useUpdateOperationTransactionMutation();
+
+  // 3. Redux Timeline state
   const filterMode = useAppSelector((state) => state.timeline.filterMode);
   const selectedMonth = useAppSelector((state) => state.timeline.selectedMonth);
   const selectedYear = useAppSelector((state) => state.timeline.selectedYear);
@@ -254,6 +265,104 @@ export function useActivityPage() {
     setSelectedTx(null);
   };
 
+  const handleOpenEdit = (tx: Transaction) => {
+    setSelectedTx(null);
+    setEditingTx(tx);
+  };
+
+  const handleCloseEdit = () => {
+    setEditingTx(null);
+  };
+
+  const handleSaveEdit = async (
+    tx: Transaction,
+    updatedData: {
+      date: string;
+      amount: number;
+      cashPaid: number;
+      remainingDue: number;
+      category?: string;
+      weight?: number;
+      discount?: number;
+      note?: string;
+      customerId?: string;
+      customerName?: string;
+      vendorName?: string;
+    },
+  ) => {
+    if (!tx.id) return;
+
+    const isCustomerTx =
+      isSaleTransaction(tx) ||
+      isPaymentTransaction(tx) ||
+      isServiceTransaction(tx) ||
+      isOpeningDueTransaction(tx);
+
+    if (isCustomerTx) {
+      const custData: Partial<CustomerTransactionData> = {
+        date: updatedData.date,
+        amount: updatedData.amount,
+        cashPaid: updatedData.cashPaid,
+        remainingDue: updatedData.remainingDue,
+        note: updatedData.note,
+      };
+
+      if (updatedData.customerId) {
+        custData.customerId = updatedData.customerId;
+      }
+      if (updatedData.customerName) {
+        custData.customerName = updatedData.customerName;
+      }
+
+      if (isSaleTransaction(tx)) {
+        (custData as any).category = updatedData.category;
+        (custData as any).weight = updatedData.weight;
+        (custData as any).discount = updatedData.discount;
+      } else if (isServiceTransaction(tx)) {
+        (custData as any).category = updatedData.category;
+        (custData as any).discount = updatedData.discount;
+      } else if (isPaymentTransaction(tx)) {
+        (custData as any).discount = updatedData.discount;
+      }
+
+      await updateCustomerTx({
+        id: tx.id,
+        data: custData,
+      }).unwrap();
+    } else {
+      // Operations Transaction (PURCHASE, EXPENSE)
+      const opsData: Partial<OperationsTransactionData> = {
+        date: updatedData.date,
+        amount: updatedData.amount,
+        cashPaid: updatedData.cashPaid,
+        remainingDue: updatedData.remainingDue,
+        note: updatedData.note,
+      };
+
+      if (isPurchaseTransaction(tx)) {
+        (opsData as any).category = updatedData.category;
+        (opsData as any).weight = updatedData.weight;
+        (opsData as any).discount = updatedData.discount;
+        (opsData as any).vendorName = updatedData.vendorName;
+      } else {
+        // EXPENSE
+        (opsData as any).category = updatedData.category;
+        (opsData as any).vendorName = updatedData.vendorName;
+      }
+
+      await updateOperationTx({
+        id: tx.id,
+        data: opsData,
+      }).unwrap();
+    }
+
+    dispatch(
+      showSnackbar({
+        message: 'Transaction updated successfully',
+      }),
+    );
+  };
+
   return {
     isLoading,
     searchTerm,
@@ -271,12 +380,16 @@ export function useActivityPage() {
     transactions: sortedTransactions,
     metrics,
     selectedTx,
+    editingTx,
     handleFilterTypeChange,
     handleResetFilters,
     handleFilterModeChange,
     handleMonthChange,
     handleOpenDetail,
     handleCloseDetail,
+    handleOpenEdit,
+    handleCloseEdit,
+    handleSaveEdit,
   };
 }
 

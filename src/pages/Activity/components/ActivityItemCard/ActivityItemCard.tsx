@@ -4,6 +4,7 @@ import { Badge } from '../../../../components/Badge';
 import { Card } from '../../../../components/Card';
 import {
   IconCreditCard,
+  IconEdit3,
   IconFileText,
   IconReceipt,
   IconShoppingBag,
@@ -36,12 +37,14 @@ import './ActivityItemCard.css';
 export interface ActivityItemCardProps {
   transaction: Transaction;
   onClick?: (_tx: Transaction) => void;
+  onEdit?: (_tx: Transaction) => void;
   className?: string;
 }
 
 export const ActivityItemCard: React.FC<ActivityItemCardProps> = ({
   transaction,
   onClick,
+  onEdit,
   className,
 }) => {
   const isSale = isSaleTransaction(transaction);
@@ -190,29 +193,45 @@ export const ActivityItemCard: React.FC<ActivityItemCardProps> = ({
               </Flex>
             </Flex>
 
-            {/* Amount */}
-            <Flex
-              direction="column"
-              align="end"
-              gap="none"
-              className="hs-activity-item-card__header-amount"
-            >
-              <Text
-                variant="title-md"
-                weight="bold"
-                sentiment={
-                  isPayment || isSale
-                    ? 'accent'
-                    : isExpense
-                      ? 'negative'
-                      : 'neutral'
-                }
+            {/* Amount & Quick Edit */}
+            <Flex align="center" gap="xs">
+              <Flex
+                direction="column"
+                align="end"
+                gap="none"
+                className="hs-activity-item-card__header-amount"
               >
-                {formatRupee(amount)}
-              </Text>
-              <Text variant="caption" appearance="secondary">
-                {formatDate(transaction.date)}
-              </Text>
+                <Text
+                  variant="title-md"
+                  weight="bold"
+                  sentiment={
+                    isPayment || isSale
+                      ? 'accent'
+                      : isExpense
+                        ? 'negative'
+                        : 'neutral'
+                  }
+                >
+                  {formatRupee(amount)}
+                </Text>
+                <Text variant="caption" appearance="secondary">
+                  {formatDate(transaction.date)}
+                </Text>
+              </Flex>
+
+              {onEdit && (
+                <button
+                  type="button"
+                  aria-label="Edit transaction"
+                  className="hs-activity-item-card__edit-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onEdit(transaction);
+                  }}
+                >
+                  <IconEdit3 size="lg" />
+                </button>
+              )}
             </Flex>
           </Flex>
 

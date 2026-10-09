@@ -1,7 +1,7 @@
 import React from 'react';
 import { Badge } from '../../../../components/Badge';
 import { Button } from '../../../../components/Button';
-import { IconX } from '../../../../components/Icon';
+import { IconEdit3, IconX } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Text } from '../../../../components/Text';
 import {
@@ -28,12 +28,14 @@ export interface ActivityDetailDrawerProps {
   transaction: Transaction | null;
   isOpen: boolean;
   onClose: () => void;
+  onEdit?: (_tx: Transaction) => void;
 }
 
 export const ActivityDetailDrawer: React.FC<ActivityDetailDrawerProps> = ({
   transaction,
   isOpen,
   onClose,
+  onEdit,
 }) => {
   if (!isOpen || !transaction) return null;
 
@@ -239,10 +241,22 @@ export const ActivityDetailDrawer: React.FC<ActivityDetailDrawerProps> = ({
             )}
           </div>
 
-          {/* Close Action */}
-          <Button variant="tonal" fullWidth onClick={onClose}>
-            Close
-          </Button>
+          {/* Actions */}
+          <Flex gap="sm" fullWidth>
+            <Button variant="tonal" fullWidth onClick={onClose}>
+              Close
+            </Button>
+            {onEdit && (
+              <Button
+                variant="filled"
+                fullWidth
+                onClick={() => onEdit(transaction)}
+                icon={<IconEdit3 size="md" />}
+              >
+                Edit Transaction
+              </Button>
+            )}
+          </Flex>
         </Flex>
       </div>
     </div>

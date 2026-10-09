@@ -13,6 +13,7 @@ export interface ActivityListProps {
   transactions: Transaction[];
   isLoading?: boolean;
   onSelectTransaction?: (_tx: Transaction) => void;
+  onEditTransaction?: (_tx: Transaction) => void;
   className?: string;
 }
 
@@ -20,6 +21,7 @@ export const ActivityList: React.FC<ActivityListProps> = ({
   transactions,
   isLoading,
   onSelectTransaction,
+  onEditTransaction,
   className,
 }) => {
   if (isLoading && transactions.length === 0) {
@@ -58,6 +60,7 @@ export const ActivityList: React.FC<ActivityListProps> = ({
             key={tx.id || `activity-tx-${idx}`}
             transaction={tx}
             onClick={onSelectTransaction}
+            onEdit={onEditTransaction}
           />
         ))}
       </Flex>

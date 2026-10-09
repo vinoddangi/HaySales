@@ -1,26 +1,40 @@
-import type { CSSProperties } from 'react';
-
 export type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | number;
+
+export type IconSentiment =
+  'positive' | 'negative' | 'warning' | 'info' | 'accent' | 'neutral';
+
+export const ICON_SIZE_MAP: Record<string, number> = {
+  xs: 12,
+  sm: 14,
+  md: 16,
+  lg: 20,
+  xl: 24,
+  '2xl': 32,
+};
+
+export function resolveIconPixelSize(size: IconSize = 'md'): number {
+  if (typeof size === 'number') {
+    return size;
+  }
+  return ICON_SIZE_MAP[size] ?? 16;
+}
 
 export interface UseIconProps {
   size?: IconSize;
+  sentiment?: IconSentiment;
+  color?: string;
 }
 
-export const useIcon = ({ size = 'md' }: UseIconProps = {}) => {
-  const isNamedSize = typeof size === 'string';
-  const sizeClass = isNamedSize ? `hs-icon--${size}` : undefined;
-  const customStyle =
-    typeof size === 'number'
-      ? ({
-          width: `${size}px`,
-          height: `${size}px`,
-          fontSize: `${size}px`,
-          '--md-icon-size': `${size}px`,
-        } as CSSProperties)
-      : undefined;
+export const useIcon = ({ size = 'md', sentiment }: UseIconProps = {}) => {
+  const pixelSize = resolveIconPixelSize(size);
+  const sizeClass = typeof size === 'string' ? `hs-icon--${size}` : undefined;
+  const sentimentClass = sentiment ? `hs-icon--${sentiment}` : undefined;
 
   return {
+    pixelSize,
     sizeClass,
-    customStyle,
+    sentimentClass,
   };
 };
+
+export default useIcon;

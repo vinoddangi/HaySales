@@ -50,9 +50,36 @@
   --md-icon-size: 2rem;
 }
 
-/* Ensure SVG icon children fill the Icon container */
+/* Ensure SVG icon children fill the Icon container and preserve outline strokes */
 .hs-icon > svg {
   width: 100%;
   height: 100%;
   display: block;
+  fill: none !important;
+  stroke: currentColor !important;
+}
+
+/* Material Design 3 Sentiment Colors */
+.hs-icon--positive {
+  color: var(--md-sys-color-primary, #006c4c);
+}
+
+.hs-icon--negative {
+  color: var(--md-sys-color-error, #ba1a1a);
+}
+
+.hs-icon--warning {
+  color: var(--md-sys-color-warning, #e28704);
+}
+
+.hs-icon--info {
+  color: var(--md-sys-color-tertiary, #3d6473);
+}
+
+.hs-icon--accent {
+  color: var(--md-sys-color-primary, #006c4c);
+}
+
+.hs-icon--neutral {
+  color: var(--md-sys-color-on-surface-variant, #404943);
 }

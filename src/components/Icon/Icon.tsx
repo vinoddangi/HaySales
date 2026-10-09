@@ -1,12 +1,16 @@
-import '@material/web/icon/icon.js';
 import clsx from 'clsx';
 import React from 'react';
 import './Icon.css';
-import { IconSize, useIcon } from './useIcon';
+import { IconSentiment, IconSize, useIcon } from './useIcon';
 
-export interface IconProps extends React.HTMLAttributes<HTMLElement> {
+export type { IconSentiment, IconSize };
+
+export interface IconProps extends React.SVGAttributes<SVGSVGElement> {
   children?: React.ReactNode;
   size?: IconSize;
+  sentiment?: IconSentiment;
+  color?: string;
+  strokeWidth?: number;
   className?: string;
   slot?: string;
 }
@@ -15,30 +19,62 @@ export interface IconProps extends React.HTMLAttributes<HTMLElement> {
  * Material Design 3 Icon Component.
  * Supports standard semantic sizes: 'xs' (12px), 'sm' (14px), 'md' (16px), 'lg' (20px), 'xl' (24px), '2xl' (32px),
  * or numeric pixel values (e.g. size={18}).
- * Wraps Lucide SVG icons or standard M3 icon font characters.
+ * Supports M3 sentiment roles ('positive', 'negative', 'warning', 'info', 'accent', 'neutral') or direct color.
+ * Directly renders Lucide SVG icons with full stroke preservation and zero Shadow DOM interference.
  */
 export const Icon: React.FC<IconProps> = ({
   children,
   size = 'md',
+  sentiment,
+  color,
+  strokeWidth,
   className = '',
   slot,
   style,
   ...props
 }) => {
-  const { sizeClass, customStyle } = useIcon({ size });
+  const { pixelSize, sizeClass, sentimentClass } = useIcon({
+    size,
+    sentiment,
+    color,
+  });
+
+  const resolvedClass = clsx('hs-icon', sizeClass, sentimentClass, className);
+
+  if (React.isValidElement(children)) {
+    return React.cloneElement(children as React.ReactElement<any>, {
+      size: pixelSize,
+      width: pixelSize,
+      height: pixelSize,
+      color,
+      strokeWidth: strokeWidth ?? (children.props as any).strokeWidth,
+      className: clsx(resolvedClass, (children.props as any).className),
+      style: {
+        ...(color ? { color } : {}),
+        ...style,
+        ...(children.props as any).style,
+      },
+      ...props,
+    });
+  }
 
   return (
-    <md-icon
+    <span
       slot={slot}
-      className={clsx('hs-icon', sizeClass, className)}
+      className={resolvedClass}
       style={{
-        ...customStyle,
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: `${pixelSize}px`,
+        height: `${pixelSize}px`,
+        ...(color ? { color } : {}),
         ...style,
       }}
-      {...props}
+      {...(props as React.HTMLAttributes<HTMLSpanElement>)}
     >
       {children}
-    </md-icon>
+    </span>
   );
 };
 

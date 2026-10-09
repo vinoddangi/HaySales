@@ -10,6 +10,8 @@ import {
   DatePicker,
   Flex,
   Grid,
+  Icon,
+  IconCalendar,
   Progress,
   Select,
   Switch,
@@ -330,6 +332,42 @@ describe('Reusable Building Block Components (M3 Token-Bound & M3 UX Guide)', ()
       expect(html).toContain('label="Sales Date"');
       expect(html).toContain('07 Oct 2026');
       expect(html).toContain('hs-date-picker__icon');
+    });
+  });
+
+  describe('Icon (Material Design 3 & Lucide Integration)', () => {
+    it('renders semantic size classes and sentiment color tokens', () => {
+      const htmlSm = renderToStaticMarkup(
+        <Icon size="sm" sentiment="positive">
+          <svg />
+        </Icon>,
+      );
+      expect(htmlSm).toContain('hs-icon--sm');
+      expect(htmlSm).toContain('hs-icon--positive');
+
+      const htmlNumeric = renderToStaticMarkup(
+        <Icon size={28} sentiment="warning" color="#e28704">
+          <svg />
+        </Icon>,
+      );
+      expect(htmlNumeric).toContain('width="28"');
+      expect(htmlNumeric).toContain('height="28"');
+      expect(htmlNumeric).toContain('hs-icon--warning');
+      expect(htmlNumeric).toContain('color:#e28704');
+    });
+
+    it('renders named icon component directly as Lucide SVG with stroke preservation', () => {
+      const html = renderToStaticMarkup(
+        <IconCalendar size="lg" sentiment="accent" className="test-calendar" />,
+      );
+      expect(html).toContain('hs-icon--lg');
+      expect(html).toContain('hs-icon--accent');
+      expect(html).toContain('test-calendar');
+      expect(html).toContain('lucide-calendar');
+      expect(html).toContain('width="20"');
+      expect(html).toContain('height="20"');
+      expect(html).toContain('stroke="currentColor"');
+      expect(html).toContain('fill="none"');
     });
   });
 });

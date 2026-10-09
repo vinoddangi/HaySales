@@ -5,6 +5,7 @@ import { PageContainer } from '../../views/PageContainer';
 import './ActivityPage.css';
 import {
   ActivityDetailDrawer,
+  ActivityEditDrawer,
   ActivityFilterBar,
   ActivityList,
   ActivityMetricsCard,
@@ -30,12 +31,16 @@ export const ActivityPage: React.FC = () => {
     transactions,
     metrics,
     selectedTx,
+    editingTx,
     handleFilterTypeChange,
     handleResetFilters,
     handleFilterModeChange,
     handleMonthChange,
     handleOpenDetail,
     handleCloseDetail,
+    handleOpenEdit,
+    handleCloseEdit,
+    handleSaveEdit,
   } = useActivityPage();
 
   return (
@@ -94,6 +99,7 @@ export const ActivityPage: React.FC = () => {
         transactions={transactions}
         isLoading={isLoading}
         onSelectTransaction={handleOpenDetail}
+        onEditTransaction={handleOpenEdit}
       />
 
       {/* 6. Transaction Detail Drawer */}
@@ -101,6 +107,16 @@ export const ActivityPage: React.FC = () => {
         isOpen={Boolean(selectedTx)}
         transaction={selectedTx}
         onClose={handleCloseDetail}
+        onEdit={handleOpenEdit}
+      />
+
+      {/* 7. Transaction Edit Drawer */}
+      <ActivityEditDrawer
+        key={editingTx?.id || 'none'}
+        isOpen={Boolean(editingTx)}
+        transaction={editingTx}
+        onClose={handleCloseEdit}
+        onSave={handleSaveEdit}
       />
     </PageContainer>
   );

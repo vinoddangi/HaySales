@@ -71,3 +71,24 @@
 .hs-activity-item-card__note {
   max-width: 12.5rem;
 }
+
+.hs-activity-item-card__edit-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--md-sys-color-on-surface-variant);
+  border-radius: var(--md-sys-shape-corner-full, 9999px);
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.hs-activity-item-card__edit-btn:hover {
+  background-color: var(--md-sys-color-surface-container-highest);
+  color: var(--md-sys-color-primary);
+}
