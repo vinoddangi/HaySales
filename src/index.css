@@ -3,45 +3,82 @@
 @tailwind utilities;
 
 :root {
-  /* Material Design 3 Light Theme Colors (Default Agriculture Theme) */
+  /* Material Design 3 Light Theme Colors (Default Agriculture Theme)
+   * Calm, high-contrast palette: white card surfaces on a soft neutral
+   * background, muted pastel containers and AA-readable role colors. */
   --md-sys-color-primary: #006c4c;
   --md-sys-color-on-primary: #ffffff;
-  --md-sys-color-primary-container: #89f8c7;
-  --md-sys-color-on-primary-container: #002114;
+  --md-sys-color-primary-container: #cdeedd;
+  --md-sys-color-on-primary-container: #003824;
 
-  --md-sys-color-secondary: #4d6356;
+  --md-sys-color-secondary: #50605a;
   --md-sys-color-on-secondary: #ffffff;
-  --md-sys-color-secondary-container: #d0e8d7;
-  --md-sys-color-on-secondary-container: #0b1f15;
+  --md-sys-color-secondary-container: #dde7e2;
+  --md-sys-color-on-secondary-container: #142420;
 
-  --md-sys-color-tertiary: #3d6473;
+  --md-sys-color-tertiary: #2c6385;
   --md-sys-color-on-tertiary: #ffffff;
-  --md-sys-color-tertiary-container: #c1e9fb;
-  --md-sys-color-on-tertiary-container: #001f29;
+  --md-sys-color-tertiary-container: #dbeaf5;
+  --md-sys-color-on-tertiary-container: #0b2c41;
 
-  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-error: #b3261e;
   --md-sys-color-on-error: #ffffff;
-  --md-sys-color-error-container: #ffdad6;
-  --md-sys-color-on-error-container: #410002;
+  --md-sys-color-error-container: #fbe4e1;
+  --md-sys-color-on-error-container: #5f1410;
 
-  --md-sys-color-background: #fbfdf9;
-  --md-sys-color-on-background: #191c1a;
-  --md-sys-color-surface: #fbfdf9;
-  --md-sys-color-on-surface: #191c1a;
-  --md-sys-color-surface-variant: #dce5dd;
-  --md-sys-color-on-surface-variant: #404943;
-  --md-sys-color-outline: #707973;
-  --md-sys-color-outline-variant: #c0c9c2;
+  --md-sys-color-background: #f2f5f3;
+  --md-sys-color-on-background: #161d1a;
+  --md-sys-color-surface: #f2f5f3;
+  --md-sys-color-on-surface: #161d1a;
+  --md-sys-color-surface-variant: #dfe5e1;
+  --md-sys-color-on-surface-variant: #48514c;
+  --md-sys-color-outline: #737b77;
+  --md-sys-color-outline-variant: #d6ddd9;
 
   --md-sys-color-surface-container-lowest: #ffffff;
-  --md-sys-color-surface-container-low: #f5f7f3;
-  --md-sys-color-surface-container: #eff1ed;
-  --md-sys-color-surface-container-high: #e9ebe7;
-  --md-sys-color-surface-container-highest: #e3e5e1;
-  --md-sys-color-warning: #e28704;
+  --md-sys-color-surface-container-low: #ffffff;
+  --md-sys-color-surface-container: #edf1ee;
+  --md-sys-color-surface-container-high: #e7ece9;
+  --md-sys-color-surface-container-highest: #e1e7e3;
+  --md-sys-color-warning: #8f5600;
   --md-sys-color-on-warning: #ffffff;
-  --md-sys-color-warning-container: #ffddb4;
-  --md-sys-color-on-warning-container: #2a1800;
+  --md-sys-color-warning-container: #fcebcf;
+  --md-sys-color-on-warning-container: #3f2700;
+
+  /* Derived container outlines — soft role-tinted borders for tonal pills,
+   * badges and sub-cards. Computed from the role colors so they follow
+   * every color scheme and light/dark mode automatically. */
+  --md-sys-color-primary-container-outline: color-mix(
+    in srgb,
+    var(--md-sys-color-primary) 22%,
+    transparent
+  );
+  --md-sys-color-secondary-container-outline: color-mix(
+    in srgb,
+    var(--md-sys-color-secondary) 22%,
+    transparent
+  );
+  --md-sys-color-tertiary-container-outline: color-mix(
+    in srgb,
+    var(--md-sys-color-tertiary) 22%,
+    transparent
+  );
+  --md-sys-color-error-container-outline: color-mix(
+    in srgb,
+    var(--md-sys-color-error) 22%,
+    transparent
+  );
+  --md-sys-color-warning-container-outline: color-mix(
+    in srgb,
+    var(--md-sys-color-warning) 25%,
+    transparent
+  );
+
+  /* Elevation shadows */
+  --md-sys-elevation-level1:
+    0 1px 2px rgba(16, 24, 20, 0.06), 0 1px 3px rgba(16, 24, 20, 0.04);
+  --md-sys-elevation-level2:
+    0 2px 6px rgba(16, 24, 20, 0.08), 0 1px 2px rgba(16, 24, 20, 0.05);
 
   /* Typography Scale Tokens */
   --md-sys-typescale-font-family:
@@ -136,45 +173,50 @@
 
 .dark {
   /* Material Design 3 Dark Theme Colors */
-  --md-sys-color-primary: #6cdbac;
-  --md-sys-color-on-primary: #003825;
-  --md-sys-color-primary-container: #005138;
-  --md-sys-color-on-primary-container: #89f8c7;
+  --md-sys-color-primary: #7fd8b0;
+  --md-sys-color-on-primary: #003826;
+  --md-sys-color-primary-container: #12402f;
+  --md-sys-color-on-primary-container: #b6ecd2;
 
-  --md-sys-color-secondary: #b4ccbc;
-  --md-sys-color-on-secondary: #20352a;
-  --md-sys-color-secondary-container: #364b3f;
-  --md-sys-color-on-secondary-container: #d0e8d7;
+  --md-sys-color-secondary: #b6c9c0;
+  --md-sys-color-on-secondary: #21332c;
+  --md-sys-color-secondary-container: #26332e;
+  --md-sys-color-on-secondary-container: #d3e3db;
 
-  --md-sys-color-tertiary: #a5cde0;
-  --md-sys-color-on-tertiary: #073544;
-  --md-sys-color-tertiary-container: #244c5b;
-  --md-sys-color-on-tertiary-container: #c1e9fb;
+  --md-sys-color-tertiary: #9fcbea;
+  --md-sys-color-on-tertiary: #00344f;
+  --md-sys-color-tertiary-container: #15344a;
+  --md-sys-color-on-tertiary-container: #cfe5f6;
 
-  --md-sys-color-error: #ffb4ab;
-  --md-sys-color-on-error: #690005;
-  --md-sys-color-error-container: #93000a;
-  --md-sys-color-on-error-container: #ffdad6;
+  --md-sys-color-error: #f2a69d;
+  --md-sys-color-on-error: #601410;
+  --md-sys-color-error-container: #4a1c19;
+  --md-sys-color-on-error-container: #fbd6d1;
 
-  --md-sys-color-warning: #ffb95c;
-  --md-sys-color-on-warning: #462a00;
-  --md-sys-color-warning-container: #643f00;
-  --md-sys-color-on-warning-container: #ffddb4;
+  --md-sys-color-warning: #f0bf6c;
+  --md-sys-color-on-warning: #432b00;
+  --md-sys-color-warning-container: #42300f;
+  --md-sys-color-on-warning-container: #fbe3bb;
 
-  --md-sys-color-background: #101512;
-  --md-sys-color-on-background: #e1e3df;
-  --md-sys-color-surface: #101512;
-  --md-sys-color-on-surface: #e1e3df;
-  --md-sys-color-surface-variant: #404943;
-  --md-sys-color-on-surface-variant: #c0c9c2;
-  --md-sys-color-outline: #8a938c;
-  --md-sys-color-outline-variant: #404943;
+  --md-sys-color-background: #0e1311;
+  --md-sys-color-on-background: #e0e5e2;
+  --md-sys-color-surface: #0e1311;
+  --md-sys-color-on-surface: #e0e5e2;
+  --md-sys-color-surface-variant: #3c4541;
+  --md-sys-color-on-surface-variant: #b9c3be;
+  --md-sys-color-outline: #87918c;
+  --md-sys-color-outline-variant: #2e3733;
 
-  --md-sys-color-surface-container-lowest: #0c0f0d;
-  --md-sys-color-surface-container-low: #181d1a;
-  --md-sys-color-surface-container: #1c211e;
-  --md-sys-color-surface-container-high: #272b28;
-  --md-sys-color-surface-container-highest: #323633;
+  --md-sys-color-surface-container-lowest: #0a0e0c;
+  --md-sys-color-surface-container-low: #161c19;
+  --md-sys-color-surface-container: #1b221f;
+  --md-sys-color-surface-container-high: #242c28;
+  --md-sys-color-surface-container-highest: #2e3632;
+
+  --md-sys-elevation-level1:
+    0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.25);
+  --md-sys-elevation-level2:
+    0 2px 6px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 * {
