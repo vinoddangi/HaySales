@@ -31,6 +31,24 @@ export const BASELINE_CLOSING_STOCK: CropRecord = {
 };
 
 /**
+ * Baseline closing stock as of August 2026 ('2026-08').
+ */
+export const AUG_2026_CLOSING_STOCK: CropRecord = {
+  Others: {
+    id: 'closing-others-2026-08',
+    date: '2026-08-31',
+    type: 'PURCHASE',
+    category: 'Others',
+    weight: 5403,
+    amount: 58029.96,
+    cashPaid: 58029.96,
+    remainingDue: 0,
+    note: '2026 Aug Closing Stock',
+    vendorName: 'Opening Inventory',
+  },
+};
+
+/**
  * Returns the last day number of a given year and month (1-indexed month 1..12).
  */
 export function getLastDayOfMonth(year: number, month: number): number {

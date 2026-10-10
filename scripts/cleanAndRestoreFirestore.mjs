@@ -63,22 +63,37 @@ function toFirestoreFields(obj) {
   return fields;
 }
 
-async function commitBatch(token, projectId, writes) {
+async function commitBatch(token, projectId, writes, retryCount = 0) {
   const url = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents:commit`;
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ writes }),
-  });
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ writes }),
+    });
 
-  if (!res.ok) {
-    const errText = await res.text();
-    throw new Error(`Firestore commit failed (${res.status}): ${errText}`);
+    if (!res.ok) {
+      const errText = await res.text();
+      if ((res.status === 429 || res.status === 503) && retryCount < 5) {
+        const delay = Math.pow(2, retryCount) * 1500 + Math.random() * 1000;
+        console.warn(`\n⚠️  Quota/Rate limit hit (${res.status}). Retrying in ${(delay / 1000).toFixed(1)}s (attempt ${retryCount + 1}/5)...`);
+        await new Promise(r => setTimeout(r, delay));
+        return commitBatch(token, projectId, writes, retryCount + 1);
+      }
+      throw new Error(`Firestore commit failed (${res.status}): ${errText}`);
+    }
+    return await res.json();
+  } catch (err) {
+    if (retryCount < 5 && err.message.includes('429')) {
+      const delay = Math.pow(2, retryCount) * 2000;
+      await new Promise(r => setTimeout(r, delay));
+      return commitBatch(token, projectId, writes, retryCount + 1);
+    }
+    throw err;
   }
-  return await res.json();
 }
 
 async function fetchCollectionDocNames(token, projectId, collectionId) {
@@ -119,6 +134,22 @@ async function main() {
 
   // 2. Fetch existing document names in Firestore to delete orphaned/unmatched docs
   console.log('\n🔍 Scanning existing Firestore collections...');
+  const existingCustomers = await fetchCollectionDocNames(token, projectId, 'customers');
+  console.log(`   - Found ${existingCustomers.length} existing customers in Firestore`);
+  const validCustomerNames = new Set(customers.map(c => `projects/${projectId}/databases/(default)/documents/customers/${c.id}`));
+  const custDocsToDelete = existingCustomers.filter(name => !validCustomerNames.has(name));
+
+  if (custDocsToDelete.length > 0) {
+    console.log(`🗑️ Deleting ${custDocsToDelete.length} orphaned/duplicate customers from Firestore...`);
+    const deleteWrites = custDocsToDelete.map(name => ({ delete: name }));
+    const CHUNK_SIZE = 300;
+    for (let i = 0; i < Math.ceil(deleteWrites.length / CHUNK_SIZE); i++) {
+      const chunk = deleteWrites.slice(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE);
+      await commitBatch(token, projectId, chunk);
+    }
+    console.log('✅ Orphaned customers deleted.');
+  }
+
   const existingCustTxs = await fetchCollectionDocNames(token, projectId, 'customer_transactions');
   console.log(`   - Found ${existingCustTxs.length} existing customer_transactions in Firestore`);
 
@@ -126,14 +157,31 @@ async function main() {
   const docsToDelete = existingCustTxs.filter(name => !validCustTxNames.has(name));
 
   if (docsToDelete.length > 0) {
-    console.log(`🗑️ Deleting ${docsToDelete.length} orphaned/reconciliation customer transactions from Firestore...`);
+    console.log(`🗑️ Deleting ${docsToDelete.length} orphaned customer transactions from Firestore...`);
     const deleteWrites = docsToDelete.map(name => ({ delete: name }));
     const CHUNK_SIZE = 300;
     for (let i = 0; i < Math.ceil(deleteWrites.length / CHUNK_SIZE); i++) {
       const chunk = deleteWrites.slice(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE);
       await commitBatch(token, projectId, chunk);
     }
-    console.log('✅ Orphaned documents deleted.');
+    console.log('✅ Orphaned customer transactions deleted.');
+  }
+
+  const existingOpTxs = await fetchCollectionDocNames(token, projectId, 'operation_transactions');
+  console.log(`   - Found ${existingOpTxs.length} existing operation_transactions in Firestore`);
+
+  const validOpTxNames = new Set(operation_transactions.map(t => `projects/${projectId}/databases/(default)/documents/operation_transactions/${t.id}`));
+  const opDocsToDelete = existingOpTxs.filter(name => !validOpTxNames.has(name));
+
+  if (opDocsToDelete.length > 0) {
+    console.log(`🗑️ Deleting ${opDocsToDelete.length} orphaned operation transactions from Firestore...`);
+    const deleteWrites = opDocsToDelete.map(name => ({ delete: name }));
+    const CHUNK_SIZE = 300;
+    for (let i = 0; i < Math.ceil(deleteWrites.length / CHUNK_SIZE); i++) {
+      const chunk = deleteWrites.slice(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE);
+      await commitBatch(token, projectId, chunk);
+    }
+    console.log('✅ Orphaned operation transactions deleted.');
   }
 
   // 3. Upload target documents
@@ -164,13 +212,14 @@ async function main() {
   }
 
   console.log(`\n📤 Uploading ${allWrites.length} clean restored documents...`);
-  const CHUNK_SIZE = 300;
+  const CHUNK_SIZE = 250;
   const totalChunks = Math.ceil(allWrites.length / CHUNK_SIZE);
   for (let i = 0; i < totalChunks; i++) {
     const chunk = allWrites.slice(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE);
     process.stdout.write(`⏳ Uploading batch ${i + 1}/${totalChunks} (${chunk.length} docs)... `);
     await commitBatch(token, projectId, chunk);
     console.log('✅ Done');
+    await new Promise(r => setTimeout(r, 400));
   }
 
   console.log('\n🎉 Cloud Firestore has been completely restored to pre-reconciliation baseline!');
