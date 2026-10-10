@@ -1,10 +1,10 @@
 import {
-  IconBookOpen,
-  IconHistory,
-  IconHome,
-  IconShoppingBag,
-  IconShoppingCart,
-} from '../../components/Icon';
+  BookOpen,
+  History,
+  Home,
+  ShoppingBag,
+  ShoppingCart,
+} from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { NavItem } from '../navigationTypes';
 
@@ -13,31 +13,31 @@ export const navItems: NavItem[] = [
     id: 'home',
     label: 'Home',
     path: '/',
-    icon: IconHome,
+    icon: Home,
   },
   {
     id: 'sales',
     label: 'Sales',
     path: '/sales',
-    icon: IconShoppingBag,
+    icon: ShoppingBag,
   },
   {
     id: 'purchases',
     label: 'Buy',
     path: '/purchases',
-    icon: IconShoppingCart,
+    icon: ShoppingCart,
   },
   {
     id: 'ledger',
     label: 'Ledger',
     path: '/ledger',
-    icon: IconBookOpen,
+    icon: BookOpen,
   },
   {
     id: 'activity',
     label: 'Activity',
     path: '/activity',
-    icon: IconHistory,
+    icon: History,
   },
 ];
 

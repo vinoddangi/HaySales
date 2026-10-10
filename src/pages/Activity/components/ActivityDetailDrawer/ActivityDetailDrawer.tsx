@@ -1,9 +1,14 @@
 import React from 'react';
-import { Badge } from '../../../../components/Badge';
-import { Button } from '../../../../components/Button';
-import { IconEdit3, IconX } from '../../../../components/Icon';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Text } from '../../../../components/Text';
+import {
+  Button,
+  Drawer,
+  DrawerCloseButton,
+  FlexLayout,
+  Pill,
+  StackLayout,
+  Text,
+} from '@salt-ds/core';
+import { Edit3 } from 'lucide-react';
 import {
   CropTransactionData,
   CustomerTransactionData,
@@ -65,201 +70,178 @@ export const ActivityDetailDrawer: React.FC<ActivityDetailDrawerProps> = ({
   const derivedRate = getRate(transaction);
 
   let badgeLabel = 'Transaction';
-  let badgeSentiment:
-    'positive' | 'negative' | 'warning' | 'info' | 'neutral' | 'accent' =
-    'neutral';
 
   if (isSale) {
     if (credit === 0 && (cash > 0 || amount === 0)) {
       badgeLabel = 'Cash';
-      badgeSentiment = 'positive';
     } else if (cash === 0 && credit > 0) {
       badgeLabel = 'Credit';
-      badgeSentiment = 'warning';
     } else if (cash > 0 && credit > 0) {
       badgeLabel = 'Partial Credit';
-      badgeSentiment = 'info';
     } else {
       badgeLabel = 'Sale';
-      badgeSentiment = 'accent';
     }
   } else if (isPurchase) {
     if (credit === 0 && (cash > 0 || amount === 0)) {
       badgeLabel = 'Cash';
-      badgeSentiment = 'positive';
     } else if (cash === 0 && credit > 0) {
       badgeLabel = 'Credit';
-      badgeSentiment = 'warning';
     } else if (cash > 0 && credit > 0) {
       badgeLabel = 'Partial Credit';
-      badgeSentiment = 'info';
     } else {
       badgeLabel = 'Purchase';
-      badgeSentiment = 'info';
     }
   } else if (isPayment) {
     badgeLabel = 'Payment';
-    badgeSentiment = 'positive';
   } else if (isService) {
     badgeLabel = 'Service';
-    badgeSentiment = 'neutral';
   } else if (isExpense) {
     badgeLabel = 'Expense';
-    badgeSentiment = 'negative';
   } else if (isOpening) {
     badgeLabel = 'Opening Due';
-    badgeSentiment = 'warning';
   }
 
   return (
-    <div
-      className="hs-activity-drawer-overlay"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
+    <Drawer
+      open={isOpen}
+      position="bottom"
+      onOpenChange={(open) => {
+        if (!open) onClose();
       }}
+      className="hs-activity-drawer"
+      style={{ maxHeight: '90vh' }}
     >
-      <div className="hs-activity-drawer">
-        <div className="hs-activity-drawer__handle" />
+      <StackLayout gap={2} style={{ padding: 'var(--salt-spacing-200)' }}>
+        {/* Header */}
+        <FlexLayout align="center" justify="space-between">
+          <FlexLayout align="center" gap={1}>
+            <Text styleAs="h2">
+              <b>Transaction Details</b>
+            </Text>
+            <Pill>{badgeLabel}</Pill>
+          </FlexLayout>
+          <DrawerCloseButton onClick={onClose} />
+        </FlexLayout>
 
-        <Flex direction="column" gap="md" fullWidth>
-          {/* Header */}
-          <Flex align="center" justify="between" fullWidth>
-            <Flex align="center" gap="xs">
-              <Text variant="title-md" weight="bold">
-                Transaction Details
-              </Text>
-              <Badge sentiment={badgeSentiment} size="md">
-                {badgeLabel}
-              </Badge>
-            </Flex>
-            <button
-              type="button"
-              aria-label="Close details"
-              onClick={onClose}
-              className="hs-activity-drawer__close-btn"
-            >
-              <IconX size="md" />
-            </button>
-          </Flex>
-
-          {/* Details Table */}
-          <div className="hs-activity-drawer__content">
-            <div className="hs-activity-drawer__row">
-              <Text variant="body-sm" appearance="secondary">
-                Transaction ID
-              </Text>
-              <Text variant="body-sm" weight="medium">
-                {transaction.id || 'N/A'}
-              </Text>
-            </div>
-
-            <div className="hs-activity-drawer__row">
-              <Text variant="body-sm" appearance="secondary">
-                Date
-              </Text>
-              <Text variant="body-sm" weight="medium">
-                {formatDate(transaction.date)}
-              </Text>
-            </div>
-
-            <div className="hs-activity-drawer__row">
-              <Text variant="body-sm" appearance="secondary">
-                Associated Party
-              </Text>
-              <Text variant="body-sm" weight="bold">
-                {partyName}
-              </Text>
-            </div>
-
-            <div className="hs-activity-drawer__row">
-              <Text variant="body-sm" appearance="secondary">
-                Category
-              </Text>
-              <Text variant="body-sm" weight="medium">
-                {(transaction as any).category || 'N/A'}
-              </Text>
-            </div>
-
-            {typeof weightKg === 'number' && weightKg > 0 && (
-              <div className="hs-activity-drawer__row">
-                <Text variant="body-sm" appearance="secondary">
-                  Weight
-                </Text>
-                <Text variant="body-sm" weight="bold" sentiment="neutral">
-                  {formatWeight(weightKg)}
-                </Text>
-              </div>
-            )}
-
-            {typeof derivedRate === 'number' && (
-              <div className="hs-activity-drawer__row">
-                <Text variant="body-sm" appearance="secondary">
-                  Derived Rate
-                </Text>
-                <Text variant="body-sm" weight="bold" sentiment="accent">
-                  ₹{derivedRate} / Kg
-                </Text>
-              </div>
-            )}
-
-            <div className="hs-activity-drawer__row">
-              <Text variant="body-sm" appearance="secondary">
-                Total Amount
-              </Text>
-              <Text variant="title-md" weight="bold" sentiment="accent">
-                {formatRupee(amount)}
-              </Text>
-            </div>
-
-            <div className="hs-activity-drawer__row">
-              <Text variant="body-sm" appearance="secondary">
-                Cash Settled
-              </Text>
-              <Text variant="body-sm" weight="bold" sentiment="positive">
-                {formatRupee(cash)}
-              </Text>
-            </div>
-
-            <div className="hs-activity-drawer__row">
-              <Text variant="body-sm" appearance="secondary">
-                Remaining Due (Credit)
-              </Text>
-              <Text variant="body-sm" weight="bold" sentiment="warning">
-                {formatRupee(credit)}
-              </Text>
-            </div>
-
-            {transaction.note && (
-              <div className="hs-activity-drawer__row">
-                <Text variant="body-sm" appearance="secondary">
-                  Notes
-                </Text>
-                <Text variant="body-sm" appearance="secondary">
-                  {transaction.note}
-                </Text>
-              </div>
-            )}
+        {/* Details Table */}
+        <div className="hs-activity-drawer__content">
+          <div className="hs-activity-drawer__row">
+            <Text styleAs="notation" color="secondary">
+              Transaction ID
+            </Text>
+            <Text styleAs="notation">
+              <b>{transaction.id || 'N/A'}</b>
+            </Text>
           </div>
 
-          {/* Actions */}
-          <Flex gap="sm" fullWidth>
-            <Button variant="tonal" fullWidth onClick={onClose}>
-              Close
+          <div className="hs-activity-drawer__row">
+            <Text styleAs="notation" color="secondary">
+              Date
+            </Text>
+            <Text styleAs="notation">
+              <b>{formatDate(transaction.date)}</b>
+            </Text>
+          </div>
+
+          <div className="hs-activity-drawer__row">
+            <Text styleAs="notation" color="secondary">
+              Associated Party
+            </Text>
+            <Text styleAs="notation">
+              <b>{partyName}</b>
+            </Text>
+          </div>
+
+          <div className="hs-activity-drawer__row">
+            <Text styleAs="notation" color="secondary">
+              Category
+            </Text>
+            <Text styleAs="notation">
+              <b>{(transaction as any).category || 'N/A'}</b>
+            </Text>
+          </div>
+
+          {typeof weightKg === 'number' && weightKg > 0 && (
+            <div className="hs-activity-drawer__row">
+              <Text styleAs="notation" color="secondary">
+                Weight
+              </Text>
+              <Text styleAs="notation">
+                <b>{formatWeight(weightKg)}</b>
+              </Text>
+            </div>
+          )}
+
+          {typeof derivedRate === 'number' && (
+            <div className="hs-activity-drawer__row">
+              <Text styleAs="notation" color="secondary">
+                Derived Rate
+              </Text>
+              <Text styleAs="notation">
+                <b>₹{derivedRate} / Kg</b>
+              </Text>
+            </div>
+          )}
+
+          <div className="hs-activity-drawer__row">
+            <Text styleAs="notation" color="secondary">
+              Total Amount
+            </Text>
+            <Text styleAs="h3">
+              <b>{formatRupee(amount)}</b>
+            </Text>
+          </div>
+
+          <div className="hs-activity-drawer__row">
+            <Text styleAs="notation" color="secondary">
+              Cash Settled
+            </Text>
+            <Text styleAs="notation" color="success">
+              <b>{formatRupee(cash)}</b>
+            </Text>
+          </div>
+
+          <div className="hs-activity-drawer__row">
+            <Text styleAs="notation" color="secondary">
+              Remaining Due (Credit)
+            </Text>
+            <Text styleAs="notation" color="warning">
+              <b>{formatRupee(credit)}</b>
+            </Text>
+          </div>
+
+          {transaction.note && (
+            <div className="hs-activity-drawer__row">
+              <Text styleAs="notation" color="secondary">
+                Notes
+              </Text>
+              <Text styleAs="notation" color="secondary">
+                {transaction.note}
+              </Text>
+            </div>
+          )}
+        </div>
+
+        {/* Actions */}
+        <FlexLayout gap={1}>
+          <Button onClick={onClose} style={{ flex: 1, height: '44px' }}>
+            Close
+          </Button>
+          {onEdit && (
+            <Button
+              sentiment="accented"
+              onClick={() => onEdit(transaction)}
+              style={{ flex: 1, height: '44px' }}
+            >
+              <FlexLayout align="center" justify="center" gap={0.5}>
+                <Edit3 size={16} />
+                <span>Edit Transaction</span>
+              </FlexLayout>
             </Button>
-            {onEdit && (
-              <Button
-                variant="filled"
-                fullWidth
-                onClick={() => onEdit(transaction)}
-                icon={<IconEdit3 size="md" />}
-              >
-                Edit Transaction
-              </Button>
-            )}
-          </Flex>
-        </Flex>
-      </div>
-    </div>
+          )}
+        </FlexLayout>
+      </StackLayout>
+    </Drawer>
   );
 };
 

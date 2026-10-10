@@ -1,12 +1,18 @@
 import React from 'react';
-import { Checkbox } from '../../../../components/Checkbox';
-import { DatePicker } from '../../../../components/DatePicker';
-import { Form, useForm } from '../../../../components/Form';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Grid } from '../../../../components/layouts/Grid';
-import { Select } from '../../../../components/Select';
-import { Text } from '../../../../components/Text';
-import { TextField } from '../../../../components/TextField';
+import {
+  Button,
+  Card,
+  Checkbox,
+  FlexLayout,
+  FormField,
+  FormFieldLabel,
+  GridLayout,
+  GridItem,
+  Input,
+  StackLayout,
+  Text,
+} from '@salt-ds/core';
+import { useForm } from '../../../../hooks/useForm';
 import { CropCategory, VALID_CROP_CATEGORIES } from '../../../../models';
 import {
   formatRupee,
@@ -36,7 +42,7 @@ export interface PurchaseFormCardProps {
 }
 
 const CROP_OPTIONS = [
-  { value: '', label: 'Select' },
+  { value: '', label: 'Select Crop' },
   ...VALID_CROP_CATEGORIES.map((crop) => ({ value: crop, label: crop })),
 ];
 
@@ -92,126 +98,189 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
     },
   });
 
-  const { values, setValue } = form;
+  const { values, setValue, isValid } = form;
   const effectiveCashPaid = values.paidInFull ? values.amount : values.cashPaid;
   const avgRate =
     values.weight > 0 && values.amount > 0 ? values.amount / values.weight : 0;
 
   return (
-    <Form form={form} className="hs-purchase-form-card">
-      <Text
-        variant="title-sm"
-        weight="bold"
-        className="hs-purchase-form-card__section-title"
-      >
-        Record Stock Purchase
-      </Text>
+    <Card className="hs-purchase-form-card">
+      <form onSubmit={form.handleSubmit}>
+        <StackLayout gap={2}>
+          <Text styleAs="label">
+            <b>RECORD STOCK PURCHASE</b>
+          </Text>
 
-      {/* 1. Date and Crop Type */}
-      <Grid columns={2} gap="md" fullWidth>
-        <Grid.Item>
-          <DatePicker
-            label="Purchase Date"
-            required
-            value={values.date}
-            onChange={(val) => setValue('date', val)}
+          {/* 1. Date and Crop Type */}
+          <GridLayout columns={2} gap={2}>
+            <GridItem>
+              <FormField necessity="required">
+                <FormFieldLabel>Purchase Date</FormFieldLabel>
+                <Input
+                  inputProps={{
+                    type: 'date',
+                    value: values.date,
+                    onChange: (e) => setValue('date', e.target.value),
+                  }}
+                />
+              </FormField>
+            </GridItem>
+            <GridItem>
+              <FormField necessity="required">
+                <FormFieldLabel>Crop Type</FormFieldLabel>
+                <select
+                  value={values.category}
+                  onChange={(e) =>
+                    setValue('category', e.target.value as CropCategory)
+                  }
+                  style={{
+                    width: '100%',
+                    height: 'var(--salt-size-base, 36px)',
+                    borderRadius: 'var(--salt-palette-corner-rounded, 6px)',
+                    border: '1px solid var(--salt-palette-neutral-border)',
+                    backgroundColor: 'var(--salt-container-primary-background)',
+                    color: 'var(--salt-palette-neutral-primary-foreground)',
+                    padding: '0 8px',
+                    fontSize: '14px',
+                  }}
+                >
+                  {CROP_OPTIONS.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </FormField>
+            </GridItem>
+          </GridLayout>
+
+          {/* 2. Weight (Kg) and Purchase Amount (₹) */}
+          <GridLayout columns={2} gap={2}>
+            <GridItem>
+              <FormField necessity="required">
+                <FormFieldLabel>Weight (Kg)</FormFieldLabel>
+                <Input
+                  inputProps={{
+                    type: 'number',
+                    placeholder: '0',
+                    value: values.weight ? String(values.weight) : '',
+                    onChange: (e) =>
+                      setValue('weight', Number(e.target.value) || 0),
+                  }}
+                />
+              </FormField>
+            </GridItem>
+            <GridItem>
+              <FormField necessity="required">
+                <FormFieldLabel>Purchase Amount (₹)</FormFieldLabel>
+                <Input
+                  inputProps={{
+                    type: 'number',
+                    placeholder: '0',
+                    value: values.amount ? String(values.amount) : '',
+                    onChange: (e) =>
+                      setValue('amount', Number(e.target.value) || 0),
+                  }}
+                />
+              </FormField>
+            </GridItem>
+          </GridLayout>
+
+          {/* 3. Supplier Name */}
+          <FormField>
+            <FormFieldLabel>Supplier Name (Optional)</FormFieldLabel>
+            <Input
+              inputProps={{
+                placeholder: 'e.g. Ramesh Patel, Mandi Trader',
+                value: values.vendorName,
+                onChange: (e) => setValue('vendorName', e.target.value),
+              }}
+            />
+          </FormField>
+
+          {/* 4. Payment Settlement Checkbox */}
+          <Checkbox
+            label="Paid in Full (All Cash)"
+            checked={values.paidInFull}
+            onChange={(e) => setValue('paidInFull', e.target.checked)}
           />
-        </Grid.Item>
-        <Grid.Item>
-          <Select
-            label="Crop Type"
-            required
-            value={values.category}
-            options={CROP_OPTIONS}
-            onChange={(val) => setValue('category', val as CropCategory)}
-          />
-        </Grid.Item>
-      </Grid>
 
-      {/* 2. Weight (Kg) and Purchase Amount (₹) */}
-      <Grid columns={2} gap="md" fullWidth>
-        <Grid.Item>
-          <TextField
-            label="Weight (Kg)"
-            type="number"
-            required
-            placeholder="0"
-            value={values.weight ? String(values.weight) : ''}
-            onChange={(val) => setValue('weight', Number(val) || 0)}
-          />
-        </Grid.Item>
-        <Grid.Item>
-          <TextField
-            label="Purchase Amount (₹)"
-            type="number"
-            required
-            placeholder="0"
-            value={values.amount ? String(values.amount) : ''}
-            onChange={(val) => setValue('amount', Number(val) || 0)}
-          />
-        </Grid.Item>
-      </Grid>
+          {!values.paidInFull && (
+            <FormField>
+              <FormFieldLabel>Cash Paid (₹)</FormFieldLabel>
+              <Input
+                inputProps={{
+                  type: 'number',
+                  placeholder: '0',
+                  value: values.cashPaid ? String(values.cashPaid) : '',
+                  onChange: (e) =>
+                    setValue('cashPaid', Number(e.target.value) || 0),
+                }}
+              />
+            </FormField>
+          )}
 
-      {/* 3. Supplier / Farmer Name */}
-      <TextField
-        label="Supplier Name (Optional)"
-        type="text"
-        placeholder="e.g. Ramesh Patel, Mandi Trader"
-        value={values.vendorName}
-        onChange={(val) => setValue('vendorName', val)}
-      />
+          {/* 5. Remarks / Note */}
+          <FormField>
+            <FormFieldLabel>Note / Remarks (Optional)</FormFieldLabel>
+            <Input
+              inputProps={{
+                placeholder: 'e.g. Lot #12, 14% moisture, direct from farm',
+                value: values.note,
+                onChange: (e) => setValue('note', e.target.value),
+              }}
+            />
+          </FormField>
 
-      {/* 4. Payment Settlement Checkbox */}
-      <Flex align="center" justify="between" fullWidth>
-        <Checkbox
-          label="Paid in Full (All Cash)"
-          checked={values.paidInFull}
-          onChange={(checked) => setValue('paidInFull', checked)}
-        />
-      </Flex>
+          {/* 6. Summary Card */}
+          <Card
+            style={{
+              backgroundColor: 'var(--salt-container-secondary-background)',
+              padding: 'var(--salt-spacing-150)',
+            }}
+          >
+            <StackLayout gap={1}>
+              <FlexLayout justify="space-between">
+                <Text styleAs="notation" color="secondary">
+                  Calculated Buying Rate:
+                </Text>
+                <Text styleAs="notation">
+                  <b>{avgRate > 0 ? `${formatRupee(avgRate)} / Kg` : '—'}</b>
+                </Text>
+              </FlexLayout>
+              <FlexLayout justify="space-between">
+                <Text styleAs="notation" color="secondary">
+                  Total Purchase Cost:
+                </Text>
+                <Text styleAs="notation">
+                  <b>
+                    {formatRupee(values.amount)} ({formatWeight(values.weight)})
+                  </b>
+                </Text>
+              </FlexLayout>
+              <FlexLayout justify="space-between">
+                <Text styleAs="notation" color="secondary">
+                  Cash Outflow Now:
+                </Text>
+                <Text styleAs="notation" color="error">
+                  <b>{formatRupee(effectiveCashPaid)}</b>
+                </Text>
+              </FlexLayout>
+            </StackLayout>
+          </Card>
 
-      {!values.paidInFull && (
-        <TextField
-          label="Cash Paid (₹)"
-          type="number"
-          placeholder="0"
-          value={values.cashPaid ? String(values.cashPaid) : ''}
-          onChange={(val) => setValue('cashPaid', Number(val) || 0)}
-        />
-      )}
-
-      {/* 5. Remarks / Note */}
-      <TextField
-        label="Note / Remarks (Optional)"
-        type="text"
-        placeholder="e.g. Lot #12, 14% moisture, direct from farm"
-        value={values.note}
-        onChange={(val) => setValue('note', val)}
-      />
-
-      {/* 6. Summary Box */}
-      <Form.Summary>
-        <Form.Summary.Row
-          label="Calculated Buying Rate:"
-          value={avgRate > 0 ? `${formatRupee(avgRate)} / Kg` : '—'}
-        />
-        <Form.Summary.Row
-          label="Total Purchase Cost:"
-          value={`${formatRupee(values.amount)} (${formatWeight(values.weight)})`}
-        />
-        <Form.Summary.Row
-          label="Cash Outflow Now:"
-          value={formatRupee(effectiveCashPaid)}
-          sentiment="negative"
-        />
-      </Form.Summary>
-
-      {/* 7. Action Button */}
-      <Form.Submit
-        label="Record Stock Purchase"
-        submittingLabel="Recording Purchase..."
-      />
-    </Form>
+          {/* 7. Action Button */}
+          <Button
+            sentiment="accented"
+            type="submit"
+            disabled={!isValid || isSaving}
+            style={{ width: '100%', height: '44px' }}
+          >
+            {isSaving ? 'Recording Purchase...' : 'Record Stock Purchase'}
+          </Button>
+        </StackLayout>
+      </form>
+    </Card>
   );
 };
 

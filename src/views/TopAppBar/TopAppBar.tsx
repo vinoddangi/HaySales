@@ -1,5 +1,6 @@
 import React from 'react';
-import { Avatar, Flex, IconArrowLeft, Text } from '../../components';
+import { Avatar, FlexLayout, Text } from '@salt-ds/core';
+import { ArrowLeft } from 'lucide-react';
 import { TopAppBarProps } from '../navigationTypes';
 import './TopAppBar.css';
 import { useTopAppBar } from './useTopAppBar';
@@ -22,10 +23,10 @@ export const TopAppBarLeading: React.FC<TopAppBarLeadingProps> = ({
   });
 
   return (
-    <Flex
+    <FlexLayout
       direction="row"
       align="center"
-      gap="sm"
+      gap={1}
       className="top-app-bar__leading"
     >
       {showBack ? (
@@ -35,26 +36,20 @@ export const TopAppBarLeading: React.FC<TopAppBarLeadingProps> = ({
           className="top-app-bar__icon-btn"
           type="button"
         >
-          <IconArrowLeft size="lg" />
+          <ArrowLeft size={20} />
         </button>
       ) : (
         <Avatar
           name={profileName}
-          size="sm"
           onClick={handleProfileClick}
           title={`Profile: ${profileName}`}
           className="top-app-bar__avatar"
         />
       )}
-      <Text
-        variant="title-md"
-        weight="bold"
-        as="h1"
-        className="top-app-bar__title"
-      >
-        {title}
+      <Text styleAs="h2" className="top-app-bar__title">
+        <b>{title}</b>
       </Text>
-    </Flex>
+    </FlexLayout>
   );
 };
 
@@ -71,27 +66,27 @@ export const TopAppBarTrailing: React.FC<TopAppBarTrailingProps> = ({
 
   if (customActions) {
     return (
-      <Flex
+      <FlexLayout
         direction="row"
         align="center"
-        gap="xs"
+        gap={1}
         className="top-app-bar__trailing"
       >
         {customActions}
-      </Flex>
+      </FlexLayout>
     );
   }
 
   return (
-    <Flex
+    <FlexLayout
       direction="row"
       align="center"
-      gap="xs"
+      gap={1}
       className="top-app-bar__trailing"
     >
-      <Flex.Item className="top-app-bar__year-selector" title="Accounting Year">
-        <Text variant="label-sm" weight="bold">
-          {selectedYear}
+      <div className="top-app-bar__year-selector" title="Accounting Year">
+        <Text styleAs="label">
+          <b>{selectedYear}</b>
         </Text>
         <select
           aria-label="Select Year"
@@ -105,8 +100,8 @@ export const TopAppBarTrailing: React.FC<TopAppBarTrailingProps> = ({
             </option>
           ))}
         </select>
-      </Flex.Item>
-    </Flex>
+      </div>
+    </FlexLayout>
   );
 };
 
@@ -120,16 +115,15 @@ export const TopAppBar: React.FC<TopAppBarProps> = ({
 }) => {
   return (
     <header className="top-app-bar">
-      <Flex
+      <FlexLayout
         direction="row"
         align="center"
-        justify="between"
-        fullWidth
+        justify="space-between"
         className="top-app-bar__container"
       >
         <TopAppBarLeading title={title} showBack={showBack} onBack={onBack} />
         <TopAppBarTrailing customActions={actions} />
-      </Flex>
+      </FlexLayout>
     </header>
   );
 };

@@ -1,12 +1,16 @@
 import clsx from 'clsx';
 import React from 'react';
 import { CropCommissionProfitResult } from '../../../../business';
-import { Badge } from '../../../../components/Badge';
-import { Card } from '../../../../components/Card';
-import { IconChevronRight, IconPackage } from '../../../../components/Icon';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Grid } from '../../../../components/layouts/Grid';
-import { Text } from '../../../../components/Text';
+import {
+  Card,
+  FlexLayout,
+  GridItem,
+  GridLayout,
+  Pill,
+  StackLayout,
+  Text,
+} from '@salt-ds/core';
+import { ChevronRight, Package } from 'lucide-react';
 import { formatRupee, formatWeight } from '../../../../utils/formatters';
 import './StockCard.css';
 
@@ -59,132 +63,113 @@ export const StockCard: React.FC<StockCardProps> = ({
 
   return (
     <Card
-      variant="filled"
-      clickable={Boolean(onClick)}
       onClick={onClick}
       className={clsx('hs-stock-card', className)}
+      style={{ cursor: onClick ? 'pointer' : undefined }}
     >
-      <Card.Content>
+      <StackLayout gap={1}>
         {/* 1. Header */}
-        <Flex
+        <FlexLayout
+          direction="row"
           align="center"
-          justify="between"
-          fullWidth
+          justify="space-between"
           className="hs-stock-card__header"
         >
-          <Flex align="center" gap="sm">
+          <FlexLayout direction="row" align="center" gap={1}>
             <div className="hs-stock-card__icon-wrapper">
-              <IconPackage size="md" />
+              <Package size={18} />
             </div>
-            <Flex direction="column">
-              <Flex align="center" gap="xs">
-                <Text variant="label-sm" weight="bold" uppercase>
-                  Crop Stock &amp; Valuation
+            <div>
+              <FlexLayout direction="row" align="center" gap={1}>
+                <Text styleAs="label">
+                  <b>Crop Stock & Valuation</b>
                 </Text>
                 {onClick && (
-                  <IconChevronRight
-                    size="sm"
-                    className="hs-stock-card__chevron"
-                  />
+                  <ChevronRight size={14} className="hs-stock-card__chevron" />
                 )}
-              </Flex>
-              <Text variant="caption" appearance="secondary">
+              </FlexLayout>
+              <Text styleAs="notation" color="secondary">
                 {periodLabel || 'Period'} Inventory &amp; Margins
               </Text>
-            </Flex>
-          </Flex>
+            </div>
+          </FlexLayout>
 
-          <Badge
-            sentiment={totalClosingStock.weight > 0 ? 'info' : 'neutral'}
-            size="sm"
-          >
-            {formatWeight(totalClosingStock.weight)} In Stock
-          </Badge>
-        </Flex>
+          <Pill>{formatWeight(totalClosingStock.weight)} In Stock</Pill>
+        </FlexLayout>
 
         {/* 2. Amount Headline (Closing Stock Valuation) */}
         <div className="hs-stock-card__amount-row">
-          <Text variant="headline-md" weight="bold" sentiment="info">
-            {formatRupee(totalClosingStock.amount)}
+          <Text styleAs="h1" color="info">
+            <b>{formatRupee(totalClosingStock.amount)}</b>
           </Text>
-          <Text variant="body-sm" weight="bold" appearance="secondary">
-            {formatWeight(totalClosingStock.weight)} Total Stock
+          <Text color="secondary">
+            <b>{formatWeight(totalClosingStock.weight)} Total Stock</b>
           </Text>
         </div>
 
-        <Text variant="caption" appearance="secondary">
+        <Text styleAs="notation" color="secondary">
           Available: {formatWeight(totalAvailableWeight)} • Margin:{' '}
           {formatRupee(totalGrossCommissionProfit)}
         </Text>
 
         {/* 3. Top 3 Summary Sub-Pills */}
-        <Grid columns={3} gap="xs" className="hs-stock-card__pills">
+        <GridLayout columns={3} gap={1} className="hs-stock-card__pills">
           {/* Opening Stock (Previous Month Closing) */}
-          <Grid.Item>
+          <GridItem>
             <div className="hs-stock-pill hs-stock-pill--opening">
-              <Text variant="caption" weight="bold" uppercase sentiment="info">
-                Prev Closing
+              <Text styleAs="notation" color="info">
+                <b>Prev Closing</b>
               </Text>
-              <Text variant="body-sm" weight="bold" sentiment="info">
-                {formatWeight(totalOpeningStock.weight)}
+              <Text color="info">
+                <b>{formatWeight(totalOpeningStock.weight)}</b>
               </Text>
-              <Text variant="caption" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 {openingAvgRate > 0
                   ? `₹${openingAvgRate.toFixed(2)}/kg`
                   : formatRupee(totalOpeningStock.amount)}
               </Text>
             </div>
-          </Grid.Item>
+          </GridItem>
 
           {/* Current Purchases */}
-          <Grid.Item>
+          <GridItem>
             <div className="hs-stock-pill hs-stock-pill--buying">
-              <Text
-                variant="caption"
-                weight="bold"
-                uppercase
-                sentiment="warning"
-              >
-                Purchases
+              <Text styleAs="notation" color="warning">
+                <b>Purchases</b>
               </Text>
-              <Text variant="body-sm" weight="bold" sentiment="warning">
-                {formatWeight(totalPurchases.weight)}
+              <Text color="warning">
+                <b>{formatWeight(totalPurchases.weight)}</b>
               </Text>
-              <Text variant="caption" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 Avg ₹{totalPurchases.rate.toFixed(2)}/kg
               </Text>
             </div>
-          </Grid.Item>
+          </GridItem>
 
           {/* Mean Buying Rate */}
-          <Grid.Item>
+          <GridItem>
             <div className="hs-stock-pill hs-stock-pill--mean">
-              <Text variant="caption" weight="bold" uppercase sentiment="info">
-                Mean Buy Rate
+              <Text styleAs="notation" color="info">
+                <b>Mean Buy Rate</b>
               </Text>
-              <Text variant="body-sm" weight="bold" sentiment="info">
-                ₹{overallMeanBuyingRate.toFixed(2)}/kg
+              <Text color="info">
+                <b>₹{overallMeanBuyingRate.toFixed(2)}/kg</b>
               </Text>
-              <Text variant="caption" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 Blended mean cost
               </Text>
             </div>
-          </Grid.Item>
-        </Grid>
+          </GridItem>
+        </GridLayout>
 
         {/* 4. Crop Line Items Breakdown */}
         {cropItems.length > 0 ? (
           <div className="hs-stock-card__crops-section">
             <div className="hs-stock-card__crops-header">
-              <Text
-                variant="label-sm"
-                weight="bold"
-                uppercase
-                appearance="secondary"
-              >
+              <Text styleAs="label" color="secondary">
                 Crop Realization &amp; Margin Breakdown
               </Text>
-              <Text variant="caption" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 {cropItems.length} active crop
                 {cropItems.length === 1 ? '' : 's'}
               </Text>
@@ -214,70 +199,61 @@ export const StockCard: React.FC<StockCardProps> = ({
                   <div key={crop.category} className="hs-stock-crop-row">
                     {/* Top Row: Crop Name, In-Stock Badge & Valuation, Margin Badge */}
                     <div className="hs-stock-crop-row__top">
-                      <Flex align="center" gap="xs">
-                        <Text variant="body-sm" weight="bold">
-                          {crop.category}
+                      <FlexLayout direction="row" align="center" gap={1}>
+                        <Text styleAs="h4">
+                          <b>{crop.category}</b>
                         </Text>
-                        <Badge
-                          sentiment={stockWeight > 0 ? 'info' : 'neutral'}
-                          size="sm"
-                        >
+                        <Pill>
                           {stockWeight > 0
                             ? `Stock: ${formatWeight(stockWeight)}`
                             : 'Sold Out'}
-                        </Badge>
+                        </Pill>
                         {stockWeight > 0 && (
-                          <Text variant="caption" appearance="secondary">
+                          <Text styleAs="notation" color="secondary">
                             ({formatRupee(crop.closingStock.amount)})
                           </Text>
                         )}
-                      </Flex>
+                      </FlexLayout>
 
                       <div className="hs-stock-crop-row__profit-badge">
-                        <Text
-                          variant="body-sm"
-                          weight="bold"
-                          sentiment={isProfitPos ? 'positive' : 'negative'}
-                        >
-                          {formatRupee(crop.grossCommissionProfit)}
+                        <Text color={isProfitPos ? 'success' : 'error'}>
+                          <b>{formatRupee(crop.grossCommissionProfit)}</b>
                         </Text>
                       </div>
                     </div>
 
                     {/* Middle: 3-Column Metrics Grid */}
-                    <Grid
+                    <GridLayout
                       columns={3}
-                      gap="xs"
+                      gap={1}
                       className="hs-stock-crop-row__grid"
                     >
                       {/* 1. Mean Buying Rate Column */}
-                      <Grid.Item>
+                      <GridItem>
                         <div className="hs-stock-crop-row__col hs-stock-crop-row__col--buy">
-                          <Text
-                            variant="caption"
-                            weight="bold"
-                            uppercase
-                            appearance="secondary"
-                          >
-                            Mean Buy Rate
+                          <Text styleAs="notation" color="secondary">
+                            <b>MEAN BUY RATE</b>
                           </Text>
-                          <Text variant="body-sm" weight="bold">
-                            ₹{crop.totalAvailableStock.weightedRate.toFixed(2)}
-                            /kg
+                          <Text>
+                            <b>
+                              ₹
+                              {crop.totalAvailableStock.weightedRate.toFixed(2)}
+                              /kg
+                            </b>
                           </Text>
                           <div className="hs-stock-crop-row__sub-list">
                             {hasOpen && (
-                              <Text variant="caption" appearance="secondary">
+                              <Text styleAs="notation" color="secondary">
                                 Prev: ₹{crop.openingStock.rate.toFixed(2)}/kg
                               </Text>
                             )}
                             {hasBuy && (
-                              <Text variant="caption" appearance="secondary">
+                              <Text styleAs="notation" color="secondary">
                                 Buy: ₹{crop.purchases.rate.toFixed(2)}/kg
                               </Text>
                             )}
                             {!hasOpen && !hasBuy && (
-                              <Text variant="caption" appearance="secondary">
+                              <Text styleAs="notation" color="secondary">
                                 Rate: ₹
                                 {crop.totalAvailableStock.weightedRate.toFixed(
                                   2,
@@ -287,41 +263,38 @@ export const StockCard: React.FC<StockCardProps> = ({
                             )}
                           </div>
                         </div>
-                      </Grid.Item>
+                      </GridItem>
 
                       {/* 2. Selling Rate Column */}
-                      <Grid.Item>
+                      <GridItem>
                         <div className="hs-stock-crop-row__col hs-stock-crop-row__col--sell">
-                          <Text
-                            variant="caption"
-                            weight="bold"
-                            uppercase
-                            appearance="secondary"
-                          >
-                            Selling Rate
+                          <Text styleAs="notation" color="secondary">
+                            <b>SELLING RATE</b>
                           </Text>
-                          <Text variant="body-sm" weight="bold">
-                            {crop.sales.avgRate > 0
-                              ? `₹${crop.sales.avgRate.toFixed(2)}/kg`
-                              : '—'}
+                          <Text>
+                            <b>
+                              {crop.sales.avgRate > 0
+                                ? `₹${crop.sales.avgRate.toFixed(2)}/kg`
+                                : '—'}
+                            </b>
                           </Text>
                           <div className="hs-stock-crop-row__sub-list">
-                            <Text variant="caption" appearance="secondary">
+                            <Text styleAs="notation" color="secondary">
                               {soldWeight > 0
                                 ? `Sold: ${formatWeight(soldWeight)}`
                                 : 'No sales'}
                             </Text>
                             {soldWeight > 0 && (
-                              <Text variant="caption" appearance="secondary">
+                              <Text styleAs="notation" color="secondary">
                                 Rev: {formatRupee(crop.sales.amount)}
                               </Text>
                             )}
                           </div>
                         </div>
-                      </Grid.Item>
+                      </GridItem>
 
                       {/* 3. Margin & Spread Column */}
-                      <Grid.Item>
+                      <GridItem>
                         <div
                           className={clsx(
                             'hs-stock-crop-row__col',
@@ -330,30 +303,27 @@ export const StockCard: React.FC<StockCardProps> = ({
                               : 'hs-stock-crop-row__col--margin-neg',
                           )}
                         >
-                          <Text
-                            variant="caption"
-                            weight="bold"
-                            uppercase
-                            appearance="secondary"
-                          >
-                            Spread &amp; COGS
+                          <Text styleAs="notation" color="secondary">
+                            <b>SPREAD &amp; COGS</b>
                           </Text>
-                          <Text variant="body-sm" weight="bold">
-                            {crop.sales.avgRate > 0
-                              ? `₹${unitSpread.toFixed(2)}/kg`
-                              : '—'}
+                          <Text>
+                            <b>
+                              {crop.sales.avgRate > 0
+                                ? `₹${unitSpread.toFixed(2)}/kg`
+                                : '—'}
+                            </b>
                           </Text>
                           <div className="hs-stock-crop-row__sub-list">
-                            <Text variant="caption" appearance="secondary">
+                            <Text styleAs="notation" color="secondary">
                               COGS: {formatRupee(crop.costOfGoodsSold)}
                             </Text>
-                            <Text variant="caption" appearance="secondary">
+                            <Text styleAs="notation" color="secondary">
                               Profit: {formatRupee(crop.grossCommissionProfit)}
                             </Text>
                           </div>
                         </div>
-                      </Grid.Item>
-                    </Grid>
+                      </GridItem>
+                    </GridLayout>
 
                     {/* Progress Bar & Legend */}
                     {availWeight > 0 && (
@@ -370,7 +340,7 @@ export const StockCard: React.FC<StockCardProps> = ({
                             title={`In Stock: ${stockPct.toFixed(1)}%`}
                           />
                         </div>
-                        <Text variant="caption" appearance="secondary">
+                        <Text styleAs="notation" color="secondary">
                           Sold {soldPct.toFixed(0)}% • Stock{' '}
                           {stockPct.toFixed(0)}%
                         </Text>
@@ -383,12 +353,12 @@ export const StockCard: React.FC<StockCardProps> = ({
           </div>
         ) : (
           <div className="hs-stock-card__empty">
-            <Text variant="body-sm" appearance="secondary">
+            <Text color="secondary">
               No inventory movements or closing stock for this period.
             </Text>
           </div>
         )}
-      </Card.Content>
+      </StackLayout>
     </Card>
   );
 };

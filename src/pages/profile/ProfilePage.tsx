@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Flex, Text } from '../../components';
+import { Button, FlexLayout, Text } from '@salt-ds/core';
 import { PageContainer } from '../../views';
 import {
   FontSettingsCard,
@@ -91,31 +91,34 @@ export const ProfilePage: React.FC = () => {
 
       {/* 5. Sign Out & Version Footer */}
       <div className="profile-footer">
-        <Button variant="outlined" onClick={handleSignOut}>
+        <Button
+          onClick={handleSignOut}
+          style={{ width: '100%', height: '44px' }}
+        >
           Sign Out
         </Button>
 
-        <Flex
+        <FlexLayout
           direction="column"
           align="center"
-          gap="xs"
+          gap={0.5}
           className="profile-footer__meta"
         >
           <Text
-            variant="caption"
-            appearance="secondary"
+            styleAs="notation"
+            color="secondary"
             className="profile-footer__version"
           >
             HaySales App • v1.0.0
           </Text>
           <Text
-            variant="caption"
-            appearance="secondary"
+            styleAs="notation"
+            color="secondary"
             className="profile-footer__subtext"
           >
             Automated Versioning via Changesets
           </Text>
-        </Flex>
+        </FlexLayout>
       </div>
     </PageContainer>
   );

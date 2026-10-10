@@ -1,7 +1,6 @@
 import React from 'react';
-import { IconDollarSign, IconWrench } from '../../../../components/Icon';
-import { Text } from '../../../../components/Text';
-import { cn } from '../../../../utils/cn';
+import { FlexLayout, ToggleButton, ToggleButtonGroup } from '@salt-ds/core';
+import { DollarSign, Wrench } from 'lucide-react';
 import './SalesTypeSelector.css';
 
 export interface SalesTypeSelectorProps {
@@ -15,35 +14,29 @@ export const SalesTypeSelector: React.FC<SalesTypeSelectorProps> = ({
 }) => {
   return (
     <div className="hs-sales-type-selector">
-      <button
-        type="button"
-        onClick={() => onChange('SALE')}
-        className={cn(
-          'hs-sales-type-selector__button',
-          activeType === 'SALE' &&
-            'hs-sales-type-selector__button--active-sale',
-        )}
+      <ToggleButtonGroup
+        value={activeType}
+        onChange={(event) => {
+          const val = (event.currentTarget as HTMLButtonElement).value;
+          if (val === 'SALE' || val === 'SERVICE') {
+            onChange(val);
+          }
+        }}
+        style={{ width: '100%' }}
       >
-        <IconDollarSign size="md" />
-        <Text variant="label-md" weight="bold" as="span">
-          Crop Sales
-        </Text>
-      </button>
-
-      <button
-        type="button"
-        onClick={() => onChange('SERVICE')}
-        className={cn(
-          'hs-sales-type-selector__button',
-          activeType === 'SERVICE' &&
-            'hs-sales-type-selector__button--active-service',
-        )}
-      >
-        <IconWrench size="md" />
-        <Text variant="label-md" weight="bold" as="span">
-          Service Income
-        </Text>
-      </button>
+        <ToggleButton value="SALE" style={{ flex: 1 }}>
+          <FlexLayout align="center" justify="center" gap={1}>
+            <DollarSign size={16} />
+            <span>Crop Sales</span>
+          </FlexLayout>
+        </ToggleButton>
+        <ToggleButton value="SERVICE" style={{ flex: 1 }}>
+          <FlexLayout align="center" justify="center" gap={1}>
+            <Wrench size={16} />
+            <span>Service Income</span>
+          </FlexLayout>
+        </ToggleButton>
+      </ToggleButtonGroup>
     </div>
   );
 };

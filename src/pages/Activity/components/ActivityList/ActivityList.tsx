@@ -1,11 +1,9 @@
-import clsx from 'clsx';
 import React from 'react';
-import { EmptyState } from '../../../../components/EmptyState';
-import { IconFileSearch } from '../../../../components/Icon';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Progress } from '../../../../components/Progress';
-import { Text } from '../../../../components/Text';
+import { FlexLayout, Spinner, StackLayout, Text } from '@salt-ds/core';
+import { clsx } from 'clsx';
+import { FileSearch } from 'lucide-react';
 import { Transaction } from '../../../../models';
+import { EmptyState } from '../../../../views/EmptyState';
 import { ActivityItemCard } from '../ActivityItemCard';
 import './ActivityList.css';
 
@@ -26,25 +24,28 @@ export const ActivityList: React.FC<ActivityListProps> = ({
 }) => {
   if (isLoading && transactions.length === 0) {
     return (
-      <Flex
+      <FlexLayout
         direction="column"
         align="center"
         justify="center"
-        padding="xl"
-        fullWidth
+        style={{ padding: 'var(--salt-spacing-300)', width: '100%' }}
       >
-        <Progress type="circular" indeterminate fourColor />
-        <Text variant="body-sm" appearance="secondary" className="mt-4">
+        <Spinner size="medium" />
+        <Text
+          styleAs="notation"
+          color="secondary"
+          style={{ marginTop: '16px' }}
+        >
           Loading activity log...
         </Text>
-      </Flex>
+      </FlexLayout>
     );
   }
 
   if (transactions.length === 0) {
     return (
       <EmptyState
-        icon={<IconFileSearch size={28} />}
+        icon={<FileSearch size={36} />}
         headline="No Transactions Found"
         body="No registered activity matches your active search and filter criteria."
         className={className}
@@ -54,7 +55,7 @@ export const ActivityList: React.FC<ActivityListProps> = ({
 
   return (
     <div className={clsx('hs-activity-list', className)}>
-      <Flex direction="column" gap="sm" fullWidth>
+      <StackLayout gap={1}>
         {transactions.map((tx, idx) => (
           <ActivityItemCard
             key={tx.id || `activity-tx-${idx}`}
@@ -63,7 +64,7 @@ export const ActivityList: React.FC<ActivityListProps> = ({
             onEdit={onEditTransaction}
           />
         ))}
-      </Flex>
+      </StackLayout>
     </div>
   );
 };

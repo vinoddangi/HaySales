@@ -1,6 +1,7 @@
-import clsx from 'clsx';
 import React from 'react';
-import { Badge, Card, Flex, IconType, Text } from '../../../components';
+import { Card, FlexLayout, Pill, StackLayout, Text } from '@salt-ds/core';
+import { clsx } from 'clsx';
+import { Type } from 'lucide-react';
 import { FontSize } from '../../../store/slices/themeSlice';
 
 export interface FontSettingsCardProps {
@@ -23,33 +24,30 @@ export const FontSettingsCard: React.FC<FontSettingsCardProps> = ({
 }) => {
   return (
     <div className="profile-section">
-      <Flex align="center" gap="xs" className="profile-section__header">
-        <IconType size="sm" className="profile-section__icon" />
-        <Text variant="label-sm" appearance="secondary" uppercase>
-          Font &amp; Text Scaling
+      <FlexLayout align="center" gap={0.5} className="profile-section__header">
+        <Type size={16} className="profile-section__icon" />
+        <Text styleAs="label">
+          <b>FONT & TEXT SCALING</b>
         </Text>
-      </Flex>
+      </FlexLayout>
 
-      <Card variant="outlined" className="font-card">
-        <Card.Content>
-          <Flex
+      <Card className="font-card">
+        <StackLayout gap={1.5}>
+          <FlexLayout
             align="center"
-            justify="between"
-            fullWidth
+            justify="space-between"
             className="font-settings__top-row"
           >
             <div className="font-settings__title-group">
-              <Text variant="title-sm" weight="bold">
-                Text Size Scaling
+              <Text>
+                <b>Text Size Scaling</b>
               </Text>
-              <Text variant="body-sm" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 Adjust readable text size across the entire application
               </Text>
             </div>
-            <Badge sentiment="neutral" size="sm">
-              {getFontBadgeLabel()}
-            </Badge>
-          </Flex>
+            <Pill>{getFontBadgeLabel()}</Pill>
+          </FlexLayout>
 
           <div className="font-settings__grid">
             {fontSizeOptions.map((opt) => {
@@ -64,18 +62,24 @@ export const FontSettingsCard: React.FC<FontSettingsCardProps> = ({
                     isSelected && 'font-settings__option-btn--active',
                   )}
                 >
-                  <Text
-                    as="span"
-                    variant="title-lg"
-                    weight="bold"
+                  <span
                     className={clsx('font-settings__symbol', opt.symbolClass)}
+                    style={{
+                      fontSize:
+                        opt.key === 'large'
+                          ? '22px'
+                          : opt.key === 'medium'
+                            ? '18px'
+                            : '14px',
+                      fontWeight: 'bold',
+                    }}
                   >
                     A
+                  </span>
+                  <Text styleAs="label">
+                    <b>{opt.label}</b>
                   </Text>
-                  <Text variant="label-md" weight="bold" as="span">
-                    {opt.label}
-                  </Text>
-                  <Text variant="caption" appearance="secondary" as="span">
+                  <Text styleAs="notation" color="secondary">
                     {opt.level}
                   </Text>
                 </button>
@@ -84,11 +88,11 @@ export const FontSettingsCard: React.FC<FontSettingsCardProps> = ({
           </div>
 
           <div className="font-settings__preview">
-            <Text variant="body-sm" appearance="secondary" as="span">
-              Preview: Fast Hay Invoicing, Purchases &amp; Ledger
+            <Text styleAs="notation" color="secondary">
+              Preview: Fast Hay Invoicing, Purchases & Ledger
             </Text>
           </div>
-        </Card.Content>
+        </StackLayout>
       </Card>
     </div>
   );

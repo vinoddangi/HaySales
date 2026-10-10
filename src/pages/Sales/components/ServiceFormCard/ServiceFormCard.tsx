@@ -1,13 +1,19 @@
 import React from 'react';
-import { Checkbox } from '../../../../components/Checkbox';
-import { DatePicker } from '../../../../components/DatePicker';
-import { Form, useForm } from '../../../../components/Form';
-import { IconAlertTriangle } from '../../../../components/Icon';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Grid } from '../../../../components/layouts/Grid';
-import { Select } from '../../../../components/Select';
-import { Text } from '../../../../components/Text';
-import { TextField } from '../../../../components/TextField';
+import {
+  Button,
+  Card,
+  Checkbox,
+  FlexLayout,
+  FormField,
+  FormFieldLabel,
+  GridLayout,
+  GridItem,
+  Input,
+  StackLayout,
+  Text,
+} from '@salt-ds/core';
+import { AlertTriangle } from 'lucide-react';
+import { useForm } from '../../../../hooks/useForm';
 import { ServiceCategory, VALID_SERVICE_CATEGORIES } from '../../../../models';
 import { formatRupee, getTodayDateString } from '../../../../utils/formatters';
 import './ServiceFormCard.css';
@@ -34,7 +40,7 @@ export interface ServiceFormCardProps {
 }
 
 const SERVICE_OPTIONS = [
-  { value: '', label: 'Select' },
+  { value: '', label: 'Select Service' },
   ...VALID_SERVICE_CATEGORIES.map((s) => ({ value: s, label: s })),
 ];
 
@@ -88,7 +94,7 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
     },
   });
 
-  const { values, setValue } = form;
+  const { values, setValue, isValid } = form;
   const effectiveCashPaid = values.allCash ? values.amount : values.cashPaid;
   const remainingDue = Math.max(
     0,
@@ -98,137 +104,213 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
   const isOverCreditLimit = newOutstandingDue > creditLimit;
 
   return (
-    <Form form={form} className="hs-service-form-card">
-      <Text
-        variant="title-sm"
-        weight="bold"
-        className="hs-service-form-card__section-title"
-      >
-        Record Service Income
-      </Text>
-
-      {/* 1. Date and Service Item */}
-      <Grid columns={2} gap="md" fullWidth>
-        <Grid.Item>
-          <DatePicker
-            label="Service Date"
-            required
-            value={values.date}
-            onChange={(val) => setValue('date', val)}
-          />
-        </Grid.Item>
-        <Grid.Item>
-          <Select
-            label="Service Type"
-            required
-            value={values.category}
-            options={SERVICE_OPTIONS}
-            onChange={(val) => setValue('category', val)}
-          />
-        </Grid.Item>
-      </Grid>
-
-      {/* 2. Amount and Discount */}
-      <Grid columns={2} gap="md" fullWidth>
-        <Grid.Item>
-          <TextField
-            label="Amount (₹)"
-            type="number"
-            required
-            placeholder="0"
-            value={values.amount ? String(values.amount) : ''}
-            onChange={(val) => setValue('amount', Number(val) || 0)}
-          />
-        </Grid.Item>
-        <Grid.Item>
-          <TextField
-            label="Discount (₹)"
-            type="number"
-            placeholder="0"
-            value={values.discount ? String(values.discount) : ''}
-            onChange={(val) => setValue('discount', Number(val) || 0)}
-          />
-        </Grid.Item>
-      </Grid>
-
-      {/* 3. Full Cash Payment Checkbox (Row layout matching Payment Form) */}
-      <Flex align="center" justify="between" fullWidth>
-        <Checkbox
-          label="Full Cash Payment (All Cash)"
-          checked={values.allCash}
-          onChange={(checked) => setValue('allCash', checked)}
-        />
-      </Flex>
-
-      {/* 4. Cash Paid (when not all cash) */}
-      {!values.allCash && (
-        <TextField
-          label="Cash Paid (₹)"
-          type="number"
-          placeholder="0"
-          value={values.cashPaid ? String(values.cashPaid) : ''}
-          onChange={(val) => setValue('cashPaid', Number(val) || 0)}
-        />
-      )}
-
-      {/* 5. Remarks / Note */}
-      <TextField
-        label="Remarks / Note (Optional)"
-        type="text"
-        placeholder="e.g. Village trip, threshing, driver"
-        value={values.note}
-        onChange={(val) => setValue('note', val)}
-      />
-
-      {/* 6. Summary Box */}
-      <Form.Summary>
-        <Form.Summary.Row
-          label="Service Fee:"
-          value={formatRupee(values.amount)}
-        />
-        <Form.Summary.Row
-          label="Cash Received:"
-          value={formatRupee(effectiveCashPaid)}
-          sentiment="positive"
-        />
-        {values.discount > 0 && (
-          <Form.Summary.Row
-            label="Discount:"
-            value={`-${formatRupee(values.discount)}`}
-            sentiment="warning"
-          />
-        )}
-        <Form.Summary.Row
-          label="Added to Dues:"
-          value={formatRupee(remainingDue)}
-        />
-        <Form.Summary.Row
-          label="New Customer Total Due:"
-          value={formatRupee(newOutstandingDue)}
-          sentiment={newOutstandingDue > 0 ? 'negative' : 'neutral'}
-        />
-      </Form.Summary>
-
-      {/* 7. Credit Warning */}
-      {remainingDue > 0 && isOverCreditLimit && (
-        <div className="hs-service-form-card__warning-box">
-          <IconAlertTriangle
-            size="sm"
-            className="hs-service-form-card__warning-icon"
-          />
-          <Text variant="body-sm">
-            Customer balance ({formatRupee(newOutstandingDue)}) exceeds credit
-            limit ({formatRupee(creditLimit)}). Credit service permitted.
+    <Card className="hs-service-form-card">
+      <form onSubmit={form.handleSubmit}>
+        <StackLayout gap={2}>
+          <Text styleAs="label">
+            <b>RECORD SERVICE INCOME</b>
           </Text>
-        </div>
-      )}
 
-      {/* 8. Submit Button */}
-      <Form.Submit
-        label="Record Service"
-        submittingLabel="Recording Service..."
-      />
-    </Form>
+          {/* 1. Date and Service Item */}
+          <GridLayout columns={2} gap={2}>
+            <GridItem>
+              <FormField necessity="required">
+                <FormFieldLabel>Service Date</FormFieldLabel>
+                <Input
+                  inputProps={{
+                    type: 'date',
+                    value: values.date,
+                    onChange: (e) => setValue('date', e.target.value),
+                  }}
+                />
+              </FormField>
+            </GridItem>
+            <GridItem>
+              <FormField necessity="required">
+                <FormFieldLabel>Service Type</FormFieldLabel>
+                <select
+                  value={values.category}
+                  onChange={(e) => setValue('category', e.target.value)}
+                  style={{
+                    width: '100%',
+                    height: 'var(--salt-size-base, 36px)',
+                    borderRadius: 'var(--salt-palette-corner-rounded, 6px)',
+                    border: '1px solid var(--salt-palette-neutral-border)',
+                    backgroundColor: 'var(--salt-container-primary-background)',
+                    color: 'var(--salt-palette-neutral-primary-foreground)',
+                    padding: '0 8px',
+                    fontSize: '14px',
+                  }}
+                >
+                  {SERVICE_OPTIONS.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </FormField>
+            </GridItem>
+          </GridLayout>
+
+          {/* 2. Amount and Discount */}
+          <GridLayout columns={2} gap={2}>
+            <GridItem>
+              <FormField necessity="required">
+                <FormFieldLabel>Amount (₹)</FormFieldLabel>
+                <Input
+                  inputProps={{
+                    type: 'number',
+                    placeholder: '0',
+                    value: values.amount ? String(values.amount) : '',
+                    onChange: (e) =>
+                      setValue('amount', Number(e.target.value) || 0),
+                  }}
+                />
+              </FormField>
+            </GridItem>
+            <GridItem>
+              <FormField>
+                <FormFieldLabel>Discount (₹)</FormFieldLabel>
+                <Input
+                  inputProps={{
+                    type: 'number',
+                    placeholder: '0',
+                    value: values.discount ? String(values.discount) : '',
+                    onChange: (e) =>
+                      setValue('discount', Number(e.target.value) || 0),
+                  }}
+                />
+              </FormField>
+            </GridItem>
+          </GridLayout>
+
+          {/* 3. Full Cash Payment Checkbox */}
+          <Checkbox
+            label="Full Cash Payment (All Cash)"
+            checked={values.allCash}
+            onChange={(e) => setValue('allCash', e.target.checked)}
+          />
+
+          {/* 4. Cash Paid (when not all cash) */}
+          {!values.allCash && (
+            <FormField>
+              <FormFieldLabel>Cash Paid (₹)</FormFieldLabel>
+              <Input
+                inputProps={{
+                  type: 'number',
+                  placeholder: '0',
+                  value: values.cashPaid ? String(values.cashPaid) : '',
+                  onChange: (e) =>
+                    setValue('cashPaid', Number(e.target.value) || 0),
+                }}
+              />
+            </FormField>
+          )}
+
+          {/* 5. Remarks / Note */}
+          <FormField>
+            <FormFieldLabel>Remarks / Note (Optional)</FormFieldLabel>
+            <Input
+              inputProps={{
+                placeholder: 'e.g. Village trip, threshing, driver',
+                value: values.note,
+                onChange: (e) => setValue('note', e.target.value),
+              }}
+            />
+          </FormField>
+
+          {/* 6. Summary Card */}
+          <Card
+            style={{
+              backgroundColor: 'var(--salt-container-secondary-background)',
+              padding: 'var(--salt-spacing-150)',
+            }}
+          >
+            <StackLayout gap={1}>
+              <FlexLayout justify="space-between">
+                <Text styleAs="notation" color="secondary">
+                  Service Fee:
+                </Text>
+                <Text styleAs="notation">
+                  <b>{formatRupee(values.amount)}</b>
+                </Text>
+              </FlexLayout>
+              <FlexLayout justify="space-between">
+                <Text styleAs="notation" color="secondary">
+                  Cash Received:
+                </Text>
+                <Text styleAs="notation" color="success">
+                  <b>{formatRupee(effectiveCashPaid)}</b>
+                </Text>
+              </FlexLayout>
+              {values.discount > 0 && (
+                <FlexLayout justify="space-between">
+                  <Text styleAs="notation" color="secondary">
+                    Discount:
+                  </Text>
+                  <Text styleAs="notation" color="warning">
+                    <b>-{formatRupee(values.discount)}</b>
+                  </Text>
+                </FlexLayout>
+              )}
+              <FlexLayout justify="space-between">
+                <Text styleAs="notation" color="secondary">
+                  Added to Dues:
+                </Text>
+                <Text styleAs="notation">
+                  <b>{formatRupee(remainingDue)}</b>
+                </Text>
+              </FlexLayout>
+              <FlexLayout justify="space-between">
+                <Text styleAs="notation" color="secondary">
+                  New Customer Total Due:
+                </Text>
+                <Text
+                  styleAs="notation"
+                  color={newOutstandingDue > 0 ? 'error' : 'secondary'}
+                >
+                  <b>{formatRupee(newOutstandingDue)}</b>
+                </Text>
+              </FlexLayout>
+            </StackLayout>
+          </Card>
+
+          {/* 7. Credit Warning */}
+          {remainingDue > 0 && isOverCreditLimit && (
+            <FlexLayout
+              align="center"
+              gap={1}
+              style={{
+                padding: 'var(--salt-spacing-100)',
+                backgroundColor:
+                  'var(--salt-status-warning-background, #fff8e1)',
+                borderRadius: 'var(--salt-palette-corner-rounded, 6px)',
+              }}
+            >
+              <AlertTriangle
+                size={18}
+                color="var(--salt-status-warning-foreground, #b78103)"
+              />
+              <Text styleAs="notation">
+                Customer balance ({formatRupee(newOutstandingDue)}) exceeds
+                credit limit ({formatRupee(creditLimit)}). Credit service
+                permitted.
+              </Text>
+            </FlexLayout>
+          )}
+
+          {/* 8. Submit Button */}
+          <Button
+            sentiment="accented"
+            type="submit"
+            disabled={!isValid || isSaving}
+            style={{ width: '100%', height: '44px' }}
+          >
+            {isSaving ? 'Recording Service...' : 'Record Service'}
+          </Button>
+        </StackLayout>
+      </form>
+    </Card>
   );
 };
 

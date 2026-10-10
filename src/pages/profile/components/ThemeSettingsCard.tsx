@@ -1,15 +1,14 @@
-import clsx from 'clsx';
 import React from 'react';
 import {
-  Badge,
   Card,
-  Flex,
-  IconMoon,
-  IconPalette,
-  IconSun,
+  FlexLayout,
+  Pill,
+  StackLayout,
   Switch,
   Text,
-} from '../../../components';
+} from '@salt-ds/core';
+import { clsx } from 'clsx';
+import { Moon, Palette, Sun } from 'lucide-react';
 import { ColorScheme } from '../../../store/slices/themeSlice';
 
 export interface ThemeSettingsCardProps {
@@ -29,24 +28,28 @@ export const ThemeSettingsCard: React.FC<ThemeSettingsCardProps> = ({
 }) => {
   return (
     <div className="profile-section">
-      <Flex align="center" gap="xs" className="profile-section__header">
-        <IconPalette size="sm" className="profile-section__icon" />
-        <Text variant="label-sm" appearance="secondary" uppercase>
-          Theme &amp; Colors
+      <FlexLayout align="center" gap={0.5} className="profile-section__header">
+        <Palette size={16} className="profile-section__icon" />
+        <Text styleAs="label">
+          <b>THEME & COLORS</b>
         </Text>
-      </Flex>
+      </FlexLayout>
 
-      <Card variant="outlined" className="theme-card">
-        <Card.Content>
+      <Card className="theme-card">
+        <StackLayout gap={2}>
           {/* Dark Mode Switch Row */}
-          <Flex
+          <FlexLayout
             align="center"
-            justify="between"
-            fullWidth
+            justify="space-between"
             className="theme-settings__mode-row"
             onClick={() => onToggleDarkMode(!isDark)}
+            style={{ cursor: 'pointer' }}
           >
-            <Flex align="center" gap="md" className="theme-settings__mode-left">
+            <FlexLayout
+              align="center"
+              gap={1}
+              className="theme-settings__mode-left"
+            >
               <div
                 className={clsx(
                   'theme-settings__icon-box',
@@ -55,39 +58,39 @@ export const ThemeSettingsCard: React.FC<ThemeSettingsCardProps> = ({
                     : 'theme-settings__icon-box--light',
                 )}
               >
-                {isDark ? <IconMoon size="lg" /> : <IconSun size="lg" />}
+                {isDark ? <Moon size={20} /> : <Sun size={20} />}
               </div>
 
-              <Flex.Item grow>
-                <Flex
-                  align="center"
-                  gap="xs"
-                  className="theme-settings__title-row"
-                >
-                  <Text variant="title-sm" weight="bold">
-                    Dark Mode
+              <div>
+                <FlexLayout align="center" gap={0.5}>
+                  <Text>
+                    <b>Dark Mode</b>
                   </Text>
-                  <Badge sentiment={isDark ? 'accent' : 'neutral'} size="sm">
-                    {isDark ? 'ON' : 'OFF'}
-                  </Badge>
-                </Flex>
-                <Text variant="caption" appearance="secondary" as="div">
+                  <Pill>{isDark ? 'ON' : 'OFF'}</Pill>
+                </FlexLayout>
+                <Text styleAs="notation" color="secondary">
                   {isDark
                     ? 'Dark theme active across all screens'
                     : 'Light theme active across all screens'}
                 </Text>
-              </Flex.Item>
-            </Flex>
+              </div>
+            </FlexLayout>
 
-            <Switch selected={isDark} onChange={onToggleDarkMode} />
-          </Flex>
+            <Switch
+              checked={isDark}
+              onChange={(e) => onToggleDarkMode(e.target.checked)}
+            />
+          </FlexLayout>
 
           {/* Dynamic Color Palette Grid */}
           <div className="theme-settings__palette-section">
-            <Text variant="title-sm" weight="bold" as="span">
-              Dynamic M3 Color Palette
+            <Text styleAs="label">
+              <b>Accent Color</b>
             </Text>
-            <div className="theme-settings__palette-grid">
+            <div
+              className="theme-settings__palette-grid"
+              style={{ marginTop: '8px' }}
+            >
               {colorPalettes.map((pal) => (
                 <button
                   key={pal.key}
@@ -102,14 +105,14 @@ export const ThemeSettingsCard: React.FC<ThemeSettingsCardProps> = ({
                     className="theme-settings__palette-circle"
                     style={{ backgroundColor: pal.hex }}
                   />
-                  <Text variant="caption" weight="medium" as="span">
-                    {pal.name.split(' ')[0]}
+                  <Text styleAs="notation">
+                    <b>{pal.name.split(' ')[0]}</b>
                   </Text>
                 </button>
               ))}
             </div>
           </div>
-        </Card.Content>
+        </StackLayout>
       </Card>
     </div>
   );

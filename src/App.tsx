@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Flex, Progress } from './components';
+import { FlexLayout, Spinner } from '@salt-ds/core';
 import { store } from './store';
 import { ThemeProvider } from './theme';
 import { MobileShell, PlaceholderView } from './views';
@@ -14,16 +14,19 @@ const LedgerPage = React.lazy(() => import('./pages/Ledger'));
 const ActivityPage = React.lazy(() => import('./pages/Activity'));
 
 const RouteLoadingFallback: React.FC = () => (
-  <Flex
+  <FlexLayout
     direction="column"
     align="center"
     justify="center"
-    fullWidth
-    fullHeight
-    padding="xl"
+    style={{
+      width: '100%',
+      height: '100%',
+      minHeight: '50vh',
+      padding: 'var(--salt-spacing-300)',
+    }}
   >
-    <Progress type="circular" indeterminate fourColor />
-  </Flex>
+    <Spinner size="medium" />
+  </FlexLayout>
 );
 
 export const App: React.FC = () => {

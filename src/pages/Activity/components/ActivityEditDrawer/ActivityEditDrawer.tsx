@@ -1,13 +1,20 @@
 import React from 'react';
-import { Badge } from '../../../../components/Badge';
-import { Button } from '../../../../components/Button';
-import { DatePicker } from '../../../../components/DatePicker';
-import { IconAlertTriangle, IconX } from '../../../../components/Icon';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Grid } from '../../../../components/layouts/Grid';
-import { Select } from '../../../../components/Select';
-import { Text } from '../../../../components/Text';
-import { TextField } from '../../../../components/TextField';
+import {
+  Button,
+  Drawer,
+  DrawerCloseButton,
+  FlexLayout,
+  FormField,
+  FormFieldHelperText,
+  FormFieldLabel,
+  GridLayout,
+  GridItem,
+  Input,
+  Pill,
+  StackLayout,
+  Text,
+} from '@salt-ds/core';
+import { AlertTriangle } from 'lucide-react';
 import { Transaction } from '../../../../models';
 import { formatRupee, formatWeight } from '../../../../utils/formatters';
 import './ActivityEditDrawer.css';
@@ -49,7 +56,6 @@ export const ActivityEditDrawer: React.FC<ActivityEditDrawerProps> = (
     isPayment,
     isOpeningDue,
     badgeLabel,
-    badgeSentiment,
     date,
     customerId,
     vendorName,
@@ -82,261 +88,338 @@ export const ActivityEditDrawer: React.FC<ActivityEditDrawerProps> = (
   if (!isOpen || !transaction) return null;
 
   return (
-    <div
-      className="hs-activity-edit-drawer-overlay"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) handleClose();
+    <Drawer
+      open={isOpen}
+      position="bottom"
+      onOpenChange={(open) => {
+        if (!open) handleClose();
       }}
+      className="hs-activity-edit-drawer"
+      style={{ maxHeight: '90vh' }}
     >
-      <div className="hs-activity-edit-drawer">
-        <div className="hs-activity-edit-drawer__handle" />
+      <StackLayout gap={2} style={{ padding: 'var(--salt-spacing-200)' }}>
+        {/* Header */}
+        <FlexLayout align="center" justify="space-between">
+          <FlexLayout align="center" gap={1}>
+            <Text styleAs="h2">
+              <b>Edit Transaction</b>
+            </Text>
+            <Pill>{badgeLabel}</Pill>
+          </FlexLayout>
+          <DrawerCloseButton onClick={handleClose} />
+        </FlexLayout>
 
-        <Flex direction="column" gap="md" fullWidth>
-          {/* Header */}
-          <Flex align="center" justify="between" fullWidth>
-            <Flex align="center" gap="xs">
-              <Text variant="title-md" weight="bold">
-                Edit Transaction
-              </Text>
-              <Badge sentiment={badgeSentiment} size="md">
-                {badgeLabel}
-              </Badge>
-            </Flex>
-            <button
-              type="button"
-              aria-label="Close"
-              onClick={handleClose}
-              className="hs-activity-edit-drawer__close-btn"
-            >
-              <IconX size="md" />
-            </button>
-          </Flex>
-
-          {/* Form */}
-          <form
-            onSubmit={handleSubmit}
-            className="hs-activity-edit-drawer__form"
-          >
+        {/* Form */}
+        <form onSubmit={handleSubmit}>
+          <StackLayout gap={2}>
             {errorMessage && (
-              <div className="hs-activity-edit-drawer__error-banner">
-                <Flex align="center" gap="xs">
-                  <IconAlertTriangle size="sm" />
-                  <Text variant="body-sm">{errorMessage}</Text>
-                </Flex>
-              </div>
+              <FlexLayout
+                align="center"
+                gap={1}
+                style={{
+                  padding: 'var(--salt-spacing-100)',
+                  backgroundColor:
+                    'var(--salt-status-error-background, #ffebee)',
+                  borderRadius: 'var(--salt-palette-corner-rounded, 6px)',
+                }}
+              >
+                <AlertTriangle
+                  size={18}
+                  color="var(--salt-status-error-foreground, #c62828)"
+                />
+                <Text styleAs="notation" color="error">
+                  <b>{errorMessage}</b>
+                </Text>
+              </FlexLayout>
             )}
 
             {/* Date & Associated Party */}
-            <Grid columns={2} gap="md" fullWidth>
-              <Grid.Item>
-                <DatePicker
-                  label="Date"
-                  value={date}
-                  onChange={handleDateChange}
-                  required
-                />
-              </Grid.Item>
-              <Grid.Item>
+            <GridLayout columns={2} gap={2}>
+              <GridItem>
+                <FormField necessity="required">
+                  <FormFieldLabel>Date</FormFieldLabel>
+                  <Input
+                    inputProps={{
+                      type: 'date',
+                      value: date,
+                      onChange: (e) => handleDateChange(e.target.value),
+                    }}
+                  />
+                </FormField>
+              </GridItem>
+              <GridItem>
                 {isSale || isService || isPayment || isOpeningDue ? (
-                  <Select
-                    label="Customer"
-                    value={customerId}
-                    options={customerOptions}
-                    onChange={handleCustomerChange}
-                  />
+                  <FormField>
+                    <FormFieldLabel>Customer</FormFieldLabel>
+                    <select
+                      value={customerId}
+                      onChange={(e) => handleCustomerChange(e.target.value)}
+                      style={{
+                        width: '100%',
+                        height: 'var(--salt-size-base, 36px)',
+                        borderRadius: 'var(--salt-palette-corner-rounded, 6px)',
+                        border: '1px solid var(--salt-palette-neutral-border)',
+                        backgroundColor:
+                          'var(--salt-container-primary-background)',
+                        color: 'var(--salt-palette-neutral-primary-foreground)',
+                        padding: '0 8px',
+                        fontSize: '14px',
+                      }}
+                    >
+                      {customerOptions.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                  </FormField>
                 ) : (
-                  <TextField
-                    label="Vendor / Payee Name"
-                    value={vendorName}
-                    onChange={handleVendorNameChange}
-                    placeholder="Vendor / Farmer"
-                  />
+                  <FormField>
+                    <FormFieldLabel>Vendor / Payee Name</FormFieldLabel>
+                    <Input
+                      inputProps={{
+                        value: vendorName,
+                        onChange: (e) => handleVendorNameChange(e.target.value),
+                        placeholder: 'Vendor / Farmer',
+                      }}
+                    />
+                  </FormField>
                 )}
-              </Grid.Item>
-            </Grid>
+              </GridItem>
+            </GridLayout>
 
             {/* Category & Weight */}
             {isCrop && (
-              <Grid columns={2} gap="md" fullWidth>
-                <Grid.Item>
-                  <Select
-                    label="Crop Category"
-                    value={category}
-                    options={categoryOptions}
-                    onChange={handleCategoryChange}
-                    required
-                  />
-                </Grid.Item>
-                <Grid.Item>
-                  <TextField
-                    label="Weight (Kg)"
-                    type="number"
-                    value={weight || ''}
-                    onChange={handleWeightChange}
-                    suffixText="Kg"
-                    supportingText="Weight in Kg only"
-                    required
-                  />
-                </Grid.Item>
-              </Grid>
+              <GridLayout columns={2} gap={2}>
+                <GridItem>
+                  <FormField necessity="required">
+                    <FormFieldLabel>Crop Category</FormFieldLabel>
+                    <select
+                      value={category}
+                      onChange={(e) => handleCategoryChange(e.target.value)}
+                      style={{
+                        width: '100%',
+                        height: 'var(--salt-size-base, 36px)',
+                        borderRadius: 'var(--salt-palette-corner-rounded, 6px)',
+                        border: '1px solid var(--salt-palette-neutral-border)',
+                        backgroundColor:
+                          'var(--salt-container-primary-background)',
+                        color: 'var(--salt-palette-neutral-primary-foreground)',
+                        padding: '0 8px',
+                        fontSize: '14px',
+                      }}
+                    >
+                      {categoryOptions.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                  </FormField>
+                </GridItem>
+                <GridItem>
+                  <FormField necessity="required">
+                    <FormFieldLabel>Weight (Kg)</FormFieldLabel>
+                    <Input
+                      inputProps={{
+                        type: 'number',
+                        value: weight || '',
+                        onChange: (e) => handleWeightChange(e.target.value),
+                      }}
+                    />
+                    <FormFieldHelperText>Weight in Kg only</FormFieldHelperText>
+                  </FormField>
+                </GridItem>
+              </GridLayout>
             )}
 
             {isService && (
-              <Select
-                label="Service Category"
-                value={category}
-                options={categoryOptions}
-                onChange={handleCategoryChange}
-                required
-              />
+              <FormField necessity="required">
+                <FormFieldLabel>Service Category</FormFieldLabel>
+                <select
+                  value={category}
+                  onChange={(e) => handleCategoryChange(e.target.value)}
+                  style={{
+                    width: '100%',
+                    height: 'var(--salt-size-base, 36px)',
+                    borderRadius: 'var(--salt-palette-corner-rounded, 6px)',
+                    border: '1px solid var(--salt-palette-neutral-border)',
+                    backgroundColor: 'var(--salt-container-primary-background)',
+                    color: 'var(--salt-palette-neutral-primary-foreground)',
+                    padding: '0 8px',
+                    fontSize: '14px',
+                  }}
+                >
+                  {categoryOptions.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </FormField>
             )}
 
             {isExpense && (
-              <Select
-                label="Expense Category"
-                value={category}
-                options={categoryOptions}
-                onChange={handleCategoryChange}
-                required
-              />
+              <FormField necessity="required">
+                <FormFieldLabel>Expense Category</FormFieldLabel>
+                <select
+                  value={category}
+                  onChange={(e) => handleCategoryChange(e.target.value)}
+                  style={{
+                    width: '100%',
+                    height: 'var(--salt-size-base, 36px)',
+                    borderRadius: 'var(--salt-palette-corner-rounded, 6px)',
+                    border: '1px solid var(--salt-palette-neutral-border)',
+                    backgroundColor: 'var(--salt-container-primary-background)',
+                    color: 'var(--salt-palette-neutral-primary-foreground)',
+                    padding: '0 8px',
+                    fontSize: '14px',
+                  }}
+                >
+                  {categoryOptions.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </FormField>
             )}
 
             {/* Financial Amounts */}
-            <Grid
-              columns={isPayment || isOpeningDue ? 1 : 2}
-              gap="md"
-              fullWidth
-            >
-              <Grid.Item>
-                <TextField
-                  label="Total Amount (₹)"
-                  type="number"
-                  value={amount || ''}
-                  onChange={handleAmountChange}
-                  prefixText="₹"
-                  required
-                />
-              </Grid.Item>
-              {!isPayment && !isOpeningDue && (
-                <Grid.Item>
-                  <TextField
-                    label="Cash Settled (₹)"
-                    type="number"
-                    value={cashPaid || ''}
-                    onChange={handleCashPaidChange}
-                    prefixText="₹"
+            <GridLayout columns={isPayment || isOpeningDue ? 1 : 2} gap={2}>
+              <GridItem>
+                <FormField necessity="required">
+                  <FormFieldLabel>Total Amount (₹)</FormFieldLabel>
+                  <Input
+                    inputProps={{
+                      type: 'number',
+                      value: amount || '',
+                      onChange: (e) => handleAmountChange(e.target.value),
+                    }}
                   />
-                </Grid.Item>
+                </FormField>
+              </GridItem>
+              {!isPayment && !isOpeningDue && (
+                <GridItem>
+                  <FormField>
+                    <FormFieldLabel>Cash Settled (₹)</FormFieldLabel>
+                    <Input
+                      inputProps={{
+                        type: 'number',
+                        value: cashPaid || '',
+                        onChange: (e) => handleCashPaidChange(e.target.value),
+                      }}
+                    />
+                  </FormField>
+                </GridItem>
               )}
-            </Grid>
+            </GridLayout>
 
             {/* Discount (if applicable) */}
             {(isSale || isPurchase || isService) && (
-              <TextField
-                label="Discount (₹)"
-                type="number"
-                value={discount || ''}
-                onChange={handleDiscountChange}
-                prefixText="₹"
-              />
+              <FormField>
+                <FormFieldLabel>Discount (₹)</FormFieldLabel>
+                <Input
+                  inputProps={{
+                    type: 'number',
+                    value: discount || '',
+                    onChange: (e) => handleDiscountChange(e.target.value),
+                  }}
+                />
+              </FormField>
             )}
 
             {/* Notes */}
-            <TextField
-              label="Notes / Remarks"
-              value={note}
-              onChange={handleNoteChange}
-              placeholder="Optional transaction note"
-            />
+            <FormField>
+              <FormFieldLabel>Notes / Remarks</FormFieldLabel>
+              <Input
+                inputProps={{
+                  value: note,
+                  onChange: (e) => handleNoteChange(e.target.value),
+                  placeholder: 'Optional transaction note',
+                }}
+              />
+            </FormField>
 
             {/* Live Calculation Summary */}
             <div className="hs-activity-edit-drawer__summary-card">
-              <Grid columns={isCrop ? 4 : 3} gap="sm" fullWidth>
-                <Grid.Item className="hs-activity-edit-drawer__summary-item">
-                  <Text variant="caption" appearance="secondary">
+              <GridLayout columns={isCrop ? 4 : 3} gap={1}>
+                <GridItem className="hs-activity-edit-drawer__summary-item">
+                  <Text styleAs="notation" color="secondary">
                     Total Amount
                   </Text>
-                  <Text variant="title-sm" weight="bold" sentiment="accent">
-                    {formatRupee(amount)}
+                  <Text>
+                    <b>{formatRupee(amount)}</b>
                   </Text>
-                </Grid.Item>
+                </GridItem>
 
                 {isCrop && weight > 0 && (
-                  <Grid.Item className="hs-activity-edit-drawer__summary-item">
-                    <Text variant="caption" appearance="secondary">
+                  <GridItem className="hs-activity-edit-drawer__summary-item">
+                    <Text styleAs="notation" color="secondary">
                       Weight
                     </Text>
-                    <Text variant="title-sm" weight="bold" sentiment="neutral">
-                      {formatWeight(weight)}
+                    <Text>
+                      <b>{formatWeight(weight)}</b>
                     </Text>
-                  </Grid.Item>
+                  </GridItem>
                 )}
 
                 {!isPayment && !isOpeningDue && (
                   <>
-                    <Grid.Item className="hs-activity-edit-drawer__summary-item">
-                      <Text variant="caption" appearance="secondary">
+                    <GridItem className="hs-activity-edit-drawer__summary-item">
+                      <Text styleAs="notation" color="secondary">
                         Cash Settled
                       </Text>
-                      <Text
-                        variant="title-sm"
-                        weight="bold"
-                        sentiment="positive"
-                      >
-                        {formatRupee(cashPaid)}
+                      <Text color="success">
+                        <b>{formatRupee(cashPaid)}</b>
                       </Text>
-                    </Grid.Item>
-                    <Grid.Item className="hs-activity-edit-drawer__summary-item">
-                      <Text variant="caption" appearance="secondary">
+                    </GridItem>
+                    <GridItem className="hs-activity-edit-drawer__summary-item">
+                      <Text styleAs="notation" color="secondary">
                         Remaining Due
                       </Text>
-                      <Text
-                        variant="title-sm"
-                        weight="bold"
-                        sentiment={remainingDue > 0 ? 'warning' : 'neutral'}
-                      >
-                        {formatRupee(remainingDue)}
+                      <Text color={remainingDue > 0 ? 'warning' : 'secondary'}>
+                        <b>{formatRupee(remainingDue)}</b>
                       </Text>
-                    </Grid.Item>
+                    </GridItem>
                   </>
                 )}
 
                 {isCrop && typeof derivedRate === 'number' && (
-                  <Grid.Item className="hs-activity-edit-drawer__summary-item">
-                    <Text variant="caption" appearance="secondary">
+                  <GridItem className="hs-activity-edit-drawer__summary-item">
+                    <Text styleAs="notation" color="secondary">
                       Derived Rate
                     </Text>
-                    <Text variant="title-sm" weight="bold" sentiment="accent">
-                      ₹{derivedRate} / Kg
+                    <Text>
+                      <b>₹{derivedRate} / Kg</b>
                     </Text>
-                  </Grid.Item>
+                  </GridItem>
                 )}
-              </Grid>
+              </GridLayout>
             </div>
 
             {/* Form Actions */}
-            <div className="hs-activity-edit-drawer__actions">
+            <FlexLayout gap={1}>
               <Button
-                variant="tonal"
-                fullWidth
                 onClick={handleClose}
                 disabled={isSaving}
+                style={{ flex: 1, height: '44px' }}
               >
                 Cancel
               </Button>
               <Button
-                variant="filled"
-                fullWidth
+                sentiment="accented"
                 type="submit"
                 disabled={!isValid || isSaving}
+                style={{ flex: 1, height: '44px' }}
               >
                 {isSaving ? 'Saving...' : 'Save Changes'}
               </Button>
-            </div>
-          </form>
-        </Flex>
-      </div>
-    </div>
+            </FlexLayout>
+          </StackLayout>
+        </form>
+      </StackLayout>
+    </Drawer>
   );
 };
 

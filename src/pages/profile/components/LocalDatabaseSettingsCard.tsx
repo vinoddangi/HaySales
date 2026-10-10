@@ -1,20 +1,24 @@
-import clsx from 'clsx';
 import React from 'react';
 import {
-  Badge,
   Button,
   Card,
-  Flex,
-  Grid,
-  IconArrowDownToLine,
-  IconArrowUpRight,
-  IconDatabase,
-  IconHardDrive,
-  IconTrash2,
-  IconUploadCloud,
+  FlexLayout,
+  GridLayout,
+  GridItem,
+  Pill,
+  StackLayout,
   Switch,
   Text,
-} from '../../../components';
+} from '@salt-ds/core';
+import { clsx } from 'clsx';
+import {
+  ArrowDownToLine,
+  ArrowUpRight,
+  Database,
+  HardDrive,
+  Trash2,
+  UploadCloud,
+} from 'lucide-react';
 import { DatabaseMode } from '../../../services/dbBridge';
 import { PendingChange } from '../../../services/indexedDBService';
 import { LocalStats } from '../useProfilePage';
@@ -58,21 +62,24 @@ export const LocalDatabaseSettingsCard: React.FC<
 
   return (
     <div className="profile-section">
-      <Flex align="center" gap="xs" className="profile-section__header">
-        <IconDatabase size="sm" className="profile-section__icon" />
-        <Text variant="label-sm" appearance="secondary" uppercase>
-          Local Database
+      <FlexLayout align="center" gap={0.5} className="profile-section__header">
+        <Database size={16} className="profile-section__icon" />
+        <Text styleAs="label">
+          <b>LOCAL DATABASE</b>
         </Text>
-      </Flex>
+      </FlexLayout>
 
-      <Card variant="outlined" className="db-card">
-        <Card.Content>
+      <Card className="db-card">
+        <StackLayout gap={2}>
           {/* Database Mode Switch Row */}
-          <div
+          <FlexLayout
+            align="center"
+            justify="space-between"
             className="db-settings__mode-card"
             onClick={() => onToggleDbMode(!isLocalMode)}
+            style={{ cursor: 'pointer' }}
           >
-            <Flex align="center" gap="md">
+            <FlexLayout align="center" gap={1}>
               <div
                 className={clsx(
                   'db-settings__mode-icon-box',
@@ -82,43 +89,39 @@ export const LocalDatabaseSettingsCard: React.FC<
                 )}
               >
                 {isLocalMode ? (
-                  <IconHardDrive size="lg" />
+                  <HardDrive size={20} />
                 ) : (
-                  <IconUploadCloud size="lg" />
+                  <UploadCloud size={20} />
                 )}
               </div>
               <div>
-                <Flex align="center" gap="xs">
-                  <Text variant="title-sm" weight="bold">
-                    {isLocalMode ? 'Local Database' : 'Server Database'}
+                <FlexLayout align="center" gap={0.5}>
+                  <Text>
+                    <b>{isLocalMode ? 'Local Database' : 'Server Database'}</b>
                   </Text>
-                  <Badge
-                    sentiment={isLocalMode ? 'warning' : 'positive'}
-                    size="sm"
-                  >
-                    {isLocalMode ? 'OFFLINE' : 'ONLINE'}
-                  </Badge>
-                </Flex>
-                <Text variant="caption" appearance="secondary" as="div">
+                  <Pill>{isLocalMode ? 'OFFLINE' : 'ONLINE'}</Pill>
+                </FlexLayout>
+                <Text styleAs="notation" color="secondary">
                   {isLocalMode
                     ? 'Browser IndexedDB storage'
                     : 'Live Cloud Firestore connection'}
                 </Text>
               </div>
-            </Flex>
-            <Switch selected={isLocalMode} onChange={onToggleDbMode} />
-          </div>
+            </FlexLayout>
+            <Switch
+              checked={isLocalMode}
+              onChange={(e) => onToggleDbMode(e.target.checked)}
+            />
+          </FlexLayout>
 
           {/* Live Stats Header with Refresh */}
-          <div className="db-settings__header-row">
-            <Text
-              variant="label-sm"
-              weight="bold"
-              uppercase
-              appearance="secondary"
-              as="span"
-            >
-              Local Records
+          <FlexLayout
+            justify="space-between"
+            align="center"
+            className="db-settings__header-row"
+          >
+            <Text styleAs="label">
+              <b>LOCAL RECORDS</b>
             </Text>
             <button
               type="button"
@@ -126,68 +129,75 @@ export const LocalDatabaseSettingsCard: React.FC<
               disabled={loadingDb}
               className="db-settings__refresh-btn"
             >
-              <Text
-                variant="label-sm"
-                weight="medium"
-                sentiment="accent"
-                as="span"
-              >
-                {loadingDb ? 'Refreshing...' : 'Refresh'}
+              <Text styleAs="notation">
+                <b>{loadingDb ? 'Refreshing...' : 'Refresh'}</b>
               </Text>
             </button>
-          </div>
+          </FlexLayout>
 
           {/* 6-Grid Breakdown Stats */}
-          <div className="db-settings__stats-grid">
-            <div className="db-settings__stat-item">
-              <Text variant="title-md" weight="bold">
-                {stats.customers}
-              </Text>
-              <Text variant="label-sm" appearance="secondary" as="span">
-                Customers
-              </Text>
-            </div>
-            <div className="db-settings__stat-item">
-              <Text variant="title-md" weight="bold" sentiment="positive">
-                {stats.sales}
-              </Text>
-              <Text variant="label-sm" appearance="secondary" as="span">
-                Sales
-              </Text>
-            </div>
-            <div className="db-settings__stat-item">
-              <Text variant="title-md" weight="bold" sentiment="positive">
-                {stats.payments}
-              </Text>
-              <Text variant="label-sm" appearance="secondary" as="span">
-                Payments
-              </Text>
-            </div>
-            <div className="db-settings__stat-item">
-              <Text variant="title-md" weight="bold" sentiment="info">
-                {stats.services}
-              </Text>
-              <Text variant="label-sm" appearance="secondary" as="span">
-                Services
-              </Text>
-            </div>
-            <div className="db-settings__stat-item">
-              <Text variant="title-md" weight="bold" sentiment="accent">
-                {stats.purchases}
-              </Text>
-              <Text variant="label-sm" appearance="secondary" as="span">
-                Purchases
-              </Text>
-            </div>
-            <div className="db-settings__stat-item">
-              <Text variant="title-md" weight="bold" sentiment="negative">
-                {stats.expenses}
-              </Text>
-              <Text variant="label-sm" appearance="secondary" as="span">
-                Expenses
-              </Text>
-            </div>
-          </div>
+          <GridLayout columns={3} gap={1} className="db-settings__stats-grid">
+            <GridItem>
+              <div className="db-settings__stat-item">
+                <Text styleAs="h3">
+                  <b>{stats.customers}</b>
+                </Text>
+                <Text styleAs="notation" color="secondary">
+                  Customers
+                </Text>
+              </div>
+            </GridItem>
+            <GridItem>
+              <div className="db-settings__stat-item">
+                <Text styleAs="h3" color="success">
+                  <b>{stats.sales}</b>
+                </Text>
+                <Text styleAs="notation" color="secondary">
+                  Sales
+                </Text>
+              </div>
+            </GridItem>
+            <GridItem>
+              <div className="db-settings__stat-item">
+                <Text styleAs="h3" color="success">
+                  <b>{stats.payments}</b>
+                </Text>
+                <Text styleAs="notation" color="secondary">
+                  Payments
+                </Text>
+              </div>
+            </GridItem>
+            <GridItem>
+              <div className="db-settings__stat-item">
+                <Text styleAs="h3">
+                  <b>{stats.services}</b>
+                </Text>
+                <Text styleAs="notation" color="secondary">
+                  Services
+                </Text>
+              </div>
+            </GridItem>
+            <GridItem>
+              <div className="db-settings__stat-item">
+                <Text styleAs="h3">
+                  <b>{stats.purchases}</b>
+                </Text>
+                <Text styleAs="notation" color="secondary">
+                  Purchases
+                </Text>
+              </div>
+            </GridItem>
+            <GridItem>
+              <div className="db-settings__stat-item">
+                <Text styleAs="h3" color="error">
+                  <b>{stats.expenses}</b>
+                </Text>
+                <Text styleAs="notation" color="secondary">
+                  Expenses
+                </Text>
+              </div>
+            </GridItem>
+          </GridLayout>
 
           {/* Pending Sync / Delta Status Bar */}
           {isLocalMode && (
@@ -201,17 +211,17 @@ export const LocalDatabaseSettingsCard: React.FC<
                   : 'db-settings__pending-bar--clean',
               )}
             >
-              <Text variant="body-sm" weight="medium" as="span">
-                {pendingCount > 0
-                  ? `⚡ ${pendingCount} modified record${
-                      pendingCount === 1 ? '' : 's'
-                    } pending publish`
-                  : '✅ All changes synced with Cloud Firestore'}
+              <Text styleAs="notation">
+                <b>
+                  {pendingCount > 0
+                    ? `⚡ ${pendingCount} modified record${
+                        pendingCount === 1 ? '' : 's'
+                      } pending publish`
+                    : '✅ All changes synced with Cloud Firestore'}
+                </b>
               </Text>
               {pendingCount > 0 && (
-                <Badge sentiment="neutral" size="sm">
-                  {showPendingDetails ? 'HIDE' : 'VIEW DETAILS'}
-                </Badge>
+                <Pill>{showPendingDetails ? 'HIDE' : 'VIEW DETAILS'}</Pill>
               )}
             </button>
           )}
@@ -221,7 +231,6 @@ export const LocalDatabaseSettingsCard: React.FC<
             <div className="db-settings__pending-drawer">
               {pendingItems.map((item, idx) => {
                 const d = (item.data || {}) as Record<string, any>;
-                const isDelete = item.action === 'DELETE';
                 const summaryText = String(
                   d.name ||
                     d.customerName ||
@@ -240,19 +249,16 @@ export const LocalDatabaseSettingsCard: React.FC<
                     key={item.id || item.path || idx}
                     className="db-settings__pending-item"
                   >
-                    <Flex align="center" gap="xs">
-                      <Badge
-                        sentiment={isDelete ? 'negative' : 'positive'}
-                        size="sm"
-                      >
-                        {item.action}
-                      </Badge>
-                      <Text variant="body-sm" weight="medium" as="span">
-                        {summaryText}
-                        {amountText}
+                    <FlexLayout align="center" gap={0.5}>
+                      <Pill>{item.action}</Pill>
+                      <Text styleAs="notation">
+                        <b>
+                          {summaryText}
+                          {amountText}
+                        </b>
                       </Text>
-                    </Flex>
-                    <Text variant="caption" appearance="secondary" as="span">
+                    </FlexLayout>
+                    <Text styleAs="notation" color="secondary">
                       {item.timestamp
                         ? new Date(item.timestamp).toLocaleTimeString([], {
                             hour: '2-digit',
@@ -267,37 +273,52 @@ export const LocalDatabaseSettingsCard: React.FC<
           )}
 
           {/* Action Buttons: 3 core operations */}
-          <Grid columns={3} gap="sm" className="db-settings__actions-grid">
-            <Button
-              variant="tonal"
-              onClick={onSyncFromCloud}
-              disabled={syncingPull || syncingCloud || loadingDb}
-              icon={<IconArrowDownToLine size="md" />}
-            >
-              {syncingPull ? 'Syncing...' : 'Sync'}
-            </Button>
-            <Button
-              variant="filled"
-              onClick={onPublishToCloud}
-              disabled={syncingCloud || syncingPull || loadingDb}
-              icon={<IconArrowUpRight size="md" />}
-            >
-              {syncingCloud
-                ? 'Publishing...'
-                : pendingCount > 0
-                  ? `Publish (${pendingCount})`
-                  : 'Publish'}
-            </Button>
-            <Button
-              variant="outlined"
-              onClick={onClearLocalDb}
-              disabled={loadingDb || syncingCloud || syncingPull}
-              icon={<IconTrash2 size="md" />}
-            >
-              {loadingDb ? 'Clearing...' : 'Clear'}
-            </Button>
-          </Grid>
-        </Card.Content>
+          <GridLayout columns={3} gap={1} className="db-settings__actions-grid">
+            <GridItem>
+              <Button
+                onClick={onSyncFromCloud}
+                disabled={syncingPull || syncingCloud || loadingDb}
+                style={{ width: '100%', height: '44px' }}
+              >
+                <FlexLayout align="center" justify="center" gap={0.5}>
+                  <ArrowDownToLine size={16} />
+                  <span>{syncingPull ? 'Syncing...' : 'Sync'}</span>
+                </FlexLayout>
+              </Button>
+            </GridItem>
+            <GridItem>
+              <Button
+                sentiment="accented"
+                onClick={onPublishToCloud}
+                disabled={syncingCloud || syncingPull || loadingDb}
+                style={{ width: '100%', height: '44px' }}
+              >
+                <FlexLayout align="center" justify="center" gap={0.5}>
+                  <ArrowUpRight size={16} />
+                  <span>
+                    {syncingCloud
+                      ? 'Publishing...'
+                      : pendingCount > 0
+                        ? `Publish (${pendingCount})`
+                        : 'Publish'}
+                  </span>
+                </FlexLayout>
+              </Button>
+            </GridItem>
+            <GridItem>
+              <Button
+                onClick={onClearLocalDb}
+                disabled={loadingDb || syncingCloud || syncingPull}
+                style={{ width: '100%', height: '44px' }}
+              >
+                <FlexLayout align="center" justify="center" gap={0.5}>
+                  <Trash2 size={16} />
+                  <span>{loadingDb ? 'Clearing...' : 'Clear'}</span>
+                </FlexLayout>
+              </Button>
+            </GridItem>
+          </GridLayout>
+        </StackLayout>
       </Card>
     </div>
   );

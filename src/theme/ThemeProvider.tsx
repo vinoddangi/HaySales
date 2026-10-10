@@ -1,38 +1,25 @@
-import React, { useEffect } from 'react';
+import { SaltProviderNext, type Accent } from '@salt-ds/core';
+import React from 'react';
 import { useAppSelector } from '../store/hooks';
-import { m3ColorSchemes } from './m3Tokens';
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { mode, scheme, fontSize } = useAppSelector((state) => state.theme);
+  const { mode, scheme } = useAppSelector((state) => state.theme);
 
-  useEffect(() => {
-    if (typeof document === 'undefined') return;
+  // Strictly support what accent is supported by Salt ("teal" | "blue")
+  const accent: Accent = scheme === 'blue' ? 'blue' : 'teal';
 
-    const root = document.documentElement;
-    const isDark = mode === 'dark';
-
-    if (isDark) {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-
-    const currentPalette = m3ColorSchemes[scheme] || m3ColorSchemes.green;
-    const tokens = isDark ? currentPalette.dark : currentPalette.light;
-
-    Object.entries(tokens).forEach(([cssVar, value]) => {
-      root.style.setProperty(cssVar, value);
-    });
-
-    const fontScaleMap = {
-      small: '87.5%',
-      medium: '100%',
-      large: '112.5%',
-    };
-    root.style.fontSize = fontScaleMap[fontSize] || '100%';
-  }, [mode, scheme, fontSize]);
-
-  return <>{children}</>;
+  return (
+    <SaltProviderNext
+      accent={accent}
+      corner="rounded"
+      headingFont="Amplitude"
+      actionFont="Amplitude"
+      density="touch"
+      mode={mode}
+    >
+      {children}
+    </SaltProviderNext>
+  );
 };

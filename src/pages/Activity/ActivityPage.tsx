@@ -1,6 +1,5 @@
 import React from 'react';
-import { Flex } from '../../components/layouts/Flex';
-import { Text } from '../../components/Text';
+import { StackLayout, Text } from '@salt-ds/core';
 import { PageContainer } from '../../views/PageContainer';
 import './ActivityPage.css';
 import {
@@ -46,20 +45,15 @@ export const ActivityPage: React.FC = () => {
   return (
     <PageContainer spacing="md" bottomPadding="lg" className="hs-activity-page">
       {/* 1. Page Header */}
-      <Flex
-        direction="column"
-        gap="none"
-        fullWidth
-        className="hs-activity-page__header"
-      >
-        <Text as="h2" variant="headline-sm" weight="bold">
-          Activity &amp; Audit Log
+      <StackLayout gap={0.5} className="hs-activity-page__header">
+        <Text styleAs="h2">
+          <b>Activity & Audit Log</b>
         </Text>
-        <Text variant="body-md" appearance="secondary">
+        <Text color="secondary">
           Complete ledger history across sales, purchases, payments, and
           expenses
         </Text>
-      </Flex>
+      </StackLayout>
 
       {/* 2. Period Filter Bar (Month / YTD / All-Time) */}
       <ActivityPeriodBar

@@ -1,11 +1,15 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Badge } from '../../../../components/Badge';
-import { Card } from '../../../../components/Card';
-import { IconChevronRight, IconTrendingUp } from '../../../../components/Icon';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Grid } from '../../../../components/layouts/Grid';
-import { Text } from '../../../../components/Text';
+import {
+  Card,
+  FlexLayout,
+  GridItem,
+  GridLayout,
+  Pill,
+  StackLayout,
+  Text,
+} from '@salt-ds/core';
+import { ChevronRight, TrendingUp } from 'lucide-react';
 import { formatRupee } from '../../../../utils/formatters';
 import './EstimatedProfitCard.css';
 
@@ -36,8 +40,6 @@ export const EstimatedProfitCard: React.FC<EstimatedProfitCardProps> = ({
 
   return (
     <Card
-      variant="filled"
-      clickable={Boolean(onClick)}
       onClick={onClick}
       className={clsx(
         'hs-estimated-profit-card',
@@ -46,11 +48,12 @@ export const EstimatedProfitCard: React.FC<EstimatedProfitCardProps> = ({
           : 'hs-estimated-profit-card--negative',
         className,
       )}
+      style={{ cursor: onClick ? 'pointer' : undefined }}
     >
-      <Card.Content>
+      <StackLayout gap={1}>
         {/* Header */}
-        <Flex align="center" justify="between" fullWidth>
-          <Flex align="center" gap="sm">
+        <FlexLayout direction="row" align="center" justify="space-between">
+          <FlexLayout direction="row" align="center" gap={1}>
             <div
               className={clsx(
                 'hs-estimated-profit-card__icon-wrapper',
@@ -59,108 +62,92 @@ export const EstimatedProfitCard: React.FC<EstimatedProfitCardProps> = ({
                   : 'hs-estimated-profit-card__icon-wrapper--negative',
               )}
             >
-              <IconTrendingUp size={18} />
+              <TrendingUp size={18} />
             </div>
             <div>
-              <Flex align="center" gap="xs">
-                <Text variant="label-sm" uppercase weight="bold">
-                  Estimated Net Profit
+              <FlexLayout direction="row" align="center" gap={1}>
+                <Text styleAs="label">
+                  <b>Estimated Net Profit</b>
                 </Text>
                 {onClick && (
-                  <IconChevronRight
+                  <ChevronRight
                     size={14}
                     className="hs-estimated-profit-card__chevron"
                   />
                 )}
-              </Flex>
-              <Text variant="body-sm" appearance="secondary">
+              </FlexLayout>
+              <Text styleAs="notation" color="secondary">
                 {periodLabel || 'Period'} Trading Profit
               </Text>
             </div>
-          </Flex>
+          </FlexLayout>
 
-          <Badge
-            sentiment={profitMarginPct >= 0 ? 'positive' : 'negative'}
-            size="sm"
-          >
-            {profitMarginPct.toFixed(1)}% Margin
-          </Badge>
-        </Flex>
+          <Pill>{profitMarginPct.toFixed(1)}% Margin</Pill>
+        </FlexLayout>
 
         {/* Profit Headline */}
-        <Text
-          as="div"
-          variant="headline-md"
-          weight="bold"
-          sentiment={isPositive ? 'positive' : 'negative'}
-        >
-          {formatRupee(netProfit)}
+        <Text styleAs="h1" color={isPositive ? 'success' : 'error'}>
+          <b>{formatRupee(netProfit)}</b>
         </Text>
 
         {cumulativeProfit !== undefined && (
-          <Text variant="caption" appearance="secondary">
+          <Text styleAs="notation" color="secondary">
             Balance Sheet Cumulative: {formatRupee(cumulativeProfit)}
           </Text>
         )}
 
         {/* 3-Column Breakdown Sub-Pills */}
-        <Grid columns={3} gap="xs" className="hs-estimated-profit-card__pills">
+        <GridLayout
+          columns={3}
+          gap={1}
+          className="hs-estimated-profit-card__pills"
+        >
           {/* 1. Trading Margin */}
-          <Grid.Item>
+          <GridItem>
             <div className="hs-profit-pill hs-profit-pill--margin">
-              <Text
-                variant="caption"
-                uppercase
-                weight="bold"
-                sentiment="positive"
-              >
-                Trading Margin
+              <Text styleAs="notation" color="success">
+                <b>Trading Margin</b>
               </Text>
-              <Text variant="label-md" weight="bold" sentiment="positive">
-                {formatRupee(grossCommission)}
+              <Text styleAs="h4" color="success">
+                <b>{formatRupee(grossCommission)}</b>
               </Text>
-              <Text variant="caption" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 Crop margin
               </Text>
             </div>
-          </Grid.Item>
+          </GridItem>
 
           {/* 2. Service Net */}
-          <Grid.Item>
+          <GridItem>
             <div className="hs-profit-pill hs-profit-pill--service">
-              <Text variant="caption" uppercase weight="bold" sentiment="info">
-                Service Net
+              <Text styleAs="notation" color="info">
+                <b>Service Net</b>
               </Text>
-              <Text variant="label-md" weight="bold" sentiment="info">
-                {formatRupee(pickupNet)}
+              <Text styleAs="h4" color="info">
+                <b>{formatRupee(pickupNet)}</b>
               </Text>
-              <Text variant="caption" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 Net service
               </Text>
             </div>
-          </Grid.Item>
+          </GridItem>
 
           {/* 3. Expenses */}
-          <Grid.Item>
+          <GridItem>
             <div className="hs-profit-pill hs-profit-pill--expense">
-              <Text
-                variant="caption"
-                uppercase
-                weight="bold"
-                sentiment="negative"
-              >
-                Expenses
+              <Text styleAs="notation" color="error">
+                <b>Expenses</b>
               </Text>
-              <Text variant="label-md" weight="bold" sentiment="negative">
-                -{formatRupee(operatingExpenses)}
+              <Text styleAs="h4" color="error">
+                <b>-{formatRupee(operatingExpenses)}</b>
               </Text>
-              <Text variant="caption" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 Operating costs
               </Text>
             </div>
-          </Grid.Item>
-        </Grid>
-      </Card.Content>
+          </GridItem>
+        </GridLayout>
+      </StackLayout>
     </Card>
   );
 };

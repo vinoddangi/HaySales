@@ -1,6 +1,5 @@
 import React from 'react';
-import { Flex } from '../../components/layouts/Flex';
-import { Text } from '../../components/Text';
+import { StackLayout, Text } from '@salt-ds/core';
 import { PageContainer } from '../../views/PageContainer';
 import { PeriodFilterBar } from '../Home/components/PeriodFilterBar';
 import {
@@ -39,19 +38,14 @@ export const PurchasesPage: React.FC = () => {
       className="hs-purchases-page"
     >
       {/* 1. Page Header */}
-      <Flex
-        direction="column"
-        gap="none"
-        fullWidth
-        className="hs-purchases-page__header"
-      >
-        <Text as="h2" variant="headline-sm" weight="bold">
-          Purchases &amp; Expenses
+      <StackLayout gap={0.5} className="hs-purchases-page__header">
+        <Text styleAs="h2">
+          <b>Purchases & Expenses</b>
         </Text>
-        <Text variant="body-md" appearance="secondary">
+        <Text color="secondary">
           Record raw crop procurement and operational farm costs
         </Text>
-      </Flex>
+      </StackLayout>
 
       {/* 2. Period Filter Bar */}
       <PeriodFilterBar

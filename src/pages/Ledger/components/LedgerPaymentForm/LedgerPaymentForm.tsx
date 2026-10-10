@@ -1,11 +1,19 @@
 import React from 'react';
-import { Checkbox } from '../../../../components/Checkbox';
-import { DatePicker } from '../../../../components/DatePicker';
-import { Form, useForm } from '../../../../components/Form';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Grid } from '../../../../components/layouts/Grid';
-import { Text } from '../../../../components/Text';
-import { TextField } from '../../../../components/TextField';
+import {
+  Button,
+  Card,
+  Checkbox,
+  FlexLayout,
+  FormField,
+  FormFieldHelperText,
+  FormFieldLabel,
+  GridLayout,
+  GridItem,
+  Input,
+  StackLayout,
+  Text,
+} from '@salt-ds/core';
+import { useForm } from '../../../../hooks/useForm';
 import { formatRupee, getTodayDateString } from '../../../../utils/formatters';
 import './LedgerPaymentForm.css';
 
@@ -72,7 +80,7 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
     },
   });
 
-  const { values, setValue } = form;
+  const { values, setValue, isValid } = form;
   const effectivePaymentAmount = values.allDueClear
     ? outstandingDue - values.discount
     : values.paymentAmount;
@@ -81,103 +89,146 @@ export const LedgerPaymentForm: React.FC<LedgerPaymentFormProps> = ({
   const newOutstandingDue = Math.max(0, outstandingDue - totalClearedAmount);
 
   return (
-    <Form form={form} className="hs-ledger-payment-form">
-      <Text variant="title-sm" weight="bold" sentiment="accent">
-        Record Account Payment
-      </Text>
+    <Card className="hs-ledger-payment-form">
+      <form onSubmit={form.handleSubmit}>
+        <StackLayout gap={2}>
+          <Text styleAs="label">
+            <b>RECORD ACCOUNT PAYMENT</b>
+          </Text>
 
-      {/* 1. Date */}
-      <DatePicker
-        label="Payment Date"
-        required
-        value={values.date}
-        onChange={(val) => setValue('date', val)}
-      />
+          {/* 1. Date */}
+          <FormField necessity="required">
+            <FormFieldLabel>Payment Date</FormFieldLabel>
+            <Input
+              inputProps={{
+                type: 'date',
+                value: values.date,
+                onChange: (e) => setValue('date', e.target.value),
+              }}
+            />
+          </FormField>
 
-      {/* 2. Full Clear Checkbox */}
-      <Flex align="center" gap="xs">
-        <Checkbox
-          checked={values.allDueClear}
-          onChange={(checked) => {
-            setValue('allDueClear', checked);
-            if (checked) {
-              setValue('paymentAmount', outstandingDue);
-            }
-          }}
-        />
-        <Text variant="body-md" weight="bold">
-          Pay Full Outstanding Due ({formatRupee(outstandingDue)})
-        </Text>
-      </Flex>
-
-      {/* 3. Amounts Grid */}
-      <Grid columns={2} gap="sm">
-        <Grid.Item>
-          <TextField
-            label="Payment Received (₹)"
-            type="number"
-            required
-            disabled={values.allDueClear}
-            value={effectivePaymentAmount ? String(effectivePaymentAmount) : ''}
-            onChange={(val) =>
-              setValue('paymentAmount', Math.max(0, Number(val) || 0))
-            }
-            supportingText="Cash paid today"
+          {/* 2. Full Clear Checkbox */}
+          <Checkbox
+            label={`Pay Full Outstanding Due (${formatRupee(outstandingDue)})`}
+            checked={values.allDueClear}
+            onChange={(e) => {
+              const checked = e.target.checked;
+              setValue('allDueClear', checked);
+              if (checked) {
+                setValue('paymentAmount', outstandingDue);
+              }
+            }}
           />
-        </Grid.Item>
 
-        <Grid.Item>
-          <TextField
-            label="Discount Waived (₹)"
-            type="number"
-            value={values.discount ? String(values.discount) : ''}
-            onChange={(val) =>
-              setValue('discount', Math.max(0, Number(val) || 0))
-            }
-            supportingText="Write-off / settlement"
-          />
-        </Grid.Item>
+          {/* 3. Amounts Grid */}
+          <GridLayout columns={2} gap={2}>
+            <GridItem>
+              <FormField necessity="required">
+                <FormFieldLabel>Payment Received (₹)</FormFieldLabel>
+                <Input
+                  disabled={values.allDueClear}
+                  inputProps={{
+                    type: 'number',
+                    placeholder: '0',
+                    value: effectivePaymentAmount
+                      ? String(effectivePaymentAmount)
+                      : '',
+                    onChange: (e) =>
+                      setValue(
+                        'paymentAmount',
+                        Math.max(0, Number(e.target.value) || 0),
+                      ),
+                  }}
+                />
+                <FormFieldHelperText>Cash paid today</FormFieldHelperText>
+              </FormField>
+            </GridItem>
 
-        <Grid.Item span={2}>
-          <TextField
-            label="Total Balance Cleared (₹)"
-            type="text"
-            disabled
-            value={formatRupee(discountDuringPayment)}
-          />
-        </Grid.Item>
-      </Grid>
+            <GridItem>
+              <FormField>
+                <FormFieldLabel>Discount Waived (₹)</FormFieldLabel>
+                <Input
+                  inputProps={{
+                    type: 'number',
+                    placeholder: '0',
+                    value: values.discount ? String(values.discount) : '',
+                    onChange: (e) =>
+                      setValue(
+                        'discount',
+                        Math.max(0, Number(e.target.value) || 0),
+                      ),
+                  }}
+                />
+                <FormFieldHelperText>
+                  Write-off / settlement
+                </FormFieldHelperText>
+              </FormField>
+            </GridItem>
+          </GridLayout>
 
-      {/* 4. Summary Box */}
-      <Form.Summary>
-        <Form.Summary.Row
-          label="Current Outstanding Due:"
-          value={formatRupee(outstandingDue)}
-        />
-        <Form.Summary.Row
-          label="Payment Applied:"
-          value={`-${formatRupee(effectivePaymentAmount)}`}
-          sentiment="positive"
-        />
-        {discountDuringPayment > 0 && (
-          <Form.Summary.Row
-            label="Discount Waived:"
-            value={`-${formatRupee(discountDuringPayment)}`}
-          />
-        )}
-        <Form.Summary.Row
-          label="New Balance Due:"
-          value={formatRupee(newOutstandingDue)}
-        />
-      </Form.Summary>
+          {/* 4. Summary Card */}
+          <Card
+            style={{
+              backgroundColor: 'var(--salt-container-secondary-background)',
+              padding: 'var(--salt-spacing-150)',
+            }}
+          >
+            <StackLayout gap={1}>
+              <FlexLayout justify="space-between">
+                <Text styleAs="notation" color="secondary">
+                  Current Outstanding Due:
+                </Text>
+                <Text styleAs="notation">
+                  <b>{formatRupee(outstandingDue)}</b>
+                </Text>
+              </FlexLayout>
+              <FlexLayout justify="space-between">
+                <Text styleAs="notation" color="secondary">
+                  Payment Applied:
+                </Text>
+                <Text styleAs="notation" color="success">
+                  <b>-{formatRupee(effectivePaymentAmount)}</b>
+                </Text>
+              </FlexLayout>
+              {discountDuringPayment > 0 && (
+                <FlexLayout justify="space-between">
+                  <Text styleAs="notation" color="secondary">
+                    Discount Waived:
+                  </Text>
+                  <Text styleAs="notation" color="warning">
+                    <b>-{formatRupee(discountDuringPayment)}</b>
+                  </Text>
+                </FlexLayout>
+              )}
+              <FlexLayout justify="space-between">
+                <Text styleAs="notation" color="secondary">
+                  New Balance Due:
+                </Text>
+                <Text
+                  styleAs="notation"
+                  color={newOutstandingDue > 0 ? 'error' : 'secondary'}
+                >
+                  <b>{formatRupee(newOutstandingDue)}</b>
+                </Text>
+              </FlexLayout>
+            </StackLayout>
+          </Card>
 
-      {/* 5. Submit Button */}
-      <Form.Submit
-        fullWidth
-        label={`Record Payment of ${formatRupee(effectivePaymentAmount)}`}
-        submittingLabel="Recording Payment..."
-      />
-    </Form>
+          {/* 5. Submit Button */}
+          <Button
+            sentiment="accented"
+            type="submit"
+            disabled={!isValid || isPaying}
+            style={{ width: '100%', height: '44px' }}
+          >
+            {isPaying
+              ? 'Recording Payment...'
+              : `Record Payment of ${formatRupee(effectivePaymentAmount)}`}
+          </Button>
+        </StackLayout>
+      </form>
+    </Card>
   );
 };
 

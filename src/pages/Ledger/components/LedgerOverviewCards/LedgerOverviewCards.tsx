@@ -1,7 +1,6 @@
 import React from 'react';
-import { IconIndianRupee, IconUsers } from '../../../../components/Icon';
-import { Grid } from '../../../../components/layouts/Grid';
-import { StatCard } from '../../../../components/StatCard';
+import { Card, GridLayout, GridItem, StackLayout, Text } from '@salt-ds/core';
+import { IndianRupee, Users } from 'lucide-react';
 import { formatRupee } from '../../../../utils/formatters';
 import './LedgerOverviewCards.css';
 
@@ -17,27 +16,47 @@ export const LedgerOverviewCards: React.FC<LedgerOverviewCardsProps> = ({
   totalCustomersCount,
 }) => {
   return (
-    <Grid columns={2} gap="sm" fullWidth>
-      <Grid.Item>
-        <StatCard
-          icon={<IconIndianRupee size="md" />}
-          value={formatRupee(totalOutstanding)}
-          label="Total Outstanding"
-          sentiment="negative"
-          variant="filled"
-        />
-      </Grid.Item>
+    <GridLayout columns={2} gap={1} className="hs-ledger-overview-cards">
+      <GridItem>
+        <Card className="hs-ledger-overview-card hs-ledger-overview-card--outstanding">
+          <StackLayout gap={0.5}>
+            <div className="hs-ledger-overview-card__header">
+              <Text styleAs="label">
+                <b>TOTAL OUTSTANDING</b>
+              </Text>
+              <IndianRupee size={16} />
+            </div>
+            <Text styleAs="h3" color="error">
+              <b>{formatRupee(totalOutstanding)}</b>
+            </Text>
+            <Text styleAs="notation" color="secondary">
+              Receivables Balance
+            </Text>
+          </StackLayout>
+        </Card>
+      </GridItem>
 
-      <Grid.Item>
-        <StatCard
-          icon={<IconUsers size="md" />}
-          value={`${customersWithDuesCount} / ${totalCustomersCount}`}
-          label="Accounts Due"
-          sentiment="warning"
-          variant="filled"
-        />
-      </Grid.Item>
-    </Grid>
+      <GridItem>
+        <Card className="hs-ledger-overview-card hs-ledger-overview-card--accounts">
+          <StackLayout gap={0.5}>
+            <div className="hs-ledger-overview-card__header">
+              <Text styleAs="label">
+                <b>ACCOUNTS DUE</b>
+              </Text>
+              <Users size={16} />
+            </div>
+            <Text styleAs="h3" color="warning">
+              <b>
+                {customersWithDuesCount} / {totalCustomersCount}
+              </b>
+            </Text>
+            <Text styleAs="notation" color="secondary">
+              Active Debtors
+            </Text>
+          </StackLayout>
+        </Card>
+      </GridItem>
+    </GridLayout>
   );
 };
 

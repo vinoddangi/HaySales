@@ -1,7 +1,6 @@
 import React from 'react';
-import { IconArrowDownLeft, IconDollarSign } from '../../../../components/Icon';
-import { Text } from '../../../../components/Text';
-import { cn } from '../../../../utils/cn';
+import { FlexLayout, ToggleButton, ToggleButtonGroup } from '@salt-ds/core';
+import { ArrowDownLeft, DollarSign } from 'lucide-react';
 import './PurchaseTypeSelector.css';
 
 export interface PurchaseTypeSelectorProps {
@@ -15,35 +14,29 @@ export const PurchaseTypeSelector: React.FC<PurchaseTypeSelectorProps> = ({
 }) => {
   return (
     <div className="hs-purchase-type-selector">
-      <button
-        type="button"
-        onClick={() => onChange('PURCHASE')}
-        className={cn(
-          'hs-purchase-type-selector__button',
-          activeType === 'PURCHASE' &&
-            'hs-purchase-type-selector__button--active-purchase',
-        )}
+      <ToggleButtonGroup
+        value={activeType}
+        onChange={(event) => {
+          const val = (event.currentTarget as HTMLButtonElement).value;
+          if (val === 'PURCHASE' || val === 'EXPENSE') {
+            onChange(val);
+          }
+        }}
+        style={{ width: '100%' }}
       >
-        <IconDollarSign size="md" />
-        <Text variant="label-md" weight="bold" as="span">
-          Stock Purchase
-        </Text>
-      </button>
-
-      <button
-        type="button"
-        onClick={() => onChange('EXPENSE')}
-        className={cn(
-          'hs-purchase-type-selector__button',
-          activeType === 'EXPENSE' &&
-            'hs-purchase-type-selector__button--active-expense',
-        )}
-      >
-        <IconArrowDownLeft size="md" />
-        <Text variant="label-md" weight="bold" as="span">
-          Farm Expense
-        </Text>
-      </button>
+        <ToggleButton value="PURCHASE" style={{ flex: 1 }}>
+          <FlexLayout align="center" justify="center" gap={1}>
+            <DollarSign size={16} />
+            <span>Stock Purchase</span>
+          </FlexLayout>
+        </ToggleButton>
+        <ToggleButton value="EXPENSE" style={{ flex: 1 }}>
+          <FlexLayout align="center" justify="center" gap={1}>
+            <ArrowDownLeft size={16} />
+            <span>Farm Expense</span>
+          </FlexLayout>
+        </ToggleButton>
+      </ToggleButtonGroup>
     </div>
   );
 };

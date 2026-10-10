@@ -1,12 +1,14 @@
 import React from 'react';
 import {
   Button,
-  Flex,
-  IconShieldCheck,
-  IconX,
+  FormField,
+  FormFieldHelperText,
+  FormFieldLabel,
+  Input,
+  StackLayout,
   Text,
-  TextField,
-} from '../../components';
+} from '@salt-ds/core';
+import { ShieldCheck, X } from 'lucide-react';
 import './LoginModal.css';
 import { useLoginModal } from './useLoginModal';
 
@@ -33,7 +35,11 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="login-modal__overlay">
-      <Flex direction="column" gap="md" className="login-modal__container">
+      <StackLayout
+        direction="column"
+        gap={2}
+        className="login-modal__container"
+      >
         <div id="recaptcha-container" />
 
         <button
@@ -42,14 +48,14 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
           className="login-modal__close-btn"
           type="button"
         >
-          <IconX size="lg" />
+          <X size={20} />
         </button>
 
         {/* Header */}
-        <Flex
+        <StackLayout
           direction="column"
           align="center"
-          gap="xs"
+          gap={1}
           className="login-modal__header"
         >
           <img
@@ -57,25 +63,15 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             alt="HaySales Logo"
             className="login-modal__logo-img"
           />
-          <Text
-            variant="title-lg"
-            weight="bold"
-            as="h2"
-            className="login-modal__title"
-          >
-            {phoneSubmitted ? 'Enter PIN' : 'Secure Sign In'}
+          <Text styleAs="h2" className="login-modal__title">
+            <b>{phoneSubmitted ? 'Enter PIN' : 'Secure Sign In'}</b>
           </Text>
-          <Text
-            variant="body-md"
-            appearance="secondary"
-            as="p"
-            className="login-modal__subtitle"
-          >
+          <Text color="secondary" className="login-modal__subtitle">
             {phoneSubmitted
               ? `Enter your 6-digit PIN for +91 ${phoneNumber}`
               : 'Confirm access using your phone number.'}
           </Text>
-        </Flex>
+        </StackLayout>
 
         {/* Error Message */}
         {error && <div className="login-modal__error">{error}</div>}
@@ -83,83 +79,85 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         {/* Step 1: Mobile Number with +91 Start Adornment */}
         {!phoneSubmitted ? (
           <form onSubmit={handleSendCode} className="login-modal__form">
-            <Flex direction="column" gap="md">
-              <TextField
-                label="Mobile Number"
-                placeholder="98765 43210"
-                type="tel"
-                value={phoneNumber}
-                onChange={handlePhoneChange}
-                required
-                supportingText="10-digit Indian phone number"
-                startAdornment={
-                  <Text
-                    as="span"
-                    variant="body-md"
-                    weight="medium"
-                    className="login-modal__country-code"
-                  >
-                    +91
-                  </Text>
-                }
-              />
+            <StackLayout direction="column" gap={2}>
+              <FormField necessity="required">
+                <FormFieldLabel>Mobile Number</FormFieldLabel>
+                <Input
+                  placeholder="98765 43210"
+                  inputProps={{ type: 'tel' }}
+                  value={phoneNumber}
+                  onChange={(e) =>
+                    handlePhoneChange((e.target as HTMLInputElement).value)
+                  }
+                  startAdornment={
+                    <span className="login-modal__country-code">+91</span>
+                  }
+                />
+                <FormFieldHelperText>
+                  10-digit Indian phone number
+                </FormFieldHelperText>
+              </FormField>
 
-              <Flex.Item className="login-modal__actions">
+              <div className="login-modal__actions">
                 <Button
                   type="submit"
-                  variant="filled"
+                  variant="cta"
                   disabled={loading}
                   onClick={handleSendCode}
-                  fullWidth
+                  style={{ width: '100%' }}
                 >
                   {loading ? 'Processing...' : 'Login'}
                 </Button>
-              </Flex.Item>
-            </Flex>
+              </div>
+            </StackLayout>
           </form>
         ) : (
           /* Step 2: 6-Digit PIN Verification */
           <form onSubmit={handleVerifyPin} className="login-modal__form">
-            <Flex direction="column" gap="md">
-              <TextField
-                label="Login PIN / Code"
-                placeholder="Enter 6-digit PIN"
-                type="password"
-                value={pin}
-                onChange={handlePinChange}
-                required
-                supportingText="Enter your 6-digit login PIN"
-                startAdornment={<IconShieldCheck size="md" />}
-              />
+            <StackLayout direction="column" gap={2}>
+              <FormField necessity="required">
+                <FormFieldLabel>Login PIN / Code</FormFieldLabel>
+                <Input
+                  placeholder="Enter 6-digit PIN"
+                  inputProps={{ type: 'password' }}
+                  value={pin}
+                  onChange={(e) =>
+                    handlePinChange((e.target as HTMLInputElement).value)
+                  }
+                  startAdornment={<ShieldCheck size={18} />}
+                />
+                <FormFieldHelperText>
+                  Enter your 6-digit login PIN
+                </FormFieldHelperText>
+              </FormField>
 
-              <Flex
+              <StackLayout
                 direction="column"
-                gap="sm"
+                gap={1}
                 className="login-modal__actions"
               >
                 <Button
                   type="submit"
-                  variant="filled"
+                  variant="cta"
                   disabled={loading}
                   onClick={handleVerifyPin}
-                  fullWidth
+                  style={{ width: '100%' }}
                 >
                   {loading ? 'Verifying PIN...' : 'Verify & Log In'}
                 </Button>
 
-                <Flex.Item
-                  as="button"
+                <button
                   type="button"
                   onClick={handleEditNumber}
                   className="login-modal__edit-number-btn"
                 >
                   Edit Mobile Number
-                </Flex.Item>
-              </Flex>
-            </Flex>
+                </button>
+              </StackLayout>
+            </StackLayout>
           </form>
         )}
-      </Flex>
+      </StackLayout>
     </div>
   );
 };

@@ -1,12 +1,6 @@
 import React, { useMemo, useRef, useState } from 'react';
-import { Badge } from '../../../../components/Badge';
-import {
-  IconSearch,
-  IconUserCheck,
-  IconUsers,
-  IconX,
-} from '../../../../components/Icon';
-import { Text } from '../../../../components/Text';
+import { Card, FlexLayout, Pill, Text } from '@salt-ds/core';
+import { Search, UserCheck, Users, X } from 'lucide-react';
 import { CustomerModel } from '../../../../models';
 import { formatRupee } from '../../../../utils/formatters';
 import './CustomerSelectorCard.css';
@@ -61,36 +55,38 @@ export const CustomerSelectorCard: React.FC<CustomerSelectorCardProps> = ({
   const isOverLimit = outstandingDue > creditLimit;
 
   return (
-    <div className="hs-customer-selector-card" ref={containerRef}>
-      <div className="hs-customer-selector-card__header">
-        <Text variant="title-sm" weight="bold">
-          Customer Account Selection
+    <Card className="hs-customer-selector-card" ref={containerRef}>
+      <FlexLayout
+        justify="space-between"
+        align="center"
+        className="hs-customer-selector-card__header"
+      >
+        <Text styleAs="label">
+          <b>CUSTOMER ACCOUNT SELECTION</b>
         </Text>
         {selectedCustomer ? (
-          <Badge sentiment="info" appearance="subtle">
-            <IconUserCheck
-              size="xs"
-              className="hs-customer-selector-card__badge-icon"
-            />
-            Selected
-          </Badge>
+          <Pill>
+            <FlexLayout align="center" gap={0.5}>
+              <UserCheck size={12} />
+              <span>Selected</span>
+            </FlexLayout>
+          </Pill>
         ) : (
-          <Badge sentiment="neutral" appearance="subtle">
-            <IconUsers
-              size="xs"
-              className="hs-customer-selector-card__badge-icon"
-            />
-            Required
-          </Badge>
+          <Pill>
+            <FlexLayout align="center" gap={0.5}>
+              <Users size={12} />
+              <span>Required</span>
+            </FlexLayout>
+          </Pill>
         )}
-      </div>
+      </FlexLayout>
 
       {/* 1. Search & Select Input */}
       {!selectedCustomer ? (
         <div className="hs-customer-selector-card__search-box">
           <div className="hs-customer-selector-card__input-wrapper">
-            <IconSearch
-              size="md"
+            <Search
+              size={16}
               className="hs-customer-selector-card__search-icon"
             />
             <input
@@ -108,8 +104,8 @@ export const CustomerSelectorCard: React.FC<CustomerSelectorCardProps> = ({
                 className="hs-customer-selector-card__clear-btn"
                 aria-label="Clear search"
               >
-                <IconX
-                  size="md"
+                <X
+                  size={16}
                   className="hs-customer-selector-card__clear-icon"
                 />
               </button>
@@ -121,7 +117,7 @@ export const CustomerSelectorCard: React.FC<CustomerSelectorCardProps> = ({
             <div className="hs-customer-selector-card__dropdown">
               {filteredCustomers.length === 0 ? (
                 <div className="hs-customer-selector-card__dropdown-empty">
-                  <Text variant="body-sm" appearance="secondary">
+                  <Text styleAs="notation" color="secondary">
                     No customers found matching &quot;{searchTerm}&quot;
                   </Text>
                 </div>
@@ -135,16 +131,14 @@ export const CustomerSelectorCard: React.FC<CustomerSelectorCardProps> = ({
                     tabIndex={0}
                   >
                     <div>
-                      <Text variant="body-md" weight="bold">
-                        {c.name}
+                      <Text>
+                        <b>{c.name}</b>
                       </Text>
-                      <Text variant="body-sm" appearance="secondary">
+                      <Text styleAs="notation" color="secondary">
                         {c.village || 'No village'} • {c.mobile || 'No mobile'}
                       </Text>
                     </div>
-                    <Badge sentiment="neutral" appearance="subtle">
-                      Select
-                    </Badge>
+                    <Pill onClick={() => handleSelect(c.id)}>Select</Pill>
                   </div>
                 ))
               )}
@@ -156,10 +150,10 @@ export const CustomerSelectorCard: React.FC<CustomerSelectorCardProps> = ({
         <div className="hs-customer-selector-card__info">
           <div className="hs-customer-selector-card__info-header">
             <div>
-              <Text variant="title-md" weight="bold">
-                {selectedCustomer.name}
+              <Text styleAs="h3">
+                <b>{selectedCustomer.name}</b>
               </Text>
-              <Text variant="body-sm" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 {selectedCustomer.village
                   ? `Village: ${selectedCustomer.village}`
                   : 'No village specified'}
@@ -170,11 +164,7 @@ export const CustomerSelectorCard: React.FC<CustomerSelectorCardProps> = ({
             </div>
 
             <div className="hs-customer-selector-card__actions">
-              {isOverLimit && (
-                <Badge sentiment="negative" appearance="solid">
-                  Over Credit Limit
-                </Badge>
-              )}
+              {isOverLimit && <Pill>Over Credit Limit</Pill>}
               <button
                 type="button"
                 onClick={handleClear}
@@ -187,32 +177,33 @@ export const CustomerSelectorCard: React.FC<CustomerSelectorCardProps> = ({
 
           <div className="hs-customer-selector-card__metrics">
             <div className="hs-customer-selector-card__metric-item">
-              <Text variant="label-sm" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 Current Due:
               </Text>
               <Text
-                variant="title-sm"
-                weight="bold"
-                sentiment={outstandingDue > 0 ? 'negative' : 'positive'}
+                styleAs="h4"
+                color={outstandingDue > 0 ? 'error' : 'success'}
               >
-                {outstandingDue > 0
-                  ? formatRupee(outstandingDue)
-                  : '₹0 (Clear)'}
+                <b>
+                  {outstandingDue > 0
+                    ? formatRupee(outstandingDue)
+                    : '₹0 (Clear)'}
+                </b>
               </Text>
             </div>
 
             <div className="hs-customer-selector-card__metric-item">
-              <Text variant="label-sm" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 Credit Limit:
               </Text>
-              <Text variant="title-sm" weight="bold">
-                {formatRupee(creditLimit)}
+              <Text styleAs="h4">
+                <b>{formatRupee(creditLimit)}</b>
               </Text>
             </div>
           </div>
         </div>
       )}
-    </div>
+    </Card>
   );
 };
 

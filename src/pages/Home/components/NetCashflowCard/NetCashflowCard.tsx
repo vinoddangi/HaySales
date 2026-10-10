@@ -1,10 +1,14 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Card } from '../../../../components/Card';
-import { IconWallet } from '../../../../components/Icon';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Grid } from '../../../../components/layouts/Grid';
-import { Text } from '../../../../components/Text';
+import {
+  Card,
+  FlexLayout,
+  GridItem,
+  GridLayout,
+  StackLayout,
+  Text,
+} from '@salt-ds/core';
+import { Wallet } from 'lucide-react';
 import { formatRupee } from '../../../../utils/formatters';
 import './NetCashflowCard.css';
 
@@ -38,44 +42,37 @@ export const NetCashflowCard: React.FC<NetCashflowCardProps> = ({
   const isPositive = netCashflow >= 0;
 
   return (
-    <Card variant="filled" className={clsx('hs-net-cashflow-card', className)}>
-      <Card.Content>
+    <Card className={clsx('hs-net-cashflow-card', className)}>
+      <StackLayout gap={1}>
         {/* Header */}
-        <Flex align="center" justify="between" fullWidth>
-          <Flex align="center" gap="sm">
+        <FlexLayout direction="row" align="center" justify="space-between">
+          <FlexLayout direction="row" align="center" gap={1}>
             <div className="hs-net-cashflow-card__icon-wrapper">
-              <IconWallet size={18} />
+              <Wallet size={18} />
             </div>
             <div>
-              <Text
-                as="div"
-                variant="label-sm"
-                uppercase
-                weight="bold"
-                sentiment="accent"
-              >
-                Net Cashflow
+              <Text styleAs="label" color="primary">
+                <b>Net Cashflow</b>
               </Text>
-              <Text variant="body-sm" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 Cash In − Cash Out
               </Text>
             </div>
-          </Flex>
+          </FlexLayout>
 
-          <Text
-            as="div"
-            variant="headline-sm"
-            weight="bold"
-            sentiment={isPositive ? 'positive' : 'negative'}
-          >
-            {formatRupee(netCashflow)}
+          <Text styleAs="h2" color={isPositive ? 'success' : 'error'}>
+            <b>{formatRupee(netCashflow)}</b>
           </Text>
-        </Flex>
+        </FlexLayout>
 
         {/* 2 Sub-Cards: Cash In & Cash Out */}
-        <Grid columns={2} gap="sm" className="hs-net-cashflow-card__sub-cards">
+        <GridLayout
+          columns={2}
+          gap={1}
+          className="hs-net-cashflow-card__sub-cards"
+        >
           {/* Cash In Details */}
-          <Grid.Item>
+          <GridItem>
             <div
               className="hs-cashflow-subcard hs-cashflow-subcard--in"
               onClick={onCashInClick}
@@ -83,49 +80,44 @@ export const NetCashflowCard: React.FC<NetCashflowCardProps> = ({
               tabIndex={onCashInClick ? 0 : undefined}
             >
               <div className="hs-cashflow-subcard__header">
-                <Text
-                  variant="caption"
-                  uppercase
-                  weight="bold"
-                  sentiment="positive"
-                >
-                  Cash In
+                <Text styleAs="label" color="success">
+                  <b>Cash In</b>
                 </Text>
-                <Text variant="label-md" weight="bold" sentiment="positive">
-                  {formatRupee(totalCashIn)}
+                <Text styleAs="h4" color="success">
+                  <b>{formatRupee(totalCashIn)}</b>
                 </Text>
               </div>
               <div className="hs-cashflow-subcard__rows">
                 <div className="hs-cashflow-subcard__row">
-                  <Text variant="caption" appearance="secondary">
+                  <Text styleAs="notation" color="secondary">
                     Recvd:
                   </Text>
-                  <Text variant="caption" weight="medium">
-                    {formatRupee(paymentsReceived)}
+                  <Text styleAs="notation">
+                    <b>{formatRupee(paymentsReceived)}</b>
                   </Text>
                 </div>
                 <div className="hs-cashflow-subcard__row">
-                  <Text variant="caption" appearance="secondary">
+                  <Text styleAs="notation" color="secondary">
                     Cash Sales:
                   </Text>
-                  <Text variant="caption" weight="medium">
-                    {formatRupee(salesOnCash)}
+                  <Text styleAs="notation">
+                    <b>{formatRupee(salesOnCash)}</b>
                   </Text>
                 </div>
                 <div className="hs-cashflow-subcard__row">
-                  <Text variant="caption" appearance="secondary">
+                  <Text styleAs="notation" color="secondary">
                     Service:
                   </Text>
-                  <Text variant="caption" weight="medium">
-                    {formatRupee(servicesReceived)}
+                  <Text styleAs="notation">
+                    <b>{formatRupee(servicesReceived)}</b>
                   </Text>
                 </div>
               </div>
             </div>
-          </Grid.Item>
+          </GridItem>
 
           {/* Cash Out Details */}
-          <Grid.Item>
+          <GridItem>
             <div
               className="hs-cashflow-subcard hs-cashflow-subcard--out"
               onClick={onCashOutClick}
@@ -133,40 +125,35 @@ export const NetCashflowCard: React.FC<NetCashflowCardProps> = ({
               tabIndex={onCashOutClick ? 0 : undefined}
             >
               <div className="hs-cashflow-subcard__header">
-                <Text
-                  variant="caption"
-                  uppercase
-                  weight="bold"
-                  sentiment="warning"
-                >
-                  Cash Out
+                <Text styleAs="label" color="warning">
+                  <b>Cash Out</b>
                 </Text>
-                <Text variant="label-md" weight="bold" sentiment="warning">
-                  {formatRupee(totalCashOut)}
+                <Text styleAs="h4" color="warning">
+                  <b>{formatRupee(totalCashOut)}</b>
                 </Text>
               </div>
               <div className="hs-cashflow-subcard__rows">
                 <div className="hs-cashflow-subcard__row">
-                  <Text variant="caption" appearance="secondary">
+                  <Text styleAs="notation" color="secondary">
                     Purchase:
                   </Text>
-                  <Text variant="caption" weight="medium">
-                    {formatRupee(purchaseOnCash)}
+                  <Text styleAs="notation">
+                    <b>{formatRupee(purchaseOnCash)}</b>
                   </Text>
                 </div>
                 <div className="hs-cashflow-subcard__row">
-                  <Text variant="caption" appearance="secondary">
+                  <Text styleAs="notation" color="secondary">
                     Expense:
                   </Text>
-                  <Text variant="caption" weight="medium">
-                    {formatRupee(expensesOnCash)}
+                  <Text styleAs="notation">
+                    <b>{formatRupee(expensesOnCash)}</b>
                   </Text>
                 </div>
               </div>
             </div>
-          </Grid.Item>
-        </Grid>
-      </Card.Content>
+          </GridItem>
+        </GridLayout>
+      </StackLayout>
     </Card>
   );
 };

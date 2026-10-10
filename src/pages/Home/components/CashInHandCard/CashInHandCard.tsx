@@ -1,10 +1,14 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Card } from '../../../../components/Card';
-import { IconLandmark } from '../../../../components/Icon';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Grid } from '../../../../components/layouts/Grid';
-import { Text } from '../../../../components/Text';
+import {
+  Card,
+  FlexLayout,
+  GridItem,
+  GridLayout,
+  StackLayout,
+  Text,
+} from '@salt-ds/core';
+import { Landmark } from 'lucide-react';
 import { formatRupee } from '../../../../utils/formatters';
 import './CashInHandCard.css';
 
@@ -36,64 +40,57 @@ export const CashInHandCard: React.FC<CashInHandCardProps> = ({
   className,
 }) => {
   return (
-    <Card variant="filled" className={clsx('hs-cash-in-hand-card', className)}>
-      <Card.Content>
+    <Card className={clsx('hs-cash-in-hand-card', className)}>
+      <StackLayout gap={1}>
         {/* Header */}
-        <Flex align="center" justify="between" fullWidth>
-          <Flex align="center" gap="sm">
+        <FlexLayout direction="row" align="center" justify="space-between">
+          <FlexLayout direction="row" align="center" gap={1}>
             <div className="hs-cash-in-hand-card__icon-wrapper">
-              <IconLandmark size={18} />
+              <Landmark size={18} />
             </div>
             <div>
-              <Text
-                as="div"
-                variant="label-sm"
-                uppercase
-                weight="bold"
-                sentiment="accent"
-              >
-                Cash in Hand
+              <Text styleAs="label" color="primary">
+                <b>Cash in Hand</b>
               </Text>
-              <Text variant="body-sm" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 Current Net Liquid Balance
               </Text>
             </div>
-          </Flex>
+          </FlexLayout>
 
           <div className="hs-cash-in-hand-card__header-right">
-            <Text
-              as="div"
-              variant="headline-sm"
-              weight="bold"
-              sentiment="accent"
-            >
-              {formatRupee(cashInHand)}
+            <Text styleAs="h2" color="primary">
+              <b>{formatRupee(cashInHand)}</b>
             </Text>
             <Text
-              as="div"
-              variant="caption"
-              weight="bold"
-              sentiment={
+              styleAs="notation"
+              color={
                 cashAdjustment > 0
-                  ? 'positive'
+                  ? 'success'
                   : cashAdjustment < 0
-                    ? 'negative'
-                    : 'neutral'
+                    ? 'error'
+                    : 'secondary'
               }
             >
-              {cashAdjustment > 0
-                ? `${formatRupee(cashAdjustment)} vs last period`
-                : cashAdjustment < 0
-                  ? `-${formatRupee(Math.abs(cashAdjustment))} vs last period`
-                  : '₹0.00 vs last period'}
+              <b>
+                {cashAdjustment > 0
+                  ? `${formatRupee(cashAdjustment)} vs last period`
+                  : cashAdjustment < 0
+                    ? `-${formatRupee(Math.abs(cashAdjustment))} vs last period`
+                    : '₹0.00 vs last period'}
+              </b>
             </Text>
           </div>
-        </Flex>
+        </FlexLayout>
 
         {/* 2 Sub-Cards: Total Assets & Total Liabilities */}
-        <Grid columns={2} gap="sm" className="hs-cash-in-hand-card__sub-cards">
+        <GridLayout
+          columns={2}
+          gap={1}
+          className="hs-cash-in-hand-card__sub-cards"
+        >
           {/* Sub-Card 1: Total Assets */}
-          <Grid.Item>
+          <GridItem>
             <div
               className="hs-balance-subcard hs-balance-subcard--assets"
               onClick={onNavigateBalanceSheet}
@@ -101,57 +98,52 @@ export const CashInHandCard: React.FC<CashInHandCardProps> = ({
               tabIndex={onNavigateBalanceSheet ? 0 : undefined}
             >
               <div className="hs-balance-subcard__header">
-                <Text
-                  variant="caption"
-                  uppercase
-                  weight="bold"
-                  sentiment="positive"
-                >
-                  Total Assets
+                <Text styleAs="label" color="success">
+                  <b>Total Assets</b>
                 </Text>
-                <Text variant="label-md" weight="bold" sentiment="positive">
-                  {formatRupee(totalAssets)}
+                <Text styleAs="h4" color="success">
+                  <b>{formatRupee(totalAssets)}</b>
                 </Text>
               </div>
               <div className="hs-balance-subcard__rows">
                 <div className="hs-balance-subcard__row">
-                  <Text variant="caption" appearance="secondary">
+                  <Text styleAs="notation" color="secondary">
                     Cash:
                   </Text>
-                  <Text variant="caption" weight="medium">
-                    {formatRupee(cashInHand)}
+                  <Text styleAs="notation">
+                    <b>{formatRupee(cashInHand)}</b>
                   </Text>
                 </div>
                 <div className="hs-balance-subcard__row">
-                  <Text variant="caption" appearance="secondary">
+                  <Text styleAs="notation" color="secondary">
                     Receivables:
                   </Text>
-                  <Text variant="caption" weight="medium">
-                    {formatRupee(customerReceivables)}
+                  <Text styleAs="notation">
+                    <b>{formatRupee(customerReceivables)}</b>
                   </Text>
                 </div>
                 <div className="hs-balance-subcard__row">
-                  <Text variant="caption" appearance="secondary">
+                  <Text styleAs="notation" color="secondary">
                     Crop Stock:
                   </Text>
-                  <Text variant="caption" weight="medium">
-                    {formatRupee(closingStockValue)}
+                  <Text styleAs="notation">
+                    <b>{formatRupee(closingStockValue)}</b>
                   </Text>
                 </div>
                 <div className="hs-balance-subcard__row">
-                  <Text variant="caption" appearance="secondary">
+                  <Text styleAs="notation" color="secondary">
                     Fixed Assets:
                   </Text>
-                  <Text variant="caption" weight="medium">
-                    {formatRupee(fixedAssetsValue)}
+                  <Text styleAs="notation">
+                    <b>{formatRupee(fixedAssetsValue)}</b>
                   </Text>
                 </div>
               </div>
             </div>
-          </Grid.Item>
+          </GridItem>
 
           {/* Sub-Card 2: Total Liabilities & Capital */}
-          <Grid.Item>
+          <GridItem>
             <div
               className="hs-balance-subcard hs-balance-subcard--liabilities"
               onClick={onNavigateBalanceSheet}
@@ -159,48 +151,43 @@ export const CashInHandCard: React.FC<CashInHandCardProps> = ({
               tabIndex={onNavigateBalanceSheet ? 0 : undefined}
             >
               <div className="hs-balance-subcard__header">
-                <Text
-                  variant="caption"
-                  uppercase
-                  weight="bold"
-                  sentiment="info"
-                >
-                  Liabilities &amp; Capital
+                <Text styleAs="label" color="info">
+                  <b>Liabilities &amp; Capital</b>
                 </Text>
-                <Text variant="label-md" weight="bold" sentiment="info">
-                  {formatRupee(totalAssets)}
+                <Text styleAs="h4" color="info">
+                  <b>{formatRupee(totalAssets)}</b>
                 </Text>
               </div>
               <div className="hs-balance-subcard__rows">
                 <div className="hs-balance-subcard__row">
-                  <Text variant="caption" appearance="secondary">
+                  <Text styleAs="notation" color="secondary">
                     Partner Loan / Payables:
                   </Text>
-                  <Text variant="caption" weight="medium">
-                    {formatRupee(totalLiabilities)}
+                  <Text styleAs="notation">
+                    <b>{formatRupee(totalLiabilities)}</b>
                   </Text>
                 </div>
                 <div className="hs-balance-subcard__row">
-                  <Text variant="caption" appearance="secondary">
+                  <Text styleAs="notation" color="secondary">
                     Partner Capital:
                   </Text>
-                  <Text variant="caption" weight="medium">
-                    {formatRupee(partnerCapital)}
+                  <Text styleAs="notation">
+                    <b>{formatRupee(partnerCapital)}</b>
                   </Text>
                 </div>
                 <div className="hs-balance-subcard__row">
-                  <Text variant="caption" appearance="secondary">
+                  <Text styleAs="notation" color="secondary">
                     Retained Profit:
                   </Text>
-                  <Text variant="caption" weight="medium">
-                    {formatRupee(retainedProfit)}
+                  <Text styleAs="notation">
+                    <b>{formatRupee(retainedProfit)}</b>
                   </Text>
                 </div>
               </div>
             </div>
-          </Grid.Item>
-        </Grid>
-      </Card.Content>
+          </GridItem>
+        </GridLayout>
+      </StackLayout>
     </Card>
   );
 };

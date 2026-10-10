@@ -1,11 +1,15 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Badge } from '../../../../components/Badge';
-import { Card } from '../../../../components/Card';
-import { IconChevronRight, IconUsers } from '../../../../components/Icon';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Grid } from '../../../../components/layouts/Grid';
-import { Text } from '../../../../components/Text';
+import {
+  Card,
+  FlexLayout,
+  GridItem,
+  GridLayout,
+  Pill,
+  StackLayout,
+  Text,
+} from '@salt-ds/core';
+import { ChevronRight, Users } from 'lucide-react';
 import { formatRupee } from '../../../../utils/formatters';
 import './CustomerOutstandingCard.css';
 
@@ -40,139 +44,112 @@ export const CustomerOutstandingCard: React.FC<
 }) => {
   return (
     <Card
-      variant="filled"
-      clickable={Boolean(onClick)}
       onClick={onClick}
       className={clsx('hs-customer-outstanding-card', className)}
+      style={{ cursor: onClick ? 'pointer' : undefined }}
     >
-      <Card.Content>
+      <StackLayout gap={1}>
         {/* Header */}
-        <Flex align="center" justify="between" fullWidth>
-          <Flex align="center" gap="sm">
+        <FlexLayout direction="row" align="center" justify="space-between">
+          <FlexLayout direction="row" align="center" gap={1}>
             <div className="hs-customer-outstanding-card__icon-wrapper">
-              <IconUsers size="md" />
+              <Users size={18} />
             </div>
             <div>
-              <Flex align="center" gap="xs">
-                <Text
-                  variant="label-sm"
-                  uppercase
-                  weight="bold"
-                  sentiment="negative"
-                >
-                  Customer Outstanding
+              <FlexLayout direction="row" align="center" gap={1}>
+                <Text styleAs="label" color="warning">
+                  <b>Customer Outstanding</b>
                 </Text>
                 {onClick && (
-                  <IconChevronRight
-                    size="sm"
+                  <ChevronRight
+                    size={14}
                     className="hs-customer-outstanding-card__chevron"
                   />
                 )}
-              </Flex>
-              <Text variant="body-sm" appearance="secondary">
+              </FlexLayout>
+              <Text styleAs="notation" color="secondary">
                 {periodLabel || 'Period'} Receivables
               </Text>
             </div>
-          </Flex>
+          </FlexLayout>
 
-          <Badge sentiment="warning" size="sm">
-            {customersWithDuesCount} Due
-          </Badge>
-        </Flex>
+          <Pill>{customersWithDuesCount} Due</Pill>
+        </FlexLayout>
 
         {/* Amount Headline with Tenor Comparison */}
         <div className="hs-customer-outstanding-card__amount-container">
-          <Text
-            as="div"
-            variant="headline-md"
-            weight="bold"
-            sentiment="negative"
-          >
-            {formatRupee(totalOutstanding)}
+          <Text styleAs="h1" color="warning">
+            <b>{formatRupee(totalOutstanding)}</b>
           </Text>
           {previousOutstanding !== undefined && (
             <div className="hs-customer-outstanding-card__comparison">
-              <Text variant="body-sm" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 Prev: {formatRupee(previousOutstanding)}
               </Text>
-              <Text
-                as="span"
-                variant="body-sm"
-                appearance="secondary"
-                className="hs-customer-outstanding-card__comparison-dot"
-              >
+              <span className="hs-customer-outstanding-card__comparison-dot">
                 •
-              </Text>
+              </span>
               <Text
-                variant="body-sm"
-                weight="bold"
-                sentiment={
+                styleAs="notation"
+                color={
                   (tenorDifference ?? netChange) > 0
                     ? 'warning'
                     : (tenorDifference ?? netChange) < 0
-                      ? 'positive'
-                      : 'neutral'
+                      ? 'success'
+                      : 'secondary'
                 }
               >
-                {(tenorDifference ?? netChange) > 0
-                  ? `${formatRupee(tenorDifference ?? netChange)}`
-                  : (tenorDifference ?? netChange) < 0
-                    ? `-${formatRupee(Math.abs(tenorDifference ?? netChange))}`
-                    : '₹0.00'}
-                {previousTenorLabel ? ` (${previousTenorLabel})` : ''}
+                <b>
+                  {(tenorDifference ?? netChange) > 0
+                    ? `${formatRupee(tenorDifference ?? netChange)}`
+                    : (tenorDifference ?? netChange) < 0
+                      ? `-${formatRupee(Math.abs(tenorDifference ?? netChange))}`
+                      : '₹0.00'}
+                  {previousTenorLabel ? ` (${previousTenorLabel})` : ''}
+                </b>
               </Text>
             </div>
           )}
         </div>
 
         {/* 3-Column Breakdown Sub-Pills */}
-        <Grid
+        <GridLayout
           columns={3}
-          gap="xs"
+          gap={1}
           className="hs-customer-outstanding-card__pills"
         >
           {/* 1. Credit Added */}
-          <Grid.Item>
+          <GridItem>
             <div className="hs-outstanding-pill hs-outstanding-pill--credit">
-              <Text
-                variant="caption"
-                uppercase
-                weight="bold"
-                sentiment="warning"
-              >
-                Credit Added
+              <Text styleAs="notation" color="warning">
+                <b>Credit Added</b>
               </Text>
-              <Text variant="label-md" weight="bold" sentiment="warning">
-                {formatRupee(periodCreditAdded)}
+              <Text styleAs="h4" color="warning">
+                <b>{formatRupee(periodCreditAdded)}</b>
               </Text>
-              <Text variant="caption" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 Sales & dues
               </Text>
             </div>
-          </Grid.Item>
+          </GridItem>
 
           {/* 2. Collected */}
-          <Grid.Item>
+          <GridItem>
             <div className="hs-outstanding-pill hs-outstanding-pill--collected">
-              <Text
-                variant="caption"
-                uppercase
-                weight="bold"
-                sentiment="positive"
-              >
-                Collected
+              <Text styleAs="notation" color="success">
+                <b>Collected</b>
               </Text>
-              <Text variant="label-md" weight="bold" sentiment="positive">
-                {formatRupee(periodCollections)}
+              <Text styleAs="h4" color="success">
+                <b>{formatRupee(periodCollections)}</b>
               </Text>
-              <Text variant="caption" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 Payments
               </Text>
             </div>
-          </Grid.Item>
+          </GridItem>
 
           {/* 3. Net Change */}
-          <Grid.Item>
+          <GridItem>
             <div
               className={clsx(
                 'hs-outstanding-pill',
@@ -184,43 +161,42 @@ export const CustomerOutstandingCard: React.FC<
               )}
             >
               <Text
-                variant="caption"
-                uppercase
-                weight="bold"
-                sentiment={
+                styleAs="notation"
+                color={
                   netChange > 0
                     ? 'warning'
                     : netChange < 0
-                      ? 'positive'
-                      : 'neutral'
+                      ? 'success'
+                      : 'secondary'
                 }
               >
-                Net Change
+                <b>Net Change</b>
               </Text>
               <Text
-                variant="label-md"
-                weight="bold"
-                sentiment={
+                styleAs="h4"
+                color={
                   netChange > 0
                     ? 'warning'
                     : netChange < 0
-                      ? 'positive'
-                      : 'neutral'
+                      ? 'success'
+                      : 'secondary'
                 }
               >
-                {netChange > 0
-                  ? `${formatRupee(netChange)}`
-                  : netChange < 0
-                    ? `-${formatRupee(Math.abs(netChange))}`
-                    : '₹0.00'}
+                <b>
+                  {netChange > 0
+                    ? `${formatRupee(netChange)}`
+                    : netChange < 0
+                      ? `-${formatRupee(Math.abs(netChange))}`
+                      : '₹0.00'}
+                </b>
               </Text>
-              <Text variant="caption" appearance="secondary">
+              <Text styleAs="notation" color="secondary">
                 Period net
               </Text>
             </div>
-          </Grid.Item>
-        </Grid>
-      </Card.Content>
+          </GridItem>
+        </GridLayout>
+      </StackLayout>
     </Card>
   );
 };

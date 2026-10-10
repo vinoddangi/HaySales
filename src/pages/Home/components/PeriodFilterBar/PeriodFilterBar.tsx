@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
-import { IconCalendar } from '../../../../components/Icon';
-import { Flex } from '../../../../components/layouts/Flex';
-import { SegmentedButton } from '../../../../components/SegmentedButton';
+import { FlexLayout, ToggleButton, ToggleButtonGroup } from '@salt-ds/core';
+import { Calendar } from 'lucide-react';
 import { FilterPeriodMode } from '../../../../store/slices/timelineSlice';
 import { MONTH_NAMES } from '../../../../utils/formatters';
 import './PeriodFilterBar.css';
@@ -28,25 +27,30 @@ export const PeriodFilterBar: React.FC<PeriodFilterBarProps> = ({
 
   return (
     <div className={clsx('hs-period-filter-bar', className)}>
-      <Flex align="center" justify="between" fullWidth gap="xs">
-        {/* Mode Toggle Buttons: Monthly / YTD / All using SegmentedButton */}
-        <SegmentedButton
+      <FlexLayout
+        direction="row"
+        align="center"
+        justify="space-between"
+        gap={1}
+      >
+        {/* Mode Toggle Buttons: Monthly / YTD / All using Salt ToggleButtonGroup */}
+        <ToggleButtonGroup
           value={filterMode}
-          onChange={(val) => onFilterModeChange(val as FilterPeriodMode)}
-          segments={[
-            { value: 'month', label: 'Monthly' },
-            { value: 'ytd', label: `YTD ${selectedYear}` },
-            { value: 'all', label: 'All' },
-          ]}
-        />
+          onChange={(e) =>
+            onFilterModeChange(
+              (e.currentTarget as HTMLButtonElement).value as FilterPeriodMode,
+            )
+          }
+        >
+          <ToggleButton value="month">Monthly</ToggleButton>
+          <ToggleButton value="ytd">YTD {selectedYear}</ToggleButton>
+          <ToggleButton value="all">All</ToggleButton>
+        </ToggleButtonGroup>
 
         {/* Month Dropdown Selector (Active in Monthly Mode) */}
         {filterMode === 'month' && (
           <div className="hs-period-filter-bar__select-wrapper">
-            <IconCalendar
-              size="sm"
-              className="hs-period-filter-bar__select-icon"
-            />
+            <Calendar size={16} className="hs-period-filter-bar__select-icon" />
             <select
               value={selectedMonth}
               onChange={(e) => onMonthChange(Number(e.target.value))}
@@ -61,7 +65,7 @@ export const PeriodFilterBar: React.FC<PeriodFilterBarProps> = ({
             </select>
           </div>
         )}
-      </Flex>
+      </FlexLayout>
     </div>
   );
 };

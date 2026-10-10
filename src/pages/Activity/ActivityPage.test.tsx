@@ -1,5 +1,6 @@
 import { Provider } from 'react-redux';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { store } from '../../store';
 import {
@@ -171,7 +172,7 @@ describe('Activity Page Modular Components', () => {
       note: 'Batch A quality certified',
     };
 
-    const html = renderToStaticMarkup(
+    render(
       <ActivityDetailDrawer
         isOpen={true}
         transaction={tx}
@@ -179,6 +180,7 @@ describe('Activity Page Modular Components', () => {
       />,
     );
 
+    const html = document.body.innerHTML;
     expect(html).toContain('Transaction Details');
     expect(html).toContain('tx_detail_003');
     expect(html).toContain('Kishan Mandi');
@@ -218,7 +220,7 @@ describe('Activity Page Modular Components', () => {
       customerName: 'Suresh Patel',
     };
 
-    const html = renderToStaticMarkup(
+    render(
       <ActivityDetailDrawer
         isOpen={true}
         transaction={tx}
@@ -227,6 +229,7 @@ describe('Activity Page Modular Components', () => {
       />,
     );
 
+    const html = document.body.innerHTML;
     expect(html).toContain('Edit Transaction');
     expect(html).toContain('Close');
   });
@@ -246,7 +249,7 @@ describe('Activity Page Modular Components', () => {
       note: 'Advance payment received',
     };
 
-    const html = renderToStaticMarkup(
+    render(
       <Provider store={store}>
         <ActivityEditDrawer
           isOpen={true}
@@ -257,6 +260,7 @@ describe('Activity Page Modular Components', () => {
       </Provider>,
     );
 
+    const html = document.body.innerHTML;
     expect(html).toContain('Edit Transaction');
     expect(html).toContain('Sale');
     expect(html).toContain('Save Changes');

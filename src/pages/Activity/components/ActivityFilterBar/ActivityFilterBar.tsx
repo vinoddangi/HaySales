@@ -1,15 +1,20 @@
-import clsx from 'clsx';
 import React from 'react';
 import {
-  IconLayers,
-  IconLayoutGrid,
-  IconReceipt,
-  IconRotateCcw,
-  IconSearch,
-  IconShoppingBag,
-  IconX,
-} from '../../../../components/Icon';
-import { Text } from '../../../../components/Text';
+  FlexLayout,
+  Text,
+  ToggleButton,
+  ToggleButtonGroup,
+} from '@salt-ds/core';
+import { clsx } from 'clsx';
+import {
+  Layers,
+  LayoutGrid,
+  Receipt,
+  RotateCcw,
+  Search,
+  ShoppingBag,
+  X,
+} from 'lucide-react';
 import './ActivityFilterBar.css';
 
 export type ActivityFilterType = 'all' | 'sales' | 'payments' | 'others';
@@ -46,7 +51,7 @@ export const ActivityFilterBar: React.FC<ActivityFilterBarProps> = ({
       {/* Search Input Bar + Optional Reset Button */}
       <div className="hs-activity-filter-bar__top">
         <div className="hs-activity-search">
-          <IconSearch size={18} className="hs-activity-search__icon" />
+          <Search size={16} className="hs-activity-search__icon" />
           <input
             type="text"
             placeholder="Search by customer, vendor, note, ID..."
@@ -61,7 +66,7 @@ export const ActivityFilterBar: React.FC<ActivityFilterBarProps> = ({
               onClick={() => onSearchChange('')}
               className="hs-activity-search__clear"
             >
-              <IconX size="sm" className="hs-activity-search__clear-icon" />
+              <X size={16} className="hs-activity-search__clear-icon" />
             </button>
           )}
         </div>
@@ -73,102 +78,53 @@ export const ActivityFilterBar: React.FC<ActivityFilterBarProps> = ({
             className="hs-activity-filter-bar__reset-btn"
             title="Reset all filters"
           >
-            <IconRotateCcw size={14} />
-            <Text variant="label-sm" weight="medium">
-              Reset
-            </Text>
+            <RotateCcw size={14} />
+            <Text styleAs="notation">Reset</Text>
           </button>
         )}
       </div>
 
       {/* 4-Filter Tabs: All vs Sales vs Payments vs Others */}
-      <div className="hs-activity-filter-tabs">
-        <button
-          type="button"
-          onClick={() => onFilterTypeChange('all')}
-          className={clsx(
-            'hs-activity-filter-tab-btn',
-            filterType === 'all'
-              ? 'hs-activity-filter-tab-btn--active'
-              : 'hs-activity-filter-tab-btn--inactive',
-          )}
-        >
-          <IconLayoutGrid
-            size="sm"
-            className="hs-activity-filter-tab-btn__icon"
-          />
-          <Text
-            variant="label-md"
-            weight={filterType === 'all' ? 'bold' : 'medium'}
-            className="hs-activity-filter-tab-btn__label"
-          >
-            All ({allCount})
-          </Text>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => onFilterTypeChange('sales')}
-          className={clsx(
-            'hs-activity-filter-tab-btn',
-            filterType === 'sales'
-              ? 'hs-activity-filter-tab-btn--active'
-              : 'hs-activity-filter-tab-btn--inactive',
-          )}
-        >
-          <IconShoppingBag
-            size="sm"
-            className="hs-activity-filter-tab-btn__icon"
-          />
-          <Text
-            variant="label-md"
-            weight={filterType === 'sales' ? 'bold' : 'medium'}
-            className="hs-activity-filter-tab-btn__label"
-          >
-            Sales ({salesCount})
-          </Text>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => onFilterTypeChange('payments')}
-          className={clsx(
-            'hs-activity-filter-tab-btn',
-            filterType === 'payments'
-              ? 'hs-activity-filter-tab-btn--active'
-              : 'hs-activity-filter-tab-btn--inactive',
-          )}
-        >
-          <IconReceipt size="sm" className="hs-activity-filter-tab-btn__icon" />
-          <Text
-            variant="label-md"
-            weight={filterType === 'payments' ? 'bold' : 'medium'}
-            className="hs-activity-filter-tab-btn__label"
-          >
-            Payments ({paymentsCount})
-          </Text>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => onFilterTypeChange('others')}
-          className={clsx(
-            'hs-activity-filter-tab-btn',
-            filterType === 'others'
-              ? 'hs-activity-filter-tab-btn--active'
-              : 'hs-activity-filter-tab-btn--inactive',
-          )}
-        >
-          <IconLayers size="sm" className="hs-activity-filter-tab-btn__icon" />
-          <Text
-            variant="label-md"
-            weight={filterType === 'others' ? 'bold' : 'medium'}
-            className="hs-activity-filter-tab-btn__label"
-          >
-            Others ({othersCount})
-          </Text>
-        </button>
-      </div>
+      <ToggleButtonGroup
+        value={filterType}
+        onChange={(event) => {
+          const val = (event.currentTarget as HTMLButtonElement).value;
+          if (
+            val === 'all' ||
+            val === 'sales' ||
+            val === 'payments' ||
+            val === 'others'
+          ) {
+            onFilterTypeChange(val);
+          }
+        }}
+        style={{ width: '100%' }}
+      >
+        <ToggleButton value="all" style={{ flex: 1 }}>
+          <FlexLayout align="center" justify="center" gap={0.5}>
+            <LayoutGrid size={14} />
+            <span>All ({allCount})</span>
+          </FlexLayout>
+        </ToggleButton>
+        <ToggleButton value="sales" style={{ flex: 1 }}>
+          <FlexLayout align="center" justify="center" gap={0.5}>
+            <ShoppingBag size={14} />
+            <span>Sales ({salesCount})</span>
+          </FlexLayout>
+        </ToggleButton>
+        <ToggleButton value="payments" style={{ flex: 1 }}>
+          <FlexLayout align="center" justify="center" gap={0.5}>
+            <Receipt size={14} />
+            <span>Payments ({paymentsCount})</span>
+          </FlexLayout>
+        </ToggleButton>
+        <ToggleButton value="others" style={{ flex: 1 }}>
+          <FlexLayout align="center" justify="center" gap={0.5}>
+            <Layers size={14} />
+            <span>Others ({othersCount})</span>
+          </FlexLayout>
+        </ToggleButton>
+      </ToggleButtonGroup>
     </div>
   );
 };

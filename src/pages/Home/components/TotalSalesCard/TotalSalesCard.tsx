@@ -1,9 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Card } from '../../../../components/Card';
-import { IconTrendingUp } from '../../../../components/Icon';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Text } from '../../../../components/Text';
+import { Card, FlexLayout, StackLayout, Text } from '@salt-ds/core';
+import { TrendingUp } from 'lucide-react';
 import { formatRupee, formatWeight } from '../../../../utils/formatters';
 import './TotalSalesCard.css';
 
@@ -26,38 +24,36 @@ export const TotalSalesCard: React.FC<TotalSalesCardProps> = ({
 }) => {
   return (
     <Card
-      variant="elevated"
-      clickable={Boolean(onClick)}
+      elevation="raised"
       onClick={onClick}
       className={clsx('hs-total-sales-card', className)}
+      style={{ cursor: onClick ? 'pointer' : undefined }}
     >
-      <Card.Content>
-        <Flex align="center" justify="between" fullWidth>
-          <Text variant="label-sm" uppercase weight="bold" sentiment="positive">
-            Total Sales
+      <StackLayout gap={1}>
+        <FlexLayout direction="row" align="center" justify="space-between">
+          <Text styleAs="label" color="success">
+            <b>Total Sales</b>
           </Text>
           <div className="hs-total-sales-card__icon-wrapper">
-            <IconTrendingUp size={14} className="hs-total-sales-card__icon" />
+            <TrendingUp size={14} className="hs-total-sales-card__icon" />
           </div>
-        </Flex>
+        </FlexLayout>
 
-        <Text as="div" variant="headline-sm" weight="bold" truncate>
-          {formatRupee(amount)}
+        <Text styleAs="h2">
+          <b>{formatRupee(amount)}</b>
         </Text>
 
-        <Text variant="body-sm" appearance="secondary" truncate>
+        <Text styleAs="notation" color="secondary">
           {formatWeight(weight)} • {invoicesCount} Invoices
         </Text>
 
         <div className="hs-total-sales-card__rate-badge">
-          <Text variant="caption" weight="medium" sentiment="positive">
-            Avg Rate:
-          </Text>
-          <Text variant="label-sm" weight="bold" sentiment="positive">
-            {avgRate > 0 ? `₹${avgRate.toFixed(2)} /kg` : '₹0.00 /kg'}
+          <Text styleAs="notation">Avg Rate:</Text>
+          <Text styleAs="label" color="success">
+            <b>{avgRate > 0 ? `₹${avgRate.toFixed(2)} /kg` : '₹0.00 /kg'}</b>
           </Text>
         </div>
-      </Card.Content>
+      </StackLayout>
     </Card>
   );
 };

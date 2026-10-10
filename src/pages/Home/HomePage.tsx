@@ -1,9 +1,6 @@
 import React from 'react';
-import { Fab } from '../../components/Fab';
-import { IconPlus } from '../../components/Icon';
-import { Flex } from '../../components/layouts/Flex';
-import { Grid } from '../../components/layouts/Grid';
-import { Text } from '../../components/Text';
+import { Button, GridItem, GridLayout, StackLayout, Text } from '@salt-ds/core';
+import { Plus } from 'lucide-react';
 import { PageContainer } from '../../views/PageContainer';
 import {
   CashInHandCard,
@@ -42,20 +39,17 @@ export const HomePage: React.FC = () => {
   return (
     <PageContainer spacing="md" bottomPadding="lg" className="hs-home-page">
       {/* 1. Header Overview & Period Indicator */}
-      <Flex direction="column" gap="none" fullWidth className="hs-home-header">
-        <Flex align="center" gap="xs">
-          <Text as="h2" variant="title-lg" weight="bold">
-            Business Overview
+      <StackLayout direction="column" gap={1} className="hs-home-header">
+        <StackLayout direction="row" align="center" gap={1}>
+          <Text styleAs="h2">
+            <b>Business Overview</b>
           </Text>
           <span className="hs-home-header__live-dot" />
-        </Flex>
-        <Text variant="body-sm" appearance="secondary">
-          Performance for{' '}
-          <Text variant="body-sm" weight="bold" sentiment="positive">
-            {periodLabel}
-          </Text>
+        </StackLayout>
+        <Text color="secondary">
+          Performance for <b>{periodLabel}</b>
         </Text>
-      </Flex>
+      </StackLayout>
 
       {/* 2. Period Filter Bar */}
       <PeriodFilterBar
@@ -67,8 +61,8 @@ export const HomePage: React.FC = () => {
       />
 
       {/* 3. Row 1: Top Main Cards (Total Sales & Total Purchases side-by-side) */}
-      <Grid columns={2} gap="sm" fullWidth>
-        <Grid.Item>
+      <GridLayout columns={2} gap={2}>
+        <GridItem>
           <TotalSalesCard
             amount={salesMetrics.totalAmount}
             weight={salesMetrics.totalWeight}
@@ -76,8 +70,8 @@ export const HomePage: React.FC = () => {
             avgRate={salesMetrics.avgRate}
             onClick={() => handleNavigate('/activity?category=SALES')}
           />
-        </Grid.Item>
-        <Grid.Item>
+        </GridItem>
+        <GridItem>
           <TotalPurchasesCard
             amount={purchaseMetrics.totalAmount}
             weight={purchaseMetrics.totalWeight}
@@ -87,12 +81,12 @@ export const HomePage: React.FC = () => {
               handleNavigate('/activity?category=PURCHASES_EXPENSES')
             }
           />
-        </Grid.Item>
-      </Grid>
+        </GridItem>
+      </GridLayout>
 
       {/* 4. Row 2: Sales Breakdown (Sales on Cash & Sales on Credit) */}
-      <Grid columns={2} gap="sm" fullWidth>
-        <Grid.Item>
+      <GridLayout columns={2} gap={2}>
+        <GridItem>
           <SalesOnCashCard
             amount={salesMetrics.salesOnCash}
             percentage={salesMetrics.cashPercentage}
@@ -100,8 +94,8 @@ export const HomePage: React.FC = () => {
               handleNavigate('/activity?category=SALES&nature=CASH')
             }
           />
-        </Grid.Item>
-        <Grid.Item>
+        </GridItem>
+        <GridItem>
           <SalesOnCreditCard
             amount={salesMetrics.salesOnCredit}
             percentage={salesMetrics.creditPercentage}
@@ -109,8 +103,8 @@ export const HomePage: React.FC = () => {
               handleNavigate('/activity?category=SALES&nature=CREDIT')
             }
           />
-        </Grid.Item>
-      </Grid>
+        </GridItem>
+      </GridLayout>
 
       {/* 5. Row 3: Estimated Net Profit Card */}
       <EstimatedProfitCard
@@ -185,13 +179,10 @@ export const HomePage: React.FC = () => {
 
       {/* 10. Floating Action Button for New Sale */}
       <div className="hs-home-fab">
-        <Fab
-          icon={<IconPlus size="md" className="hs-home-fab__icon" />}
-          label="New Sale"
-          variant="primary"
-          size="md"
-          onClick={handleNewSale}
-        />
+        <Button variant="cta" onClick={handleNewSale}>
+          <Plus size={18} />
+          New Sale
+        </Button>
       </div>
     </PageContainer>
   );

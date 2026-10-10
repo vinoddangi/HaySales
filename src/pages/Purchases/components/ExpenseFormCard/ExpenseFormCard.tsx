@@ -1,13 +1,19 @@
 import React, { useMemo } from 'react';
-import { Checkbox } from '../../../../components/Checkbox';
-import { DatePicker } from '../../../../components/DatePicker';
-import { Form, useForm } from '../../../../components/Form';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Grid } from '../../../../components/layouts/Grid';
-import { Select } from '../../../../components/Select';
-import { Text } from '../../../../components/Text';
-import { TextField } from '../../../../components/TextField';
+import {
+  Button,
+  Card,
+  Checkbox,
+  FlexLayout,
+  FormField,
+  FormFieldLabel,
+  GridLayout,
+  GridItem,
+  Input,
+  StackLayout,
+  Text,
+} from '@salt-ds/core';
 import { extractFixedAssetsFromTransactions } from '../../../../business';
+import { useForm } from '../../../../hooks/useForm';
 import { ExpenseCategory, VALID_EXPENSE_CATEGORIES } from '../../../../models';
 import { useGetOperationTransactionsQuery } from '../../../../store/api';
 import { formatRupee, getTodayDateString } from '../../../../utils/formatters';
@@ -34,7 +40,7 @@ export interface ExpenseFormCardProps {
 }
 
 const CATEGORY_OPTIONS = [
-  { value: '', label: 'Select' },
+  { value: '', label: 'Select Expense Category' },
   ...VALID_EXPENSE_CATEGORIES.map((c) => ({ value: c, label: c })),
 ];
 
@@ -116,7 +122,7 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
     [availableAssets],
   );
 
-  const { values, setValue } = form;
+  const { values, setValue, isValid } = form;
   const isDepreciation = values.category === 'Depreciation';
   const isProfitDistribution = values.category === 'Profit Distribution';
   const effectiveCashPaid = isDepreciation
@@ -130,175 +136,254 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
       : null;
 
   return (
-    <Form form={form} className="hs-expense-form-card">
-      <Text
-        variant="title-sm"
-        weight="bold"
-        className="hs-expense-form-card__section-title"
-      >
-        Record Operating Farm Expense
-      </Text>
+    <Card className="hs-expense-form-card">
+      <form onSubmit={form.handleSubmit}>
+        <StackLayout gap={2}>
+          <Text styleAs="label">
+            <b>RECORD OPERATING FARM EXPENSE</b>
+          </Text>
 
-      {/* 1. Date and Expense Category */}
-      <Grid columns={2} gap="md" fullWidth>
-        <Grid.Item>
-          <DatePicker
-            label="Expense Date"
-            required
-            value={values.date}
-            onChange={(val) => setValue('date', val)}
-          />
-        </Grid.Item>
-        <Grid.Item>
-          <Select
-            label="Expense Category"
-            required
-            value={values.category}
-            options={CATEGORY_OPTIONS}
-            onChange={(val) => setValue('category', val)}
-          />
-        </Grid.Item>
-      </Grid>
+          {/* 1. Date and Expense Category */}
+          <GridLayout columns={2} gap={2}>
+            <GridItem>
+              <FormField necessity="required">
+                <FormFieldLabel>Expense Date</FormFieldLabel>
+                <Input
+                  inputProps={{
+                    type: 'date',
+                    value: values.date,
+                    onChange: (e) => setValue('date', e.target.value),
+                  }}
+                />
+              </FormField>
+            </GridItem>
+            <GridItem>
+              <FormField necessity="required">
+                <FormFieldLabel>Expense Category</FormFieldLabel>
+                <select
+                  value={values.category}
+                  onChange={(e) => setValue('category', e.target.value)}
+                  style={{
+                    width: '100%',
+                    height: 'var(--salt-size-base, 36px)',
+                    borderRadius: 'var(--salt-palette-corner-rounded, 6px)',
+                    border: '1px solid var(--salt-palette-neutral-border)',
+                    backgroundColor: 'var(--salt-container-primary-background)',
+                    color: 'var(--salt-palette-neutral-primary-foreground)',
+                    padding: '0 8px',
+                    fontSize: '14px',
+                  }}
+                >
+                  {CATEGORY_OPTIONS.map((c) => (
+                    <option key={c.value} value={c.value}>
+                      {c.label}
+                    </option>
+                  ))}
+                </select>
+              </FormField>
+            </GridItem>
+          </GridLayout>
 
-      {/* 2. Depreciation Asset Selector if category is Depreciation */}
-      {isDepreciation && (
-        <div className="hs-expense-form-card__depreciation-box">
-          <Select
-            label="Select Fixed Asset to Depreciate"
-            required
-            value={values.targetAssetId}
-            options={assetOptions}
-            onChange={(val) => setValue('targetAssetId', val)}
-          />
-          {selectedAsset && (
-            <Flex justify="between" fullWidth>
-              <Text variant="body-sm" appearance="secondary">
-                Original Cost: {formatRupee(selectedAsset.purchaseCost)}
-              </Text>
-              <Text variant="body-sm" weight="bold" sentiment="warning">
-                Book Value: {formatRupee(selectedAsset.currentBookValue)}
-              </Text>
-            </Flex>
+          {/* 2. Depreciation Asset Selector if category is Depreciation */}
+          {isDepreciation && (
+            <StackLayout
+              gap={1}
+              className="hs-expense-form-card__depreciation-box"
+            >
+              <FormField necessity="required">
+                <FormFieldLabel>
+                  Select Fixed Asset to Depreciate
+                </FormFieldLabel>
+                <select
+                  value={values.targetAssetId}
+                  onChange={(e) => setValue('targetAssetId', e.target.value)}
+                  style={{
+                    width: '100%',
+                    height: 'var(--salt-size-base, 36px)',
+                    borderRadius: 'var(--salt-palette-corner-rounded, 6px)',
+                    border: '1px solid var(--salt-palette-neutral-border)',
+                    backgroundColor: 'var(--salt-container-primary-background)',
+                    color: 'var(--salt-palette-neutral-primary-foreground)',
+                    padding: '0 8px',
+                    fontSize: '14px',
+                  }}
+                >
+                  {assetOptions.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </FormField>
+              {selectedAsset && (
+                <FlexLayout justify="space-between">
+                  <Text styleAs="notation" color="secondary">
+                    Original Cost: {formatRupee(selectedAsset.purchaseCost)}
+                  </Text>
+                  <Text styleAs="notation" color="warning">
+                    <b>
+                      Book Value: {formatRupee(selectedAsset.currentBookValue)}
+                    </b>
+                  </Text>
+                </FlexLayout>
+              )}
+            </StackLayout>
           )}
-        </div>
-      )}
 
-      {/* 3. Profit Distribution Notice */}
-      {isProfitDistribution && (
-        <div className="hs-expense-form-card__distribution-box">
-          <Text
-            variant="title-sm"
-            weight="bold"
-            className="hs-expense-form-card__distribution-title"
+          {/* 3. Profit Distribution Notice */}
+          {isProfitDistribution && (
+            <Card
+              style={{
+                backgroundColor: 'var(--salt-container-secondary-background)',
+                padding: 'var(--salt-spacing-100)',
+              }}
+            >
+              <StackLayout gap={0.5}>
+                <Text styleAs="label">
+                  <b>Partner Profit Distribution</b>
+                </Text>
+                <Text styleAs="notation" color="secondary">
+                  Deducted directly from business Retained Profit and paid out
+                  in cash.
+                </Text>
+              </StackLayout>
+            </Card>
+          )}
+
+          {/* 4. Expense Amount */}
+          <FormField necessity="required">
+            <FormFieldLabel>
+              {isDepreciation
+                ? 'Depreciation Written Down (₹)'
+                : 'Expense Amount (₹)'}
+            </FormFieldLabel>
+            <Input
+              inputProps={{
+                type: 'number',
+                placeholder: '0',
+                value: values.amount ? String(values.amount) : '',
+                onChange: (e) =>
+                  setValue('amount', Number(e.target.value) || 0),
+              }}
+            />
+          </FormField>
+
+          {/* 5. Settlement (Operational expenses only) */}
+          {!isDepreciation && !isProfitDistribution && (
+            <>
+              <Checkbox
+                label="Paid in Full (100% Cash Outflow)"
+                checked={values.paidInFull}
+                onChange={(e) => setValue('paidInFull', e.target.checked)}
+              />
+
+              {!values.paidInFull && (
+                <FormField>
+                  <FormFieldLabel>Cash Paid Now (₹)</FormFieldLabel>
+                  <Input
+                    inputProps={{
+                      type: 'number',
+                      placeholder: '0',
+                      value: values.cashPaid ? String(values.cashPaid) : '',
+                      onChange: (e) =>
+                        setValue('cashPaid', Number(e.target.value) || 0),
+                    }}
+                  />
+                </FormField>
+              )}
+
+              <FormField>
+                <FormFieldLabel>
+                  Paid To / Person / Station (Optional)
+                </FormFieldLabel>
+                <Input
+                  inputProps={{
+                    placeholder: 'e.g. Indian Oil Pump, Tractor Driver, Mandi',
+                    value: values.vendorName,
+                    onChange: (e) => setValue('vendorName', e.target.value),
+                  }}
+                />
+              </FormField>
+            </>
+          )}
+
+          {/* 6. Description / Note */}
+          <FormField>
+            <FormFieldLabel>Description / Note (Optional)</FormFieldLabel>
+            <Input
+              inputProps={{
+                placeholder: isProfitDistribution
+                  ? 'e.g. Partner profit withdrawal'
+                  : isDepreciation
+                    ? 'e.g. Annual wear and tear write down'
+                    : 'e.g. 50 Liters diesel for pump, Monthly repair',
+                value: values.note,
+                onChange: (e) => setValue('note', e.target.value),
+              }}
+            />
+          </FormField>
+
+          {/* 7. Summary Card */}
+          <Card
+            style={{
+              backgroundColor: 'var(--salt-container-secondary-background)',
+              padding: 'var(--salt-spacing-150)',
+            }}
           >
-            Partner Profit Distribution
-          </Text>
-          <Text variant="body-sm" appearance="secondary">
-            Deducted directly from business Retained Profit and paid out in
-            cash.
-          </Text>
-        </div>
-      )}
+            <StackLayout gap={1}>
+              <FlexLayout justify="space-between">
+                <Text styleAs="notation" color="secondary">
+                  Expense Category:
+                </Text>
+                <Text styleAs="notation">
+                  <b>{values.category || '—'}</b>
+                </Text>
+              </FlexLayout>
+              <FlexLayout justify="space-between">
+                <Text styleAs="notation" color="secondary">
+                  Total Outflow:
+                </Text>
+                <Text styleAs="notation">
+                  <b>{formatRupee(values.amount)}</b>
+                </Text>
+              </FlexLayout>
+              <FlexLayout justify="space-between">
+                <Text styleAs="notation" color="secondary">
+                  {isDepreciation
+                    ? 'Asset Value Reduction:'
+                    : isProfitDistribution
+                      ? 'Deducted From Retained Profit:'
+                      : 'Cash Paid:'}
+                </Text>
+                <Text styleAs="notation" color="error">
+                  <b>
+                    {isDepreciation
+                      ? formatRupee(values.amount)
+                      : formatRupee(effectiveCashPaid)}
+                  </b>
+                </Text>
+              </FlexLayout>
+            </StackLayout>
+          </Card>
 
-      {/* 4. Expense Amount */}
-      <TextField
-        label={
-          isDepreciation
-            ? 'Depreciation Written Down (₹)'
-            : 'Expense Amount (₹)'
-        }
-        type="number"
-        required
-        placeholder="0"
-        value={values.amount ? String(values.amount) : ''}
-        onChange={(val) => setValue('amount', Number(val) || 0)}
-      />
-
-      {/* 5. Settlement (Operational expenses only) */}
-      {!isDepreciation && !isProfitDistribution && (
-        <>
-          <Flex align="center" justify="between" fullWidth>
-            <Checkbox
-              label="Paid in Full (100% Cash Outflow)"
-              checked={values.paidInFull}
-              onChange={(checked) => setValue('paidInFull', checked)}
-            />
-          </Flex>
-
-          {!values.paidInFull && (
-            <TextField
-              label="Cash Paid Now (₹)"
-              type="number"
-              placeholder="0"
-              value={values.cashPaid ? String(values.cashPaid) : ''}
-              onChange={(val) => setValue('cashPaid', Number(val) || 0)}
-            />
-          )}
-
-          <TextField
-            label="Paid To / Person / Station (Optional)"
-            type="text"
-            placeholder="e.g. Indian Oil Pump, Tractor Driver, Mandi"
-            value={values.vendorName}
-            onChange={(val) => setValue('vendorName', val)}
-          />
-        </>
-      )}
-
-      {/* 6. Description / Note */}
-      <TextField
-        label="Description / Note (Optional)"
-        type="text"
-        placeholder={
-          isProfitDistribution
-            ? 'e.g. Partner profit withdrawal'
-            : isDepreciation
-              ? 'e.g. Annual wear and tear write down'
-              : 'e.g. 50 Liters diesel for pump, Monthly repair'
-        }
-        value={values.note}
-        onChange={(val) => setValue('note', val)}
-      />
-
-      {/* 7. Summary Box */}
-      <Form.Summary>
-        <Form.Summary.Row
-          label="Expense Category:"
-          value={values.category || '—'}
-        />
-        <Form.Summary.Row
-          label="Total Outflow:"
-          value={formatRupee(values.amount)}
-        />
-        <Form.Summary.Row
-          label={
-            isDepreciation
-              ? 'Asset Value Reduction:'
+          {/* 8. Action Button */}
+          <Button
+            sentiment="accented"
+            type="submit"
+            disabled={!isValid || isSaving}
+            style={{ width: '100%', height: '44px' }}
+          >
+            {isDepreciation
+              ? 'Record Asset Depreciation'
               : isProfitDistribution
-                ? 'Deducted From Retained Profit:'
-                : 'Cash Paid:'
-          }
-          value={
-            isDepreciation
-              ? formatRupee(values.amount)
-              : formatRupee(effectiveCashPaid)
-          }
-          sentiment="negative"
-        />
-      </Form.Summary>
-
-      {/* 8. Action Button */}
-      <Form.Submit
-        label={
-          isDepreciation
-            ? 'Record Asset Depreciation'
-            : isProfitDistribution
-              ? 'Record Profit Distribution'
-              : 'Record Expense'
-        }
-        submittingLabel="Recording Expense..."
-      />
-    </Form>
+                ? 'Record Profit Distribution'
+                : isSaving
+                  ? 'Recording Expense...'
+                  : 'Record Expense'}
+          </Button>
+        </StackLayout>
+      </form>
+    </Card>
   );
 };
 

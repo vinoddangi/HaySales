@@ -1,8 +1,13 @@
-import clsx from 'clsx';
 import React from 'react';
-import { Card } from '../../../../components/Card';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Text } from '../../../../components/Text';
+import {
+  Card,
+  FlexLayout,
+  GridLayout,
+  GridItem,
+  StackLayout,
+  Text,
+} from '@salt-ds/core';
+import { clsx } from 'clsx';
 import { formatRupee, formatWeight } from '../../../../utils/formatters';
 import './ActivityMetricsCard.css';
 
@@ -28,100 +33,80 @@ export const ActivityMetricsCard: React.FC<ActivityMetricsCardProps> = ({
   className,
 }) => {
   return (
-    <Card
-      variant="filled"
-      className={clsx('hs-activity-metrics-card', className)}
-    >
-      <Card.Content>
-        <Flex direction="column" gap="sm" fullWidth>
-          {/* Header */}
-          <Flex align="center" justify="between" fullWidth>
-            <Flex direction="column" gap="none">
-              <Text
-                variant="label-sm"
-                weight="bold"
-                uppercase
-                appearance="secondary"
-              >
-                Activity Summary • {categoryLabel}
-              </Text>
-              <Flex align="center" gap="xs">
-                <Text variant="body-sm" appearance="secondary">
-                  Period:
-                </Text>
-                <Text variant="body-sm" weight="bold">
-                  {periodLabel}
-                </Text>
-              </Flex>
-            </Flex>
-            <Text variant="title-md" weight="bold" sentiment="accent">
-              {totalCount} {totalCount === 1 ? 'Record' : 'Records'}
+    <Card className={clsx('hs-activity-metrics-card', className)}>
+      <StackLayout gap={1.5}>
+        {/* Header */}
+        <FlexLayout align="center" justify="space-between">
+          <div>
+            <Text styleAs="label">
+              <b>Activity Summary • {categoryLabel}</b>
             </Text>
-          </Flex>
-
-          {/* Grid Stats */}
-          <div className="hs-activity-metrics-card__grid">
-            <div className="hs-activity-metrics-item hs-activity-metrics-item--accent">
-              <Flex direction="column" gap="none">
-                <Text
-                  variant="label-sm"
-                  weight="medium"
-                  appearance="secondary"
-                  uppercase
-                >
-                  Total Volume (₹)
-                </Text>
-                <Text variant="title-lg" weight="bold" sentiment="accent">
-                  {formatRupee(totalAmount)}
-                </Text>
-              </Flex>
-            </div>
-
-            <div className="hs-activity-metrics-item">
-              <Flex direction="column" gap="none">
-                <Text
-                  variant="label-sm"
-                  weight="medium"
-                  appearance="secondary"
-                  uppercase
-                >
-                  Total Weight (Kg)
-                </Text>
-                <Text variant="title-lg" weight="bold" sentiment="neutral">
-                  {formatWeight(totalWeight)}
-                </Text>
-              </Flex>
-            </div>
+            <Text styleAs="notation" color="secondary">
+              Period: <b>{periodLabel}</b>
+            </Text>
           </div>
+          <Text styleAs="h3">
+            <b>
+              {totalCount} {totalCount === 1 ? 'Record' : 'Records'}
+            </b>
+          </Text>
+        </FlexLayout>
 
-          {/* Footer Breakdown (Cash vs Credit) */}
-          {(cashAmount > 0 || creditAmount > 0) && (
-            <Flex
-              align="center"
-              justify="between"
-              fullWidth
-              className="hs-activity-metrics-card__footer"
-            >
-              <Flex align="center" gap="xs">
-                <Text variant="label-sm" appearance="secondary">
-                  Cash Paid:
-                </Text>
-                <Text variant="label-sm" weight="bold" sentiment="positive">
-                  {formatRupee(cashAmount)}
-                </Text>
-              </Flex>
-              <Flex align="center" gap="xs">
-                <Text variant="label-sm" appearance="secondary">
-                  Remaining Due:
-                </Text>
-                <Text variant="label-sm" weight="bold" sentiment="warning">
-                  {formatRupee(creditAmount)}
-                </Text>
-              </Flex>
-            </Flex>
-          )}
-        </Flex>
-      </Card.Content>
+        {/* Grid Stats */}
+        <GridLayout
+          columns={2}
+          gap={1}
+          className="hs-activity-metrics-card__grid"
+        >
+          <GridItem>
+            <div className="hs-activity-metrics-item hs-activity-metrics-item--accent">
+              <Text styleAs="notation" color="secondary">
+                Total Volume (₹)
+              </Text>
+              <Text styleAs="h2">
+                <b>{formatRupee(totalAmount)}</b>
+              </Text>
+            </div>
+          </GridItem>
+
+          <GridItem>
+            <div className="hs-activity-metrics-item">
+              <Text styleAs="notation" color="secondary">
+                Total Weight (kg)
+              </Text>
+              <Text styleAs="h2">
+                <b>{formatWeight(totalWeight)}</b>
+              </Text>
+            </div>
+          </GridItem>
+        </GridLayout>
+
+        {/* Footer Breakdown (Cash vs Credit) */}
+        {(cashAmount > 0 || creditAmount > 0) && (
+          <FlexLayout
+            align="center"
+            justify="space-between"
+            className="hs-activity-metrics-card__footer"
+          >
+            <FlexLayout align="center" gap={0.5}>
+              <Text styleAs="notation" color="secondary">
+                Cash Paid:
+              </Text>
+              <Text styleAs="notation" color="success">
+                <b>{formatRupee(cashAmount)}</b>
+              </Text>
+            </FlexLayout>
+            <FlexLayout align="center" gap={0.5}>
+              <Text styleAs="notation" color="secondary">
+                Remaining Due:
+              </Text>
+              <Text styleAs="notation" color="warning">
+                <b>{formatRupee(creditAmount)}</b>
+              </Text>
+            </FlexLayout>
+          </FlexLayout>
+        )}
+      </StackLayout>
     </Card>
   );
 };

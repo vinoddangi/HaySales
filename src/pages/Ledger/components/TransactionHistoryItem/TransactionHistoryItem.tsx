@@ -1,7 +1,7 @@
 import React from 'react';
-import { Badge } from '../../../../components/Badge';
-import { IconCheckCircle2 } from '../../../../components/Icon';
-import { Text } from '../../../../components/Text';
+import { FlexLayout, Pill, Text } from '@salt-ds/core';
+import { clsx } from 'clsx';
+import { CheckCircle2 } from 'lucide-react';
 import {
   CustomerTransactionData,
   getRate,
@@ -10,7 +10,6 @@ import {
   isSaleTransaction,
   isServiceTransaction,
 } from '../../../../models';
-import { cn } from '../../../../utils/cn';
 import {
   formatDate,
   formatRupee,
@@ -57,7 +56,7 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
 
   return (
     <div
-      className={cn(
+      className={clsx(
         'hs-tx-history-item',
         isCleared && 'hs-tx-history-item--cleared',
         !isCleared && isPayment && 'hs-tx-history-item--payment',
@@ -68,53 +67,30 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
       {/* 1. Left Details */}
       <div className="hs-tx-history-item__left">
         <div className="hs-tx-history-item__title-row">
-          <Text variant="body-md" weight="bold" as="span">
-            {title}
+          <Text>
+            <b>{title}</b>
           </Text>
 
-          {isOpeningDue && (
-            <Badge sentiment="warning" appearance="subtle">
-              Opening Due
-            </Badge>
-          )}
-          {isPayment && (
-            <Badge sentiment="positive" appearance="subtle">
-              Cash In
-            </Badge>
-          )}
-          {isService && (
-            <Badge sentiment="neutral" appearance="subtle">
-              Service
-            </Badge>
-          )}
-          {isFullCashSale && (
-            <Badge sentiment="positive" appearance="subtle">
-              100% Cash
-            </Badge>
-          )}
-          {isPartialCash && (
-            <Badge sentiment="warning" appearance="subtle">
-              Part-Cash
-            </Badge>
-          )}
+          {isOpeningDue && <Pill>Opening Due</Pill>}
+          {isPayment && <Pill>Cash In</Pill>}
+          {isService && <Pill>Service</Pill>}
+          {isFullCashSale && <Pill>100% Cash</Pill>}
+          {isPartialCash && <Pill>Part-Cash</Pill>}
           {isSale && !isFullCashSale && !isPartialCash && (
-            <Badge sentiment="neutral" appearance="subtle">
-              Credit Invoice
-            </Badge>
+            <Pill>Credit Invoice</Pill>
           )}
 
           {isCleared && (
-            <Badge sentiment="positive" appearance="solid">
-              <IconCheckCircle2
-                size="xs"
-                className="hs-tx-history-item__badge-icon"
-              />
-              0 DUE
-            </Badge>
+            <Pill>
+              <FlexLayout align="center" gap={0.5}>
+                <CheckCircle2 size={12} />
+                <span>0 DUE</span>
+              </FlexLayout>
+            </Pill>
           )}
         </div>
 
-        <Text variant="body-sm" appearance="secondary" as="span">
+        <Text styleAs="notation" color="secondary">
           {subtitle}
         </Text>
       </div>
@@ -123,65 +99,45 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
       <div className="hs-tx-history-item__right">
         {isOpeningDue ? (
           <>
-            <Text
-              variant="label-lg"
-              weight="bold"
-              sentiment="negative"
-              as="span"
-            >
-              {formatRupee(tx.amount)}
+            <Text color="error">
+              <b>{formatRupee(tx.amount)}</b>
             </Text>
-            <Text variant="body-sm" appearance="secondary" as="span">
+            <Text styleAs="notation" color="secondary">
               Opening Balance
             </Text>
           </>
         ) : isPayment ? (
           <>
-            <Text
-              variant="label-lg"
-              weight="bold"
-              sentiment="positive"
-              as="span"
-            >
-              -{formatRupee(tx.amount)}
+            <Text color="success">
+              <b>-{formatRupee(tx.amount)}</b>
             </Text>
             {tx.discount && tx.discount > 0 && (
-              <Text variant="body-sm" appearance="secondary" as="span">
+              <Text styleAs="notation" color="secondary">
                 Disc: {formatRupee(tx.discount)}
               </Text>
             )}
           </>
         ) : isFullCashSale ? (
           <>
-            <Text
-              variant="label-lg"
-              weight="bold"
-              sentiment="positive"
-              as="span"
-            >
-              {formatRupee(tx.amount)}
+            <Text color="success">
+              <b>{formatRupee(tx.amount)}</b>
             </Text>
-            <Text variant="body-sm" appearance="secondary" as="span">
+            <Text styleAs="notation" color="secondary">
               Paid in Full
             </Text>
           </>
         ) : (
           <>
-            <Text
-              variant="label-lg"
-              weight="bold"
-              sentiment="negative"
-              as="span"
-            >
-              {formatRupee(tx.amount)}
+            <Text color="error">
+              <b>{formatRupee(tx.amount)}</b>
             </Text>
             {tx.cashPaid > 0 && (
-              <Text variant="body-sm" appearance="secondary" as="span">
+              <Text styleAs="notation" color="secondary">
                 Cash: {formatRupee(tx.cashPaid)}
               </Text>
             )}
             {tx.remainingDue > 0 && (
-              <Text variant="body-sm" appearance="secondary" as="span">
+              <Text styleAs="notation" color="secondary">
                 Due: {formatRupee(tx.remainingDue)}
               </Text>
             )}
@@ -191,3 +147,5 @@ export const TransactionHistoryItem: React.FC<TransactionHistoryItemProps> = ({
     </div>
   );
 };
+
+export default TransactionHistoryItem;

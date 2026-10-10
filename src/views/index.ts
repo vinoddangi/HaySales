@@ -2,6 +2,7 @@ export * from './BottomNavBar';
 export * from './DesktopToolbar';
 export * from './LoginModal';
 export * from './MobileShell';
+export * from './EmptyState';
 export * from './navigationTypes';
 export * from './PageContainer';
 export * from './PlaceholderView';

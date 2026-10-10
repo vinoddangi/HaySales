@@ -1,6 +1,5 @@
 import React from 'react';
-import { Flex } from '../../components/layouts/Flex';
-import { Text } from '../../components/Text';
+import { StackLayout, Text } from '@salt-ds/core';
 import { PageContainer } from '../../views/PageContainer';
 import {
   CustomerLedgerDrawer,
@@ -35,20 +34,15 @@ export const LedgerPage: React.FC = () => {
   return (
     <PageContainer spacing="md" bottomPadding="lg" className="hs-ledger-page">
       {/* 1. Page Header */}
-      <Flex
-        direction="column"
-        gap="none"
-        fullWidth
-        className="hs-ledger-page__header"
-      >
-        <Text as="h2" variant="headline-sm" weight="bold">
-          Customer Dues Ledger
+      <StackLayout gap={0.5} className="hs-ledger-page__header">
+        <Text styleAs="h2">
+          <b>Customer Dues Ledger</b>
         </Text>
-        <Text variant="body-md" appearance="secondary">
+        <Text color="secondary">
           Track outstanding customer balances, account statements, and payment
           settlements
         </Text>
-      </Flex>
+      </StackLayout>
 
       {/* 2. Overview Summary Cards */}
       <LedgerOverviewCards

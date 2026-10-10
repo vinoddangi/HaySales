@@ -1,11 +1,10 @@
 import React from 'react';
-import { IconProps } from '../components/Icon';
 
 export interface NavItem {
   id: string;
   label: string;
   path: string;
-  icon: React.ComponentType<IconProps>;
+  icon: React.ComponentType<{ size?: number | string; className?: string }>;
   badge?: number;
 }
 

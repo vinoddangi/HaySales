@@ -1,8 +1,6 @@
 import React from 'react';
-import { Badge } from '../../../../components/Badge';
-import { IconSearch } from '../../../../components/Icon';
-import { Progress } from '../../../../components/Progress';
-import { Text } from '../../../../components/Text';
+import { FlexLayout, Pill, Spinner, Text } from '@salt-ds/core';
+import { Search } from 'lucide-react';
 import { CustomerTransactionData } from '../../../../models';
 import { TransactionHistoryItem } from '../TransactionHistoryItem';
 import './TransactionHistoryList.css';
@@ -42,19 +40,21 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
 
   return (
     <div className="hs-tx-history-list">
-      <div className="hs-tx-history-list__header">
-        <Text variant="title-sm" weight="bold">
-          Transaction Statement ({sortedTransactions.length})
+      <FlexLayout
+        justify="space-between"
+        align="center"
+        className="hs-tx-history-list__header"
+      >
+        <Text styleAs="label">
+          <b>TRANSACTION STATEMENT ({sortedTransactions.length})</b>
         </Text>
-        <Badge sentiment="positive" appearance="subtle">
-          Settled Highlighted
-        </Badge>
-      </div>
+        <Pill>Settled Highlighted</Pill>
+      </FlexLayout>
 
       {/* 1. Filter Bar & Search */}
       <div className="hs-tx-history-list__filter-bar">
         <div className="hs-tx-history-list__search-row">
-          <IconSearch size="md" className="hs-tx-history-list__search-icon" />
+          <Search size={16} className="hs-tx-history-list__search-icon" />
           <input
             type="text"
             className="hs-tx-history-list__search-input"
@@ -82,14 +82,20 @@ export const TransactionHistoryList: React.FC<TransactionHistoryListProps> = ({
 
       {/* 2. Transaction List */}
       {isLoading ? (
-        <div className="hs-tx-history-list__empty">
-          <Progress type="circular" indeterminate fourColor />
-        </div>
+        <FlexLayout
+          align="center"
+          justify="center"
+          style={{ padding: 'var(--salt-spacing-300)' }}
+        >
+          <Spinner size="medium" />
+        </FlexLayout>
       ) : filteredTransactions.length === 0 ? (
         <div className="hs-tx-history-list__empty">
-          {sortedTransactions.length === 0
-            ? 'No transactions recorded for this customer.'
-            : 'No transactions match the selected filter.'}
+          <Text styleAs="notation" color="secondary">
+            {sortedTransactions.length === 0
+              ? 'No transactions recorded for this customer.'
+              : 'No transactions match the selected filter.'}
+          </Text>
         </div>
       ) : (
         <div className="hs-tx-history-list__items">

@@ -1,19 +1,16 @@
-import clsx from 'clsx';
 import React from 'react';
-import { Badge } from '../../../../components/Badge';
-import { Card } from '../../../../components/Card';
+import { Card, FlexLayout, Pill, StackLayout, Text } from '@salt-ds/core';
+import { clsx } from 'clsx';
 import {
-  IconCreditCard,
-  IconEdit3,
-  IconFileText,
-  IconReceipt,
-  IconShoppingBag,
-  IconShoppingCart,
-  IconTruck,
-  IconWrench,
-} from '../../../../components/Icon';
-import { Flex } from '../../../../components/layouts/Flex';
-import { Text } from '../../../../components/Text';
+  CreditCard,
+  Edit3,
+  FileText,
+  Receipt,
+  ShoppingBag,
+  ShoppingCart,
+  Truck,
+  Wrench,
+} from 'lucide-react';
 import {
   CropTransactionData,
   CustomerTransactionData,
@@ -72,233 +69,175 @@ export const ActivityItemCard: React.FC<ActivityItemCardProps> = ({
   const weightKg = cropTx.weight;
   const derivedRate = getRate(transaction);
 
-  // Determine Type labels, icons, and short badge sentiment
   let typeLabel = 'Transaction';
   let iconWrapClass = 'hs-activity-item-card__icon-wrap--sale';
-  let IconComp = IconFileText;
+  let IconComp = FileText;
   let badgeLabel = 'Transaction';
-  let badgeSentiment:
-    'positive' | 'negative' | 'warning' | 'info' | 'neutral' | 'accent' =
-    'neutral';
 
   if (isSale) {
     typeLabel = `Sale: ${transaction.category || 'Crop'}`;
     iconWrapClass = 'hs-activity-item-card__icon-wrap--sale';
-    IconComp = IconShoppingBag;
+    IconComp = ShoppingBag;
     if (credit === 0 && (cash > 0 || amount === 0)) {
       badgeLabel = 'Cash';
-      badgeSentiment = 'positive';
     } else if (cash === 0 && credit > 0) {
       badgeLabel = 'Credit';
-      badgeSentiment = 'warning';
     } else if (cash > 0 && credit > 0) {
       badgeLabel = 'Partial Credit';
-      badgeSentiment = 'info';
     } else {
       badgeLabel = 'Sale';
-      badgeSentiment = 'accent';
     }
   } else if (isPurchase) {
     typeLabel = `Purchase: ${transaction.category || 'Crop'}`;
     iconWrapClass = 'hs-activity-item-card__icon-wrap--purchase';
-    IconComp = IconShoppingCart;
+    IconComp = ShoppingCart;
     if (credit === 0 && (cash > 0 || amount === 0)) {
       badgeLabel = 'Cash';
-      badgeSentiment = 'positive';
     } else if (cash === 0 && credit > 0) {
       badgeLabel = 'Credit';
-      badgeSentiment = 'warning';
     } else if (cash > 0 && credit > 0) {
       badgeLabel = 'Partial Credit';
-      badgeSentiment = 'info';
     } else {
       badgeLabel = 'Purchase';
-      badgeSentiment = 'info';
     }
   } else if (isPayment) {
     typeLabel = 'Payment Received';
     iconWrapClass = 'hs-activity-item-card__icon-wrap--payment';
-    IconComp = IconReceipt;
+    IconComp = Receipt;
     badgeLabel = 'Payment';
-    badgeSentiment = 'positive';
   } else if (isService) {
     typeLabel = `Service: ${(transaction as any).category || 'Charge'}`;
     iconWrapClass = 'hs-activity-item-card__icon-wrap--service';
-    IconComp = IconTruck;
+    IconComp = Truck;
     badgeLabel = 'Service';
-    badgeSentiment = 'neutral';
   } else if (isExpense) {
     typeLabel = `Expense: ${(transaction as any).category || 'General'}`;
     iconWrapClass = 'hs-activity-item-card__icon-wrap--expense';
-    IconComp = IconWrench;
+    IconComp = Wrench;
     badgeLabel = 'Expense';
-    badgeSentiment = 'negative';
   } else if (isOpening) {
     typeLabel = 'Opening Due Balance';
     iconWrapClass = 'hs-activity-item-card__icon-wrap--payment';
-    IconComp = IconCreditCard;
+    IconComp = CreditCard;
     badgeLabel = 'Opening Due';
-    badgeSentiment = 'warning';
   }
 
   return (
     <Card
-      variant="outlined"
       onClick={() => onClick?.(transaction)}
       className={clsx('hs-activity-item-card', className)}
+      style={{ cursor: onClick ? 'pointer' : 'default' }}
     >
-      <Card.Content>
-        <Flex direction="column" gap="xs" fullWidth>
-          {/* Main Top Row */}
-          <Flex align="center" justify="between" fullWidth gap="sm">
-            {/* Icon + Basic Info */}
-            <Flex
-              align="center"
-              gap="sm"
-              className="hs-activity-item-card__header-left"
-            >
-              <div
-                className={clsx(
-                  'hs-activity-item-card__icon-wrap',
-                  iconWrapClass,
-                )}
-              >
-                <IconComp size="md" className="hs-activity-item-card__icon" />
-              </div>
-
-              <Flex
-                direction="column"
-                gap="none"
-                className="hs-activity-item-card__header-info"
-              >
-                <Flex align="center" gap="xs" wrap>
-                  <Text variant="body-md" weight="bold" truncate>
-                    {typeLabel}
-                  </Text>
-                  <Badge sentiment={badgeSentiment} size="sm">
-                    {badgeLabel}
-                  </Badge>
-                </Flex>
-
-                {partyName && (
-                  <Text
-                    variant="body-sm"
-                    weight="medium"
-                    appearance="secondary"
-                    truncate
-                  >
-                    {partyName}
-                  </Text>
-                )}
-              </Flex>
-            </Flex>
-
-            {/* Amount & Quick Edit */}
-            <Flex align="center" gap="xs">
-              <Flex
-                direction="column"
-                align="end"
-                gap="none"
-                className="hs-activity-item-card__header-amount"
-              >
-                <Text
-                  variant="title-md"
-                  weight="bold"
-                  sentiment={
-                    isPayment || isSale
-                      ? 'accent'
-                      : isExpense
-                        ? 'negative'
-                        : 'neutral'
-                  }
-                >
-                  {formatRupee(amount)}
-                </Text>
-                <Text variant="caption" appearance="secondary">
-                  {formatDate(transaction.date)}
-                </Text>
-              </Flex>
-
-              {onEdit && (
-                <button
-                  type="button"
-                  aria-label="Edit transaction"
-                  className="hs-activity-item-card__edit-btn"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onEdit(transaction);
-                  }}
-                >
-                  <IconEdit3 size="lg" />
-                </button>
+      <StackLayout gap={1}>
+        {/* Main Top Row */}
+        <FlexLayout align="center" justify="space-between" gap={1}>
+          {/* Icon + Basic Info */}
+          <FlexLayout
+            align="center"
+            gap={1}
+            className="hs-activity-item-card__header-left"
+          >
+            <div
+              className={clsx(
+                'hs-activity-item-card__icon-wrap',
+                iconWrapClass,
               )}
-            </Flex>
-          </Flex>
-
-          {/* Secondary Details Row (Weight, Rate, Breakdown) */}
-          {((typeof weightKg === 'number' && weightKg > 0) ||
-            typeof derivedRate === 'number' ||
-            (cash > 0 && credit > 0) ||
-            transaction.note) && (
-            <Flex
-              align="center"
-              justify="between"
-              fullWidth
-              wrap
-              gap="xs"
-              className="hs-activity-item-card__details"
             >
-              {/* Weight & Derived Rate */}
-              <Flex align="center" gap="xs">
-                {typeof weightKg === 'number' && weightKg > 0 && (
-                  <Flex align="center" gap="none">
-                    <Text variant="caption" appearance="secondary">
-                      Weight:&nbsp;
-                    </Text>
-                    <Text variant="caption" weight="bold">
-                      {formatWeight(weightKg)}
-                    </Text>
-                  </Flex>
-                )}
-                {typeof derivedRate === 'number' && (
-                  <>
-                    <Text variant="caption" appearance="secondary">
-                      •
-                    </Text>
-                    <Flex align="center" gap="none">
-                      <Text variant="caption" appearance="secondary">
-                        Rate:&nbsp;
-                      </Text>
-                      <Text variant="caption" weight="bold">
-                        ₹{derivedRate}/Kg
-                      </Text>
-                    </Flex>
-                  </>
-                )}
-              </Flex>
+              <IconComp size={18} className="hs-activity-item-card__icon" />
+            </div>
 
-              {/* Cash & Credit Breakdown / Note */}
-              <Flex align="center" gap="xs">
-                {cash > 0 && credit > 0 && (
-                  <Text variant="caption" appearance="secondary">
-                    Cash: {formatRupee(cash)} | Due: {formatRupee(credit)}
-                  </Text>
-                )}
-                {transaction.note && (
-                  <Text
-                    variant="caption"
-                    appearance="secondary"
-                    truncate
-                    className="hs-activity-item-card__note"
-                  >
-                    {transaction.note}
-                  </Text>
-                )}
-              </Flex>
-            </Flex>
-          )}
-        </Flex>
-      </Card.Content>
+            <div className="hs-activity-item-card__header-info">
+              <FlexLayout align="center" gap={0.5}>
+                <Text>
+                  <b>{typeLabel}</b>
+                </Text>
+                <Pill>{badgeLabel}</Pill>
+              </FlexLayout>
+
+              {partyName && (
+                <Text styleAs="notation" color="secondary">
+                  {partyName}
+                </Text>
+              )}
+            </div>
+          </FlexLayout>
+
+          {/* Amount & Quick Edit */}
+          <FlexLayout align="center" gap={1}>
+            <div style={{ textAlign: 'right' }}>
+              <Text
+                styleAs="h4"
+                color={
+                  isPayment || isSale
+                    ? 'success'
+                    : isExpense
+                      ? 'error'
+                      : 'secondary'
+                }
+              >
+                <b>{formatRupee(amount)}</b>
+              </Text>
+              <Text styleAs="notation" color="secondary">
+                {formatDate(transaction.date)}
+              </Text>
+            </div>
+
+            {onEdit && (
+              <button
+                type="button"
+                aria-label="Edit transaction"
+                className="hs-activity-item-card__edit-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onEdit(transaction);
+                }}
+              >
+                <Edit3 size={16} />
+              </button>
+            )}
+          </FlexLayout>
+        </FlexLayout>
+
+        {/* Secondary Details Row (Weight, Rate, Breakdown) */}
+        {((typeof weightKg === 'number' && weightKg > 0) ||
+          typeof derivedRate === 'number' ||
+          (cash > 0 && credit > 0) ||
+          transaction.note) && (
+          <FlexLayout
+            align="center"
+            justify="space-between"
+            className="hs-activity-item-card__details"
+          >
+            {/* Weight & Derived Rate */}
+            <FlexLayout align="center" gap={0.5}>
+              {typeof weightKg === 'number' && weightKg > 0 && (
+                <Text styleAs="notation" color="secondary">
+                  Weight: <b>{formatWeight(weightKg)}</b>
+                </Text>
+              )}
+              {typeof derivedRate === 'number' && (
+                <Text styleAs="notation" color="secondary">
+                  • Rate: <b>₹{derivedRate}/Kg</b>
+                </Text>
+              )}
+            </FlexLayout>
+
+            {/* Cash & Credit Breakdown / Note */}
+            <FlexLayout align="center" gap={0.5}>
+              {cash > 0 && credit > 0 && (
+                <Text styleAs="notation" color="secondary">
+                  Cash: {formatRupee(cash)} | Due: {formatRupee(credit)}
+                </Text>
+              )}
+              {transaction.note && (
+                <Text styleAs="notation" color="secondary">
+                  {transaction.note}
+                </Text>
+              )}
+            </FlexLayout>
+          </FlexLayout>
+        )}
+      </StackLayout>
     </Card>
   );
 };

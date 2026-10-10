@@ -1,7 +1,7 @@
 import React from 'react';
-import { EmptyState } from '../../components/EmptyState';
-import { IconUserCheck } from '../../components/Icon';
-import { SectionHeader } from '../../components/SectionHeader';
+import { StackLayout, Text } from '@salt-ds/core';
+import { UserCheck } from 'lucide-react';
+import { EmptyState } from '../../views/EmptyState';
 import { PageContainer } from '../../views/PageContainer';
 import {
   CustomerSelectorCard,
@@ -30,10 +30,14 @@ export const SalesPage: React.FC = () => {
   return (
     <PageContainer spacing="md" bottomPadding="lg" className="hs-sales-page">
       {/* 1. Page Header */}
-      <SectionHeader
-        title="Sales & Services"
-        subtitle="Register crop sales invoices and custom agricultural service charges"
-      />
+      <StackLayout gap={0.5}>
+        <Text styleAs="h2">
+          <b>Sales & Services</b>
+        </Text>
+        <Text color="secondary">
+          Register crop sales invoices and custom agricultural service charges
+        </Text>
+      </StackLayout>
 
       {/* 2. Customer Selector Card */}
       <CustomerSelectorCard
@@ -70,7 +74,7 @@ export const SalesPage: React.FC = () => {
         </>
       ) : (
         <EmptyState
-          icon={<IconUserCheck size="xl" />}
+          icon={<UserCheck size={36} />}
           headline="Select Customer Account"
           body="Please select a customer account above to record a new sale or service invoice."
         />

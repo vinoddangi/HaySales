@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-  IconCoins,
-  IconLayers,
-  IconPackagePlus,
-  IconReceipt,
-} from '../../../../components/Icon';
-import { Grid } from '../../../../components/layouts/Grid';
-import { Text } from '../../../../components/Text';
+import { Card, GridLayout, GridItem, StackLayout, Text } from '@salt-ds/core';
+import { Coins, Layers, PackagePlus, Receipt } from 'lucide-react';
 import { formatRupee, formatWeight } from '../../../../utils/formatters';
 import './PurchasesOverviewMetricsCard.css';
 
@@ -30,140 +24,91 @@ export const PurchasesOverviewMetricsCard: React.FC<
   avgBuyRate,
 }) => {
   return (
-    <Grid columns={2} gap="sm" fullWidth>
+    <GridLayout columns={2} gap={1} className="hs-purchases-overview-metrics">
       {/* 1. Stock Purchases */}
-      <Grid.Item>
-        <div className="hs-purchases-metrics-card hs-purchases-metrics-card--purchases">
-          <div className="hs-purchases-metrics-card__header">
-            <Text
-              variant="label-sm"
-              weight="bold"
-              uppercase
-              className="hs-purchases-metrics-card__title hs-purchases-metrics-card__title--purchases"
-            >
-              Purchases
+      <GridItem>
+        <Card className="hs-purchases-metrics-card hs-purchases-metrics-card--purchases">
+          <StackLayout gap={0.5}>
+            <div className="hs-purchases-metrics-card__header">
+              <Text styleAs="label">
+                <b>Purchases</b>
+              </Text>
+              <PackagePlus size={16} />
+            </div>
+            <Text styleAs="h3">
+              <b>{formatRupee(totalPurchaseAmount)}</b>
             </Text>
-            <IconPackagePlus
-              size="md"
-              className="hs-purchases-metrics-card__icon hs-purchases-metrics-card__icon--purchases"
-            />
-          </div>
-          <Text
-            variant="title-md"
-            weight="bold"
-            as="div"
-            className="hs-purchases-metrics-card__value"
-          >
-            {formatRupee(totalPurchaseAmount)}
-          </Text>
-          <Text variant="body-sm" appearance="secondary">
-            {formatWeight(totalPurchaseWeight)}
-          </Text>
-        </div>
-      </Grid.Item>
+            <Text styleAs="notation" color="secondary">
+              {formatWeight(totalPurchaseWeight)}
+            </Text>
+          </StackLayout>
+        </Card>
+      </GridItem>
 
       {/* 2. Expenses */}
-      <Grid.Item>
-        <div className="hs-purchases-metrics-card hs-purchases-metrics-card--expenses">
-          <div className="hs-purchases-metrics-card__header">
-            <Text
-              variant="label-sm"
-              weight="bold"
-              uppercase
-              className="hs-purchases-metrics-card__title hs-purchases-metrics-card__title--expenses"
-            >
-              Expenses
+      <GridItem>
+        <Card className="hs-purchases-metrics-card hs-purchases-metrics-card--expenses">
+          <StackLayout gap={0.5}>
+            <div className="hs-purchases-metrics-card__header">
+              <Text styleAs="label">
+                <b>Expenses</b>
+              </Text>
+              <Receipt size={16} />
+            </div>
+            <Text styleAs="h3">
+              <b>{formatRupee(totalExpenseAmount)}</b>
             </Text>
-            <IconReceipt
-              size="md"
-              className="hs-purchases-metrics-card__icon hs-purchases-metrics-card__icon--expenses"
-            />
-          </div>
-          <Text
-            variant="title-md"
-            weight="bold"
-            as="div"
-            className="hs-purchases-metrics-card__value"
-          >
-            {formatRupee(totalExpenseAmount)}
-          </Text>
-          <Text variant="body-sm" appearance="secondary">
-            Operational Outflow
-          </Text>
-        </div>
-      </Grid.Item>
+            <Text styleAs="notation" color="secondary">
+              Operational Outflow
+            </Text>
+          </StackLayout>
+        </Card>
+      </GridItem>
 
       {/* 3. Stock In Hand */}
-      <Grid.Item>
-        <div className="hs-purchases-metrics-card hs-purchases-metrics-card--stock">
-          <div className="hs-purchases-metrics-card__header">
-            <Text
-              variant="label-sm"
-              weight="bold"
-              uppercase
-              className="hs-purchases-metrics-card__title hs-purchases-metrics-card__title--stock"
-            >
-              Stock In Hand
+      <GridItem>
+        <Card className="hs-purchases-metrics-card hs-purchases-metrics-card--stock">
+          <StackLayout gap={0.5}>
+            <div className="hs-purchases-metrics-card__header">
+              <Text styleAs="label">
+                <b>Stock in Hand</b>
+              </Text>
+              <Layers size={16} />
+            </div>
+            <Text styleAs="h3">
+              <b>{formatWeight(currentStock)}</b>
             </Text>
-            <IconLayers
-              size="md"
-              className="hs-purchases-metrics-card__icon hs-purchases-metrics-card__icon--stock"
-            />
-          </div>
-          <Text
-            variant="title-md"
-            weight="bold"
-            as="div"
-            className="hs-purchases-metrics-card__value"
-          >
-            {formatWeight(currentStock)}
-          </Text>
-          <Text variant="body-sm" appearance="secondary">
-            Sold: {formatWeight(totalSoldWeight)}
-          </Text>
-        </div>
-      </Grid.Item>
+            <Text styleAs="notation" color="secondary">
+              Sold: {formatWeight(totalSoldWeight)}
+            </Text>
+          </StackLayout>
+        </Card>
+      </GridItem>
 
       {/* 4. Avg Buying Rate */}
-      <Grid.Item>
-        <div className="hs-purchases-metrics-card hs-purchases-metrics-card--rate">
-          <div className="hs-purchases-metrics-card__header">
-            <Text
-              variant="label-sm"
-              weight="bold"
-              uppercase
-              className="hs-purchases-metrics-card__title hs-purchases-metrics-card__title--rate"
-            >
-              Avg Buying Rate
+      <GridItem>
+        <Card className="hs-purchases-metrics-card hs-purchases-metrics-card--rate">
+          <StackLayout gap={0.5}>
+            <div className="hs-purchases-metrics-card__header">
+              <Text styleAs="label">
+                <b>Avg Buying Rate</b>
+              </Text>
+              <Coins size={16} />
+            </div>
+            <Text styleAs="h3">
+              <b>
+                {formatRupee(avgBuyRate)}{' '}
+                <span style={{ fontSize: '12px', fontWeight: 'normal' }}>
+                  /kg
+                </span>
+              </b>
             </Text>
-            <IconCoins
-              size="md"
-              className="hs-purchases-metrics-card__icon hs-purchases-metrics-card__icon--rate"
-            />
-          </div>
-          <div className="hs-purchases-metrics-card__value-row">
-            <Text
-              variant="title-md"
-              weight="bold"
-              as="span"
-              className="hs-purchases-metrics-card__value"
-            >
-              {formatRupee(avgBuyRate)}
+            <Text styleAs="notation" color="secondary">
+              Weighted Average Cost
             </Text>
-            <Text
-              variant="label-md"
-              appearance="secondary"
-              as="span"
-              className="hs-purchases-metrics-card__unit"
-            >
-              /kg
-            </Text>
-          </div>
-          <Text variant="body-sm" appearance="secondary">
-            Weighted Average Cost
-          </Text>
-        </div>
-      </Grid.Item>
-    </Grid>
+          </StackLayout>
+        </Card>
+      </GridItem>
+    </GridLayout>
   );
 };

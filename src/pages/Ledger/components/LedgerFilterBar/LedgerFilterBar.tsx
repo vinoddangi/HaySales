@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  IconFilter,
-  IconSearch,
-  IconUsers,
-  IconX,
-} from '../../../../components/Icon';
-import { SegmentedButton } from '../../../../components/SegmentedButton';
+import { FlexLayout, ToggleButton, ToggleButtonGroup } from '@salt-ds/core';
+import { Filter, Search, Users, X } from 'lucide-react';
 import './LedgerFilterBar.css';
 
 export interface LedgerFilterBarProps {
@@ -29,7 +24,7 @@ export const LedgerFilterBar: React.FC<LedgerFilterBarProps> = ({
     <div className="hs-ledger-filter-bar">
       {/* 1. Search Bar */}
       <div className="hs-ledger-filter-bar__search">
-        <IconSearch size="md" className="hs-ledger-filter-bar__search-icon" />
+        <Search size={16} className="hs-ledger-filter-bar__search-icon" />
         <input
           type="text"
           placeholder="Search accounts by name or village..."
@@ -44,28 +39,35 @@ export const LedgerFilterBar: React.FC<LedgerFilterBarProps> = ({
             className="hs-ledger-filter-bar__clear-btn"
             aria-label="Clear search"
           >
-            <IconX size="md" />
+            <X size={16} />
           </button>
         )}
       </div>
 
-      {/* 2. Filter Tabs using SegmentedButton */}
-      <SegmentedButton
+      {/* 2. Filter Tabs using ToggleButtonGroup */}
+      <ToggleButtonGroup
         value={filterMode}
-        onChange={(val) => onFilterModeChange(val as 'dueOnly' | 'all')}
-        segments={[
-          {
-            value: 'dueOnly',
-            label: `Pending Dues (${customersWithDuesCount})`,
-            icon: <IconFilter size="sm" />,
-          },
-          {
-            value: 'all',
-            label: `All Accounts (${totalCustomersCount})`,
-            icon: <IconUsers size="sm" />,
-          },
-        ]}
-      />
+        onChange={(event) => {
+          const val = (event.currentTarget as HTMLButtonElement).value;
+          if (val === 'dueOnly' || val === 'all') {
+            onFilterModeChange(val);
+          }
+        }}
+        style={{ width: '100%' }}
+      >
+        <ToggleButton value="dueOnly" style={{ flex: 1 }}>
+          <FlexLayout align="center" justify="center" gap={1}>
+            <Filter size={14} />
+            <span>Pending Dues ({customersWithDuesCount})</span>
+          </FlexLayout>
+        </ToggleButton>
+        <ToggleButton value="all" style={{ flex: 1 }}>
+          <FlexLayout align="center" justify="center" gap={1}>
+            <Users size={14} />
+            <span>All Accounts ({totalCustomersCount})</span>
+          </FlexLayout>
+        </ToggleButton>
+      </ToggleButtonGroup>
     </div>
   );
 };

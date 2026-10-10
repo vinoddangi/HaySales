@@ -1,15 +1,16 @@
 import React from 'react';
+import {
+  Card,
+  FlexLayout,
+  Pill,
+  Spinner,
+  StackLayout,
+  Text,
+} from '@salt-ds/core';
+import { ChevronRight, Users } from 'lucide-react';
 import { CustomerLedgerSummary } from '../../../../business/ledgerBusiness';
-import { Badge } from '../../../../components/Badge';
-import { Card } from '../../../../components/Card';
-import { EmptyState } from '../../../../components/EmptyState';
-import { IconChevronRight, IconUsers } from '../../../../components/Icon';
-import { Flex } from '../../../../components/layouts/Flex';
-import { ListItem } from '../../../../components/ListItem';
-import { Progress } from '../../../../components/Progress';
-import { SectionHeader } from '../../../../components/SectionHeader';
-import { Text } from '../../../../components/Text';
 import { formatRupee } from '../../../../utils/formatters';
+import { EmptyState } from '../../../../views/EmptyState';
 import './CustomerLedgerList.css';
 
 export interface CustomerLedgerListProps {
@@ -26,75 +27,86 @@ export const CustomerLedgerList: React.FC<CustomerLedgerListProps> = ({
   isLoading,
 }) => {
   return (
-    <Card variant="filled" className="hs-customer-ledger-list">
-      <SectionHeader
-        title="Customer Accounts"
-        subtitle={`${customers.length} Accounts`}
-      />
+    <Card className="hs-customer-ledger-list">
+      <StackLayout gap={1}>
+        <FlexLayout
+          justify="space-between"
+          align="center"
+          className="hs-customer-ledger-list__header"
+        >
+          <Text styleAs="label">
+            <b>CUSTOMER ACCOUNTS</b>
+          </Text>
+          <Text styleAs="notation" color="secondary">
+            {customers.length} Accounts
+          </Text>
+        </FlexLayout>
 
-      {isLoading ? (
-        <Card.Content>
-          <Flex align="center" justify="center" padding="lg">
-            <Progress type="circular" indeterminate fourColor />
-          </Flex>
-        </Card.Content>
-      ) : customers.length === 0 ? (
-        <Card.Content>
+        {isLoading ? (
+          <FlexLayout
+            align="center"
+            justify="center"
+            style={{ padding: 'var(--salt-spacing-300)' }}
+          >
+            <Spinner size="medium" />
+          </FlexLayout>
+        ) : customers.length === 0 ? (
           <EmptyState
-            icon={<IconUsers size="xl" />}
+            icon={<Users size={36} />}
             headline="No Accounts Found"
             body="No customer ledger accounts match your filter criteria."
           />
-        </Card.Content>
-      ) : (
-        <Card.Content noPadding className="hs-customer-ledger-list__items">
-          {customers.map((c, idx) => {
-            const hasDue = c.currentOutstanding > 0;
-            const isSelected = selectedCustomerId === c.customerId;
-            return (
-              <ListItem
-                key={c.customerId}
-                headline={c.customerName}
-                supporting={`${c.transactionCount} entries • Total Billed: ${formatRupee(c.totalBilled)}`}
-                trailing={
-                  <Flex align="center" gap="xs">
-                    <Flex direction="column" align="end" gap="none">
-                      <Text
-                        variant="label-md"
-                        weight="bold"
-                        sentiment={hasDue ? 'negative' : 'positive'}
-                      >
-                        {hasDue
-                          ? formatRupee(c.currentOutstanding)
-                          : 'All Clear'}
+        ) : (
+          <StackLayout gap={0.5} className="hs-customer-ledger-list__items">
+            {customers.map((c) => {
+              const hasDue = c.currentOutstanding > 0;
+              const isSelected = selectedCustomerId === c.customerId;
+              return (
+                <div
+                  key={c.customerId}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => onSelectCustomer(c.customerId)}
+                  className={`hs-customer-ledger-list__item ${isSelected ? 'hs-customer-ledger-list__item--active' : ''}`}
+                >
+                  <FlexLayout
+                    justify="space-between"
+                    align="center"
+                    style={{ width: '100%' }}
+                  >
+                    <div>
+                      <Text>
+                        <b>{c.customerName}</b>
                       </Text>
-                      <Badge
-                        sentiment={hasDue ? 'negative' : 'positive'}
-                        appearance="subtle"
-                        size="sm"
-                      >
-                        {hasDue ? 'Due' : 'Zero Due'}
-                      </Badge>
-                    </Flex>
-                    <IconChevronRight
-                      size="md"
-                      className="hs-customer-ledger-list__chevron"
-                    />
-                  </Flex>
-                }
-                divider={idx < customers.length - 1}
-                clickable
-                onClick={() => onSelectCustomer(c.customerId)}
-                className={
-                  isSelected
-                    ? 'hs-customer-ledger-list__item--active'
-                    : undefined
-                }
-              />
-            );
-          })}
-        </Card.Content>
-      )}
+                      <Text styleAs="notation" color="secondary">
+                        {c.transactionCount} entries • Total Billed:{' '}
+                        {formatRupee(c.totalBilled)}
+                      </Text>
+                    </div>
+
+                    <FlexLayout align="center" gap={1}>
+                      <div style={{ textAlign: 'right' }}>
+                        <Text color={hasDue ? 'error' : 'success'}>
+                          <b>
+                            {hasDue
+                              ? formatRupee(c.currentOutstanding)
+                              : 'All Clear'}
+                          </b>
+                        </Text>
+                        <Pill>{hasDue ? 'Due' : 'Zero Due'}</Pill>
+                      </div>
+                      <ChevronRight
+                        size={18}
+                        className="hs-customer-ledger-list__chevron"
+                      />
+                    </FlexLayout>
+                  </FlexLayout>
+                </div>
+              );
+            })}
+          </StackLayout>
+        )}
+      </StackLayout>
     </Card>
   );
 };

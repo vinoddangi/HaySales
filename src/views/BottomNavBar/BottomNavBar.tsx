@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Flex, Text } from '../../components';
+import { FlexLayout, Text } from '@salt-ds/core';
 import './BottomNavBar.css';
 import { useBottomNavBar } from './useBottomNavBar';
 
@@ -9,12 +9,10 @@ export const BottomNavBar: React.FC = () => {
 
   return (
     <nav className="bottom-nav-bar">
-      <Flex
+      <FlexLayout
         direction="row"
         align="center"
-        justify="around"
-        paddingHorizontal="sm"
-        fullWidth
+        justify="space-around"
         className="bottom-nav-bar__container"
       >
         {navItems.map((item) => {
@@ -22,9 +20,8 @@ export const BottomNavBar: React.FC = () => {
           const IconComponent = item.icon;
 
           return (
-            <Flex.Item
+            <button
               key={item.id}
-              as="button"
               onClick={() => handleNavigate(item.path)}
               className="bottom-nav-bar__item"
               type="button"
@@ -39,7 +36,7 @@ export const BottomNavBar: React.FC = () => {
                 )}
               >
                 <IconComponent
-                  size="lg"
+                  size={22}
                   className={clsx(
                     'bottom-nav-bar__icon',
                     isActive && 'bottom-nav-bar__icon--active',
@@ -47,22 +44,13 @@ export const BottomNavBar: React.FC = () => {
                 />
 
                 {item.badge && item.badge > 0 && (
-                  <Text
-                    as="span"
-                    variant="caption"
-                    weight="bold"
-                    className="bottom-nav-bar__badge"
-                  >
-                    {item.badge}
-                  </Text>
+                  <span className="bottom-nav-bar__badge">{item.badge}</span>
                 )}
               </div>
 
               {/* Label */}
               <Text
-                variant="label-sm"
-                weight={isActive ? 'bold' : 'medium'}
-                as="span"
+                styleAs="label"
                 className={clsx(
                   'bottom-nav-bar__label',
                   isActive
@@ -72,10 +60,10 @@ export const BottomNavBar: React.FC = () => {
               >
                 {item.label}
               </Text>
-            </Flex.Item>
+            </button>
           );
         })}
-      </Flex>
+      </FlexLayout>
     </nav>
   );
 };

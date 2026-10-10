@@ -1,9 +1,19 @@
 import React from 'react';
+import {
+  Drawer,
+  DrawerCloseButton,
+  FlexLayout,
+  GridLayout,
+  GridItem,
+  Card,
+  StackLayout,
+  Text,
+  ToggleButton,
+  ToggleButtonGroup,
+} from '@salt-ds/core';
+import { History, Receipt } from 'lucide-react';
 import { CustomerLedgerDetail } from '../../../../business/ledgerBusiness';
-import { IconHistory, IconReceipt, IconX } from '../../../../components/Icon';
-import { Text } from '../../../../components/Text';
 import { CustomerTransactionData } from '../../../../models';
-import { cn } from '../../../../utils/cn';
 import { formatRupee, formatWeight } from '../../../../utils/formatters';
 import { LedgerPaymentForm } from '../LedgerPaymentForm';
 import { TransactionHistoryList } from '../TransactionHistoryList';
@@ -51,24 +61,23 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
   const hasDue = currentOutstanding > 0;
 
   return (
-    <div
-      className="hs-ledger-drawer-backdrop"
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
+    <Drawer
+      open={isOpen}
+      position="bottom"
+      onOpenChange={(open) => {
+        if (!open) onClose();
+      }}
+      className="hs-ledger-drawer"
+      style={{ maxHeight: '90vh' }}
     >
-      <div
-        className="hs-ledger-drawer-container"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="hs-ledger-drawer-handle" />
-
-        <div className="hs-ledger-drawer-topbar">
+      <StackLayout gap={2} style={{ padding: 'var(--salt-spacing-200)' }}>
+        {/* Header */}
+        <FlexLayout justify="space-between" align="center">
           <div>
-            <Text variant="title-lg" weight="bold">
-              {detail.customerName}
+            <Text styleAs="h2">
+              <b>{detail.customerName}</b>
             </Text>
-            <Text variant="body-sm" appearance="secondary">
+            <Text styleAs="notation" color="secondary">
               {detail.customer.village
                 ? `Village: ${detail.customer.village}`
                 : ''}
@@ -77,124 +86,116 @@ export const CustomerLedgerDrawer: React.FC<CustomerLedgerDrawerProps> = ({
                 : ''}
             </Text>
           </div>
+          <DrawerCloseButton onClick={onClose} />
+        </FlexLayout>
 
-          <button
-            type="button"
-            onClick={onClose}
-            className="hs-ledger-drawer-close-btn"
-            aria-label="Close drawer"
-          >
-            <IconX size="lg" />
-          </button>
-        </div>
-
-        <div className="hs-ledger-drawer">
-          {/* 1. Customer Summary Metrics */}
-          <div className="hs-ledger-drawer__metrics">
-            <div
-              className={cn(
-                'hs-ledger-drawer__metric-card',
-                hasDue
-                  ? 'hs-ledger-drawer__metric-card--due'
-                  : 'hs-ledger-drawer__metric-card--clear',
-              )}
-            >
-              <Text variant="label-sm" appearance="secondary">
-                Outstanding Due
-              </Text>
-              <Text
-                variant="title-md"
-                weight="bold"
-                sentiment={hasDue ? 'negative' : 'positive'}
-              >
-                {hasDue ? formatRupee(currentOutstanding) : '₹0 (Clear)'}
-              </Text>
-            </div>
-
-            <div className="hs-ledger-drawer__metric-card">
-              <Text variant="label-sm" appearance="secondary">
-                Total Billed
-              </Text>
-              <Text variant="title-md" weight="bold" sentiment="accent">
-                {formatRupee(totalBilled)}
-              </Text>
-            </div>
-
-            <div className="hs-ledger-drawer__metric-card">
-              <Text variant="label-sm" appearance="secondary">
-                Total Paid
-              </Text>
-              <Text variant="title-md" weight="bold" sentiment="positive">
-                {formatRupee(totalPaid)}
-              </Text>
-            </div>
-
-            <div className="hs-ledger-drawer__metric-card">
-              <Text variant="label-sm" appearance="secondary">
-                Weight / Rate
-              </Text>
-              <Text variant="title-md" weight="bold" sentiment="warning">
-                {totalWeight > 0 ? `${formatWeight(totalWeight)}` : '—'}
-              </Text>
-              {avgRate > 0 && (
-                <Text variant="label-sm" appearance="secondary">
-                  @ {formatRupee(avgRate)}/kg
+        {/* 1. Customer Summary Metrics */}
+        <GridLayout columns={4} gap={1} className="hs-ledger-drawer__metrics">
+          <GridItem>
+            <Card style={{ padding: 'var(--salt-spacing-100)' }}>
+              <StackLayout gap={0.5}>
+                <Text styleAs="notation" color="secondary">
+                  Outstanding Due
                 </Text>
-              )}
-            </div>
-          </div>
+                <Text styleAs="h4" color={hasDue ? 'error' : 'success'}>
+                  <b>
+                    {hasDue ? formatRupee(currentOutstanding) : '₹0 (Clear)'}
+                  </b>
+                </Text>
+              </StackLayout>
+            </Card>
+          </GridItem>
 
-          {/* 2. Tab Switcher */}
-          <div className="hs-ledger-drawer__tabs">
-            <button
-              type="button"
-              onClick={() => setActiveTab('statement')}
-              className={cn(
-                'hs-ledger-drawer__tab-btn',
-                activeTab === 'statement' &&
-                  'hs-ledger-drawer__tab-btn--active',
-              )}
-            >
-              <IconHistory size="md" />
-              <Text variant="label-md" weight="bold" as="span">
-                Statement ({transactions.length})
-              </Text>
-            </button>
+          <GridItem>
+            <Card style={{ padding: 'var(--salt-spacing-100)' }}>
+              <StackLayout gap={0.5}>
+                <Text styleAs="notation" color="secondary">
+                  Total Billed
+                </Text>
+                <Text styleAs="h4">
+                  <b>{formatRupee(totalBilled)}</b>
+                </Text>
+              </StackLayout>
+            </Card>
+          </GridItem>
 
-            <button
-              type="button"
-              onClick={() => setActiveTab('payment')}
-              className={cn(
-                'hs-ledger-drawer__tab-btn',
-                activeTab === 'payment' &&
-                  'hs-ledger-drawer__tab-btn--active-pay',
-              )}
-            >
-              <IconReceipt size="md" />
-              <Text variant="label-md" weight="bold" as="span">
-                Record Payment
-              </Text>
-            </button>
-          </div>
+          <GridItem>
+            <Card style={{ padding: 'var(--salt-spacing-100)' }}>
+              <StackLayout gap={0.5}>
+                <Text styleAs="notation" color="secondary">
+                  Total Paid
+                </Text>
+                <Text styleAs="h4" color="success">
+                  <b>{formatRupee(totalPaid)}</b>
+                </Text>
+              </StackLayout>
+            </Card>
+          </GridItem>
 
-          {/* 3. Tab Content */}
-          <div className="hs-ledger-drawer__content">
-            {activeTab === 'statement' ? (
-              <TransactionHistoryList
-                transactions={transactions}
-                isLoading={isLoadingTransactions}
-              />
-            ) : (
-              <LedgerPaymentForm
-                outstandingDue={detail.currentOutstanding}
-                isPaying={isPaying}
-                onPay={onPay}
-              />
-            )}
-          </div>
+          <GridItem>
+            <Card style={{ padding: 'var(--salt-spacing-100)' }}>
+              <StackLayout gap={0.5}>
+                <Text styleAs="notation" color="secondary">
+                  Weight / Rate
+                </Text>
+                <Text styleAs="h4">
+                  <b>{totalWeight > 0 ? formatWeight(totalWeight) : '—'}</b>
+                </Text>
+                {avgRate > 0 && (
+                  <Text styleAs="notation" color="secondary">
+                    @ {formatRupee(avgRate)}/kg
+                  </Text>
+                )}
+              </StackLayout>
+            </Card>
+          </GridItem>
+        </GridLayout>
+
+        {/* 2. Tab Switcher */}
+        <ToggleButtonGroup
+          value={activeTab}
+          onChange={(event) => {
+            const val = (event.currentTarget as HTMLButtonElement).value;
+            if (val === 'statement' || val === 'payment') {
+              setActiveTab(val);
+            }
+          }}
+          style={{ width: '100%' }}
+        >
+          <ToggleButton value="statement" style={{ flex: 1 }}>
+            <FlexLayout align="center" justify="center" gap={1}>
+              <History size={16} />
+              <span>Statement ({transactions.length})</span>
+            </FlexLayout>
+          </ToggleButton>
+          <ToggleButton value="payment" style={{ flex: 1 }}>
+            <FlexLayout align="center" justify="center" gap={1}>
+              <Receipt size={16} />
+              <span>Record Payment</span>
+            </FlexLayout>
+          </ToggleButton>
+        </ToggleButtonGroup>
+
+        {/* 3. Tab Content */}
+        <div
+          className="hs-ledger-drawer__content"
+          style={{ overflowY: 'auto', maxHeight: '55vh' }}
+        >
+          {activeTab === 'statement' ? (
+            <TransactionHistoryList
+              transactions={transactions}
+              isLoading={isLoadingTransactions}
+            />
+          ) : (
+            <LedgerPaymentForm
+              outstandingDue={detail.currentOutstanding}
+              isPaying={isPaying}
+              onPay={onPay}
+            />
+          )}
         </div>
-      </div>
-    </div>
+      </StackLayout>
+    </Drawer>
   );
 };
 

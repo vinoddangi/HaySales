@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { BottomSheet, Snackbar } from '../../components';
+import { GlobalDrawer } from './components/GlobalDrawer';
+import { GlobalToast } from './components/GlobalToast';
 import { BottomNavBar } from '../BottomNavBar';
 import { DesktopToolbar } from '../DesktopToolbar';
 import { LoginModal } from '../LoginModal';
@@ -46,11 +47,11 @@ export const MobileShell: React.FC = () => {
         {/* Bottom Navigation Bar */}
         <BottomNavBar />
 
-        {/* Global Bottom Sheet Modal */}
-        <BottomSheet />
+        {/* Global Bottom Sheet Drawer */}
+        <GlobalDrawer />
 
-        {/* Global Snackbar */}
-        <Snackbar />
+        {/* Global Toast */}
+        <GlobalToast />
 
         {/* Authentication Login Modal Gate */}
         <LoginModal isOpen={showLogin} onClose={handleCloseLogin} />

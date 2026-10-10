@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  Flex,
-  IconCalendar,
-  IconChevronDown,
-  IconTrendingUp,
-  Text,
-} from '../../components';
-import { cn } from '../../utils/cn';
+import { FlexLayout, Text } from '@salt-ds/core';
+import { clsx } from 'clsx';
+import { Calendar, ChevronDown, TrendingUp } from 'lucide-react';
 import './Timeline.css';
 import { SHORT_MONTH_NAMES, useTimeline } from './useTimeline';
 
@@ -28,31 +23,31 @@ export const Timeline: React.FC<TimelineProps> = ({ className }) => {
   } = useTimeline();
 
   return (
-    <div className={cn('timeline', className)}>
-      <Flex
+    <div className={clsx('timeline', className)}>
+      <FlexLayout
         direction="row"
         align="center"
-        gap="xs"
-        padding="xs"
-        fullWidth
+        gap={1}
         className="timeline__container"
       >
         {/* Month Dropdown Button */}
-        <Flex.Item className="timeline__month-wrapper">
+        <div className="timeline__month-wrapper">
           <button
             type="button"
             aria-label="Select month"
             onClick={handleMonthButtonClick}
-            className={cn(
+            className={clsx(
               'timeline__btn',
               !isYtd ? 'timeline__btn--active' : 'timeline__btn--inactive',
             )}
           >
-            <IconCalendar size="sm" />
-            <Text variant="label-sm" weight="bold" as="span">
-              {shortMonthNames[selectedMonth]} {selectedYear}
+            <Calendar size={16} />
+            <Text styleAs="label">
+              <b>
+                {shortMonthNames[selectedMonth]} {selectedYear}
+              </b>
             </Text>
-            <IconChevronDown size="sm" />
+            <ChevronDown size={16} />
           </button>
 
           {/* Native select overlay when in month mode */}
@@ -70,25 +65,24 @@ export const Timeline: React.FC<TimelineProps> = ({ className }) => {
               ))}
             </select>
           )}
-        </Flex.Item>
+        </div>
 
         {/* YTD Button */}
-        <Flex.Item
-          as="button"
+        <button
           type="button"
           aria-label="Year to date"
           onClick={handleYtdClick}
-          className={cn(
+          className={clsx(
             'timeline__btn',
             isYtd ? 'timeline__btn--active' : 'timeline__btn--inactive',
           )}
         >
-          <IconTrendingUp size="sm" />
-          <Text variant="label-sm" weight="bold" as="span">
-            YTD {selectedYear}
+          <TrendingUp size={16} />
+          <Text styleAs="label">
+            <b>YTD {selectedYear}</b>
           </Text>
-        </Flex.Item>
-      </Flex>
+        </button>
+      </FlexLayout>
     </div>
   );
 };
