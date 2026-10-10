@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { PurchaseTransactionData, SaleTransactionData } from '../models';
 import {
-  BASELINE_CLOSING_STOCK,
   calculateMonthlyStockFromTransactions,
   extractChronologicalMonths,
   formatYearMonth,
@@ -39,16 +38,14 @@ describe('stockBusiness - Monthly Stock Calculations & YYYY-MM Rollovers', () =>
     expect(months).toEqual(['2026-01', '2026-02', '2026-03']);
   });
 
-  it('initializes with baseline 2025-01 closing stock', () => {
+  it('initializes with baseline 2026-08 closing stock', () => {
     const stockState = calculateMonthlyStockFromTransactions([]);
 
-    expect(stockState['2024-12']).toEqual(BASELINE_CLOSING_STOCK);
-    expect(stockState['2024-12']?.Others?.weight).toBe(24203);
-    expect(stockState['2024-12']?.Others?.amount).toBe(216616);
+    expect(stockState['2026-07']).toEqual({});
 
-    // Opening stock for Jan 2025 is derived from baseline closing stock
-    const janOpening = getOpeningStockForMonth(stockState, 2025, 1);
-    expect(janOpening).toEqual(BASELINE_CLOSING_STOCK);
+    // Opening stock for Aug 2026 is derived from 2026-07 closing stock
+    const augOpening = getOpeningStockForMonth(stockState, 2026, 8);
+    expect(augOpening).toEqual({});
   });
 
   it('calculates continuous monthly closing stocks in YYYY-MM format', () => {

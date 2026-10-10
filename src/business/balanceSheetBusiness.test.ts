@@ -1,13 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import {
-  FixedAsset,
-  INITIAL_ASSETS,
-  INITIAL_CAPITAL,
-  INITIAL_LIABILITIES,
-  INITIAL_RETAINED_PROFIT,
-} from '../models';
+import { FixedAsset } from '../models';
 import {
   calculateBalanceSheet,
+  extractFixedAssetsFromTransactions,
   getFixedAssetsForPeriod,
   getPartnerCapitalForPeriod,
   getPartnerLoanForPeriod,
@@ -98,36 +93,83 @@ describe('balanceSheetBusiness', () => {
     expect(result.netWorth).toBe(1200000); // 1000000 + 200000
   });
 
-  it('handles baseline initial records properly when passed as dictionary', () => {
-    const totalLiabilities = Object.values(INITIAL_LIABILITIES).reduce(
-      (sum, l) => sum + l.amount,
-      0,
-    );
-    const totalCapital = Object.values(INITIAL_CAPITAL).reduce(
-      (sum, c) => sum + c.principalCapital,
-      0,
-    );
+  it('handles fixed assets dictionary records properly', () => {
+    const fixedAssetsRecord = {
+      tractor: {
+        id: 'tractor',
+        name: 'Tractor',
+        category: 'Machinery' as const,
+        purchaseCost: 840000,
+        accumulatedDepreciation: 0,
+        currentBookValue: 840000,
+      },
+      pickup: {
+        id: 'pickup',
+        name: 'Pickup',
+        category: 'Vehicle' as const,
+        purchaseCost: 120000,
+        accumulatedDepreciation: 0,
+        currentBookValue: 120000,
+      },
+    };
 
     const result = calculateBalanceSheet({
-      partnerCapital: totalCapital,
-      retainedProfit: INITIAL_RETAINED_PROFIT,
+      partnerCapital: 1500000,
+      retainedProfit: 0,
       customerReceivables: 420000,
       closingStockValue: 85000,
-      fixedAssets: INITIAL_ASSETS,
-      loansAndLiabilities: totalLiabilities,
+      fixedAssets: fixedAssetsRecord,
+      loansAndLiabilities: 750000,
     });
 
-    // Total Fixed Assets: 329000 (Pickup / Daalu) + 64800 (Fence) + 24000 (Talpatri) = 417800
-    expect(result.assets.totalFixedAssetsValue).toBe(417800);
-
-    // Total Liabilities & Capital = 1200000 + 2165402 + 800000 = 4165402
-    expect(result.liabilitiesAndEquity.totalCapitalAndEquity).toBe(4165402);
-
-    // Non-Cash Assets = 420000 + 85000 + 417800 = 922800
-    // Cash Balance = 4165402 - 922800 = 3242602
-    expect(result.assets.cashBalance).toBe(3242602);
-    expect(result.assets.totalAssets).toBe(4165402);
+    // Total Fixed Assets: 840000 + 120000 = 960000
+    expect(result.assets.totalFixedAssetsValue).toBe(960000);
+    // Total Liabilities & Capital = 1500000 + 0 + 750000 = 2250000
+    expect(result.liabilitiesAndEquity.totalCapitalAndEquity).toBe(2250000);
+    // Non-Cash Assets = 420000 + 85000 + 960000 = 1465000
+    // Cash Balance = 2250000 - 1465000 = 785000
+    expect(result.assets.cashBalance).toBe(785000);
+    expect(result.assets.totalAssets).toBe(2250000);
     expect(result.isEquilibrium).toBe(true);
+  });
+
+  it('extracts fixed assets dynamically from database operational transactions', () => {
+    const mockOpTxs = [
+      {
+        id: 'open_asset_tractor_2026_08_31',
+        date: '2026-08-31',
+        type: 'EXPENSE' as const,
+        category: 'Asset Purchase' as const,
+        vendorName: 'Machinery',
+        amount: 840000,
+        cashPaid: 840000,
+        remainingDue: 0,
+        notes: 'Baseline Fixed Asset - Tractor Book Value as of 31-Aug-2026',
+      },
+      {
+        id: 'open_asset_pickup_2026_08_31',
+        date: '2026-08-31',
+        type: 'EXPENSE' as const,
+        category: 'Asset Purchase' as const,
+        vendorName: 'Vehicle',
+        amount: 120000,
+        cashPaid: 120000,
+        remainingDue: 0,
+        notes:
+          'Baseline Fixed Asset - Pickup (Daalu) Residual Book Value as of 31-Aug-2026',
+      },
+    ];
+
+    const assets = extractFixedAssetsFromTransactions(mockOpTxs as any);
+    expect(assets).toHaveLength(2);
+    expect(
+      assets.find((a) => a.id === 'open_asset_tractor_2026_08_31')
+        ?.currentBookValue,
+    ).toBe(840000);
+    expect(
+      assets.find((a) => a.id === 'open_asset_pickup_2026_08_31')
+        ?.currentBookValue,
+    ).toBe(120000);
   });
 
   describe('period-aware helpers', () => {

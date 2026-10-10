@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Checkbox } from '../../../../components/Checkbox';
 import { DatePicker } from '../../../../components/DatePicker';
 import { Form, useForm } from '../../../../components/Form';
@@ -7,11 +7,9 @@ import { Grid } from '../../../../components/layouts/Grid';
 import { Select } from '../../../../components/Select';
 import { Text } from '../../../../components/Text';
 import { TextField } from '../../../../components/TextField';
-import {
-  ExpenseCategory,
-  INITIAL_ASSETS,
-  VALID_EXPENSE_CATEGORIES,
-} from '../../../../models';
+import { extractFixedAssetsFromTransactions } from '../../../../business';
+import { ExpenseCategory, VALID_EXPENSE_CATEGORIES } from '../../../../models';
+import { useGetOperationTransactionsQuery } from '../../../../store/api';
 import { formatRupee, getTodayDateString } from '../../../../utils/formatters';
 import './ExpenseFormCard.css';
 
@@ -38,14 +36,6 @@ export interface ExpenseFormCardProps {
 const CATEGORY_OPTIONS = [
   { value: '', label: 'Select' },
   ...VALID_EXPENSE_CATEGORIES.map((c) => ({ value: c, label: c })),
-];
-
-const ASSET_OPTIONS = [
-  { value: '', label: 'Select' },
-  ...Object.values(INITIAL_ASSETS).map((asset) => ({
-    value: asset.id,
-    label: `${asset.name} (Value: ${formatRupee(asset.currentBookValue)})`,
-  })),
 ];
 
 interface ExpenseFormState {
@@ -109,6 +99,23 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
     },
   });
 
+  const { data: opTransactions = [] } = useGetOperationTransactionsQuery();
+  const availableAssets = useMemo(
+    () => extractFixedAssetsFromTransactions(opTransactions),
+    [opTransactions],
+  );
+
+  const assetOptions = useMemo(
+    () => [
+      { value: '', label: 'Select Fixed Asset' },
+      ...availableAssets.map((asset) => ({
+        value: asset.id,
+        label: `${asset.name} (Value: ${formatRupee(asset.currentBookValue)})`,
+      })),
+    ],
+    [availableAssets],
+  );
+
   const { values, setValue } = form;
   const isDepreciation = values.category === 'Depreciation';
   const isProfitDistribution = values.category === 'Profit Distribution';
@@ -119,7 +126,7 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
       : values.cashPaid;
   const selectedAsset =
     isDepreciation && values.targetAssetId
-      ? INITIAL_ASSETS[values.targetAssetId]
+      ? availableAssets.find((a) => a.id === values.targetAssetId) || null
       : null;
 
   return (
@@ -160,7 +167,7 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
             label="Select Fixed Asset to Depreciate"
             required
             value={values.targetAssetId}
-            options={ASSET_OPTIONS}
+            options={assetOptions}
             onChange={(val) => setValue('targetAssetId', val)}
           />
           {selectedAsset && (

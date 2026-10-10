@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import {
   calculateBalanceSheet,
   CropCommissionProfitResult,
+  extractFixedAssetsFromTransactions,
   filterTransactionsByTimeline,
-  getFixedAssetsForPeriod,
   getPartnerCapitalForPeriod,
   getPartnerLoanForPeriod,
   getProfitDistributionForPeriod,
@@ -227,7 +227,7 @@ export function useHomePage() {
     const customerReceivables = customerOutstandingMetrics.totalOutstanding;
     const closingStockValue = profitMetrics.totalClosingStock.amount;
 
-    const fixedAssetsList = getFixedAssetsForPeriod(currentYearMonth);
+    const fixedAssetsList = extractFixedAssetsFromTransactions(operationTxs);
 
     const bsResult = calculateBalanceSheet({
       partnerCapital,
@@ -256,6 +256,7 @@ export function useHomePage() {
     selectedMonth,
     profitMetrics,
     customerOutstandingMetrics.totalOutstanding,
+    operationTxs,
   ]);
 
   // 13. Period Label

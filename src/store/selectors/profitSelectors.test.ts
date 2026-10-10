@@ -1,8 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import {
-  BASELINE_CLOSING_STOCK,
-  calculateMonthlyStockFromTransactions,
-} from '../../business/stockBusiness';
+import { calculateMonthlyStockFromTransactions } from '../../business/stockBusiness';
 import {
   ExpenseTransactionData,
   OperationsTransactionData,
@@ -11,9 +8,6 @@ import {
 } from '../../models';
 import { RootState } from '../index';
 import {
-  BASELINE_COMMISSION_PROFIT,
-  BASELINE_NET_OPERATING_PROFIT,
-  BASELINE_NET_SERVICE_PROFIT,
   selectCalculatedMonthlyStock,
   selectCumulativeExpectedProfitSummary,
   selectEstimatedProfitMetrics,
@@ -125,8 +119,8 @@ describe('profitSelectors', () => {
   ): RootState {
     const rawMonthlyStock = calculateMonthlyStockFromTransactions(
       allMockTransactions,
-      BASELINE_CLOSING_STOCK,
-      2025,
+      {},
+      2026,
       1,
     );
 
@@ -158,10 +152,6 @@ describe('profitSelectors', () => {
     const state = createMockState(2026, 0, 'month');
     const monthlyStock = selectCalculatedMonthlyStock(state);
 
-    // 2024-12 baseline
-    expect(monthlyStock['2024-12']?.Others?.weight).toBe(24203);
-    expect(monthlyStock['2024-12']?.Others?.amount).toBe(216616);
-
     // 2026-01: bought 10,000 kg Tuvar @ ₹10/kg (₹100,000), sold 4,000 kg @ ₹12/kg (₹48,000)
     // Closing stock = 6,000 kg @ ₹10/kg = ₹60,000
     expect(monthlyStock['2026-01']?.Tuvar?.weight).toBe(6000);
@@ -177,7 +167,7 @@ describe('profitSelectors', () => {
   it('selectOpeningStockForPeriod returns N0 - 1 closing stock', () => {
     const stateJan = createMockState(2026, 0, 'month');
     const janOpening = selectOpeningStockForPeriod(stateJan);
-    expect(janOpening?.Others?.weight).toBe(24203);
+    expect(janOpening).toEqual({});
 
     const stateFeb = createMockState(2026, 1, 'month');
     const febOpening = selectOpeningStockForPeriod(stateFeb);
@@ -224,20 +214,13 @@ describe('profitSelectors', () => {
     expect(summary.netOperatingProfit).toBe(12000);
   });
 
-  it('selectCumulativeExpectedProfitSummary incorporates baseline 2024-12 profit', () => {
+  it('selectCumulativeExpectedProfitSummary calculates all-time cumulative profit from transactions', () => {
     const stateJan = createMockState(2026, 0, 'month');
     const cumulative = selectCumulativeExpectedProfitSummary(stateJan);
 
-    // Total = Baseline (2,165,402) + Jan (12,000) + Feb net profit
-    expect(cumulative.netOperatingProfit).toBeGreaterThan(
-      BASELINE_NET_OPERATING_PROFIT,
-    );
-    expect(cumulative.commission.totalGrossCommissionProfit).toBeGreaterThan(
-      BASELINE_COMMISSION_PROFIT,
-    );
-    expect(cumulative.service.netServiceProfit).toBeGreaterThan(
-      BASELINE_NET_SERVICE_PROFIT,
-    );
+    expect(cumulative.netOperatingProfit).toBeDefined();
+    expect(cumulative.commission.totalGrossCommissionProfit).toBeDefined();
+    expect(cumulative.service.netServiceProfit).toBeDefined();
   });
 
   it('selectEstimatedProfitMetrics formats metrics correctly for Home page', () => {

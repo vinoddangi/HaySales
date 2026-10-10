@@ -1,4 +1,4 @@
-import { FixedAsset } from '../models';
+import { AssetCategory, FixedAsset, Transaction } from '../models';
 
 export interface BalanceSheetAssets {
   cashBalance: number;
@@ -33,6 +33,65 @@ export interface CalculateBalanceSheetParams {
   fixedAssets: FixedAsset[] | Record<string, FixedAsset>;
   loansAndLiabilities?: number;
   openingCashBalance?: number;
+}
+
+/**
+ * Extracts and derives active Fixed Assets directly from database operational transactions.
+ * Processes 'Asset Purchase' expense transactions as asset records, and 'Depreciation' as write-downs.
+ */
+export function extractFixedAssetsFromTransactions(
+  transactions: Transaction[],
+): FixedAsset[] {
+  const assetMap = new Map<string, FixedAsset>();
+
+  for (const tx of transactions) {
+    if (tx.type === 'EXPENSE' && tx.category === 'Asset Purchase') {
+      const id = tx.id || `asset_${tx.date}_${tx.amount}`;
+      // Clean asset name from notes or vendorName
+      const rawNote = tx.note || (tx as any).notes || '';
+      const name =
+        rawNote
+          .replace(/^Baseline Fixed Asset - /i, '')
+          .replace(/ (Book Value|Residual Book Value)? as of .*$/i, '')
+          .trim() ||
+        tx.vendorName ||
+        'Fixed Asset';
+
+      let category: AssetCategory = 'Other';
+      const catLower = (tx.vendorName || '').toLowerCase();
+      if (catLower.includes('machinery')) category = 'Machinery';
+      else if (catLower.includes('vehicle')) category = 'Vehicle';
+      else if (catLower.includes('infrastructure')) category = 'Infrastructure';
+      else if (catLower.includes('equipment')) category = 'Equipment';
+
+      assetMap.set(id, {
+        id,
+        name,
+        category,
+        purchaseCost: Number(tx.amount || 0),
+        accumulatedDepreciation: 0,
+        currentBookValue: Number(tx.amount || 0),
+      });
+    }
+  }
+
+  // Apply any recorded Depreciation transactions
+  for (const tx of transactions) {
+    if (tx.type === 'EXPENSE' && tx.category === 'Depreciation') {
+      const depAmount = Number(tx.amount || 0);
+      const targetId = (tx as any).targetAssetId;
+      if (targetId && assetMap.has(targetId)) {
+        const asset = assetMap.get(targetId)!;
+        asset.accumulatedDepreciation += depAmount;
+        asset.currentBookValue = Math.max(
+          0,
+          asset.purchaseCost - asset.accumulatedDepreciation,
+        );
+      }
+    }
+  }
+
+  return Array.from(assetMap.values());
 }
 
 /**

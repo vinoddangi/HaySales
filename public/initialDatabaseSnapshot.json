@@ -1,10 +1,10 @@
 {
   "summary": {
-    "totalCustomers": 497,
-    "totalOpeningDues": 2721599,
-    "totalSalesAmount": 16523051,
-    "totalPaymentsAmount": 8559968,
-    "totalCustomerOutstanding": 10684682
+    "totalCustomers": 495,
+    "totalOpeningDues": 3653295,
+    "totalSalesAmount": 0,
+    "totalPaymentsAmount": 0,
+    "totalCustomerOutstanding": 3653295
   },
   "customers": [
     {

@@ -1,6 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
 import {
-  BASELINE_CLOSING_STOCK,
   calculateCommissionProfit,
   calculateExpectedProfit,
   calculateMonthlyStockFromTransactions,
@@ -22,31 +21,16 @@ import {
   selectPeriodTransactions,
 } from './transactionSelectors';
 
-// ── Baseline Constants (Closing 2024 / Opening 2025) ─────────────────────────
-
-export const BASELINE_COMMISSION_PROFIT = 2084732;
-export const BASELINE_SERVICE_INCOME = 340860;
-export const BASELINE_SERVICE_EXPENSES = 260190;
-export const BASELINE_NET_SERVICE_PROFIT =
-  BASELINE_SERVICE_INCOME - BASELINE_SERVICE_EXPENSES; // 80,670
-export const BASELINE_NET_OPERATING_PROFIT =
-  BASELINE_COMMISSION_PROFIT + BASELINE_NET_SERVICE_PROFIT; // 2,165,402
-
 // ── 1. Continuous Monthly Stock Rolling Selector ────────────────────────────
 
 /**
  * Calculates continuous monthly closing stock and valuation for every chronological month
- * from all historical and active transactions starting from the 2024-12 baseline.
+ * from all historical and active transactions.
  */
 export const selectCalculatedMonthlyStock = createSelector(
   [selectAllTransactions],
   (transactions): StockState => {
-    return calculateMonthlyStockFromTransactions(
-      transactions,
-      BASELINE_CLOSING_STOCK,
-      2025,
-      1,
-    );
+    return calculateMonthlyStockFromTransactions(transactions);
   },
 );
 
@@ -55,8 +39,8 @@ export const selectCalculatedMonthlyStock = createSelector(
 /**
  * Derives the exact Opening Stock (N0 - 1 Month Closing Stock) for the active timeline period:
  * - Monthly: Month (M - 1)'s closing stock.
- * - YTD: December (Year - 1)'s closing stock (or baseline for 2025).
- * - All: 2024-12 baseline closing stock.
+ * - YTD: December (Year - 1)'s closing stock.
+ * - All: Empty initial stock (opening inventory is captured via transaction events).
  */
 export const selectOpeningStockForPeriod = createSelector(
   [
@@ -67,16 +51,12 @@ export const selectOpeningStockForPeriod = createSelector(
   ],
   (monthlyStock, year, month, filterMode): CropRecord => {
     if (filterMode === 'all') {
-      return BASELINE_CLOSING_STOCK;
+      return {};
     }
 
     if (filterMode === 'ytd') {
-      // Opening for YTD of `year` is closing stock of December of previous year
       const prevYearKey = `${year - 1}-12`;
-      return (
-        monthlyStock[prevYearKey] ||
-        (year === 2025 ? BASELINE_CLOSING_STOCK : {})
-      );
+      return monthlyStock[prevYearKey] || {};
     }
 
     // Monthly mode (N0 = start of month, N0 - 1 = previous month closing)
@@ -167,51 +147,12 @@ export const selectPeriodExpectedProfitSummary = createSelector(
 // ── 7. All-Time Cumulative Profit Selector ───────────────────────────────────
 
 /**
- * Calculates all-time cumulative net profit from the 2024 baseline + all transactions.
+ * Calculates all-time cumulative net profit from all transactions.
  */
 export const selectCumulativeExpectedProfitSummary = createSelector(
   [selectAllTransactions],
   (allTransactions): ExpectedProfitSummary => {
-    const liveProfit = calculateExpectedProfit(
-      allTransactions,
-      BASELINE_CLOSING_STOCK,
-    );
-
-    return {
-      ...liveProfit,
-      netOperatingProfit: Number(
-        (BASELINE_NET_OPERATING_PROFIT + liveProfit.netOperatingProfit).toFixed(
-          2,
-        ),
-      ),
-      commission: {
-        ...liveProfit.commission,
-        totalGrossCommissionProfit: Number(
-          (
-            BASELINE_COMMISSION_PROFIT +
-            liveProfit.commission.totalGrossCommissionProfit
-          ).toFixed(2),
-        ),
-      },
-      service: {
-        ...liveProfit.service,
-        serviceIncome: Number(
-          (BASELINE_SERVICE_INCOME + liveProfit.service.serviceIncome).toFixed(
-            2,
-          ),
-        ),
-        fuelExpenses: Number(
-          (BASELINE_SERVICE_EXPENSES + liveProfit.service.fuelExpenses).toFixed(
-            2,
-          ),
-        ),
-        netServiceProfit: Number(
-          (
-            BASELINE_NET_SERVICE_PROFIT + liveProfit.service.netServiceProfit
-          ).toFixed(2),
-        ),
-      },
-    };
+    return calculateExpectedProfit(allTransactions, {});
   },
 );
 

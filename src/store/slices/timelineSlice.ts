@@ -9,7 +9,7 @@ export interface TimelineState {
 }
 
 const currentYear = new Date().getFullYear();
-const defaultYear = currentYear >= 2025 ? currentYear : 2025;
+const defaultYear = currentYear >= 2026 ? currentYear : 2026;
 
 const initialState: TimelineState = {
   selectedYear: defaultYear,

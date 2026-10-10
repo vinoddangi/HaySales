@@ -13,42 +13,6 @@ import {
 } from './profitBusiness';
 
 /**
- * Baseline closing stock as of January 2025 ('2025-01').
- */
-export const BASELINE_CLOSING_STOCK: CropRecord = {
-  Others: {
-    id: 'closing-others-2025-01',
-    date: '2025-01-01',
-    type: 'PURCHASE',
-    category: 'Others',
-    weight: 24203,
-    amount: 216616,
-    cashPaid: 0,
-    remainingDue: 0,
-    note: '2025 Jan Opening Stock',
-    vendorName: 'Opening Inventory',
-  },
-};
-
-/**
- * Baseline closing stock as of August 2026 ('2026-08').
- */
-export const AUG_2026_CLOSING_STOCK: CropRecord = {
-  Chana: {
-    id: 'closing-chana-2026-08',
-    date: '2026-08-31',
-    type: 'PURCHASE',
-    category: 'Chana',
-    weight: 5403,
-    amount: 58029.96,
-    cashPaid: 58029.96,
-    remainingDue: 0,
-    note: '2026 Aug Closing Stock (Chana)',
-    vendorName: 'Opening Inventory',
-  },
-};
-
-/**
  * Returns the last day number of a given year and month (1-indexed month 1..12).
  */
 export function getLastDayOfMonth(year: number, month: number): number {
@@ -87,12 +51,12 @@ export function getOpeningStockForMonth(
 
 /**
  * Extracts and sorts all unique year-months ('YYYY-MM') present across transactions.
- * Always ensures baseline period (e.g. 2025-01) is included in chronological order.
+ * Always ensures baseline period (e.g. 2026-08) is included in chronological order.
  */
 export function extractChronologicalMonths(
   transactions: Transaction[],
-  baselineYear = 2025,
-  baselineMonth = 1,
+  baselineYear = 2026,
+  baselineMonth = 8,
 ): string[] {
   let minYear = baselineYear;
   let minMonth = baselineMonth;
@@ -138,20 +102,20 @@ export function extractChronologicalMonths(
  * maintaining state keyed strictly by 'YYYY-MM'.
  *
  * For each month:
- * 1. Opening Stock is taken directly from the previous month's Closing Stock (or '2025-01' baseline).
+ * 1. Opening Stock is taken directly from the previous month's Closing Stock.
  * 2. Purchases and Sales in the month are matched by crop category.
  * 3. Weighted average cost, sales, COGS, and closing stock are computed.
  * 4. Closing stock of the month is recorded directly under 'YYYY-MM' key.
  *
  * @param transactions All recorded transactions (Customer sales & Operations purchases)
- * @param initialBaseline Optional starting baseline closing stock (defaults to '2025-01' closing stock)
- * @returns Complete StockState mapping 'YYYY-MM' strings (e.g. '2025-01', '2025-02') to CropRecords.
+ * @param initialBaseline Optional starting baseline closing stock (defaults to empty {})
+ * @returns Complete StockState mapping 'YYYY-MM' strings (e.g. '2026-08', '2026-09') to CropRecords.
  */
 export function calculateMonthlyStockFromTransactions(
   transactions: Transaction[],
-  initialBaseline: CropRecord = BASELINE_CLOSING_STOCK,
-  baselineYear = 2025,
-  baselineMonth = 1,
+  initialBaseline: CropRecord = {},
+  baselineYear = 2026,
+  baselineMonth = 8,
 ): StockState {
   const baselineKey = getPreviousYearMonth(baselineYear, baselineMonth);
   const stockState: StockState = {
