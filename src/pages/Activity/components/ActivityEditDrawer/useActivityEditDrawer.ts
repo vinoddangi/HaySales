@@ -182,7 +182,7 @@ export function useActivityEditDrawer({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!transaction || !isValid) return;
+    if (!transaction || !isValid || isSaving) return;
 
     try {
       setIsSaving(true);

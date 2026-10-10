@@ -52,7 +52,7 @@ export function useSalesPage() {
   const creditLimit = selectedCustomer?.creditLimit ?? 35000;
 
   const handleSaleSubmit = async (data: SaleFormData) => {
-    if (!selectedCustomerId || !selectedCustomer) return;
+    if (!selectedCustomerId || !selectedCustomer || isSaving) return;
     try {
       const remainingDue = Math.max(
         0,
@@ -83,7 +83,7 @@ export function useSalesPage() {
   };
 
   const handleServiceSubmit = async (data: ServiceFormData) => {
-    if (!selectedCustomerId || !selectedCustomer) return;
+    if (!selectedCustomerId || !selectedCustomer || isSaving) return;
     try {
       const remainingDue = Math.max(
         0,

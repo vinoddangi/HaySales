@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Button } from '../../../../components/Button';
+import React from 'react';
 import { Checkbox } from '../../../../components/Checkbox';
 import { DatePicker } from '../../../../components/DatePicker';
+import { Form, useForm } from '../../../../components/Form';
 import { IconAlertTriangle } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
@@ -26,6 +26,11 @@ export interface ServiceFormCardProps {
   creditLimit: number;
   isSaving: boolean;
   onSubmit: (_data: ServiceFormData) => Promise<void>;
+  onDataChange?: (
+    _key: keyof ServiceFormData,
+    _value: any,
+    _allValues: ServiceFormData,
+  ) => void;
 }
 
 const SERVICE_OPTIONS = [
@@ -33,51 +38,67 @@ const SERVICE_OPTIONS = [
   ...VALID_SERVICE_CATEGORIES.map((s) => ({ value: s, label: s })),
 ];
 
+interface ServiceFormState {
+  date: string;
+  category: string;
+  amount: number;
+  discount: number;
+  cashPaid: number;
+  allCash: boolean;
+  note: string;
+}
+
 export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
   outstandingDue,
   creditLimit,
   isSaving,
   onSubmit,
+  onDataChange,
 }) => {
-  const [date, setDate] = useState(() => getTodayDateString());
-  const [category, setCategory] = useState<string>('');
-  const [amount, setAmount] = useState<number>(0);
-  const [discount, setDiscount] = useState<number>(0);
-  const [cashPaid, setCashPaid] = useState<number>(0);
-  const [allCash, setAllCash] = useState<boolean>(false);
-  const [note, setNote] = useState<string>('');
+  const form = useForm<ServiceFormState>({
+    initialValues: {
+      date: getTodayDateString(),
+      category: '',
+      amount: 0,
+      discount: 0,
+      cashPaid: 0,
+      allCash: false,
+      note: '',
+    },
+    validate: (vals) => Boolean(vals.category && vals.amount > 0),
+    isSaving,
+    onDataChange: (key, val, allVals) => {
+      onDataChange?.(
+        key as keyof ServiceFormData,
+        val,
+        allVals as unknown as ServiceFormData,
+      );
+    },
+    onSubmit: async (vals) => {
+      const effectiveCashPaid = vals.allCash ? vals.amount : vals.cashPaid;
+      await onSubmit({
+        category: vals.category as ServiceCategory,
+        amount: vals.amount,
+        discount: vals.discount > 0 ? vals.discount : undefined,
+        cashPaid: effectiveCashPaid,
+        date: vals.date,
+        note: vals.note.trim() || undefined,
+      });
+      form.reset();
+    },
+  });
 
-  const effectiveCashPaid = allCash ? amount : cashPaid;
-  const remainingDue = Math.max(0, amount - discount - effectiveCashPaid);
+  const { values, setValue } = form;
+  const effectiveCashPaid = values.allCash ? values.amount : values.cashPaid;
+  const remainingDue = Math.max(
+    0,
+    values.amount - values.discount - effectiveCashPaid,
+  );
   const newOutstandingDue = outstandingDue + remainingDue;
   const isOverCreditLimit = newOutstandingDue > creditLimit;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!category || amount <= 0) return;
-
-    await onSubmit({
-      category: category as ServiceCategory,
-      amount,
-      discount: discount > 0 ? discount : undefined,
-      cashPaid: effectiveCashPaid,
-      date,
-      note: note.trim() || undefined,
-    });
-
-    // Reset form
-    setCategory('');
-    setAmount(0);
-    setDiscount(0);
-    setCashPaid(0);
-    setAllCash(false);
-    setNote('');
-  };
-
-  const isFormValid = Boolean(category && amount > 0);
-
   return (
-    <form onSubmit={handleSubmit} className="hs-service-form-card">
+    <Form form={form} className="hs-service-form-card">
       <Text
         variant="title-sm"
         weight="bold"
@@ -92,17 +113,17 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
           <DatePicker
             label="Service Date"
             required
-            value={date}
-            onChange={(val) => setDate(val)}
+            value={values.date}
+            onChange={(val) => setValue('date', val)}
           />
         </Grid.Item>
         <Grid.Item>
           <Select
             label="Service Type"
             required
-            value={category}
+            value={values.category}
             options={SERVICE_OPTIONS}
-            onChange={(val) => setCategory(val)}
+            onChange={(val) => setValue('category', val)}
           />
         </Grid.Item>
       </Grid>
@@ -115,8 +136,8 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
             type="number"
             required
             placeholder="0"
-            value={amount ? String(amount) : ''}
-            onChange={(val) => setAmount(Number(val) || 0)}
+            value={values.amount ? String(values.amount) : ''}
+            onChange={(val) => setValue('amount', Number(val) || 0)}
           />
         </Grid.Item>
         <Grid.Item>
@@ -124,8 +145,8 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
             label="Discount (₹)"
             type="number"
             placeholder="0"
-            value={discount ? String(discount) : ''}
-            onChange={(val) => setDiscount(Number(val) || 0)}
+            value={values.discount ? String(values.discount) : ''}
+            onChange={(val) => setValue('discount', Number(val) || 0)}
           />
         </Grid.Item>
       </Grid>
@@ -134,19 +155,19 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
       <Flex align="center" justify="between" fullWidth>
         <Checkbox
           label="Full Cash Payment (All Cash)"
-          checked={allCash}
-          onChange={(checked) => setAllCash(checked)}
+          checked={values.allCash}
+          onChange={(checked) => setValue('allCash', checked)}
         />
       </Flex>
 
       {/* 4. Cash Paid (when not all cash) */}
-      {!allCash && (
+      {!values.allCash && (
         <TextField
           label="Cash Paid (₹)"
           type="number"
           placeholder="0"
-          value={cashPaid ? String(cashPaid) : ''}
-          onChange={(val) => setCashPaid(Number(val) || 0)}
+          value={values.cashPaid ? String(values.cashPaid) : ''}
+          onChange={(val) => setValue('cashPaid', Number(val) || 0)}
         />
       )}
 
@@ -155,59 +176,38 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
         label="Remarks / Note (Optional)"
         type="text"
         placeholder="e.g. Village trip, threshing, driver"
-        value={note}
-        onChange={(val) => setNote(val)}
+        value={values.note}
+        onChange={(val) => setValue('note', val)}
       />
 
       {/* 6. Summary Box */}
-      <div className="hs-service-form-card__summary">
-        <div className="hs-service-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            Service Fee:
-          </Text>
-          <Text variant="body-sm" weight="bold">
-            {formatRupee(amount)}
-          </Text>
-        </div>
-        <div className="hs-service-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            Cash Received:
-          </Text>
-          <Text variant="body-sm" weight="bold" sentiment="positive">
-            {formatRupee(effectiveCashPaid)}
-          </Text>
-        </div>
-        {discount > 0 && (
-          <div className="hs-service-form-card__summary-row">
-            <Text variant="body-sm" appearance="secondary">
-              Discount:
-            </Text>
-            <Text variant="body-sm" weight="bold" sentiment="warning">
-              -{formatRupee(discount)}
-            </Text>
-          </div>
+      <Form.Summary>
+        <Form.Summary.Row
+          label="Service Fee:"
+          value={formatRupee(values.amount)}
+        />
+        <Form.Summary.Row
+          label="Cash Received:"
+          value={formatRupee(effectiveCashPaid)}
+          sentiment="positive"
+        />
+        {values.discount > 0 && (
+          <Form.Summary.Row
+            label="Discount:"
+            value={`-${formatRupee(values.discount)}`}
+            sentiment="warning"
+          />
         )}
-        <div className="hs-service-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            Added to Dues:
-          </Text>
-          <Text variant="body-sm" weight="bold">
-            {formatRupee(remainingDue)}
-          </Text>
-        </div>
-        <div className="hs-service-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            New Customer Total Due:
-          </Text>
-          <Text
-            variant="body-sm"
-            weight="bold"
-            sentiment={newOutstandingDue > 0 ? 'negative' : 'neutral'}
-          >
-            {formatRupee(newOutstandingDue)}
-          </Text>
-        </div>
-      </div>
+        <Form.Summary.Row
+          label="Added to Dues:"
+          value={formatRupee(remainingDue)}
+        />
+        <Form.Summary.Row
+          label="New Customer Total Due:"
+          value={formatRupee(newOutstandingDue)}
+          sentiment={newOutstandingDue > 0 ? 'negative' : 'neutral'}
+        />
+      </Form.Summary>
 
       {/* 7. Credit Warning */}
       {remainingDue > 0 && isOverCreditLimit && (
@@ -224,14 +224,11 @@ export const ServiceFormCard: React.FC<ServiceFormCardProps> = ({
       )}
 
       {/* 8. Submit Button */}
-      <Button
-        variant="filled"
-        type="submit"
-        disabled={isSaving || !isFormValid}
-      >
-        {isSaving ? 'Recording Service...' : 'Record Service'}
-      </Button>
-    </form>
+      <Form.Submit
+        label="Record Service"
+        submittingLabel="Recording Service..."
+      />
+    </Form>
   );
 };
 

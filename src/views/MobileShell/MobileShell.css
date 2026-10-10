@@ -17,7 +17,7 @@
   height: 100%;
   max-height: 100dvh;
   width: 100%;
-  max-width: 440px;
+  max-width: 380px;
   flex-direction: column;
   background-color: var(--md-sys-color-surface);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -30,7 +30,7 @@
 .mobile-shell-container--framed {
   margin: var(--md-sys-spacing-medium) auto;
   width: 100%;
-  max-width: 430px;
+  max-width: 380px;
   height: min(890px, calc(100dvh - 3rem));
   max-height: min(890px, calc(100dvh - 3rem));
   overflow: hidden;

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Button } from '../../../../components/Button';
+import React from 'react';
 import { Checkbox } from '../../../../components/Checkbox';
 import { DatePicker } from '../../../../components/DatePicker';
+import { Form, useForm } from '../../../../components/Form';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
 import { Select } from '../../../../components/Select';
@@ -28,6 +28,11 @@ export interface PurchaseFormData {
 export interface PurchaseFormCardProps {
   isSaving: boolean;
   onSubmit: (_data: PurchaseFormData) => Promise<void>;
+  onDataChange?: (
+    _key: keyof PurchaseFormData,
+    _value: any,
+    _allValues: PurchaseFormData,
+  ) => void;
 }
 
 const CROP_OPTIONS = [
@@ -35,50 +40,65 @@ const CROP_OPTIONS = [
   ...VALID_CROP_CATEGORIES.map((crop) => ({ value: crop, label: crop })),
 ];
 
+interface PurchaseFormState {
+  date: string;
+  category: CropCategory | '';
+  weight: number;
+  amount: number;
+  cashPaid: number;
+  paidInFull: boolean;
+  vendorName: string;
+  note: string;
+}
+
 export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
   isSaving,
   onSubmit,
+  onDataChange,
 }) => {
-  const [date, setDate] = useState(() => getTodayDateString());
-  const [category, setCategory] = useState<CropCategory | ''>('');
-  const [weight, setWeight] = useState<number>(0);
-  const [amount, setAmount] = useState<number>(0);
-  const [cashPaid, setCashPaid] = useState<number>(0);
-  const [paidInFull, setPaidInFull] = useState<boolean>(true);
-  const [vendorName, setVendorName] = useState<string>('');
-  const [note, setNote] = useState<string>('');
+  const form = useForm<PurchaseFormState>({
+    initialValues: {
+      date: getTodayDateString(),
+      category: '',
+      weight: 0,
+      amount: 0,
+      cashPaid: 0,
+      paidInFull: true,
+      vendorName: '',
+      note: '',
+    },
+    validate: (vals) =>
+      Boolean(vals.category && vals.amount > 0 && vals.weight > 0),
+    isSaving,
+    onDataChange: (key, val, allVals) => {
+      onDataChange?.(
+        key as keyof PurchaseFormData,
+        val,
+        allVals as unknown as PurchaseFormData,
+      );
+    },
+    onSubmit: async (vals) => {
+      const effectiveCashPaid = vals.paidInFull ? vals.amount : vals.cashPaid;
+      await onSubmit({
+        category: vals.category as CropCategory,
+        weight: vals.weight,
+        amount: vals.amount,
+        cashPaid: effectiveCashPaid,
+        vendorName: vals.vendorName.trim() || undefined,
+        note: vals.note.trim() || undefined,
+        date: vals.date,
+      });
+      form.reset();
+    },
+  });
 
-  const effectiveCashPaid = paidInFull ? amount : cashPaid;
-  const avgRate = weight > 0 && amount > 0 ? amount / weight : 0;
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!category || amount <= 0 || weight <= 0) return;
-
-    await onSubmit({
-      category: category as CropCategory,
-      weight,
-      amount,
-      cashPaid: effectiveCashPaid,
-      vendorName: vendorName.trim() || undefined,
-      note: note.trim() || undefined,
-      date,
-    });
-
-    // Reset form
-    setCategory('');
-    setWeight(0);
-    setAmount(0);
-    setCashPaid(0);
-    setPaidInFull(true);
-    setVendorName('');
-    setNote('');
-  };
-
-  const isFormValid = Boolean(category && amount > 0 && weight > 0);
+  const { values, setValue } = form;
+  const effectiveCashPaid = values.paidInFull ? values.amount : values.cashPaid;
+  const avgRate =
+    values.weight > 0 && values.amount > 0 ? values.amount / values.weight : 0;
 
   return (
-    <form onSubmit={handleSubmit} className="hs-purchase-form-card">
+    <Form form={form} className="hs-purchase-form-card">
       <Text
         variant="title-sm"
         weight="bold"
@@ -93,17 +113,17 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
           <DatePicker
             label="Purchase Date"
             required
-            value={date}
-            onChange={(val) => setDate(val)}
+            value={values.date}
+            onChange={(val) => setValue('date', val)}
           />
         </Grid.Item>
         <Grid.Item>
           <Select
             label="Crop Type"
             required
-            value={category}
+            value={values.category}
             options={CROP_OPTIONS}
-            onChange={(val) => setCategory(val as CropCategory)}
+            onChange={(val) => setValue('category', val as CropCategory)}
           />
         </Grid.Item>
       </Grid>
@@ -116,8 +136,8 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
             type="number"
             required
             placeholder="0"
-            value={weight ? String(weight) : ''}
-            onChange={(val) => setWeight(Number(val) || 0)}
+            value={values.weight ? String(values.weight) : ''}
+            onChange={(val) => setValue('weight', Number(val) || 0)}
           />
         </Grid.Item>
         <Grid.Item>
@@ -126,8 +146,8 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
             type="number"
             required
             placeholder="0"
-            value={amount ? String(amount) : ''}
-            onChange={(val) => setAmount(Number(val) || 0)}
+            value={values.amount ? String(values.amount) : ''}
+            onChange={(val) => setValue('amount', Number(val) || 0)}
           />
         </Grid.Item>
       </Grid>
@@ -137,26 +157,26 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
         label="Supplier Name (Optional)"
         type="text"
         placeholder="e.g. Ramesh Patel, Mandi Trader"
-        value={vendorName}
-        onChange={(val) => setVendorName(val)}
+        value={values.vendorName}
+        onChange={(val) => setValue('vendorName', val)}
       />
 
       {/* 4. Payment Settlement Checkbox */}
       <Flex align="center" justify="between" fullWidth>
         <Checkbox
           label="Paid in Full (All Cash)"
-          checked={paidInFull}
-          onChange={(checked) => setPaidInFull(checked)}
+          checked={values.paidInFull}
+          onChange={(checked) => setValue('paidInFull', checked)}
         />
       </Flex>
 
-      {!paidInFull && (
+      {!values.paidInFull && (
         <TextField
           label="Cash Paid (₹)"
           type="number"
           placeholder="0"
-          value={cashPaid ? String(cashPaid) : ''}
-          onChange={(val) => setCashPaid(Number(val) || 0)}
+          value={values.cashPaid ? String(values.cashPaid) : ''}
+          onChange={(val) => setValue('cashPaid', Number(val) || 0)}
         />
       )}
 
@@ -165,47 +185,33 @@ export const PurchaseFormCard: React.FC<PurchaseFormCardProps> = ({
         label="Note / Remarks (Optional)"
         type="text"
         placeholder="e.g. Lot #12, 14% moisture, direct from farm"
-        value={note}
-        onChange={(val) => setNote(val)}
+        value={values.note}
+        onChange={(val) => setValue('note', val)}
       />
 
       {/* 6. Summary Box */}
-      <div className="hs-purchase-form-card__summary">
-        <div className="hs-purchase-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            Calculated Buying Rate:
-          </Text>
-          <Text variant="body-sm" weight="bold">
-            {avgRate > 0 ? `${formatRupee(avgRate)} / Kg` : '—'}
-          </Text>
-        </div>
-        <div className="hs-purchase-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            Total Purchase Cost:
-          </Text>
-          <Text variant="body-sm" weight="bold">
-            {formatRupee(amount)} ({formatWeight(weight)})
-          </Text>
-        </div>
-        <div className="hs-purchase-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            Cash Outflow Now:
-          </Text>
-          <Text variant="body-sm" weight="bold" sentiment="negative">
-            {formatRupee(effectiveCashPaid)}
-          </Text>
-        </div>
-      </div>
+      <Form.Summary>
+        <Form.Summary.Row
+          label="Calculated Buying Rate:"
+          value={avgRate > 0 ? `${formatRupee(avgRate)} / Kg` : '—'}
+        />
+        <Form.Summary.Row
+          label="Total Purchase Cost:"
+          value={`${formatRupee(values.amount)} (${formatWeight(values.weight)})`}
+        />
+        <Form.Summary.Row
+          label="Cash Outflow Now:"
+          value={formatRupee(effectiveCashPaid)}
+          sentiment="negative"
+        />
+      </Form.Summary>
 
       {/* 7. Action Button */}
-      <Button
-        variant="filled"
-        type="submit"
-        disabled={isSaving || !isFormValid}
-      >
-        {isSaving ? 'Recording Purchase...' : 'Record Stock Purchase'}
-      </Button>
-    </form>
+      <Form.Submit
+        label="Record Stock Purchase"
+        submittingLabel="Recording Purchase..."
+      />
+    </Form>
   );
 };
 

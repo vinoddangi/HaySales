@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Button } from '../../../../components/Button';
+import React from 'react';
 import { Checkbox } from '../../../../components/Checkbox';
 import { DatePicker } from '../../../../components/DatePicker';
+import { Form, useForm } from '../../../../components/Form';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
 import { Select } from '../../../../components/Select';
@@ -28,6 +28,11 @@ export interface ExpenseFormData {
 export interface ExpenseFormCardProps {
   isSaving: boolean;
   onSubmit: (_data: ExpenseFormData) => Promise<void>;
+  onDataChange?: (
+    _key: keyof ExpenseFormData,
+    _value: any,
+    _allValues: ExpenseFormData,
+  ) => void;
 }
 
 const CATEGORY_OPTIONS = [
@@ -43,58 +48,82 @@ const ASSET_OPTIONS = [
   })),
 ];
 
+interface ExpenseFormState {
+  date: string;
+  category: string;
+  targetAssetId: string;
+  amount: number;
+  cashPaid: number;
+  paidInFull: boolean;
+  vendorName: string;
+  note: string;
+}
+
 export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
   isSaving,
   onSubmit,
+  onDataChange,
 }) => {
-  const [date, setDate] = useState(() => getTodayDateString());
-  const [category, setCategory] = useState<string>('');
-  const [targetAssetId, setTargetAssetId] = useState<string>('');
-  const [amount, setAmount] = useState<number>(0);
-  const [cashPaid, setCashPaid] = useState<number>(0);
-  const [paidInFull, setPaidInFull] = useState<boolean>(true);
-  const [vendorName, setVendorName] = useState<string>('');
-  const [note, setNote] = useState<string>('');
+  const form = useForm<ExpenseFormState>({
+    initialValues: {
+      date: getTodayDateString(),
+      category: '',
+      targetAssetId: '',
+      amount: 0,
+      cashPaid: 0,
+      paidInFull: true,
+      vendorName: '',
+      note: '',
+    },
+    validate: (vals) => {
+      const isDep = vals.category === 'Depreciation';
+      return Boolean(
+        vals.category && vals.amount > 0 && (!isDep || vals.targetAssetId),
+      );
+    },
+    isSaving,
+    onDataChange: (key, val, allVals) => {
+      onDataChange?.(
+        key as keyof ExpenseFormData,
+        val,
+        allVals as unknown as ExpenseFormData,
+      );
+    },
+    onSubmit: async (vals) => {
+      const isDep = vals.category === 'Depreciation';
+      const effectiveCashPaid = isDep
+        ? 0
+        : vals.paidInFull
+          ? vals.amount
+          : vals.cashPaid;
+      await onSubmit({
+        category: vals.category as ExpenseCategory,
+        amount: vals.amount,
+        cashPaid: effectiveCashPaid,
+        vendorName: vals.vendorName.trim() || undefined,
+        note: vals.note.trim() || undefined,
+        date: vals.date,
+        targetAssetId: isDep ? vals.targetAssetId : undefined,
+      });
+      form.reset();
+    },
+  });
 
-  const isDepreciation = category === 'Depreciation';
-  const isProfitDistribution = category === 'Profit Distribution';
-
-  const effectiveCashPaid = isDepreciation ? 0 : paidInFull ? amount : cashPaid;
-
+  const { values, setValue } = form;
+  const isDepreciation = values.category === 'Depreciation';
+  const isProfitDistribution = values.category === 'Profit Distribution';
+  const effectiveCashPaid = isDepreciation
+    ? 0
+    : values.paidInFull
+      ? values.amount
+      : values.cashPaid;
   const selectedAsset =
-    isDepreciation && targetAssetId ? INITIAL_ASSETS[targetAssetId] : null;
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!category || amount <= 0) return;
-    if (isDepreciation && !targetAssetId) return;
-
-    await onSubmit({
-      category: category as ExpenseCategory,
-      amount,
-      cashPaid: effectiveCashPaid,
-      vendorName: vendorName.trim() || undefined,
-      note: note.trim() || undefined,
-      date,
-      targetAssetId: isDepreciation ? targetAssetId : undefined,
-    });
-
-    // Reset form
-    setCategory('');
-    setTargetAssetId('');
-    setAmount(0);
-    setCashPaid(0);
-    setPaidInFull(true);
-    setVendorName('');
-    setNote('');
-  };
-
-  const isFormValid = Boolean(
-    category && amount > 0 && (!isDepreciation || targetAssetId),
-  );
+    isDepreciation && values.targetAssetId
+      ? INITIAL_ASSETS[values.targetAssetId]
+      : null;
 
   return (
-    <form onSubmit={handleSubmit} className="hs-expense-form-card">
+    <Form form={form} className="hs-expense-form-card">
       <Text
         variant="title-sm"
         weight="bold"
@@ -109,17 +138,17 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
           <DatePicker
             label="Expense Date"
             required
-            value={date}
-            onChange={(val) => setDate(val)}
+            value={values.date}
+            onChange={(val) => setValue('date', val)}
           />
         </Grid.Item>
         <Grid.Item>
           <Select
             label="Expense Category"
             required
-            value={category}
+            value={values.category}
             options={CATEGORY_OPTIONS}
-            onChange={(val) => setCategory(val)}
+            onChange={(val) => setValue('category', val)}
           />
         </Grid.Item>
       </Grid>
@@ -130,9 +159,9 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
           <Select
             label="Select Fixed Asset to Depreciate"
             required
-            value={targetAssetId}
+            value={values.targetAssetId}
             options={ASSET_OPTIONS}
-            onChange={(val) => setTargetAssetId(val)}
+            onChange={(val) => setValue('targetAssetId', val)}
           />
           {selectedAsset && (
             <Flex justify="between" fullWidth>
@@ -174,8 +203,8 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
         type="number"
         required
         placeholder="0"
-        value={amount ? String(amount) : ''}
-        onChange={(val) => setAmount(Number(val) || 0)}
+        value={values.amount ? String(values.amount) : ''}
+        onChange={(val) => setValue('amount', Number(val) || 0)}
       />
 
       {/* 5. Settlement (Operational expenses only) */}
@@ -184,18 +213,18 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
           <Flex align="center" justify="between" fullWidth>
             <Checkbox
               label="Paid in Full (100% Cash Outflow)"
-              checked={paidInFull}
-              onChange={(checked) => setPaidInFull(checked)}
+              checked={values.paidInFull}
+              onChange={(checked) => setValue('paidInFull', checked)}
             />
           </Flex>
 
-          {!paidInFull && (
+          {!values.paidInFull && (
             <TextField
               label="Cash Paid Now (₹)"
               type="number"
               placeholder="0"
-              value={cashPaid ? String(cashPaid) : ''}
-              onChange={(val) => setCashPaid(Number(val) || 0)}
+              value={values.cashPaid ? String(values.cashPaid) : ''}
+              onChange={(val) => setValue('cashPaid', Number(val) || 0)}
             />
           )}
 
@@ -203,8 +232,8 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
             label="Paid To / Person / Station (Optional)"
             type="text"
             placeholder="e.g. Indian Oil Pump, Tractor Driver, Mandi"
-            value={vendorName}
-            onChange={(val) => setVendorName(val)}
+            value={values.vendorName}
+            onChange={(val) => setValue('vendorName', val)}
           />
         </>
       )}
@@ -220,59 +249,49 @@ export const ExpenseFormCard: React.FC<ExpenseFormCardProps> = ({
               ? 'e.g. Annual wear and tear write down'
               : 'e.g. 50 Liters diesel for pump, Monthly repair'
         }
-        value={note}
-        onChange={(val) => setNote(val)}
+        value={values.note}
+        onChange={(val) => setValue('note', val)}
       />
 
       {/* 7. Summary Box */}
-      <div className="hs-expense-form-card__summary">
-        <div className="hs-expense-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            Expense Category:
-          </Text>
-          <Text variant="body-sm" weight="bold">
-            {category || '—'}
-          </Text>
-        </div>
-        <div className="hs-expense-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            Total Outflow:
-          </Text>
-          <Text variant="body-sm" weight="bold">
-            {formatRupee(amount)}
-          </Text>
-        </div>
-        <div className="hs-expense-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            {isDepreciation
+      <Form.Summary>
+        <Form.Summary.Row
+          label="Expense Category:"
+          value={values.category || '—'}
+        />
+        <Form.Summary.Row
+          label="Total Outflow:"
+          value={formatRupee(values.amount)}
+        />
+        <Form.Summary.Row
+          label={
+            isDepreciation
               ? 'Asset Value Reduction:'
               : isProfitDistribution
                 ? 'Deducted From Retained Profit:'
-                : 'Cash Paid:'}
-          </Text>
-          <Text variant="body-sm" weight="bold" sentiment="negative">
-            {isDepreciation
-              ? formatRupee(amount)
-              : formatRupee(effectiveCashPaid)}
-          </Text>
-        </div>
-      </div>
+                : 'Cash Paid:'
+          }
+          value={
+            isDepreciation
+              ? formatRupee(values.amount)
+              : formatRupee(effectiveCashPaid)
+          }
+          sentiment="negative"
+        />
+      </Form.Summary>
 
       {/* 8. Action Button */}
-      <Button
-        variant="filled"
-        type="submit"
-        disabled={isSaving || !isFormValid}
-      >
-        {isSaving
-          ? 'Recording Expense...'
-          : isDepreciation
+      <Form.Submit
+        label={
+          isDepreciation
             ? 'Record Asset Depreciation'
             : isProfitDistribution
               ? 'Record Profit Distribution'
-              : 'Record Expense'}
-      </Button>
-    </form>
+              : 'Record Expense'
+        }
+        submittingLabel="Recording Expense..."
+      />
+    </Form>
   );
 };
 

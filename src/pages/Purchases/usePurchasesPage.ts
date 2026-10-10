@@ -114,6 +114,7 @@ export function usePurchasesPage() {
   };
 
   const handlePurchaseSubmit = async (data: PurchaseFormData) => {
+    if (isSaving) return;
     try {
       const remainingDue = Math.max(0, data.amount - data.cashPaid);
       const purchaseTx: PurchaseTransactionData = {
@@ -140,6 +141,7 @@ export function usePurchasesPage() {
   };
 
   const handleExpenseSubmit = async (data: ExpenseFormData) => {
+    if (isSaving) return;
     try {
       const remainingDue = Math.max(0, data.amount - data.cashPaid);
       await addOperationTx({

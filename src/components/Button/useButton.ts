@@ -42,7 +42,11 @@ export const useButton = ({
         onClick(e as unknown as React.MouseEvent<HTMLElement>);
       }
 
-      if (type === 'submit' && !e.defaultPrevented) {
+      // In standard browsers with form-associated custom element support,
+      // @material/web's mixinFormSubmitter handles submission natively.
+      // We only fallback to manual requestSubmit if the custom element is NOT
+      // already form-associated (e.g. headless/jsdom testing environments).
+      if (type === 'submit' && !el.form && !e.defaultPrevented) {
         const form = el.closest('form');
         if (form) {
           form.requestSubmit();

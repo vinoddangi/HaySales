@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Button } from '../../../../components/Button';
+import React from 'react';
 import { Checkbox } from '../../../../components/Checkbox';
 import { DatePicker } from '../../../../components/DatePicker';
+import { Form, useForm } from '../../../../components/Form';
 import { IconAlertTriangle } from '../../../../components/Icon';
 import { Flex } from '../../../../components/layouts/Flex';
 import { Grid } from '../../../../components/layouts/Grid';
@@ -31,6 +31,11 @@ export interface SaleFormCardProps {
   creditLimit: number;
   isSaving: boolean;
   onSubmit: (_data: SaleFormData) => Promise<void>;
+  onDataChange?: (
+    _key: keyof SaleFormData,
+    _value: any,
+    _allValues: SaleFormData,
+  ) => void;
 }
 
 const CROP_OPTIONS = [
@@ -38,55 +43,73 @@ const CROP_OPTIONS = [
   ...VALID_CROP_CATEGORIES.map((crop) => ({ value: crop, label: crop })),
 ];
 
+interface SaleFormState {
+  date: string;
+  category: CropCategory | '';
+  weight: number;
+  amount: number;
+  discount: number;
+  cashPaid: number;
+  allCash: boolean;
+  note: string;
+}
+
 export const SaleFormCard: React.FC<SaleFormCardProps> = ({
   outstandingDue,
   creditLimit,
   isSaving,
   onSubmit,
+  onDataChange,
 }) => {
-  const [date, setDate] = useState(() => getTodayDateString());
-  const [category, setCategory] = useState<CropCategory | ''>('');
-  const [weight, setWeight] = useState<number>(0);
-  const [amount, setAmount] = useState<number>(0);
-  const [discount, setDiscount] = useState<number>(0);
-  const [cashPaid, setCashPaid] = useState<number>(0);
-  const [allCash, setAllCash] = useState<boolean>(false);
-  const [note, setNote] = useState<string>('');
+  const form = useForm<SaleFormState>({
+    initialValues: {
+      date: getTodayDateString(),
+      category: '',
+      weight: 0,
+      amount: 0,
+      discount: 0,
+      cashPaid: 0,
+      allCash: false,
+      note: '',
+    },
+    validate: (vals) =>
+      Boolean(vals.category && vals.amount > 0 && vals.weight > 0),
+    isSaving,
+    onDataChange: (key, val, allVals) => {
+      onDataChange?.(
+        key as keyof SaleFormData,
+        val,
+        allVals as unknown as SaleFormData,
+      );
+    },
+    onSubmit: async (vals) => {
+      const effectiveCashPaid = vals.allCash ? vals.amount : vals.cashPaid;
+      await onSubmit({
+        category: vals.category as CropCategory,
+        weight: vals.weight,
+        amount: vals.amount,
+        discount: vals.discount > 0 ? vals.discount : undefined,
+        cashPaid: effectiveCashPaid,
+        date: vals.date,
+        note: vals.note.trim() || undefined,
+      });
+      form.reset();
+    },
+  });
 
-  const effectiveCashPaid = allCash ? amount : cashPaid;
-  const remainingDue = Math.max(0, amount - discount - effectiveCashPaid);
+  const { values, setValue } = form;
+  const effectiveCashPaid = values.allCash ? values.amount : values.cashPaid;
+  const remainingDue = Math.max(
+    0,
+    values.amount - values.discount - effectiveCashPaid,
+  );
   const newOutstandingDue = outstandingDue + remainingDue;
-  const avgRate = weight > 0 && amount > 0 ? amount / weight : 0;
+  const avgRate =
+    values.weight > 0 && values.amount > 0 ? values.amount / values.weight : 0;
   const isOverCreditLimit = newOutstandingDue > creditLimit;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!category || amount <= 0 || weight <= 0) return;
-
-    await onSubmit({
-      category: category as CropCategory,
-      weight,
-      amount,
-      discount: discount > 0 ? discount : undefined,
-      cashPaid: effectiveCashPaid,
-      date,
-      note: note.trim() || undefined,
-    });
-
-    // Reset form
-    setCategory('');
-    setWeight(0);
-    setAmount(0);
-    setDiscount(0);
-    setCashPaid(0);
-    setAllCash(false);
-    setNote('');
-  };
-
-  const isFormValid = Boolean(category && amount > 0 && weight > 0);
-
   return (
-    <form onSubmit={handleSubmit} className="hs-sale-form-card">
+    <Form form={form} className="hs-sale-form-card">
       <Text
         variant="title-sm"
         weight="bold"
@@ -101,17 +124,17 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
           <DatePicker
             label="Sale Date"
             required
-            value={date}
-            onChange={(val) => setDate(val)}
+            value={values.date}
+            onChange={(val) => setValue('date', val)}
           />
         </Grid.Item>
         <Grid.Item>
           <Select
             label="Crop Type"
             required
-            value={category}
+            value={values.category}
             options={CROP_OPTIONS}
-            onChange={(val) => setCategory(val as CropCategory)}
+            onChange={(val) => setValue('category', val as CropCategory)}
           />
         </Grid.Item>
       </Grid>
@@ -124,8 +147,8 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
             type="number"
             required
             placeholder="0"
-            value={weight ? String(weight) : ''}
-            onChange={(val) => setWeight(Number(val) || 0)}
+            value={values.weight ? String(values.weight) : ''}
+            onChange={(val) => setValue('weight', Number(val) || 0)}
           />
         </Grid.Item>
         <Grid.Item>
@@ -134,8 +157,8 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
             type="number"
             required
             placeholder="0"
-            value={amount ? String(amount) : ''}
-            onChange={(val) => setAmount(Number(val) || 0)}
+            value={values.amount ? String(values.amount) : ''}
+            onChange={(val) => setValue('amount', Number(val) || 0)}
           />
         </Grid.Item>
       </Grid>
@@ -144,8 +167,8 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
       <Flex align="center" justify="between" fullWidth>
         <Checkbox
           label="Full Cash Payment (All Cash)"
-          checked={allCash}
-          onChange={(checked) => setAllCash(checked)}
+          checked={values.allCash}
+          onChange={(checked) => setValue('allCash', checked)}
         />
       </Flex>
 
@@ -156,17 +179,17 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
             label="Cash Paid (₹)"
             type="number"
             placeholder="0"
-            disabled={allCash}
+            disabled={values.allCash}
             value={
-              allCash
-                ? amount > 0
-                  ? String(amount)
+              values.allCash
+                ? values.amount > 0
+                  ? String(values.amount)
                   : ''
-                : cashPaid
-                  ? String(cashPaid)
+                : values.cashPaid
+                  ? String(values.cashPaid)
                   : ''
             }
-            onChange={(val) => setCashPaid(Number(val) || 0)}
+            onChange={(val) => setValue('cashPaid', Number(val) || 0)}
           />
         </Grid.Item>
         <Grid.Item>
@@ -174,8 +197,8 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
             label="Discount (₹)"
             type="number"
             placeholder="0"
-            value={discount ? String(discount) : ''}
-            onChange={(val) => setDiscount(Number(val) || 0)}
+            value={values.discount ? String(values.discount) : ''}
+            onChange={(val) => setValue('discount', Number(val) || 0)}
           />
         </Grid.Item>
       </Grid>
@@ -185,67 +208,42 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
         label="Note / Remarks (Optional)"
         type="text"
         placeholder="e.g. Bag count, vehicle number"
-        value={note}
-        onChange={(val) => setNote(val)}
+        value={values.note}
+        onChange={(val) => setValue('note', val)}
       />
 
-      {/* 6. Summary Box (Styled identically to Payment Form) */}
-      <div className="hs-sale-form-card__summary">
-        <div className="hs-sale-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            Rate:
-          </Text>
-          <Text variant="body-sm" weight="bold">
-            {avgRate > 0 ? `${formatRupee(avgRate)} / Kg` : '—'}
-          </Text>
-        </div>
-        <div className="hs-sale-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            Total Amount:
-          </Text>
-          <Text variant="body-sm" weight="bold">
-            {formatRupee(amount)} ({formatWeight(weight)})
-          </Text>
-        </div>
-        <div className="hs-sale-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            Cash Paid:
-          </Text>
-          <Text variant="body-sm" weight="bold" sentiment="positive">
-            {formatRupee(effectiveCashPaid)}
-          </Text>
-        </div>
-        {discount > 0 && (
-          <div className="hs-sale-form-card__summary-row">
-            <Text variant="body-sm" appearance="secondary">
-              Discount:
-            </Text>
-            <Text variant="body-sm" weight="bold" sentiment="warning">
-              -{formatRupee(discount)}
-            </Text>
-          </div>
+      {/* 6. Summary Box */}
+      <Form.Summary>
+        <Form.Summary.Row
+          label="Rate:"
+          value={avgRate > 0 ? `${formatRupee(avgRate)} / Kg` : '—'}
+        />
+        <Form.Summary.Row
+          label="Total Amount:"
+          value={`${formatRupee(values.amount)} (${formatWeight(values.weight)})`}
+        />
+        <Form.Summary.Row
+          label="Cash Paid:"
+          value={formatRupee(effectiveCashPaid)}
+          sentiment="positive"
+        />
+        {values.discount > 0 && (
+          <Form.Summary.Row
+            label="Discount:"
+            value={`-${formatRupee(values.discount)}`}
+            sentiment="warning"
+          />
         )}
-        <div className="hs-sale-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            Added Due:
-          </Text>
-          <Text variant="body-sm" weight="bold">
-            {formatRupee(remainingDue)}
-          </Text>
-        </div>
-        <div className="hs-sale-form-card__summary-row">
-          <Text variant="body-sm" appearance="secondary">
-            New Total Due:
-          </Text>
-          <Text
-            variant="body-sm"
-            weight="bold"
-            sentiment={newOutstandingDue > 0 ? 'negative' : 'neutral'}
-          >
-            {formatRupee(newOutstandingDue)}
-          </Text>
-        </div>
-      </div>
+        <Form.Summary.Row
+          label="Added Due:"
+          value={formatRupee(remainingDue)}
+        />
+        <Form.Summary.Row
+          label="New Total Due:"
+          value={formatRupee(newOutstandingDue)}
+          sentiment={newOutstandingDue > 0 ? 'negative' : 'neutral'}
+        />
+      </Form.Summary>
 
       {/* 7. Credit Warning */}
       {remainingDue > 0 && isOverCreditLimit && (
@@ -262,14 +260,8 @@ export const SaleFormCard: React.FC<SaleFormCardProps> = ({
       )}
 
       {/* 8. Submit Button */}
-      <Button
-        variant="filled"
-        type="submit"
-        disabled={isSaving || !isFormValid}
-      >
-        {isSaving ? 'Processing Sale...' : 'Process Sale'}
-      </Button>
-    </form>
+      <Form.Submit label="Process Sale" submittingLabel="Processing Sale..." />
+    </Form>
   );
 };
 
