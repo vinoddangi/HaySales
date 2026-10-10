@@ -1,5 +1,5 @@
 id,date,type,category,vendorName,weight,amount,cashPaid,remainingDue,notes
-open_stock_2026_08_31,2026-08-31,PURCHASE,Others,Opening Inventory,5403,58029.96,58029.96,0,Baseline Closing Stock as of 31-Aug-2026 (5403 Kg @ ₹10.74/Kg)
+open_stock_2026_08_31,2026-08-31,PURCHASE,Chana,Opening Inventory,5403,58029.96,58029.96,0,Baseline Closing Stock as of 31-Aug-2026 (Chana 5403 Kg @ ₹10.74/Kg)
 open_asset_tractor_2026_08_31,2026-08-31,EXPENSE,Asset Purchase,Machinery,0,840000,840000,0,Baseline Fixed Asset - Tractor Book Value as of 31-Aug-2026
 open_asset_pickup_2026_08_31,2026-08-31,EXPENSE,Asset Purchase,Vehicle,0,120000,120000,0,Baseline Fixed Asset - Pickup (Daalu) Residual Book Value as of 31-Aug-2026
 open_asset_fence_2026_08_31,2026-08-31,EXPENSE,Asset Purchase,Infrastructure,0,64800,64800,0,Baseline Fixed Asset - Boundary Fence as of 31-Aug-2026

@@ -6145,13 +6145,13 @@
       "id": "open_stock_2026_08_31",
       "date": "2026-08-31",
       "type": "PURCHASE",
-      "category": "Others",
+      "category": "Chana",
       "vendorName": "Opening Inventory",
       "weight": 5403,
       "amount": 58029.96,
       "cashPaid": 58029.96,
       "remainingDue": 0,
-      "notes": "Baseline Closing Stock as of 31-Aug-2026 (5403 Kg @ ₹10.74/Kg)"
+      "notes": "Baseline Closing Stock as of 31-Aug-2026 (Chana 5403 Kg @ ₹10.74/Kg)"
     },
     {
       "id": "open_asset_tractor_2026_08_31",

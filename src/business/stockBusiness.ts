@@ -34,16 +34,16 @@ export const BASELINE_CLOSING_STOCK: CropRecord = {
  * Baseline closing stock as of August 2026 ('2026-08').
  */
 export const AUG_2026_CLOSING_STOCK: CropRecord = {
-  Others: {
-    id: 'closing-others-2026-08',
+  Chana: {
+    id: 'closing-chana-2026-08',
     date: '2026-08-31',
     type: 'PURCHASE',
-    category: 'Others',
+    category: 'Chana',
     weight: 5403,
     amount: 58029.96,
     cashPaid: 58029.96,
     remainingDue: 0,
-    note: '2026 Aug Closing Stock',
+    note: '2026 Aug Closing Stock (Chana)',
     vendorName: 'Opening Inventory',
   },
 };
